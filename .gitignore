@@ -1,4 +1,3 @@
-/workspace
 .venv/
 /problem-example
 scheduled_tasks.lock

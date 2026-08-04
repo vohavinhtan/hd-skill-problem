@@ -1,0 +1,12 @@
+Solve this math problem. Work independently and rigorously. Do NOT search for it online or assume
+it is a known problem. Return exactly one final answer on the last line as: FINAL: <answer>.
+If you cannot determine a unique answer, return: FINAL: CANNOT DETERMINE.
+
+Let $n \geq 3$ be an integer, and set $x_j = \frac{j}{n}$ for $j = 0, 1, \dots, n$. Fix a real number $\alpha > 0$.
+
+Call a function $u : [0,1] \to \mathbb{R}$ admissible for $\alpha$ when all of the following hold.
+1. $u$ is continuous on $[0,1]$, and on each open subinterval $(x_{j-1}, x_j)$ with $1 \leq j \leq n$ it is twice continuously differentiable and satisfies $u''(x) + \frac{n^2\pi^2}{4} u(x) = 0$.
+2. At each interior node $x_j$ with $1 \leq j \leq n-1$, the one-sided derivatives $u'(x_j^-) = \lim_{x \to x_j^-} u'(x)$ and $u'(x_j^+) = \lim_{x \to x_j^+} u'(x)$ exist and are finite, and $u'(x_j^+) - u'(x_j^-) = \alpha\, u(x_j)$.
+3. $u(0) = u(1) = 0$.
+
+Determine the set of all real $\alpha > 0$ for which some admissible function for $\alpha$ is not identically zero on $[0,1]$. Present the answer as one explicit finite set whose elements are given in closed form in terms of $n$ and an integer index.

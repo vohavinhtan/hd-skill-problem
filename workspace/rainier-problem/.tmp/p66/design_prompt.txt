@@ -1,0 +1,27 @@
+You are helping design ONE frontier-tier research-flavored math problem for an expert benchmark. Do not search the web. Produce candidate DESIGNS only.
+
+TARGET TAXONOMY (must be the honest primary content, pick one row per candidate):
+  Domain "Algebra, Functions, and Trigonometry", sub-domain one of:
+  {Polynomial and rational functions | Sequences and elementary recurrence relations | Equations and inequalities | Functions and graphs}
+So: an ELEMENTARY-STATED problem (no graduate vocabulary in the statement) whose hidden core is genuinely deep.
+
+HARD CONSTRAINTS on each candidate:
+1. Final answer must be ONE exact object, under 100 characters when $ and whitespace are stripped, and must NOT be degenerate (not 0, not 1, not (1,...,1), not the empty set, not "does not exist").
+2. The intended solution must be fully by hand: no CAS, no code, no large tables, no case enumeration over many cases, no "by computation". Total honest write-up must fit in 10000 characters.
+3. Statement must introduce at most 2 bespoke defined terms and use standard vocabulary. No invented glyphs. Self-contained.
+4. Exactly one question. No proofs requested. No multiple choice.
+5. The decisive step must be a DISCOVERY with no retrievable name (not "recognize theorem X and substitute"). Forbidden decisive mechanisms (all saturated / on-sight retrievable): Chebyshev/orthogonal polynomials, Ritt's commuting-polynomial classification, QRT/Somos linearization, Mobius/coordinate conjugation, transfer matrix, generating-function-to-rational, circulant/DFT diagonalization, Smith normal form, Schur complement, KKT/duality/slack certificates, Lagrange multipliers as the core, character sums/quadratic residues/Paley, Galois-group identification, Pell/fundamental units, Burnside/orbit-stabilizer counting, Stirling/Euler-Maclaurin asymptotics, Beatty/Sturmian words, chip-firing/sandpile, Catalan/lattice-path bijections, Hensel lifting, Newton polygon, p-adic valuation (Kummer) of binomials, envelope of a family, moment problems (Markov-Krein), max-entropy/exponential families.
+6. BRUTE-FORCE PROTECTION (critical): a solver with a computer must NOT be able to recover the final answer by (a) direct numerical computation over the stated data, (b) computing small cases and extrapolating the pattern, (c) numerically approximating a constant and snapping it to closed form with PSLQ/inverse symbolic lookup, or (d) guessing a plausible answer and cheaply verifying it. Strongly prefer designs where SMALL CASES ARE ACTIVELY MISLEADING: the generic/naive family gives the right value for all small instances, and a structurally different competitor takes over only at a larger or structured instance, so pattern-fitting from small data yields a WRONG answer.
+7. The problem statement must NOT spell out the recipe that produces the requested object, and must not print any intermediate that the solution would otherwise have to derive.
+
+DELIVER 3 CANDIDATES. For each, output exactly:
+  CANDIDATE k
+  ROW: <sub-domain>
+  STATEMENT: <the full problem statement, LaTeX with $...$ inline, self-contained, one question>
+  ANSWER: <the exact final answer, and its stripped character count>
+  GATEWAY: <one sentence: the decisive discovery, and why it has no standard name>
+  DERIVATION: <8-15 lines: the real proof outline, including the closure certificate: sharp bound + attainment, or uniqueness, or exhaustiveness>
+  WHY-BRUTE-FORCE-FAILS: <concretely address (a)-(d) above; if small cases mislead, say exactly which small instances give the wrong pattern and where the crossover/degeneracy first occurs>
+  FALSE-TRAILS: <two plausible attacks and the structural reason each fails>
+
+Be rigorous: the ANSWER must actually be correct and you must have checked it. If you are not certain a candidate's answer is right, say so explicitly in that candidate.
