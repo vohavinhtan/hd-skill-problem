@@ -2,25 +2,26 @@
 
 ## LaTeX (Normalized)
 
-Fix a real number $\mu>0$ and consider the boundary value problem
+Let $p\geq5$ be an odd prime and set
 $$
--u''(x)+\mu\,u(1-x)=\lambda u(x),\qquad 0\le x\le1,
+\mu=\frac{(p^2-2p)\pi^2}{2}.
+$$
+For each real number $\lambda$, let $E_\lambda$ be the real vector space of all twice continuously differentiable functions $u:[0,1]\to\mathbb R$ satisfying
+$$
+-u''(x)+\mu\,u(1-x)=\lambda u(x),\qquad 0\leq x\leq1,
 $$
 $$
-u(0)=u(1)=0,
+u(0)=u(1)=0.
 $$
-for a real number $\lambda$ and a twice continuously differentiable function $u:[0,1]\to\mathbb R$.
-
-For fixed $\lambda$, the solutions form a real vector space $E_\lambda$. Call $\lambda$ certified when $\dim E_\lambda\ge2$ and there exist nonzero functions $p,q\in E_\lambda$ such that
+Let $\lambda_p$ be the least real number $\lambda$ for which $\dim E_\lambda\geq2$, and let $w_p$ be the unique function in $E_{\lambda_p}$ satisfying
 $$
-p'\!\left(\frac12\right)=p\!\left(\frac17\right)=0
-$$
-and
-$$
-q\!\left(\frac12\right)=q\!\left(\frac15\right)=0.
+w_p\!\left(\frac1p\right)=0,\qquad w_p'\!\left(\frac1p\right)=1.
 $$
 
-Determine the set of all $\mu>0$ for which the problem has at least two distinct certified eigenvalues. Present the answer as one explicit set whose elements are given in closed form in terms of integer indices.
+Determine, in closed form in terms of $p$, the exact value of
+$$
+\int_0^1 |w_p(x)|\,dx.
+$$
 
 ---
 
@@ -30,11 +31,11 @@ Determine the set of all $\mu>0$ for which the problem has at least two distinct
 |---|---|
 | **Domain** | Differential Equations and Dynamical Systems |
 | **Sub-domain** | Boundary value problems |
-| **Problem Type** | Exhaustive enumeration |
-| **Answer Type** | Set or multiset of objects |
+| **Problem Type** | Symbolic derivation |
+| **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-The problem concerns a nonlocal two-point boundary value problem and the internal geometry of its repeated eigenspaces. Reflection symmetry separates the equation into ordinary Dirichlet modes, but certification requires two different vectors in the same repeated eigenspace to satisfy independent interior constraints. These constraints isolate different parity modes and impose simultaneous divisibility conditions on the colliding frequencies, after which the full classification becomes a constrained factorization problem with coupled congruences rather than an unrestricted divisor count.
+The primary task is to identify the least multiple eigenvalue of a nonlocal two-point boundary value problem, reconstruct a uniquely normalized function inside its eigenspace, and then evaluate an exact nonsmooth functional of that function. The arithmetic parameter and the interior normalization are both load-bearing parts of the spectral analysis, while the absolute value forces a complete determination of the normalized eigenfunction's nodal structure before the requested integral can be derived.
