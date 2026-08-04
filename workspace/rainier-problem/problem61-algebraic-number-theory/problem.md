@@ -2,51 +2,82 @@
 
 ## LaTeX (Normalized)
 
-Fix an even integer $d=2m\geq4$, put $U=\mathbb F_2^d$ and $q=2^d$, and write each element of $U$ as
+Fix an integer $m\geq3$, put $K=\mathbb F_{2^m}$ and $q=2^m$, and let
 $$
-x=(x_1,\ldots,x_m,y_1,\ldots,y_m).
+\operatorname{Tr}:K\to\mathbb F_2
 $$
-Define the alternating form
-$$
-\omega(x,x')=\sum_{i=1}^m\bigl(x_i y_i'+y_i x_i'\bigr)\in\mathbb F_2.
-$$
-Let $\mathcal H_d$ be the vector space of functions $h:U\to\mathbb F_2$ satisfying
-$$
-h(x)+h(x+a)+h(x+b)+h(x+a+b)=0
-$$
-for every $x\in U$ and every linearly independent $a,b\in U$ with $\omega(a,b)=0$.
+be the absolute trace. Fix $\theta\in K$ such that $K=\mathbb F_2(\theta)$, and put $U=K^2$.
 
-Call $h:U\to\mathbb F_2$ affine if
+For a function $h:U\to\mathbb F_2$ and $a\in U$, define
 $$
-h(u)=c+\ell(u)
+D_a h(x)=h(x+a)+h(x).
 $$
-for some $c\in\mathbb F_2$ and $\ell\in\operatorname{Hom}_{\mathbb F_2}(U,\mathbb F_2)$.
+For $a=(a_1,a_2)$ and $b=(b_1,b_2)$ in $U$, put
+$$
+[a,b]=a_1b_2+a_2b_1\in K.
+$$
+Let $\mathcal H_m$ be the vector space of functions $h:U\to\mathbb F_2$ satisfying
+$$
+D_aD_bD_c h(x)=0
+$$
+for every $x,a,b,c\in U$, and
+$$
+D_aD_b h(x)=0
+$$
+for every $x,a,b\in U$ such that
+$$
+\operatorname{Tr}([a,b])=\operatorname{Tr}(\theta[a,b])=0.
+$$
 
 Let
 $$
-B_4=C_2^4\rtimes S_4
+B_6=C_2^6\rtimes S_6
 $$
-act naturally on $\Omega=\{\pm1,\pm2,\pm3,\pm4\}$. Write an element as $(\varepsilon,\sigma)$, where $\varepsilon=(\varepsilon_1,\ldots,\varepsilon_4)\in\{\pm1\}^4$ and $\sigma\in S_4$, and define $\eta(1)=0$, $\eta(-1)=1$ in $\mathbb F_2$.
+act naturally on
+$$
+\Omega=\{\pm1,\pm2,\ldots,\pm6\}.
+$$
+Write an element as $(\varepsilon,\sigma)$, where
+$$
+\varepsilon=(\varepsilon_1,\ldots,\varepsilon_6)\in\{\pm1\}^6,
+\qquad \sigma\in S_6,
+$$
+and define $\eta(1)=0$, $\eta(-1)=1$ in $\mathbb F_2$.
 
-For every $u\in U$, let $F_u$ be an octic number field with Galois closure $L_u$ such that $\operatorname{Gal}(L_u/\mathbb Q)$ is identified with $B_4$ through its action on the eight embeddings of $F_u$. Assume that the fields $L_u^{C_2^4}$ are all equal and that, for the compositum $L$ of the $L_u$, restriction identifies $\operatorname{Gal}(L/\mathbb Q)$ with
+For every $u\in U$, let $F_u$ be a degree-$12$ number field with Galois closure $L_u$ such that $\operatorname{Gal}(L_u/\mathbb Q)$ is identified with $B_6$ through its action on the twelve embeddings of $F_u$. Assume that the fields $L_u^{C_2^6}$ are all equal and that, for the compositum $L$ of the $L_u$, restriction identifies $\operatorname{Gal}(L/\mathbb Q)$ with
 $$
-\mathcal G_d=
+\mathcal G_m=
 \left\{
 \bigl((\varepsilon_u,\sigma)\bigr)_{u\in U}:
 \begin{array}{l}
-\sigma\in S_4,\quad \varepsilon_u\in\{\pm1\}^4,\\
-u\longmapsto\eta(\varepsilon_{u,j})\text{ belongs to }\mathcal H_d
-\text{ for }j=1,2,3,4
+\sigma\in S_6,\quad \varepsilon_u\in\{\pm1\}^6,\\
+u\longmapsto\eta(\varepsilon_{u,j})\text{ belongs to }\mathcal H_m
+\text{ for }j=1,\ldots,6
 \end{array}
 \right\}.
 $$
 
-For every rational prime $p$ unramified in $L$, let $\lambda_u(p)$ be the partition of $8$ formed by the residue degrees of the primes of $F_u$ above $p$, counted with multiplicity.
+For every rational prime $p$ unramified in $L$, let $\lambda_u(p)$ be the partition of $12$ formed by the residue degrees of the primes of $F_u$ above $p$, counted with multiplicity.
 
-Determine, as a rational function of $q$, the natural density of primes $p$ for which there exist a non-affine function $r\in\mathcal H_d$ and two distinct partitions $\Lambda_0,\Lambda_1$ of $8$, having the same number of parts, such that
+Determine, as a rational function of $q$, the natural density of primes $p$ for which there exist $r,s\in\mathcal H_m$ such that
 $$
-\lambda_u(p)=\Lambda_{r(u)}
-\qquad\text{for every }u\in U.
+\#\{u\in U:r(u)=0\}
+=
+\#\{u\in U:s(u)=0\}
+=
+\#\{u\in U:r(u)+s(u)=0\}
+=
+\frac{q^2+q}{2},
+$$
+and, for every $u\in U$,
+$$
+\lambda_u(p)=
+\begin{cases}
+(3,3,2,2,1,1),& (r(u),s(u))=(0,0),\\
+(6,2,2,2),& (r(u),s(u))=(1,0),\\
+(4,3,3,2),& (r(u),s(u))=(0,1),\\
+(6,4,1,1),& (r(u),s(u))=(1,1).
+\end{cases}
 $$
 
 ---
@@ -62,4 +93,4 @@ $$
 
 ## Domain Explanation
 
-This problem is classified under algebraic number theory because the residue-degree partitions are Frobenius cycle types, and Chebotarev's theorem converts the requested density into an exact proportion inside the Galois group of the compositum. The local parallelogram relations are controlled by a symplectic form and produce two interacting families of Boolean characters rather than the single affine family in the original version. The requirement that two distinct splitting types have the same number of prime factors couples different signed cycle lengths, so the count cannot be reduced to independent cycle-parity constraints.
+This problem is classified under algebraic number theory because residue-degree partitions are Frobenius cycle types, and Chebotarev's theorem converts the requested density into an exact proportion in the Galois group of the compositum. The Frobenius signs are coupled across the fields by trace-defined quadratic Boolean functions. Determining the density requires reconstructing that quadratic structure, analyzing a three-way Walsh-sign correlation, and then matching it with the signed cycle decomposition in the hyperoctahedral group.
