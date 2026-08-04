@@ -1,0 +1,1 @@
+../../skills/format-solution/SKILL.md

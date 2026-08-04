@@ -1,0 +1,1 @@
+../../skills/math-clone/SKILL.md

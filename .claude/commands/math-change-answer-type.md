@@ -1,0 +1,1 @@
+../../skills/math-change-answer-type/SKILL.md

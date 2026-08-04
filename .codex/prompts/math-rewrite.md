@@ -1,0 +1,1 @@
+../../skills/math-rewrite/SKILL.md

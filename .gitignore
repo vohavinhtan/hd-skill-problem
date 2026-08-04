@@ -1,0 +1,16 @@
+/workspace
+.venv/
+/problem-example
+scheduled_tasks.lock
+.antigravitycli
+# Repo-local scratch root: stump-gate outputs + math-harder draft staging (skills/_shared/stump_gate.md, skills/math-harder/SKILL.md)
+/.tmp/
+.antigravitycli/
+# Breaker-topics per-topic files are runtime-mutated local learning logs (Round-log + Distilled
+# lessons reference gitignored workspace problems). Keep only the README schema tracked.
+/skills/_shared/breaker-topics/*.md
+!/skills/_shared/breaker-topics/README.md
+# Learning-state digests that cite specific gitignored workspace problems (probNN) — local only.
+/skills/_shared/accepted_topic_history.md
+/skills/_shared/passed_exemplars.md
+/skills/_shared/breaker_playbook.md

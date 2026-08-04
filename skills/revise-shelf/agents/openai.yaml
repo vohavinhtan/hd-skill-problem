@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revise Shelf"
+  short_description: "Park and restore slot-blocked math problems"
+  default_prompt: "Use $revise-shelf to park this frontier problem until its taxonomy slot reopens."

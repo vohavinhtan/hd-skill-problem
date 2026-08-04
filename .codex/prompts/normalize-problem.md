@@ -1,0 +1,1 @@
+../../skills/normalize-problem/SKILL.md

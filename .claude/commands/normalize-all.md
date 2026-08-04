@@ -1,0 +1,1 @@
+../../skills/normalize-all/SKILL.md

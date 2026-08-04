@@ -1,0 +1,1 @@
+../../skills/problem-init/SKILL.md

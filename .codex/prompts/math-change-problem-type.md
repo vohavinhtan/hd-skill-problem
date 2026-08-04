@@ -1,0 +1,1 @@
+../../skills/math-change-problem-type/SKILL.md

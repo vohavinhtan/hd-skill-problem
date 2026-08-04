@@ -1,0 +1,1 @@
+../../skills/math-harder/SKILL.md
