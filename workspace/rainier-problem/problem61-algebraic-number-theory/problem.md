@@ -69,15 +69,26 @@ $$
 =
 \frac{q^2+q}{2},
 $$
-and, for every $u\in U$,
+and, for every $u\in U$, the following four rules hold:
 $$
-\lambda_u(p)=
-\begin{cases}
-(3,3,2,2,1,1),& (r(u),s(u))=(0,0),\\
-(6,2,2,2),& (r(u),s(u))=(1,0),\\
-(4,3,3,2),& (r(u),s(u))=(0,1),\\
-(6,4,1,1),& (r(u),s(u))=(1,1).
-\end{cases}
+(r(u),s(u))=(0,0)
+\quad\Longrightarrow\quad
+\lambda_u(p)=(3,3,2,2,1,1),
+$$
+$$
+(r(u),s(u))=(1,0)
+\quad\Longrightarrow\quad
+\lambda_u(p)=(6,2,2,2),
+$$
+$$
+(r(u),s(u))=(0,1)
+\quad\Longrightarrow\quad
+\lambda_u(p)=(4,3,3,2),
+$$
+$$
+(r(u),s(u))=(1,1)
+\quad\Longrightarrow\quad
+\lambda_u(p)=(6,4,1,1).
 $$
 
 ---
