@@ -89,7 +89,7 @@ $$
 | Domain | Number Theory |
 | Sub-domain | Algebraic number theory |
 | Problem Type | Symbolic derivation |
-| Answer Type | Exact symbolic expression |
+| Answer Type | Polynomial or rational function |
 
 ## Domain Explanation
 
