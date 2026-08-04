@@ -171,12 +171,9 @@ Therefore the nilpotency class is $c$. Substituting
 $$
 m=\left\lfloor\log_2(n-1)\right\rfloor
 $$
-gives
+gives the required expression.
 
-Final Answer:
-$$
-\boxed{1+\left\lfloor\log_2\!\left(\left\lfloor\log_2(n-1)\right\rfloor\right)\right\rfloor}.
-$$
+Final Answer: $\boxed{1+\left\lfloor\log_2\!\left(\left\lfloor\log_2(n-1)\right\rfloor\right)\right\rfloor}$
 
 ---
 
