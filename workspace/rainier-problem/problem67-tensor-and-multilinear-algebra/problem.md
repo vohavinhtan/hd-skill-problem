@@ -4,8 +4,9 @@
 
 Fix integers $m,r,s$ satisfying
 $$
-m\geq4,\qquad 1\leq s\leq\left\lfloor\frac{m}{2}\right\rfloor,
-\qquad s\leq r\leq s+\left\lfloor\frac{m}{2}\right\rfloor.
+m\geq4,\qquad m\equiv0\pmod2,
+\qquad 1\leq s\leq\frac{m}{2},
+\qquad s\leq r\leq s+\frac{m}{2}.
 $$
 Let $V$ be a complex vector space with ordered basis
 $$
@@ -33,9 +34,23 @@ L(\alpha)=\Omega\wedge\alpha,
 \qquad
 C(\alpha)=\sum_{i=1}^{m}\iota_{\varphi_i}\iota_{\varepsilon_i}(\alpha).
 $$
-Determine, as a closed formula in $m,r,s$, the nullity of the linear map
+Let $J$ be the algebra automorphism of $\bigwedge V$ induced by
 $$
-C^rL^s:\bigwedge^mV\longrightarrow\bigwedge^{m+2s-2r}V.
+J(e_i)=f_i,
+\qquad
+J(f_i)=e_i
+$$
+for $1\leq i\leq m$. For $\delta\in\{1,-1\}$, set
+$$
+E_\delta=\left\{\alpha\in\bigwedge^mV:J(\alpha)=\delta\alpha\right\}
+$$
+and
+$$
+\nu_\delta=\dim\ker\left(\left.C^rL^s\right|_{E_\delta}\right).
+$$
+Determine, as a closed formula in $m,r,s$, the integer
+$$
+\nu_1-\nu_{-1}.
 $$
 
 ---
@@ -53,4 +68,4 @@ $$
 
 ## Domain Explanation
 
-This problem is classified under Linear Algebra and Tensor and multilinear algebra because its central objects are exterior powers, contraction operators, and multiplication by a fixed alternating tensor. The requested nullity depends on how the wedge and contraction operators interact across the full decomposition of the middle exterior power. A direct basis computation grows exponentially with $m$, whereas the intended derivation must recover the hidden invariant-string structure and identify exactly which components are annihilated by the mixed power $C^rL^s$.
+This problem is classified under Linear Algebra and Tensor and multilinear algebra because its central objects are exterior powers, contraction operators, multiplication by an alternating tensor, and the eigenspace decomposition induced by an involution. The requested signed nullity requires both the invariant-string decomposition of the middle exterior power and a trace calculation that records how the involution acts across those strings; counting only the annihilated components no longer determines the answer.
