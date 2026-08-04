@@ -2,44 +2,44 @@
 
 ## LaTeX (Normalized)
 
-Fix integers $d,h,k$ satisfying
+Fix integers $a,b,u$ satisfying
 $$
-d\geq2,\qquad h\geq3,\qquad m=dh,
-\qquad d\leq k<\frac{dh(h-1)}{2}.
+a\geq4,\qquad 1\leq b\leq a-1,
+\qquad 1\leq u\leq2^a-2.
 $$
-Let $q$ be the unique integer satisfying
+Work over the field $\mathbb F_2$. Let $U$ and $V$ have ordered bases
 $$
-\frac{dq(q+1)}{2}\leq k<\frac{d(q+1)(q+2)}{2}.
+x_0,x_1,\ldots,x_{2^{a+1}-2}
 $$
-Let $J\in M_m(\mathbb C)$ be defined on the standard basis by
+and
 $$
-J e_1=0,
-\qquad
-J e_i=e_{i-1}\quad(2\leq i\leq m),
+y_0,y_1,\ldots,y_{2^a-2},
 $$
-and define a linear map $T:M_m(\mathbb C)\to M_m(\mathbb C)$ by
+respectively. Define nilpotent linear maps $A:U\to U$ and $B:V\to V$ by
 $$
-T(X)=JX-XJ^d.
+A(x_0)=0,\qquad A(x_i)=x_{i-1}\quad(i\geq1),
 $$
-Put
 $$
-Q=M_m(\mathbb C)/\ker T,
+B(y_0)=0,\qquad B(y_j)=y_{j-1}\quad(j\geq1).
 $$
-and let $\overline T:Q\to Q$ be the induced map
+Since $\ker A^u$ and $\ker B^u$ are invariant, $A\oplus B$ induces an endomorphism of
 $$
-\overline T([X])=[T(X)].
+(U/\ker A^u)\oplus(V/\ker B^u).
 $$
-Define the induced derivation $\Delta:\bigwedge^kQ\to\bigwedge^kQ$ by
+Let $R$ be the quotient
 $$
-\Delta(v_1\wedge\cdots\wedge v_k)
-=
-\sum_{i=1}^{k}
- v_1\wedge\cdots\wedge \overline T(v_i)
- \wedge\cdots\wedge v_k.
+R=
+\frac{\bigwedge^2\left((U/\ker A^u)\oplus(V/\ker B^u)\right)}
+{\bigwedge^2(U/\ker A^u)+\bigwedge^2(V/\ker B^u)}.
 $$
-Determine, as a closed formula in $d,h,k$, the least positive integer $N$ such that
+Let $\Gamma:R\to R$ be the map induced by
 $$
-\Delta^N=0.
+z\wedge w\longmapsto
+(A\oplus B)z\wedge w+z\wedge(A\oplus B)w.
+$$
+Determine, as a closed formula in $a,b,u$, the rank of
+$$
+\Gamma^{\,2^{a+1}-2^b}.
 $$
 
 ---
@@ -50,11 +50,11 @@ $$
 |---|---|
 | **Domain** | Linear Algebra |
 | **Sub-domain** | Tensor and multilinear algebra |
-| **Problem Type** | Parameter identification |
+| **Problem Type** | Symbolic derivation |
 | **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-This problem is classified under Linear Algebra and Tensor and multilinear algebra because it combines a quotient of a matrix space by the kernel of a nilpotent operator with the derivation induced on an exterior power. Determining the nilpotency index requires recovering the Jordan structure created by the unequal left and right actions, understanding how passage to the quotient changes every Jordan chain, and then identifying the extremal chain in the exterior representation.
+This problem is classified under Linear Algebra and Tensor and multilinear algebra because it uses quotients of nilpotent Jordan chains, an exterior-square cross-term, and an induced tensor derivation. The rank at the specified power depends on characteristic-two binomial cancellation, a residue-class decomposition at scale $2^b$, and an exact count of the surviving graded components; characteristic-zero highest-weight arguments do not determine it.
