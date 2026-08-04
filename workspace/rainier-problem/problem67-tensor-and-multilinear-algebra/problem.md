@@ -2,55 +2,44 @@
 
 ## LaTeX (Normalized)
 
-Fix integers $m,r,s$ satisfying
+Fix integers $d,h,k$ satisfying
 $$
-m\geq4,\qquad m\equiv0\pmod2,
-\qquad 1\leq s\leq\frac{m}{2},
-\qquad s\leq r\leq s+\frac{m}{2}.
+d\geq2,\qquad h\geq3,\qquad m=dh,
+\qquad d\leq k<\frac{dh(h-1)}{2}.
 $$
-Let $V$ be a complex vector space with ordered basis
+Let $q$ be the unique integer satisfying
 $$
-e_1,\ldots,e_m,f_1,\ldots,f_m,
+\frac{dq(q+1)}{2}\leq k<\frac{d(q+1)(q+2)}{2}.
 $$
-and let
+Let $J\in M_m(\mathbb C)$ be defined on the standard basis by
 $$
-\varepsilon_1,\ldots,\varepsilon_m,\varphi_1,\ldots,\varphi_m
+J e_1=0,
+\qquad
+J e_i=e_{i-1}\quad(2\leq i\leq m),
 $$
-be the dual basis. For $\lambda\in V^*$, define the contraction operator $\iota_\lambda$ on decomposable exterior products by
+and define a linear map $T:M_m(\mathbb C)\to M_m(\mathbb C)$ by
 $$
-\iota_\lambda(v_1\wedge\cdots\wedge v_k)
-=\sum_{j=1}^{k}(-1)^{j-1}\lambda(v_j)
-\,v_1\wedge\cdots\wedge\widehat{v_j}\wedge\cdots\wedge v_k,
+T(X)=JX-XJ^d.
 $$
-and extend it linearly.
-
 Put
 $$
-\Omega=\sum_{i=1}^{m}e_i\wedge f_i,
+Q=M_m(\mathbb C)/\ker T,
 $$
-and define linear operators on the exterior algebra $\bigwedge V$ by
+and let $\overline T:Q\to Q$ be the induced map
 $$
-L(\alpha)=\Omega\wedge\alpha,
-\qquad
-C(\alpha)=\sum_{i=1}^{m}\iota_{\varphi_i}\iota_{\varepsilon_i}(\alpha).
+\overline T([X])=[T(X)].
 $$
-Let $J$ be the algebra automorphism of $\bigwedge V$ induced by
+Define the induced derivation $\Delta:\bigwedge^kQ\to\bigwedge^kQ$ by
 $$
-J(e_i)=f_i,
-\qquad
-J(f_i)=e_i
+\Delta(v_1\wedge\cdots\wedge v_k)
+=
+\sum_{i=1}^{k}
+ v_1\wedge\cdots\wedge \overline T(v_i)
+ \wedge\cdots\wedge v_k.
 $$
-for $1\leq i\leq m$. For $\delta\in\{1,-1\}$, set
+Determine, as a closed formula in $d,h,k$, the least positive integer $N$ such that
 $$
-E_\delta=\left\{\alpha\in\bigwedge^mV:J(\alpha)=\delta\alpha\right\}
-$$
-and
-$$
-\nu_\delta=\dim\ker\left(\left.C^rL^s\right|_{E_\delta}\right).
-$$
-Determine, as a closed formula in $m,r,s$, the integer
-$$
-\nu_1-\nu_{-1}.
+\Delta^N=0.
 $$
 
 ---
@@ -61,11 +50,11 @@ $$
 |---|---|
 | **Domain** | Linear Algebra |
 | **Sub-domain** | Tensor and multilinear algebra |
-| **Problem Type** | Symbolic derivation |
+| **Problem Type** | Parameter identification |
 | **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-This problem is classified under Linear Algebra and Tensor and multilinear algebra because its central objects are exterior powers, contraction operators, multiplication by an alternating tensor, and the eigenspace decomposition induced by an involution. The requested signed nullity requires both the invariant-string decomposition of the middle exterior power and a trace calculation that records how the involution acts across those strings; counting only the annihilated components no longer determines the answer.
+This problem is classified under Linear Algebra and Tensor and multilinear algebra because it combines a quotient of a matrix space by the kernel of a nilpotent operator with the derivation induced on an exterior power. Determining the nilpotency index requires recovering the Jordan structure created by the unequal left and right actions, understanding how passage to the quotient changes every Jordan chain, and then identifying the extremal chain in the exterior representation.
