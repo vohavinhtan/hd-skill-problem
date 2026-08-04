@@ -198,7 +198,11 @@ The number of permutations in $S_6$ with cycle type $(3,2,1)$ is
 $$
 \frac{6!}{3\cdot2}=120,
 $$
-so their proportion is $120/6!=1/6$. Chebotarev's theorem and Steps 1, 2, and 4 give the density
+so their proportion is
+$$
+\frac{120}{6!}=\frac{1}{6}.
+$$
+Chebotarev's theorem and Steps 1, 2, and 4 give the density
 $$
 \frac{1}{6}\cdot
 \frac{3q^3(q+1)}{(8q^2)^3}
