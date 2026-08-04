@@ -191,6 +191,8 @@ $$
 =\boxed{\frac{(2p+1)^{\frac{2p+1}{2}}}{2^{3p}(p+1)^{\frac{2p-1}{2}}}}.
 $$
 
+Final Answer: $\boxed{\frac{(2p+1)^{\frac{2p+1}{2}}}{2^{3p}(p+1)^{\frac{2p-1}{2}}}}$
+
 ---
 
 ## Answer
