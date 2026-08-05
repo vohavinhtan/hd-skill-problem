@@ -18,100 +18,150 @@ $$
 \tag{2}
 $$
 
-Step 2: Construct the monic eigenfunction and prove its eigenvalue index
+Step 2: Construct the eigenfunction and prove its spectral index
 
-Let $L_j^{(k)}$ be the classical Laguerre polynomial and define the monic version
+Let $L_j^{(k)}$ be the classical Laguerre polynomial and put
 $$
-\ell_j(x)=(-1)^j j!L_j^{(k)}(x).
+\ell_j(x)=(-1)^j j!L_j^{(k)}(x),\qquad m=n-1.
 $$
-Put $m=n-1$ and
+Define
 $$
 E_n(x)=-(x+k+1)L_m^{(k)}(x)+L_{m-1}^{(k)}(x).
 $$
-The Laguerre identities
+The identities
 $$
 xL_j''+(k+1-x)L_j'+jL_j=0,
 \qquad
 (L_m^{(k)})'-(L_{m-1}^{(k)})'=-L_{m-1}^{(k)}
 \tag{3}
 $$
-show directly that $E_n$ satisfies (1) with $\lambda=n$: after eliminating the second derivatives, the left side becomes
+reduce the left side of (1), for $E_n$ and $\lambda=n$, to
 $$
 2x\bigl((L_m^{(k)})'-(L_{m-1}^{(k)})'+L_{m-1}^{(k)}\bigr)=0.
 $$
-Therefore the monic polynomial solution is
+Thus the monic polynomial solution is
 $$
 q_{n,k}(x)=(-1)^n(n-1)!E_n(x)
 =(x+k+1)\ell_m(x)+m\ell_{m-1}(x).
 \tag{4}
 $$
-It is admissible because near $0$ the norm integrand is $O(x^k)$ and the flux is $O(x^{k+1})$, while at infinity both are a polynomial times $e^{-x}$.
+It is admissible: near $0$ the norm integrand is $O(x^k)$ and the flux is $O(x^{k+1})$, while at infinity both are a polynomial times $e^{-x}$.
 
-The positive simple zeros of $\ell_{m-1}$ interlace those of $\ell_m$. At a zero $a_i$ of $\ell_m$,
+We first prove the required Laguerre interlacing. The recurrence
 $$
-q_{n,k}(a_i)=m\ell_{m-1}(a_i),
+jL_j^{(k)}(x)=\bigl(2j+k-1-x\bigr)L_{j-1}^{(k)}(x)
+-(j+k-1)L_{j-2}^{(k)}(x)
+\tag{5}
 $$
-so the alternating signs give one zero of $q_{n,k}$ in $(0,a_1)$ and one in each $(a_i,a_{i+1})$. Thus $q_{n,k}$ has $m=n-1$ positive zeros. Since $q_{n,k}$ is monic and
+has the following consequence. Assume the zeros of $L_{j-2}^{(k)}$ separate those of $L_{j-1}^{(k)}$, and denote the latter by
 $$
-q_{n,k}(0)=(-1)^m(n+k)(k)_{n-1}\neq0,
+0<b_1<\cdots<b_{j-1}.
 $$
-it has one further negative zero.
+At $b_i$, equation (5) gives
+$$
+jL_j^{(k)}(b_i)=-(j+k-1)L_{j-2}^{(k)}(b_i).
+$$
+The right-hand signs alternate. Moreover, $L_j^{(k)}(0)>0$, $L_j^{(k)}(b_1)<0$, and the signs at $b_{j-1}$ and at infinity are opposite because the leading coefficient of $L_j^{(k)}$ is $(-1)^j/j!$. Hence $L_j^{(k)}$ has one zero in each of
+$$
+(0,b_1),\ (b_1,b_2),\ldots,(b_{j-2},b_{j-1}),\ (b_{j-1},\infty).
+$$
+These are $j$ distinct positive zeros, so they are all its zeros and are simple. Starting from $L_0^{(k)}=1$ and $L_1^{(k)}=k+1-x$ proves by induction that consecutive Laguerre polynomials have simple positive interlacing zeros.
 
-It remains to justify that an admissible eigenfunction with $j-1$ zeros in $(0,\infty)$ corresponds to the $j$th eigenvalue for this singular problem. We prove the needed nodal-index statement for the present coefficients.
-
-Use the Liouville variables
+Let $0<a_1<\cdots<a_m$ be the zeros of $\ell_m$. At these points,
 $$
-t=2\sqrt{x},
-\qquad
-y(t)=r(x)u(x),
-\qquad
+q_{n,k}(a_i)=m\ell_{m-1}(a_i).
+$$
+The interlacing just proved makes these values alternate. Also
+$$
+q_{n,k}(0)=(-1)^m(n+k)(k)_{n-1}
+$$
+has the sign opposite to $q_{n,k}(a_1)$. Therefore $q_{n,k}$ has one zero in $(0,a_1)$ and one in every $(a_i,a_{i+1})$, hence exactly $m=n-1$ positive zeros. Its remaining zero is real and negative, since
+$$
+\prod_{q_{n,k}(r)=0}r=(-1)^nq_{n,k}(0)=-(n+k)(k)_{n-1}<0.
+\tag{6}
+$$
+
+It remains to identify the eigenvalue index without appealing to an unstated singular oscillation theorem. Use the Liouville variables
+$$
+t=2\sqrt{x},\qquad y(t)=r(x)u(x),\qquad
 r(x)=(p(x)w(x))^{1/4}
 =\frac{x^{(2k+1)/4}e^{-x/2}}{x+k}.
 $$
-A direct differentiation transforms the equation into
+Since $dt/dx=1/\sqrt{x}$,
+$$
+\int_0^\infty |y(t)|^2\,dt
+=\int_0^\infty w(x)|u(x)|^2\,dx,
+$$
+so the transformation is unitary. Direct differentiation gives
 $$
 -y''(t)+V_k(t)y(t)=\lambda y(t),
 \qquad
 V_k(t)=\frac{2k}{x+k}+\frac{r_{tt}}{r},
-\quad x=\frac{t^2}{4}.
-\tag{5}
+\quad x=\frac{t^2}{4},
+\tag{7}
 $$
-The displayed expression for $r$ gives
+with
 $$
-V_k(t)=\frac{k^2-\tfrac14}{t^2}+O(1)
+V_k(t)=\frac{k^2-\frac14}{t^2}+O(1)
 \quad(t\downarrow0),
 \qquad
 V_k(t)=\frac{t^2}{16}-\frac{k-1}{2}+O(t^{-2})
 \quad(t\to\infty).
-\tag{6}
+\tag{8}
 $$
-Near $0$, the two local behaviors are $t^{k+1/2}$ and $t^{1/2-k}$; the second is not square-integrable for $k\ge1$. Thus the square-integrable solution is unique at the left endpoint. At infinity, $V_k(t)\to\infty$. Consequently a sequence bounded in the quadratic-form norm has uniformly small $L^2$ tails, while on every finite interval its $H^1$ bound gives an $L^2$-convergent subsequence. Hence the transformed self-adjoint problem has a simple discrete spectrum.
+At $0$ the local behaviors are $t^{k+1/2}$ and $t^{1/2-k}$; only the first is square-integrable for $k\geq1$. At infinity, $V_k(t)\to\infty$, so the endpoint is also limit-point. These statements agree with the endpoint conditions in the prompt. Indeed,
+$$
+(pu')'=\left(\frac{2k}{x+k}-\lambda\right)wu.
+$$
+For a weighted square-integrable solution, the right side is integrable near both endpoints by Cauchy--Schwarz, because $w$ is integrable. Thus $pu'$ has endpoint limits. A nonzero limit would force the nonintegrable behavior $u(x)\asymp x^{-k}$ at $0$, or exponential growth at infinity. Hence both limits are zero.
 
-For completeness, the zero count follows from a direct Prüfer argument on finite truncations. On $[a,R]$, let $y(t,\lambda)$ satisfy the left Dirichlet normalization $y(a,\lambda)=0$, $y'(a,\lambda)=1$, and write
+After adding a constant, $V_k$ is positive and tends to infinity at both endpoints. The quadratic form
 $$
-y=\rho\sin\theta,
-\qquad
-y'=\rho\cos\theta,
-\qquad
-theta(a,\lambda)=0.
+\mathfrak h[y]=\int_0^\infty\bigl(|y'|^2+V_k|y|^2\bigr)\,dt
 $$
-If $y_\lambda=\partial y/\partial\lambda$, then differentiating the equation gives
+is therefore closed and bounded below. Its bounded sets have uniformly small tails because $V_k(t)\to\infty$, and Rellich compactness applies on every compact subinterval. Hence the associated half-line operator $H$ has compact resolvent. Its eigenvalues
 $$
-\frac{d}{dt}\bigl(y_\lambda y'-y_\lambda' y\bigr)=y^2.
+\mu_1<\mu_2<\cdots
 $$
-Therefore
+are simple: two square-integrable solutions for the same eigenvalue have constant Wronskian, and the unique square-integrable behavior at the left endpoint forces that Wronskian to vanish.
+
+Choose $\varepsilon_s\downarrow0$ and $R_s\uparrow\infty$. Let $H_s$ be the Dirichlet problem on $[\varepsilon_s,R_s]$, extended by zero to the half-line, and let $\mu_j^{(s)}$ be its ordered eigenvalues. Its form domains increase and their union contains $C_c^\infty(0,\infty)$, a form core for $H$. The min--max principle therefore gives
+$$
+\mu_j^{(s)}\downarrow\mu_j.
+\tag{9}
+$$
+Indeed, the lower bound $\mu_j^{(s)}\geq\mu_j$ follows from domain inclusion; approximating the first $j$ eigenfunctions of $H$ in form norm by compactly supported functions gives the reverse limiting inequality.
+
+Let $y_j^{(s)}$ be normalized eigenfunctions. Their form norms are bounded by (9), so compactness gives $L^2$ convergence along subsequences, and the differential equation gives local $C^1$ convergence. Every limit is a $\mu_j$-eigenfunction. Simplicity fixes its sign and shows that the whole sequence converges to the normalized $j$th half-line eigenfunction $y_j$.
+
+On each finite interval, write
+$$
+y=\rho\sin\theta,\qquad y'=\rho\cos\theta,
+\qquad \theta(\varepsilon_s,\lambda)=0.
+$$
+If $y_\lambda=\partial y/\partial\lambda$, then
+$$
+\frac{d}{dt}\bigl(y_\lambda y'-y_\lambda' y\bigr)=y^2,
+$$
+and hence
 $$
 \frac{\partial\theta}{\partial\lambda}(t,\lambda)
-=\frac{\displaystyle\int_a^t y(s,\lambda)^2\,ds}
+=\frac{\displaystyle\int_{\varepsilon_s}^t y(v,\lambda)^2\,dv}
 {y(t,\lambda)^2+y'(t,\lambda)^2}>0.
-\tag{7}
+\tag{10}
 $$
-The Dirichlet eigenvalues on $[a,R]$ are exactly the successive values for which $\theta(R,\lambda)=j\pi$; hence the $j$th truncated eigenfunction has exactly $j-1$ interior zeros. Letting $a\downarrow0$ and $R\to\infty$, the endpoint uniqueness from (6), the compactness argument above, and ordinary differential-equation convergence on compact intervals give convergence of the truncated eigenpairs to the half-line eigenpairs. Simple zeros persist, and beyond a common large $T$ the inequality $V_k(t)>\lambda$ prevents a square-integrable eigenfunction from acquiring another zero. Thus the $j$th half-line eigenfunction has exactly $j-1$ zeros in $(0,\infty)$.
+Thus $y_j^{(s)}$ has exactly $j-1$ interior zeros.
 
-Since $q_{n,k}$ has exactly $n-1$ zeros in the physical interval, its eigenvalue $n$ is the $n$th eigenvalue:
+These zero counts survive the singular limit. Fix $\Lambda>\sup_s\mu_j^{(s)}$. By (8), there are $A<B$ such that $V_k>\Lambda$ on $(0,A)\cup(B,\infty)$. If $y_j^{(s)}$ had a zero in $(\varepsilon_s,A)$, integration between that zero and the Dirichlet endpoint would give
+$$
+\int\bigl(|(y_j^{(s)})'|^2+(V_k-\mu_j^{(s)})|y_j^{(s)}|^2\bigr)\,dt=0,
+$$
+a contradiction; the same argument applies on $(B,R_s)$. Hence all $j-1$ zeros lie in the fixed compact interval $[A,B]$. Local $C^1$ convergence preserves simple zeros. Distinct zeros cannot merge, since Rolle's theorem would then give $y_j=y_j'=0$ at a limit point, and no zero can disappear through an endpoint of $[A,B]$. Conversely, any additional zero of $y_j$ would, by local convergence, produce an additional zero of $y_j^{(s)}$. Therefore $y_j$ has exactly $j-1$ zeros on $(0,\infty)$.
+
+The polynomial $q_{n,k}$ has $n-1$ zeros in the physical interval and eigenvalue $n$. The half-line nodal result therefore yields
 $$
 \lambda_{n,k}=n.
-\tag{8}
+\tag{11}
 $$
 
 Step 3: Derive the root derivative identity
@@ -120,24 +170,27 @@ Write
 $$
 L=L_m^{(k)},\qquad M=L_{m-1}^{(k)}.
 $$
-The Laguerre recurrence and derivative identities are
+The Laguerre identities
 $$
 xL'=mL-(m+k)M,
 \qquad
-xM'=(x-m-k)M+mL.
-\tag{9}
+xM'=(x-m-k)M+mL
+\tag{12}
 $$
-If $r$ is a zero of $E_n$, then $M(r)=(r+k+1)L(r)$. Substitution into (9) gives
+imply the following. If $r$ is a zero of $E_n$, then $M(r)=(r+k+1)L(r)$, and substitution into (12) gives
 $$
-rE_n'(r)=-rL(r)-(r+k+1)rL'(r)+rM'(r)=(n+k)(r+k)^2L(r).
+rE_n'(r)=(n+k)(r+k)^2L(r).
 $$
-Because $q_{n,k}=(-1)^nm!E_n$ and $\ell_m=(-1)^mm!L$, every zero $r$ of $q_{n,k}$ satisfies
+Since $q_{n,k}=(-1)^nm!E_n$ and $\ell_m=(-1)^mm!L$, every zero $r$ of $q_{n,k}$ satisfies
 $$
-q_{n,k}'(r)
-=-\frac{n+k}{r}(r+k)^2\ell_m(r).
-\tag{10}
+q_{n,k}'(r)=-\frac{n+k}{r}(r+k)^2\ell_m(r).
+\tag{13}
 $$
-No zero equals $0$ by the displayed constant term. Also $E_n(-k)=-L_m^{(k-1)}(-k)\neq0$, since every term in the defining series of $L_m^{(k-1)}(-k)$ is positive. Consecutive Laguerre polynomials have no common zero, so (10) also shows that all zeros of $q_{n,k}$ are simple.
+No zero equals $0$ by (6). Also
+$$
+E_n(-k)=-L_m^{(k-1)}(-k)\neq0,
+$$
+because every term in the defining series of $L_m^{(k-1)}(-k)$ is positive. Consecutive Laguerre polynomials have no common zero, so (13) also proves that all zeros of $q_{n,k}$ are simple.
 
 Step 4: Evaluate the required resultant
 
@@ -145,13 +198,13 @@ The monic Laguerre recurrence is
 $$
 \ell_j(x)=\bigl(x-(2j+k-1)\bigr)\ell_{j-1}(x)
 -(j-1)(j+k-1)\ell_{j-2}(x).
-\tag{11}
+\tag{14}
 $$
 Let
 $$
 S_j=\operatorname{Res}(\ell_j,\ell_{j-1}).
 $$
-At each root of $\ell_{j-1}$, equation (11) reduces to
+At each root of $\ell_{j-1}$, equation (14) reduces to
 $$
 \ell_j=-(j-1)(j+k-1)\ell_{j-2}.
 $$
@@ -164,18 +217,18 @@ Iteration gives
 $$
 S_m=(-1)^{m(m-1)/2}
 \prod_{j=1}^{m-1}\bigl(j(j+k)\bigr)^j.
-\tag{12}
+\tag{15}
 $$
 From (4),
 $$
-q_{n,k}\equiv m\ell_{m-1}\pmod{\ell_m}.
+q_{n,k}\equiv m\ell_{m-1}\pmod{\ell_m},
 $$
-Thus
+so
 $$
 \operatorname{Res}(q_{n,k},\ell_m)
 =(-1)^{m(m-1)/2}m^m
 \prod_{j=1}^{m-1}\bigl(j(j+k)\bigr)^j.
-\tag{13}
+\tag{16}
 $$
 
 Step 5: Compute the constant term
@@ -185,14 +238,16 @@ $$
 \ell_j(0)=(-1)^j(k+1)_j,
 $$
 equation (4) gives
-\begin{align*}
+$$
+\begin{aligned}
 q_{n,k}(0)
 &=(k+1)(-1)^m(k+1)_m
 +m(-1)^{m-1}(k+1)_{m-1}\\
 &=(-1)^m(n+k)(k)_{n-1}\\
 &=(-1)^{n-1}(n+k)\frac{(n+k-2)!}{(k-1)!}.
-\tag{14}
-\end{align*}
+\end{aligned}
+\tag{17}
+$$
 
 Step 6: Convert the derivative product to the weighted discriminant
 
@@ -200,9 +255,9 @@ Let the roots of $q_{n,k}$ be $\zeta_1,\ldots,\zeta_n$ and put $N=n(n-1)/2$. Sin
 $$
 \prod_{i=1}^n q_{n,k}'(\zeta_i)
 =(-1)^N\prod_{i<j}(\zeta_j-\zeta_i)^2.
-\tag{15}
+\tag{18}
 $$
-Multiplying (10) over all roots and using
+Multiplying (13) over all roots and using
 $$
 \prod_i\ell_m(\zeta_i)=\operatorname{Res}(q_{n,k},\ell_m),
 \qquad
@@ -215,9 +270,9 @@ $$
 =(-1)^N
 \frac{(n+k)^n\operatorname{Res}(q_{n,k},\ell_m)}
 {q_{n,k}(0)}.
-\tag{16}
+\tag{19}
 $$
-Substituting (13) and (14), with $m=n-1$, the total sign exponent is
+Substituting (16) and (17), with $m=n-1$, the sign exponent is
 $$
 N+\frac{m(m-1)}2-m=m(m-1),
 $$
@@ -225,7 +280,7 @@ which is even. Since
 $$
 (k)_{n-1}=\frac{(n+k-2)!}{(k-1)!},
 $$
-equation (16) becomes
+equation (19) becomes
 $$
 \frac{\prod_{i<j}(\zeta_j-\zeta_i)^2}
 {\prod_i(\zeta_i+k)^2}
@@ -244,69 +299,18 @@ $\frac{(n+k)^{n-1}(n-1)^{n-1}(k-1)!}{(n+k-2)!}\prod_{j=1}^{n-2}(j(j+k))^j$
 
 ---
 
-## Solution Concepts
-
-Exceptional Laguerre eigenpolynomials; Liouville transformation; singular endpoint classification; Prüfer angle; root derivative identity; polynomial resultants; discriminant
-
-## Black-Box Audit
-
-Step 1: Level 1. The self-adjoint equation is converted explicitly, and the eigenvalue is forced by the highest-degree coefficient.
-
-Step 2: Level 1. The polynomial eigenfunction is constructed from displayed Laguerre identities. The spectral index is no longer assigned by an unstated oscillation theorem: the Liouville potential, endpoint behavior, discreteness argument, Wronskian identity, Prüfer monotonicity, and passage from finite truncations are all displayed.
-
-Step 3: Level 1. The root derivative identity is derived from two displayed Laguerre identities.
-
-Step 4: Level 1. The resultant is not quoted; its recurrence and initial condition are derived from the monic three-term recurrence.
-
-Steps 5-6: Level 1. The constant term, all signs, and the conversion from derivative products to the requested weighted discriminant are explicit.
-
-No Level 2 or Level 3 finding.
-
-## Verification
-
-Check 1 (singular-index audit): pass. The transformed potential satisfies $V_k(t)=(k^2-1/4)t^{-2}+O(1)$ at $0$ and $V_k(t)\to\infty$ at infinity. Thus only one local branch is square-integrable at $0$, the spectrum is discrete, and the displayed Prüfer derivative is strictly positive. The $n-1$ positive zeros therefore identify eigenvalue $n$ as $\lambda_{n,k}$.
-
-Check 2 (smallest case): pass. For $n=2$,
-$$
-q_{2,k}(x)=x^2-k^2-2k.
-$$
-Its roots are $\pm\sqrt{k(k+2)}$, and direct substitution gives
-$$
-\frac{(\zeta_2-\zeta_1)^2}
-{(\zeta_1+k)^2(\zeta_2+k)^2}
-=\frac{k+2}{k},
-$$
-which agrees with the formula and its empty product.
-
-Check 3 (next case): pass. For $n=3$,
-$$
-q_{3,k}(x)=x^3-(k+3)x^2-k(k+3)x+k(k+1)(k+3).
-$$
-Its discriminant is $4k(k+3)^2(4k+3)^2$, while $q_{3,k}(-k)=k(4k+3)$, so the quotient is $4(k+3)^2/k$, again matching the formula.
-
-Check 4 (counterexample attack): pass. The truncated candidate
-$$
-\frac{(n-1)^{n-1}(n+k)^{n-1}}{k}
-$$
-agrees for $n=2,3$ but at $n=4$ gives $27(k+4)^3/k$, whereas the resultant recurrence gives
-$$
-\frac{108(k+2)(k+4)^3}{k}.
-$$
-
-Check 5 (exact arithmetic): pass. Exact discriminant computations from (4) agree with the final formula for $1\leq k\leq4$ and $2\leq n\leq6$.
-
-Check 6 (Answer Length Gate): pass. The normalized answer has exactly $72$ characters after removing whitespace and dollar signs.
-
-Check 7 (Solution Length Gate): pass. The `## Steps` section remains below the $10000$-character limit.
-
 ## Classification
-
-**Domain/Sub-domain:** Differential Equations and Dynamical Systems / Boundary value problems
 
 **Problem Type:** Symbolic derivation
 
 **Answer Type:** Exact symbolic expression
 
-## Confidence
+---
 
-High. The formerly external nodal-index step is now justified inside Step 2, and the eigenpolynomial, root derivative identity, consecutive-polynomial resultant, constant term, and every sign in the discriminant conversion are independently certified.
+## Solution Concepts
+
+- exceptional Laguerre eigenpolynomials
+- singular Sturm--Liouville theory
+- Liouville transformation
+- Prüfer nodal count
+- polynomial resultants
