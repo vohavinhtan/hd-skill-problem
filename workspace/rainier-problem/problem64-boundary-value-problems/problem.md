@@ -2,24 +2,29 @@
 
 ## LaTeX (Normalized)
 
-Let $n\geq1$ be an odd integer. Let $\mathcal D$ be the real vector space of all twice continuously differentiable functions $u:[0,1]\to\mathbb R$ satisfying
+Consider the singular boundary value problem
 $$
-u(0)=u(1)=0.
+-\frac{d}{dx}\!\left((1-x^2)u'(x)\right)+\frac{4}{1-x^2}u(x)=\lambda u(x),
+\qquad -1<x<1,
 $$
-For each real number $\alpha$, define the linear operator $T_\alpha:\mathcal D\to C([0,1])$ by
+where admissible solutions belong to $C^2((-1,1))\cap C([-1,1])$ and satisfy
 $$
-(T_\alpha u)(x)
-=-u''(x)+\alpha x\int_0^1\cos(\pi t)\cos(2\pi t)u(t)\,dt.
+u(-1)=u(1)=0.
 $$
+Let
+$$
+\lambda_0<\lambda_1<\lambda_2<\cdots
+$$
+be the real numbers for which the problem has a nonzero admissible solution. For an integer $n\geq2$, let
+$$
+-1<\xi_1<\xi_2<\cdots<\xi_n<1
+$$
+be the zeros in $(-1,1)$ of a nonzero solution corresponding to $\lambda_n$.
 
-For $r\geq1$, a Jordan chain of length $r$ for $T_\alpha$ at a real number $\lambda$ is a sequence $u_0,\ldots,u_{r-1}\in\mathcal D$ such that $u_0\neq0$ and
+Determine, in closed form as a function of $n$, the exact value of
 $$
-(T_\alpha-\lambda)u_0=0,
-\qquad
-(T_\alpha-\lambda)u_j=u_{j-1}\quad(1\leq j<r).
+\prod_{1\leq i<j\leq n}(\xi_j-\xi_i)^2.
 $$
-
-Determine, in closed form as a function of $n$, all real numbers $\alpha$ for which $T_\alpha$ has a Jordan chain of length $2$ at $\lambda=n^2\pi^2$ but has no Jordan chain of length $3$ there.
 
 ---
 
@@ -29,11 +34,11 @@ Determine, in closed form as a function of $n$, all real numbers $\alpha$ for wh
 |---|---|
 | **Domain** | Differential Equations and Dynamical Systems |
 | **Sub-domain** | Boundary value problems |
-| **Problem Type** | Parameter identification |
-| **Answer Type** | Function or mapping |
+| **Problem Type** | Symbolic derivation |
+| **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-The problem concerns a Dirichlet boundary value operator with a nonlocal finite-rank perturbation. The requested parameter is controlled by compatibility between the boundary equation and its generalized-eigenfunction equations, while the requirement that the chain stop at length two supplies an independent obstruction rather than an additional coefficient-matching condition.
+The problem asks for a global invariant of the nodal set of a singular Sturm--Liouville boundary value problem. A complete derivation must first control the endpoint singularities and identify the indexed eigenfunction, then convert its differential and recurrence structure into an exact product over every pair of interior zeros. The requested quantity is insensitive to eigenfunction scaling but depends on the full nodal configuration, so neither local asymptotics nor a finite collection of individual zeros determines it.
