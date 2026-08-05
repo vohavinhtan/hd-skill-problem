@@ -152,9 +152,9 @@ Hence
 $$
 \begin{aligned}
 v_L(\mathfrak D_{L/K})
-={}&(p-c+1)(p^4-1)+p(c-b)(p^3-1)\\
-&+p^2(b-a)(p^2-1)+p^3a(p-1)\\
-={}&(p+1)p^4-b_{L/K}-1.
+&=(p-c+1)(p^4-1)+p(c-b)(p^3-1)\\
+&\quad+p^2(b-a)(p^2-1)+p^3a(p-1)\\
+&=(p+1)p^4-b_{L/K}-1.
 \end{aligned}
 $$
 
@@ -175,9 +175,9 @@ As an independent check, the conductor-discriminant formula and the character co
 $$
 \begin{aligned}
 v_K(\operatorname{Disc}(L/K))
-={}&(p-1)\big(p^3(p+1)+p^2(p-a+1)\\
+&=(p-1)\big(p^3(p+1)+p^2(p-a+1)\\
 &\qquad+p(p-b+1)+(p-c+1)\big)\\
-={}&(p+1)p^4-\big(ap^3+(b-a)p^2+(c-b)p+p-c\big)-1.
+&=(p+1)p^4-\big(ap^3+(b-a)p^2+(c-b)p+p-c\big)-1.
 \end{aligned}
 $$
 This matches the lower-group calculation. For the smallest boundary example $p=7$, $(a,b,c)=(1,2,3)$, both formulas give $b_{L/K}=403$ and absolute discriminant exponent $30809$.
