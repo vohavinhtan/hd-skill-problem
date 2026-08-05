@@ -30,9 +30,25 @@ For a $3$-element subset $T\subseteq E$ write $s(T)$ for the sum of its elements
 
 Step 5: Diagonalise over the unramified cubic extension
 
-Let $W$ be the ring of integers of the unramified cubic extension of $\mathbb Q_3$: a discrete valuation ring with uniformiser $3$, residue field $\mathbb F_{27}$ and normalised valuation $v$. By Step 3 the reduction of $p$ has six distinct roots in $\mathbb F_{27}$, so Hensel's lemma splits $p$ into six distinct linear factors over $W$; write the roots as $\lambda_e\in W^\times$ with $\lambda_e\equiv\zeta^e$, so that $\lambda_{-e}=\lambda_e^{-1}$ by reciprocity. Thus $A$ is diagonalisable over $W$, and in the induced basis of $\Lambda^3W^6$ the matrix $M$ is diagonal with entries $\lambda_T=\prod_{e\in T}\lambda_e$. Hence $M^N-I$ is diagonal with entries $\lambda_T^N-1$ and
+Let $W$ be the ring of integers of the unramified cubic extension of $\mathbb Q_3$: a complete discrete valuation ring with maximal ideal $3W$, residue field $\mathbb F_{27}$ and normalised valuation $v(3)=1$.
+
+We first prove the simple-root lifting statement needed here. Let $R$ be a complete discrete valuation ring with maximal ideal $\mathfrak m$, let $f\in R[x]$, and suppose $\bar a\in R/\mathfrak m$ satisfies $\bar f(\bar a)=0$ and $\bar f'(\bar a)\neq0$. For any lift $a_0$ of $\bar a$, the element $f'(a_0)$ is a unit. Define
+$$a_{n+1}=a_n-\frac{f(a_n)}{f'(a_n)}.$$
+Taylor expansion gives $f(a_{n+1})\in f(a_n)^2R$, so the valuations of the errors tend to infinity and $(a_n)$ converges, by completeness, to a root $a$ of $f$ reducing to $\bar a$. This root is unique: if $a$ and $b$ are two such roots, then $a-b\in\mathfrak m$ and
+$$0=f(a)-f(b)=(a-b)\bigl(f'(b)+(a-b)h\bigr)$$
+for some $h\in R$; the factor in parentheses is a unit, hence $a=b$.
+
+By Step 3 the reduction $\bar p$ has six distinct roots $\zeta^e$ in $\mathbb F_{27}$, so each is a simple root and the preceding argument gives a unique lift $\lambda_e\in W$ satisfying
+$$p(\lambda_e)=0,\qquad \lambda_e\equiv\zeta^e\pmod{3W}.$$
+All $\lambda_e$ are units, and distinct residue classes imply that $\lambda_e-\lambda_f$ is a unit for $e\neq f$. Thus the six linear factors are pairwise comaximal and, since $p$ is monic of degree $6$,
+$$p(x)=\prod_{e\in E}(x-\lambda_e).$$
+Reciprocity gives $p(\lambda_e^{-1})=0$, and $\lambda_e^{-1}$ reduces to $\zeta^{-e}$; uniqueness of the lift therefore gives $\lambda_{-e}=\lambda_e^{-1}$.
+
+Because $A$ is the companion matrix of $p$, the $W[x]$-module $W^6$ on which $x$ acts by $A$ is isomorphic to $W[x]/(p)$. The factors $(x-\lambda_e)$ are pairwise comaximal, so the Chinese remainder map gives
+$$W[x]/(p)\cong\bigoplus_{e\in E}W[x]/(x-\lambda_e)\cong\bigoplus_{e\in E}W.$$
+In this integral basis, multiplication by $x$, hence $A$, is diagonal with entries $\lambda_e$. Therefore in the induced basis of $\Lambda^3W^6$ the matrix $M$ is diagonal with entries $\lambda_T=\prod_{e\in T}\lambda_e$. Hence $M^N-I$ is diagonal with entries $\lambda_T^N-1$ and
 $$\operatorname{coker}_W(M^N-I)\cong\bigoplus_T W/3^{\,v(\lambda_T^N-1)} .$$
-Since $W$ is free over $\mathbb Z_3$ with $(\mathbb Z_3/3^k)\otimes_{\mathbb Z_3}W=W/3^kW$, the multiset of exponents of the $3$-primary elementary divisors of $M^N-I$ over $\mathbb Z$ is exactly the multiset of the finite values $v(\lambda_T^N-1)$.
+Since $W$ is free over $\mathbb Z_3$ with $(\mathbb Z_3/3^k)\otimes_{\mathbb Z_3}W=W/3^kW$, the classification of finite modules over the two discrete valuation rings shows that the multiset of exponents of the $3$-primary elementary divisors of $M^N-I$ over $\mathbb Z$ is exactly the multiset of the finite values $v(\lambda_T^N-1)$.
 
 Step 6: The determinant pins one valuation
 
@@ -45,9 +61,21 @@ $$\prod_{8\ \text{triples}}(1-\lambda_T)=F(\alpha_1)F(\alpha_1^{-1})=\bigl[y_1^2
 Therefore $\det(M-I)=9$. By Steps 4 and 5, $\lambda_T\equiv1\pmod 3$ holds exactly for the two triples $O$ and $-O$, whose $\lambda$-values are $\lambda_O$ and $\lambda_O^{-1}$; all other factors are units. Hence
 $$2=v\bigl(\det(M-I)\bigr)=v(\lambda_O-1)+v(\lambda_O^{-1}-1)=2\,v(\lambda_O-1),\qquad v(\lambda_O-1)=1 .$$
 
-Step 7: Every $\lambda_T^{13}$ lies in $1+3W$ but not in $1+9W$
+Step 7: A valuation lemma and the values of $\lambda_T^{13}$
 
-For $e\in E$ let $\omega_e\in W$ be the Teichmüller lift of $\zeta^e$, so $\omega_e^{13}=1$, and set $u_e=\lambda_e\omega_e^{-1}=1+3t_e$ with $t_e\in W$. For a triple $T$ put $\omega_T=\prod_{e\in T}\omega_e$ and $u_T=\prod_{e\in T}u_e$, so $\lambda_T=\omega_Tu_T$ and $\omega_T^{13}=1$, whence $\lambda_T^{13}=u_T^{13}$. As $13$ is a unit of $\mathbb Z_3$ and $u_T\in1+3W$, lifting the exponent gives $v(u_T^{13}-1)=v(u_T-1)$. Expanding $u_T=\prod_{e\in T}(1+3t_e)$ modulo $9$,
+We shall use the following valuation identity, proved here for this setting. If $x\in1+3W$ and $n\geq1$, then
+$$v(x^n-1)=v(x-1)+v_3(n).$$
+Write $n=3^rm$ with $3\nmid m$. Since
+$$\frac{x^m-1}{x-1}=1+x+\cdots+x^{m-1}\equiv m\not\equiv0\pmod{3W},$$
+the quotient is a unit and $v(x^m-1)=v(x-1)$. Next, if $y=1+a\in1+3W$, then $v(a)\geq1$ and
+$$y^2+y+1=3+3a+a^2=3(1+a)+a^2.$$
+The first summand has valuation $1$ and the second has valuation at least $2$, so $v(y^2+y+1)=1$. Hence
+$$v(y^3-1)=v(y-1)+1.$$
+Applying this last equality successively to $y=x^m,(x^m)^3,\ldots,(x^m)^{3^{r-1}}$ proves the stated identity.
+
+For $e\in E$ let $\omega_e\in W$ be the Teichmüller lift of $\zeta^e$, so $\omega_e^{13}=1$, and set $u_e=\lambda_e\omega_e^{-1}=1+3t_e$ with $t_e\in W$. For a triple $T$ put $\omega_T=\prod_{e\in T}\omega_e$ and $u_T=\prod_{e\in T}u_e$, so $\lambda_T=\omega_Tu_T$ and $\omega_T^{13}=1$, whence $\lambda_T^{13}=u_T^{13}$. Since $u_T\in1+3W$ and $v_3(13)=0$, the proved identity gives
+$$v(\lambda_T^{13}-1)=v(u_T^{13}-1)=v(u_T-1).$$
+Expanding $u_T=\prod_{e\in T}(1+3t_e)$ modulo $9$,
 $$u_T\equiv1+3\sum_{e\in T}t_e\pmod 9,\qquad\text{so}\qquad v(\lambda_T^{13}-1)=1\iff\sum_{e\in T}\bar t_e\neq0\ \text{in }\mathbb F_{27}.$$
 The Frobenius of $W$ sends $\lambda_e\mapsto\lambda_{3e}$ and $\omega_e\mapsto\omega_{3e}$, hence $\bar t_{3e}=\bar t_e^{\,3}$; and $\lambda_{-e}=\lambda_e^{-1}$ forces $u_{-e}=u_e^{-1}$, hence $\bar t_{-e}=-\bar t_e$. Write $\tau=\bar t_a$ and $c=\tau+\tau^3+\tau^9=\operatorname{Tr}_{\mathbb F_{27}/\mathbb F_3}(\tau)\in\mathbb F_3$. Using the classification of triples from Step 4, the $20$ sums $\sum_{e\in T}\bar t_e$ are $\pm c$ for $O$ and $-O$; $\pm\tau^{3^j}$ for the $12$ triples containing a reciprocal pair; and, since $-2=1$ in $\mathbb F_3$, $\pm(c+\tau^{3^j})$ for the $6$ mixed triples.
 
@@ -57,9 +85,12 @@ Step 8: The elementary divisors
 
 Fix $N$ and a triple $T$. Reduction modulo $3$ gives $\bar\lambda_T^{\,N}=\zeta^{Ns(T)}$, so $v(\lambda_T^N-1)>0$ if and only if $Ns(T)\equiv0\pmod{13}$.
 
-If $13\nmid N$, this says $s(T)\equiv0$, which by Step 4 holds only for $O$ and $-O$. For those, $\lambda_T\equiv1\pmod3$ with $v(\lambda_T-1)=1$ by Step 6, so lifting the exponent at the odd prime $3$ gives $v(\lambda_T^N-1)=v(\lambda_T-1)+v_3(N)=1+v_3(N)$.
+If $13\nmid N$, this says $s(T)\equiv0$, which by Step 4 holds only for $O$ and $-O$. For those, $\lambda_T\in1+3W$ and $v(\lambda_T-1)=1$ by Step 6. Applying the valuation identity proved in Step 7 with $x=\lambda_T$ and $n=N$ gives
+$$v(\lambda_T^N-1)=v(\lambda_T-1)+v_3(N)=1+v_3(N).$$
 
-If $13\mid N$, the condition holds for all $20$ triples. Writing $\lambda_T^N=(\lambda_T^{13})^{N/13}$ and using Step 7 together with $v_3(N/13)=v_3(N)$, we get $v(\lambda_T^N-1)=1+v_3(N/13)=1+v_3(N)$.
+If $13\mid N$, the condition holds for all $20$ triples. Put $x=\lambda_T^{13}$. Step 7 gives $x\in1+3W$ and $v(x-1)=1$. Since $\lambda_T^N=x^{N/13}$, another application of the proved identity gives
+$$v(\lambda_T^N-1)=v(x-1)+v_3(N/13)=1+v_3(N),$$
+because $13$ is prime to $3$.
 
 Every positive exponent therefore equals $1+v_3(N)$, and each is finite, so no $\lambda_T^N$ equals $1$ and the cokernel is finite. The number of contributing triples is $2$ when $13\nmid N$ and $20$ when $13\mid N$; as $\gcd(N,13)$ is $1$ or $13$ in these two cases, that number is $\tfrac12(3\gcd(N,13)+1)$.
 
@@ -79,7 +110,7 @@ $\left(\mathbb{Z}/3^{v_3(N)+1}\mathbb{Z}\right)^{\frac{3\gcd(N,13)+1}{2}}$
 
 ## Solution Concepts
 
-Wang exact sequence for mapping tori; exterior powers of an integer matrix; reciprocal characteristic polynomials and Dickson recursion; unramified 3-adic diagonalisation with Teichmüller decomposition; lifting the exponent
+Wang exact sequence for mapping tori; exterior powers of an integer matrix; reciprocal characteristic polynomials and Dickson recursion; unramified $3$-adic diagonalisation with Teichmüller decomposition; simple-root lifting by Newton iteration; a proved valuation formula on $1+3W$
 
 ---
 
@@ -99,10 +130,10 @@ Step 1: Level 1. The Wang sequence and the identification of the monodromy actio
 Step 2: Level 1. The companion form, the reciprocity check, and the substitution $y=x+x^{-1}$ are displayed in full.
 Step 3: Level 1. The Dickson recursion is evaluated term by term, and the passage from $D_7=D_6$ to $\alpha^{13}=1$ is an exhibited factorisation, not an assertion.
 Step 4: Level 1. The orbit decomposition of $(\mathbb Z/13)^\times$ is listed, and all $20$ triples are classified into three explicit families with their sums.
-Step 5: Level 1. Hensel splitting and the base-change statement for elementary divisors are stated with the hypotheses that make them apply.
+Step 5: Level 1. The required simple-root lifting statement is stated and proved by Newton iteration, and pairwise comaximality plus the Chinese remainder theorem supplies the integral eigenbasis.
 Step 6: Level 1. The determinant is factored by an exhibited two-stage pairing, and the closing symmetric-function substitution uses only the values computed in Step 2.
-Step 7: Level 1. The Teichmüller decomposition, the Frobenius and reciprocity transformation rules, and the reduction of all $20$ conditions to $c\neq0$ are each derived.
-Step 8: Level 1. Both parity cases of the divisibility by $13$ are treated, and the exponent-lifting hypotheses are checked.
+Step 7: Level 1. The valuation identity $v(x^n-1)=v(x-1)+v_3(n)$ on $1+3W$ is proved from a geometric-series factor and the factorisation of $y^3-1$ before it is applied; the remaining Teichmüller, Frobenius and reciprocity calculations are derived explicitly.
+Step 8: Level 1. Both divisibility cases for $13$ apply the valuation identity proved in Step 7 with the relevant element and exponent displayed.
 No Level 2 or Level 3 finding.
 
 ---
@@ -113,7 +144,7 @@ Check 1 (independent global computation): pass. The Smith normal form of $(\Lamb
 
 Check 2 (order of the reduction): pass. The order of $A$ in $\operatorname{GL}_6(\mathbb F_3)$ was computed by repeated multiplication and equals $13$, confirming Step 3 independently of the Dickson recursion. The exponent set of the eigenvalues in $\mathbb F_{27}$ is $\{2,5,6,7,8,11\}$, which is $O\sqcup(-O)$ for $O=\{2,5,6\}$, as Step 4 predicts.
 
-Check 3 (determinant certificate): pass. The four values $u_j+u_j^{-1}$ of Step 6 are the roots of $z^4-z^3+1$, whose value at $z=2$ is $9$, matching the closed-form evaluation $(8-1-4)^2=9$. Newton lifting the root $z\equiv2\pmod3$ of $z^4-z^3+1$ inside $\mathbb Z_3$ gives $v_3(z-2)=2$, hence $v_3(\lambda_O-1)=1$, confirming Step 6 by a second route.
+Check 3 (determinant certificate): pass. The four values $u_j+u_j^{-1}$ of Step 6 are the roots of $z^4-z^3+1$, whose value at $z=2$ is $9$, matching the closed-form evaluation $(8-1-4)^2=9$. Starting from $z_0=2$, direct $3$-adic Newton iteration for $z^4-z^3+1$ gives a root $z$ with $v_3(z-2)=2$, hence $v_3(\lambda_O-1)=1$, confirming Step 6 by a second route.
 
 Check 4 (counterexample attack): no counterexample found. Necessity attack: the answer excludes rank $20$ for $13\nmid N$; searching all $N\leq40$ with $13\nmid N$ produced no case with more than two invariant factors divisible by $3$. Sufficiency attack: every listed $N$ was checked to realise the predicted group exactly. Boundary attack: $N=1$ (empty $3$-part exponent), $N=3$ and $N=9$ (increasing $v_3$), $N=13$ (first multiple of $13$), and $N=39$ (both divisibilities simultaneously) were each tested, and the two mechanisms compose as predicted rather than interfering.
 
@@ -123,4 +154,4 @@ Check 5 (answer format): pass. The boxed string and the Answer field agree chara
 
 ## Confidence
 
-High. The mod-$3$ rank and the $3$-adic exponent are established by independent arguments, the single quantitative input $v(\lambda_O-1)=1$ is certified twice (by the determinant identity and by Hensel lifting inside $z^4-z^3+1$), and an exact integer Smith normal form computation reproduces the predicted group for thirteen values of $N$ covering both divisibility regimes.
+High. The mod-$3$ rank and the $3$-adic exponent are established by independent arguments, the single quantitative input $v(\lambda_O-1)=1$ is certified twice (by the determinant identity and by direct $3$-adic iteration inside $z^4-z^3+1$), and an exact integer Smith normal form computation reproduces the predicted group for thirteen values of $N$ covering both divisibility regimes.
