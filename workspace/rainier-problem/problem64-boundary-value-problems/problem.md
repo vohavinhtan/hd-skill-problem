@@ -2,26 +2,37 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be an integer satisfying $p\equiv1\pmod4$. For each real number $\lambda$, let $E_\lambda$ be the real vector space of all twice continuously differentiable functions $u:[0,1]\to\mathbb R$ satisfying
+Let $p\geq1$ be an integer and set
 $$
--u''(x)+(2p+1)\pi\,u'(1-x)=\lambda u(x),\qquad 0\leq x\leq1,
-$$
-$$
-u(0)=u(1)=0.
-$$
-Let $\lambda_p$ be the least positive real number $\lambda$ for which $E_\lambda\neq\{0\}$, and let $w_p$ be the unique function in $E_{\lambda_p}$ satisfying
-$$
-w_p'(0)=1.
+\kappa=(2p+1)\pi.
 $$
 Define
 $$
-Z_p=\{x\in(0,1):w_p(x)=0\}.
+\rho(x)=
+\begin{cases}
+1,&0\leq x\leq\tfrac12,\\
+9,&\tfrac12<x\leq1.
+\end{cases}
+$$
+For each real $\lambda$ in a neighborhood of $\kappa^2$, let $y_\lambda:[0,1]\to\mathbb R$ be the unique function that is continuously differentiable on $[0,1]$, twice continuously differentiable on each of $[0,\tfrac12]$ and $[\tfrac12,1]$, and satisfies
+$$
+-y_\lambda''(x)=\lambda\rho(x)y_\lambda(x),
+$$
+$$
+y_\lambda(0)=0,\qquad y_\lambda'(0)=1.
+$$
+For real numbers $a,b,c$, define
+$$
+F_{a,b,c}(\lambda)=y_\lambda(1)+\Bigl(a(\lambda-\kappa^2)+b(\lambda-\kappa^2)^2+c(\lambda-\kappa^2)^3\Bigr)y_\lambda'(1).
 $$
 
-Determine, in closed form in terms of $p$, the exact value of
+Determine the unique ordered triple $(a,b,c)$ for which $\lambda=\kappa^2$ is a zero of $F_{a,b,c}$ of multiplicity exactly $4$; that is,
 $$
-\prod_{\xi\in Z_p}|w_p'(\xi)|.
+F_{a,b,c}^{(j)}(\kappa^2)=0\quad(0\leq j\leq3),
+\qquad
+F_{a,b,c}^{(4)}(\kappa^2)\neq0.
 $$
+Present the answer in closed form in terms of $p$.
 
 ---
 
@@ -31,11 +42,11 @@ $$
 |---|---|
 | **Domain** | Differential Equations and Dynamical Systems |
 | **Sub-domain** | Boundary value problems |
-| **Problem Type** | Symbolic derivation |
-| **Answer Type** | Exact symbolic expression |
+| **Problem Type** | Parameter identification |
+| **Answer Type** | Tuple or ordered list |
 
 ---
 
 ## Domain Explanation
 
-The problem studies a nonlocal two-point boundary value problem in which reflection is coupled to differentiation, so the usual symmetric and antisymmetric decomposition does not diagonalize the equation. Determining the least positive eigenspace requires uncovering a hidden first-order coupling structure and reconstructing the corresponding scalar eigenfunction. The requested product then depends on the complete nodal decomposition of that eigenfunction, including the separation of two distinct zero families and exact evaluation of the slope product over both families.
+The problem is an inverse spectral design question for a two-layer Sturm--Liouville boundary value problem. The discontinuous weight forces a nontrivial transfer across the interface, while the polynomial dependence of the right boundary condition on the spectral parameter must be tuned so that a prescribed spectral point has fourth-order algebraic contact with the characteristic equation. Solving the problem requires deriving the endpoint transfer data, extracting the third-order jet of the associated boundary ratio in the variable $\lambda$, and independently verifying that the fourth-order term does not vanish.
