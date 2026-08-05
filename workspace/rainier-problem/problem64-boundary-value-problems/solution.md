@@ -1,237 +1,320 @@
 ## Steps
 
-Step 1: Convert the reflected derivative equation into a local complex equation
+Step 1: Reduce the boundary value equation to a polynomial differential equation
 
-Put
+Set
 $$
-c=(2p+1)\pi,\qquad v(x)=u(1-x).
+w(x)=\frac{x^ke^{-x}}{(x+k)^2},
+\qquad
+p(x)=xw(x).
 $$
-Then $v'(x)=-u'(1-x)$ and $v''(x)=u''(1-x)$. The original equation and the same equation evaluated at $1-x$ become
+Dividing the equation by $w$ and then multiplying by $x+k$ gives
 $$
--u''-cv'=\lambda u,\qquad -v''+cu'=\lambda v.
+x(x+k)u''-(x-k)(x+k+1)u'
++\bigl(\lambda(x+k)-2k\bigr)u=0.
+\tag{1}
 $$
-Define
+If $u$ is monic of degree $n$, the coefficient of $x^{n+1}$ in (1) is
 $$
-f=u+iv.
+(\lambda-n)x^{n+1},
 $$
-The two real equations combine into
+so a polynomial eigenfunction of degree $n$ must have eigenvalue
 $$
--f''+icf'=\lambda f,\qquad f(0)=f(1)=0.
+\lambda=n.
+\tag{2}
 $$
-Because $v(x)=u(1-x)$, the complex function also satisfies the compatibility relation
-$$
-f(1-x)=i\overline{f(x)}.
-$$
-Conversely, if a complex solution of the local equation satisfies this relation, then $u=\operatorname{Re}f$ has $\operatorname{Im}f(x)=u(1-x)$ and solves the original nonlocal problem. Thus the compatibility relation must be imposed; the Dirichlet equation alone is not sufficient.
 
-Step 2: Determine the spectrum and enforce compatibility
+Step 2: Construct the monic eigenpolynomial and identify its spectral index
+
+Let $L_j^{(k)}$ denote the classical Laguerre polynomial and put
+$$
+\ell_j(x)=(-1)^j j!L_j^{(k)}(x),
+$$
+so that $\ell_j$ is monic. For $m=n-1$, define
+$$
+E_n(x)=-(x+k+1)L_m^{(k)}(x)+L_{m-1}^{(k)}(x).
+$$
+The Laguerre identities
+$$
+xL_j''+(k+1-x)L_j'+jL_j=0,
+\qquad
+(L_m^{(k)})'-(L_{m-1}^{(k)})'=-L_{m-1}^{(k)}
+\tag{3}
+$$
+show that $E_n$ solves (1) with $\lambda=n$. Indeed, after replacing the second derivatives by the first identity in (3), the coefficients of
+$$
+(L_m^{(k)})',\quad (L_{m-1}^{(k)})',\quad L_m^{(k)},\quad L_{m-1}^{(k)}
+$$
+in the left side of (1) become respectively
+$$
+2x,\quad -2x,\quad 0,\quad 2x,
+$$
+and the result is
+$$
+2x\bigl((L_m^{(k)})'-(L_{m-1}^{(k)})'+L_{m-1}^{(k)}\bigr)=0.
+$$
+Therefore the monic solution is
+$$
+q_{n,k}(x)=(-1)^n(n-1)!E_n(x)
+=(x+k+1)\ell_m(x)+m\ell_{m-1}(x).
+\tag{4}
+$$
+
+This polynomial is admissible: near $0$ the integrand in the norm is $O(x^k)$ and the flux is $O(x^{k+1})$, while at infinity both are a polynomial times $e^{-x}$.
+
+The zeros of $\ell_m$ are positive and simple, and those of $\ell_{m-1}$ interlace them; this follows from the regular Sturm--Liouville equation for the classical Laguerre family. At a zero $a_i$ of $\ell_m$, (4) gives
+$$
+q_{n,k}(a_i)=m\ell_{m-1}(a_i).
+$$
+Using $\ell_j(0)=(-1)^j(k+1)_j$, equation (4) shows that $q_{n,k}(0)$ has sign $(-1)^m$. Interlacing gives $\ell_{m-1}(a_1)$ sign $(-1)^{m-1}$ and alternating signs thereafter. Hence $q_{n,k}$ has one zero in $(0,a_1)$ and one in every $(a_i,a_{i+1})$, giving $m=n-1$ positive zeros. Since $q_{n,k}$ is monic of degree $n$ and its sign at $-\infty$ is opposite to its sign at $0$, it has one further negative zero. Thus it has exactly $n-1$ zeros on $(0,\infty)$. The Sturm oscillation theorem for the stated separated singular boundary conditions therefore identifies it as the $n$th eigenfunction, so
+$$
+\lambda_{n,k}=n.
+$$
+
+Step 3: Derive the derivative identity at every zero
 
 Write
 $$
-f(x)=e^{icx/2}y(x).
+L=L_m^{(k)},\qquad M=L_{m-1}^{(k)}.
 $$
-Substitution gives
+The standard Laguerre recurrence and derivative identities give
 $$
-y''+\left(\lambda+\frac{c^2}{4}\right)y=0,\qquad y(0)=y(1)=0.
+xL'=mL-(m+k)M,
+\qquad
+xM'=(x-m-k)M+mL.
+\tag{5}
 $$
-Hence a nonzero Dirichlet solution exists exactly when
+Let $r$ be a zero of $E_n$. Then
 $$
-\lambda+\frac{c^2}{4}=n^2\pi^2
+M(r)=(r+k+1)L(r).
 $$
-for some integer $n\geq1$, and then
+Using (5),
+\begin{align*}
+rE_n'(r)
+&=-rL(r)-(r+k+1)rL'(r)+rM'(r)\\
+&=\Bigl[-r-(r+k+1)\bigl(m-(m+k)(r+k+1)\bigr)\\
+&\hspace{35mm}+(r-m-k)(r+k+1)+m\Bigr]L(r)\\
+&=(n+k)(r+k)^2L(r).
+\end{align*}
+Because
 $$
-f(x)=A e^{icx/2}\sin(n\pi x)
+q_{n,k}=(-1)^n m!E_n,
+\qquad
+\ell_m=(-1)^m m!L,
 $$
-for a complex constant $A$.
-
-It remains to impose $f(1-x)=i\overline{f(x)}$. Since $p\equiv1\pmod4$, in particular $p$ is odd, and
+we obtain, at every zero $r$ of $q_{n,k}$,
 $$
-e^{ic/2}=e^{i(2p+1)\pi/2}=-i.
-$$
-Using $\sin(n\pi(1-x))=(-1)^{n+1}\sin(n\pi x)$, compatibility is equivalent to
-$$
-\overline A=(-1)^nA.
-$$
-Thus $A$ is real for even $n$ and purely imaginary for odd $n$. In either case there is exactly a one-dimensional real eigenspace, with eigenvalue
-$$
-\lambda_n=\pi^2\left(n^2-\frac{(2p+1)^2}{4}\right).
-$$
-
-Step 3: Find the least positive eigenvalue and normalize its eigenfunction
-
-The sequence $\lambda_n$ is strictly increasing in $n$, and
-$$
-\lambda_n>0\iff n>\frac{2p+1}{2}=p+\frac12.
-$$
-Therefore the least positive eigenvalue occurs at $n=p+1$. Since $p+1$ is even, $A$ is real, and
-$$
-\lambda_p=\pi^2\left((p+1)^2-\frac{(2p+1)^2}{4}\right)
-=\left(p+\frac34\right)\pi^2.
-$$
-Taking real parts gives every element of $E_{\lambda_p}$ in the form
-$$
-u(x)=A\sin((p+1)\pi x)\cos\left(\frac{(2p+1)\pi x}{2}\right).
-$$
-At $x=0$,
-$$
-u'(0)=A(p+1)\pi.
-$$
-The normalization $w_p'(0)=1$ therefore yields
-$$
-w_p(x)=\frac{\sin((p+1)\pi x)\cos\left(\frac{(2p+1)\pi x}{2}\right)}{(p+1)\pi}.
-$$
-This also proves uniqueness.
-
-Step 4: Determine the complete zero set and prove that all zeros are simple
-
-The first factor vanishes at
-$$
-x_k=\frac{k}{p+1},\qquad 1\leq k\leq p,
-$$
-and the second factor vanishes at
-$$
-y_j=\frac{2j+1}{2p+1},\qquad 0\leq j\leq p-1.
-$$
-These two families are disjoint. Indeed,
-$$
-\gcd(p+1,2p+1)=1,
-$$
-and equality $x_k=y_j$ would force $p+1\mid k$, impossible for $1\leq k\leq p$.
-
-At a zero from either family, exactly one factor vanishes and the other is nonzero. Consequently every zero is simple and
-$$
-Z_p=\{x_1,\ldots,x_p,y_0,\ldots,y_{p-1}\}.
+q_{n,k}'(r)
+=-\frac{n+k}{r}(r+k)^2\ell_m(r).
+\tag{6}
 $$
 
-Step 5: Compute the slopes on the first zero family
+No zero is $0$, because the constant term computed below is nonzero. Also no zero equals $-k$: using
+$$
+L_m^{(k)}=L_m^{(k-1)}+L_{m-1}^{(k)}
+$$
+gives
+$$
+E_n(-k)=-L_m^{(k-1)}(-k)\neq0,
+$$
+since the defining series of $L_m^{(k-1)}(-k)$ has strictly positive terms. Consecutive Laguerre polynomials have no common zero, so (6) also proves that every zero of $q_{n,k}$ is simple.
 
-At $x_k=k/(p+1)$, differentiation gives
+Step 4: Compute the consecutive Laguerre resultant
+
+For monic polynomials, write $\operatorname{Res}(A,B)$ for the resultant. The monic Laguerre recurrence is
 $$
-|w_p'(x_k)|
-=\left|\cos\left(\frac{(2p+1)k\pi}{2(p+1)}\right)\right|.
+\ell_j(x)
+=\bigl(x-(2j+k-1)\bigr)\ell_{j-1}(x)
+-(j-1)(j+k-1)\ell_{j-2}(x).
+\tag{7}
 $$
-Since
+Let
 $$
-\frac{2p+1}{2(p+1)}=1-\frac{1}{2(p+1)},
+S_j=\operatorname{Res}(\ell_j,\ell_{j-1}).
 $$
-we obtain
+Since $j(j-1)$ is even, the resultant is unchanged when the two polynomials are interchanged. Evaluating (7) at the $j-1$ roots of $\ell_{j-1}$ yields
 $$
-|w_p'(x_k)|=\cos\left(\frac{k\pi}{2(p+1)}\right).
+S_j
+=\bigl(-(j-1)(j+k-1)\bigr)^{j-1}S_{j-1},
+\qquad
+S_1=1.
 $$
 Therefore
 $$
-P_A:=\prod_{k=1}^{p}|w_p'(x_k)|
-=\prod_{k=1}^{p}\cos\left(\frac{k\pi}{2(p+1)}\right).
+S_m
+=(-1)^{m(m-1)/2}
+\prod_{j=1}^{m-1}\bigl(j(j+k)\bigr)^j.
+\tag{8}
 $$
 
-Step 6: Compute the slopes on the second zero family
+From (4),
+$$
+q_{n,k}\equiv m\ell_{m-1}\pmod{\ell_m}.
+$$
+Because $m(m+1)$ is even,
+\begin{align*}
+\operatorname{Res}(q_{n,k},\ell_m)
+&=\operatorname{Res}(\ell_m,q_{n,k})\\
+&=m^m\operatorname{Res}(\ell_m,\ell_{m-1})\\
+&=m^mS_m.
+\end{align*}
+Thus
+$$
+\operatorname{Res}(q_{n,k},\ell_m)
+=(-1)^{m(m-1)/2}m^m
+\prod_{j=1}^{m-1}\bigl(j(j+k)\bigr)^j.
+\tag{9}
+$$
 
-At $y_j=(2j+1)/(2p+1)$, the cosine factor has derivative of absolute value $(2p+1)\pi/2$, so
+Step 5: Compute the constant term
+
+Since
 $$
-|w_p'(y_j)|
-=\frac{2p+1}{2(p+1)}
-\left|\sin\left(\frac{(p+1)(2j+1)\pi}{2p+1}\right)\right|.
+\ell_j(0)=(-1)^j(k+1)_j,
 $$
-Now
+where $(a)_j=a(a+1)\cdots(a+j-1)$, equation (4) gives
+\begin{align*}
+q_{n,k}(0)
+&=(k+1)(-1)^m(k+1)_m
++m(-1)^{m-1}(k+1)_{m-1}\\
+&=(-1)^m(k+1)_{m-1}
+\bigl((k+1)(k+m)-m\bigr)\\
+&=(-1)^m(n+k)(k)_{n-1}.
+\end{align*}
+Hence
 $$
-\frac{(p+1)(2j+1)\pi}{2p+1}
-=\frac{(2j+1)\pi}{2}+\frac{(2j+1)\pi}{2(2p+1)},
+q_{n,k}(0)
+=(-1)^{n-1}(n+k)\frac{(n+k-2)!}{(k-1)!}.
+\tag{10}
+$$
+
+Step 6: Convert the nodal product into the resultant
+
+Let the roots of $q_{n,k}$ be $\zeta_1,\ldots,\zeta_n$, and set
+$$
+N=\frac{n(n-1)}2.
+$$
+For a monic polynomial,
+$$
+\prod_{i=1}^n q_{n,k}'(\zeta_i)
+=(-1)^N\prod_{i<j}(\zeta_j-\zeta_i)^2.
+\tag{11}
+$$
+Multiplying (6) over all roots and using
+$$
+\prod_{i=1}^n\ell_m(\zeta_i)
+=\operatorname{Res}(q_{n,k},\ell_m),
+\qquad
+\prod_{i=1}^n\zeta_i=(-1)^nq_{n,k}(0),
+$$
+we obtain from (11)
+$$
+\frac{\prod_{i<j}(\zeta_j-\zeta_i)^2}
+{\prod_i(\zeta_i+k)^2}
+=(-1)^N
+\frac{(n+k)^n\operatorname{Res}(q_{n,k},\ell_m)}
+{q_{n,k}(0)}.
+\tag{12}
+$$
+
+Substitute (9) and (10), with $m=n-1$. The total sign exponent is
+$$
+N+\frac{m(m-1)}2-m=m(m-1),
+$$
+which is even. Therefore (12) becomes
+$$
+\frac{(n+k)^{n-1}(n-1)^{n-1}}{(k)_{n-1}}
+\prod_{j=1}^{n-2}\bigl(j(j+k)\bigr)^j.
+$$
+Finally,
+$$
+(k)_{n-1}=\frac{(n+k-2)!}{(k-1)!},
 $$
 so
 $$
-|w_p'(y_j)|
-=\frac{2p+1}{2(p+1)}
-\cos\left(\frac{(2j+1)\pi}{2(2p+1)}\right).
-$$
-Hence
-$$
-P_B:=\prod_{j=0}^{p-1}|w_p'(y_j)|
-=\left(\frac{2p+1}{2(p+1)}\right)^p
-\prod_{j=0}^{p-1}\cos\left(\frac{(2j+1)\pi}{2(2p+1)}\right).
+\frac{\prod_{i<j}(\zeta_j-\zeta_i)^2}
+{\prod_i(\zeta_i+k)^2}
+=
+\boxed{
+\frac{(n+k)^{n-1}(n-1)^{n-1}(k-1)!}{(n+k-2)!}
+\prod_{j=1}^{n-2}\bigl(j(j+k)\bigr)^j
+}.
 $$
 
-Step 7: Evaluate the two trigonometric products and assemble the answer
-
-For every integer $N\geq2$,
-$$
-\prod_{r=1}^{N-1}\sin\left(\frac{r\pi}{N}\right)=\frac{N}{2^{N-1}}.
-$$
-Indeed, taking absolute values in
-$$
-N=\prod_{r=1}^{N-1}\left(1-e^{2\pi ir/N}\right)
-$$
-gives this identity directly.
-
-Apply it first with $N=2p+2$. Symmetry about $\pi/2$ yields
-$$
-\prod_{k=1}^{p}\cos\left(\frac{k\pi}{2(p+1)}\right)
-=\frac{\sqrt{p+1}}{2^p}.
-$$
-Next, because
-$$
-\cos\left(\frac{(2j+1)\pi}{2(2p+1)}\right)
-=\sin\left(\frac{(p-j)\pi}{2p+1}\right),
-$$
-applying the same identity with $N=2p+1$ gives
-$$
-\prod_{j=0}^{p-1}\cos\left(\frac{(2j+1)\pi}{2(2p+1)}\right)
-=\frac{\sqrt{2p+1}}{2^p}.
-$$
-Therefore
-$$
-\prod_{\xi\in Z_p}|w_p'(\xi)|
-=P_AP_B
-=\frac{\sqrt{p+1}}{2^p}
-\left(\frac{2p+1}{2(p+1)}\right)^p
-\frac{\sqrt{2p+1}}{2^p}.
-$$
-After simplification,
-$$
-\prod_{\xi\in Z_p}|w_p'(\xi)|
-=\boxed{\frac{(2p+1)^{\frac{2p+1}{2}}}{2^{3p}(p+1)^{\frac{2p-1}{2}}}}.
-$$
-
-Final Answer: $\boxed{\frac{(2p+1)^{\frac{2p+1}{2}}}{2^{3p}(p+1)^{\frac{2p-1}{2}}}}$
+Final Answer: $\boxed{\frac{(n+k)^{n-1}(n-1)^{n-1}(k-1)!}{(n+k-2)!}\prod_{j=1}^{n-2}(j(j+k))^j}$
 
 ---
 
 ## Answer
 
 $$
-\frac{(2p+1)^{\frac{2p+1}{2}}}{2^{3p}(p+1)^{\frac{2p-1}{2}}}
+\frac{(n+k)^{n-1}(n-1)^{n-1}(k-1)!}{(n+k-2)!}
+\prod_{j=1}^{n-2}(j(j+k))^j
 $$
 
 ---
 
+## Solution Concepts
+
+Exceptional Laguerre eigenpolynomials; Sturm oscillation; root derivative identity; polynomial resultants; discriminant
+
 ## Black-Box Audit
 
-Step 1: Level 1. The reflected system, complex equation, and compatibility condition are derived explicitly in both directions.
+Step 1: Level 1. The self-adjoint equation is converted explicitly, and the eigenvalue is forced by the highest-degree coefficient.
 
-Step 2: Level 1. The gauge substitution is expanded, the Dirichlet spectrum is obtained from the elementary sine equation, and the compatibility restriction on $A$ is proved rather than assumed.
+Step 2: Level 1. The polynomial eigenfunction is constructed from displayed Laguerre identities; admissibility and the spectral index are certified by endpoint estimates, interlacing, and Sturm oscillation.
 
-Step 3: Level 1. Positivity and minimality follow from a strictly increasing explicit eigenvalue sequence; normalization is computed directly.
+Step 3: Level 1. The root derivative identity is derived line by line from two displayed Laguerre identities.
 
-Step 4: Level 1. Both zero families are listed, their disjointness is certified by a gcd argument, and simplicity is proved.
+Step 4: Level 1. The resultant is not quoted from a table; its recurrence and initial condition are derived from the monic three-term recurrence.
 
-Steps 5-6: Level 1. Every derivative factor is evaluated explicitly at the corresponding zero.
-
-Step 7: Level 1. The only product identity used is proved from the roots of unity, and both specializations are shown.
+Steps 5-6: Level 1. The constant term, all signs, and the conversion from derivative products to the requested weighted discriminant are shown explicitly.
 
 No Level 2 or Level 3 finding.
 
 ## Verification
 
-Check 1 (compatibility attack): pass. Solving only the complex Dirichlet equation would allow arbitrary complex $A$, but the relation $f(1-x)=i\overline{f(x)}$ reduces it to one real degree of freedom. Thus no spurious complex solution contributes to $E_\lambda$.
+Check 1 (smallest case): pass. For $n=2$,
+$$
+q_{2,k}(x)=x^2-k^2-2k,
+$$
+whose roots are $\pm\sqrt{k(k+2)}$. Directly,
+$$
+\frac{(\zeta_2-\zeta_1)^2}
+{(\zeta_1+k)^2(\zeta_2+k)^2}
+=\frac{k+2}{k},
+$$
+which is the formula with an empty product.
 
-Check 2 (least-positive attack): pass. Since $(2p+1)/2=p+1/2$, all indices $n\leq p$ give negative eigenvalues, while $n=p+1$ gives $\lambda_p=(p+3/4)\pi^2>0$.
+Check 2 (next case): pass. For $n=3$,
+$$
+q_{3,k}(x)=x^3-(k+3)x^2-k(k+3)x+k(k+1)(k+3).
+$$
+Its discriminant is
+$$
+4k(k+3)^2(4k+3)^2,
+$$
+while $q_{3,k}(-k)=k(4k+3)$. Their quotient is
+$$
+\frac{4(k+3)^2}{k},
+$$
+again matching the formula.
 
-Check 3 (zero-collision attack): pass. A collision would imply $(p+1)\mid k$ because $\gcd(p+1,2p+1)=1$, contradicting $1\leq k\leq p$. Therefore the product contains exactly $2p$ nonzero slope factors.
+Check 3 (counterexample attack): pass. The truncated candidate
+$$
+\frac{(n-1)^{n-1}(n+k)^{n-1}}{k}
+$$
+agrees at $n=2,3$ but fails at $n=4$: it gives $27(k+4)^3/k$, whereas the resultant recurrence forces
+$$
+\frac{108(k+2)(k+4)^3}{k}.
+$$
+Thus the factors in (8) are genuinely load-bearing.
 
-Check 4 (small parameter): pass. For $p=5$, the formula gives approximately $0.00513486708772536$, agreeing with direct multiplication of the ten slopes obtained from the displayed $w_p$.
+Check 4 (exact arithmetic): pass. Direct exact discriminant computations from (4) agree with the final formula for $1\leq k\leq4$ and $2\leq n\leq6$.
 
-Check 5 (missing-factor attack): pass. The factor $(2p+1)/(2(p+1))$ occurs once at each of the $p$ zeros $y_j$, hence appears to the power $p$. Omitting the denominator $(p+1)^p$ produces the incorrect larger answer found in one model response.
+Check 5 (Answer Length Gate): pass. The normalized answer has exactly $72$ characters after removing whitespace and dollar signs.
 
-Check 6 (Answer Length Gate): pass. The normalized boxed answer is under $100$ characters.
+Check 6 (Solution Length Gate): pass. The `## Steps` section has exactly $5747$ characters, below the $10000$-character limit.
 
 ## Classification
 
@@ -241,10 +324,6 @@ Check 6 (Answer Length Gate): pass. The normalized boxed answer is under $100$ c
 
 **Answer Type:** Exact symbolic expression
 
-## Solution Concepts
-
-Reflection substitution; complexification of a coupled system; gauge transformation; compatibility under involution; nodal decomposition; roots-of-unity sine products
-
 ## Confidence
 
-High. The spectrum includes the reflected compatibility constraint, the normalized eigenfunction is reconstructed uniquely, the two zero families are proved disjoint and simple, and the final product is verified independently at $p=5$ with the model-observed missing-factor error explicitly guarded against.
+High. The eigenpolynomial, spectral index, root derivative identity, consecutive-polynomial resultant, constant term, and every sign in the discriminant conversion are independently certified, and the formula passes exact small-parameter checks.
