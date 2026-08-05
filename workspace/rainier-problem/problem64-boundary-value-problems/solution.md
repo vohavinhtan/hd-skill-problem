@@ -73,12 +73,10 @@ xL'=mL-(m+k)M,
 xM'=(x-m-k)M+mL.
 \tag{5}
 $$
-If $r$ is a zero of $E_n$, then $M(r)=(r+k+1)L(r)$. Consequently,
-\begin{align*}
-rE_n'(r)
-&=-rL(r)-(r+k+1)rL'(r)+rM'(r)\\
-&=(n+k)(r+k)^2L(r).
-\end{align*}
+If $r$ is a zero of $E_n$, then $M(r)=(r+k+1)L(r)$. Substitution into (5) gives
+$$
+rE_n'(r)=-rL(r)-(r+k+1)rL'(r)+rM'(r)=(n+k)(r+k)^2L(r).
+$$
 Because $q_{n,k}=(-1)^nm!E_n$ and $\ell_m=(-1)^mm!L$, every zero $r$ of $q_{n,k}$ satisfies
 $$
 q_{n,k}'(r)
