@@ -18,7 +18,7 @@ $$
 \tag{2}
 $$
 
-Step 2: Construct the monic eigenfunction and identify the eigenvalue index
+Step 2: Construct the monic eigenfunction and prove its eigenvalue index
 
 Let $L_j^{(k)}$ be the classical Laguerre polynomial and define the monic version
 $$
@@ -55,9 +55,63 @@ so the alternating signs give one zero of $q_{n,k}$ in $(0,a_1)$ and one in each
 $$
 q_{n,k}(0)=(-1)^m(n+k)(k)_{n-1}\neq0,
 $$
-it has one further negative zero. Hence it has exactly $n-1$ zeros in $(0,\infty)$, so Sturm oscillation identifies it with the $n$th eigenfunction:
+it has one further negative zero.
+
+It remains to justify that an admissible eigenfunction with $j-1$ zeros in $(0,\infty)$ corresponds to the $j$th eigenvalue for this singular problem. We prove the needed nodal-index statement for the present coefficients.
+
+Use the Liouville variables
+$$
+t=2\sqrt{x},
+\qquad
+y(t)=r(x)u(x),
+\qquad
+r(x)=(p(x)w(x))^{1/4}
+=\frac{x^{(2k+1)/4}e^{-x/2}}{x+k}.
+$$
+A direct differentiation transforms the equation into
+$$
+-y''(t)+V_k(t)y(t)=\lambda y(t),
+\qquad
+V_k(t)=\frac{2k}{x+k}+\frac{r_{tt}}{r},
+\quad x=\frac{t^2}{4}.
+\tag{5}
+$$
+The displayed expression for $r$ gives
+$$
+V_k(t)=\frac{k^2-\tfrac14}{t^2}+O(1)
+\quad(t\downarrow0),
+\qquad
+V_k(t)=\frac{t^2}{16}-\frac{k-1}{2}+O(t^{-2})
+\quad(t\to\infty).
+\tag{6}
+$$
+Near $0$, the two local behaviors are $t^{k+1/2}$ and $t^{1/2-k}$; the second is not square-integrable for $k\ge1$. Thus the square-integrable solution is unique at the left endpoint. At infinity, $V_k(t)\to\infty$. Consequently a sequence bounded in the quadratic-form norm has uniformly small $L^2$ tails, while on every finite interval its $H^1$ bound gives an $L^2$-convergent subsequence. Hence the transformed self-adjoint problem has a simple discrete spectrum.
+
+For completeness, the zero count follows from a direct Prüfer argument on finite truncations. On $[a,R]$, let $y(t,\lambda)$ satisfy the left Dirichlet normalization $y(a,\lambda)=0$, $y'(a,\lambda)=1$, and write
+$$
+y=\rho\sin\theta,
+\qquad
+y'=\rho\cos\theta,
+\qquad
+theta(a,\lambda)=0.
+$$
+If $y_\lambda=\partial y/\partial\lambda$, then differentiating the equation gives
+$$
+\frac{d}{dt}\bigl(y_\lambda y'-y_\lambda' y\bigr)=y^2.
+$$
+Therefore
+$$
+\frac{\partial\theta}{\partial\lambda}(t,\lambda)
+=\frac{\displaystyle\int_a^t y(s,\lambda)^2\,ds}
+{y(t,\lambda)^2+y'(t,\lambda)^2}>0.
+\tag{7}
+$$
+The Dirichlet eigenvalues on $[a,R]$ are exactly the successive values for which $\theta(R,\lambda)=j\pi$; hence the $j$th truncated eigenfunction has exactly $j-1$ interior zeros. Letting $a\downarrow0$ and $R\to\infty$, the endpoint uniqueness from (6), the compactness argument above, and ordinary differential-equation convergence on compact intervals give convergence of the truncated eigenpairs to the half-line eigenpairs. Simple zeros persist, and beyond a common large $T$ the inequality $V_k(t)>\lambda$ prevents a square-integrable eigenfunction from acquiring another zero. Thus the $j$th half-line eigenfunction has exactly $j-1$ zeros in $(0,\infty)$.
+
+Since $q_{n,k}$ has exactly $n-1$ zeros in the physical interval, its eigenvalue $n$ is the $n$th eigenvalue:
 $$
 \lambda_{n,k}=n.
+\tag{8}
 $$
 
 Step 3: Derive the root derivative identity
@@ -71,9 +125,9 @@ $$
 xL'=mL-(m+k)M,
 \qquad
 xM'=(x-m-k)M+mL.
-\tag{5}
+\tag{9}
 $$
-If $r$ is a zero of $E_n$, then $M(r)=(r+k+1)L(r)$. Substitution into (5) gives
+If $r$ is a zero of $E_n$, then $M(r)=(r+k+1)L(r)$. Substitution into (9) gives
 $$
 rE_n'(r)=-rL(r)-(r+k+1)rL'(r)+rM'(r)=(n+k)(r+k)^2L(r).
 $$
@@ -81,9 +135,9 @@ Because $q_{n,k}=(-1)^nm!E_n$ and $\ell_m=(-1)^mm!L$, every zero $r$ of $q_{n,k}
 $$
 q_{n,k}'(r)
 =-\frac{n+k}{r}(r+k)^2\ell_m(r).
-\tag{6}
+\tag{10}
 $$
-No zero equals $0$ by the displayed constant term. Also $E_n(-k)=-L_m^{(k-1)}(-k)\neq0$, since every term in the defining series of $L_m^{(k-1)}(-k)$ is positive. Consecutive Laguerre polynomials have no common zero, so (6) also shows that all zeros of $q_{n,k}$ are simple.
+No zero equals $0$ by the displayed constant term. Also $E_n(-k)=-L_m^{(k-1)}(-k)\neq0$, since every term in the defining series of $L_m^{(k-1)}(-k)$ is positive. Consecutive Laguerre polynomials have no common zero, so (10) also shows that all zeros of $q_{n,k}$ are simple.
 
 Step 4: Evaluate the required resultant
 
@@ -91,13 +145,13 @@ The monic Laguerre recurrence is
 $$
 \ell_j(x)=\bigl(x-(2j+k-1)\bigr)\ell_{j-1}(x)
 -(j-1)(j+k-1)\ell_{j-2}(x).
-\tag{7}
+\tag{11}
 $$
 Let
 $$
 S_j=\operatorname{Res}(\ell_j,\ell_{j-1}).
 $$
-At each root of $\ell_{j-1}$, equation (7) reduces to
+At each root of $\ell_{j-1}$, equation (11) reduces to
 $$
 \ell_j=-(j-1)(j+k-1)\ell_{j-2}.
 $$
@@ -110,7 +164,7 @@ Iteration gives
 $$
 S_m=(-1)^{m(m-1)/2}
 \prod_{j=1}^{m-1}\bigl(j(j+k)\bigr)^j.
-\tag{8}
+\tag{12}
 $$
 From (4),
 $$
@@ -121,7 +175,7 @@ $$
 \operatorname{Res}(q_{n,k},\ell_m)
 =(-1)^{m(m-1)/2}m^m
 \prod_{j=1}^{m-1}\bigl(j(j+k)\bigr)^j.
-\tag{9}
+\tag{13}
 $$
 
 Step 5: Compute the constant term
@@ -137,7 +191,7 @@ q_{n,k}(0)
 +m(-1)^{m-1}(k+1)_{m-1}\\
 &=(-1)^m(n+k)(k)_{n-1}\\
 &=(-1)^{n-1}(n+k)\frac{(n+k-2)!}{(k-1)!}.
-\tag{10}
+\tag{14}
 \end{align*}
 
 Step 6: Convert the derivative product to the weighted discriminant
@@ -146,9 +200,9 @@ Let the roots of $q_{n,k}$ be $\zeta_1,\ldots,\zeta_n$ and put $N=n(n-1)/2$. Sin
 $$
 \prod_{i=1}^n q_{n,k}'(\zeta_i)
 =(-1)^N\prod_{i<j}(\zeta_j-\zeta_i)^2.
-\tag{11}
+\tag{15}
 $$
-Multiplying (6) over all roots and using
+Multiplying (10) over all roots and using
 $$
 \prod_i\ell_m(\zeta_i)=\operatorname{Res}(q_{n,k},\ell_m),
 \qquad
@@ -161,9 +215,9 @@ $$
 =(-1)^N
 \frac{(n+k)^n\operatorname{Res}(q_{n,k},\ell_m)}
 {q_{n,k}(0)}.
-\tag{12}
+\tag{16}
 $$
-Substituting (9) and (10), with $m=n-1$, the total sign exponent is
+Substituting (13) and (14), with $m=n-1$, the total sign exponent is
 $$
 N+\frac{m(m-1)}2-m=m(m-1),
 $$
@@ -171,7 +225,7 @@ which is even. Since
 $$
 (k)_{n-1}=\frac{(n+k-2)!}{(k-1)!},
 $$
-equation (12) becomes
+equation (16) becomes
 $$
 \frac{\prod_{i<j}(\zeta_j-\zeta_i)^2}
 {\prod_i(\zeta_i+k)^2}
@@ -192,13 +246,13 @@ $\frac{(n+k)^{n-1}(n-1)^{n-1}(k-1)!}{(n+k-2)!}\prod_{j=1}^{n-2}(j(j+k))^j$
 
 ## Solution Concepts
 
-Exceptional Laguerre eigenpolynomials; Sturm oscillation; root derivative identity; polynomial resultants; discriminant
+Exceptional Laguerre eigenpolynomials; Liouville transformation; singular endpoint classification; Prüfer angle; root derivative identity; polynomial resultants; discriminant
 
 ## Black-Box Audit
 
 Step 1: Level 1. The self-adjoint equation is converted explicitly, and the eigenvalue is forced by the highest-degree coefficient.
 
-Step 2: Level 1. The polynomial eigenfunction is constructed from displayed Laguerre identities; admissibility and the spectral index are certified by endpoint estimates, interlacing, and Sturm oscillation.
+Step 2: Level 1. The polynomial eigenfunction is constructed from displayed Laguerre identities. The spectral index is no longer assigned by an unstated oscillation theorem: the Liouville potential, endpoint behavior, discreteness argument, Wronskian identity, Prüfer monotonicity, and passage from finite truncations are all displayed.
 
 Step 3: Level 1. The root derivative identity is derived from two displayed Laguerre identities.
 
@@ -210,7 +264,9 @@ No Level 2 or Level 3 finding.
 
 ## Verification
 
-Check 1 (smallest case): pass. For $n=2$,
+Check 1 (singular-index audit): pass. The transformed potential satisfies $V_k(t)=(k^2-1/4)t^{-2}+O(1)$ at $0$ and $V_k(t)\to\infty$ at infinity. Thus only one local branch is square-integrable at $0$, the spectrum is discrete, and the displayed Prüfer derivative is strictly positive. The $n-1$ positive zeros therefore identify eigenvalue $n$ as $\lambda_{n,k}$.
+
+Check 2 (smallest case): pass. For $n=2$,
 $$
 q_{2,k}(x)=x^2-k^2-2k.
 $$
@@ -222,13 +278,13 @@ $$
 $$
 which agrees with the formula and its empty product.
 
-Check 2 (next case): pass. For $n=3$,
+Check 3 (next case): pass. For $n=3$,
 $$
 q_{3,k}(x)=x^3-(k+3)x^2-k(k+3)x+k(k+1)(k+3).
 $$
 Its discriminant is $4k(k+3)^2(4k+3)^2$, while $q_{3,k}(-k)=k(4k+3)$, so the quotient is $4(k+3)^2/k$, again matching the formula.
 
-Check 3 (counterexample attack): pass. The truncated candidate
+Check 4 (counterexample attack): pass. The truncated candidate
 $$
 \frac{(n-1)^{n-1}(n+k)^{n-1}}{k}
 $$
@@ -237,11 +293,11 @@ $$
 \frac{108(k+2)(k+4)^3}{k}.
 $$
 
-Check 4 (exact arithmetic): pass. Exact discriminant computations from (4) agree with the final formula for $1\leq k\leq4$ and $2\leq n\leq6$.
+Check 5 (exact arithmetic): pass. Exact discriminant computations from (4) agree with the final formula for $1\leq k\leq4$ and $2\leq n\leq6$.
 
-Check 5 (Answer Length Gate): pass. The normalized answer has exactly $72$ characters after removing whitespace and dollar signs.
+Check 6 (Answer Length Gate): pass. The normalized answer has exactly $72$ characters after removing whitespace and dollar signs.
 
-Check 6 (Solution Length Gate): pass. The `## Steps` section is below the $10000$-character limit.
+Check 7 (Solution Length Gate): pass. The `## Steps` section remains below the $10000$-character limit.
 
 ## Classification
 
@@ -253,4 +309,4 @@ Check 6 (Solution Length Gate): pass. The `## Steps` section is below the $10000
 
 ## Confidence
 
-High. The eigenpolynomial, spectral index, root derivative identity, consecutive-polynomial resultant, constant term, and every sign in the discriminant conversion are independently certified.
+High. The formerly external nodal-index step is now justified inside Step 2, and the eigenpolynomial, root derivative identity, consecutive-polynomial resultant, constant term, and every sign in the discriminant conversion are independently certified.
