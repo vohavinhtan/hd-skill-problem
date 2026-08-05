@@ -2,37 +2,24 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq1$ be an integer and set
+Let $n\geq1$ be an odd integer. Let $\mathcal D$ be the real vector space of all twice continuously differentiable functions $u:[0,1]\to\mathbb R$ satisfying
 $$
-\kappa=(2p+1)\pi.
+u(0)=u(1)=0.
 $$
-Define
+For each real number $\alpha$, define the linear operator $T_\alpha:\mathcal D\to C([0,1])$ by
 $$
-\rho(x)=
-\begin{cases}
-1,&0\leq x\leq\tfrac12,\\
-9,&\tfrac12<x\leq1.
-\end{cases}
-$$
-For each real $\lambda$ in a neighborhood of $\kappa^2$, let $y_\lambda:[0,1]\to\mathbb R$ be the unique function that is continuously differentiable on $[0,1]$, twice continuously differentiable on each of $[0,\tfrac12]$ and $[\tfrac12,1]$, and satisfies
-$$
--y_\lambda''(x)=\lambda\rho(x)y_\lambda(x),
-$$
-$$
-y_\lambda(0)=0,\qquad y_\lambda'(0)=1.
-$$
-For real numbers $a,b,c$, define
-$$
-F_{a,b,c}(\lambda)=y_\lambda(1)+\Bigl(a(\lambda-\kappa^2)+b(\lambda-\kappa^2)^2+c(\lambda-\kappa^2)^3\Bigr)y_\lambda'(1).
+(T_\alpha u)(x)
+=-u''(x)+\alpha x\int_0^1\cos(\pi t)\cos(2\pi t)u(t)\,dt.
 $$
 
-Determine the unique ordered triple $(a,b,c)$ for which $\lambda=\kappa^2$ is a zero of $F_{a,b,c}$ of multiplicity exactly $4$; that is,
+For $r\geq1$, a Jordan chain of length $r$ for $T_\alpha$ at a real number $\lambda$ is a sequence $u_0,\ldots,u_{r-1}\in\mathcal D$ such that $u_0\neq0$ and
 $$
-F_{a,b,c}^{(j)}(\kappa^2)=0\quad(0\leq j\leq3),
+(T_\alpha-\lambda)u_0=0,
 \qquad
-F_{a,b,c}^{(4)}(\kappa^2)\neq0.
+(T_\alpha-\lambda)u_j=u_{j-1}\quad(1\leq j<r).
 $$
-Present the answer in closed form in terms of $p$.
+
+Determine, in closed form as a function of $n$, all real numbers $\alpha$ for which $T_\alpha$ has a Jordan chain of length $2$ at $\lambda=n^2\pi^2$ but has no Jordan chain of length $3$ there.
 
 ---
 
@@ -43,10 +30,10 @@ Present the answer in closed form in terms of $p$.
 | **Domain** | Differential Equations and Dynamical Systems |
 | **Sub-domain** | Boundary value problems |
 | **Problem Type** | Parameter identification |
-| **Answer Type** | Tuple or ordered list |
+| **Answer Type** | Function or mapping |
 
 ---
 
 ## Domain Explanation
 
-The problem is an inverse spectral design question for a two-layer Sturm--Liouville boundary value problem. The discontinuous weight forces a nontrivial transfer across the interface, while the polynomial dependence of the right boundary condition on the spectral parameter must be tuned so that a prescribed spectral point has fourth-order algebraic contact with the characteristic equation. Solving the problem requires deriving the endpoint transfer data, extracting the third-order jet of the associated boundary ratio in the variable $\lambda$, and independently verifying that the fourth-order term does not vanish.
+The problem concerns a Dirichlet boundary value operator with a nonlocal finite-rank perturbation. The requested parameter is controlled by compatibility between the boundary equation and its generalized-eigenfunction equations, while the requirement that the chain stop at length two supplies an independent obstruction rather than an additional coefficient-matching condition.
