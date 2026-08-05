@@ -93,7 +93,12 @@ $$
 \phi(e)=\operatorname{Tr}\left(\frac{S(e)T(e)}{e}\right)
 \qquad(e\in E^\times).
 $$
-The constants $c_i$ exist uniquely exactly when $1+\phi$ is the restriction of a linear functional on $E$. This happens exactly when, on every two-dimensional subspace $L\subset E$,
+Let $C(e)=\sum a_ic_i$ and $\lambda(e)=a_1+a_2+a_3$. The required Walsh sign is equivalent to
+$$
+C(e)+\phi(e)=1+\lambda(e)
+\qquad(e\neq0).
+$$
+Since $C$ and $\lambda$ are linear, the constants $c_i$ exist uniquely exactly when $1+\phi$ is the restriction of a linear functional on $E$. This happens exactly when, on every two-dimensional subspace $L\subset E$,
 $$
 \sum_{e\in L\setminus\{0\}}\phi(e)=1.
 $$
