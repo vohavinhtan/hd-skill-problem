@@ -318,22 +318,13 @@ R_{r,m}\equiv
 $$
 Taking the least nonnegative representative modulo $32$ gives the requested residue.
 
-Final Answer:
-$$
-\boxed{R_{r,m}\equiv
-(19+4\lfloor m/2\rfloor)
-2^{-s_2(m)}\binom{2m}{m}\pmod{32}}
-$$
+Final Answer: $\boxed{R_{r,m}\equiv(19+4\lfloor m/2\rfloor)2^{-s_2(m)}\binom{2m}{m}\pmod{32}}$
 
 ---
 
 ## Answer
 
-$$
-R_{r,m}\equiv
-(19+4\lfloor m/2\rfloor)
-2^{-s_2(m)}\binom{2m}{m}\pmod{32}.
-$$
+$R_{r,m}\equiv(19+4\lfloor m/2\rfloor)2^{-s_2(m)}\binom{2m}{m}\pmod{32}$
 
 ---
 
