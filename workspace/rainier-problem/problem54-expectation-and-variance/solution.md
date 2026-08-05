@@ -1,105 +1,115 @@
 ## Steps
 
-Step 1: Remove the four anchored atoms and record the residual capacities
+Step 1: Reduce the first optimization stage to a residual martingale problem
 
-The anchored condition contributes mass $1/8$ to each target atom. After multiplying the remaining coupling by $8$, the source and target measures become
+Let $T=\{0,3,8,11\}$. Since $\mu_a(\{t\})=\frac18$ for every $t\in T$,
 $$
-\bar\mu_a=\sum_{i=1}^4U_{I_i(a)},
-\qquad
-\bar\nu=\delta_0+\delta_3+\delta_8+\delta_{11}.
+\pi(\{(t,t)\})\leq\frac18,
 $$
-Thus each source interval has mass $1$, each target atom has capacity $1$, and a binary conditional law supported on $u<x<v$ is forced by the martingale condition to be
+and therefore $\mathcal D(\pi)\leq\frac12$. If equality holds, then all four inequalities are equalities, so
+$$
+\pi_t=\delta_t\qquad(t\in T).
+$$
+After removing these four diagonal masses and multiplying the remainder by $8$, the first and second marginals become
+$$
+\rho_a=\sum_{i=1}^4U_{I_i(a)},\qquad
+\lambda=\delta_0+\delta_3+\delta_8+\delta_{11}.
+$$
+Thus every target atom has residual capacity $1$. The diagonal rows contribute $0$ to $\mathcal C_h$, so among couplings with $\mathcal D=\frac12$ the secondary problem is equivalent to maximizing
+$$
+J_h(Q)=\int h(x)(y-x)^2\,dQ(x,y)
+$$
+over martingale couplings of $\rho_a$ and $\lambda$.
+
+Step 2: Derive the no-crossing rule and binary fibres directly from the cost
+
+Write $q_t(x)=Q_x(\{t\})$. Take $y^-<y'<y^+$ and put
+$$
+\alpha=\frac{y^+-y'}{y^+-y^-},\qquad
+\beta=\frac{y'-y^-}{y^+-y^-}.
+$$
+Then $\alpha+\beta=1$ and $\alpha y^-+\beta y^+=y'$. Suppose that on an earlier positive-measure set $E$ both $q_{y^-}$ and $q_{y^+}$ are bounded below by a positive number, while on a later positive-measure set $F$, with $\sup E<\inf F$, the function $q_{y'}$ is bounded below by a positive number. Choose nonnegative densities $r_E,r_F$ of equal integral, small enough to stay below these masses. On $E$ replace
+$$
+\alpha\delta_{y^-}+\beta\delta_{y^+}
+\quad\text{by}\quad \delta_{y'},
+$$
+and on $F$ make the reverse replacement. Row masses, row barycentres, and all target totals are preserved. The quadratic interpolation gap is
+$$
+\alpha(y^--x)^2+\beta(y^+-x)^2-(y'-x)^2
+=(y'-y^-)(y^+-y'),
+$$
+so the gain is
+$$
+(y'-y^-)(y^+-y')
+\left(\int_Fh\,r_F\,d\rho_a-\int_Eh\,r_E\,d\rho_a\right)>0,
+$$
+because $h$ is strictly increasing. Hence no optimizer permits an earlier fibre containing $y^-,y^+$ and a later fibre containing an interior target $y'$.
+
+For each target $t$ and integer $n\geq1$, take the density points of the level set $\{q_t\geq1/n\}$. Their union supports all mass carried by target $t$. If this full-measure support contained a forbidden triple at $x<x'$, small disjoint neighbourhoods of $x,x'$ would supply sets $E,F$ of the preceding kind, a contradiction. If fibres had at least three target atoms on a positive-measure set, one fixed triple $y^-<y'<y^+$ would occur on a positive-measure subset; choosing two ordered density points of that subset would again give a forbidden triple. Therefore every residual optimal fibre has exactly two atoms almost everywhere, and the martingale condition fixes the weights on a pair $u<x<v$ as
 $$
 \frac{v-x}{v-u}\delta_u+\frac{x-u}{v-u}\delta_v.
 $$
 
-The no-crossing condition imposes an exhaustion rule. If an earlier source point uses the pair $u<v$, no later source point may use a target atom strictly between $u$ and $v$. Hence a wider pair cannot begin while an interior target capacity that must be used later remains unfilled. Once a wider pair begins, every interior target must already be exhausted. This statement preserves all target capacities because it does not alter a coupling; it only restricts the chronological order in which the fixed capacities may be consumed.
+Step 3: Determine the fibres on the first two intervals
 
-Step 2: Force the support pairs on the first two source intervals
-
-Every $x\in I_1(a)\subset(0,2)$ must use a pair containing $0$ and one of $3,8,11$. The total mass that $I_1(a)$ can send to $3$ through the pair $\{0,3\}$ is
+For $x\in I_1(a)\subset(0,2)$, the pair is $\{0,3\}$, $\{0,8\}$, or $\{0,11\}$. Even using $\{0,3\}$ on all of $I_1(a)$ sends only
 $$
-\int_{1-a}^{1+a}\frac{x}{3}\frac{dx}{2a}=\frac13<1.
+\int_{I_1(a)}\frac{x}{3}\,dU_{I_1(a)}=\frac13
 $$
-Therefore target $3$ must also be used at a later source point. If any part of $I_1(a)$ used $\{0,8\}$ or $\{0,11\}$, that later use of $3$ would lie strictly between the earlier pair and violate screening. Consequently all of $I_1(a)$ uses $\{0,3\}$:
+to target $3$, so target $3$ must also be used later. A wider pair would enclose $3$ and forbid that later use. Thus
 $$
 K_a^*(x)=\left(1-\frac{x}{3},\frac{x}{3},0,0\right)
-\qquad(x\in I_1(a)).
+\qquad(x\in I_1(a)),
 $$
-It consumes capacities $2/3$ at $0$ and $1/3$ at $3$.
+using capacities $\frac23$ at $0$ and $\frac13$ at $3$.
 
-On $I_2(a)\subset(3,5)$, target $3$ still has capacity $2/3$ and target $8$ has capacity $1$. A pair using $11$ before $8$ is exhausted would screen off the later use of $8$. A pair using $0$ before $3$ is exhausted would screen off the later use of $3$. Thus the pair is $\{3,8\}$ until target $3$ is exhausted, and then it is $\{0,8\}$.
-
-If $x_2^*$ is the switch, capacity conservation at $3$ gives
+On $I_2(a)$, target $8$ cannot be exhausted there because even the pair $\{0,8\}$ on the whole interval sends only $\frac12$ to $8$. Hence no pair involving $11$ is allowed. The pair must be $\{3,8\}$ until the remaining capacity $\frac23$ at $3$ is exhausted, then $\{0,8\}$. If the switch is $s_2$, then
 $$
-\int_{4-a}^{x_2^*}\frac{8-x}{5}\frac{dx}{2a}=\frac23.
+\int_{4-a}^{s_2}\frac{8-x}{5}\frac{dx}{2a}=\frac23,
 $$
-Solving the quadratic and choosing the root in $I_2(a)$ yields
+so
 $$
-x_2^*=8-\sqrt{a^2-\frac{16}{3}a+16}.
+s_2=8-\sqrt{a^2-\frac{16}{3}a+16}.
 $$
-The integral increases from $0$ to $4/5$ across $I_2(a)$, so this root is strictly interior. The complete kernel on $I_2(a)$ is
+The full integral over $I_2(a)$ is $\frac45>\frac23$, so $s_2$ is the unique interior root. Therefore
 $$
 K_a^*(x)=
 \begin{cases}
-\left(0,\frac{8-x}{5},\frac{x-3}{5},0\right),
-&4-a\leq x\leq x_2^*,\\
-\left(1-\frac{x}{8},0,\frac{x}{8},0\right),
-&x_2^*<x\leq4+a.
+\left(0,\frac{8-x}{5},\frac{x-3}{5},0\right),&4-a\leq x\leq s_2,\\
+\left(\frac{8-x}{8},0,\frac{x}{8},0\right),&s_2<x\leq4+a.
 \end{cases}
 $$
-Its total capacity use is $1/12$ at $0$, $2/3$ at $3$, and $1/4$ at $8$.
+Since this interval has mass $1$, mean $4$, and sends $\frac23$ to $3$, it sends $\frac14$ to $8$ and $\frac1{12}$ to $0$.
 
-Step 3: Force the remaining support pairs and compute the second switch
+Step 4: Determine the remaining fibres and verify the complete kernel
 
-After $I_1(a)$ and $I_2(a)$, target $3$ is exhausted, while target $8$ has remaining capacity $3/4$. Since $I_3(a)\subset(6,8)$, its only possible screened binary pairs are first $\{0,8\}$ and then $\{0,11\}$. Using $\{0,11\}$ while capacity remained at $8$ would make every later use of $8$ a forbidden interior point.
-
-If $x_3^*$ is the switch, exhaustion of target $8$ gives
+After $I_2(a)$, the remaining capacities are $\frac14$ at $0$, $\frac34$ at $8$, and $1$ at $11$. On $I_3(a)$ the pair is $\{0,8\}$ until $8$ is exhausted, then $\{0,11\}$. If the switch is $s_3$, then
 $$
-\int_{7-a}^{x_3^*}\frac{x}{8}\frac{dx}{2a}=\frac34,
+\int_{7-a}^{s_3}\frac{x}{8}\frac{dx}{2a}=\frac34,
 $$
 and hence
 $$
-x_3^*=\sqrt{a^2+10a+49}.
+s_3=\sqrt{a^2+10a+49}.
 $$
-The integral increases from $0$ to $7/8$ across $I_3(a)$, so $x_3^*$ lies strictly inside $I_3(a)$. Therefore
-$$
-K_a^*(x)=
-\begin{cases}
-\left(1-\frac{x}{8},0,\frac{x}{8},0\right),
-&7-a\leq x\leq x_3^*,\\
-\left(1-\frac{x}{11},0,0,\frac{x}{11}\right),
-&x_3^*<x\leq7+a.
-\end{cases}
-$$
-This interval uses capacities $7/44$ at $0$, $3/4$ at $8$, and $1/11$ at $11$.
+The full integral over $I_3(a)$ is $\frac78>\frac34$, so $s_3$ is the unique interior root. This interval sends $\frac34$ to $8$; its mean $7$ then forces masses $\frac1{11}$ at $11$ and $\frac7{44}$ at $0$. Only $0$ and $11$ remain on $I_4(a)$.
 
-Only targets $0$ and $11$ remain available on $I_4(a)$, so
-$$
-K_a^*(x)=\left(1-\frac{x}{11},0,0,\frac{x}{11}\right)
-\qquad(x\in I_4(a)).
-$$
-It uses capacities $1/11$ at $0$ and $10/11$ at $11$.
-
-Step 4: Verify existence, screening, and uniqueness
-
-Together with the anchored rows, the complete kernel is
+With either convention at the two null switching points, the complete kernel is
 $$
 K_a^*(x)=
 \begin{cases}
 (1,0,0,0),&x=0,\\
 \left(1-\frac{x}{3},\frac{x}{3},0,0\right),&x\in[1-a,1+a],\\
 (0,1,0,0),&x=3,\\
-\left(0,\frac{8-x}{5},\frac{x-3}{5},0\right),&x\in[4-a,x_2^*],\\
-\left(1-\frac{x}{8},0,\frac{x}{8},0\right),&x\in(x_2^*,4+a],\\
-\left(1-\frac{x}{8},0,\frac{x}{8},0\right),&x\in[7-a,x_3^*],\\
-\left(1-\frac{x}{11},0,0,\frac{x}{11}\right),&x\in(x_3^*,7+a],\\
+\left(0,\frac{8-x}{5},\frac{x-3}{5},0\right),&x\in[4-a,s_2],\\
+\left(\frac{8-x}{8},0,\frac{x}{8},0\right),&x\in(s_2,4+a],\\
+\left(\frac{8-x}{8},0,\frac{x}{8},0\right),&x\in[7-a,s_3],\\
+\left(\frac{11-x}{11},0,0,\frac{x}{11}\right),&x\in(s_3,7+a],\\
 (0,0,1,0),&x=8,\\
-\left(1-\frac{x}{11},0,0,\frac{x}{11}\right),&x\in[10-a,10+a],\\
+\left(\frac{11-x}{11},0,0,\frac{x}{11}\right),&x\in[10-a,10+a],\\
 (0,0,0,1),&x=11.
 \end{cases}
 $$
-Every row has total mass $1$ and barycenter $x$. The four residual target totals are
+Every row has barycentre $x$, and the residual target totals are
 $$
 \begin{aligned}
 0:&\quad \frac23+\frac1{12}+\frac7{44}+\frac1{11}=1,\\
@@ -108,13 +118,34 @@ $$
 11:&\quad \frac1{11}+\frac{10}{11}=1.
 \end{aligned}
 $$
-Thus the second marginal is correct. The successive support pairs are
-$$
-\{0,3\},\quad\{3,8\},\quad\{0,8\},\quad\{0,11\},
-$$
-and each wider pair starts only after every newly enclosed target is exhausted, so the no-crossing condition holds.
+Thus this is feasible and attains $\mathcal D=\frac12$. The residual feasible set is nonempty by this kernel and is compact because it consists of measures on a compact set with closed marginal and martingale constraints. Since $J_h$ is continuous, an optimizer exists. Step 2 applies to every optimizer, while the capacity arguments in Steps 3 and 4 force every pair and both switches. Hence this residual optimizer is unique for every admissible $h$, and it is independent of $h$.
 
-Conversely, the exhaustion rule forces these pairs in this order. Capacity at $3$ uniquely determines $x_2^*$, and capacity at $8$ uniquely determines $x_3^*$. The martingale condition then fixes every binary row, proving uniqueness of the screened distribution.
+Step 5: Prove convergence of all perturbed maximizers
+
+The set $\mathcal M_a$ is compact: all measures are supported on the compact set $[0,11]\times T$, the marginal constraints are closed, and the martingale condition is the closed family
+$$
+\int f(x)(y-x)\,d\pi=0
+$$
+for continuous $f$. Let $B=\sup_{\pi\in\mathcal M_a}|\mathcal C_h(\pi)|<\infty$. Comparing $\pi_{\varepsilon,h}$ with $\pi_a^*$ gives
+$$
+0\leq\frac12-\mathcal D(\pi_{\varepsilon,h})
+\leq\varepsilon\left(\mathcal C_h(\pi_{\varepsilon,h})-\mathcal C_h(\pi_a^*)\right)
+\leq2B\varepsilon.
+$$
+Hence $\mathcal D(\pi_{\varepsilon,h})\to\frac12$. For any weakly convergent subsequence with limit $\bar\pi$, the diagonal set is closed, so
+$$
+\mathcal D(\bar\pi)\geq\limsup\mathcal D(\pi_{\varepsilon,h})=\frac12;
+$$
+therefore $\mathcal D(\bar\pi)=\frac12$.
+
+For every $\sigma\in\mathcal M_a$ with $\mathcal D(\sigma)=\frac12$, optimality gives
+$$
+\mathcal C_h(\pi_{\varepsilon,h})
+\geq\mathcal C_h(\sigma)
++\frac{\frac12-\mathcal D(\pi_{\varepsilon,h})}{\varepsilon}
+\geq\mathcal C_h(\sigma).
+$$
+Passing to the subsequential limit shows that $\bar\pi$ maximizes $\mathcal C_h$ among all maximizers of $\mathcal D$. Step 4 makes that maximizer uniquely $\pi_a^*$. Every subsequential limit is therefore $\pi_a^*$, proving weak convergence for every choice of maximizers and every admissible $h$. The support pair changes only at $s_2$ and $s_3$.
 
 Final Answer: $\boxed{\left(8-\sqrt{a^2-\frac{16}{3}a+16},\sqrt{a^2+10a+49}\right)}$
 
@@ -128,7 +159,7 @@ $\left(8-\sqrt{a^2-\frac{16}{3}a+16},\sqrt{a^2+10a+49}\right)$
 
 ## Classification
 
-**Problem Type:** Construction under constraints
+**Problem Type:** Optimization
 
 **Answer Type:** Tuple or ordered list
 
@@ -136,8 +167,8 @@ $\left(8-\sqrt{a^2-\frac{16}{3}a+16},\sqrt{a^2+10a+49}\right)$
 
 ## Solution Concepts
 
-- conditional distributions
-- martingale barycentric splitting
-- support screening
-- capacity exhaustion
-- regular conditional probability
+- martingale transport
+- lexicographic optimization
+- local exchange argument
+- weak convergence
+- conditional barycentric splitting
