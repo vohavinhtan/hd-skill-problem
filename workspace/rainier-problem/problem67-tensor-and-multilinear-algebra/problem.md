@@ -2,44 +2,39 @@
 
 ## LaTeX (Normalized)
 
-Fix integers $a,b,u$ satisfying
+Fix integers
 $$
-a\geq4,\qquad 1\leq b\leq a-1,
-\qquad 1\leq u\leq2^a-2.
+r\geq 6,\qquad 2\leq q\leq r-2,
 $$
-Work over the field $\mathbb F_2$. Let $U$ and $V$ have ordered bases
+and put
 $$
-x_0,x_1,\ldots,x_{2^{a+1}-2}
+n_r=\frac{2^{r+1}+(-1)^r}{3}.
 $$
-and
+Work over the field $\mathbb F_2$. Let $V_r$ have ordered basis
 $$
-y_0,y_1,\ldots,y_{2^a-2},
+e_0,e_1,\ldots,e_{n_r-1},
 $$
-respectively. Define nilpotent linear maps $A:U\to U$ and $B:V\to V$ by
+and define a nilpotent linear map $J_r:V_r\to V_r$ by
 $$
-A(x_0)=0,\qquad A(x_i)=x_{i-1}\quad(i\geq1),
+J_r(e_0)=0,\qquad J_r(e_i)=e_{i-1}\quad(i\geq1).
 $$
+Let
 $$
-B(y_0)=0,\qquad B(y_j)=y_{j-1}\quad(j\geq1).
+D_r:\bigwedge^2V_r\longrightarrow\bigwedge^2V_r
 $$
-Since $\ker A^u$ and $\ker B^u$ are invariant, $A\oplus B$ induces an endomorphism of
+be the induced map
 $$
-(U/\ker A^u)\oplus(V/\ker B^u).
+D_r(v\wedge w)=J_rv\wedge w+v\wedge J_rw.
 $$
-Let $R$ be the quotient
+Let
 $$
-R=
-\frac{\bigwedge^2\left((U/\ker A^u)\oplus(V/\ker B^u)\right)}
-{\bigwedge^2(U/\ker A^u)+\bigwedge^2(V/\ker B^u)}.
+Q_r=\bigwedge^2V_r/\ker D_r,
 $$
-Let $\Gamma:R\to R$ be the map induced by
+and let $\overline D_r$ be the endomorphism of $Q_r$ induced by $D_r$.
+
+Determine, as a closed formula in $r$ and $q$, the rank of
 $$
-z\wedge w\longmapsto
-(A\oplus B)z\wedge w+z\wedge(A\oplus B)w.
-$$
-Determine, as a closed formula in $a,b,u$, the rank of
-$$
-\Gamma^{\,2^{a+1}-2^b}.
+\overline D_r^{\,2^q-2}.
 $$
 
 ---
@@ -57,4 +52,4 @@ $$
 
 ## Domain Explanation
 
-This problem is classified under Linear Algebra and Tensor and multilinear algebra because it uses quotients of nilpotent Jordan chains, an exterior-square cross-term, and an induced tensor derivation. The rank at the specified power depends on characteristic-two binomial cancellation, a residue-class decomposition at scale $2^b$, and an exact count of the surviving graded components; characteristic-zero highest-weight arguments do not determine it.
+This problem is classified under Linear Algebra and Tensor and multilinear algebra because it studies the nilpotent derivation induced by a single Jordan chain on an exterior square and on a canonical quotient. The requested rank is controlled by characteristic-two cancellations in the exterior-square Jordan structure, together with the effect of quotienting by the first kernel layer; characteristic-zero tensor-product rules do not determine it.
