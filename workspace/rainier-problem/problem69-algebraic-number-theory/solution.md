@@ -65,7 +65,7 @@ v_E(\sigma(\alpha)-\alpha)
 $$
 because $v_E(\pi)=p$. Thus this cyclic extension has break $p$.
 
-Now let a Kummer line be represented by $w=1+t$ with $v_K(t)=n$, where $1\leq n<p$, and put $\alpha^p=w$, $\beta=\alpha-1$. Normalize $v_E$ by $v_E(\pi)=p$ and write $s=v_E(\beta)$. From
+Now let a Kummer line be represented by $w=1+t$ with $v_K(t)=n$, where $1\leq n<p$, and put $\alpha^p=w$, $\beta=\alpha-1$. The residue of $\alpha$ is $1$, so $s=v_E(\beta)>0$. Normalize $v_E$ by $v_E(\pi)=p$. From
 $$
 t=p\beta+\sum_{k=2}^{p-1}\binom pk\beta^k+\beta^p
 $$
@@ -73,7 +73,11 @@ and
 $$
 v_E\left(\binom pk\right)=p(p-1)\qquad(1\leq k<p),
 $$
-the equality $v_E(t)=np<p^2$ forces $s<p$; then $\beta^p$ is the unique term of least valuation, so $ps=np$ and $s=n$.
+we have $v_E(t)=np<p^2$. If $s\geq p$, every term on the right has valuation at least $p^2$, a contradiction. Thus $s<p$, and for $1\leq k<p$,
+$$
+p(p-1)+ks-ps\geq(p-1)(p-s)>0.
+$$
+Hence $\beta^p$ is the unique term of least valuation, so $ps=np$ and $s=n$.
 
 Choose integers $A,B$ with $An+Bp=1$. Then $p\nmid A$ and
 $$
@@ -84,11 +88,11 @@ $$
 \frac{\sigma(\beta)}{\beta}
 =1+\frac{\pi\alpha}{\beta}
 $$
-and $v_E(\pi\alpha/\beta)=p-n$, the leading term of
+and $v_E(\pi\alpha/\beta)=p-n$, the first term of the binomial expansion of
 $$
 \left(\frac{\sigma(\beta)}{\beta}\right)^A-1
 $$
-has valuation $p-n$. Therefore
+has valuation $p-n$ and unit coefficient because $p\nmid A$. Therefore
 $$
 v_E(\sigma(\varpi)-\varpi)=p-n+1,
 $$
@@ -104,7 +108,7 @@ $$
 $$
 If $x_0\neq0$, its break is $p$, giving $p^3(p-1)$ characters. If $x_0=0$ and $x_a\neq0$, its first unit level is $a$, giving $p^2(p-1)$ characters of break $p-a$. Similarly, there are $p(p-1)$ characters of break $p-b$ and $p-1$ characters of break $p-c$.
 
-For an abelian extension, upper numbering is compatible with quotients, so a character is nontrivial on $G^u$ exactly while $u$ does not exceed its quotient break. Hence
+For an abelian extension, the image of $G^u$ in a cyclic quotient is that quotient's upper ramification group. Thus a character is nontrivial on $G^u$ exactly while $u$ does not exceed its quotient break. Hence
 $$
 |G^u|=
 \begin{cases}
@@ -155,7 +159,7 @@ v_L(\mathfrak D_{L/K})
 $$
 
 Step 5: Pass to the absolute discriminant and verify the result independently
-The cyclotomic extension $K/\mathbb Q_p$ is tamely ramified of degree $p-1$, so
+The extension $K/\mathbb Q_p$ is totally ramified of degree $p-1$. Since $p\nmid(p-1)$, it is tame, and the different exponent of a tame totally ramified extension is its ramification index minus $1$. Therefore
 $$
 v_K(\mathfrak D_{K/\mathbb Q_p})=p-2.
 $$
@@ -165,17 +169,18 @@ v_L(\mathfrak D_{L/\mathbb Q_p})
 =v_L(\mathfrak D_{L/K})+p^4(p-2)
 =(2p-1)p^4-b_{L/K}-1.
 $$
-Because $L/\mathbb Q_p$ is totally ramified, this is also $v_p(\operatorname{Disc}(L/\mathbb Q_p))$.
+Every nontrivial character of $G$ has positive break, so $L/K$ is totally ramified. Hence $L/\mathbb Q_p$ is totally ramified and the last quantity equals $v_p(\operatorname{Disc}(L/\mathbb Q_p))$.
 
-As an independent check, the conductor-discriminant formula sums the conductor exponents of all nontrivial characters:
+As an independent check, the conductor-discriminant formula and the character counts from Step 3 give
 $$
 \begin{aligned}
 v_K(\operatorname{Disc}(L/K))
-=(p-1)\big(&p^3(p+1)+p^2(p-a+1)\\
-&+p(p-b+1)+(p-c+1)\big).
+={}&(p-1)\big(p^3(p+1)+p^2(p-a+1)\\
+&\qquad+p(p-b+1)+(p-c+1)\big)\\
+={}&(p+1)p^4-\big(ap^3+(b-a)p^2+(c-b)p+p-c\big)-1.
 \end{aligned}
 $$
-Expanding this expression gives $(p+1)p^4-b_{L/K}-1$, matching the lower-group calculation. For the smallest boundary example $p=7$, $(a,b,c)=(1,2,3)$, the formulas give $b_{L/K}=403$ and absolute discriminant exponent $30809$ by both calculations.
+This matches the lower-group calculation. For the smallest boundary example $p=7$, $(a,b,c)=(1,2,3)$, both formulas give $b_{L/K}=403$ and absolute discriminant exponent $30809$.
 
 Final Answer: $\boxed{\left(ap^3+(b-a)p^2+(c-b)p+p-c,\ 2p^5-p^4-ap^3-(b-a)p^2-(c-b+1)p+c-1\right)}$
 
