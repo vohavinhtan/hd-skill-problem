@@ -6,7 +6,11 @@ The commutation relation is equivalent to
 $$
 F(\omega w)=\omega F(w).
 $$
-Using $F(w)=wG(w)^2$ gives $G(\omega w)^2=G(w)^2$. The two holomorphic factors $G(\omega w)-G(w)$ and $G(\omega w)+G(w)$ have zero product. The second cannot vanish identically, because no power of $\omega$ equals $-1$. Hence $G(\omega w)=G(w)$, so
+Using $F(w)=wG(w)^2$ gives $G(\omega w)^2=G(w)^2$. The two holomorphic factors $G(\omega w)-G(w)$ and $G(\omega w)+G(w)$ have zero product. Hence one of them vanishes identically. If $G(\omega w)=-G(w)$, then iterating three times gives
+$$
+G(w)=G(\omega^3w)=-G(\omega^2w)=G(\omega w)=-G(w),
+$$
+contradicting that $G$ is zero free. Therefore $G(\omega w)=G(w)$, so
 $$
 G(w)=g(w^3)
 $$
@@ -94,13 +98,13 @@ $$
 $$
 Substitute $u=w^3$ into $F(w)=we^{-p_0(w^3)}$. This map has the zero-free lift $G(w)=e^{-p_0(w^3)/2}$, and $F(\omega w)=\omega F(w)$ because $(\omega w)^3=w^3$. Thus it realizes all the data and is unique.
 
-Final Answer: $\boxed{F_*(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)}$
+Final Answer: $\boxed{F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)}$
 
 ---
 
 ## Answer
 
-$F_*(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)$
+$F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)$
 
 ---
 
