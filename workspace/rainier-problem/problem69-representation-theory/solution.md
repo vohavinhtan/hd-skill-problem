@@ -19,7 +19,7 @@ $$
 F=\sum_{d\geq1}\frac{\mu(d)}d\log\left(\frac1{1-p_d}\right)
 $$
 satisfies this identity: after taking logarithms, the coefficient of
-$\log(1-p_m)^{-1}$ on the left is
+$\log((1-p_m)^{-1})$ on the left is
 $$
 \frac1m\sum_{d\mid m}\mu(d),
 $$
