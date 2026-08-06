@@ -27,7 +27,7 @@ u_4&=\pi\varepsilon_a^4\varepsilon_b^{10}\varepsilon_c^{20},
 $$
 and let
 $$
-L=K\left(\sqrt[p]{u_1},\sqrt[p]{u_2},\sqrt[p]{u_3},\sqrt[p]{u_4}\right).
+L=K\left(\sqrt[p]{\nu_1},\sqrt[p]{\nu_2},\sqrt[p]{\nu_3},\sqrt[p]{\nu_4}\right).
 $$
 
 Let $b_{L/K}$ be the largest lower-numbering ramification break of $\operatorname{Gal}(L/K)$; equivalently,
