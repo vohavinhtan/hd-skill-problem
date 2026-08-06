@@ -2,19 +2,80 @@
 
 Step 1: Separate the common power of two
 
-For $n\geq 0$, define
+For $n\geq0$, define
 $$
 C_n=\binom{2n}{n},\qquad c_n=2^{-s_2(n)}C_n.
 $$
-Legendre's formula gives $v_2(C_n)=s_2(n)$, so $c_n$ is an odd integer. Set
+We first prove the factorial valuation formula used below. Every multiple of $2^j$ contributes at least one additional factor of $2$ to $n!$, so
 $$
-q=2^{r-1},\qquad b=q(m+1)-1.
+v_2(n!)=\sum_{j\geq1}\left\lfloor\frac{n}{2^j}\right\rfloor.
 $$
-The two terms defining $H_{r,m}$ are $C_{2b+1}$ and $C_qC_b$. The binary expansions also give
+Write the binary expansion of $n$ as
 $$
-s_2(2b+1)=r+s_2(m),\qquad s_2(q)+s_2(b)=r+s_2(m).
+n=\sum_{i=0}^{L}\varepsilon_i2^i,
+\qquad \varepsilon_i\in\{0,1\}.
 $$
-After removing this common power of two,
+Then
+$$
+\left\lfloor\frac{n}{2^j}\right\rfloor
+=\sum_{i=j}^{L}\varepsilon_i2^{i-j},
+$$
+and hence
+$$
+\begin{aligned}
+v_2(n!)
+&=\sum_{j=1}^{L}\sum_{i=j}^{L}\varepsilon_i2^{i-j}\\
+&=\sum_{i=1}^{L}\varepsilon_i\sum_{j=1}^{i}2^{i-j}\\
+&=\sum_{i=1}^{L}\varepsilon_i(2^i-1)\\
+&=n-\sum_{i=0}^{L}\varepsilon_i\\
+&=n-s_2(n).
+\end{aligned}
+$$
+Therefore
+$$
+\begin{aligned}
+v_2(C_n)
+&=v_2((2n)!)-2v_2(n!)\\
+&=\bigl(2n-s_2(2n)\bigr)-2\bigl(n-s_2(n)\bigr).
+\end{aligned}
+$$
+Multiplication by $2$ shifts the binary expansion one place to the left, so $s_2(2n)=s_2(n)$. Thus
+$$
+v_2(C_n)=s_2(n),
+$$
+and consequently $c_n$ is an odd integer.
+
+Set
+$$
+q=2^{r-1},\qquad b=q(m+1)-1=qm+(q-1).
+$$
+The lower $r-1$ binary digits of $b$ are all $1$, while the remaining digits are the binary digits of $m$. Therefore
+$$
+s_2(b)=s_2(m)+r-1.
+$$
+Similarly,
+$$
+2b+1=2^r(m+1)-1=2^rm+(2^r-1),
+$$
+so
+$$
+s_2(2b+1)=s_2(m)+r.
+$$
+Since $s_2(q)=1$, we also have
+$$
+s_2(q)+s_2(b)=s_2(m)+r.
+$$
+The two terms defining $H_{r,m}$ are $C_{2b+1}$ and $C_qC_b$. Hence
+$$
+C_{2b+1}=2^{r+s_2(m)}c_{2b+1},
+\qquad
+C_qC_b=2^{r+s_2(m)}c_qc_b,
+$$
+and therefore
+$$
+H_{r,m}=2^{r+s_2(m)}\bigl(c_{2b+1}-c_qc_b\bigr).
+$$
+Both $c_{2b+1}$ and $c_qc_b$ are odd, so their difference is even. This proves that $2^{r+1+s_2(m)}$ divides $H_{r,m}$, and hence that $R_{r,m}$ is an integer. Moreover,
 $$
 R_{r,m}=\frac{c_{2b+1}-c_qc_b}{2}.
 $$
@@ -27,19 +88,32 @@ Define
 $$
 D_n=\prod_{j=1}^{n}(2j-1),\qquad E_n=\frac{c_{2n+1}}{c_n},
 $$
-and write $\mathbf 1_{\mathcal C}=1$ when $\mathcal C$ holds and $0$ otherwise. If $U(n!)$ is the odd part of $n!$, then
+and write $\mathbf 1_{\mathcal C}=1$ when $\mathcal C$ holds and $0$ otherwise. If $U(N)$ denotes the odd part of the integer $N$, then the odd factors among $1,2,\ldots,2n$ contribute $D_n$, while the even factors $2,4,\ldots,2n$ have the same odd parts as $1,2,\ldots,n$. Thus
 $$
 U((2n)!)=U(n!)D_n.
 $$
-Substitution into
+Since
 $$
-c_n=\frac{U((2n)!)}{U(n!)^2}
+c_n=\frac{U((2n)!)}{U(n!)^2},
 $$
-gives
+we have
+$$
+c_n=\frac{D_n}{U(n!)}.
+$$
+Also,
+$$
+U((2n+1)!)=U((2n)!)(2n+1)=U(n!)D_{n+1},
+$$
+and applying the same identity with $2n+1$ in place of $n$ gives
+$$
+c_{2n+1}=\frac{D_{2n+1}}{U((2n+1)!)}
+=\frac{D_{2n+1}}{U(n!)D_{n+1}}.
+$$
+Therefore
 $$
 E_n=\frac{D_{2n+1}}{D_nD_{n+1}}.
 $$
-Hence
+It follows that
 $$
 \frac{E_{n+2}}{E_n}
 =\frac{(4n+3)(4n+5)(4n+7)(4n+9)}
@@ -52,17 +126,49 @@ $$
 $$
 B_n=(2n+1)(2n+3)^2(2n+5).
 $$
-The denominator $B_n$ is odd. Substituting $n=4t+r$ gives the following finite computation modulo $32$:
+The denominator $B_n$ is odd. To compute the quotient modulo $32$, write $n=4t+r$ with $0\leq r<4$.
+
+For $A_n$, every factor has the form $a_i+16t$. Expanding the product modulo $32$, the terms containing at least two factors $16t$ vanish, while the sum of the four terms containing exactly one factor $16t$ is $16t$ times a sum of four odd numbers and is therefore also divisible by $32$. Thus $A_{4t+r}$ is obtained by setting $t=0$.
+
+For $B_n$, set
+$$
+x=2n+3=8t+(2r+3).
+$$
+Then
+$$
+B_n=(x-2)x^2(x+2)=x^4-4x^2.
+$$
+If $a=2r+3$, then
+$$
+x^2\equiv a^2+16at\pmod{32},
+$$
+so
+$$
+x^4-4x^2\equiv a^4-4a^2\pmod{32}.
+$$
+The four fixed calculations are therefore
 $$
 \begin{array}{c|c|c|c|c}
-r&A_{4t+r}&B_{4t+r}&B_{4t+r}^{-1}&A_{4t+r}B_{4t+r}^{-1}\\
+r&A_{4t+r}\pmod{32}&B_{4t+r}\pmod{32}
+&B_{4t+r}^{-1}\pmod{32}&A_{4t+r}B_{4t+r}^{-1}\pmod{32}\\
 \hline
-0&17&13&5&21\\
-1&17&13&5&21\\
-2&17&29&21&5\\
-3&17&29&21&5
+0&(3\cdot9)(5\cdot7)\equiv27\cdot3\equiv17
+&3^4-4\cdot3^2=45\equiv13
+&13\cdot5=65\equiv1
+&17\cdot5=85\equiv21\\
+1&(7\cdot13)(9\cdot11)\equiv27\cdot3\equiv17
+&5^4-4\cdot5^2=525\equiv13
+&13\cdot5=65\equiv1
+&17\cdot5=85\equiv21\\
+2&(11\cdot17)(13\cdot15)\equiv27\cdot3\equiv17
+&7^4-4\cdot7^2=2205\equiv29
+&29\cdot21=609\equiv1
+&17\cdot21=357\equiv5\\
+3&(15\cdot21)(17\cdot19)\equiv27\cdot3\equiv17
+&9^4-4\cdot9^2=6237\equiv29
+&29\cdot21=609\equiv1
+&17\cdot21=357\equiv5
 \end{array}
-\pmod{32}.
 $$
 Therefore the residue-class recurrence for $E_n$ is
 $$
@@ -105,15 +211,16 @@ We next establish the required facts modulo $64$. The quotient
 $$
 \frac{D_{n+32}}{D_n}=\prod_{j=n+1}^{n+32}(2j-1)
 $$
-contains every odd residue modulo $64$ exactly once. Pair each unit with its inverse. The only self-inverse units modulo $64$ are
+contains every odd residue modulo $64$ exactly once. Pair every unit with its inverse. The self-inverse units satisfy $x^2\equiv1\pmod{64}$; since $(x-1)(x+1)$ is divisible by $64$ and the two even factors have greatest common divisor $2$, this gives
 $$
-1,\quad31,\quad33,\quad63,
+x\equiv1,31,33,63\pmod{64}.
 $$
-and
+Their product is
 $$
-1\cdot31\cdot33\cdot63\equiv1\pmod{64}.
+1\cdot31\cdot33\cdot63
+\equiv31\cdot31\equiv1\pmod{64}.
 $$
-It follows that
+All other units cancel in inverse pairs, and hence
 $$
 D_{n+32}\equiv D_n\pmod{64}.
 \tag{3}
@@ -127,7 +234,7 @@ E_{n+32}
 $$
 so $E_n$ is periodic modulo $64$ with period dividing $32$.
 
-The particular products needed below are now computed explicitly. The product of all units modulo $64$ is $1$, so
+The particular products needed below are now computed explicitly. Since the product of all units modulo $64$ is $1$,
 $$
 D_{32}=1\cdot3\cdot5\cdots63\equiv1\pmod{64}.
 $$
@@ -161,38 +268,97 @@ $$
 \frac{c_{2n}}{c_n}=\frac{D_{2n}}{D_n^2}
 \tag{5}
 $$
-controls the powers of two. Direct multiplication modulo $64$ gives
+follows directly from $c_n=D_n/U(n!)$ and $U((2n)!)=U(n!)D_n$.
+
+We now show the fixed products modulo $64$ in full. First,
+$$
+D_4=1\cdot3\cdot5\cdot7=105\equiv41\pmod{64}.
+$$
+For the next block,
+$$
+9\cdot11\equiv35,\qquad13\cdot15\equiv3\pmod{64},
+$$
+so
+$$
+9\cdot11\cdot13\cdot15\equiv35\cdot3=105\equiv41\pmod{64}.
+$$
+Hence
+$$
+D_8\equiv41\cdot41=1681\equiv17\pmod{64}.
+$$
+For the block from $17$ through $31$, pair the outer terms:
 $$
 \begin{aligned}
-D_4&=1\cdot3\cdot5\cdot7\equiv41,\\
-D_8&\equiv41(9\cdot11\cdot13\cdot15)
-\equiv41^2\equiv17,\\
-D_{16}&\equiv17(17\cdot19\cdots31)
-\equiv17^2\equiv33,\\
-D_{32}&\equiv33(33\cdot35\cdots63)
-\equiv33^2\equiv1
+17\cdot31&=527\equiv15,\\
+19\cdot29&=551\equiv39,\\
+21\cdot27&=567\equiv55,\\
+23\cdot25&=575\equiv63
 \end{aligned}
 \pmod{64}.
 $$
+Then
+$$
+15\cdot39=585\equiv9,
+\qquad
+55\cdot63=3465\equiv9\pmod{64},
+$$
+so
+$$
+17\cdot19\cdots31\equiv9\cdot9=81\equiv17\pmod{64}.
+$$
 Thus
 $$
-\begin{array}{c|c|c|c}
-n&D_n&D_{2n}&D_{2n}D_n^{-2}\\
-\hline
-4&41&17&1\\
-8&17&33&1\\
-16&33&1&1\\
-32&1&1&1
-\end{array}
+D_{16}\equiv17\cdot17=289\equiv33\pmod{64}.
+$$
+For the block from $33$ through $63$, the corresponding pair products are
+$$
+\begin{aligned}
+33\cdot63&=2079\equiv31,&35\cdot61&=2135\equiv23,\\
+37\cdot59&=2183\equiv7,&39\cdot57&=2223\equiv47,\\
+41\cdot55&=2255\equiv15,&43\cdot53&=2279\equiv39,\\
+45\cdot51&=2295\equiv55,&47\cdot49&=2303\equiv63
+\end{aligned}
 \pmod{64}.
+$$
+Now
+$$
+31\cdot23\equiv9,
+\quad7\cdot47\equiv9,
+\quad15\cdot39\equiv9,
+\quad55\cdot63\equiv9
+\pmod{64},
+$$
+so this block has product
+$$
+9^4\equiv17^2\equiv33\pmod{64}.
+$$
+Therefore
+$$
+D_{32}\equiv33\cdot33=1089\equiv1\pmod{64}.
+$$
+It follows that
+$$
+D_8\equiv D_4^2,
+\qquad
+D_{16}\equiv D_8^2,
+\qquad
+D_{32}\equiv D_{16}^2
+\pmod{64}.
+$$
+Also, by (3), $D_{64}\equiv D_{32}\equiv1\pmod{64}$. Applying (5) for $n=4,8,16,32$ therefore gives
+$$
+\frac{c_8}{c_4}\equiv
+\frac{c_{16}}{c_8}\equiv
+\frac{c_{32}}{c_{16}}\equiv
+\frac{c_{64}}{c_{32}}\equiv1\pmod{64}.
 $$
 Since
 $$
 c_4=2^{-1}\binom84=35,
 $$
-equation (5) and the table give
+we obtain
 $$
-c_4\equiv c_8\equiv c_{16}\equiv c_{32}\equiv35\pmod{64}.
+c_4\equiv c_8\equiv c_{16}\equiv c_{32}\equiv c_{64}\equiv35\pmod{64}.
 $$
 For $n=2^k$ with $k\geq5$, both $n$ and $2n$ are divisible by $32$. Repeated use of (3) gives
 $$
@@ -264,29 +430,64 @@ E_{8m+7}&\equiv1+16m+16
 \end{aligned}
 \pmod{32}.
 $$
-Write $m=4u+r$ with $0\leq r<4$. The four cases required for the product are
+Write $m=4u+r$ with $0\leq r<4$. The four cases are
 $$
-\begin{array}{c|c|c|c|c|c}
-r&E_m&E_{2m+1}&E_{4m+3}&E_{8m+7}&c_b/c_m\\
+\begin{array}{c|c|c|c|c}
+r&E_m&E_{2m+1}&E_{4m+3}&E_{8m+7}\\
 \hline
-0&1+8u&5+16u&9&17&29-8u\\
-1&5+8u&9+16u&17&1&29-8u\\
-2&21+8u&13+16u&25&17&25-8u\\
-3&9+8u&17+16u&1&1&25-8u
+0&1+8u&5+16u&9&17\\
+1&5+8u&9+16u&17&1\\
+2&21+8u&13+16u&25&17\\
+3&9+8u&17+16u&1&1
 \end{array}
 \pmod{32}.
+$$
+We now multiply each row explicitly. If $r=0$, then
+$$
+\begin{aligned}
+\frac{c_b}{c_m}
+&\equiv(1+8u)(5+16u)\cdot9\cdot17\\
+&\equiv(5+24u)\cdot25\\
+&\equiv29+24u\\
+&\equiv29-8u\pmod{32}.
+\end{aligned}
+$$
+If $r=1$, then
+$$
+\begin{aligned}
+\frac{c_b}{c_m}
+&\equiv(5+8u)(9+16u)\cdot17\\
+&\equiv(13+24u)\cdot17\\
+&\equiv29+24u\\
+&\equiv29-8u\pmod{32}.
+\end{aligned}
+$$
+If $r=2$, then
+$$
+\begin{aligned}
+\frac{c_b}{c_m}
+&\equiv(21+8u)(13+16u)\cdot25\cdot17\\
+&\equiv(17+24u)\cdot9\\
+&\equiv25+24u\\
+&\equiv25-8u\pmod{32}.
+\end{aligned}
+$$
+Finally, if $r=3$, then
+$$
+\begin{aligned}
+\frac{c_b}{c_m}
+&\equiv(9+8u)(17+16u)\\
+&\equiv25+24u\\
+&\equiv25-8u\pmod{32}.
+\end{aligned}
 $$
 For $r=0,1$,
 $$
 \left\lfloor\frac m2\right\rfloor=2u,
 $$
-and the last column equals $29-8u$. For $r=2,3$,
+while for $r=2,3$,
 $$
-\left\lfloor\frac m2\right\rfloor=2u+1,
-$$
-and the last column equals
-$$
-25-8u=29-4(2u+1).
+\left\lfloor\frac m2\right\rfloor=2u+1.
 $$
 Thus all four cases combine to give
 $$
@@ -338,7 +539,7 @@ $R_{r,m}\equiv(19+4\lfloor m/2\rfloor)2^{-s_2(m)}\binom{2m}{m}\pmod{32}$
 
 ## Solution Concepts
 
-- 2-adic valuation of binomial coefficients
+- 2-adic valuation of factorials
 - odd factorial parts
 - residue-class recurrences
 - modular arithmetic
