@@ -26,15 +26,32 @@ while
 $$
 (c_iF^i)(d_jF^j)=c_i d_j^{2^i}F^{i+j}.
 $$
-Thus composition of the substitutions is exactly multiplication in $R_m$. The distinct surviving monomials $x^{2^i}$ are linearly independent, so this encoding is injective.
+Thus the Ore product of the elements encoding $L$ and $M$ encodes $L(M(x))$. For the algebra automorphism
+$$
+\phi_L(p(x))=p(L(x)),
+$$
+however,
+$$
+(\phi_L\circ\phi_M)(x)=\phi_L(M(x))=M(L(x)).
+$$
+Consequently the image-of-$x$ correspondence
+$$
+\Theta(\phi_L)=\sum_i c_iF^i
+$$
+reverses multiplication:
+$$
+\Theta(\phi_L\circ\phi_M)=\Theta(\phi_M)\Theta(\phi_L).
+$$
+The distinct surviving monomials $x^{2^i}$ are linearly independent, so $\Theta$ is injective and is an anti-isomorphism onto its image.
 
 Set
 $$
 a=1+F,\qquad b=1+\omega F.
 $$
-Under the encoding, $a$ represents $\tau$ and $b$ represents $\sigma$, hence
+Under $\Theta$, the generators $\tau$ and $\sigma$ map to $a$ and $b$. Composing $\Theta$ with inversion gives an ordinary isomorphism, because both maps reverse multiplication. Hence
 $$
-H_n\cong\langle a,b\rangle\leq R_m^\times.
+H_n\cong\langle a^{-1},b^{-1}\rangle
+=\langle a,b\rangle\leq R_m^\times.
 $$
 
 Step 2: Find the cyclic subgroup controlling all commutators
@@ -185,7 +202,7 @@ $1+\left\lfloor\log_2\!\left(\left\lfloor\log_2(n-1)\right\rfloor\right)\right\r
 
 ## Black-Box Audit
 
-Step 1: Level 1. The skew relation is derived directly from composition of additive polynomials, and injectivity follows from the distinct surviving monomials.
+Step 1: Level 1. The skew multiplication formula is derived directly, the reversal in automorphism composition is explicit, and inversion converts the anti-isomorphism into the required isomorphism.
 
 Step 2: Level 1. Centrality, the common square, the inversion relation, the commutator subgroup, and the induction for the lower central series are all verified explicitly.
 
