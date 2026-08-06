@@ -20,7 +20,7 @@ Determine the Cohen-Macaulay type of the localization of $C_{c,n,\ell}$ at its i
 |---|---|
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Commutative algebra |
-| **Problem Type** | Exact computation |
+| **Problem Type** | Symbolic derivation |
 | **Answer Type** | Exact symbolic expression |
 
 ---
