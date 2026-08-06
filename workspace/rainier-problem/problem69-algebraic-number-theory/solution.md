@@ -16,7 +16,7 @@ $$
 $$
 Thus a $p$-th power unit cannot have first nonzero unit level below $p$. Because $a<b<c<p$, comparison of the first nonzero levels successively gives $x_a=x_b=x_c=0$.
 
-The exponent matrix of $u_1,u_2,u_3,u_4$ relative to this basis is
+The exponent matrix of $\nu_1,\nu_2,\nu_3,\nu_4$ relative to this basis is
 $$
 M=
 \begin{pmatrix}
@@ -49,7 +49,7 @@ $$
 0&0&0&1
 \end{pmatrix},
 $$
-so $\det M=1$. Therefore the $u_i$ span $W$, and the Kummer pairing gives
+so $\det M=1$. Therefore the $\nu_i$ span $W$, and the Kummer pairing gives
 $$
 L=K\left(\sqrt[p]{\pi},\sqrt[p]{\varepsilon_a},
 \sqrt[p]{\varepsilon_b},\sqrt[p]{\varepsilon_c}\right),
