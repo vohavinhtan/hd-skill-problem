@@ -2,83 +2,63 @@
 
 Step 1: Reduce the quotient rank to a rank on the exterior square
 
-For every integer $j\geq0$, set
+For $j\geq0$ put
 $$
 n_j=\frac{2^{j+1}+(-1)^j}{3}.
 $$
-These integers satisfy
+For $j\geq2$,
 $$
-n_j+n_{j-1}=2^j,\qquad
-n_j-n_{j-1}=2n_{j-2},\qquad
-n_j-2^{j-1}=n_{j-2}
+n_j+n_{j-1}=2^j,\qquad n_j-n_{j-1}=2n_{j-2},\qquad n_j-2^{j-1}=n_{j-2}.
 $$
-for $j\geq2$.
-
-Let the Jordan blocks of $D_r$ on $\bigwedge^2V_r$ have sizes $\lambda_1,\ldots,\lambda_m$. On a block of size $\lambda_i$, quotienting by the one-dimensional kernel produces a block of size $\lambda_i-1$. Hence
+If the Jordan blocks of $D_r$ have sizes $\lambda_i$, quotienting each block by its one-dimensional kernel changes $\lambda_i$ to $\lambda_i-1$. Hence
 $$
 \operatorname{rank}\overline D_r^{\,2^q-2}
-=
-\sum_{i=1}^m\max\{\lambda_i-2^q+1,0\}
-=
-\operatorname{rank}D_r^{\,2^q-1}.
+=\sum_i\max\{\lambda_i-2^q+1,0\}
+=\operatorname{rank}D_r^{\,2^q-1}.
 $$
-It remains to determine the Jordan blocks of $D_r$.
+So it suffices to determine the Jordan blocks of $D_r$.
 
-Step 2: Construct a Jordan basis on the tensor square
+Step 2: Derive the tensor-square Jordan chains by lifting anti-diagonals
 
-Write $n=n_r$ and replace the basis by $v_1,\ldots,v_n$, where $J_rv_1=0$ and $J_rv_i=v_{i-1}$ for $i>1$. Put
+Write $n=n_r$ and use a basis $v_1,\ldots,v_n$ with $J_rv_1=0$ and $J_rv_i=v_{i-1}$. Let
 $$
 T=J_r\otimes I+I\otimes J_r
 $$
-on $V_r\otimes V_r$, with $v_i=0$ outside $1\leq i\leq n$. For $1\leq s\leq n$, define
+on $V_r\otimes V_r$, with $v_i=0$ outside $1\leq i\leq n$. For $1\leq s\leq n$ set
 $$
 z_s=\sum_{i=1}^{s}v_i\otimes v_{s+1-i}.
 $$
-Then $Tz_s=0$. Conversely, if $\sum c_{ij}v_i\otimes v_j$ is killed by $T$, comparison of the coefficient of $v_i\otimes v_j$ gives
-$$
-c_{i+1,j}=c_{i,j+1}.
-$$
-Thus the coefficients are constant on each anti-diagonal, while the top boundary forces every anti-diagonal beyond $i+j=n+1$ to vanish. Therefore $z_1,\ldots,z_n$ form a basis of $\ker T$.
+Then $Tz_s=0$. Conversely, $T(\sum c_{ij}v_i\otimes v_j)=0$ gives $c_{i+1,j}=c_{i,j+1}$, so coefficients are constant on anti-diagonals; the boundary forces those beyond $i+j=n+1$ to vanish. Thus $z_1,\ldots,z_n$ form a basis of $\ker T$.
 
-For $2\leq k\leq r$, let
-$$
-I_k=\{n-n_k+1,\ldots,n-n_{k-1}\}.
-$$
-Its length is
-$$
-|I_k|=n_k-n_{k-1}=2n_{k-2}.
-$$
-Because $n_1=1$ and the endpoints telescope, the sets $I_2,\ldots,I_r$ are disjoint and their union is $\{1,\ldots,n-1\}$. Fix $s\in I_k$, put $M=2^k$, and define
-$$
-a_j=\left\lfloor\frac{s}{2}\right\rfloor+\frac{M}{2}+jM,
-\qquad
-b_j=s+M-a_j,
-$$
-$$
-w_s=\sum_{\substack{j\in\mathbb Z\\1\leq a_j,b_j\leq n}}
-v_{a_j}\otimes v_{b_j}.
-$$
-We prove
-$$
-T^{M-1}w_s=z_s.
-$$
-All binomial coefficients in row $M-1$ are odd, so
-$$
-T^{M-1}(v_a\otimes v_b)
-=
-\sum_{x=a-M+1}^{a}v_x\otimes v_{a+b-M+1-x}.
-$$
-For the summands of $w_s$, this becomes a segment of
-$$
-v_x\otimes v_{s+1-x}
-$$
-with $a_j-M+1\leq x\leq a_j$. Consecutive $j$ give adjacent segments because $a_{j+1}=a_j+M$.
-
-It remains to check that the first segment begins at or before $x=1$ and the last ends at or after $x=s$. Put $d=n-s$, so
+We now construct a chain ending at each $z_s$ with $s<n$. Put $d=n-s$. Since $n_j$ is strictly increasing for $j\geq1$, there is a unique $k\in\{2,\ldots,r\}$ with
 $$
 n_{k-1}\leq d\leq n_k-1.
 $$
-Let $\sigma$ be the residue of $s$ modulo $2M$ in $\{1,\ldots,2M\}$. Since $n_j\equiv-n_{j-1}\pmod{2M}$ for $j>k$, one has
+Set $M=2^k=n_k+n_{k-1}$. Powers of two are the relevant lift scales because in $\mathbb F_2$,
+$$
+(1+X)^M=1+X^M,\qquad
+(1+X)^{M-1}=1+X+\cdots+X^{M-1}.
+$$
+Hence, if $a+b=s+M$,
+$$
+T^{M-1}(v_a\otimes v_b)
+=\sum_{x=a-M+1}^{a}v_x\otimes v_{s+1-x}.
+$$
+A lift of $z_s$ is therefore obtained by tiling its anti-diagonal with adjacent intervals of length $M$. Adjacent intervals require right endpoints in one residue class modulo $M$. Choosing that class nearest the midpoint of $a+b=s+M$ gives
+$$
+a_j=\left\lfloor\frac{s}{2}\right\rfloor+\frac{M}{2}+jM,\qquad
+b_j=s+M-a_j,
+$$
+and
+$$
+w_s=\sum_{\substack{j\in\mathbb Z\\1\leq a_j,b_j\leq n}}v_{a_j}\otimes v_{b_j}.
+$$
+
+It remains to prove that the allowed intervals have neither a gap nor a missing endpoint. Let $\sigma$ be the residue of $s$ modulo $2M$ in $\{1,\ldots,2M\}$. Since $2M\mid2^j$ for $j>k$ and $n_j+n_{j-1}=2^j$,
+$$
+n_r\equiv(-1)^{r-k}n_k\pmod{2M}.
+$$
+As $s=n_r-d$,
 $$
 \sigma=
 \begin{cases}
@@ -86,226 +66,153 @@ n_k-d,&r-k\text{ even},\\
 2M-n_k-d,&r-k\text{ odd}.
 \end{cases}
 $$
-Consequently
+If $r-k$ is even, $n_{k-1}\leq d\leq n_k-1$ gives
 $$
-1\leq\sigma\leq2n_{k-2}
+1\leq\sigma\leq n_k-n_{k-1}=2n_{k-2}.
 $$
-in the first case, and
+If $r-k$ is odd, the same bounds give
 $$
-2n_{k-1}+1\leq\sigma\leq M
+2M-2n_k+1\leq\sigma\leq2M-n_k-n_{k-1},
 $$
-in the second. Set
+hence, using $n_k+n_{k-1}=M$,
+$$
+2n_{k-1}+1\leq\sigma\leq M.
+$$
+Thus $\sigma\leq M$ in both cases.
+
+Set
 $$
 \alpha=\frac{M}{2}+\left\lfloor\frac{\sigma}{2}\right\rfloor.
 $$
-This is the representative of every $a_j$ modulo $M$ lying in $\{1,\ldots,M\}$. Moreover,
-$$
-M-\alpha\leq d,\qquad \alpha-\sigma\leq d.
-$$
-For $r-k$ even, these inequalities reduce respectively to
-$$
-n_{k-2}\geq\left\lceil\frac{\sigma}{2}\right\rceil,
-\qquad
-n_{k-2}\geq\left\lfloor\frac{\sigma}{2}\right\rfloor.
-$$
-For $r-k$ odd, they follow from $\sigma\leq M$.
-
-Since $\sigma\leq M$, one has
+Because $s-\sigma$ is divisible by $2M$, every $a_j$ is congruent to $\alpha$ modulo $M$. Also
 $$
 \alpha-\sigma=\frac{M}{2}-\left\lceil\frac{\sigma}{2}\right\rceil\geq0.
 $$
-Take
+The endpoint conditions reduce to
 $$
-a_-=\alpha,\qquad b_-=s+M-\alpha.
+M-\alpha\leq d,\qquad \alpha-\sigma\leq d.
 $$
-The inequality $M-\alpha\leq d=n-s$ gives $b_-\leq n$, while $a_-\geq1$ and $b_-\geq1$. This pair yields a segment beginning at $a_--M+1\leq1$. Take also
+If $r-k$ is even, $d=n_k-\sigma$ and $n_k-M/2=n_{k-2}$, so
 $$
-a_+=s+\alpha-\sigma,\qquad b_+=M-\alpha+\sigma.
+d-(M-\alpha)=n_{k-2}-\left\lceil\frac{\sigma}{2}\right\rceil\geq0,
 $$
-The inequality $\alpha-\sigma\leq d$ gives $a_+\leq n$, and $\alpha\geq\sigma$ gives $a_+\geq s$ and $1\leq b_+\leq M$.
+$$
+d-(\alpha-\sigma)=n_{k-2}-\left\lfloor\frac{\sigma}{2}\right\rfloor\geq0.
+$$
+If $r-k$ is odd, $d=M+n_{k-1}-\sigma$, so
+$$
+d-(M-\alpha)=n_{k-1}+\alpha-\sigma\geq0,
+$$
+$$
+d-(\alpha-\sigma)=M+n_{k-1}-\alpha\geq0.
+$$
 
-If $k<r$, then
+Now take
 $$
-M\leq2^{r-1}<n_r
+a_-=\alpha,\quad b_-=s+M-\alpha,\qquad
+a_+=s+\alpha-\sigma,\quad b_+=M-\alpha+\sigma.
 $$
-because $n_r-2^{r-1}=n_{r-2}>0$. Hence $a_-\leq M<n$ and $b_+\leq M<n$, so both pairs occur among the summands of $w_s$. If $k=r$, then $r-k$ is even and
+The first endpoint inequality gives $b_-\leq n$, and $a_--M+1\leq1$. The second gives $a_+\leq n$, while $\alpha\geq\sigma$ gives $a_+\geq s$ and $1\leq b_+\leq M$. If $k<r$, then $M<n$ because $n_r-2^{r-1}=n_{r-2}>0$. If $k=r$, then $\sigma\leq2n_{r-2}$ and $n_r=M/2+n_{r-2}$, so explicitly
 $$
-1\leq\sigma\leq2n_{r-2}.
+a_-\leq\frac M2+n_{r-2}=n_r,\qquad
+b_+\leq\frac M2+n_{r-2}=n_r.
 $$
-Using $n_r=M/2+n_{r-2}$ gives the two missing upper bounds explicitly:
+Thus both extreme pairs are valid. The preceding endpoint $a_--M$ is nonpositive, while the next one $a_++M$ has second coordinate $s-a_+\leq0$. Therefore the valid $a_j$ are exactly the consecutive progression from $a_-$ to $a_+$. Their intervals
 $$
-a_-=\frac{M}{2}+\left\lfloor\frac{\sigma}{2}\right\rfloor
-\leq\frac{M}{2}+n_{r-2}=n_r,
+[a_j-M+1,a_j]
 $$
+are adjacent because $a_{j+1}=a_j+M$; the first begins at or before $1$ and the last ends at or after $s$. Outside $1\leq x\leq s$ one tensor factor is zero, so every term of $z_s$ occurs exactly once. Hence
 $$
-b_+=\frac{M}{2}+\left\lceil\frac{\sigma}{2}\right\rceil
-\leq\frac{M}{2}+n_{r-2}=n_r.
+T^{M-1}w_s=z_s,\qquad T^Mw_s=0,
 $$
-Thus the first allowed segment starts at or before $1$, and the last allowed segment ends at or after $s$. The adjacent segments therefore cover exactly $1\leq x\leq s$, proving $T^{M-1}w_s=z_s$.
+and the chain has exact length $M=2^k$.
 
-For the remaining index set $w_n=z_n$. Since the $z_s$ are independent kernel vectors,
+The same construction groups the indices by
+$$
+I_k=\{n-n_k+1,\ldots,n-n_{k-1}\},
+$$
+because $s\in I_k$ is exactly $n_{k-1}\leq n-s\leq n_k-1$. Moreover
+$$
+|I_k|=n_k-n_{k-1}=2n_{k-2},
+$$
+and $I_2,\ldots,I_r$ partition $\{1,\ldots,n-1\}$. Put $w_n=z_n$. The vectors
 $$
 \{T^jw_s:s\in I_k,\ 0\leq j<2^k,\ 2\leq k\leq r\}\cup\{z_n\}
 $$
-is linearly independent. Indeed, in a nontrivial relation choose a term for which the remaining distance to its bottom vector $z_s$ is maximal. Applying that power of $T$ kills every term with smaller remaining distance and sends every maximal one to a linear combination of distinct $z_s$, a contradiction. Its cardinality is
+are independent: in a nontrivial relation, apply the maximal remaining power needed to reach a bottom vector; shorter terms die and the maximal terms become a nontrivial combination of distinct $z_s$. Their number is
 $$
 1+\sum_{k=2}^{r}2n_{k-2}2^k=n^2.
 $$
-The last identity follows by induction, because its increment from $r-1$ to $r$ is $2^{r+1}n_{r-2}$, equal to
+For $r=2$ this is $1+8=9=n_2^2$; the induction step follows from
 $$
-n_r^2-n_{r-1}^2
-=
-(n_r-n_{r-1})(n_r+n_{r-1}).
+2^{r+1}n_{r-2}=(n_r-n_{r-1})(n_r+n_{r-1})=n_r^2-n_{r-1}^2.
 $$
-Therefore these vectors form a Jordan basis of $V_r\otimes V_r$.
+Hence these chains form a Jordan basis of $V_r\otimes V_r$.
 
 Step 3: Pass from the tensor square to the exterior square
 
-The integer $n=n_r$ is odd. Let
+Let $\pi:V_r\otimes V_r\to S^2V_r$ be the symmetric-square quotient. If $s$ is odd, pairing the off-diagonal terms of $z_s$ gives
 $$
-\pi:V_r\otimes V_r\longrightarrow S^2V_r
+\pi(z_s)=v_{(s+1)/2}^2\neq0.
 $$
-be the symmetric-square quotient. If $s$ is odd, the off-diagonal terms of $z_s$ cancel in pairs and
-$$
-\pi(z_s)=v_{(s+1)/2}^{\,2}\neq0.
-$$
-Therefore every vector in the chain
-$$
-w_s,Tw_s,\ldots,T^{2^k-1}w_s=z_s
-$$
-has nonzero image: if $\pi(T^jw_s)=0$, applying $T^{2^k-1-j}$ would give $\pi(z_s)=0$. Hence an odd $s\in I_k$ contributes a block of size $2^k$ in $S^2V_r$.
+Thus every vector in the chain ending at $z_s$ has nonzero image, so each odd $s\in I_k$ gives a block of size $2^k$ in $S^2V_r$.
 
-If $s\in I_k$ is even, the terms indexed by $j$ and $-j$ in $w_s$ cancel after applying $\pi$, leaving
+If $s\in I_k$ is even, the paired terms of $w_s$ cancel and
 $$
-\pi(w_s)=v_{s/2+2^{k-1}}^{\,2}\neq0.
+\pi(w_s)=v_{s/2+2^{k-1}}^2\neq0.
 $$
-Every square is killed by the induced $T$, because in characteristic $2$,
-$$
-T(v_i^2)=J_rv_i\,v_i+v_i\,J_rv_i=0.
-$$
-Thus
-$$
-\pi(T^jw_s)=0\qquad(1\leq j<2^k),
-$$
-so an even $s$ contributes exactly one block of size $1$. The remaining vector $z_n$, with $n$ odd, has image $v_{(n+1)/2}^{\,2}\neq0$ and contributes one more block of size $1$.
+Squares are killed by the induced $T$ in characteristic $2$, so $\pi(T^jw_s)=0$ for $1\leq j<2^k$. Thus each even $s$ gives one block of size $1$; $z_n$ gives one more.
 
-Let
+To prove these images are a basis, let
 $$
-\mathcal K=
-\{T^jw_s:s\in I_k,\ s\text{ even},\ 1\leq j<2^k,\ 2\leq k\leq r\}.
+\mathcal K=\{T^jw_s:s\in I_k,\ s\text{ even},\ 1\leq j<2^k\}.
 $$
-Every vector in $\mathcal K$ lies in $\ker\pi$. Each interval $I_k$ contains exactly $n_{k-2}$ even integers, so
+Every vector in $\mathcal K$ lies in $\ker\pi$. Since each consecutive interval $I_k$ has $n_{k-2}$ even indices,
 $$
-|\mathcal K|
-=
-\sum_{k=2}^{r}n_{k-2}(2^k-1).
+|\mathcal K|=\sum_{k=2}^{r}n_{k-2}(2^k-1)=\frac{n(n-1)}2.
 $$
-The tensor-basis identity from Step 2 and
+Here we used the tensor-basis count from Step 2 and
 $$
-\sum_{k=2}^{r}n_{k-2}=\frac{n-1}{2}
+\sum_{k=2}^{r}n_{k-2}=\frac{n-1}{2},
 $$
-give
+whose base case $r=2$ is $n_0=1=(n_2-1)/2$ and whose induction step is $(n_j-1)/2-(n_{j-1}-1)/2=n_{j-2}$. Since
 $$
-|\mathcal K|
-=
-\frac{n^2-1}{2}-\frac{n-1}{2}
-=
-\frac{n(n-1)}{2}.
+\dim\ker\pi=n^2-\dim S^2V_r=n^2-\frac{n(n+1)}2=\frac{n(n-1)}2,
 $$
-The second identity follows by induction from
-$$
-\frac{n_j-1}{2}-\frac{n_{j-1}-1}{2}=n_{j-2}.
-$$
+and $\mathcal K$ is a subset of the tensor Jordan basis, it is an independent basis of $\ker\pi$. Therefore the images of the complementary tensor-basis vectors are independent and form a Jordan basis of $S^2V_r$.
 
-The quotient $S^2V_r$ has basis
+The square subspace $\operatorname{span}\{v_1^2,\ldots,v_n^2\}$ has dimension $n$, is killed by $T$, and there is one symmetric-square Jordan block for each $s=1,\ldots,n$; hence it is exactly $\ker T$. The natural quotient $S^2V_r\to\bigwedge^2V_r$ has this square subspace as kernel, so every symmetric-square block shortens by one. The size-$1$ blocks disappear, and each odd $s\in I_k$ yields a block of size $2^k-1$. Because $I_k$ contains $n_{k-2}$ odd indices,
 $$
-\{v_i^2:1\leq i\leq n\}
-\cup
-\{v_iv_j:1\leq i<j\leq n\},
+\bigwedge^2V_r\cong
+\bigoplus_{k=2}^{r}\left(\mathbb F_2[t]/(t^{2^k-1})\right)^{n_{k-2}},
 $$
-so $\dim S^2V_r=n(n+1)/2$ and
-$$
-\dim\ker\pi=n^2-\frac{n(n+1)}{2}=\frac{n(n-1)}{2}.
-$$
-The vectors in $\mathcal K$ are a subset of the tensor Jordan basis from Step 2, hence are independent. Since they lie in $\ker\pi$ and their number equals $\dim\ker\pi$, they form a basis of $\ker\pi$.
+with $t$ acting as $D_r$.
 
-Consequently the images of the complementary tensor-basis vectors are independent. Indeed, a linear combination of complementary vectors whose image is zero lies in $\ker\pi=\operatorname{span}\mathcal K$; independence of the full tensor Jordan basis forces every coefficient to vanish. Those complementary images therefore form a basis of $S^2V_r$, and the chains described above form a Jordan basis of $S^2V_r$.
+Step 4: Sum the block contributions and substitute the parameters
 
-There is one Jordan block for each $s\in\{1,\ldots,n\}$, so $\dim\ker T=n$ on $S^2V_r$. The square subspace
+A block of size $2^k-1$ contributes $\max\{2^k-2^q,0\}$ to $\operatorname{rank}D_r^{\,2^q-1}$. Thus
 $$
-\operatorname{span}\{v_1^2,\ldots,v_n^2\}
+R_{r,q}=\sum_{k=q+1}^{r}n_{k-2}(2^k-2^q).
 $$
-also has dimension $n$ and is killed by $T$, so it equals the kernel. The natural map
-$$
-S^2V_r\longrightarrow\bigwedge^2V_r,\qquad vw\longmapsto v\wedge w,
-$$
-has precisely this square subspace as its kernel. Quotienting therefore shortens every symmetric-square Jordan block by one. The size-$1$ blocks disappear, while every odd $s\in I_k$ gives a block of size $2^k-1$. Consequently
-$$
-\bigwedge^2V_r
-\cong
-\bigoplus_{k=2}^{r}
-\left(\mathbb F_2[t]/(t^{2^k-1})\right)^{n_{k-2}},
-$$
-where $t$ acts as $D_r$.
-
-Step 4: Sum the contributions of the surviving Jordan blocks
-
-By Step 1, the desired rank equals the rank of $D_r^{\,2^q-1}$. A block of size $2^k-1$ contributes
-$$
-\max\{2^k-2^q,0\}.
-$$
-Using the decomposition from Step 3 gives
-$$
-R_{r,q}
-=
-\sum_{k=q+1}^{r}n_{k-2}(2^k-2^q).
-$$
-
-We now show
+We claim
 $$
 R_{r,q}=\frac{(n_r-n_q)(n_r-n_{q-1})}{2}.
 $$
-Both sides vanish when $r=q$. Increasing $r-1$ to $r$, the sum increases by
-$$
-n_{r-2}(2^r-2^q).
-$$
-The proposed product increases by
+Both sides vanish for $r=q$. Increasing $r-1$ to $r$, the sum gains $n_{r-2}(2^r-2^q)$, while the product gains
 $$
 \frac{(n_r-n_{r-1})(n_r+n_{r-1}-n_q-n_{q-1})}{2}
-=
-n_{r-2}(2^r-2^q),
+=n_{r-2}(2^r-2^q),
 $$
-because
-$$
-n_r-n_{r-1}=2n_{r-2},\qquad
-n_r+n_{r-1}=2^r,\qquad
-n_q+n_{q-1}=2^q.
-$$
-Induction proves the product formula.
+using $n_j-n_{j-1}=2n_{j-2}$ and $n_j+n_{j-1}=2^j$. Induction proves the formula.
 
-Step 5: Substitute the closed expressions
-
-Using
+Finally,
 $$
-n_j=\frac{2^{j+1}+(-1)^j}{3},
-$$
-one has
-$$
-n_r-n_q
-=
-\frac{2^{r+1}-2^{q+1}+(-1)^r-(-1)^q}{3},
+n_r-n_q=\frac{2^{r+1}-2^{q+1}+(-1)^r-(-1)^q}{3},
 $$
 $$
-n_r-n_{q-1}
-=
-\frac{2^{r+1}-2^q+(-1)^r+(-1)^q}{3}.
+n_r-n_{q-1}=\frac{2^{r+1}-2^q+(-1)^r+(-1)^q}{3}.
 $$
-Therefore
-$$
-\operatorname{rank}\overline D_r^{\,2^q-2}
-=
-\frac{(2^{r+1}-2^{q+1}+(-1)^r-(-1)^q)(2^{r+1}-2^q+(-1)^r+(-1)^q)}{18}.
-$$
+Combining these identities with Step 1 gives the required rank.
 
 Final Answer: $\boxed{\frac{(2^{r+1}-2^{q+1}+(-1)^r-(-1)^q)(2^{r+1}-2^q+(-1)^r+(-1)^q)}{18}}$
 
@@ -319,15 +226,13 @@ $\frac{(2^{r+1}-2^{q+1}+(-1)^r-(-1)^q)(2^{r+1}-2^q+(-1)^r+(-1)^q)}{18}$
 
 ## Black-Box Audit
 
-Step 1: Level 1. The effect of quotienting a nilpotent Jordan block by its kernel is stated and applied blockwise.
+Step 1: Level 1. The quotient effect is verified blockwise.
 
-Step 2: Level 1. The kernel vectors, chain generators, characteristic-two binomial expansion, interval coverage, endpoint inequalities, independence, and dimension count are all derived explicitly.
+Step 2: Level 1. The lift scale is selected from the boundary gap, the characteristic-two interval expansion is derived, the residue formula and both parity ranges are proved, and the endpoint tiling is checked explicitly.
 
-Step 3: Level 1. The omitted tensor-basis vectors are identified, proved to lie in $\ker\pi$, counted to equal $\dim\ker\pi$, and thereby shown to form a kernel basis before the complementary images are declared independent.
+Step 3: Level 1. The full kernel of the symmetric-square quotient is exhibited as a subset of the tensor Jordan basis and matched to its dimension, so independence of the complementary images is justified.
 
-Step 4: Level 1. Every Jordan-block contribution is displayed, and the finite sum is proved equal to the product by an increment identity.
-
-Step 5: Level 1. The prompt-defined parameters are substituted directly.
+Step 4: Level 1. The Jordan-block sum and its product form are proved by an increment identity.
 
 No Level 2 or Level 3 finding.
 
@@ -335,33 +240,14 @@ No Level 2 or Level 3 finding.
 
 ## Verification
 
-Check 1 (independent exact elimination): pass. Gaussian elimination over $\mathbb F_2$ gives
-$$
-\begin{array}{c|c|c|c}
-(r,q)&(6,2)&(6,3)&(6,4)\\ \hline
-\operatorname{rank}&840&760&608
-\end{array}
-$$
-and the formula gives the same values.
+Check 1 (exact elimination): Gaussian elimination over $\mathbb F_2$ gives ranks $840,760,608$ for $(r,q)=(6,2),(6,3),(6,4)$, matching the formula.
 
-Check 2 (dimension certificate): pass. The omitted tensor-basis vectors form a basis of $\ker\pi$, while the complementary images form a basis of $S^2V_r$. After quotienting by the square kernel, the asserted exterior-square Jordan decomposition has total dimension
+Check 2 (dimension certificate):
 $$
 \sum_{k=2}^{r}n_{k-2}(2^k-1)=\binom{n_r}{2}.
 $$
 
-Check 3 (endpoint certificate): pass. For every $6\leq r\leq12$, every $2\leq k\leq r$, and every $s\in I_k$, the two explicitly constructed extreme summands satisfy
-$$
-1\leq a_-,b_-,a_+,b_+\leq n_r,
-$$
-and the proof above derives these inequalities symbolically for all $r,k,s$.
-
-Check 4 (Counterexample Attack Gate): pass. For $(r,q)=(6,4)$, the competing square formula gives
-$$
-\frac{(43-8)^2-1}{2}=612,
-$$
-while the Jordan-chain decomposition and exact elimination both give $608$.
-
-Check 5 (boundary cases): pass. For $q=r$, the product and the Jordan-block sum are both $0$. For the allowed upper boundary $q=r-2$, only the two largest binary levels contribute, and the increment proof remains valid.
+Check 3 (competing formula): at $(r,q)=(6,4)$ the square expression from Response 1 gives $612$, while the chain decomposition and elimination give $608$.
 
 ---
 
@@ -379,4 +265,4 @@ Check 5 (boundary cases): pass. For $q=r$, the product and the Jordan-block sum 
 - exterior and symmetric squares
 - characteristic-two binomial parity
 - nilpotent quotient modules
-- telescoping rank sums
+- anti-diagonal lifting
