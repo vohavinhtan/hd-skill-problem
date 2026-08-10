@@ -33,12 +33,22 @@ e\,\frac{F(w)}{w}
 =
 1-\frac35w^5-\frac{27}{50}w^{10}
 +\frac{333}{250}w^{15}
--\frac{2917}{5000}w^{20}
-+O(w^{25}),
++O(w^{20}),
 $$
 where $F(w)/w$ is understood by its holomorphic extension at $w=0$.
 
-Prove that the associated normalized map $F$ is unique and determine it exactly.
+For every such normalized map $F$, define
+$$
+\Lambda(F)
+=[w^{20}]\left(-\log\left(e\frac{F(w)}{w}\right)\right),
+$$
+where the logarithm is the holomorphic branch near $w=0$ satisfying $\log 1=0$, and $[w^{20}]$ denotes the coefficient of $w^{20}$ in the Taylor expansion.
+
+Let $\mathcal A$ be the set of all normalized maps $F$ arising in this way and satisfying the displayed jet. Determine
+$$
+M=\sup_{F\in\mathcal A}\operatorname{Re}\Lambda(F),
+$$
+prove that the supremum is attained by a unique normalized map, and determine that extremal map exactly.
 
 ---
 
@@ -48,11 +58,11 @@ Prove that the associated normalized map $F$ is unique and determine it exactly.
 |---|---|
 | **Domain** | Analysis |
 | **Sub-domain** | Complex analysis |
-| **Problem Type** | Canonicalization or normalization |
-| **Answer Type** | Function or mapping |
+| **Problem Type** | Optimization |
+| **Answer Type** | Tuple or ordered list |
 
 ---
 
 ## Domain Explanation
 
-This is a Complex Analysis problem. The order-five disk symmetry and the zero-free Schur lift first produce a positive-real logarithmic quotient depending only on $w^5$. The prescribed jet then determines only four initial Caratheodory moments. The decisive step is to use positivity of every Toeplitz moment matrix: the first singular matrix forces a recurrence for all later moments, from which the entire positive-real function, and hence $F$, must be reconstructed. Thus the problem requires a global positivity argument rather than finite coefficient matching alone.
+This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift reduce the normalized map to a positive-real logarithmic function of $w^5$. The prescribed jet determines only its first three Caratheodory moments, while the fourth moment remains free. Positivity of the next Toeplitz moment matrix cuts out a nontrivial disk of admissible fourth moments; optimizing the logarithmic coefficient selects one boundary point. Only at that extremal point does the Toeplitz matrix become singular, and its nullspace then forces a recurrence for every later moment. The problem therefore combines disk symmetry, logarithmic normalization, semidefinite moment optimization, and singular Toeplitz rigidity.
