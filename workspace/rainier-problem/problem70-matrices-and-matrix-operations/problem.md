@@ -31,36 +31,33 @@ $$
 $$
 as $w$ ranges over all $n$-admissible words of multiplicity $q$.
 
-Two words are cyclically equivalent if one is a cyclic rotation of the other; write $[w]$ for the cyclic class of $w$. Put
+Two words are cyclically equivalent if one is a cyclic rotation of the other; write $[w]$ for the cyclic class of $w$. Let
 $$
-B_k=L_rR_r^k
-\qquad(k\geq1).
+c_{n,r,q}
+=
+\#\left\{
+[w]:
+\begin{array}{l}
+w\text{ is $n$-admissible of multiplicity }q,\\
+\operatorname{tr}P_r(w)=\beta_{n,r,q}
+\end{array}
+\right\}.
 $$
-If
-$$
-u=B_{a_1}B_{a_2}\cdots B_{a_s},
-$$
-define
-$$
-u^\dagger=B_{a_s}B_{a_{s-1}}\cdots B_{a_1},
-\qquad
-[u]^\pm=\{[u],[u^\dagger]\}.
-$$
-Let $\mathcal S_{n,r}$ be the set of all cyclic classes $[w]$, over all multiplicities $q\geq2$, such that
-$$
-\operatorname{tr}P_r(w)=\beta_{n,r,q}.
-$$
-Finally, define the formal power series
+Define the formal power series
 $$
 G_{n,r}(t)=\sum_{q=2}^{\infty}
-\left(\alpha_{n,r,q}-\beta_{n,r,q}\right)t^{q-2}.
+\left(\alpha_{n,r,q}-\beta_{n,r,q}\right)t^{q-2}
+$$
+and
+$$
+C_{n,r}(t)=\sum_{q=2}^{\infty}c_{n,r,q}t^{q-2}.
 $$
 
 Determine the ordered pair
 $$
-\left(G_{n,r}(t),\mathcal S_{n,r}\right)
+\left(G_{n,r}(t),C_{n,r}(t)\right)
 $$
-in closed form as a function of $n$ and $r$.
+as reduced rational functions of $t$, with each denominator normalized to have constant term $1$.
 
 ---
 
@@ -70,11 +67,11 @@ in closed form as a function of $n$ and $r$.
 |---|---|
 | **Domain** | Linear Algebra |
 | **Sub-domain** | Matrices and matrix operations |
-| **Problem Type** | Exhaustive enumeration |
+| **Problem Type** | Symbolic derivation |
 | **Answer Type** | Tuple or ordered list |
 
 ---
 
 ## Domain Explanation
 
-The problem asks for the second spectral layer of an unbounded family of noncommuting matrix products. A complete derivation must determine the largest and second-largest monodromy traces for every multiplicity, quantify their exact gap by a generating function, and classify all cyclic equality cases. The difficulty is therefore not a single matrix multiplication or a finite search, but a uniform extremal and near-extremal analysis of matrix words.
+The problem asks for the second spectral layer of an unbounded family of noncommuting matrix products. A complete derivation must determine the largest and second-largest traces uniformly in the multiplicity, derive the exact gap recurrence, and count all cyclic equality classes at the second level. Encoding both outputs as normalized rational generating functions makes the final answer canonical and directly checkable while preserving the underlying extremal classification work.
