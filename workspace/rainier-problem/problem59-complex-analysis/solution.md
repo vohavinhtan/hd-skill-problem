@@ -1,175 +1,224 @@
 ## Steps
 
-Step 1: Descend the square lift
+Step 1: Pass from the order-five symmetry to a positive-real function
 
 The commutation relation is equivalent to
 $$
-F(\omega w)=\omega F(w).
+F(\zeta w)=\zeta F(w).
 $$
-Using $F(w)=wG(w)^2$ gives $G(\omega w)^2=G(w)^2$. The two holomorphic factors $G(\omega w)-G(w)$ and $G(\omega w)+G(w)$ have zero product. Hence one of them vanishes identically. If $G(\omega w)=-G(w)$, then iterating three times gives
+Set
 $$
-G(w)=G(\omega^3w)=-G(\omega^2w)=G(\omega w)=-G(w),
+H(w)=\frac{F(w)}{w},
 $$
-contradicting that $G$ is zero free. Therefore $G(\omega w)=G(w)$, so
+with its holomorphic extension at $0$. Since $F(w)=wG(w)^4$ and $G$ is zero free with $|G|<1$, the function $H=G^4$ is zero free and satisfies $|H|<1$ on $\mathbb D$. Moreover,
 $$
-G(w)=g(w^3)
+H(\zeta w)=H(w).
 $$
-for a zero-free disk map $g$.
+The prescribed germ gives $H(0)=e^{-1}$. Choose the holomorphic logarithm
+$$
+P(w)=-\log H(w)
+$$
+with $P(0)=1$. Then $\operatorname{Re}P>0$.
 
-Choose a holomorphic logarithm and put $p=-2\log g$. Then $\operatorname{Re}p>0$ and
+Because $H(\zeta w)=H(w)$,
 $$
-F(w)=w e^{-p(w^3)}.
+P(\zeta w)-P(w)\in2\pi i\mathbb Z.
 $$
-
-Step 2: Synchronize the logarithmic branches
-
-The four data points correspond to
+The left side is holomorphic and vanishes at $w=0$, hence it is identically zero. Therefore $P(\zeta w)=P(w)$. Its Taylor series contains only powers divisible by $5$, so there is a holomorphic function $p:\mathbb D\to\mathbb C$ with
 $$
-u_1=-\frac18,\qquad u_2=-\frac1{27},\qquad
-u_3=\frac1{27},\qquad u_4=\frac18.
+\operatorname{Re}p>0,
+\qquad
+P(w)=p(w^5),
+\qquad
+p(0)=1.
 $$
-They give $p(u_j)=a_j+ib_j+2\pi i n_j$, where
+Consequently,
 $$
-\begin{aligned}
-(a_1,a_2,a_3,a_4)&=\left(\frac{12419}{12285},\frac{66491}{66430},\frac{66491}{66430},\frac{12419}{12285}\right),\\
-(b_1,b_2,b_3,b_4)&=\left(\frac{16}{195},\frac9{365},-\frac9{365},-\frac{16}{195}\right),
-\end{aligned}
-$$
-and $n_j\in\mathbb Z$.
-
-For the right half-plane write
-$$
-\delta(A,B)=\frac{|A-B|}{|A+\overline B|}.
-$$
-Every source distance between consecutive $u_j$ is at most $16/65$. If two corresponding integers $n_j$ differ, the imaginary difference of the target values exceeds
-$$
-2\pi-\frac{32}{195}>\frac{29}{5},
-$$
-while every $a_j$ lies between $1$ and $21/20$. Thus
-$$
-\delta\bigl(p(u_j),p(u_{j+1})\bigr)^2>
-\frac{(29/5)^2}{(21/10)^2+(29/5)^2}>\frac45>\left(\frac{16}{65}\right)^2,
-$$
-contradicting Schwarz--Pick. Hence $n_1=n_2=n_3=n_4$. Subtract their common multiple of $2\pi i$; this preserves $\operatorname{Re}p>0$ and does not change $e^{-p}$. We may therefore take
-$$
-v_j:=p(u_j)=a_j+ib_j
-$$
-with the displayed values above.
-
-Step 3: Derive the positive-real interpolant from the data
-
-For a holomorphic function with positive real part, the Caratheodory kernel
-$$
-K_p(x,y)=\frac{p(x)+\overline{p(y)}}{1-x\overline y}
-$$
-is positive semidefinite. Indeed, if $\phi=(p-1)/(p+1)$, then $|\phi|<1$ and the Schwarz kernel
-$$
-\frac{1-\phi(x)\overline{\phi(y)}}{1-x\overline y}
-$$
-is positive semidefinite; multiplying on the left and right by the nonzero diagonal factors $p(x)+1$ and $\overline{p(y)}+1$ gives $K_p$ up to the positive scalar factor $1/2$.
-
-Apply this to the four known nodes and values. The data determine the $4\times4$ matrix
-$$
-P=\left[\frac{v_j+\overline{v_k}}{1-u_ju_k}\right]_{j,k=1}^4.
-$$
-Exact row reduction, using only the four rational values from Step 2, gives
-$$
-\operatorname{rref}(P)=
-\begin{pmatrix}
-1&0&0&\dfrac{63+16i}{65}\\[4pt]
-0&1&0&-\dfrac{22016+3584i}{6561}\\[4pt]
-0&0&1&\dfrac{111104+9728i}{32805}\\[4pt]
-0&0&0&0
-\end{pmatrix}.
-$$
-Thus $P$ has rank $3$. Choosing the fourth coordinate to clear denominators gives the null vector
-$$
-c=
-\begin{pmatrix}
--6561(1-8i)\\
-6656(1-27i)\\
-6656(1+27i)\\
--6561(1+8i)
-\end{pmatrix},
-\qquad Pc=0.
+F(w)=w e^{-p(w^5)}.
 \tag{1}
 $$
 
-Now let $t\in\mathbb D$. Append $t$ to the four interpolation nodes. The resulting $5\times5$ Caratheodory matrix is positive semidefinite. Its upper-left block is $P$, and its cross-vector is
-$$
-q_j(t)=\frac{v_j+\overline{p(t)}}{1-u_j\overline t}.
-$$
-Since $Pc=0$, positivity forces $c^*q(t)=0$: otherwise the quadratic form on vectors $(c,s)$ would have zero constant term but a nonzero linear term in $s$, contradicting nonnegativity for both signs of small $s$.
+Step 2: Extract the first four Caratheodory moments from the jet
 
-Therefore
+Put $u=w^5$. From the given expansion,
 $$
-\sum_{j=1}^4\overline{c_j}
-\frac{v_j+\overline{p(t)}}{1-u_j\overline t}=0.
+eH(w)=S(u)+O(u^5),
 $$
-Taking conjugates and solving for $p(t)$ yields the interpolation formula
+where
 $$
-p(t)=-
-\frac{\displaystyle\sum_{j=1}^4
-\frac{c_j\overline{v_j}}{1-u_jt}}
-{\displaystyle\sum_{j=1}^4
-\frac{c_j}{1-u_jt}}.
+S(u)=1-\frac35u-\frac{27}{50}u^2
++\frac{333}{250}u^3
+-\frac{2917}{5000}u^4.
+$$
+Since $H(w)=e^{-p(u)}$ and $p(0)=1$,
+$$
+p(u)=1-\log S(u)+O(u^5).
+$$
+Using
+$$
+-\log(1+x)=-x+\frac{x^2}{2}-\frac{x^3}{3}+\frac{x^4}{4}+O(x^5),
+$$
+one obtains
+$$
+p(u)=1+\frac35u+\frac{18}{25}u^2
+-\frac{117}{125}u^3
++\frac{98}{625}u^4+O(u^5).
 \tag{2}
 $$
-Thus the data already force $p$; no certificate has been guessed.
-
-To simplify (2), bring the four terms in each sum to the common denominator $(t-27)(t-8)(t+8)(t+27)$. Direct collection gives
+Write
 $$
-\sum_{j=1}^4\frac{c_j}{1-u_jt}
-=-8864640i\,
-\frac{(t-1)(t+1)(t-i)}{(t-27)(t-8)(t+8)(t+27)},
+p(u)=1+2\sum_{n\ge1}m_nu^n,
+\qquad
+m_{-n}=\overline{m_n},
+\qquad m_0=1.
 $$
-and
+Equation (2) gives
 $$
-\sum_{j=1}^4\frac{c_j\overline{v_j}}{1-u_jt}
-=-2954880i\,
-\frac{(t+i)(3t^2-4it-3)}{(t-27)(t-8)(t+8)(t+27)}.
-$$
-The denominator in (2) has no zero in $\mathbb D$, since its zeros are $1,-1,i$. Hence for every $t\in\mathbb D$,
-$$
-p(t)=-\frac{(t+i)(3t^2-4it-3)}{3(t-1)(t+1)(t-i)}.
+m_1=\frac3{10},\qquad
+m_2=\frac9{25},\qquad
+m_3=-\frac{117}{250},\qquad
+m_4=\frac{49}{625}.
 \tag{3}
 $$
-Partial fractions now give
+
+Step 3: Use positivity to force all later moments
+
+For each $N\ge0$, consider the Toeplitz matrix
 $$
-p(t)=\frac13\left(
-\frac{1+t}{1-t}+\frac{1-t}{1+t}+\frac{i+t}{i-t}
-\right).
+T_N=[m_{j-k}]_{j,k=0}^N.
+$$
+We first prove that $T_N$ is positive semidefinite. Let
+$$
+A(e^{it})=\sum_{j=0}^Na_je^{ijt}.
+$$
+For $0<r<1$, the positivity of $\operatorname{Re}p$ gives
+$$
+0\leq\frac1{2\pi}\int_0^{2\pi}
+\operatorname{Re}p(re^{it})\,|A(e^{it})|^2\,dt.
+$$
+Expanding the Fourier series of $\operatorname{Re}p(re^{it})$ and integrating termwise yields
+$$
+\sum_{j,k=0}^N\overline{a_j}a_k\,
+ r^{|j-k|}m_{j-k}\ge0.
+$$
+Letting $r\uparrow1$ proves $T_N\succeq0$.
+
+From (3),
+$$
+T_4=
+\begin{pmatrix}
+1&\frac3{10}&\frac9{25}&-\frac{117}{250}&\frac{49}{625}\\
+\frac3{10}&1&\frac3{10}&\frac9{25}&-\frac{117}{250}\\
+\frac9{25}&\frac3{10}&1&\frac3{10}&\frac9{25}\\
+-\frac{117}{250}&\frac9{25}&\frac3{10}&1&\frac3{10}\\
+\frac{49}{625}&-\frac{117}{250}&\frac9{25}&\frac3{10}&1
+\end{pmatrix}.
+$$
+Exact row reduction gives
+$$
+\operatorname{rref}(T_4)=
+\begin{pmatrix}
+1&0&0&0&1\\
+0&1&0&0&-\frac65\\
+0&0&1&0&0\\
+0&0&0&1&\frac65\\
+0&0&0&0&0
+\end{pmatrix}.
+$$
+Hence
+$$
+c=(-5,6,0,-6,5)^T
+$$
+spans $\ker T_4$.
+
+Fix $N\ge5$ and view $c$ as a vector in $\mathbb C^{N+1}$ by appending zeros. Its quadratic form against $T_N$ is still
+$$
+c^*T_Nc=c^*T_4c=0.
+$$
+For a positive semidefinite Hermitian matrix, $x^*Ax=0$ implies $Ax=0$. Therefore $T_Nc=0$. Looking at row $n\ge5$ gives
+$$
+-5m_n+6m_{n-1}-6m_{n-3}+5m_{n-4}=0.
+$$
+Thus every later moment is forced by
+$$
+5m_n=6m_{n-1}-6m_{n-3}+5m_{n-4}
+\qquad(n\ge5).
 \tag{4}
 $$
-This also checks existence directly: each summand in (4) has positive real part on $\mathbb D$, so the right-hand side is a positive-real function. Because (2) was forced by the singular Pick matrix, it is the unique positive-real interpolant of the four synchronized values.
+This is the uniqueness mechanism: the four prescribed initial moments, together with positivity, determine the entire sequence.
 
-Step 4: Reconstruct the map
+Step 4: Sum the forced recurrence and recover $p$
 
-The expression in (4) simplifies to
+Let
 $$
--p(u)=1-\frac4{3(1-u^2)}-\frac2{3(1+iu)}.
+M(u)=\sum_{n\ge0}m_nu^n.
 $$
-Substituting $u=w^3$ into $F(w)=we^{-p(w^3)}$ gives
+Multiplying (4) by $u^n$ and summing for $n\ge5$, then inserting the initial values (3), gives
 $$
-F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right).
+\left(1-\frac65u+\frac65u^3-u^4\right)M(u)
+=1-\frac9{10}u+\frac3{10}u^3.
 $$
-Moreover,
+Since
 $$
-G(w)=e^{-p(w^3)/2}
+1-\frac65u+\frac65u^3-u^4
+=\frac{(1-u^2)(5u^2-6u+5)}5,
 $$
-is holomorphic, zero free, and maps $\mathbb D$ into $\mathbb D$ because $\operatorname{Re}p>0$. Also $(\omega w)^3=w^3$, hence
+we obtain
 $$
-F(\omega w)=\omega F(w).
+M(u)=
+\frac{3u^3-9u+10}
+{2(1-u^2)(5u^2-6u+5)}.
 $$
-The four prescribed values are exactly the synchronized interpolation values used to derive $p$, so this $F$ realizes all the data. Uniqueness of $p$ from (2) gives uniqueness of $F$.
+Because $p=2M-1$,
+$$
+p(u)=
+\frac{5u^4-3u^3-3u+5}
+{(1-u^2)(5u^2-6u+5)}.
+\tag{5}
+$$
 
-Final Answer: $\boxed{F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)}$
+It remains to check existence, not merely uniqueness. Put
+$$
+\rho=\frac{3+4i}{5}.
+$$
+A direct partial-fraction decomposition of (5) is
+$$
+p(u)=\frac14\left(
+\frac{1+u}{1-u}
++\frac{1-u}{1+u}
++\frac{\rho+u}{\rho-u}
++\frac{\overline\rho+u}{\overline\rho-u}
+\right).
+\tag{6}
+$$
+All four points $1,-1,\rho,\overline\rho$ lie on the unit circle, and each Cayley term in (6) has positive real part on $\mathbb D$. Hence $\operatorname{Re}p>0$.
+
+Step 5: Reconstruct the normalized map
+
+Substitute $u=w^5$ into (1) and (5):
+$$
+F(w)=w\exp\left(
+-\frac{5w^{20}-3w^{15}-3w^5+5}
+{(1-w^{10})(5w^{10}-6w^5+5)}
+\right).
+$$
+The denominator does not vanish in $\mathbb D$: its zeros correspond to $u=\pm1,\rho,\overline\rho$, all on $|u|=1$. By (6), $\operatorname{Re}p>0$, so
+$$
+G(w)=\exp\left(-\frac14p(w^5)\right)
+$$
+is holomorphic, zero free, and maps $\mathbb D$ into $\mathbb D$. Thus $F(w)=wG(w)^4$. Also $(\zeta w)^5=w^5$, hence
+$$
+F(\zeta w)=\zeta F(w).
+$$
+Finally, the first four coefficients of $p$ are exactly those in (2), so exponentiating $-p(w^5)$ reproduces the prescribed jet. Therefore the displayed map exists and, by Step 3, is unique.
+
+Final Answer: $\boxed{F(w)=w\exp\left(-\frac{5w^{20}-3w^{15}-3w^5+5}{(1-w^{10})(5w^{10}-6w^5+5)}\right)}$
 
 ---
 
 ## Answer
 
-$F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)$
+$F(w)=w\exp\left(-\frac{5w^{20}-3w^{15}-3w^5+5}{(1-w^{10})(5w^{10}-6w^5+5)}\right)$
 
 ---
 
@@ -185,6 +234,7 @@ $F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)$
 
 - cyclic disk symmetries
 - zero-free Schur lifts
-- logarithmic branch synchronization
-- Caratheodory kernels
-- singular positive-real interpolation
+- positive-real logarithms
+- Caratheodory coefficient positivity
+- singular Toeplitz moment matrices
+- forced linear recurrences
