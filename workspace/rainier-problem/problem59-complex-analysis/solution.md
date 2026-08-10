@@ -50,53 +50,118 @@ $$
 \delta\bigl(p(u_j),p(u_{j+1})\bigr)^2>
 \frac{(29/5)^2}{(21/10)^2+(29/5)^2}>\frac45>\left(\frac{16}{65}\right)^2,
 $$
-contradicting Schwarz--Pick. Hence $n_1=n_2=n_3=n_4$. Subtract their common imaginary translation; this preserves $\operatorname{Re}p>0$ and does not change $e^{-p}$. We now take the displayed $a_j+ib_j$ as the actual values of $p$.
+contradicting Schwarz--Pick. Hence $n_1=n_2=n_3=n_4$. Subtract their common multiple of $2\pi i$; this preserves $\operatorname{Re}p>0$ and does not change $e^{-p}$. We may therefore take
+$$
+v_j:=p(u_j)=a_j+ib_j
+$$
+with the displayed values above.
 
-Step 3: Build the rank-three positive-real certificate
+Step 3: Derive the positive-real interpolant from the data
 
-Define
+For a holomorphic function with positive real part, the Caratheodory kernel
 $$
-p_0(u)=\frac13\left(\frac{1+u}{1-u}+\frac{1-u}{1+u}+\frac{i+u}{i-u}\right).
+K_p(x,y)=\frac{p(x)+\overline{p(y)}}{1-x\overline y}
 $$
-Each summand has positive real part on $\mathbb D$, so $\operatorname{Re}p_0>0$. For real $u$,
+is positive semidefinite. Indeed, if $\phi=(p-1)/(p+1)$, then $|\phi|<1$ and the Schwarz kernel
 $$
-p_0(u)=\frac13\left(\frac{2(1+u^2)}{1-u^2}+\frac{1-u^2-2iu}{1+u^2}\right).
+\frac{1-\phi(x)\overline{\phi(y)}}{1-x\overline y}
 $$
-Substitution at $u_1,u_2,u_3,u_4$ gives exactly the four values from Step 2.
+is positive semidefinite; multiplying on the left and right by the nonzero diagonal factors $p(x)+1$ and $\overline{p(y)}+1$ gives $K_p$ up to the positive scalar factor $1/2$.
 
-For a positive-real function $h$, its Caratheodory kernel
+Apply this to the four known nodes and values. The data determine the $4\times4$ matrix
 $$
-K_h(x,y)=\frac{h(x)+\overline{h(y)}}{1-x\overline y}
+P=\left[\frac{v_j+\overline{v_k}}{1-u_ju_k}\right]_{j,k=1}^4.
 $$
-is positive semidefinite: this follows by applying the Schwarz kernel to $(h-1)/(h+1)$ and multiplying by the nonzero diagonal factors $h+1$. For $\zeta\in\{1,-1,i\}$,
+Exact row reduction, using only the four rational values from Step 2, gives
 $$
-K_{(\zeta+u)/(\zeta-u)}(x,y)=\frac{2}{(\zeta-x)(\overline\zeta-\overline y)}.
+\operatorname{rref}(P)=
+\begin{pmatrix}
+1&0&0&\dfrac{63+16i}{65}\\[4pt]
+0&1&0&-\dfrac{22016+3584i}{6561}\\[4pt]
+0&0&1&\dfrac{111104+9728i}{32805}\\[4pt]
+0&0&0&0
+\end{pmatrix}.
 $$
-Therefore the four-node matrix $P=[K_{p_0}(u_i,u_j)]$ is a sum of three rank-one positive matrices. The three associated Cauchy vectors are independent on the four distinct real nodes, so
+Thus $P$ has rank $3$. Choosing the fourth coordinate to clear denominators gives the null vector
 $$
-\operatorname{rank}P=3.
+c=
+\begin{pmatrix}
+-6561(1-8i)\\
+6656(1-27i)\\
+6656(1+27i)\\
+-6561(1+8i)
+\end{pmatrix},
+\qquad Pc=0.
+\tag{1}
 $$
 
-Step 4: Use the null vector to prove uniqueness
+Now let $t\in\mathbb D$. Append $t$ to the four interpolation nodes. The resulting $5\times5$ Caratheodory matrix is positive semidefinite. Its upper-left block is $P$, and its cross-vector is
+$$
+q_j(t)=\frac{v_j+\overline{p(t)}}{1-u_j\overline t}.
+$$
+Since $Pc=0$, positivity forces $c^*q(t)=0$: otherwise the quadratic form on vectors $(c,s)$ would have zero constant term but a nonzero linear term in $s$, contradicting nonnegativity for both signs of small $s$.
 
-Let $0\ne c\in\ker P$. If $p$ is any other positive-real function with the same four values, append an arbitrary $t\in\mathbb D$ to its five-node Caratheodory matrix. Positivity and $c^*Pc=0$ force the cross-vector to be orthogonal to $c$:
+Therefore
 $$
-\sum_{j=1}^4\overline{c_j}\frac{p(u_j)+\overline{p(t)}}{1-u_j\overline t}=0.
+\sum_{j=1}^4\overline{c_j}
+\frac{v_j+\overline{p(t)}}{1-u_j\overline t}=0.
 $$
-The same identity holds for $p_0$. Their difference is
+Taking conjugates and solving for $p(t)$ yields the interpolation formula
 $$
-\overline{p(t)-p_0(t)}
-\sum_{j=1}^4\frac{\overline{c_j}}{1-u_j\overline t}=0.
+p(t)=-
+\frac{\displaystyle\sum_{j=1}^4
+\frac{c_j\overline{v_j}}{1-u_jt}}
+{\displaystyle\sum_{j=1}^4
+\frac{c_j}{1-u_jt}}.
+\tag{2}
 $$
-The rational factor is not identically zero, since its distinct poles have residues $\overline{c_j}\ne0$ wherever that coordinate is nonzero. Hence $p=p_0$ away from finitely many $t$, and then everywhere by analyticity.
+Thus the data already force $p$; no certificate has been guessed.
 
-Step 5: Reconstruct the map
+To simplify (2), bring the four terms in each sum to the common denominator $(t-27)(t-8)(t+8)(t+27)$. Direct collection gives
+$$
+\sum_{j=1}^4\frac{c_j}{1-u_jt}
+=-8864640i\,
+\frac{(t-1)(t+1)(t-i)}{(t-27)(t-8)(t+8)(t+27)},
+$$
+and
+$$
+\sum_{j=1}^4\frac{c_j\overline{v_j}}{1-u_jt}
+=-2954880i\,
+\frac{(t+i)(3t^2-4it-3)}{(t-27)(t-8)(t+8)(t+27)}.
+$$
+The denominator in (2) has no zero in $\mathbb D$, since its zeros are $1,-1,i$. Hence for every $t\in\mathbb D$,
+$$
+p(t)=-\frac{(t+i)(3t^2-4it-3)}{3(t-1)(t+1)(t-i)}.
+\tag{3}
+$$
+Partial fractions now give
+$$
+p(t)=\frac13\left(
+\frac{1+t}{1-t}+\frac{1-t}{1+t}+\frac{i+t}{i-t}
+\right).
+\tag{4}
+$$
+This also checks existence directly: each summand in (4) has positive real part on $\mathbb D$, so the right-hand side is a positive-real function. Because (2) was forced by the singular Pick matrix, it is the unique positive-real interpolant of the four synchronized values.
 
-The defining expression for $p_0$ simplifies to
+Step 4: Reconstruct the map
+
+The expression in (4) simplifies to
 $$
--p_0(u)=1-\frac4{3(1-u^2)}-\frac2{3(1+iu)}.
+-p(u)=1-\frac4{3(1-u^2)}-\frac2{3(1+iu)}.
 $$
-Substitute $u=w^3$ into $F(w)=we^{-p_0(w^3)}$. This map has the zero-free lift $G(w)=e^{-p_0(w^3)/2}$, and $F(\omega w)=\omega F(w)$ because $(\omega w)^3=w^3$. Thus it realizes all the data and is unique.
+Substituting $u=w^3$ into $F(w)=we^{-p(w^3)}$ gives
+$$
+F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right).
+$$
+Moreover,
+$$
+G(w)=e^{-p(w^3)/2}
+$$
+is holomorphic, zero free, and maps $\mathbb D$ into $\mathbb D$ because $\operatorname{Re}p>0$. Also $(\omega w)^3=w^3$, hence
+$$
+F(\omega w)=\omega F(w).
+$$
+The four prescribed values are exactly the synchronized interpolation values used to derive $p$, so this $F$ realizes all the data. Uniqueness of $p$ from (2) gives uniqueness of $F$.
 
 Final Answer: $\boxed{F(w)=w\exp\left(1-\frac4{3(1-w^6)}-\frac2{3(1+iw^3)}\right)}$
 
