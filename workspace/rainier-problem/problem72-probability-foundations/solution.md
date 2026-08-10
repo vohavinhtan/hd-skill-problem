@@ -89,9 +89,9 @@ For $0\leq z<A$, the function $(A-z)/(B-z)$ decreases strictly with $z$; since $
 Therefore the smallest positive defect is $D_{1,1}$. The only candidates for the next one are $D_{2,1}$ and $D_{1,2}$. Clearing the positive common denominator reduces their difference to
 $$
 \begin{aligned}
-N={}&4(a-1)(2a+1)(B-(a-1)^2)(B-(a+2)^2)\\
+N&=4(a-1)(2a+1)(B-(a-1)^2)(B-(a+2)^2)\\
 &-4(a+1)(2a-1)(B-(a-2)^2)(B-(a+1)^2)\\
-={}&8a(A-B)(B+3A-7)<0.
+&=8a(A-B)(B+3A-7)<0.
 \end{aligned}
 $$
 Hence
@@ -104,9 +104,9 @@ Step 4: Prove that no farther support pair overtakes the third defect
 After $(1,1)$ and $(2,1)$ are removed, every remaining pair is bounded below either by $D_{1,2}$ or by $D_{3,1}$. To compare them, clearing their positive common denominator gives numerator
 $$
 \begin{aligned}
-M={}&4(a+1)(2a-1)(B-(a-3)^2)(B-(a+1)^2)\\
+M&=4(a+1)(2a-1)(B-(a-3)^2)(B-(a+1)^2)\\
 &-3(2a-3)(2a+1)(B-(a-1)^2)(B-(a+2)^2)\\
-={}&-(B-A)H,
+&=-(B-A)H,
 \end{aligned}
 $$
 where
