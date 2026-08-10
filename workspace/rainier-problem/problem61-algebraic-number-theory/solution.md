@@ -115,7 +115,7 @@ $$
 \operatorname{Tr}_{K/\mathbb F_2}(\gamma^TY\alpha)
 =\operatorname{tr}(\Psi^{-1}Y)
 $$
-for every rank-one $Y$, hence for every $Y\in V$ because the $E_{ij}$ are rank one and span $V$. From Step 3, $\Psi$ is $X\mapsto AXB$ or $X\mapsto AX^TB$. In the first case $\operatorname{tr}(\Psi^{-1}Y)$ has an invertible coefficient matrix $B^{-1}A^{-1}$, and the transpose case is the same after swapping indices. Thus invertible changes of $\alpha$ and $\gamma$ reduce the four equations to
+for every rank-one $Y$, hence for every $Y\in V$ because the $E_{ij}$ are rank one and span $V$. From Step 3, $\Psi$ is $X\mapsto AXB$ or $X\mapsto AX^TB$. In the first case $\operatorname{tr}(\Psi^{-1}Y)=\operatorname{tr}(B^{-1}A^{-1}Y)$, whose coefficient matrix is invertible; the transpose case is the same after swapping indices. Thus invertible changes of $\alpha$ and $\gamma$ reduce the four equations to
 $$
 \operatorname{Tr}_{K/\mathbb F_2}(\gamma_i\alpha_j)=\delta_{ij}.
 $$
