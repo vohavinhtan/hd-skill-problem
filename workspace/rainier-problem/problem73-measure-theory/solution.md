@@ -4,7 +4,7 @@ Step 1: Construct a four-point feasible family near the transition
 
 For polynomials of degree at most $4$, let $L$ be the moment functional
 $$
-L(1)=1,\qquad L(x)=L(x^3)=0,\qquad L(x^2)=\frac1m,\qquad L(x^4)=\frac{3}{m(m+2)}.
+L(1)=1,\qquad L(x)=L(x^3)=0,\qquad L(x^2)=\frac{1}{m},\qquad L(x^4)=\frac{3}{m(m+2)}.
 $$
 Set
 $$
@@ -14,7 +14,7 @@ a_+=\frac{\sqrt{m+3}+1}{m+2}.
 $$
 Fix $a\in(a_-,a_+)$ and put
 $$
-r=-\frac1{(m+2)a}.
+r=-\frac{1}{(m+2)a}.
 $$
 Since $m\geq3$, one has $a_->1/(m+2)$, hence $-1<r<0<a<1$, and $ar=-1/(m+2)$.
 
@@ -60,8 +60,8 @@ $$
 the odd moments vanish, so
 $$
 L(G)=\frac{3}{m(m+2)}+\frac{ar-1}{m}-ar
-=\left(\frac{3}{m(m+2)}-\frac1m\right)
-+ar\left(\frac1m-1\right)=0.
+=\left(\frac{3}{m(m+2)}-\frac{1}{m}\right)
++ar\left(\frac{1}{m}-1\right)=0.
 $$
 Every polynomial of degree at most $4$ is its cubic interpolation on $T$ plus a constant multiple of $G$, hence the measure
 $$
@@ -112,9 +112,9 @@ All factors are positive there and
 $$
 \frac{d^2}{dx^2}\log f(x)
 =
--\frac1{(x+1)^2}
--\frac2{(x-r)^2}
--\frac1{(d-x)^2}<0.
+-\frac{1}{(x+1)^2}
+-\frac{2}{(x-r)^2}
+-\frac{1}{(d-x)^2}<0.
 $$
 Hence $\log f$ is strictly concave. Since $f(a)=f(1)=AB/K$, concavity yields $f(x)\geq AB/K$ on $[a,1]$. Therefore
 $$
@@ -138,13 +138,13 @@ m(\sqrt{m+3}+1)^2-(m+2)^2=2(m\sqrt{m+3}-2)>0,
 $$
 one has $ma^2>1$. Put
 $$
-\beta^2=\frac3{m+2},
+\beta^2=\frac{3}{m+2},
 \qquad
-e=\frac{a(a^2-\beta^2)}{a^2-\frac1m},
+e=\frac{a(a^2-\beta^2)}{a^2-\frac{1}{m}},
 $$
 and define
 $$
-P(x)=x^3-ex^2-\beta^2x+\frac em=(x-a)h(x),
+P(x)=x^3-ex^2-\beta^2x+\frac{e}{m}=(x-a)h(x),
 $$
 where
 $$
@@ -154,15 +154,15 @@ h(x)=x^2+
 $$
 The moment identities give
 $$
-L(P)=-\frac em+\frac em=0,
+L(P)=-\frac{e}{m}+\frac{e}{m}=0,
 \qquad
 L(xP)=\frac{3}{m(m+2)}-\frac{\beta^2}{m}=0.
 $$
 Let
 $$
-r=-\frac1{(m+2)a},
+r=-\frac{1}{(m+2)a},
 \qquad
-c=-\frac1{ma}.
+c=-\frac{1}{ma}.
 $$
 Then $-1<c<r<0<a$. The displayed formula for $h$ gives
 $$
@@ -189,9 +189,9 @@ whose discriminant is $36-12m(m+2)<0$.
 
 Thus the quadratic $h$ has one root $u\in(-1,c)$ and one root $v\in(r,a)$. Let $\ell_u,\ell_v,\ell_a$ be the quadratic Lagrange basis on $\{u,v,a\}$ and set $\omega_z=L(\ell_z)$. Their signs follow from
 $$
-\omega_u=\frac{\frac1m+av}{(u-v)(u-a)}>0,
+\omega_u=\frac{\frac{1}{m}+av}{(u-v)(u-a)}>0,
 \qquad
-\omega_v=\frac{\frac1m+au}{(v-u)(v-a)}>0,
+\omega_v=\frac{\frac{1}{m}+au}{(v-u)(v-a)}>0,
 $$
 because $u<c=-1/(ma)<v$, and
 $$
