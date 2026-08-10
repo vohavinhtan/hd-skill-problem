@@ -61,9 +61,20 @@ There are $7!/(4\cdot2)=630$ permutations of type $(4,2,1)$. For a fixed one, th
 $$
 |\mathcal H_n|^{(4-1)+(2-1)}=|\mathcal H_n|^4.
 $$
-If $N$ is the number of valid ordered triples $(r_1,r_2,r_3)$, Chebotarev therefore gives
+Let $N$ be the number of valid ordered triples $(r_1,r_2,r_3)$.
+
+We use Chebotarev in the following form. If $L/\mathbb Q$ is a finite Galois extension with group $G$ and $C\subseteq G$ is invariant under conjugation, then the set of unramified primes whose Frobenius conjugacy class lies in $C$ has natural density
 $$
-\delta=\frac{630|\mathcal H_n|^4N}{7!|\mathcal H_n|^7}
+\frac{|C|}{|G|}.
+$$
+The finitely many ramified primes do not affect the density. In the Galois group occurring here, $|G|=7!|\mathcal H_n|^7$. The property just described is determined by the signed cycle lengths and the three cycle-sum functions on the uniquely distinguished cycles of lengths $4,2,1$, so it is preserved by conjugation. Hence the admissible elements form a conjugacy-invariant subset $C$. The preceding count gives
+$$
+|C|=630|\mathcal H_n|^4N.
+$$
+Therefore Chebotarev converts the prime-density question exactly into the group-element proportion
+$$
+\delta=\frac{|C|}{|G|}
+=\frac{630|\mathcal H_n|^4N}{7!|\mathcal H_n|^7}
 =\frac{N}{8|\mathcal H_n|^3}.
 $$
 
@@ -199,7 +210,11 @@ $$
 &=\frac{21(q-1)(q-7)}{65536q^2}.
 \end{aligned}
 $$
-The smallest case $q=8$ has $n_{111}=1$, so the cycle-type argument still applies at the boundary. An independent exhaustive check over the $8^6$ pairs of linear maps $E\to E$ gives $M=1792$, agreeing with $8^4(8-1)(8-7)/16$. Dependent polar coefficients are impossible because one nonzero combination would then be affine, whose Walsh sum is $0$ or $\pm q^2$ rather than $\pm q$.
+The smallest case $q=8$ has $n_{111}=1$, so the cycle-type argument still applies at the boundary. The formula already derived above gives, transparently,
+$$
+M=\frac{8^4(8-1)(8-7)}{16}=1792,
+$$
+so no separate enumeration is required. Dependent polar coefficients are impossible because one nonzero combination would then be affine, whose Walsh sum is $0$ or $\pm q^2$ rather than $\pm q$.
 
 Final Answer: $\boxed{\frac{21(q-1)(q-7)}{65536q^2}}$
 
