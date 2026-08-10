@@ -13,7 +13,8 @@ Put $d=(7,5,3,1)$. For $b\in\mathbb F_2^4$, let $\Pi_b$ be the partition of $32$
 
 For $X=(x_{ij})\in V$, set $r_X=\sum x_{ij}r_{ij}$. Determine the density of primes $p$ for which some $r_{11},r_{12},r_{21},r_{22}\in\mathcal H_n$ satisfy
 $$
-\#\{u:r_X(u)=0\}=\frac{q^4+q^3}{2}\qquad(0\neq X\in V,\ \det X=0),
+\#\{u:r_X(u)=0\}=\frac{q^4+(-1)^{\operatorname{tr}X}q^3}{2}
+\qquad(0\neq X\in V,\ \det X=0),
 $$
 and $\lambda_u(p)=\Pi_{(r_{11}(u),r_{12}(u),r_{21}(u),r_{22}(u))}$ for every $u\in U$.
 
@@ -30,4 +31,4 @@ and $\lambda_u(p)=\Pi_{(r_{11}(u),r_{12}(u),r_{21}(u),r_{22}(u))}$ for every $u\
 
 ## Domain Explanation
 
-This problem is classified under algebraic number theory because residue-degree partitions are Frobenius cycle types and Chebotarev converts the requested prime density into a proportion in a Galois group. The coupled Boolean conditions constrain quadratic parts through the singular-matrix geometry of a small matrix space and constrain linear parts through finite-field trace pairings. Matrix geometry and Boolean Fourier analysis are supporting tools, while the requested object is an algebraic-number-theoretic prime density.
+This problem is classified under algebraic number theory because residue-degree partitions are Frobenius cycle types and Chebotarev converts the requested prime density into a proportion in a Galois group. The coupled Boolean conditions constrain quadratic and linear data through the finite geometry of a small matrix space and finite-field trace pairings. Matrix geometry and Boolean Fourier analysis are supporting tools, while the requested object is an algebraic-number-theoretic prime density.
