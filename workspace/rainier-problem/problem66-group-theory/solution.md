@@ -108,7 +108,7 @@ $$
 $$
 It follows that
 $$
-\boxed{\gamma_j(H_n)=\left\langle r^{2^{j-1}}\right\rangle\quad(j\geq2).}
+\gamma_j(H_n)=\left\langle r^{2^{j-1}}\right\rangle\quad(j\geq2).
 $$
 
 Step 3: Determine the exact order of $r$
@@ -242,7 +242,7 @@ Check 5 (Solution Length Gate): pass. The `## Steps` section is under $10{,}000$
 
 **Domain/Sub-domain:** Abstract Algebra / Group theory
 
-**Problem Type:** Parameter identification
+**Problem Type:** Symbolic derivation
 
 **Answer Type:** Exact symbolic expression
 
