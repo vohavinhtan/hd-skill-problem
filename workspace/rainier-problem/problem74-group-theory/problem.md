@@ -2,60 +2,74 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be prime, and fix integers
+Let $p\geq7$ be prime, and fix integers
 $$
-n\geq3,
+r\geq1,
 \qquad
-1\leq r\leq n-2.
+5\leq m\leq p-1.
 $$
 Put
 $$
-R_n=\mathbb Z/p^n\mathbb Z.
+R=\mathbb Z/p^{mr}\mathbb Z.
 $$
-Equip $R_n^3$ with the group law
-$$
-(x,u,z)\star(y,v,w)
-=
-\left(x+y,\ u+v,\ z+w+p^r xv\right),
-$$
-where all coordinates are taken in $R_n$. Denote this group by $G_{p,n,r}$.
+Since $2$ is invertible in $R$, write $\frac12$ for its inverse.
 
-For a group $H$, write
+On $R^5$ define a group law by
+$$
+\begin{aligned}
+&(x_1,u_1,x_2,u_2,z)\star(y_1,v_1,y_2,v_2,w)\\
+&\quad=\Bigl(
+ x_1+y_1,
+ u_1+v_1,
+ x_2+y_2,
+ u_2+v_2,\\
+&\qquad\qquad z+w+
+\frac12\bigl(
+ p^r(x_1v_1-u_1y_1)
+ +p^{2r}(x_2v_2-u_2y_2)
+\bigr)
+\Bigr),
+\end{aligned}
+$$
+with all coordinates taken in $R$. Denote this group by $G_{p,m,r}$.
+
+For a group $H$, let
 $$
 Z(H)=\{g\in H:gh=hg\text{ for every }h\in H\}
 $$
-for its center. Let
+and
 $$
-\mathcal A_{p,n,r}
+[H,H]=\langle a^{-1}b^{-1}ab:a,b\in H\rangle.
+$$
+Let
+$$
+\mathcal A_{p,m,r}
 =
 \left\{
-\varphi\in\operatorname{Aut}(G_{p,n,r}):
-\varphi(g)=g\text{ for every }g\in Z(G_{p,n,r})
+\varphi\in\operatorname{Aut}(G_{p,m,r}):
+\varphi(g)=g\text{ for every }g\in Z(G_{p,m,r})
 \right\}.
 $$
-For a group $H$, put
+Define the lower central series of $\mathcal A_{p,m,r}$ by
 $$
-[H,H]=\langle a^{-1}b^{-1}ab:a,b\in H\rangle,
-$$
-and define its lower central series by
-$$
-\gamma_1(H)=H,
+\gamma_1(\mathcal A_{p,m,r})=\mathcal A_{p,m,r},
 \qquad
-\gamma_{j+1}(H)=[\gamma_j(H),H].
+\gamma_{j+1}(\mathcal A_{p,m,r})
+=[\gamma_j(\mathcal A_{p,m,r}),\mathcal A_{p,m,r}],
 $$
-Let $c_{p,n,r}$ be the least positive integer $c$ such that
+and let $c_{p,m,r}$ be the least positive integer $c$ such that
 $$
-\gamma_{c+1}(\mathcal A_{p,n,r})=\{1\}.
+\gamma_{c+1}(\mathcal A_{p,m,r})=\{1\}.
 $$
 
 Determine the ordered pair
 $$
 \left(
-\left|\mathcal A_{p,n,r}/[\mathcal A_{p,n,r},\mathcal A_{p,n,r}]\right|,
-\ c_{p,n,r}
+\left|\mathcal A_{p,m,r}/[\mathcal A_{p,m,r},\mathcal A_{p,m,r}]\right|,
+\ c_{p,m,r}
 \right)
 $$
-in closed form as a function of $p,n,r$.
+in closed form as a function of $p,m,r$.
 
 ---
 
@@ -72,4 +86,4 @@ in closed form as a function of $p,n,r$.
 
 ## Domain Explanation
 
-The problem asks for two intrinsic invariants of a pointwise center-fixing automorphism group of a finite nonabelian $p$-group. The factor $p^r$ enlarges the center and changes the allowable automorphisms at a different $p$-adic depth from the commutator structure. Determining the abelianization order and the exact lower-central-series length therefore requires recovering how these two depth scales interact, rather than applying the standard automorphism formula for the nondegenerate Heisenberg group.
+The problem asks for the abelianization size and nilpotency class of a pointwise center-fixing automorphism group of a finite class-two $p$-group. The commutator form has two different elementary-divisor depths, $p^r$ and $p^{2r}$, so the enlarged center imposes unequal congruence conditions on the two coordinate pairs. The derived and lower-central structure of the resulting automorphism group is therefore controlled by an asymmetric filtration rather than by a single principal congruence subgroup.
