@@ -176,7 +176,41 @@ Hence these chains form a Jordan basis of $V_r\otimes V_r$.
 
 Step 3: Pass from the tensor square to the exterior square
 
-Let $\pi:V_r\otimes V_r\to S^2V_r$ be the symmetric-square quotient. If $s$ is odd, pairing the off-diagonal terms of $z_s$ gives
+Define the symmetric square in characteristic $2$ by
+$$
+S^2V_r=(V_r\otimes V_r)/\left\langle x\otimes y+y\otimes x:x,y\in V_r\right\rangle,
+$$
+and let
+$$
+\pi:V_r\otimes V_r\to S^2V_r
+$$
+be the quotient map. For $v\in V_r$ write
+$$
+v^2=\pi(v\otimes v).
+$$
+The exterior square is
+$$
+\bigwedge^2V_r=(V_r\otimes V_r)/\left\langle v\otimes v:v\in V_r\right\rangle.
+$$
+In characteristic $2$, the relation
+$$
+(x+y)\otimes(x+y)+x\otimes x+y\otimes y=x\otimes y+y\otimes x
+$$
+shows that the square relations already imply the swap relations. Hence the natural map
+$$
+S^2V_r\to\bigwedge^2V_r
+$$
+is surjective and has kernel
+$$
+\left\langle v^2:v\in V_r\right\rangle.
+$$
+The map $T$ commutes with swapping the tensor factors, so it descends to $S^2V_r$; we denote the induced map again by $T$. Moreover
+$$
+T(v^2)=\pi(J_rv\otimes v+v\otimes J_rv)=0,
+$$
+so the square subspace is killed by $T$.
+
+If $s$ is odd, pairing the off-diagonal terms of $z_s$ gives
 $$
 \pi(z_s)=v_{(s+1)/2}^2\neq0.
 $$
@@ -186,7 +220,15 @@ If $s\in I_k$ is even, the balanced choice of $w_s$ is invariant under swapping 
 $$
 \pi(w_s)=v_{s/2+2^{k-1}}^2\neq0.
 $$
-Squares are killed by the induced $T$ in characteristic $2$, so $\pi(T^jw_s)=0$ for $1\leq j<2^k$. Thus each even $s$ gives one block of size $1$; $z_n$ gives one more.
+Since the square subspace is killed by $T$, $\pi(T^jw_s)=0$ for $1\leq j<2^k$. Thus each even $s$ gives one block of size $1$. Also $n=n_r$ is odd, because
+$$
+3n_r=2^{r+1}+(-1)^r\equiv1\pmod2.
+$$
+Therefore
+$$
+\pi(z_n)=v_{(n+1)/2}^2\neq0,
+$$
+and since $Tz_n=0$, the vector $z_n$ gives one additional size-$1$ block.
 
 To prove these images are a basis, let
 $$
@@ -255,7 +297,7 @@ Step 1: Level 1. The quotient effect is verified blockwise.
 
 Step 2: Level 1. The power-of-two scales arise from the characteristic-two binomial row, feasibility is characterized by endpoint congruence, the threshold $n_{\ell-1}$ is derived from the residue of $n_r$, and the balanced residue is then proved feasible before the chain is constructed.
 
-Step 3: Level 1. The full kernel of the symmetric-square quotient is exhibited as a subset of the tensor Jordan basis and matched to its dimension.
+Step 3: Level 1. The symmetric square, its quotient map, the square kernel leading to the exterior square, and the odd terminal index are all defined and justified; the full kernel of the symmetric-square quotient is exhibited as a subset of the tensor Jordan basis and matched to its dimension.
 
 Step 4: Level 1. The Jordan-block sum and its product form are proved by an increment identity.
 
