@@ -5,13 +5,13 @@
 Let
 $$
 \mathbb D=\{z\in\mathbb C:|z|<1\},\qquad
-\omega=-\frac12+\frac{\sqrt3}{2}i,
+\zeta=e^{2\pi i/5},
 $$
 and define
 $$
 \kappa(z)=\frac{3z-1}{3-z},\qquad
 \kappa^{-1}(w)=\frac{3w+1}{w+3},\qquad
-\sigma=\kappa^{-1}\circ(w\mapsto\omega w)\circ\kappa.
+\sigma=\kappa^{-1}\circ(w\mapsto\zeta w)\circ\kappa.
 $$
 
 Let $\mathcal F$ be the class of holomorphic maps $f:\mathbb D\to\mathbb D$ satisfying
@@ -22,19 +22,21 @@ For $f\in\mathcal F$, put
 $$
 F(w)=\kappa\bigl(f(\kappa^{-1}(w))\bigr).
 $$
-Assume that $F$ has a zero-free Schur square lift: there is a zero-free holomorphic map $G:\mathbb D\to\mathbb D$ such that
+Assume that $F$ has a zero-free fourth Schur lift: there is a zero-free holomorphic map $G:\mathbb D\to\mathbb D$ such that
 $$
-F(w)=wG(w)^2.
+F(w)=wG(w)^4.
 $$
-Finally, suppose that
+
+Suppose that, as $w\to0$,
 $$
-\begin{aligned}
-f\left(-\frac15\right)&=\kappa^{-1}\left(-\frac12e^{-12419/12285-16i/195}\right),\\
-f(0)&=\kappa^{-1}\left(-\frac13e^{-66491/66430-9i/365}\right),\\
-f\left(\frac35\right)&=\kappa^{-1}\left(\frac13e^{-66491/66430+9i/365}\right),\\
-f\left(\frac57\right)&=\kappa^{-1}\left(\frac12e^{-12419/12285+16i/195}\right).
-\end{aligned}
+e\,\frac{F(w)}{w}
+=
+1-\frac35w^5-\frac{27}{50}w^{10}
++\frac{333}{250}w^{15}
+-\frac{2917}{5000}w^{20}
++O(w^{25}),
 $$
+where $F(w)/w$ is understood by its holomorphic extension at $w=0$.
 
 Prove that the associated normalized map $F$ is unique and determine it exactly.
 
@@ -53,4 +55,4 @@ Prove that the associated normalized map $F$ is unique and determine it exactly.
 
 ## Domain Explanation
 
-This is a Complex Analysis problem. It combines an elliptic disk symmetry with a zero-free lift, a coupled logarithmic branch problem, and a four-node positive-real interpolation certificate of rank three. No two-node equality case identifies the solution; uniqueness only appears after all four data constraints are passed through the positive-real kernel.
+This is a Complex Analysis problem. The order-five disk symmetry and the zero-free Schur lift first produce a positive-real logarithmic quotient depending only on $w^5$. The prescribed jet then determines only four initial Caratheodory moments. The decisive step is to use positivity of every Toeplitz moment matrix: the first singular matrix forces a recurrence for all later moments, from which the entire positive-real function, and hence $F$, must be reconstructed. Thus the problem requires a global positivity argument rather than finite coefficient matching alone.
