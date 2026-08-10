@@ -14,12 +14,12 @@ $$
 $$
 such that
 $$
-\nu(\{j\})=\nu(\{-j\})
-\qquad(-b\leq j\leq b)
-$$
-and
-$$
+\sum_{j=-b}^{b}j\nu(\{j\})=0,
+\qquad
 \sum_{j=-b}^{b}j^2\nu(\{j\})=\frac{a^2+b^2}{2},
+$$
+$$
+\sum_{j=-b}^{b}j^3\nu(\{j\})=0,
 \qquad
 \sum_{j=-b}^{b}j^4\nu(\{j\})=\frac{a^4+b^4}{2}.
 $$
@@ -73,4 +73,4 @@ in closed form as a function of $a$ and $b$.
 
 ## Domain Explanation
 
-The problem asks for the fourth extremal endpoint mass among symmetric probability laws with two prescribed moments. A complete solution must first classify the extreme laws, then rank several competing support defects rather than merely solve the ordinary endpoint maximization problem. The decisive work is a global comparison inside a discrete moment polytope, together with an exhaustive equality-support analysis.
+The problem asks for the fourth extremal endpoint mass among integer-valued probability laws with four prescribed moments. The main difficulty is that extremality is taken before ranking the endpoint mass, so the vanishing odd moments and the even-moment constraints must be handled simultaneously when classifying the relevant atomic laws. Determining the fourth distinct level also requires a global exclusion argument and reconstruction of every equality support.
