@@ -35,11 +35,11 @@ $$
 |---|---|
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Group theory |
-| **Problem Type** | Parameter identification |
+| **Problem Type** | Symbolic derivation |
 | **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-This problem is classified under Abstract Algebra and Group theory because it asks for the exact lower-central-series length of a subgroup of an automorphism group. The two generators are truncated substitution automorphisms in characteristic two, and their noncommutative interaction produces a parameter-dependent finite $2$-group. Determining its nilpotency class requires recovering the hidden commutator structure rather than merely iterating the substitutions for fixed small values of $n$.
+This problem is classified under Abstract Algebra and Group theory because the requested quantity is the nilpotency class of the subgroup $H_n$, determined by its commutators and lower central series. The next-best complete classification is Abstract Algebra and Ring theory because the truncated Ore ring provides the supporting encoding for the substitution automorphisms. Group theory remains primary because the ring structure is only a tool, whereas the subgroup's commutator structure and lower central series directly determine the requested nilpotency class.
