@@ -243,7 +243,7 @@ For the three pairs $(i,k)=(1,1),(2,1),(2a-1,1)$, the omitted Lagrange weight is
 $$
 q_{-a}=\frac{a^2+(a-i)(a+k)}{(2a-i)(2a+k)}>0,
 $$
-because its numerator is respectively $2a^2-1$, $2a^2-a-2$, and $1$. Hence all three $q$'s are genuine probability laws.
+because its numerator is respectively $2a^2-1$, $2a^2-a-2$, and $1$. Hence all three $q$'s are genuine probability laws. Substituting the definition of $\alpha_t$ into the defect identity from Step 1 gives $\frac{1}{2}-S=\delta_{i,k}$.
 
 Since each candidate has defect at most $d_3<\frac{1}{2(2b-1)}$, its endpoint mass satisfies $S>\frac{b-1}{2b-1}$. Also
 $$
