@@ -75,11 +75,28 @@ D(U)=\begin{pmatrix}p&-\mu\\ \nu&*\end{pmatrix},
 \qquad
 D(V)=\begin{pmatrix}P&-\mu'\\ \nu'&*\end{pmatrix}.
 $$
-Since
+Set
 $$
-D_k=D_0+kx\begin{pmatrix}1&0\\0&0\end{pmatrix},
+E=\begin{pmatrix}1&0\\0&0\end{pmatrix},
+\qquad
+D_k=D_0+kxE.
 $$
-expanding only in these two selected factors gives
+Then
+$$
+\begin{aligned}
+&\Phi(a-1,U,b+1,V)-\Phi(a,U,b,V)\\
+&\quad=x\operatorname{tr}(D_aUEV)-x\operatorname{tr}(EUD_bV)-x^2\operatorname{tr}(EUEV).
+\end{aligned}
+$$
+The displayed forms of $D(U)$ and $D(V)$ give
+$$
+\begin{aligned}
+\operatorname{tr}(D_aUEV)&=a x pP-\nu P+2pP-\mu'p,\\
+\operatorname{tr}(EUD_bV)&=b x pP-\mu P+2pP-\nu'p,\\
+\operatorname{tr}(EUEV)&=pP.
+\end{aligned}
+$$
+Therefore
 $$
 \begin{aligned}
 &\Phi(a-1,U,b+1,V)-\Phi(a,U,b,V)\\
@@ -127,13 +144,24 @@ for some $i\geq0$. Define
 $$
 K_i=M^{i+2}-A^2(CA)^iC^2.
 $$
-For $i=0$ direct multiplication gives the compact certificate
+For $i=0$,
+$$
+K_0=ACAC-AACC=A(CA-AC)C.
+$$
+From the explicit matrices $A$ and $C$,
+$$
+CA-AC
+=r^2\begin{pmatrix}-1&r\\0&1\end{pmatrix},
+\qquad
+(CA-AC)C
+=\begin{pmatrix}-r^2&0\\(n+1)r^3&r^2\end{pmatrix}.
+$$
+Multiplication by $A$ now gives
 $$
 K_0
-=M^2-A^2C^2
 =r^2\begin{pmatrix}r^2-1&r\\r&1\end{pmatrix},
 $$
-which is nonzero and entrywise nonnegative. Moreover $A(CA)^i=M^iA$, and both terms defining $K_i$ satisfy the recurrence with coefficient $d$. Also
+which is nonzero and entrywise nonnegative. Moreover $A(CA)^i=M^iA$. Both $M$ and $CA$ have determinant $1$ and trace $d$, so Cayley-Hamilton shows that $M^{i+2}$ and $A^2(CA)^iC^2$ satisfy the same recurrence in $i$ with coefficient $d$. Also
 $$
 K_1-dK_0
 =(M^3-dM^2)-A(MA-dA)C^2
@@ -190,11 +218,18 @@ $$
 =r^4s_{i+1}s_{j+1}.
 $$
 
-For $1\leq a<b-1$, the recurrence gives
+For $j\geq1$ put
 $$
-s_{a+1}s_{b-1}-s_as_b=s_{b-a-1}>0;
+Q^j=
+\begin{pmatrix}d&-1\\1&0\end{pmatrix}^{j}
+=
+\begin{pmatrix}s_{j+1}&-s_j\\s_j&-s_{j-1}\end{pmatrix}.
 $$
-the identity follows by induction on $b-a$, starting from $b=a+2$. Thus among positive indices with
+Since $\det Q=1$, the $(2,1)$ entry of $Q^{-a}Q^{b-1}=Q^{b-a-1}$ gives, for $1\leq a<b-1$,
+$$
+s_{a+1}s_{b-1}-s_as_b=s_{b-a-1}>0.
+$$
+Thus among positive indices with
 $$
 (i+1)+(j+1)=q,
 $$
