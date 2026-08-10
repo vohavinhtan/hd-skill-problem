@@ -29,7 +29,7 @@ $$
 \frac{\displaystyle\prod_{1\leq i<j\leq n}(\zeta_j-\zeta_i)^2}
 {\displaystyle\prod_{i=1}^n(\zeta_i+k)^2}.
 $$
-Write the final result in normalized factorial-product form: eliminate Gamma functions, Pochhammer or rising-factorial notation, binomial coefficients, and shifted-index products; reindex every finite product to start at $j=1$, combine products having the same index range into a single product, and collect identical bases into integer powers.
+For consistency of answer representation, do not use Gamma functions, Pochhammer or rising-factorial notation, or binomial coefficients. If finite products occur in the final expression, index them starting at $j=1$ whenever possible, combine products with identical index ranges, and collect identical bases into integer powers.
 
 ---
 
