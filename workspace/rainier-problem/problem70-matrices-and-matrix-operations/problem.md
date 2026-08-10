@@ -43,7 +43,7 @@ w\text{ is $n$-admissible of multiplicity }q,\\
 \end{array}
 \right\}.
 $$
-Define the formal power series
+Define the generating functions
 $$
 G_{n,r}(t)=\sum_{q=2}^{\infty}
 \left(\alpha_{n,r,q}-\beta_{n,r,q}\right)t^{q-2}
@@ -57,7 +57,7 @@ Determine the ordered pair
 $$
 \left(G_{n,r}(t),C_{n,r}(t)\right)
 $$
-as reduced rational functions of $t$, with each denominator normalized to have constant term $1$.
+as explicit reduced rational functions of $t$, with each denominator normalized to have constant term $1$. The final answer must be this normalized rational-function pair, not a recurrence, coefficient formula, parametrization, or classification of extremizing words.
 
 ---
 
