@@ -99,11 +99,11 @@ we have
 $$
 Q=2x^qy^q(x+y)^{q-1}.
 $$
-Also $VQ=0$. On symmetric homogeneous polynomials of degree $d$, multiplication by $Q$ therefore factors through evaluation at $y=-x$. If $f$ is symmetric and homogeneous, then
+Also $VQ=0$. Thus multiplication by $Q$ annihilates every multiple of $x+y$. For symmetric homogeneous polynomials of degree $d$, evaluation at $y=-x$ has this divisible subspace as its kernel and has image of dimension at most $1$. If $f$ is symmetric and homogeneous, then
 $$
 f(x,-x)=f(-x,x)=(-1)^df(x,-x).
 $$
-Because $p$ is odd, this quotient is zero for odd $d$ and one-dimensional for even $d=2r$, represented by $(xy)^r$. For $0\leq2r\leq q-3$, the product $Q(xy)^r$ is nonzero: the expansion of $(x+y)^{q-1}$ has nonzero coefficients, and an index
+Because $p$ is odd, the image is zero for odd $d$. For even $d=2r$, the polynomial $(xy)^r$ evaluates to $(-1)^rx^{2r}\neq0$, so the quotient is one-dimensional. For $0\leq2r\leq q-3$, the product $Q(xy)^r$ is nonzero: the expansion of $(x+y)^{q-1}$ has nonzero coefficients, and an index
 $$
 r+1\leq i\leq q-2-r
 $$
@@ -146,7 +146,7 @@ $$
 $$
 blocks of size $3$, and exactly $q-1$ blocks of size $2$.
 
-A size-$3q$ block of $V$ splits under $V^q$ into $q$ blocks of size $3$. The $(q-1)/2$ size-$3q$ blocks already account for all $q(q-1)/2$ size-$3$ blocks of $B$, so no block of $V$ has size strictly between $2q$ and $3q$. A size-$2q$ block of $V$ would split under $V^q$ into $q$ blocks of size $2$, but $B$ has only $q-1$ such blocks. Hence $\operatorname{Sym}^2(A)$ has no size-$2q$ block.
+On a Jordan chain $e_0\mapsto e_1\mapsto\cdots\mapsto e_{\ell-1}\mapsto0$, the power $V^q$ preserves the residue class of the index modulo $q$. Hence $J_{3q}$ splits under $V^q$ into $q$ copies of $J_3$, every $J_{\ell}$ with $2q<\ell<3q$ contributes at least one $J_3$, and $J_{2q}$ splits into $q$ copies of $J_2$. The $(q-1)/2$ size-$3q$ blocks already account for all $q(q-1)/2$ size-$3$ blocks of $B$, so there is no size strictly between $2q$ and $3q$. A size-$2q$ block would contribute $q$ size-$2$ blocks to $B$, but $B$ has only $q-1$. Hence $\operatorname{Sym}^2(A)$ has no size-$2q$ block.
 
 Step 5: Assemble the second Jordan layer
 Step 4 gives blocks of size $3q$, so $L_1=3q$, and it excludes every size from $2q$ through $3q-1$ inside $\operatorname{Sym}^2(A)$. Step 2 bounds the terms involving only $C$ by $q$. Step 3 shows that each of the $q-2$ cross terms $A\otimes C_i$ contributes exactly $q-1$ blocks of size $2q$. Therefore
