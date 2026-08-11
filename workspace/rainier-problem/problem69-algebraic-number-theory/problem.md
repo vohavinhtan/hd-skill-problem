@@ -41,17 +41,17 @@ L=K\left(
 \right).
 $$
 
-For every intermediate field $E$ with
+Among all intermediate fields $E$ satisfying
 $$
 K\subset E\subset L,
 \qquad
 [E:K]=p^2,
 $$
-put
+let $\delta_2$ be the second-largest distinct value of
 $$
-d(E)=v_K\left(\operatorname{Disc}(E/K)\right).
+v_K\left(\operatorname{Disc}(E/K)\right).
 $$
-Let $\delta_2$ be the second-largest distinct value attained by $d(E)$. Form a graph $\Gamma$ whose vertices are the fields $E$ satisfying $d(E)=\delta_2$, with two distinct vertices $E,E'$ adjacent exactly when
+Form a graph $\Gamma$ whose vertices are the fields $E$ attaining this value $\delta_2$, with two distinct vertices $E,E'$ adjacent exactly when
 $$
 [E\cap E':K]=p.
 $$
