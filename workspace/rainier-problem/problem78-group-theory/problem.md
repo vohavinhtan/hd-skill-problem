@@ -2,72 +2,54 @@
 
 ## LaTeX (Normalized)
 
-Let $p$ be an odd prime and let $m\geq2$. Put
+Fix an integer $r\geq2$, and let $S=A_5$. Put
 $$
-U=\mathbb F_p^m,
-\qquad
-V=U\oplus U.
+N_r=S^r.
 $$
-Let $J=J_m(0)$ be the nilpotent Jordan block with
+Let $\tau$ act on $N_r$ by the cyclic shift
 $$
-J e_1=0,
-\qquad
-J e_i=e_{i-1}\quad(2\leq i\leq m),
+\tau(g_0,g_1,\ldots,g_{r-1})
+=(g_{r-1},g_0,\ldots,g_{r-2}),
 $$
-for the standard basis $e_1,\ldots,e_m$ of $U$. For
+and set
 $$
-u=(x,y),\qquad v=(x',y')\in V,
+G_r=N_r\rtimes\langle\tau\rangle,
+\qquad |\tau|=r.
 $$
-define
+Let
 $$
-B_0(u,v)=x^{\mathsf T}y'-y^{\mathsf T}x',
+\pi:G_r\to\langle\tau\rangle
 $$
-let
+be the natural quotient map. For $H\leq G_r$, write
 $$
-T(x,y)=(Jx,J^{\mathsf T}y),
+\operatorname{core}_{G_r}(H)
+=
+\bigcap_{g\in G_r}gHg^{-1}.
 $$
-and put
-$$
-B_1(u,v)=B_0(Tu,v).
-$$
+
+Call $H\leq G_r$ admissible if all three conditions hold:
+
+1. $\pi(H)=\langle\tau\rangle$;
+2. for $K=H\cap N_r$, every coordinate projection $K\to S$ is surjective;
+3. $\operatorname{core}_{G_r}(H)=\{1\}$.
 
 Let
 $$
-G_{p,m}=V\times\mathbb F_p^2
-$$
-with multiplication
-$$
-(u,a,b)(v,c,d)
+\mu_r
 =
-\bigl(u+v,\ a+c+B_0(u,v),\ b+d+B_1(u,v)\bigr).
+\min\{[G_r:H]:H\leq G_r\text{ is admissible}\},
 $$
-For a subgroup $H\leq G_{p,m}$, define
+and let $c_r$ be the number of $G_r$-conjugacy classes of admissible subgroups $H$ satisfying
 $$
-\operatorname{core}_{G_{p,m}}(H)
-=
-\bigcap_{g\in G_{p,m}}gHg^{-1}.
+[G_r:H]=\mu_r.
 $$
-Let
-$$
-\mu_{p,m}
-=
-\min\left\{
-[G_{p,m}:H]:
-H\leq G_{p,m},\
-\operatorname{core}_{G_{p,m}}(H)=\{1\}
-\right\},
-$$
-and let $c_{p,m}$ be the number of $G_{p,m}$-conjugacy classes of subgroups $H$ satisfying
-$$
-\operatorname{core}_{G_{p,m}}(H)=\{1\},
-\qquad
-[G_{p,m}:H]=\mu_{p,m}.
-$$
+Let $\ell(r)$ denote the smallest prime divisor of $r$.
+
 Determine the ordered pair
 $$
-(\mu_{p,m},c_{p,m})
+(\mu_r,c_r)
 $$
-for every odd prime $p$ and every $m\geq2$.
+for every $r\geq2$.
 
 ---
 
@@ -84,4 +66,4 @@ for every odd prime $p$ and every $m\geq2$.
 
 ## Domain Explanation
 
-The problem asks for the smallest index of a core-free subgroup in an explicitly defined finite nilpotent group and for the conjugacy classes attaining that minimum. The group commutator structure is controlled by two alternating bilinear forms, so the extremal subgroup problem becomes a structural question about subgroup cores and maximal subgroups with constrained commutators. Group theory is therefore the primary classification, with linear algebra supplying the main internal model for the commutator map.
+The problem asks for extremal core-free subgroups in a cyclic extension of a direct power of the nonabelian simple group $A_5$. The decisive structure is the classification of subdirect subgroups of the simple direct product, the block systems forced by the cyclic shift, and the conjugacy of twisted diagonal factors. Thus the primary machinery is finite group theory, with the arithmetic of divisors of $r$ entering only through the cyclic permutation action.
