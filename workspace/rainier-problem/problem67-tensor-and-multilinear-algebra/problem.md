@@ -53,4 +53,4 @@ Determine, as a closed formula in $m$ and $g$, the rank of $\Phi$.
 
 ## Domain Explanation
 
-This problem is classified under Linear Algebra and Tensor and multilinear algebra because the requested quantity is the rank of a linear map from an exterior fourth power to a symmetric fourth power, built from four commuting cyclic-shift operators. The decisive structure is multilinear: after a scalar extension, the coefficient on each exterior basis vector becomes a Frobenius determinant, and the rank is governed by linear independence over a proper finite subfield together with an exact correction forced by the missing affine point.
+This problem is classified under Linear Algebra and Tensor and multilinear algebra because it asks for the rank of a linear map from an exterior fourth power to a symmetric fourth power, defined from a structured family of commuting linear transformations.
