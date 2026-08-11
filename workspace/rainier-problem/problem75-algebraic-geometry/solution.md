@@ -35,20 +35,20 @@ f=y^2-x^3
 $$
 Then
 $$
-a_\lambda=xz-\frac12f
-=t^{31}-\frac12t^{30}-t^{29}-\frac12t^{28}+(\lambda-1)t^{27},
+a_{\lambda}=xz-\frac{1}{2}f
+=t^{31}-\frac{1}{2}t^{30}-t^{29}-\frac{1}{2}t^{28}+(\lambda-1)t^{27},
 $$
-so $v(a_\lambda)=27$ whenever $\lambda\neq1$. Also
+so $v(a_{\lambda})=27$ whenever $\lambda\neq1$. Also
 $$
 \begin{aligned}
-g_\lambda=y^3-z^2
+g_{\lambda}=y^3-z^2
 ={}&-t^{46}+t^{45}+3t^{44}+3t^{43}+(4-2\lambda)t^{42}+4t^{41}\\
 &+3t^{40}+3t^{39}+(3-\lambda^2)t^{38}-2\lambda t^{37}.
 \end{aligned}
 $$
-Because $\lambda\in\mathbb C^\times$, $v(g_\lambda)=37$. For $\lambda\neq1$, the eight elements
+Because $\lambda\in\mathbb C^{\times}$, $v(g_{\lambda})=37$. For $\lambda\neq1$, the eight elements
 $$
-1,\ yg_\lambda,\ z,\ a_\lambda,\ y,\ g_\lambda,\ yz,\ ya_\lambda
+1,\ yg_{\lambda},\ z,\ a_{\lambda},\ y,\ g_{\lambda},\ yz,\ ya_{\lambda}
 $$
 have valuations, in residue order $0,1,\ldots,7$,
 $$
@@ -56,7 +56,7 @@ $$
 $$
 Applying Step 1 gives
 $$
-\delta_\lambda
+\delta_{\lambda}
 \leq
 0+6+2+3+1+4+3+4
 =23
@@ -66,8 +66,8 @@ $$
 Step 3: Determine the exceptional value semigroup at lambda equal to one
 Now set $\lambda=1$. Starting with the same $f$, define
 $$
-s=xz-\frac12f,\qquad
-h=s+\frac12x^2y,\qquad
+s=xz-\frac{1}{2}f,\qquad
+h=s+\frac{1}{2}x^2y,\qquad
 g=y^3-z^2,
 $$
 $$
@@ -76,8 +76,8 @@ $$
 Their relevant exact expansions are
 $$
 \begin{aligned}
-s&=t^{31}-\frac12t^{30}-t^{29}-\frac12t^{28},\\
-h&=\frac32t^{31}-t^{29},\\
+s&=t^{31}-\frac{1}{2}t^{30}-t^{29}-\frac{1}{2}t^{28},\\
+h&=\frac{3}{2}t^{31}-t^{29},\\
 q&=-t^{46}+t^{45}+3t^{44}+3t^{43}+2t^{42}+4t^{41}+3t^{40}+2t^{38},\\
 k&=-t^{46}-2t^{42}-2t^{41}-2t^{39}.
 \end{aligned}
@@ -94,9 +94,9 @@ and the corresponding reductions are
 $$
 y^2-x^3=f,
 \qquad
-xz-\frac12f=s,
+xz-\frac{1}{2}f=s,
 \qquad
-s+\frac12x^2y=h,
+s+\frac{1}{2}x^2y=h,
 $$
 $$
 y^3-z^2=g,
@@ -154,11 +154,11 @@ $$
 $$
 
 Step 5: Prove the maximum and its unique attaining parameter
-Step 4 gives the attained value $\delta_1=24$. Step 2 gives the strict bound $\delta_\lambda\leq23$ for every allowed $\lambda\neq1$. Hence no nonexceptional parameter can tie the exceptional one, and
+Step 4 gives the attained value $\delta_1=24$. Step 2 gives the strict bound $\delta_{\lambda}\leq23$ for every allowed $\lambda\neq1$. Hence no nonexceptional parameter can tie the exceptional one, and
 $$
 \Delta=24,\qquad \Lambda=\{1\}.
 $$
-This also gives a counterexample check against the tempting generic rule: at $\lambda=1$ the coefficient of $t^{27}$ in $a_\lambda$ vanishes, forcing the different cancellation chain that produces the extra gap.
+This also gives a counterexample check against the tempting generic rule: at $\lambda=1$ the coefficient of $t^{27}$ in $a_{\lambda}$ vanishes, forcing the different cancellation chain that produces the extra gap.
 
 Final Answer: $\boxed{(24,\{1\})}$
 
