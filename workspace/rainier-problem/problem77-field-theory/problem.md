@@ -58,8 +58,8 @@ Determine $R_r$ exactly as a function of $r$.
 |---|---|
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Field theory |
-| **Problem Type** | Exact computation |
-| **Answer Type** | Exact scalar |
+| **Problem Type** | Symbolic derivation |
+| **Answer Type** | Exact symbolic expression |
 
 ---
 
