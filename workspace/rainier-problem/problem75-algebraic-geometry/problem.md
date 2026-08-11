@@ -2,42 +2,41 @@
 
 ## LaTeX (Normalized)
 
-Let
+For each $\lambda\in\mathbb C^\times$, define a continuous $\mathbb C$-algebra homomorphism
 $$
-\eta=e^{\pi i/3},
-\qquad
-\rho=e^{2\pi i/7}.
-$$
-Define two continuous $\mathbb C$-algebra homomorphisms
-$$
-\Phi_C,\Phi_D:\mathbb C[[x,y]]\longrightarrow \mathbb C[[t]],\mathbb C[[s]]
+\Psi_\lambda:\mathbb C[[X,Y,Z]]\longrightarrow\mathbb C[[t]]
 $$
 by
 $$
-\Phi_C(x)=t^{84},
+\Psi_\lambda(X)=t^8,
 $$
 $$
-\Phi_C(y)=t^{126}+t^{154}+t^{161}+t^{174}+t^{181},
-$$
-and
-$$
-\Phi_D(x)=s^{84}\left(1+\frac23s^{28}+\frac23s^{35}\right),
+\Psi_\lambda(Y)=t^{12}+t^{14}+t^{15},
 $$
 $$
-\Phi_D(y)=s^{126}+(1+\eta^2)s^{154}+(1+\eta)s^{161}+\rho^{-1}s^{174}+2s^{181}.
+\Psi_\lambda(Z)=t^{18}+\lambda t^{19}+t^{23}.
+$$
+Let
+$$
+A_\lambda=\operatorname{im}\Psi_\lambda\subset\mathbb C[[t]],
+$$
+and define
+$$
+\delta_\lambda
+=
+\dim_{\mathbb C}\bigl(\mathbb C[[t]]/A_\lambda\bigr).
 $$
 Set
 $$
-I_C=\ker\Phi_C,
+\Delta=\max_{\lambda\in\mathbb C^\times}\delta_\lambda,
 \qquad
-I_D=\ker\Phi_D.
-$$
-The local intersection multiplicity of the two corresponding formal plane branches at the origin is
-$$
-I_0(C,D)=\dim_{\mathbb C}\frac{\mathbb C[[x,y]]}{I_C+I_D}.
+\Lambda=\{\lambda\in\mathbb C^\times:\delta_\lambda=\Delta\}.
 $$
 
-Determine the exact value of $I_0(C,D)$.
+Determine the ordered pair
+$$
+(\Delta,\Lambda).
+$$
 
 ---
 
@@ -47,11 +46,11 @@ Determine the exact value of $I_0(C,D)$.
 |---|---|
 | **Domain** | Topology and Geometry |
 | **Sub-domain** | Algebraic geometry |
-| **Problem Type** | Exact computation |
-| **Answer Type** | Exact scalar |
+| **Problem Type** | Optimization |
+| **Answer Type** | Tuple or ordered list |
 
 ---
 
 ## Domain Explanation
 
-The problem asks for a local intersection multiplicity of two explicitly parametrized formal plane branches. The two branches have the same leading ramification order but different higher-order parametrizations, so the intersection number depends on their full local contact structure rather than only on multiplicity or tangent direction.
+The rings $A_\lambda$ are local rings of irreducible parametrized space-curve singularities, and $\delta_\lambda$ is the colength of the curve ring in its normalization. The problem asks for the maximal jump of this singularity invariant in a one-parameter family, where the exceptional parameter is controlled by higher-order cancellations in the value semigroup rather than by the displayed leading orders alone.
