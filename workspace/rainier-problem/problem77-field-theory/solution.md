@@ -197,9 +197,9 @@ $2^{3\cdot2^{r-2}+2^{(r-3)/2}-3}$
 
 ## Classification
 
-**Problem Type:** Exact computation
+**Problem Type:** Symbolic derivation
 
-**Answer Type:** Exact scalar
+**Answer Type:** Exact symbolic expression
 
 ---
 
