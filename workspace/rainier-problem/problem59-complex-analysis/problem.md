@@ -31,22 +31,20 @@ Suppose that, as $w\to0$,
 $$
 e\,\frac{F(w)}{w}
 =
-1-\frac35w^5-\frac{27}{50}w^{10}
-+\frac{333}{250}w^{15}
-+O(w^{20}),
+1-w^5+\frac7{10}w^{10}-\frac{17}{30}w^{15}+O(w^{20}),
 $$
 where $F(w)/w$ is understood by its holomorphic extension at $w=0$.
 
 For every such normalized map $F$, define
 $$
-\Lambda(F)
-=[w^{20}]\left(-\log\left(e\frac{F(w)}{w}\right)\right),
+\Lambda_7(F)
+=[w^{35}]\left(-\log\left(e\frac{F(w)}{w}\right)\right),
 $$
-where the logarithm is the holomorphic branch near $w=0$ satisfying $\log 1=0$, and $[w^{20}]$ denotes the coefficient of $w^{20}$ in the Taylor expansion.
+where the logarithm is the holomorphic branch near $w=0$ satisfying $\log 1=0$, and $[w^{35}]$ denotes the coefficient of $w^{35}$ in the Taylor expansion.
 
 Let $\mathcal A$ be the set of all normalized maps $F$ arising in this way and satisfying the displayed jet. Determine
 $$
-M=\sup_{F\in\mathcal A}\operatorname{Re}\Lambda(F),
+M=\sup_{F\in\mathcal A}\operatorname{Re}\Lambda_7(F),
 $$
 prove that the supremum is attained by a unique normalized map, and determine that extremal map exactly.
 
@@ -65,4 +63,4 @@ prove that the supremum is attained by a unique normalized map, and determine th
 
 ## Domain Explanation
 
-This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift reduce the normalized map to a positive-real logarithmic function of $w^5$. The prescribed jet determines only its first three Caratheodory moments, while the fourth moment remains free. Positivity of the next Toeplitz moment matrix cuts out a nontrivial disk of admissible fourth moments; optimizing the logarithmic coefficient selects one boundary point. Only at that extremal point does the Toeplitz matrix become singular, and its nullspace then forces a recurrence for every later moment. The problem therefore combines disk symmetry, logarithmic normalization, semidefinite moment optimization, and singular Toeplitz rigidity.
+This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift reduce the normalized map to a positive-real logarithmic function of $w^5$. The jet fixes only the first three Caratheodory moments, while the objective is the seventh logarithmic coefficient. Solving the problem requires a higher-order trigonometric moment optimization: one must derive a sharp cubic majorant for the seventh Chebyshev mode from the available lower moments, analyze its contact set, and use the equality conditions to recover the unique boundary measure and hence the entire extremal holomorphic map.
