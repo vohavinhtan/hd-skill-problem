@@ -12,11 +12,11 @@ Fix an integer $m$ such that
 $$
 2\leq m,
 \qquad
-5m<p.
+5m<p<7m.
 $$
 For $j\in\{1,2,3,4\}$, define
 $$
-\eta_j=\pi^{j^4}\frac{1+j\pi^m}{1-j\pi^m},
+\eta_j=\zeta_p^{\,j^3+j^4}\pi^{j^4}\frac{1+j\pi^m}{1-j\pi^m},
 $$
 and let
 $$
