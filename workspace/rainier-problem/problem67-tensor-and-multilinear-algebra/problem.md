@@ -27,7 +27,7 @@ by declaring, for every $0\leq i_1<i_2<i_3<i_4<i_5<n$,
 $$
 \begin{aligned}
 \Psi(e_{i_1}\wedge e_{i_2}\wedge e_{i_3}\wedge e_{i_4}\wedge e_{i_5})
-={}&\sum_{\sigma\in S_5}
+&=\sum_{\sigma\in S_5}
 (I+S)e_{i_{\sigma(1)}}\wedge
 (I+S^q)e_{i_{\sigma(2)}}\wedge
 (I+S^{q^2})e_{i_{\sigma(3)}}\\
