@@ -6,7 +6,16 @@ For a law on the finite set $\{-b,\ldots,b\}$, write its moment column at $j$ as
 $$
 c_j=(1,j,j^2,j^3,j^4)^T.
 $$
-If a feasible law has more than five support points, its supported columns are linearly dependent. A nonzero dependence $h$ preserves all five constraints, and for sufficiently small $\varepsilon>0$ both $\nu+\varepsilon h$ and $\nu-\varepsilon h$ are nonnegative, so $\nu$ is not extreme. Conversely, at most five distinct columns are independent by the Vandermonde determinant; a feasible law with at most five support points is therefore extreme.
+If a feasible law has more than five support points, its supported columns are linearly dependent. A nonzero dependence $h$ preserves all five constraints, and for sufficiently small $\varepsilon>0$ both $\nu+\varepsilon h$ and $\nu-\varepsilon h$ are nonnegative, so $\nu$ is not extreme. Conversely, suppose $\nu$ has at most five support points and
+$$
+\nu=t\nu_1+(1-t)\nu_2,
+\qquad 0<t<1,
+$$
+with $\nu_1,\nu_2\in\mathcal P_{a,b}$. If $\nu(\{j\})=0$, then nonnegativity and
+$$
+0=t\nu_1(\{j\})+(1-t)\nu_2(\{j\})
+$$
+force $\nu_1(\{j\})=\nu_2(\{j\})=0$. Hence both $\nu_1$ and $\nu_2$ are supported on $\operatorname{supp}(\nu)$. Their difference therefore gives a linear dependence among the supported columns $c_j$, because all five moments agree. Those columns are linearly independent by the Vandermonde determinant, so $\nu_1=\nu_2=\nu$. Thus every feasible law with at most five support points is extreme.
 
 Put $A=a^2$ and $B=b^2$. The prescribed moments give
 $$
