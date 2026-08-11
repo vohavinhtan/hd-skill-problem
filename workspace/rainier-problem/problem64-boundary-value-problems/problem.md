@@ -2,34 +2,43 @@
 
 ## LaTeX (Normalized)
 
-Let $k\geq1$ be an integer. Consider the singular boundary value problem on $(0,\infty)$
+Let $k\geq1$ be an integer and define
 $$
--\frac{d}{dx}\!\left(\frac{x^{k+1}e^{-x}}{(x+k)^2}u'(x)\right)
-+\frac{2k\,x^ke^{-x}}{(x+k)^3}u(x)
-=\lambda\frac{x^ke^{-x}}{(x+k)^2}u(x),
+s_k(x)=x^2+2(k+1)x+k(k+1).
+$$
+Consider the singular boundary value problem on $(0,\infty)$
+$$
+-\frac{d}{dx}\!\left(\frac{x^{k+1}e^{-x}}{s_k(x)^2}u'(x)\right)
++\frac{2k\,s_k'(x)x^ke^{-x}}{s_k(x)^3}u(x)
+=\lambda\frac{x^ke^{-x}}{s_k(x)^2}u(x),
 $$
 where admissible solutions belong to $C^2((0,\infty))$, satisfy
 $$
-\int_0^\infty \frac{x^ke^{-x}}{(x+k)^2}u(x)^2\,dx<\infty,
+\int_0^\infty \frac{x^ke^{-x}}{s_k(x)^2}u(x)^2\,dx<\infty,
 $$
 and obey the endpoint conditions
 $$
-\lim_{x\downarrow0}\frac{x^{k+1}e^{-x}}{(x+k)^2}u'(x)=0,
+\lim_{x\downarrow0}\frac{x^{k+1}e^{-x}}{s_k(x)^2}u'(x)=0,
 \qquad
-\lim_{x\to\infty}\frac{x^{k+1}e^{-x}}{(x+k)^2}u'(x)=0.
+\lim_{x\to\infty}\frac{x^{k+1}e^{-x}}{s_k(x)^2}u'(x)=0.
 $$
 Let
 $$
 0<\lambda_{1,k}<\lambda_{2,k}<\lambda_{3,k}<\cdots
 $$
-be its eigenvalues. For integers $n\geq2$, let $q_{n,k}$ be an eigenfunction corresponding to $\lambda_{n,k}$, normalized to be a monic polynomial. Let $\zeta_1,\ldots,\zeta_n$ be the real zeros of $q_{n,k}$.
+be its eigenvalues. For each integer $n\geq2$, let $q_{n,k}$ be the polynomial eigenfunction corresponding to $\lambda_{n,k}$, normalized to be monic. Put $d_n=\deg q_{n,k}$ and denote its real zeros by $\zeta_{n,1},\ldots,\zeta_{n,d_n}$.
 
+Define
+$$
+D_{n,k}=
+\frac{\displaystyle\prod_{1\leq i<j\leq d_n}(\zeta_{n,j}-\zeta_{n,i})^2}
+{\displaystyle\prod_{i=1}^{d_n}s_k(\zeta_{n,i})^2}.
+$$
 Determine, in closed form as a function of $n$ and $k$, the exact value of
 $$
-\frac{\displaystyle\prod_{1\leq i<j\leq n}(\zeta_j-\zeta_i)^2}
-{\displaystyle\prod_{i=1}^n(\zeta_i+k)^2}.
+\frac{D_{n+1,k}}{D_{n,k}}.
 $$
-For consistency of answer representation, do not use Gamma functions, Pochhammer or rising-factorial notation, or binomial coefficients. If finite products occur in the final expression, index them starting at $j=1$ whenever possible, combine products with identical index ranges, and collect identical bases into integer powers.
+Give the final result in fully factored multiplicative form with common factors cancelled. Do not use Gamma functions, Pochhammer or rising-factorial notation, factorials, or unevaluated finite products in the final answer.
 
 ---
 
@@ -46,4 +55,4 @@ For consistency of answer representation, do not use Gamma functions, Pochhammer
 
 ## Domain Explanation
 
-The problem concerns a singular Sturm--Liouville family whose rational coefficient introduces an additional pole outside the physical interval. A complete derivation must identify the polynomial eigenfunction and its spectral index, then convert the weighted global separation of all its real zeros into a recurrence for polynomial resultants with the correct monic normalization. The denominator is tied to the same pole that changes the eigenfunction family, so it cannot be removed without changing the requested invariant.
+The problem concerns a singular Sturm Liouville family whose quadratic denominator produces two poles outside the physical interval and a polynomial spectrum with missing low degrees. A complete derivation must reconstruct the polynomial eigenfunctions and their spectral indexing, then relate their root separation to algebraic identities that couple consecutive spectral levels. The requested quotient depends on both the exceptional weight and the degree shift, so removing either feature changes the quantity being determined.
