@@ -31,20 +31,27 @@ Suppose that, as $w\to0$,
 $$
 e\,\frac{F(w)}{w}
 =
-1-w^5+\frac7{10}w^{10}-\frac{17}{30}w^{15}+O(w^{20}),
+1+\left(\frac13+\frac{2i}{15}\right)w^5
++\left(\frac{37}{150}+\frac{i}{9}\right)w^{10}
++\left(\frac{4837}{4050}+\frac{161i}{10125}\right)w^{15}
++O(w^{20}),
 $$
 where $F(w)/w$ is understood by its holomorphic extension at $w=0$.
 
-For every such normalized map $F$, define
+Set
 $$
-\Lambda_7(F)
-=[w^{35}]\left(-\log\left(e\frac{F(w)}{w}\right)\right),
+\tau=2^{-1/5}.
 $$
-where the logarithm is the holomorphic branch near $w=0$ satisfying $\log 1=0$, and $[w^{35}]$ denotes the coefficient of $w^{35}$ in the Taylor expansion.
+Assume in addition that
+$$
+\left|\frac{F(-\tau)}{-\tau}\right|=e^{-77/57}.
+$$
 
-Let $\mathcal A$ be the set of all normalized maps $F$ arising in this way and satisfying the displayed jet. Determine
+Let $\mathcal A$ be the set of all normalized maps $F$ arising in this way and satisfying both the displayed jet and the modulus constraint at $-\tau$.
+
+Determine
 $$
-M=\sup_{F\in\mathcal A}\operatorname{Re}\Lambda_7(F),
+M=\sup_{F\in\mathcal A}\left|\frac{F(\tau)}{\tau}\right|,
 $$
 prove that the supremum is attained by a unique normalized map, and determine that extremal map exactly.
 
@@ -63,4 +70,4 @@ prove that the supremum is attained by a unique normalized map, and determine th
 
 ## Domain Explanation
 
-This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift reduce the normalized map to a positive-real logarithmic function of $w^5$. The jet fixes only the first three Caratheodory moments, while the objective is the seventh logarithmic coefficient. Solving the problem requires a higher-order trigonometric moment optimization: one must derive a sharp cubic majorant for the seventh Chebyshev mode from the available lower moments, analyze its contact set, and use the equality conditions to recover the unique boundary measure and hence the entire extremal holomorphic map.
+This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift reduce the normalized map to a positive-real function of $w^5$. The complex jet fixes three genuinely complex Herglotz moments, while the modulus condition at $-2^{-1/5}$ fixes an additional Poisson-kernel average. The objective is a second Poisson-kernel average at the opposite point. A sharp solution requires a constrained two-point moment duality argument: one must derive a rational minorant from the available moments and the fixed negative-point average, analyze its three-point contact set, use the imaginary moment constraints to recover asymmetric masses on conjugate boundary points, and then reconstruct the unique extremal holomorphic map.
