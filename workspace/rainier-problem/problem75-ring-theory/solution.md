@@ -42,8 +42,8 @@ so $v(a_{\lambda})=27$ whenever $\lambda\neq1$. Also
 $$
 \begin{aligned}
 g_{\lambda}=y^3-z^2
-={}&-t^{46}+t^{45}+3t^{44}+3t^{43}+(4-2\lambda)t^{42}+4t^{41}\\
-&+3t^{40}+3t^{39}+(3-\lambda^2)t^{38}-2\lambda t^{37}.
+&=-t^{46}+t^{45}+3t^{44}+3t^{43}+(4-2\lambda)t^{42}+4t^{41}\\
+&\quad+3t^{40}+3t^{39}+(3-\lambda^2)t^{38}-2\lambda t^{37}.
 \end{aligned}
 $$
 Because $\lambda\in\mathbb C^{\times}$, $v(g_{\lambda})=37$. For $\lambda\neq1$, the eight elements
