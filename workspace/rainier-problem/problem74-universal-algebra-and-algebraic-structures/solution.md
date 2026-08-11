@@ -237,19 +237,19 @@ $$
 a=1+q,\qquad
 d=\begin{pmatrix}a&0\\0&a^{-1}\end{pmatrix},
 \qquad
-u(x)=I+xE.
+h(x)=I+xE.
 $$
-Both $d$ and $u(q)$ lie in $SL_2(R)$ and are congruent to $I$ modulo $q$. With the convention $[g,h]=g^{-1}h^{-1}gh$,
+Both $d$ and $h(q)$ lie in $SL_2(R)$ and are congruent to $I$ modulo $q$. With the convention $[g,h]=g^{-1}h^{-1}gh$,
 $$
-[d,u(x)]=u\left(x(1-a^{-2})\right).
+[d,h(x)]=h\left(x(1-a^{-2})\right).
 $$
-Starting with $c_1=u(q)$ and defining $c_{k+1}=[d,c_k]$, we obtain
+Starting with $c_1=h(q)$ and defining $c_{k+1}=[d,c_k]$, we obtain
 $$
-c_k=u\left(q(1-a^{-2})^{k-1}\right).
+c_k=h\left(q(1-a^{-2})^{k-1}\right).
 $$
 Now $1-a^{-2}=q\eta$ with $\eta\in R^\times$ because $\eta\equiv2\pmod p$. Therefore
 $$
-c_k=u(q^k\eta^{k-1}),
+c_k=h(q^k\eta^{k-1}),
 $$
 which is nontrivial for $1\leq k\leq m-1$. Hence $\gamma_{m-1}(\mathcal A_{p,m,r})\neq1$, so
 $$
