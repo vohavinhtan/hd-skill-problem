@@ -2,36 +2,49 @@
 
 ## LaTeX (Normalized)
 
+Fix an integer $r\geq3$ and put
+$$
+V_r=\mathbb F_2^r\setminus\{0\}.
+$$
 Let
 $$
-f(X)=X^3-3X+5\in\mathbb C[X],
-$$
-and for $j\geq1$ let $f^{\circ j}$ denote the $j$-fold iterate of $f$ under composition. Put
-$$
-\alpha_j=f^{\circ j}(1),
+t_1,\ldots,t_r,
 \qquad
-\beta_j=f^{\circ j}(-1).
+(s_v)_{v\in V_r}
 $$
-
-Let $t$ be transcendental over $\mathbb C$. For each $n\geq2$, let $L_n$ be the splitting field over $\mathbb C(t)$ of
+be algebraically independent over $\mathbb C$, and set
 $$
-f^{\circ n}(X)-t,
+F_r=\mathbb C\bigl(t_1,\ldots,t_r,(s_v)_{v\in V_r}\bigr).
 $$
-and define
+In a fixed algebraic closure of $F_r$, choose $\delta_i$ with
 $$
-K_n=\mathbb C(t)\left(\sqrt{(t-\alpha_n)(t-\beta_n)}\right).
+\delta_i^2=t_i
+\qquad(1\leq i\leq r).
+$$
+For $v=(v_1,\ldots,v_r)\in V_r$, define
+$$
+\delta_v=\prod_{i=1}^r\delta_i^{v_i},
+$$
+and choose $\rho_v$ satisfying
+$$
+\rho_v^3=\frac{s_v+\delta_v}{s_v-\delta_v}.
 $$
 Let
 $$
-M_n=L_nK_n
+L_r=F_r\bigl(\delta_1,\ldots,\delta_r,(\rho_v)_{v\in V_r}\bigr).
 $$
-be their compositum in a fixed algebraic closure of $\mathbb C(t)$. Let
-$$
-\mathfrak D_n=\operatorname{Diff}(M_n/K_n)
-$$
-be the different divisor of the finite separable extension $M_n/K_n$, and let $\deg\mathfrak D_n$ denote its divisor degree.
 
-Determine $\deg\mathfrak D_n$ exactly as a function of $n$.
+Among all intermediate fields
+$$
+F_r\subseteq K\subseteq L_r
+$$
+whose normal closure over $F_r$ is $L_r$, let $\mu_r$ be the minimum possible value of $[K:F_r]$. Let $c_r$ be the number of $F_r$-isomorphism classes of such fields $K$ satisfying $[K:F_r]=\mu_r$.
+
+Determine the ordered pair
+$$
+(\mu_r,c_r)
+$$
+for every $r\geq3$.
 
 ---
 
@@ -41,11 +54,11 @@ Determine $\deg\mathfrak D_n$ exactly as a function of $n$.
 |---|---|
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Galois theory |
-| **Problem Type** | Exact computation |
-| **Answer Type** | Exact scalar |
+| **Problem Type** | Optimization |
+| **Answer Type** | Tuple or ordered list |
 
 ---
 
 ## Domain Explanation
 
-The problem asks for the different after a quadratic base change tied to the newest critical values of an iterated cubic. Determining it requires identifying how that quadratic field meets the splitting field, reconstructing the Galois groups in the iteration tower, and tracking the inertia groups through the base change before assembling the global ramification contribution. These are Galois-theoretic questions about splitting fields, intermediate fields, and ramification rather than direct polynomial evaluation.
+The problem asks for extremal intermediate fields inside a finite Galois compositum built from correlated quadratic extensions and cubic Kummer layers. Solving it requires determining the Galois group and its action, translating normal-closure conditions through the Galois correspondence, and classifying the subgroups that attain the smallest possible index. The requested invariants are therefore controlled by Galois groups, intermediate fields, and normal closures rather than by direct manipulation of the radical equations alone.
