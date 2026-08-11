@@ -76,11 +76,11 @@ We now kill these homology classes by iterated mapping cones. For every such cla
 $$
 e_0[\lambda_1,e_1]\cdots[\lambda_r,e_r],
 $$
-where each $\lambda_i$ is one of two labels and each $e_i$ is a basis element of $F$. This is a tensor-word construction, not an acyclic closure or a divided-power DG algebra.
+where each $\lambda_i$ is one of two labels and each $e_i$ is a basis element of $F$. This is a tensor-word free resolution constructed by mapping cones; the bracket labels are separators, not commuting DG variables.
 
 The construction is compatible at every stage because the representatives come from the connecting morphism above: their lifts have coefficients in $L$, while every positive differential coefficient of $F$ lies in $\mathfrak q$. Hence a possible composite correction contains a factor from $L\mathfrak q$ and is zero. Therefore the mapping-cone differential squares to zero without additional higher terms. The same description shows exactness by induction on the number of brackets: at stage $r$ all homology classes represented by words with at most $r$ brackets are killed, and every cycle is a finite sum of words, so it is killed at a finite stage.
 
-Minimality is also visible in this construction. The old differential entries lie in the image of $\mathfrak q$, and the attaching cycles have coefficients in the image of $\mathfrak q$ because $L\subseteq\mathfrak q^2$; therefore every matrix entry of the resulting $R$-differential lies in $\mathfrak m$.
+Minimality is also visible in this construction. The old differential entries lie in the image of $\mathfrak q$. For an attaching class represented by $\ell\in L\subseteq\mathfrak q^2$, write $\ell=\sum r_js_j$ with $r_j,s_j\in\mathfrak q$; lifting the $s_j$ through the first differential of $F$ produces a connecting cycle with coefficients $r_j\in\mathfrak q$. The same comparison-map induction in higher degree keeps the coefficients in $\mathfrak q$ because the differentials of $F$ are minimal. Hence every attaching map has entries in $\mathfrak m$, and so does every differential matrix of the resulting $R$-complex.
 
 Counting the tensor words gives
 $$
