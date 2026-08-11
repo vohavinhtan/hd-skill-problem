@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Reduce the symmetry to a positive-real logarithm
+Step 1: Reduce the symmetry to a positive-real function
 
 The commutation relation is equivalent to
 $$
@@ -10,285 +10,331 @@ Set
 $$
 H(w)=\frac{F(w)}{w},
 $$
-using its holomorphic extension at $0$. Since $F(w)=wG(w)^4$ and $G$ is zero free with $|G|<1$, the function $H=G^4$ is zero free and satisfies $|H|<1$ on $\mathbb D$. Moreover,
+using the holomorphic extension at $w=0$. Since $F(w)=wG(w)^4$ with $G$ zero free and $|G|<1$, the function
 $$
-H(\zeta w)=H(w).
+H=G^4
 $$
-The prescribed jet gives $H(0)=e^{-1}$. Choose the holomorphic logarithm
-$$
-P(w)=-\log H(w)
-$$
-with $P(0)=1$. Then $\operatorname{Re}P>0$.
+is zero free and satisfies $|H|<1$. The symmetry gives $H(\zeta w)=H(w)$, and the prescribed jet gives $H(0)=e^{-1}$.
 
-Because $H(\zeta w)=H(w)$,
+Choose the holomorphic logarithm
+$$
+P(w)=-\log H(w),\qquad P(0)=1.
+$$
+Because $|H|<1$, we have $\operatorname{Re}P>0$. Also
 $$
 P(\zeta w)-P(w)\in2\pi i\mathbb Z.
 $$
-The left-hand side is holomorphic and vanishes at $0$, hence it is identically zero. Therefore $P(\zeta w)=P(w)$, so there is a holomorphic function $p:\mathbb D\to\mathbb C$ such that
+The left-hand side is holomorphic and vanishes at $0$, hence it is identically zero. Therefore $P(\zeta w)=P(w)$, so the Taylor series of $P$ contains only powers divisible by $5$. Thus there is a holomorphic function $p:\mathbb D\to\mathbb C$ such that
 $$
-\operatorname{Re}p>0,
-\qquad
-P(w)=p(w^5),
-\qquad
-p(0)=1.
+\operatorname{Re}p>0,\qquad p(0)=1,\qquad P(w)=p(w^5).
 $$
-Consequently,
+Consequently
 $$
 F(w)=w e^{-p(w^5)}.
 \tag{1}
 $$
 
-Step 2: Extract the fixed moments and identify the free extremal parameter
+Step 2: Read the first three moments from the jet
 
-Put $u=w^5$. The given jet is
+Put $u=w^5$. The hypothesis is
 $$
 eH(w)=S(u)+O(u^4),
 $$
 where
 $$
-S(u)=1-\frac35u-\frac{27}{50}u^2+\frac{333}{250}u^3.
+S(u)=1-u+\frac7{10}u^2-\frac{17}{30}u^3.
 $$
 Since $H(w)=e^{-p(u)}$ and $p(0)=1$,
 $$
 p(u)=1-\log S(u)+O(u^4).
 $$
-Using
+Expanding the logarithm gives
 $$
--\log(1+x)=-x+\frac{x^2}{2}-\frac{x^3}{3}+O(x^4),
-$$
-we obtain
-$$
-p(u)=1+\frac35u+\frac{18}{25}u^2-\frac{117}{125}u^3+O(u^4).
+p(u)=1+u-\frac15u^2+\frac15u^3+O(u^4).
 \tag{2}
 $$
 Write
 $$
 p(u)=1+2\sum_{n\ge1}m_nu^n,
-\qquad
-m_{-n}=\overline{m_n},
-\qquad m_0=1.
+\qquad m_{-n}=\overline{m_n},\qquad m_0=1.
 $$
 Then
 $$
-m_1=\frac3{10},\qquad
-m_2=\frac9{25},\qquad
-m_3=-\frac{117}{250}.
+m_1=\frac12,\qquad m_2=-\frac1{10},\qquad m_3=\frac1{10}.
 \tag{3}
 $$
-The fourth moment is not prescribed. Write
-$$
-m_4=x+iy.
-$$
-Since
+Moreover,
 $$
 -\log\left(e\frac{F(w)}{w}\right)=p(w^5)-1,
 $$
-we have
+so
 $$
-\Lambda(F)=2m_4,
-\qquad
-\operatorname{Re}\Lambda(F)=2x.
+\Lambda_7(F)=2m_7.
 \tag{4}
 $$
-Thus the extremal problem is exactly the problem of maximizing the real part of the fourth Caratheodory moment subject to positivity.
 
-Step 3: Solve the fourth-moment semidefinite problem
+Step 3: Produce a boundary measure from positivity
 
-For $N\ge0$, define the Toeplitz matrix
+We need a measure interpretation of the coefficients, so we derive it directly from $\operatorname{Re}p>0$. For $0<r<1$, define a probability measure on the unit circle by
 $$
-T_N=[m_{j-k}]_{j,k=0}^N.
+d\mu_r(e^{it})=\frac{\operatorname{Re}p(re^{it})}{2\pi}\,dt.
 $$
-We first prove $T_N\succeq0$. For
+Its total mass is $1$ because the mean value of $\operatorname{Re}p$ is $\operatorname{Re}p(0)=1$. From the Taylor series of $p$,
 $$
-A(e^{it})=\sum_{j=0}^Na_je^{ijt}
-$$
-and $0<r<1$, positivity of $\operatorname{Re}p$ gives
-$$
-0\leq\frac1{2\pi}\int_0^{2\pi}
-\operatorname{Re}p(re^{it})\,|A(e^{it})|^2\,dt.
-$$
-Expanding the Fourier series and integrating termwise yields
-$$
-\sum_{j,k=0}^N\overline{a_j}a_k\,
-r^{|j-k|}m_{j-k}\ge0.
-$$
-Letting $r\uparrow1$ proves $T_N\succeq0$.
-
-The fixed $4\times4$ principal block is
-$$
-T_3=
-\begin{pmatrix}
-1&\frac3{10}&\frac9{25}&-\frac{117}{250}\\
-\frac3{10}&1&\frac3{10}&\frac9{25}\\
-\frac9{25}&\frac3{10}&1&\frac3{10}\\
--\frac{117}{250}&\frac9{25}&\frac3{10}&1
-\end{pmatrix}.
-$$
-Its leading principal minors are
-$$
-1,\qquad
-\frac{91}{100},\qquad
-\frac{472}{625},\qquad
-\frac{4096}{15625},
-$$
-so $T_3$ is positive definite.
-
-Now append the unknown fourth moment. Since $T_3\succ0$, positivity of
-$$
-T_4=
-\begin{pmatrix}
-T_3&b\\
-b^*&1
-\end{pmatrix}
-$$
-is equivalent to nonnegativity of its scalar Schur complement, or equivalently of $\det T_4$. Exact expansion in $x=\operatorname{Re}m_4$ and $y=\operatorname{Im}m_4$ gives
-$$
-\det T_4
-=
-\frac{472}{625}
-\left[
-\left(\frac{512}{1475}\right)^2
--\left|m_4+\frac{9909}{36875}\right|^2
-\right].
+\int e^{-int}\,d\mu_r(e^{it})=r^n m_n
+\qquad(n\ge1).
 \tag{5}
 $$
-Hence every admissible fourth moment lies in the closed disk
+Choose a sequence $r_k\uparrow1$. Since the unit circle is compact, probability measures on it admit a weakly convergent subsequence; for example, one obtains this by a diagonal subsequence argument on integrals against a countable dense family of continuous functions. Let the subsequential limit be $\mu$. Passing to the limit in (5) gives
 $$
-\left|m_4+\frac{9909}{36875}\right|
-\leq\frac{512}{1475}.
+m_n=\int_{|\xi|=1}\xi^{-n}\,d\mu(\xi)
+\qquad(n\ge1).
 \tag{6}
 $$
-The rightmost point of this disk is real and equals
-$$
--\frac{9909}{36875}+\frac{512}{1475}
-=\frac{49}{625}.
-$$
-Therefore
-$$
-\operatorname{Re}m_4\leq\frac{49}{625},
-$$
-and by (4),
-$$
-M\leq\frac{98}{625}.
-\tag{7}
-$$
-Equality in (7) forces
-$$
-m_4=\frac{49}{625}.
-\tag{8}
-$$
-Thus any extremizer has the same first four moments, and $T_4$ is singular at the extremal point.
-
-Step 4: Derive the singular kernel and force every later moment
-
-At the value (8), $T_3$ is still invertible and $\det T_4=0$, so $\ker T_4$ is one-dimensional. Normalize a null vector by taking its last coordinate equal to $5$. The first four equations of $T_4c=0$ are then
-$$
-T_3
-\begin{pmatrix}c_0\\c_1\\c_2\\c_3\end{pmatrix}
-=-5
-\begin{pmatrix}
-\frac{49}{625}\\[2pt]
--\frac{117}{250}\\[2pt]
-\frac9{25}\\[2pt]
-\frac3{10}
-\end{pmatrix}.
-$$
-Since $T_3$ is invertible, these equations have a unique solution; elimination gives
-$$
-(c_0,c_1,c_2,c_3)=(-5,6,0,-6).
-$$
-Hence
-$$
-c=(-5,6,0,-6,5)^T
-$$
-spans $\ker T_4$.
-
-Fix $N\ge5$ and append zeros to $c$ to view it in $\mathbb C^{N+1}$. Because $T_N\succeq0$ and
-$$
-c^*T_Nc=c^*T_4c=0,
-$$
-we must have $T_Nc=0$. Looking at row $n\ge5$ gives
-$$
--5m_n+6m_{n-1}-6m_{n-3}+5m_{n-4}=0.
-$$
-Therefore every higher moment is forced by
-$$
-5m_n=6m_{n-1}-6m_{n-3}+5m_{n-4}
-\qquad(n\ge5).
-\tag{9}
-$$
-Thus equality in the extremal bound determines the entire Caratheodory moment sequence, not just the fourth moment.
-
-Step 5: Sum the recurrence and reconstruct the extremizer
 
 Let
 $$
-M_0(u)=\sum_{n\ge0}m_nu^n.
+X(\xi)=\operatorname{Re}\xi.
 $$
-Multiplying (9) by $u^n$ and summing for $n\ge5$, using (3) and (8), gives
+Since $m_1,m_2,m_3$ are real, (3) and the identities
 $$
-\left(1-\frac65u+\frac65u^3-u^4\right)M_0(u)
-=1-\frac9{10}u+\frac3{10}u^3.
+\cos2t=2\cos^2t-1,
+\qquad
+\cos3t=4\cos^3t-3\cos t
 $$
-Hence
+give
 $$
-M_0(u)=
-\frac{3u^3-9u+10}
-{2(1-u^2)(5u^2-6u+5)}.
+\mathbb E_\mu X=\frac12,\qquad
+\mathbb E_\mu X^2=\frac9{20},\qquad
+\mathbb E_\mu X^3=\frac25.
+\tag{7}
 $$
-Since $p=2M_0-1$,
+Also, if
 $$
-p(u)=
-\frac{5u^4-3u^3-3u+5}
-{(1-u^2)(5u^2-6u+5)}.
+T_7(x)=64x^7-112x^5+56x^3-7x,
+$$
+then
+$$
+\operatorname{Re}m_7=\mathbb E_\mu T_7(X).
+\tag{8}
+$$
+Thus the analytic extremal problem has become a seventh-moment problem on $[-1,1]$ with only the three moments in (7) fixed.
+
+Step 4: Derive a sharp cubic majorant for $T_7$
+
+Because only the expectations of $1,X,X^2,X^3$ are known, a dual bound for $\mathbb E T_7(X)$ should come from a cubic polynomial $q$ satisfying $q\ge T_7$ on $[-1,1]$. We now derive such a polynomial rather than guess it.
+
+For a sharp three-point contact pattern, take one endpoint contact and two interior double contacts. Write the gap in the form
+$$
+R(x)=64(1-x)(x^2-sx+t)^2(x^2+\alpha x+\beta),
+$$
+and require
+$$
+q(x)=T_7(x)+R(x)
+$$
+to have degree at most $3$. Cancellation of the coefficients of $x^6,x^5,x^4$ gives
+$$
+\alpha=2s+1,
+$$
+$$
+\beta=3s^2+2s-2t-\frac34,
+$$
+and
+$$
+8t(3s+1)=16s^3+12s^2-6s-3.
+\tag{9}
+$$
+
+For this bound to be sharp for the moments (7), a measure supported on the contact set must satisfy
+$$
+(X-1)(X^2-sX+t)=0.
+$$
+Taking expectations and using (7) yields
+$$
+\frac25-(s+1)\frac9{20}+(s+t)\frac12-t=0,
+$$
+so
+$$
+t=\frac{s-1}{10}.
 \tag{10}
 $$
-
-It remains to prove that the upper bound is actually attained. Put
+Combining (9) and (10) gives
 $$
-\rho=\frac{3+4i}{5}.
-$$
-The rational function (10) decomposes as
-$$
-p(u)=\frac14\left(
-\frac{1+u}{1-u}
-+\frac{1-u}{1+u}
-+\frac{\rho+u}{\rho-u}
-+\frac{\overline\rho+u}{\overline\rho-u}
-\right).
+(2s-1)(40s^2+44s+11)=0.
 \tag{11}
 $$
-Each point $1,-1,\rho,\overline\rho$ lies on the unit circle, so every Cayley term in (11) has positive real part in $\mathbb D$. Hence $\operatorname{Re}p>0$.
-
-Substituting $u=w^5$ into (1) gives
+If $40s^2+44s+11=0$, then substituting (10) into the formula for $\beta$ gives
 $$
-F_*(w)=w\exp\left(
--\frac{5w^{20}-3w^{15}-3w^5+5}
-{(1-w^{10})(5w^{10}-6w^5+5)}
-\right).
+\beta=-\frac{12s+11}{8}<0.
+$$
+Since then $t\ne0$, the proposed gap satisfies $R(0)<0$, so it cannot be a majorant. Hence the only admissible value from (11) is
+$$
+s=\frac12.
+$$
+Equations (9) and (10) now give
+$$
+t=-\frac1{20},\qquad \alpha=2,\qquad \beta=\frac{11}{10}.
+$$
+Therefore
+$$
+R(x)
+=\frac2{125}(1-x)(10x^2+20x+11)(20x^2-10x-1)^2.
 \tag{12}
 $$
-The denominator has no zero in $\mathbb D$, since its $u$-zeros are $\pm1,\rho,\overline\rho$. Moreover,
+Every factor on the right of (12) is nonnegative for $-1\le x\le1$; indeed
 $$
-G_*(w)=\exp\left(-\frac14p(w^5)\right)
+10x^2+20x+11=10(x+1)^2+1>0.
 $$
-is holomorphic, zero free, and maps $\mathbb D$ into $\mathbb D$. Thus $F_*(w)=wG_*(w)^4$, and $(\zeta w)^5=w^5$ gives
+Thus $R\ge0$. Expanding $q=T_7+R$ gives the sharp cubic majorant
+$$
+q(x)
+=-\frac{228}{25}x^3+\frac{332}{25}x^2
+-\frac{417}{125}x+\frac{22}{125}.
+\tag{13}
+$$
+Using (7),
+$$
+\mathbb E_\mu T_7(X)
+\le \mathbb E_\mu q(X)
+=\frac{209}{250}.
+$$
+By (4) and (8),
+$$
+\operatorname{Re}\Lambda_7(F)\le\frac{209}{125}.
+\tag{14}
+$$
+
+Step 5: Analyze equality and recover the unique measure
+
+Equality in (14) implies
+$$
+\int R(X)\,d\mu=0.
+$$
+Since $R\ge0$, the measure is supported where $R=0$. By (12), the possible real parts are
+$$
+1,\qquad
+a=\frac{5+3\sqrt5}{20},\qquad
+b=\frac{5-3\sqrt5}{20},
+\tag{15}
+$$
+the two roots of $20x^2-10x-1=0$.
+
+Let $W_1,W_a,W_b$ be the total masses carried by the three real-part classes in (15). The equations for total mass, $\mathbb E X$, and $\mathbb E X^2$ are
+$$
+W_1+W_a+W_b=1,
+$$
+$$
+W_1+aW_a+bW_b=\frac12,
+$$
+$$
+W_1+a^2W_a+b^2W_b=\frac9{20}.
+$$
+Since the three nodes are distinct, this system has a unique solution, namely
+$$
+W_1=W_a=W_b=\frac13.
+\tag{16}
+$$
+
+For $x=a,b$, choose
+$$
+\xi_x=x+i\sqrt{1-x^2}.
+$$
+The only circle points with real part $x$ are $\xi_x$ and $\overline{\xi_x}$. Let
+$$
+\delta_a=\mu(\{\xi_a\})-\mu(\{\overline{\xi_a}\}),
+\qquad
+\delta_b=\mu(\{\xi_b\})-\mu(\{\overline{\xi_b}\}).
+$$
+Because $m_1$ and $m_2$ are real, their imaginary parts give
+$$
+\sqrt{1-a^2}\,\delta_a+\sqrt{1-b^2}\,\delta_b=0,
+$$
+$$
+a\sqrt{1-a^2}\,\delta_a+b\sqrt{1-b^2}\,\delta_b=0.
+$$
+The determinant is nonzero because $a\ne b$ and $|a|,|b|<1$. Hence
+$$
+\delta_a=\delta_b=0.
+$$
+Together with (16), this proves that every extremizer has the same measure
+$$
+\mu_*
+=\frac13\delta_1
++\frac16\left(
+\delta_{\xi_a}+\delta_{\overline{\xi_a}}
++\delta_{\xi_b}+\delta_{\overline{\xi_b}}
+\right).
+\tag{17}
+$$
+Thus the boundary measure, and therefore every coefficient $m_n$ in (6), is uniquely determined at equality.
+
+Step 6: Reconstruct the extremal positive-real function
+
+For $|\xi|=1$,
+$$
+\operatorname{Re}\frac{\xi+u}{\xi-u}
+=\frac{1-|u|^2}{|\xi-u|^2}>0
+\qquad(|u|<1).
+$$
+Hence the measure (17) produces the positive-real function
+$$
+p_*(u)
+=\frac13\frac{1+u}{1-u}
++\frac13(1-u^2)
+\left(
+\frac1{1-2au+u^2}
++\frac1{1-2bu+u^2}
+\right).
+\tag{18}
+$$
+Using
+$$
+a+b=\frac12,\qquad ab=-\frac1{20},
+$$
+formula (18) simplifies to
+$$
+p_*(u)
+=\frac{(1+u)(5u^4-10u^3+13u^2-10u+5)}
+{(1-u)(5u^4-5u^3+9u^2-5u+5)}.
+\tag{19}
+$$
+Its Taylor expansion begins
+$$
+p_*(u)
+=1+u-\frac15u^2+\frac15u^3+\cdots+\frac{209}{125}u^7+\cdots,
+$$
+so the corresponding map attains the bound (14).
+
+Finally substitute $u=w^5$ into (1):
+$$
+F_*(w)
+=w\exp\left(
+-\frac{(1+w^5)(5w^{20}-10w^{15}+13w^{10}-10w^5+5)}
+{(1-w^5)(5w^{20}-5w^{15}+9w^{10}-5w^5+5)}
+\right).
+\tag{20}
+$$
+Because $\operatorname{Re}p_*>0$,
+$$
+G_*(w)=\exp\left(-\frac14p_*(w^5)\right)
+$$
+is holomorphic, zero free, and maps $\mathbb D$ into $\mathbb D$. Thus $F_*(w)=wG_*(w)^4$. Also $(\zeta w)^5=w^5$, so
 $$
 F_*(\zeta w)=\zeta F_*(w).
 $$
-The first three coefficients of $p$ are exactly those in (2), so $F_*$ satisfies the prescribed jet. Its fourth moment is $49/625$, hence
+The first three coefficients in (19) reproduce the prescribed jet after exponentiating $1-p_*(w^5)$. Hence $F_*$ belongs to $\mathcal A$ and attains
 $$
-\operatorname{Re}\Lambda(F_*)=\frac{98}{625}.
+\operatorname{Re}\Lambda_7(F_*)=\frac{209}{125}.
 $$
-Thus the upper bound (7) is attained. By Steps 3 and 4, every extremizer has the same complete moment sequence and therefore the same function $p$, so $F_*$ is the unique extremal normalized map.
+By Step 5, equality determines the measure uniquely, so it determines $p_*$ and therefore $F_*$ uniquely.
 
-Final Answer: $\boxed{\left(M,F(w)\right)=\left(\frac{98}{625},\;w\exp\left(-\frac{5w^{20}-3w^{15}-3w^5+5}{(1-w^{10})(5w^{10}-6w^5+5)}\right)\right)}$
+Final Answer: $\boxed{\left(M,F_*(w)\right)=\left(\frac{209}{125},\;w\exp\left(-\frac{(1+w^5)(5w^{20}-10w^{15}+13w^{10}-10w^5+5)}{(1-w^5)(5w^{20}-5w^{15}+9w^{10}-5w^5+5)}\right)\right)}$
 
 ---
 
 ## Answer
 
-$\left(M,F(w)\right)=\left(\frac{98}{625},\;w\exp\left(-\frac{5w^{20}-3w^{15}-3w^5+5}{(1-w^{10})(5w^{10}-6w^5+5)}\right)\right)$
+$\left(M,F_*(w)\right)=\left(\frac{209}{125},\;w\exp\left(-\frac{(1+w^5)(5w^{20}-10w^{15}+13w^{10}-10w^5+5)}{(1-w^5)(5w^{20}-5w^{15}+9w^{10}-5w^5+5)}\right)\right)$
 
 ---
 
@@ -305,7 +351,7 @@ $\left(M,F(w)\right)=\left(\frac{98}{625},\;w\exp\left(-\frac{5w^{20}-3w^{15}-3w
 - cyclic disk symmetries
 - zero-free Schur lifts
 - positive-real logarithms
-- Toeplitz moment positivity
-- Schur-complement optimization
-- singular moment matrices
-- forced linear recurrences
+- boundary moment measures
+- Chebyshev polynomials
+- dual polynomial majorants
+- equality-support rigidity
