@@ -2,42 +2,38 @@
 
 ## LaTeX (Normalized)
 
-Let $p>5$ be prime. Let $K$ be the unramified quadratic extension of $\mathbb Q_p(\zeta_p)$, where $\zeta_p$ is a primitive $p$-th root of unity, and put
+Let $p>5$ be prime and put
 $$
-\pi=\zeta_p-1.
+F=\mathbb Q_p(\zeta_p),
+\qquad
+\pi=\zeta_p-1,
 $$
-Normalize $v_K$ by $v_K(\pi)=1$. Let $\mathcal O_K$ be the valuation ring of $K$, whose residue field is $\mathbb F_{p^2}$, and choose $\omega\in\mathcal O_K^\times$ whose residue does not belong to $\mathbb F_p$.
+where $\zeta_p$ is a primitive $p$-th root of unity. Let $K/F$ be the unramified quadratic extension, let $\sigma$ be the nontrivial element of $\operatorname{Gal}(K/F)$, and normalize $v_K$ by $v_K(\pi)=1$. Choose $\omega\in\mathcal O_K^\times$ such that
+$$
+\sigma(\omega)=-\omega.
+$$
 
-Fix an integer $m$ such that
+Fix an integer $m$ satisfying
 $$
 2\leq m,
 \qquad
-3m<p<5m.
+5m<p<7m.
 $$
-Define
+For
 $$
-\eta_1=
-\pi\frac{1+\pi^m}{1-\pi^m},
-\qquad
-\eta_2=
-\zeta_p\frac{1+\omega\pi^m}{1-\omega\pi^m},
+T=\{-2,-1,0,1,2\}
 $$
+and $t\in T$, define
 $$
-\eta_3=
-\frac{1+(1+\omega)\pi^m}{1-(1+\omega)\pi^m},
-\qquad
-\eta_4=\pi\zeta_p,
-\qquad
-\eta_5=\pi^2\zeta_p^3,
+u_t=
+\frac{1+(1+t\omega)\pi^m}{1-(1+t\omega)\pi^m}.
 $$
-and let
+Let
 $$
 L=K\left(
-\sqrt[p]{\eta_1},
-\sqrt[p]{\eta_2},
-\sqrt[p]{\eta_3},
-\sqrt[p]{\eta_4},
-\sqrt[p]{\eta_5}
+\sqrt[p]{\pi},
+\sqrt[p]{\zeta_p},
+\sqrt[p]{\nu_t}:t\in T
 \right).
 $$
 
@@ -47,20 +43,21 @@ K\subset E\subset L,
 \qquad
 [E:K]=p^2,
 $$
-let $\delta_2$ be the second-largest distinct value of
+and such that $E/F$ is Galois with abelian Galois group, let $\delta_2$ be the second-largest distinct value of
 $$
 v_K\left(\operatorname{Disc}(E/K)\right).
 $$
-Form a graph $\Gamma$ whose vertices are the fields $E$ attaining this value $\delta_2$, with two distinct vertices $E,E'$ adjacent exactly when
+
+Form a graph $\Gamma$ whose vertices are the fields $E$ attaining $\delta_2$, with two distinct vertices $E,E'$ adjacent exactly when
 $$
 [E\cap E':K]=p.
 $$
+Let $A_\Gamma$ be the adjacency matrix of $\Gamma$, and let $\lambda_*$ be the largest eigenvalue of $A_\Gamma$ that is strictly smaller than its spectral radius.
 
 Determine the ordered pair
 $$
-\left(\delta_2,\ \deg\Gamma\right),
+\left(\delta_2,\lambda_*\right).
 $$
-where $\deg\Gamma$ denotes the common vertex degree of $\Gamma$.
 
 ---
 
@@ -77,4 +74,4 @@ where $\deg\Gamma$ denotes the common vertex degree of $\Gamma$.
 
 ## Domain Explanation
 
-This problem is classified under Number Theory and Algebraic number theory because its primary objects are Kummer extensions of a local field, ramification filtrations, discriminants, and intermediate extensions. The decisive work is to reconstruct the filtered Kummer space from the given radicands and then translate the discriminant condition into the incidence geometry of degree-$p^2$ subextensions. Finite-dimensional projective geometry supports the final incidence count, but the filtration and discriminant structure remain the controlling algebraic-number-theoretic data.
+This problem is classified under Number Theory and Algebraic number theory because the controlling objects are a filtered Kummer space over a local field, ramification discriminants, and Galois descent through an unramified extension. The abelian descent condition forces a Frobenius-fixed part of the Kummer space, while the second discriminant stratum must then be reconstructed from its unit filtration. The final graph spectrum is a secondary finite-dimensional calculation attached to that arithmetic stratum, rather than the primary source of the field-theoretic structure.
