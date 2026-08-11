@@ -82,7 +82,7 @@ Its core is trivial. If $C=\operatorname{core}_{G_r}(H)$, the image of $C\cap N_
 
 Thus the minimum field degree is
 $$
-\mu_r=[N_r:K]=2^8\,9828^{r-r/\ell_0}.
+\mu_r=2^8\,9828^{r-r/\ell_0}.
 $$
 
 Step 5: Count the minimizing isomorphism classes
@@ -111,26 +111,24 @@ Z(N_r)\cong\mathbb F_2[x]/(h),
 $$
 with $\tau$ acting as multiplication by $x$. Since $h(1)=1$, $x-1$ is invertible modulo $h$, so every central modification $c\tau$ is conjugate to $\tau$: write $c=(1-x)y$ and conjugate by $y\in Z(N_r)$. Thus the outer class is the complete conjugacy invariant, and by Step 1 it is also the complete $F_r$-isomorphism invariant of minimizing fields.
 
-Step 6: Compact the two parity cases and verify the boundary cases
-Put
+Step 6: State the two parity cases directly and verify the boundary cases
+For even $r$, Step 4 gives $\ell_0=2$, while Step 5 gives $c_r=2$. Hence
 $$
-d=\gcd(2,r),
-\qquad
-g=\gcd(r,21^r).
+(\mu_r,c_r)=(256\cdot9828^{r/2},2).
 $$
-The optimal block size is
+For odd $r$, Step 4 gives $\ell_0=\gcd(r,21^r)$ and Step 5 gives $c_r=3$. Hence
 $$
-\ell_0=d+(2-d)(g-1),
+(\mu_r,c_r)=\left(256\cdot9828^{r-r/\gcd(r,21^r)},3\right).
 $$
-which equals $2$ for even $r$ and $g$ for odd $r$, while the class count is $4-d$. For $r=21$ this gives block size $21$, exponent $20$, and $c_r=3$; for $r=42$ it gives block size $2$, exponent $21$, and $c_r=2$; for $r=63$ it gives block size $63$, exponent $62$, and $c_r=3$. Conversely, any smaller odd block misses part of the $3$- or $7$-primary component and fails the primitive-root test in Step 3, while for even $r$ the only smaller candidate than $2$ is $\ell=1$, which also fails. Hence the minimum and equality cases are exhaustive.
+For $r=21$ this gives exponent $20$ and $c_r=3$; for $r=42$ it gives exponent $21$ and $c_r=2$; for $r=63$ it gives exponent $62$ and $c_r=3$. Conversely, any smaller odd block misses part of the $3$- or $7$-primary component and fails the primitive-root test in Step 3, while for even $r$ the only smaller candidate than $2$ is $\ell=1$, which also fails. Hence the minimum and equality cases are exhaustive.
 
-Final Answer: $\boxed{\left(256\cdot9828^{r-\frac{r}{\gcd(2,r)+(2-\gcd(2,r))(\gcd(r,21^r)-1)}},4-\gcd(2,r)\right)}$
+Final Answer: $\boxed{(256\cdot9828^{r/2},2)\text{ if }2\mid r;\ (256\cdot9828^{r-r/\gcd(r,21^r)},3)\text{ if }2\nmid r}$
 
 ---
 
 ## Answer
 
-$\left(256\cdot9828^{r-\frac{r}{\gcd(2,r)+(2-\gcd(2,r))(\gcd(r,21^r)-1)}},4-\gcd(2,r)\right)$
+$(256\cdot9828^{r/2},2)\text{ if }2\mid r;\ (256\cdot9828^{r-r/\gcd(r,21^r)},3)\text{ if }2\nmid r$
 
 ---
 
