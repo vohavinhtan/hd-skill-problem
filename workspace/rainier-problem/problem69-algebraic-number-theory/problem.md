@@ -2,38 +2,65 @@
 
 ## LaTeX (Normalized)
 
-Let $p>5$ be prime, let $\zeta_p$ be a primitive $p$-th root of unity, and put
+Let $p>5$ be prime. Let $K$ be the unramified quadratic extension of $\mathbb Q_p(\zeta_p)$, where $\zeta_p$ is a primitive $p$-th root of unity, and put
 $$
-K=\mathbb Q_p(\zeta_p),
-\qquad
 \pi=\zeta_p-1.
 $$
+Normalize $v_K$ by $v_K(\pi)=1$. Let $\mathcal O_K$ be the valuation ring of $K$, whose residue field is $\mathbb F_{p^2}$, and choose $\omega\in\mathcal O_K^\times$ whose residue does not belong to $\mathbb F_p$.
+
 Fix an integer $m$ such that
 $$
 2\leq m,
 \qquad
-5m<p<7m.
+3m<p<5m.
 $$
-For $j\in\{1,2,3,4\}$, define
+Define
 $$
-\eta_j=\zeta_p^{\,j^3+j^4}\pi^{j^4}\frac{1+j\pi^m}{1-j\pi^m},
+\eta_1=
+\pi\frac{1+\pi^m}{1-\pi^m},
+\qquad
+\eta_2=
+\zeta_p\frac{1+\omega\pi^m}{1-\omega\pi^m},
+$$
+$$
+\eta_3=
+\frac{1+(1+\omega)\pi^m}{1-(1+\omega)\pi^m},
+\qquad
+\eta_4=\pi\zeta_p,
+\qquad
+\eta_5=\pi^2\zeta_p^3,
 $$
 and let
 $$
-L=K\left(\sqrt[p]{\eta_1},\sqrt[p]{\eta_2},\sqrt[p]{\eta_3},\sqrt[p]{\eta_4}\right).
+L=K\left(
+\sqrt[p]{\eta_1},
+\sqrt[p]{\eta_2},
+\sqrt[p]{\eta_3},
+\sqrt[p]{\eta_4},
+\sqrt[p]{\eta_5}
+\right).
 $$
 
-Let $b_{L/K}$ be the largest lower-numbering ramification break of $\operatorname{Gal}(L/K)$; equivalently,
+For every intermediate field $E$ with
 $$
-b_{L/K}=\max\{i\geq0:\operatorname{Gal}(L/K)_i\neq1\}.
+K\subset E\subset L,
+\qquad
+[E:K]=p^2,
 $$
-Let $\operatorname{Disc}(L/\mathbb Q_p)$ be the discriminant ideal, and normalize $v_p$ by $v_p(p)=1$.
+put
+$$
+d(E)=v_K\left(\operatorname{Disc}(E/K)\right).
+$$
+Let $\delta_2$ be the second-largest distinct value attained by $d(E)$. Form a graph $\Gamma$ whose vertices are the fields $E$ satisfying $d(E)=\delta_2$, with two distinct vertices $E,E'$ adjacent exactly when
+$$
+[E\cap E':K]=p.
+$$
 
 Determine the ordered pair
 $$
-\left(b_{L/K},\ v_p\left(\operatorname{Disc}(L/\mathbb Q_p)\right)\right)
+\left(\delta_2,\ \deg\Gamma\right),
 $$
-explicitly as a function of $p$ and $m$.
+where $\deg\Gamma$ denotes the common vertex degree of $\Gamma$.
 
 ---
 
@@ -50,4 +77,4 @@ explicitly as a function of $p$ and $m$.
 
 ## Domain Explanation
 
-This problem is classified under Number Theory and Algebraic number theory because it asks for ramification breaks and discriminant invariants of a Kummer extension of a cyclotomic local field. The decisive structure is the interaction between valuation cancellation and the higher-unit filtration, followed by upper-to-lower ramification conversion and the discriminant calculation in a tower of local fields. The next-best classification is Abstract Algebra — Galois theory, since Kummer theory and the elementary abelian Galois group organize the extension, but they support rather than replace the local-number-theoretic ramification analysis.
+This problem is classified under Number Theory and Algebraic number theory because its primary objects are Kummer extensions of a local field, ramification filtrations, discriminants, and intermediate extensions. The decisive work is to reconstruct the filtered Kummer space from the given radicands and then translate the discriminant condition into the incidence geometry of degree-$p^2$ subextensions. Finite-dimensional projective geometry supports the final incidence count, but the filtration and discriminant structure remain the controlling algebraic-number-theoretic data.
