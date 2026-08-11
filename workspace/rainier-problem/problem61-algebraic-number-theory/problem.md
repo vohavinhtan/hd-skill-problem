@@ -11,6 +11,8 @@ $$
 
 Put $d=(7,5,3,1)$. For $b\in\mathbb F_2^4$, let $\Pi_b$ be the partition of $32$ obtained by replacing $d_i$ with $(d_i,d_i)$ if $b_i=0$ and with $(2d_i)$ if $b_i=1$. For unramified $p$, let $\lambda_u(p)$ be the residue-degree partition in $F_u$.
 
+You may use without proof the following form of the Chebotarev density theorem: if $M/\mathbb Q$ is finite Galois with group $G$ and $C\subseteq G$ is stable under conjugation, then the unramified primes whose Frobenius conjugacy class lies in $C$ have natural density $|C|/|G|$.
+
 For $X=(x_{ij})\in V$, set $r_X=\sum x_{ij}r_{ij}$. Determine the density of primes $p$ for which some $r_{11},r_{12},r_{21},r_{22}\in\mathcal H_n$ satisfy
 $$
 \#\{u:r_X(u)=0\}=\frac{q^4+(-1)^{\operatorname{tr}X}q^3}{2}
