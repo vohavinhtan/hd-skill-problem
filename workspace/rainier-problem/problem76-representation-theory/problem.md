@@ -2,36 +2,36 @@
 
 ## LaTeX (Normalized)
 
-Let $n\geq6$ be even. Identify the vertices of a regular $n$-gon with $\mathbb Z/n\mathbb Z$, and regard
+Let $m\geq12$ be even, and let
 $$
-D_n=\langle r,s:r^n=s^2=1,\ srs=r^{-1}\rangle
+\mathcal M_0=\left\{\{1,2\},\{3,4\},\ldots,\{2m-1,2m\}\right\}.
 $$
-as a subgroup of $S_n$ through
+Let $H_m\leq S_{2m}$ be the setwise stabilizer of $\mathcal M_0$. The action of $H_m$ on the $m$ pairs of $\mathcal M_0$ gives a surjective homomorphism
 $$
-r(i)=i+1,
-\qquad
-s(i)=-i.
+\pi:H_m\longrightarrow S_m.
 $$
-Let $\chi_n:D_n\to\{1,-1\}$ be the one-dimensional character determined by
+Let
 $$
-\chi_n(r)=-1,
-\qquad
-\chi_n(s)=1,
+V_m=\left\{(x_1,\ldots,x_m)\in\mathbb C^m:x_1+\cdots+x_m=0\right\},
 $$
-and let
+where $S_m$ permutes coordinates, and regard $V_m$ as an $H_m$-module through $\pi$. Define
 $$
-M_n=\operatorname{Ind}_{D_n}^{S_n}\chi_n
+M_m=\operatorname{Ind}_{H_m}^{S_{2m}}V_m
 $$
-be the induced complex representation.
+and
+$$
+N_m=\operatorname{sgn}_{S_{2m}}\otimes\operatorname{Ind}_{H_m}^{S_{2m}}\mathbf 1,
+$$
+where $\mathbf 1$ is the trivial representation of $H_m$.
 
-For $0\leq k\leq n-1$, let $S^{(n-k,1^k)}$ denote the irreducible complex Specht module of $S_n$ corresponding to the hook partition $(n-k,1^k)$, and let $m_{n,k}$ be its multiplicity in $M_n$.
-
-Define
+For a partition $\lambda\vdash2m$, let $S^\lambda$ be the corresponding irreducible complex Specht module and put
 $$
-P_n(t)=\sum_{k=0}^{n-1}m_{n,k}t^k.
+a_\lambda=\dim_{\mathbb C}\operatorname{Hom}_{S_{2m}}(S^\lambda,M_m).
 $$
-
-Determine $P_n(t)$ in closed form for every even $n\geq6$.
+Determine, as an exact function of $m$,
+$$
+A_m=\max\left\{a_\lambda:\operatorname{Hom}_{S_{2m}}(S^\lambda,N_m)\neq0\right\}.
+$$
 
 ---
 
@@ -41,11 +41,11 @@ Determine $P_n(t)$ in closed form for every even $n\geq6$.
 |---|---|
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Representation theory |
-| **Problem Type** | Symbolic derivation |
-| **Answer Type** | Polynomial or rational function |
+| **Problem Type** | Optimization |
+| **Answer Type** | Exact scalar |
 
 ---
 
 ## Domain Explanation
 
-The problem asks for the hook-isotypic multiplicities in a complex representation induced from a nontrivial one-dimensional character of a dihedral subgroup of $S_n$. Its structure is governed by restriction and induction of representations, irreducible Specht modules, and the interaction between the character twist and the conjugacy behavior of rotations and reflections. These are representation-theoretic rather than purely combinatorial features.
+The problem asks for an extremal Specht multiplicity inside an induced representation from the stabilizer of a perfect matching. The inducing module is the standard representation on the set of matching pairs, while the comparison module is a sign twist of the matching permutation representation. Determining their common irreducible spectrum and the largest multiplicity requires induction, Specht-module branching structure, and the interaction between row and column parity of partitions, so Representation theory is the primary classification.
