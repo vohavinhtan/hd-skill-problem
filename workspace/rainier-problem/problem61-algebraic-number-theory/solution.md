@@ -2,6 +2,12 @@
 
 Step 1: Classify the functions in $\mathcal H_n$
 
+Let $m=3n$. The trace polynomial
+$$
+P(T)=T+T^2+\cdots+T^{2^{m-1}}
+$$
+is nonzero of degree $2^{m-1}<|K|$, so it does not vanish on all of $K$. Choose $t$ with $P(t)=1$. For $0\neq z\in K$, $w=t/z$ gives $\operatorname{Tr}(zw)=1$; hence the trace pairing is nondegenerate.
+
 Put $B_h(a,b)=D_aD_bh(0)$. Vanishing third differences make $D_aD_bh(w)$ independent of $w$, and
 $$
 D_{a+a'}=D_a+D_{a'}+D_aD_{a'}
@@ -10,11 +16,11 @@ makes $B_h$ alternating and $\mathbb F_2$-bilinear. Writing $a=(x,y)$ and $b=(x'
 $$
 B_h((x,y),(x',y'))=\beta(x,y')+\beta(x',y)
 $$
-for an $\mathbb F_2$-bilinear $\beta$. By nondegeneracy of the absolute trace pairing,
+for an $\mathbb F_2$-bilinear $\beta$. By the nondegeneracy just proved,
 $$
 \beta(x,y)=\operatorname{Tr}_{K/\mathbb F_2}(x^TT(y))
 $$
-for a unique $\mathbb F_2$-linear $T:K^2\to K^2$. The defining condition puts each coordinate of $T(y_1,y_2)$ in $\operatorname{span}_{\mathbb F_2}\{y_1,y_2\}$. Setting one input coordinate to $0$ gives $f(z)\in\mathbb F_2z$ for every component map $f$. For independent $z,w$, linearity at $z+w$ forces the three scalar coefficients to agree, so each component is $0$ or the identity. Hence
+for a unique $\mathbb F_2$-linear $T:K^2\to K^2$. The defining condition puts each coordinate of $T(y_1,y_2)$ in $\operatorname{span}_{\mathbb F_2}\{y_1,y_2\}$. Setting one input coordinate to $0$ gives $f(z)\in\mathbb F_2z$ for each component $f$; linearity on independent $z,w$ forces the coefficients for $z,w,z+w$ to agree, so $f$ is $0$ or the identity. Hence
 $$
 T(y)=Cy,\qquad C\in M_2(\mathbb F_2),
 $$
@@ -24,15 +30,15 @@ Set
 $$
 Q_C(x,y)=\operatorname{Tr}_{K/\mathbb F_2}(x^TCy).
 $$
-Its polar form is $B_h$. Let $g=h-Q_C$. Since $h,Q_C$ have vanishing third differences, $D_aD_bg(w)$ is independent of $w$ and equals its value $0$ at $w=0$. Hence $D_ag(w)$ is constant in $w$. With $\ell(a)=D_ag(0)$,
+Its polar form is $B_h$. If $g=h-Q_C$, then $D_aD_bg=0$. Therefore $D_ag(w)$ is constant in $w$; with $\ell(a)=D_ag(0)$,
 $$
 g(w+a)+g(w)=\ell(a).
 $$
-Because $D_aD_{a'}g=0$, the same difference identity gives $\ell(a+a')=\ell(a)+\ell(a')$. Thus $g=g(0)+\ell$ is affine; here $g(0)=0$. By nondegeneracy of the trace pairing, every linear functional is uniquely
+Also $D_aD_{a'}g=0$ gives $\ell(a+a')=\ell(a)+\ell(a')$, so $g=g(0)+\ell$ is affine. Here $g(0)=0$. Applying the nondegenerate trace pairing coordinatewise, every linear functional on $K^2\times K^2$ is uniquely
 $$
-\operatorname{Tr}_{K/\mathbb F_2}(s^Tx+t^Ty),
+\operatorname{Tr}_{K/\mathbb F_2}(s^Tx+t^Ty).
 $$
-so
+Thus
 $$
 \mathcal H_n=
 \left\{
@@ -67,7 +73,7 @@ Thus $W=0$ unless $s\in\operatorname{im}C$ and $t\in\operatorname{im}C^T$; if $C
 $$
 W(C,s,t)=q^{4-r}(-1)^{\operatorname{Tr}(t^Ty_0)}.
 $$
-Every nonzero singular $X\in V$ has rank $1$. Since a Boolean $f$ has $(q^4+\sum_u(-1)^{f(u)})/2$ zeros, the condition is equivalent, for every rank-one $X$, to
+Every nonzero singular $X\in V$ has rank $1$. Since a Boolean $f$ has $(q^4+\sum_u(-1)^{f(u)})/2$ zeros, the required condition is equivalent, for every rank-one $X$, to
 $$
 \operatorname{rank}\Psi(X)=1,\qquad
 s_X\in\operatorname{im}\Psi(X),\qquad
@@ -80,26 +86,50 @@ $$
 
 Step 3: Classify the possible linear maps $\Psi$
 
-The kernel contains no rank-one matrix, so $\operatorname{rank}\Psi\geq2$. If the rank were $3$, the kernel would be $\langle A\rangle$ with $A$ invertible; replacing $X$ by $A^{-1}X$, take $A=I$. For rank-one $X$,
+The kernel contains no rank-one matrix, so $\operatorname{rank}\Psi\geq2$. If the rank were $3$, its kernel would be $\langle A\rangle$ with $A$ invertible; replacing $X$ by $A^{-1}X$, take $A=I$. For rank-one $X$,
 $$
 \det(X+I)=\operatorname{tr}X+1.
 $$
-Of the nine $X=uv^T$, exactly six have $\operatorname{tr}X=v^Tu=1$, forming three pairs $\{X,X+I\}$; the other three lie in distinct cosets. The image hyperplane would therefore contain at least six rank-one points. Yet after left-right changes any hyperplane has normal form $x_{11}=0$ or $\operatorname{tr}X=0$, containing only five or three nonzero singular matrices. Thus rank $3$ is impossible.
+Of the nine $X=uv^T$, exactly six have $\operatorname{tr}X=v^Tu=1$, forming three pairs $\{X,X+I\}$; the other three lie in distinct cosets. Thus the image hyperplane would contain at least six rank-one points.
+
+A hyperplane is $\operatorname{tr}(H^TX)=0$ with $H\neq0$. Left-right changes reduce rank-$1$ $H$ to $E_{11}$ and rank-$2$ $H$ to $I$. For $x_{11}=0$,
+$$
+X=\begin{pmatrix}0&b\\c&d\end{pmatrix},\qquad \det X=bc,
+$$
+so $6$ triples $(b,c,d)$ are singular, including $0$; hence there are $5$ nonzero singular matrices. For $\operatorname{tr}X=0$,
+$$
+X=\begin{pmatrix}a&b\\c&a\end{pmatrix},\qquad \det X=a+bc,
+$$
+and each of the $4$ pairs $(b,c)$ determines the unique singular value $a=bc$, giving $3$ nonzero singular matrices. Hence rank $3$ is impossible.
 
 For nonzero $u,v\in\mathbb F_2^2$, put
 $$
 L_u=\{uv^T:v\in\mathbb F_2^2\},\qquad
 R_v=\{uv^T:u\in\mathbb F_2^2\}.
 $$
-For distinct rank-one $uv^T,u'v'^T$, the sum has rank $1$ exactly when $u=u'$ or $v=v'$. Hence these are precisely the six two-dimensional cone subspaces. Same-family lines meet only in $0$, while $L_u\cap R_v=\langle uv^T\rangle$, so their incidence graph is $K_{3,3}$.
+The sum of distinct $uv^T,u'v'^T$ has rank $1$ exactly when $u=u'$ or $v=v'$. Thus these are the six two-dimensional cone subspaces, with incidence graph $K_{3,3}$.
 
-If $\Psi$ has rank $4$, it induces an automorphism of this $K_{3,3}$, hence preserves the two rulings or swaps them. In the first case it permutes the three nonzero left factors and three nonzero right factors independently. Each permutation is induced by a unique element of $\operatorname{GL}_2(\mathbb F_2)$. Since $uv^T$ is the unique nonzero point of $L_u\cap R_v$, the two permutations force $\Psi(X)=AXB$ on the spanning rank-one points. If the rulings swap, transpose gives $\Psi(X)=AX^TB$. Hence there are
-$$
-6\cdot6+6\cdot6=72
-$$
-rank-four maps.
+If $\Psi$ has rank $4$, it automorphically preserves or swaps the two rulings of $K_{3,3}$. In the preserving case the three left and three right factors are permuted independently, each by a unique element of $\operatorname{GL}_2(\mathbb F_2)$. Since $L_u\cap R_v=\langle uv^T\rangle$, this forces $\Psi(X)=AXB$; if the rulings swap, transpose gives $\Psi(X)=AX^TB$. Hence there are $6\cdot6+6\cdot6=72$ rank-four maps.
 
-If $\operatorname{rank}\Psi=2$, its kernel is a two-dimensional subspace whose three nonzero elements are invertible. There are exactly two such external lines: for invertible $A,B$, their span is external iff $A^{-1}B$ and $I+A^{-1}B$ are invertible, forcing $A^{-1}B$ to be one of the two order-$3$ elements of $\operatorname{GL}_2(\mathbb F_2)$. The nine rank-one matrices occupy the three nonzero kernel cosets, so the image is a generator line. Hence there are $2\cdot6\cdot6=72$ rank-two maps.
+If $\operatorname{rank}\Psi=2$, its kernel is a two-dimensional subspace whose three nonzero elements are invertible. Put
+$$
+R=\begin{pmatrix}0&1\\1&1\end{pmatrix},\qquad
+R^2=\begin{pmatrix}1&1\\1&0\end{pmatrix},\qquad
+J=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+$$
+The six invertible matrices are
+$$
+I,\ R,\ R^2,\ J,\ JR,\ JR^2.
+$$
+For a line through $I$, $I+C$ must also be invertible. Here $I+J,I+JR,I+JR^2$ are singular, whereas $I+R=R^2$ and $I+R^2=R$ are invertible. Thus the only external line through $I$ is
+$$
+E_0=\{0,I,R,R^2\}.
+$$
+Left multiplication sends any external line to one through $I$, so every such line is $AE_0$. If $A\in E_0$ this is $E_0$; otherwise $A\in JE_0$ and it is
+$$
+E_1=JE_0=\{0,J,JR,JR^2\}.
+$$
+Thus exactly two external lines occur. The nine rank-one matrices occupy the three nonzero kernel cosets, so every nonzero image point is rank one; therefore the image is one of the six generator lines. Thus there are $2\cdot6\cdot6=72$ rank-two maps.
 
 Step 4: Count the linear parts for the rank-four maps
 
@@ -107,18 +137,14 @@ Fix a rank-four $\Psi$ and put $Y=\Psi(X)$. A linear map $S:V\to K^2$ with $S(X)
 $$
 ae_1,\ be_1,\ ce_2,\ de_2.
 $$
-The rank-one matrices $E_{11}+E_{21}$ and $E_{12}+E_{22}$ force $a=c$ and $b=d$, hence
-$$
-\widetilde S(Y)=Y\alpha
-$$
-for a unique $\alpha\in K^2$. Similarly $\widetilde T(Y)=Y^T\gamma$.
+The rank-one matrices $E_{11}+E_{21}$ and $E_{12}+E_{22}$ force $a=c$ and $b=d$, so $\widetilde S(Y)=Y\alpha$ for a unique $\alpha\in K^2$. Similarly $\widetilde T(Y)=Y^T\gamma$.
 
 The phase identity
 $$
 \operatorname{Tr}_{K/\mathbb F_2}(\gamma^TY\alpha)
 =\operatorname{tr}(\Psi^{-1}Y)
 $$
-holds on rank-one $Y$ and therefore on all $V$, since the $E_{ij}$ span $V$. By Step 3, $\Psi$ is $X\mapsto AXB$ or $X\mapsto AX^TB$; in either case the right side is a linear functional with invertible coefficient matrix. Invertible changes of $\alpha,\gamma$ therefore reduce the four equations to
+holds on rank-one $Y$ and hence on all $V$, since the $E_{ij}$ span $V$. By Step 3 the right side has an invertible coefficient matrix, so invertible changes of $\alpha,\gamma$ reduce the equations to
 $$
 \operatorname{Tr}_{K/\mathbb F_2}(\gamma_i\alpha_j)=\delta_{ij}.
 $$
@@ -132,24 +158,22 @@ Step 5: Count the linear parts for the rank-two maps
 Let
 $$
 \Psi_0\!\begin{pmatrix}a&b\\c&d\end{pmatrix}
-=
-\begin{pmatrix}a+d&b+c+d\\0&0\end{pmatrix},
-\qquad K_0=\ker\Psi_0
+=\begin{pmatrix}a+d&b+c+d\\0&0\end{pmatrix},
+\qquad
+K_0=\ker\Psi_0
 =\left\{\begin{pmatrix}a&b\\a+b&a\end{pmatrix}:a,b\in\mathbb F_2\right\}.
 $$
-The other external line is $JK_0$, where $J=\begin{pmatrix}0&1\\1&0\end{pmatrix}$; thus precomposition by left multiplication by $I$ or $J$ sends any rank-two kernel to $K_0$. By Step 3, left-right multiplication and transpose act transitively on the six generator image lines, so a cone automorphism sends $\operatorname{im}\Psi$ to $\operatorname{im}\Psi_0$. After these pre- and post-compositions, both maps have kernel $K_0$ and image $\operatorname{im}\Psi_0$, hence differ by an automorphism of the quotient $V/K_0$, equivalently by an automorphism of the two-dimensional image. Every such image automorphism extends to right multiplication by some $B\in\operatorname{GL}_2(\mathbb F_2)$ because
+By Step 3 the two possible kernels are $K_0$ and $JK_0$, so left multiplication normalizes the kernel to $K_0$. Cone automorphisms act transitively on the six generator image lines, so postcomposition normalizes the image to $\operatorname{im}\Psi_0$. Two maps with this kernel and image differ by an automorphism of the two-dimensional quotient/image, and every such automorphism is realized by
 $$
-e_1v^T\longmapsto e_1v^TB
+e_1v^T\longmapsto e_1v^TB,\qquad B\in\operatorname{GL}_2(\mathbb F_2).
 $$
-realizes all automorphisms of $\operatorname{im}\Psi_0$. A final post-composition therefore gives $\Psi_0$ exactly.
+A final postcomposition therefore gives $\Psi_0$ exactly. These pre/post-compositions biject admissible linear parts: they are invertible changes of the $r_{ij}$ and $(x,y)$ variables; precomposition only replaces $\operatorname{tr}X$ by a nonzero linear functional $\tau(X)$.
 
-These normalizations preserve the count of admissible linear parts. Precomposition is an invertible change of the four coordinates $r_{ij}$ and replaces $\operatorname{tr}X$ by a nonzero linear functional $\tau(X)$. Postcomposition $C\mapsto ACB$ corresponds to the bijective variable change $(x,y)\mapsto(A^Tx,By)$, while $C\mapsto AC^TB$ corresponds to $(x,y)\mapsto(By,A^Tx)$; both give bijections on linear terms.
-
-Write
+Write $\ell(X)=(a+d,b+c+d)$. Since the rank-one cone spans $V$,
 $$
-\ell(X)=(a+d,\ b+c+d).
+S(X)=e_1A(X)
 $$
-For the normal form, $S(X)\in\langle e_1\rangle$ on the rank-one cone, which spans $V$, so $S(X)=e_1A(X)$ for an arbitrary linear $A:V\to K$. Write
+for an arbitrary linear $A:V\to K$. Write
 $$
 T(X)=
 \binom{\alpha a+\beta b+\gamma c+\delta d}
@@ -176,7 +200,7 @@ For rank-one $X$, the phase condition is
 $$
 \operatorname{Tr}_{K/\mathbb F_2}(zA(X))=\tau(X).
 $$
-Since $\tau\neq0$, $z\neq0$. For each of the $q-1$ values of $z$, the four values $A(E_{ij})$ independently satisfy one trace equation and each has $q/2$ choices. Thus each rank-two $\Psi$ contributes
+Since $\tau\neq0$, $z\neq0$. For each of the $q-1$ values of $z$, the four values $A(E_{ij})$ independently satisfy one nontrivial trace equation; by Step 1 each has $q/2$ solutions. Thus each rank-two $\Psi$ contributes
 $$
 D(q)=\frac{(q-1)q^4}{16}.
 $$
@@ -187,29 +211,24 @@ At $u=0$ all elements of $\mathcal H_n$ vanish, so
 $$
 \Pi_{0000}=(7,7,5,5,3,3,1,1),
 $$
-forcing cycle type $(7,5,3,1)$; there are $16!/105$ such permutations. For a fixed one, the four cycle-sum maps from $\mathcal H_n^{16}$ to $\mathcal H_n^4$ are surjective with fiber $|\mathcal H_n|^{12}$, and the four distinct cycle lengths make $\Pi_b$ determine the four signs uniquely.
+forcing cycle type $(7,5,3,1)$; there are $16!/105$ such permutations. For a fixed one, the four cycle-sum maps from $\mathcal H_n^{16}$ to $\mathcal H_n^4$ are surjective with fiber $|\mathcal H_n|^{12}$, and the distinct cycle lengths make $\Pi_b$ determine the four signs.
 
-Let $C$ be the set of Galois-group elements satisfying the required residue-partition condition for all $u$. It is conjugacy-stable because conjugation preserves each underlying cycle length and the sign product around each cycle, hence preserves every $\lambda_u$. The version of Chebotarev explicitly allowed in the problem therefore gives density $|C|/|G|$.
+Let $C$ be the set of Galois-group elements satisfying the required residue-partition condition for all $u$. Conjugation preserves each cycle length and the sign product around each cycle, so $C$ is conjugacy-stable. The Chebotarev theorem allowed in the problem gives density $|C|/|G|$.
 
 Let $N$ be the number of valid ordered quadruples. Steps 3--5 give
 $$
-\begin{aligned}
-N
-&=72A(q)+72D(q)\\
-&=\frac{9}{2}q^2(q-1)^2(q+2).
-\end{aligned}
+N=72A(q)+72D(q)
+=\frac{9}{2}q^2(q-1)^2(q+2).
 $$
 Since $|G|=16!|\mathcal H_n|^{16}$,
 $$
 \begin{aligned}
 \delta
-&=\frac{(16!/105)|\mathcal H_n|^{12}N}
-{16!|\mathcal H_n|^{16}}\\
-&=\frac{N}{105|\mathcal H_n|^4}
-=\frac{3(q-1)^2(q+2)}{35\cdot2^{17}q^{14}}.
+&=\frac{(16!/105)|\mathcal H_n|^{12}N}{16!|\mathcal H_n|^{16}}\\
+&=\frac{3(q-1)^2(q+2)}{35\cdot2^{17}q^{14}}.
 \end{aligned}
 $$
-For $q=8$, $A(8)=168$ and $D(8)=1792$, giving $N=141120$ as in the formula; the explicit rank-two normal form also defeats an invertible-only count.
+For $q=8$, $A(8)=168$ and $D(8)=1792$, giving $N=141120$; the explicit rank-two normal form also rules out the invertible-only count.
 
 Final Answer: $\boxed{\frac{3(q-1)^2(q+2)}{35\cdot2^{17}q^{14}}}$
 
