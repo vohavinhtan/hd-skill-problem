@@ -4,38 +4,39 @@
 
 Fix integers
 $$
-r\geq 6,\qquad 2\leq q\leq r-2,
+m\geq4,\qquad g\geq1,
 $$
 and put
 $$
-n_r=\frac{2^{r+1}+(-1)^r}{3}.
+n=2^{mg}-1.
 $$
-Work over the field $\mathbb F_2$. Let $V_r$ have ordered basis
+Work over the field $\mathbb F_2$. Let $V$ have basis
 $$
-e_0,e_1,\ldots,e_{n_r-1},
+e_0,e_1,\ldots,e_{n-1},
 $$
-and define a nilpotent linear map $J_r:V_r\to V_r$ by
+and let $S:V\to V$ be the cyclic shift
 $$
-J_r(e_0)=0,\qquad J_r(e_i)=e_{i-1}\quad(i\geq1).
+S(e_i)=e_{i+1}\quad(0\leq i<n-1),\qquad S(e_{n-1})=e_0.
 $$
-Let
+For $j=0,1,2,3$, define
 $$
-D_r:\bigwedge^2V_r\longrightarrow\bigwedge^2V_r
+A_j=I+S^{\,2^{jg}}.
 $$
-be the induced map
+Write $\odot$ for the symmetric product in $\operatorname{Sym}^4V$. Define a linear map
 $$
-D_r(v\wedge w)=J_rv\wedge w+v\wedge J_rw.
+\Phi:\bigwedge^4V\longrightarrow\operatorname{Sym}^4V
 $$
-Let
+by declaring, for every $0\leq i_1<i_2<i_3<i_4<n$,
 $$
-Q_r=\bigwedge^2V_r/\ker D_r,
+\Phi(e_{i_1}\wedge e_{i_2}\wedge e_{i_3}\wedge e_{i_4})
+=
+\sum_{\sigma\in S_4}
+A_0e_{i_{\sigma(1)}}\odot
+A_1e_{i_{\sigma(2)}}\odot
+A_2e_{i_{\sigma(3)}}\odot
+A_3e_{i_{\sigma(4)}}.
 $$
-and let $\overline D_r$ be the endomorphism of $Q_r$ induced by $D_r$.
-
-Determine, as a closed formula in $r$ and $q$, the rank of
-$$
-\overline D_r^{\,2^q-2}.
-$$
+Determine, as a closed formula in $m$ and $g$, the rank of $\Phi$.
 
 ---
 
@@ -52,4 +53,4 @@ $$
 
 ## Domain Explanation
 
-This problem is classified under Linear Algebra and Tensor and multilinear algebra because it studies the nilpotent derivation induced by a single Jordan chain on an exterior square and on a canonical quotient. The requested rank is controlled by characteristic-two cancellations in the exterior-square Jordan structure, together with the effect of quotienting by the first kernel layer; characteristic-zero tensor-product rules do not determine it.
+This problem is classified under Linear Algebra and Tensor and multilinear algebra because the requested quantity is the rank of a linear map from an exterior fourth power to a symmetric fourth power, built from four commuting cyclic-shift operators. The decisive structure is multilinear: after a scalar extension, the coefficient on each exterior basis vector becomes a Frobenius determinant, and the rank is governed by linear independence over a proper finite subfield together with an exact correction forced by the missing affine point.
