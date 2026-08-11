@@ -2,7 +2,7 @@
 
 Step 1: Split the repeated-root cyclic shift into two-dimensional spectral blocks
 
-Extend scalars from $\mathbb F_2$ to $K=\mathbb F_Q$; matrix rank is unchanged by field extension. The vector $e_0$ is cyclic for $S$, so
+Extend scalars from $\mathbb F_2$ to $K=\mathbb F_Q$ and write $V_K=K\otimes_{\mathbb F_2}V$; matrix rank is unchanged by field extension. The vector $e_0$ is cyclic for $S$, so
 $$
 V_K\cong K[x]/(x^{2(Q-1)}-1).
 $$
@@ -40,7 +40,7 @@ Fix distinct $\lambda_1,\ldots,\lambda_5$ and put $z_i=1+\lambda_i$. The corresp
 $$
 R=K[\varepsilon_1,\ldots,\varepsilon_5]/(\varepsilon_1^2,\ldots,\varepsilon_5^2).
 $$
-Let
+For $a\in R$, write $m_a$ for multiplication by $a$. Let
 $$
 c_0=\det\left(z_i^{q^j}\right)_{\substack{1\leq i\leq5\\0\leq j\leq4}},
 \qquad
