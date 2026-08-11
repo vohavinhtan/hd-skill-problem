@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Recover the center and all center-fixing automorphisms
+Step 1: Recover the center and the center-fixing automorphisms
 Put $q=p^r$, so $R=\mathbb Z/q^m\mathbb Z$, and write $v=(x_1,u_1,x_2,u_2)^T$. With
 $$
 J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
@@ -11,11 +11,11 @@ the group law is
 $$
 (v,z)\star(w,t)=\left(v+w,z+t+\frac12v^T\Omega w\right),
 $$
-hence
+so
 $$
 [(v,z),(w,t)]=(0,v^T\Omega w).
 $$
-Therefore
+Hence
 $$
 \operatorname{rad}(\Omega)=q^{m-1}R^2\oplus q^{m-2}R^2
 $$
@@ -23,50 +23,67 @@ and
 $$
 Z(G_{p,m,r})=\operatorname{rad}(\Omega)\times R.
 $$
-If $\varphi$ fixes the center pointwise, then the central axis is fixed and, since $(v,z)^k=(kv,kz)$, its first four coordinates define an $R$-linear map $A$. Preservation of commutators gives $A^T\Omega A=\Omega$. Writing $\varphi(v,0)=(Av,\ell v)$, the homomorphism identity then shows that $\ell$ is additive, hence $R$-linear. Pointwise fixation of the radical gives
+If $\varphi$ fixes this center pointwise, its first four coordinates depend only on $v$ and are additive, hence $R$-linear; write them as $Av$. Injectivity of $\varphi$ makes $A\in GL_4(R)$. Writing
 $$
-A|_{\operatorname{rad}(\Omega)}=I,
-\qquad
+\varphi(v,z)=(Av,z+\ell v),
+$$
+commutator preservation and center fixation are exactly
+$$
+A^T\Omega A=\Omega,\qquad
+A|_{\operatorname{rad}(\Omega)}=I,\qquad
 \ell|_{\operatorname{rad}(\Omega)}=0.
 $$
 Conversely these conditions define an automorphism. Thus
 $$
 \mathcal A_{p,m,r}=F\rtimes S,
+\qquad
+F=q(R^2)^*\oplus q^2(R^2)^*,
 $$
-where
-$$
-F=q(R^2)^*\oplus q^2(R^2)^*
-$$
-and $S$ consists of the $A\in GL_4(R)$ satisfying $A^T\Omega A=\Omega$ and fixing the radical pointwise. If
+where $S$ is the group of $A$ satisfying the two displayed conditions. For
 $$
 A=\begin{pmatrix}A_{11}&A_{12}\\A_{21}&A_{22}\end{pmatrix},
 $$
-radical fixation is equivalent to
+fixing the radical pointwise is equivalent to
 $$
 A_{11}-I,\ A_{21}\in qM_2(R),
 \qquad
 A_{12},\ A_{22}-I\in q^2M_2(R).
 $$
 
-Step 2: Linearize the weighted isometry group
-Every $A\in S$ is congruent to $I$ modulo $q$. Also
+Step 2: Obtain the correct linearized weighted-isometry space without a correspondence theorem
+Because $q^m=0$ in $R$ and $m\leq p-1$, every integer $1,\ldots,m-1$ is a unit in $R$. Therefore on $qM_d(R)$ the finite polynomials
 $$
-[\,I+q^iM_4(R),I+q^jM_4(R)\,]\subseteq I+q^{i+j}M_4(R),
+\exp X=\sum_{k=0}^{m-1}\frac{X^k}{k!},
+\qquad
+\log(I+Y)=\sum_{k=1}^{m-1}\frac{(-1)^{k+1}Y^k}{k}
 $$
-so $S$ has nilpotency class at most $m-1<p$. Hence the truncated logarithm and exponential give the Lazard correspondence for $S$; in particular $S/[S,S]$ has the same order as $\mathfrak s/[\mathfrak s,\mathfrak s]$, where $\mathfrak s=\log S$. The isometry equation gives $A^T\Omega=\Omega A^{-1}$; therefore $(A^T-I)^k\Omega=\Omega(A^{-1}-I)^k$ for every $k$, and applying the finite logarithm yields
-$$
-X^T\Omega+\Omega X=0
-$$
-for $X=\log A$.
+are inverse: the usual one-variable formal identities are polynomial identities after discarding terms of degree at least $m$, and such terms vanish because $(qM_d(R))^m=0$.
 
-For
+Let $\mathfrak s$ be the set of matrices $X$ having block depths
 $$
-X=\begin{pmatrix}P&Q\\B&T\end{pmatrix}\in\mathfrak s,
+X=\begin{pmatrix}P&Q\\B&T\end{pmatrix},
+\qquad
+P,B\in qM_2(R),\quad Q,T\in q^2M_2(R),
 $$
-the linear isometry equation together with the congruence conditions is equivalent to
+and satisfying $X^T\Omega+\Omega X=0$. If $X\in\mathfrak s$, then
 $$
-P,B\in qM_2(R),\qquad Q,T\in q^2M_2(R),
+(\exp X)^T\Omega\exp X=\Omega
 $$
+because $(X^T)^k\Omega=(-1)^k\Omega X^k$; the block depths also show that $\exp X$ fixes the radical pointwise. Conversely, if $A\in S$, then $A-I$ has the same block depths, and from
+$$
+(A^T-I)^k\Omega=\Omega(A^{-1}-I)^k
+$$
+we obtain $(\log A)^T\Omega=-\Omega\log A$. Thus $\exp$ and $\log$ give inverse bijections between $\mathfrak s$ and $S$.
+
+Now expand the linear equation itself:
+$$
+X^T\Omega+\Omega X=
+\begin{pmatrix}
+q(P^TJ+JP)&q^2B^TJ+qJQ\\
+qQ^TJ+q^2JB&q^2(T^TJ+JT)
+\end{pmatrix}.
+$$
+Using $Y^TJ+JY=(\operatorname{tr}Y)J$ for $2\times2$ matrices, this is equivalent to
 $$
 \operatorname{tr}P\in q^{m-1}R,\qquad
 \operatorname{tr}T\in q^{m-2}R,
@@ -75,11 +92,11 @@ and
 $$
 Q-qJB^TJ\in q^{m-1}M_2(R).
 $$
-Indeed, for every $2\times2$ matrix $Y$,
+Set $\psi(Y)=JY^TJ$. Since $2$ is invertible, every $X\in\mathfrak s$ decomposes uniquely as
 $$
-Y^TJ+JY=(\operatorname{tr}Y)J.
+P(A)+C(B)+T(D)+U(a)+V(d)+W(E),
 $$
-Set $\psi(Y)=JY^TJ$. Since $2$ is invertible, every $X\in\mathfrak s$ has a unique decomposition into
+where
 $$
 P(A)=\begin{pmatrix}A&0\\0&0\end{pmatrix},\quad A\in q\mathfrak{sl}_2(R),
 $$
@@ -89,20 +106,25 @@ $$
 $$
 T(D)=\begin{pmatrix}0&0\\0&D\end{pmatrix},\quad D\in q^2\mathfrak{sl}_2(R),
 $$
-together with
-$$
-U(a)=\begin{pmatrix}aI&0\\0&0\end{pmatrix},\ a\in q^{m-1}R,
-$$
-$$
-V(d)=\begin{pmatrix}0&0\\0&dI\end{pmatrix},\ d\in q^{m-2}R,
-$$
 and
 $$
-W(E)=\begin{pmatrix}0&E\\0&0\end{pmatrix},\ E\in q^{m-1}M_2(R).
+a\in q^{m-1}R,\qquad d\in q^{m-2}R,\qquad E\in q^{m-1}M_2(R),
+$$
+with $U(a)=\operatorname{diag}(aI,0)$, $V(d)=\operatorname{diag}(0,dI)$, and $W(E)$ having only upper-right block $E$.
+
+Step 3: Compute the derived subgroup by a finite commutator-lifting argument
+For $X\in q^iM_d(R)$ and $Y\in q^jM_d(R)$, direct multiplication of the four finite series gives
+$$
+[\exp X,\exp Y]
+=
+I+[X,Y]\pmod{q^{i+j+1}M_d(R)}.
+$$
+Indeed, the terms of depth $i+j$ are exactly $XY-YX$; every other nonconstant term contains at least one extra factor of depth at least $1$. This congruence gives a finite lifting argument. Suppose an additive Lie ideal $D$ has each graded layer spanned by brackets of graded pieces of $\mathfrak s$. For $Z\in D$, let $k$ be its first nonzero $q$-depth. Choose brackets whose sum equals $Z$ modulo $q^{k+1}$; the product of the corresponding group commutators equals $\exp Z$ modulo $q^{k+1}$. Multiplying by its inverse replaces the error by an element of $D\cap q^{k+1}M_d(R)$. Repeating reaches depth $m$ and proves $\exp D\subseteq[S,S]$. Conversely, for a product $g$ of group commutators, the first nonzero layer of $\log g$ is a sum of Lie brackets and lies in $D$; subtract that layer and repeat. Thus $\log g\in D$, proving
+$$
+[S,S]=\exp D.
 $$
 
-Step 3: Determine the derived quotient of the linear part
-For traceless $A,D$ the identities $AJ+JA^T=0$ and $DJ+JD^T=0$ give
+We now determine $D=[\mathfrak s,\mathfrak s]$. For traceless $A,D$,
 $$
 [P(A),P(A')]=P([A,A']),
 $$
@@ -120,17 +142,15 @@ q(\psi(B)B'-\psi(B')B)&0\\
 0&q(B\psi(B')-B'\psi(B))
 \end{pmatrix}.
 $$
-Both diagonal blocks in the last bracket are traceless. With
+The diagonal blocks in the last bracket are traceless. Put
 $$
-H=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
-E=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
-F_0=\begin{pmatrix}0&0\\1&0\end{pmatrix},
+H=\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+\quad
+E=\begin{pmatrix}0&1\\0&0\end{pmatrix},
+\quad
+F_0=\begin{pmatrix}0&0\\1&0\end{pmatrix}.
 $$
-the relations $[H,E]=2E$, $[H,F_0]=-2F_0$, $[E,F_0]=H$ show
-$$
-[q\mathfrak{sl}_2,q\mathfrak{sl}_2]=q^2\mathfrak{sl}_2.
-$$
-Because $H$ is invertible, the brackets $[P(qH),C(B)]$ span $C(q^2M_2)$. Finally, for matrix units,
+The relations $[H,E]=2E$, $[H,F_0]=-2F_0$, $[E,F_0]=H$ give every layer of $P(q^2\mathfrak{sl}_2)$. Since $H$ is invertible, $[P(qH),C(B)]$ gives every layer of $C(q^2M_2)$. Finally,
 $$
 E_{11}\psi(E_{12})-E_{12}\psi(E_{11})=2E,
 $$
@@ -140,15 +160,14 @@ $$
 $$
 E_{12}\psi(E_{21})-E_{21}\psi(E_{12})=H,
 $$
-so the lower-right blocks of $[C(qM_2),C(qM_2)]$ span $q^3\mathfrak{sl}_2$. Their upper-left companions lie in $P(q^3\mathfrak{sl}_2)\subseteq P(q^2\mathfrak{sl}_2)$, already generated by $[P,P]$, so subtraction isolates all of $T(q^3\mathfrak{sl}_2)$. The remaining brackets either vanish or lie in these three submodules; in particular $U$, $W$ are central and $[V,C(qM_2)]\subseteq C(q^{m-1}M_2)$. Hence
+so the lower-right blocks of the $[C,C]$ brackets give every layer of $T(q^3\mathfrak{sl}_2)$; their upper-left companions already lie in the generated $P$-part and can be subtracted. All other brackets lie in these three modules: $U$ and $W$ are central, while $[V,C(qM_2)]\subseteq C(q^{m-1}M_2)$. Therefore
 $$
-[\mathfrak s,\mathfrak s]
-=
+D=
 P(q^2\mathfrak{sl}_2)
 \oplus C(q^2M_2)
 \oplus T(q^3\mathfrak{sl}_2).
 $$
-Therefore
+The lifting argument gives $[S,S]=\exp D$, so the bijection $\log:S\to\mathfrak s$ yields
 $$
 |S^{\mathrm{ab}}|
 =
@@ -157,65 +176,85 @@ q^3\cdot q^4\cdot q^3\cdot q\cdot q^2\cdot q^4
 q^{17}.
 $$
 
-Step 4: Add the shear quotient
+Step 4: Compute the shear contribution directly
 Since $F$ is abelian,
 $$
 |\mathcal A_{p,m,r}^{\mathrm{ab}}|
 =
 |S^{\mathrm{ab}}|\,|F/[F,S]|.
 $$
-For a row vector $(\alpha,\beta)\in q(R^2)^*\oplus q^2(R^2)^*$ and
+For $\ell=(\alpha,\beta)\in q(R^2)^*\oplus q^2(R^2)^*$ and $A\in S$, the block depths from Step 1 give
 $$
-X=\begin{pmatrix}P&Q\\B&T\end{pmatrix}\in\mathfrak s,
+\ell(A-I)\in q^2(R^2)^*\oplus q^3(R^2)^*,
 $$
-one has
+so
 $$
-(\alpha,\beta)X=(\alpha P+\beta B,\alpha Q+\beta T)
-\in q^2(R^2)^*\oplus q^3(R^2)^*.
+[F,S]\subseteq q^2(R^2)^*\oplus q^3(R^2)^*.
 $$
-The first summand is attained using $P(qH)$, and the second is attained using $C(qI)$ with $\beta=0$, because $\psi(I)=-I$. Thus
+For the first summand, the exact isometries
+$$
+\operatorname{diag}(I+q^kE_{12},I_2),
+\qquad
+\operatorname{diag}(I+q^kE_{21},I_2)
+\qquad(1\leq k\leq m-2)
+$$
+belong to $S$ and their action on $q(R^2)^*$ generates every layer $q^{k+1}(R^2)^*$. For the second summand, take $B\in q^kM_2(R)$ and $X=C(B)$. The finite exponential $\exp X$ belongs to $S$ by Step 2, and its upper-right block is
+$$
+q\psi(B)\pmod{q^{k+2}M_2(R)}.
+$$
+As $\psi$ is a bijection of $M_2(R)$, acting on $\alpha\in q(R^2)^*$ generates the layer $q^{k+2}(R^2)^*$. Successive lifting over $k=1,\ldots,m-3$ therefore gives
 $$
 [F,S]=q^2(R^2)^*\oplus q^3(R^2)^*.
 $$
-Indeed, if $A=\exp X$, then $A-I=X(1+X/2!+\cdots)$ and the parenthesized factor is invertible on $F$, so the group commutator images and the Lie-action images coincide. Hence
+Hence
 $$
-|F/[F,S]|=q^2q^2=q^4,
+|F/[F,S]|=q^4
 $$
 and
 $$
-|\mathcal A_{p,m,r}^{\mathrm{ab}}|=q^{17}q^4=q^{21}=p^{21r}.
+|\mathcal A_{p,m,r}^{\mathrm{ab}}|
+=q^{17}q^4=q^{21}=p^{21r}.
 $$
 
-Step 5: Compute the nilpotency class
-Represent $(A,\ell)\in\mathcal A_{p,m,r}$ on the additive module $R^4\oplus R$ by
+Step 5: Determine the nilpotency class without Lazard correspondence
+Represent $(A,\ell)\in\mathcal A_{p,m,r}$ by
 $$
 \widehat A=
-\begin{pmatrix}
-A&0\\
-\ell&1
-\end{pmatrix}.
+\begin{pmatrix}A&0\\\ell&1\end{pmatrix}.
 $$
-Every such matrix is congruent to $I$ modulo $q$. Therefore a commutator of weight $k$ lies in $I+q^kM_5(R)$, so $\gamma_m(\mathcal A_{p,m,r})=1$ and
+Every such matrix is congruent to $I$ modulo $q$. Direct multiplication gives
+$$
+[I+q^iM_5(R),I+q^jM_5(R)]
+\subseteq I+q^{i+j}M_5(R),
+$$
+so every commutator of weight $m$ is trivial. Thus
 $$
 c_{p,m,r}\leq m-1.
 $$
-For the reverse inequality, $\mathcal A_{p,m,r}$ contains the subgroup
+
+For the reverse inequality, use the subgroup with only the first $2\times2$ block nontrivial. Put
 $$
-\left\{
-\begin{pmatrix}
-U&0\\0&I_2
-\end{pmatrix}
-:
-U\in SL_2(R),\ U\equiv I\pmod q
-\right\}.
+a=1+q,\qquad
+d=\begin{pmatrix}a&0\\0&a^{-1}\end{pmatrix},
+\qquad
+u(x)=I+xE.
 $$
-Its Lazard Lie ring contains $q\mathfrak{sl}_2(R)$, and the displayed $H,E,F_0$ relations give
+Both $d$ and $u(q)$ lie in $SL_2(R)$ and are congruent to $I$ modulo $q$. With the convention $[g,h]=g^{-1}h^{-1}gh$,
 $$
-[q^i\mathfrak{sl}_2,q\mathfrak{sl}_2]
-=
-q^{i+1}\mathfrak{sl}_2
+[d,u(x)]=u\left(x(1-a^{-2})\right).
 $$
-for $1\leq i\leq m-2$. Since $q^{m-1}\mathfrak{sl}_2(R)\neq0$, its $(m-1)$st lower-central term is nonzero. Thus $c_{p,m,r}\geq m-1$, and so $c_{p,m,r}=m-1$.
+Starting with $c_1=u(q)$ and defining $c_{k+1}=[d,c_k]$, we obtain
+$$
+c_k=u\left(q(1-a^{-2})^{k-1}\right).
+$$
+Now $1-a^{-2}=q\eta$ with $\eta\in R^\times$ because $\eta\equiv2\pmod p$. Therefore
+$$
+c_k=u(q^k\eta^{k-1}),
+$$
+which is nontrivial for $1\leq k\leq m-1$. Hence $\gamma_{m-1}(\mathcal A_{p,m,r})\neq1$, so
+$$
+c_{p,m,r}=m-1.
+$$
 
 Final Answer: $\boxed{\left(p^{21r},m-1\right)}$
 
@@ -240,5 +279,5 @@ $\left(p^{21r},m-1\right)$
 - class-two central extensions
 - alternating bilinear forms
 - p-adic matrix filtrations
-- Lazard correspondence
+- filtered commutator lifting
 - lower central series
