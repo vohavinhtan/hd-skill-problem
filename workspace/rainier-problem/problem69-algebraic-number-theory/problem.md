@@ -25,7 +25,7 @@ T=\{-2,-1,0,1,2\}
 $$
 and $t\in T$, define
 $$
-u_t=
+\nu_t=
 \frac{1+(1+t\omega)\pi^m}{1-(1+t\omega)\pi^m}.
 $$
 Let
@@ -43,7 +43,7 @@ K\subset E\subset L,
 \qquad
 [E:K]=p^2,
 $$
-and such that $E/F$ is Galois with abelian Galois group, let $\delta_2$ be the second-largest distinct value of
+and such that $E/F$ is Galois, let $\delta_2$ be the second-largest distinct value of
 $$
 v_K\left(\operatorname{Disc}(E/K)\right).
 $$
@@ -52,11 +52,11 @@ Form a graph $\Gamma$ whose vertices are the fields $E$ attaining $\delta_2$, wi
 $$
 [E\cap E':K]=p.
 $$
-Let $A_\Gamma$ be the adjacency matrix of $\Gamma$, and let $\lambda_*$ be the largest eigenvalue of $A_\Gamma$ that is strictly smaller than its spectral radius.
+Let $\rho_\Gamma$ be the spectral radius of the adjacency matrix of $\Gamma$.
 
 Determine the ordered pair
 $$
-\left(\delta_2,\lambda_*\right).
+\left(\delta_2,\rho_\Gamma\right).
 $$
 
 ---
@@ -74,4 +74,4 @@ $$
 
 ## Domain Explanation
 
-This problem is classified under Number Theory and Algebraic number theory because the controlling objects are a filtered Kummer space over a local field, ramification discriminants, and Galois descent through an unramified extension. The abelian descent condition forces a Frobenius-fixed part of the Kummer space, while the second discriminant stratum must then be reconstructed from its unit filtration. The final graph spectrum is a secondary finite-dimensional calculation attached to that arithmetic stratum, rather than the primary source of the field-theoretic structure.
+This problem is classified under Number Theory and Algebraic number theory because its controlling objects are a filtered Kummer space over a local field, ramification discriminants, and Galois descent through an unramified quadratic extension. The Galois condition must be reconciled with the ramification filtration before the second discriminant stratum can be identified. The graph spectrum is a finite-dimensional invariant attached to that arithmetic stratum, while the field-theoretic descent and discriminant structure remain the primary mathematics.
