@@ -6,7 +6,7 @@ Fix real parameters
 $$
 0<\delta<1,
 \qquad
-\frac{52}{49}<\rho<\frac{273193}{254184}.
+\frac{52}{49}<\rho<\frac{27}{25}.
 $$
 Let $\mathcal{A}_{\delta,\rho}$ be the set of all absolutely continuous concave functions $\varphi:[0,1]\to\mathbb{R}$ such that $\varphi'\in L^2(0,1)$ and
 $$
