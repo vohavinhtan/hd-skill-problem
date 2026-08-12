@@ -40,6 +40,10 @@ $$
 $$
 B_{s;r,q}=\left\{t\in[-1,1]:w_{s;r,q}(t)^{\mathsf T}Q_{s;r,q}w_{s;r,q}(t)=1\right\}.
 $$
+Also put
+$$
+H:=\max_{0\leq u\leq1}u(r-qu)^2.
+$$
 
 For arbitrary fixed $r,q>0$, determine the complete set of parameters $s_0>0$ at which the ordered contact pair
 $$
