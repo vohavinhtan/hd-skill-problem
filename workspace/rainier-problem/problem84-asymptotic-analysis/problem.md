@@ -14,51 +14,93 @@ and
 $$
 R_n(x)=n\phi(x)^p.
 $$
-For real $\lambda$, set
+
+For real parameters $\lambda$ and $\theta$, set
 $$
-Z_n(p,\lambda)
+Z_n(p,\lambda,\theta)
 =
-\int_0^1 x^{-\lambda}e^{-1/x}
+\int_0^1 x^{-\lambda}e^{\theta x}e^{-1/x}
 \exp\!\left(-R_n(x)\right)\,dx,
 $$
-and define
+and define the probability measure
 $$
-m_n(p,\lambda)
+d\mu_{n,p,\lambda,\theta}(x)
 =
-\frac{\displaystyle\int_0^1 x^{1-\lambda}e^{-1/x}
-\exp\!\left(-R_n(x)\right)\,dx}
-{Z_n(p,\lambda)}.
+\frac{x^{-\lambda}e^{\theta x}e^{-1/x}
+\exp\!\left(-R_n(x)\right)}
+{Z_n(p,\lambda,\theta)}\,dx.
+$$
+Put
+$$
+a_n(p)=\frac{\log n}{p}.
 $$
 
-For each fixed $p>1$ and $n\ge3$, let $\lambda_n(p)$ be the unique real number satisfying
+For each fixed $p>1$, prove that for all sufficiently large $n$ there is a unique pair
 $$
-m_n\bigl(p,\lambda_n(p)\bigr)=\frac12.
+(\lambda_n(p),\theta_n(p))\in\mathbb R^2
 $$
-The existence and uniqueness of $\lambda_n(p)$ are part of what must be justified.
+satisfying the two simultaneous moment conditions
+$$
+\int_0^1(-\log x)\,d\mu_{n,p,\lambda_n(p),\theta_n(p)}(x)
+=\frac14\log a_n(p),
+$$
+and
+$$
+\int_0^1x\,d\mu_{n,p,\lambda_n(p),\theta_n(p)}(x)
+=\frac12.
+$$
+The existence and uniqueness of this pair are part of what must be justified.
 
 For $k\in\{0,1,\dots,8\}$, define
 $$
 M_{k,n}(p)
 =
-\frac{\displaystyle\int_0^1 x^{k-\lambda_n(p)}e^{-1/x}
-\exp\!\left(-R_n(x)\right)\,dx}
-{Z_n\bigl(p,\lambda_n(p)\bigr)}.
+\int_0^1x^k\,d\mu_{n,p,\lambda_n(p),\theta_n(p)}(x),
 $$
-Thus $M_{0,n}(p)=1$ and $M_{1,n}(p)=\tfrac12$.
-
-Set
+and set
 $$
 H_n(p)
 =
 \det\!\bigl[M_{i+j,n}(p)\bigr]_{i,j=0}^{4}.
 $$
 
-For each $p>1$, determine the unique pair
-$(\beta_p,L_p)\in\mathbb R\times(0,\infty)$ such that
+For $j\ge0$, write
 $$
+\psi_j(z)=\frac{d^{j+1}}{dz^{j+1}}\log\Gamma(z),
+$$
+and define
+$$
+\Delta_p
+=
+\psi_1\!\left(\frac1p\right)\psi_3\!\left(\frac1p\right)
++2\psi_1\!\left(\frac1p\right)^3
+-\psi_2\!\left(\frac1p\right)^2.
+$$
+
+For each $p>1$, prove that the following four limits exist and determine them exactly:
+$$
+A_p
+=
+\lim_{n\to\infty}
+\log a_n(p)\bigl(\lambda_n(p)-2\bigr),
+$$
+$$
+B_p
+=
+\lim_{n\to\infty}
+\log a_n(p)\bigl(\theta_n(p)-\log16\bigr),
+$$
+$$
+\beta_p
+\text{ and }L_p>0
+\quad\text{such that}\quad
 \lim_{n\to\infty}(\log n)^{\beta_p}H_n(p)=L_p.
 $$
-Give $\beta_p$ and $L_p$ exactly as functions of $p$.
+Give the ordered quadruple
+$$
+(A_p,B_p,\beta_p,L_p)
+$$
+exactly as a function of $p$.
 
 ---
 
@@ -75,4 +117,4 @@ Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ## Domain Explanation
 
-The normalized measure develops three competing concentration layers, at the flat endpoint $x=0$, the interior zero $x=\tfrac12$, and the algebraic endpoint $x=1$. The implicit first-moment condition fixes their critical balance. The limiting three-point measure makes the $5\times5$ Hankel matrix rank deficient, so the first nonzero determinant term depends on a finer multi-sample fluctuation inside the widest boundary layer and on proving that all configurations involving algebraic-width collisions are negligible. Determining that surviving scale and coefficient is an asymptotic-analysis problem.
+The two parameters are determined by a coupled exponential-family moment map, while the normalized measure develops three competing concentration layers at $0$, $\tfrac12$, and $1$. The moment constraints tune both the limiting layer weights and the slow logarithmic drift of the parameters. The resulting three-point weak limit makes the $5\times5$ Hankel matrix rank deficient, so the first nonzero determinant term comes from a finer three-sample fluctuation inside the flat endpoint layer. Establishing global uniqueness of the implicit pair, resolving its coupled asymptotics, and identifying the dominant determinant configuration are asymptotic-analysis tasks.
