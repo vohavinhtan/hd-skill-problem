@@ -1,201 +1,238 @@
 ## Steps
 
-Step 1: Convert the two polynomial factors into coupled radical families
-Put
+Step 1: Determine the cubic Kummer kernel
+Put $g_i=a+y_i$ and $M=K(\omega)$. Since
 $$
-A_i=a+y_i.
+\prod_{i=1}^n g_i=(-1)^nf(-a)=c^3,
 $$
-The roots of $P$ are $\pm\alpha_i$ with $\alpha_i^2=A_i$, while the roots of $Q$ are $\pm\beta_i$ with $\beta_i^2=qA_i$. Hence
-$$
-L=K(\alpha_1,\ldots,\alpha_n,\beta_1,\ldots,\beta_n).
-$$
-The two radical families are not independent: for every $i$,
-$$
-\left(\frac{\beta_i}{\alpha_i}\right)^2=q.
-$$
-The common quadratic twist will supply one global sign choice rather than $n$ independent choices.
+the all-ones vector is a cubic relation among the classes of the $g_i$ in $M^\times/(M^\times)^3$.
 
-Step 2: Determine the relations among the first family of square classes
-Let
-$$
-\delta=\prod_{1\leq i<j\leq n}(y_i-y_j).
-$$
-Then $\delta\in K$ and $\delta^2=\Delta$. The prescribed norm identity gives
-$$
-\prod_{i=1}^n A_i=(-1)^n f(-a)=\Delta c^2=(c\delta)^2.
-$$
-Thus the all-ones vector is a relation among the classes of $A_1,\ldots,A_n$ in $K^\times/(K^\times)^2$.
+The unique index-two subgroup of $S_n$ is $A_n$, so the unique quadratic subfield of $K$ is $\mathbb Q(\sqrt\Delta)$. The assumption that $-3\Delta$ is not a rational square therefore gives $K\cap\mathbb Q(\omega)=\mathbb Q$, and the copy of $S_n$ acting on $K$ extends to $M$ while fixing $\omega$.
 
-The factorization modulo $p$ has Frobenius cycle type $(n-2,1,1)$. Since $p\nmid\Delta$, a prime of $K$ above $p$ is unramified and has residue field $\mathbb F_{p^{n-2}}$. Label a root reducing to $r$ as $y_1$. The element $A_1$ reduces to $a+r$, which is a nonsquare in $\mathbb F_p$. It remains a nonsquare in $\mathbb F_{p^{n-2}}$ because $n-2$ is odd. Therefore
-$$
-A_1\notin(K^\times)^2.
-$$
-This residue calculation is an in-step certificate that the relation space is not all of $\mathbb F_2^n$.
+Because $p\nmid\Delta$, the roots have distinct reduction at primes above $p$. Frobenius acts on the reduced roots by $z\mapsto z^p$; the irreducible factor $h$ therefore gives an orbit of length $n-3$, while $u,v,w$ give fixed roots. Since $n-3\equiv2\pmod3$ and $p\equiv1\pmod3$, the noncube $a+u\in\mathbb F_p^\times$ remains a noncube in $\mathbb F_{p^{n-3}}^\times$. Thus the corresponding $g_i$ is not a cube in $M$.
 
-Step 3: Use the $S_n$-action to classify the first relation space
+Let $\mathcal R\subseteq\mathbb F_3^n$ be the relation space. It is $S_n$-invariant and contains $\mathbf1$. If $w\in\mathcal R$ were nonconstant, a transposition exchanging two unequal coordinates would put a nonzero multiple of $e_i-e_j$ in $\mathcal R$. Its conjugates span $\{z:\sum z_i=0\}$. Since $n\equiv2\pmod3$, adjoining $\mathbf1$ then gives all of $\mathbb F_3^n$, contradicting that the root reducing to $u$ gives a noncube $g_i$. Hence
+$$
+\mathcal R=\langle\mathbf1\rangle.
+$$
+The pair classes span the quotient because, for distinct $i,j,k$,
+$$
+2e_i=(e_i+e_j)+(e_i+e_k)-(e_j+e_k).
+$$
+Every $g_i$ is a $p$-adic unit, since the $g_i$ are integral and their product $c^3=f(-a)$ is a $p$-adic unit. As $p$ is unramified, $v_{\mathfrak p}(p)=1$, so $p\prod g_i^{a_i}$ cannot be a cube. Thus $p$ is independent of the pair classes. Consequently every $M$-automorphism is uniquely described by
+$$
+(u,s)\in\left\{u\in\mathbb F_3^n:\sum_i u_i=0\right\}\times\mathbb F_3,
+$$
+and every such pair defines an automorphism by multiplying chosen cube roots by the corresponding powers of $\omega$.
+
+Step 2: Convert the root-cycle conditions into orbit twists
+Choose $\alpha_i^3=g_i$ with $\prod_i\alpha_i=c$, and choose $\eta^3=p$. For an extension fixing $\omega$ and inducing $\pi\in S_n$,
+$$
+\sigma(\alpha_i)=\omega^{u_i}\alpha_{\pi(i)},\qquad
+\sigma(\eta)=\omega^s\eta.
+$$
+For $\beta_{ij}=\alpha_i\alpha_j$,
+$$
+\sigma(\beta_{ij})=\omega^{u_i+u_j}\beta_{\pi(i),\pi(j)}.
+$$
+If an orbit of unordered pairs has length $\ell$ and accumulated exponent $T$, then its three cubic roots form three $\ell$-cycles when $T=0$, and one $3\ell$-cycle when $T\neq0$. For $Q$, the accumulated exponent is $T+\ell s$.
+
+Write $\alpha$ for the sum of the $u_i$ on the $2$-cycle, $\phi_i$ for the sum on the $i$th $5$-cycle, and $\psi_j$ for the sum on the $j$th $7$-cycle. The relevant pair orbits are:
+- two length-$5$ orbits inside each $5$-cycle, each with twist $-\phi_i$;
+- five length-$5$ orbits between two $5$-cycles, with twist $\phi_i+\phi_{i'}$;
+- one length-$35$ orbit between a $5$- and a $7$-cycle, with twist $\phi_i-\psi_j$;
+- three length-$7$ orbits inside each $7$-cycle, each with twist $-\psi_j$;
+- seven length-$7$ orbits between two $7$-cycles, with twist $\psi_j+\psi_{j'}$.
+Pairs involving the $2$-cycle have lengths $1$, $10$, or $14$, so they cannot contribute to the requested lengths.
+
+Step 3: Reduce the three cycle counts to three distribution equations
+For $a\in\mathbb F_3$, let
+$$
+n_a=\#\{i:\phi_i=a\},\qquad p_a=\#\{j:\psi_j=a\}.
+$$
+For the $Q$ condition put $q_a=p_{a+s}$, with indices modulo $3$. A zero-twist base orbit contributes three root cycles of the same length. Hence the three conditions are equivalent to
+$$
+2n_0+5\left(\binom{n_0}{2}+n_1n_2\right)=\frac{5r^2-r+8}{6},
+$$
+$$
+n_0p_0+n_1p_1+n_2p_2=\frac{r^2-1}{3},
+$$
+$$
+3q_0+7\left(\binom{q_0}{2}+q_1q_2\right)=\frac{7r^2-r+12}{6}.
+$$
+Since $r=3t+1$, write
+$$
+\begin{aligned}
+n_0&=t+1+x,&
+n_1&=t+\frac{-x+d}{2},&
+n_2&=t+\frac{-x-d}{2},\\
+q_0&=t+1+y,&
+q_1&=t+\frac{-y+e}{2},&
+q_2&=t+\frac{-y-e}{2}.
+\end{aligned}
+$$
+Direct substitution gives the exact residuals
+$$
+5d^2=15x^2+18x,\qquad 7e^2=21y^2+26y.
+$$
+The middle equation becomes, according as $s=0,1,2$,
+$$
+\begin{aligned}
+0&=de+3xy+2x+2y+2,\\
+0&=de-3dy-2d+3ex+2e+3xy+2x+2y,\\
+0&=de+3dy+2d-3ex-2e+3xy+2x+2y.
+\end{aligned}
+$$
+
+Step 4: Classify all possibilities for the $5$-cycle distribution
+Set $A=15x+9$ and $C=5d$. The first quadratic equation is
+$$
+A^2-3C^2=81.
+$$
+Reducing twice modulo $3$ shows $9\mid A$ and $9\mid C$, so $(A+C\sqrt3)/9$ has norm $1$ in $\mathbb Z[\sqrt3]$. The standard Pell description for $a^2-3b^2=1$, whose fundamental positive solution is $2+\sqrt3$, gives
+$$
+\frac{A+C\sqrt3}{9}=\pm(2+\sqrt3)^k.
+$$
+Since $5\mid C$, the coefficient of $\sqrt3$ must vanish modulo $5$. Because
+$$
+(2+\sqrt3)^3=26+15\sqrt3\equiv1\pmod5,
+$$
+while the first two powers have nonzero $\sqrt3$-coefficient modulo $5$, this forces $3\mid k$. The congruence $A\equiv9\pmod{15}$ fixes the positive sign. Interchanging the labels $1$ and $2$ if necessary permits $d\geq0$, so
+$$
+A+5d\sqrt3=9(2+\sqrt3)^{3j},\qquad j\geq0.
+$$
+The first values are
+$$
+(x,d)=(0,0),\ (15,27),\ (810,1404).
+$$
+Multiplication by $26+15\sqrt3$ gives
+$$
+A_{j+1}=26A_j+225d_j,\qquad d_{j+1}=3A_j+26d_j.
+$$
+Thus $d_3=72981$, and $d_j$ is increasing for $j\geq1$.
+
+Step 5: Eliminate the two shifted cases for every nonzero Pell branch
+For $j=0$, $x=d=0$. When $s=0$, the middle equation gives $y=-1$, incompatible with $7e^2=21y^2+26y$. When $s=1$ or $2$, it gives $e=-y$ or $e=y$, and the second quadratic then forces $y=e=0$. Hence there are exactly two balanced branches.
+
+Now let $j\geq1$, so $x\geq15$ and $d>0$. Since
+$$
+d^2=3x^2+\frac{18}{5}x,
+$$
+we have $x<d<2x$. For $s=2$, eliminating $e$ from the middle equation and the quadratic for $e$ gives a quadratic in $y$ with discriminant
+$$
+8(-d+3x+2)^2(6x^2+47x+338-1011dx-702d)<0,
+$$
+because $d>x$ and $x\geq15$.
+
+For $s=1$, the middle equation gives
+$$
+e=\frac{(3d-3x-2)y+2d-2x}{d+3x+2}.
+$$
 Define
 $$
-\mathcal R_A=left\{e\in\mathbb F_2^n:
-\prod_{i=1}^n A_i^{e_i}\in(K^\times)^2\right\}.
+H(y)=7\left((3d-3x-2)y+2d-2x\right)^2-(d+3x+2)^2(21y^2+26y).
 $$
-It is $S_n$-invariant and contains $\mathbf1=(1,\ldots,1)$. Suppose it contained a vector $e$ outside $\langle\mathbf1\rangle$. Two coordinates of $e$ would differ. If $\tau$ exchanges those coordinates, then
+Using the relation for $d^2$, its leading coefficient is negative and
 $$
-e+\tau e=\varepsilon_i+\varepsilon_j\in\mathcal R_A,
+\begin{aligned}
+H(-2)&=16(-26dx-22d+4x^2+8x-1)<0,\\
+H(-1)&=\frac85(10dx-5d+55x^2+82x+30)>0,\\
+H(0)&=\frac{56x}{5}(-5d+10x+9)>0,\\
+H(1)&=\frac85(-395dx-205d+85x^2+23x-100)<0.
+\end{aligned}
 $$
-where $\varepsilon_i$ are the standard basis vectors. Conjugating by $S_n$ places every pair sum in $\mathcal R_A$, so the whole even-weight subspace lies in $\mathcal R_A$. Since $n$ is odd, $\mathbf1$ has odd weight; adjoining it gives all of $\mathbb F_2^n$. This contradicts the nonsquare certificate for $A_1$. It follows that
-$$
-\mathcal R_A=\langle\mathbf1\rangle.
-$$
+Therefore its roots lie in $(-2,-1)$ and $(0,1)$, so no integer $y$ occurs. Interchanging labels $1$ and $2$ sends $(d,e,s)$ to $(-d,-e,-s)$, so the same conclusion covers $d<0$.
 
-Step 4: Classify every relation involving both radical families
-Let $\mathcal R\subseteq\mathbb F_2^n\oplus\mathbb F_2^n$ be the relation space of
+Step 6: Solve the remaining unshifted case and isolate the exceptional branch
+For $s=0$ and $d\neq0$, the middle equation gives
 $$
-A_1,\ldots,A_n,qA_1,\ldots,qA_n.
+e=-\frac{(3x+2)y+2x+2}{d}.
 $$
-For $(e,d)\in\mathbb F_2^n\oplus\mathbb F_2^n$, the corresponding product has square class
+Substituting this into $7e^2=21y^2+26y$ and using $5d^2=15x^2+18x$ yields
 $$
-q^{\operatorname{wt}(d)}\prod_{i=1}^n A_i^{e_i+d_i}.
+(21x+70)y^2+(15x^2+116x+140)y+70(x+1)^2=0.
 $$
-If $\operatorname{wt}(d)$ is even, this is a square precisely when
+Its discriminant is
 $$
-e+d\in\langle\mathbf1\rangle.
+d^2S^2,\qquad S^2=75x^2-890x-3500=\frac{A^2-196A-8817}{3}.
 $$
+For $j=1$, $x=15,d=27$, and the quadratic is a nonzero multiple of
+$$
+(y+7)(77y+512),
+$$
+so $y=-7$, and the middle equation gives $e=11$.
 
-No relation can have $\operatorname{wt}(d)$ odd. To prove this, suppose
+For $j=2$, $S^2=48483100$, while
 $$
-q\prod_{i=1}^n A_i^{w_i}\in(K^\times)^2
+6962^2<S^2<6963^2,
 $$
-for some $w\in\mathbb F_2^n$. Comparing this relation with any transposition of the roots shows
+so $S^2$ is not a square. For $j\geq3$,
 $$
-w+\tau w\in\mathcal R_A=\langle\mathbf1\rangle.
+3\left(S^2-(5d-56)^2\right)=1680d-196A-18144<0,
 $$
-The vector $w+\tau w$ has weight $0$ or $2$, so it cannot equal $\mathbf1$ because $n\geq5$. Every transposition fixes $w$, forcing $w=\mathbf0$ or $w=\mathbf1$. The alleged relation would then make either $q$ or
+because $A/d>\sqrt{75}>60/7$. Also $d\geq72981$ and, since $d>27$,
 $$
-q\prod_iA_i=q\Delta c^2
+\frac Ad=\sqrt{75+\frac{81}{d^2}}<\frac{26}{3}.
 $$
-a square in $K$.
+Hence
+$$
+3\left(S^2-(5d-57)^2\right)=1710d-196A-18483>\frac{34}{3}d-18483>0.
+$$
+Thus $(5d-57)^2<S^2<(5d-56)^2$, impossible for a square. The only nonzero branch is
+$$
+(x,d,y,e,s)=(15,27,-7,11,0)
+$$
+and its label-swapped partner $(15,-27,-7,-11,0)$.
 
-An $S_n$-extension with $n\geq5$ has a unique quadratic subfield, namely $\mathbb Q(\sqrt\Delta)$, because $A_n$ is the unique index-two subgroup of $S_n$. A rational number can therefore become a square in $K$ only if its rational square class is $1$ or $\Delta$. The assumptions that neither $q$ nor $q\Delta$ is a rational square exclude both alternatives. Hence
+Step 7: Count the admissible lifts
+The balanced branches have
 $$
-\mathcal R=left\{(d+t\mathbf1,d):
-\operatorname{wt}(d)\equiv0\pmod2, t\in\mathbb F_2\right\}.
+(n_0,n_1,n_2)=(t+1,t,t)
 $$
+and two possible $p$-distributions, obtained by placing the entry $t+1$ in position $1$ or $2$. Their labeled-cycle contribution is
+$$
+2\left(\frac{r!}{(t+1)!t!^2}\right)^2.
+$$
+The exceptional branches have
+$$
+(n_0,n_1,n_2)=(t+16,t+6,t-21),\qquad (p_0,p_1,p_2)=(t-6,t+9,t-2),
+$$
+or the simultaneous swap of positions $1$ and $2$. Since $t\geq22$, all entries are nonnegative. Their contribution is
+$$
+2\frac{r!}{(t+16)!(t+6)!(t-21)!}\frac{r!}{(t-6)!(t+9)!(t-2)!}.
+$$
+For fixed cycle sums, the sum $\alpha$ on the $2$-cycle is forced by $\sum_i u_i=0$. The permutation has $2r+1$ index cycles, so the number of $u$-vectors realizing prescribed cycle sums is
+$$
+3^{n-(2r+1)}=3^{10r+1}.
+$$
+The number of permutations of type $(2,5^r,7^r)$ is
+$$
+\frac{n!}{2\cdot5^r7^r(r!)^2}=\frac{n!}{2\cdot35^r(r!)^2}.
+$$
+Multiplying the permutation count, the Kummer lifts, and the two distribution contributions, then cancelling $(r!)^2$, gives the final expression.
 
-Step 5: Pass from radical relations to the sign-change subgroup
-Let $V$ be the span in $K^\times/(K^\times)^2$ of the $2n$ radicands. Each $K$-automorphism of their multiquadratic extension defines a linear character $V\to\mathbb F_2$ by recording whether a chosen square root changes sign, and every such character defines an automorphism. Thus
-$$
-\operatorname{Gal}(L/K)\cong\operatorname{Hom}(V,\mathbb F_2).
-$$
-In coordinates, this identifies the realized sign vectors with the orthogonal complement $\mathcal R^\perp$ under the standard dot product on $\mathbb F_2^{2n}$. A vector $(u,v)$ lies in this orthogonal complement exactly when
-$$
-0=(u,v)\mathbin{\cdot}(d+t\mathbf1,d)
-=d\mathbin{\cdot}(u+v)+t\sum_{i=1}^n u_i
-$$
-for every even-weight $d$ and every $t\in\mathbb F_2$. Varying $t$ gives
-$$
-\sum_i u_i=0.
-$$
-The orthogonal complement of the even-weight subspace is $\langle\mathbf1\rangle$, so varying $d$ gives $u+v\in\langle\mathbf1\rangle$. Therefore the sign-change code is
-$$
-\mathcal C=left\{(u,u+\epsilon\mathbf1):
-\operatorname{wt}(u)\equiv0\pmod2, \epsilon\in\mathbb F_2\right\}.
-$$
-This is the symmetry quotient plus correction certificate: $u$ records the constrained signs of the first family, while $\epsilon$ records the global twist $\sqrt q\mapsto-\sqrt q$ discarded by the quotient.
-
-Step 6: Enumerate the weights in the sign-change code
-For $\epsilon=0$, the two blocks agree. If $\operatorname{wt}(u)=k$, the total weight is $2k$, and only even $k$ occur. Their contribution is
-$$
-\sum_{\substack{0\leq k\leq n\\k\text{ even}}}\binom nk z^{2k}
-=\frac{(1+z^2)^n+(1-z^2)^n}{2}.
-$$
-For $\epsilon=1$, the second block is the complement of the first, so
-$$
-\operatorname{wt}(u)+\operatorname{wt}(u+\mathbf1)=n.
-$$
-There are $2^{n-1}$ even-weight vectors $u$, giving the second contribution $2^{n-1}z^n$. Thus
-$$
-W_n(z)=\frac{(1+z^2)^n+(1-z^2)^n}{2}+2^{n-1}z^n.
-$$
-
-Step 7: Check the field degree and the smallest allowed case
-The relation space $\mathcal R$ has dimension $n$, so the $2n$ radicands span an $n$-dimensional subspace of $K^\times/(K^\times)^2$. Hence
-$$
-[L:K]=2^n.
-$$
-The polynomial answer gives the same independent check:
-$$
-W_n(1)=2^{n-1}+2^{n-1}=2^n.
-$$
-At the smallest allowed value $n=5$,
-$$
-W_5(z)=1+10z^4+16z^5+5z^8.
-$$
-The middle term records the global twist; omitting it is the concrete falsifier for the tempting but incorrect assumption that the two sign blocks must always agree.
-
-The hypotheses are nonempty. For example, take
-$$
-f(y)=y^5-y-4,qquad a=5,qquad c=\frac1{16},qquad q=2,qquad p=13.
-$$
-Here $\Delta=2^{10}\cdot11\cdot71$, and modulo $13$ the polynomial factors as
-$$
-(y-2)(y-7)(y^3+9y^2+2y+9),
-$$
-with $5+2=7$ a nonsquare. This also verifies the boundary case without assuming that the stated conditions are vacuous.
-Final Answer: $\boxed{\dfrac{(1+z^2)^n+(1-z^2)^n}{2}+2^{n-1}z^n}$
+Final Answer: $\boxed{\frac{3^{10r+1}n!}{35^r}(\frac{1}{(t+1)!^2t!^4}+\frac{1}{(t+16)!(t+6)!(t-21)!(t-6)!(t+9)!(t-2)!})}$
 
 ---
 
 ## Answer
 
-$\dfrac{(1+z^2)^n+(1-z^2)^n}{2}+2^{n-1}z^n$
-
----
-
-## Black-Box Audit
-
-- Step 1: Level 1. Both root families and their common twist follow directly from the displayed polynomials.
-- Step 2: Level 1. The norm relation and the local nonsquare obstruction are displayed explicitly.
-- Step 3: Level 1. The full $S_n$-invariant relation-space classification is proved with transpositions.
-- Step 4: Level 1. Even-twist and odd-twist relations are handled separately, including the unique quadratic-subfield obstruction.
-- Step 5: Level 1. The orthogonal-complement equations are written and solved explicitly.
-- Step 6: Level 1. Both weight contributions are enumerated in closed form.
-- Step 7: Level 1. Degree and boundary certificates independently verify the result.
-- No Level 2 or Level 3 finding remains.
-
----
-
-## Verification
-
-- Necessity: pass. Every sign vector must annihilate every radical relation, forcing even weight in the first block and a constant difference between the two blocks.
-- Sufficiency: pass. Every vector $(u,u+\epsilon\mathbf1)$ with even-weight $u$ annihilates $\mathcal R$, so Kummer duality realizes it as an element of $\operatorname{Gal}(L/K)$.
-- Completeness: pass. The local prime excludes the full first-family relation space, and the rational square-class hypotheses exclude every odd-twist relation.
-- Counterexample attack: the independent-family guess fails because $\beta_i/\alpha_i$ has the same square $q$ for every $i$. The identical-block guess fails on $(\mathbf0,\mathbf1)\in\mathcal C$. The unrestricted-first-block guess fails because the all-ones radical relation forces $\operatorname{wt}(u)$ to be even.
-- Independent re-derivation: $K(\alpha_1,\ldots,\alpha_n)$ has degree $2^{n-1}$ over $K$. Adjoining $\sqrt q$ doubles this degree because an expression of $q$ as a product of the $A_i$ square classes was excluded in Step 4. Since $\beta_i$ differs from $\sqrt q\,\alpha_i$ only by sign, this gives $[L:K]=2^n$ and the same global-flip description of the sign vectors.
-- Answer Length Gate: pass. The bare answer has fewer than $102$ characters.
+$\frac{3^{10r+1}n!}{35^r}(\frac{1}{(t+1)!^2t!^4}+\frac{1}{(t+16)!(t+6)!(t-21)!(t-6)!(t+9)!(t-2)!})$
 
 ---
 
 ## Classification
 
-**Domain/Sub-domain:** Abstract Algebra / Galois theory
-
 **Problem Type:** Symbolic derivation
 
-**Answer Type:** Polynomial or rational function
+**Answer Type:** Exact symbolic expression
 
 ---
 
 ## Solution Concepts
 
-- Kummer square classes
-- Frobenius residue obstruction
-- permutation modules over $\mathbb F_2$
-- quadratic twists
-- dual binary codes
-- weight enumerators
-
----
-
-## Confidence
-
-High. The relation module is classified in both directions, the local obstruction rules out its only larger $S_n$-invariant possibility, and the resulting weight enumerator agrees with the independently computed field degree.
+- cubic Kummer theory
+- permutation modules over finite fields
+- orbit decomposition on two-subsets
+- Pell equations
+- multinomial counting
