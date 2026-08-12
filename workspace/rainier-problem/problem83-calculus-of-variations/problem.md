@@ -2,79 +2,80 @@
 
 ## LaTeX (Normalized)
 
-Fix a real number $p>1$. For each integer $n\geq3$, let $\mathcal A$ be the set of all measurable functions $f:[0,1]\to[0,\infty)$ such that
+Fix an integer $m\geq2$. For $\lambda>0$ and $u\in H^4(0,\pi)$ satisfying
 $$
-\int_0^1 f(x)\,dx=1,
-\qquad
-\int_0^1 x f(x)\,dx=\frac12,
+u'(0)=u'(\pi)=u'''(0)=u'''(\pi)=0,
 $$
-and
+set
 $$
-\int_0^1 f(x)\log f(x)\,dx<\infty,
-$$
-where $0\log0$ is interpreted as $0$.
-
-Put
-$$
-V_p(x)=x(1-x)^2\bigl(1+(p-1)x\bigr),
+G_u(x)
+=
+u(x)^3-
+\frac{3u(x)}{\pi}
+\int_0^\pi u(t)^2\,dt,
 $$
 and define
 $$
-\mathcal E_{n,p}(f)
-=
-\int_0^1
-\left[
- f(x)\log f(x)+nV_p(x)f(x)
-\right]dx.
+\begin{aligned}
+\mathcal E_{m,\lambda}(u)
+={}&
+\frac12\int_0^\pi
+\bigl(u^{(4)}+5u''+4u\bigr)^2\,dx
+\\
+&+
+\sqrt{\frac{m-1}{m}}
+\int_0^\pi
+\bigl(u^{(4)}+5u''+4u\bigr)G_u\,dx
++
+\frac12\int_0^\pi G_u^2\,dx
+\\
+&-
+\frac{\lambda}{2}\int_0^\pi u^2\,dx
++
+\frac{1}{2\pi}
+\left(\int_0^\pi u^2\,dx\right)^2.
+\end{aligned}
 $$
-The functional $\mathcal E_{n,p}$ has a unique minimizer $f_{n,p}$ in $\mathcal A$.
 
-Let $\Lambda_{n,p}$ be the Lagrange multiplier associated with the constraint
+Prove that $\mathcal E_{m,\lambda}$ attains its global minimum. For all sufficiently small $\lambda>0$, choose any global minimizer $u_{m,\lambda}$ for which
 $$
-\int_0^1 x f(x)\,dx=\frac12,
-$$
-with the sign convention that the Lagrangian is
-$$
-\mathcal E_{n,p}(f)
-+A\left(\int_0^1 f(x)\,dx-1\right)
--\Lambda_{n,p}
-\left(\int_0^1 x f(x)\,dx-\frac12\right)
-$$
-for a real normalization multiplier $A$.
-
-The following limits exist:
-$$
-B_p
+a_{m,\lambda}
 =
-\lim_{n\to\infty}
-\left(
-\Lambda_{n,p}+\frac12\log n
-\right),
-$$
-$$
-C_p
-=
-\lim_{n\to\infty}
-\frac{\sqrt n}{\log n}
-\left(
-\Lambda_{n,p}+\frac12\log n-B_p
-\right),
+\frac{2}{\pi}\int_0^\pi u_{m,\lambda}(x)\cos x\,dx>0,
 $$
 and
 $$
-D_p
+b_{m,\lambda}
 =
-\lim_{n\to\infty}
-\sqrt n
-\left(
-\Lambda_{n,p}+\frac12\log n-B_p
--C_p\frac{\log n}{\sqrt n}
-\right).
+\frac{2}{\pi}\int_0^\pi u_{m,\lambda}(x)\cos(2x)\,dx>0.
 $$
-Determine the ordered triple
+The existence of such a choice for all sufficiently small $\lambda$ is part of what must be justified.
+
+Also set
 $$
-\bigl(B_p,C_p,D_p\bigr).
+c_{m,\lambda}
+=
+\frac{2}{\pi}\int_0^\pi u_{m,\lambda}(x)\cos(3x)\,dx.
 $$
+Prove that the limits
+$$
+Q_m
+=
+\lim_{\lambda\downarrow0}
+\left(\frac{b_{m,\lambda}}{a_{m,\lambda}}\right)^2
+$$
+and
+$$
+T_m
+=
+\lim_{\lambda\downarrow0}
+\frac{c_{m,\lambda}}{\lambda^{3/2}}
+$$
+exist, are independent of the permitted choice of global minimizer, and determine the ordered pair
+$$
+(Q_m,T_m)
+$$
+for every integer $m\geq2$.
 
 ---
 
@@ -91,4 +92,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for refined asymptotics of a Lagrange multiplier arising from a strictly convex entropy minimization problem with normalization and first-moment constraints. The variational structure determines the Gibbs-type minimizer and the implicit multiplier equation, while the requested constants require resolving unequal endpoint concentration scales and a logarithmically enhanced correction. Calculus of variations is therefore the primary subject, with asymptotic analysis providing the main supporting technique.
+The problem studies global minimizers of a higher-order nonlocal variational functional near a small-parameter degeneracy. Determining the requested limits requires identifying the asymptotic Fourier structure of the minimizers and resolving the first nonlinear order at which the competing modes are distinguished. Calculus of variations is therefore the primary subject, with spectral and asymptotic analysis providing supporting tools.
