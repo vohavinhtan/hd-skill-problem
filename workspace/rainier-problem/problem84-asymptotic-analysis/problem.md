@@ -31,34 +31,34 @@ m_n\bigl(p,\lambda_n(p)\bigr)=\frac12.
 $$
 The existence and uniqueness of $\lambda_n(p)$ are part of what must be justified.
 
+For $k\in\{0,1,2,3,4,5,6\}$, define
+$$
+M_{k,n}(p)
+=
+\frac{\displaystyle\int_0^1 x^{k-\lambda_n(p)}e^{-1/x}
+\exp\!\left(-n\phi(x)^p\right)\,dx}
+{Z_n\bigl(p,\lambda_n(p)\bigr)}.
+$$
+Thus $M_{0,n}(p)=1$ and $M_{1,n}(p)=\tfrac12$.
+
 Set
 $$
-a_n(p)=\frac{\log n}{p}.
-$$
-For each $p>1$, prove that the following two limits exist and determine them exactly:
-$$
-A_p
+H_n(p)
 =
-\lim_{n\to\infty}
-a_n(p)
-\left[
-a_n(p)\log a_n(p)\bigl(\lambda_n(p)-2\bigr)-1
-\right],
+\det\!\begin{pmatrix}
+M_{0,n}(p)&M_{1,n}(p)&M_{2,n}(p)&M_{3,n}(p)\\
+M_{1,n}(p)&M_{2,n}(p)&M_{3,n}(p)&M_{4,n}(p)\\
+M_{2,n}(p)&M_{3,n}(p)&M_{4,n}(p)&M_{5,n}(p)\\
+M_{3,n}(p)&M_{4,n}(p)&M_{5,n}(p)&M_{6,n}(p)
+\end{pmatrix}.
 $$
+
+For each $p>1$, determine the unique pair
+$(\beta_p,L_p)\in\mathbb{R}\times(0,\infty)$ such that
 $$
-B_p
-=
-\lim_{n\to\infty}
-\log a_n(p)
-\left\{
-a_n(p)
-\left[
-a_n(p)\log a_n(p)\bigl(\lambda_n(p)-2\bigr)-1
-\right]
--A_p
-\right\}.
+\lim_{n\to\infty}(\log n)^{\beta_p}H_n(p)=L_p.
 $$
-Give the ordered pair $(A_p,B_p)$ exactly as a function of $p$.
+Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ---
 
@@ -75,4 +75,4 @@ Give the ordered pair $(A_p,B_p)$ exactly as a function of $p$.
 
 ## Domain Explanation
 
-The parameter $\lambda_n(p)$ is defined implicitly by a normalized first-moment condition. Determining its asymptotics requires proving monotonicity and uniqueness, identifying two competing endpoint layers whose leading masses balance at a critical tilt, and resolving the implicit balance through two successive correction scales. The primary mathematical content is therefore asymptotic analysis.
+The parameter $\lambda_n(p)$ is defined implicitly by a normalized first-moment condition, while the requested quantity is a fourth-order Hankel determinant of moments under the resulting critical tilt. The limiting measure separates into two endpoint layers, making the leading two-point approximation rank deficient; the first nonzero determinant term therefore comes from finer fluctuations inside the flat endpoint layer. Establishing the critical tilt, identifying the dominant endpoint configuration, and resolving the surviving determinant scale are asymptotic-analysis tasks.
