@@ -41,7 +41,7 @@ in closed form as a function of $q$.
 | Field | Value |
 |---|---|
 | **Domain** | Linear Algebra |
-| **Sub-domain** | Matrix decompositions and canonical forms |
+| **Sub-domain** | Matrices and matrix operations |
 | **Problem Type** | Parameter identification |
 | **Answer Type** | Tuple or ordered list |
 
@@ -49,4 +49,4 @@ in closed form as a function of $q$.
 
 ## Domain Explanation
 
-This is a Linear Algebra problem centered on the Jordan canonical structure of a nilpotent endomorphism. The symmetric-square and tensor-product constructions are tools used to transport the multiplication operator to a larger space, but the quantity to be determined is the second distinct Jordan-block size and its multiplicity. The decisive work is therefore the recovery and comparison of Jordan block sizes under the induced operator, so the appropriate sub-domain is Matrix decompositions and canonical forms.
+This is a Linear Algebra problem whose central task is to determine the sizes and multiplicities of Jordan blocks of a nilpotent linear operator. The symmetric-square and tensor-product constructions are tools used to transport the operator to a larger space, while the decisive calculations concern nilpotent powers, ranks, and the resulting matrix/Jordan-block structure. Among the available sub-domains, Matrices and matrix operations is therefore the closest fit to the canonical-form content of the problem.
