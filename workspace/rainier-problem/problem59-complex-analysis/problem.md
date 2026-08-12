@@ -47,13 +47,24 @@ $$
 \left|\frac{F(-\tau)}{-\tau}\right|=e^{-77/57}.
 $$
 
-Let $\mathcal A$ be the set of all normalized maps $F$ arising in this way and satisfying both the displayed jet and the modulus constraint at $-\tau$.
+Let $\mathcal A$ be the set of all maps $F$ arising in this way and satisfying both the displayed jet and the modulus constraint at $-\tau$.
 
-Determine
+For $F\in\mathcal A$, the zero-free lift and the order-five equivariance give a unique holomorphic function $p_F:\mathbb D\to\mathbb C$ satisfying
 $$
+\operatorname{Re}p_F>0,\qquad p_F(0)=1,\qquad
+F(w)=w e^{-p_F(w^5)}.
+$$
+
+Determine the ordered pair
+$$
+(M,p_*),
+\qquad
 M=\sup_{F\in\mathcal A}\left|\frac{F(\tau)}{\tau}\right|,
 $$
-prove that the supremum is attained by a unique normalized map, and determine that extremal map exactly.
+where $p_*=p_{F_*}$ for the unique maximizing map $F_*\in\mathcal A$. In particular, a complete solution must prove that the supremum is attained uniquely; the exact extremal map is then
+$$
+F_*(w)=w e^{-p_*(w^5)}.
+$$
 
 ---
 
@@ -70,4 +81,4 @@ prove that the supremum is attained by a unique normalized map, and determine th
 
 ## Domain Explanation
 
-This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift reduce the normalized map to a positive-real function of $w^5$. The complex jet fixes three genuinely complex Herglotz moments, while the modulus condition at $-2^{-1/5}$ fixes an additional Poisson-kernel average. The objective is a second Poisson-kernel average at the opposite point. A sharp solution requires a constrained two-point moment duality argument: one must derive a rational minorant from the available moments and the fixed negative-point average, analyze its three-point contact set, use the imaginary moment constraints to recover asymmetric masses on conjugate boundary points, and then reconstruct the unique extremal holomorphic map.
+This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift lead to a positive-real function whose first three complex Herglotz moments are fixed by the jet, while the modulus constraint fixes one Poisson-kernel average. The objective is the opposite Poisson-kernel average, and sharpness requires a rational dual certificate, equality-support reconstruction, and recovery of the unique extremal holomorphic map.
