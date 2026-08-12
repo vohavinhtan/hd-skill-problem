@@ -183,8 +183,8 @@ $$
 $$
 where $r_+^3+r_-^3=(r_++r_-)^3-3r_+r_-(r_++r_-)=1/5$.
 
-Put $s_\pm=\sqrt{1-r_\pm^2}$ and
-$\eta_\pm=r_\pm+i s_\pm$. Let $\delta_\pm$ be the mass at $\eta_\pm$ minus the mass at $\overline{\eta_\pm}$. Since
+Put $s_{\pm}=\sqrt{1-r_{\pm}^2}$ and
+$\eta_{\pm}=r_{\pm}+i s_{\pm}$. Let $\delta_{\pm}$ be the mass at $\eta_{\pm}$ minus the mass at $\overline{\eta_{\pm}}$. Since
 $m_n=\int\xi^{-n}\,d\mu$, the imaginary parts of $m_1,m_2$ give
 $$
 s_+\delta_++s_-\delta_-=\frac1{15},
@@ -205,7 +205,7 @@ $$
 +\left(\frac16-\frac1{60s_\epsilon}\right)\delta_{\overline{\eta_\epsilon}}
 \right].
 $$
-Here $|r_\pm|<3/5$, so $s_\pm>4/5$ and all weights are positive. The third imaginary moment also matches:
+Here $|r_{\pm}|<3/5$, so $s_{\pm}>4/5$ and all weights are positive. The third imaginary moment also matches:
 $$
 \operatorname{Im}m_3
 =-\frac1{30}\left((4r_+^2-1)+(4r_-^2-1)\right)
@@ -232,18 +232,18 @@ Since
 $$
 (1+u)\prod_{\epsilon\in\{+,-\}}
 (1-2r_\epsilon u+u^2)
-=1+\frac45u^2+\frac45u^3+u^5,
+=u^5+\frac45u^3+\frac45u^2+1,
 $$
 putting the three terms over this common denominator gives
 $$
 p_*(u)=
 \frac{
-15-(5+2i)u+(9-i)u^2-(9+i)u^3+(5-2i)u^4-15u^5
+-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15
 }{
-15+12u^2+12u^3+15u^5
+15u^5+12u^3+12u^2+15
 }.
 $$
-The measure construction gives $\operatorname{Re}p_*>0$ and the first three Taylor coefficients from Step 1. At $u=1/2$ the numerator and denominator are
+The measure construction gives $\operatorname{Re}p_*>0$ and the first three Taylor coefficients from Step 1; since $eF(w)/w=e^{1-p(w^5)}$, these coefficients reproduce the prescribed jet. At $u=1/2$ the numerator and denominator are
 $$
 \frac{431}{32}-\frac{3i}{2},\qquad \frac{639}{32},
 $$
@@ -261,9 +261,9 @@ Define
 $$
 F_*(w)=w\exp\left(
 -\frac{
-15-(5+2i)w^5+(9-i)w^{10}-(9+i)w^{15}+(5-2i)w^{20}-15w^{25}
+-15w^{25}+(5-2i)w^{20}-(9+i)w^{15}+(9-i)w^{10}-(5+2i)w^5+15
 }{
-15+12w^{10}+12w^{15}+15w^{25}
+15w^{25}+12w^{15}+12w^{10}+15
 }
 \right).
 $$
@@ -279,13 +279,13 @@ $$
 $$
 Therefore the upper bound is attained. If another admissible map attained it, equality in the dual identity would force the same measure $\mu_*$ by Step 4; uniqueness in the Herglotz representation would then force the same $p_*$ and the same $F_*$. Hence the maximizer is unique.
 
-Final Answer: $\boxed{\left(e^{-431/639},\frac{15-(5+2i)u+(9-i)u^2-(9+i)u^3+(5-2i)u^4-15u^5}{15+12u^2+12u^3+15u^5}\right)}$
+Final Answer: $\boxed{(e^{-431/639},\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})}$
 
 ---
 
 ## Answer
 
-$\left(e^{-431/639},\frac{15-(5+2i)u+(9-i)u^2-(9+i)u^3+(5-2i)u^4-15u^5}{15+12u^2+12u^3+15u^5}\right)$
+$(e^{-431/639},\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})$
 
 ---
 
