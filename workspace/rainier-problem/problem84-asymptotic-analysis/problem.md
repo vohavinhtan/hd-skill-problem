@@ -29,4 +29,4 @@ Give $\alpha_p$ and $L_p$ exactly as functions of $p$.
 
 ## Domain Explanation
 
-The task asks for the exact leading power and leading coefficient of a parameterized ratio of Laplace-type integrals as $n\to\infty$. Determining the pair requires asymptotic localization and comparison of contributions to the numerator and denominator, so asymptotic analysis is the primary subject. The requested final object is the ordered pair of asymptotic parameters for each $p>1$.
+The task asks for the exact leading power and leading coefficient in the large-$n$ behavior of a parameterized ratio of integrals. Its primary mathematical content is the extraction of an asymptotic scale and coefficient as functions of the free parameter $p$, so Asymptotic analysis is the honest sub-domain. The requested final object is an ordered pair of parameters for each $p>1$.
