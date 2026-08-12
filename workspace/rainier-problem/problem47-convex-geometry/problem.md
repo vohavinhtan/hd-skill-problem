@@ -11,10 +11,10 @@ t\\
 t^2
 \end{pmatrix},
 \qquad
-w_{s;r,q}(t)=\frac{1}{\sqrt{s}}
+w_{s;r,q}(t)=
 \begin{pmatrix}
 0\\
-1\\
+s^{-1/2}\\
 rt-qt^3
 \end{pmatrix},
 $$
@@ -33,23 +33,21 @@ $$
 E(Q_{s;r,q})=
 \left\{x\in\mathbb R^3:x^{\mathsf T}Q_{s;r,q}x\leq1\right\}
 $$
-be the unique minimum-volume ellipsoid containing $K_{s;r,q}$, and define its two contact-parameter sets
+be the unique minimum-volume ellipsoid containing $K_{s;r,q}$, and define
 $$
 A_{s;r,q}=\left\{t\in[-1,1]:v(t)^{\mathsf T}Q_{s;r,q}v(t)=1\right\},
 $$
 $$
 B_{s;r,q}=\left\{t\in[-1,1]:w_{s;r,q}(t)^{\mathsf T}Q_{s;r,q}w_{s;r,q}(t)=1\right\}.
 $$
-For compactness, put
-$$
-H=\max_{0\leq\tau\leq1}\tau(r-q\tau)^2.
-$$
 
-Determine, for arbitrary fixed $r,q>0$, the complete set of parameters $s_0>0$ at which the ordered pair
+For arbitrary fixed $r,q>0$, determine the complete set of parameters $s_0>0$ at which the ordered contact pair
 $$
 \bigl(A_{s;r,q},B_{s;r,q}\bigr)
 $$
-is not locally constant as a function of $s$ at $s=s_0$. Your answer must be exact and valid for every $r,q>0$; numerical optimization or computer algebra is not allowed.
+is not locally constant as a function of $s$ at $s=s_0$.
+
+Your answer must be exact and valid for every $r,q>0$. Numerical optimization, computer algebra, exhaustive search, and unproved completeness claims are not accepted.
 
 ---
 
@@ -66,4 +64,4 @@ is not locally constant as a function of $s$ at $s=s_0$. Your answer must be exa
 
 ## Domain Explanation
 
-The problem asks for the exact contact-transition parameters of a one-parameter family of minimum-volume circumscribing ellipsoids. Its core is a convex-geometric active-set analysis: symmetry reduces the ellipsoid to a structured positive-definite matrix, containment becomes a small family of sharp contact inequalities, and the requested set consists precisely of the parameter values where the active contact pattern changes.
+The task is a single parametric minimum-volume circumscribing-ellipsoid problem. The deformation acts anisotropically on one generating curve, so the contact inequality itself changes with the parameter being identified. The difficulty is to derive the sharp contact constraints, exhaust the possible active sets, and detect genuine loss and re-entry of contacts without introducing a separate bifurcation or algebraic-geometry subproblem.
