@@ -49,4 +49,6 @@ Determine, as a closed formula in $n$ and $k$, the number of automorphisms $\sig
 
 ## Domain Explanation
 
-The task concerns the action of automorphisms of a splitting field on two related root sets and the compatibility of those actions with restriction to an $S_n$-subextension. The requested output is a closed symbolic count depending on $n$ and $k$, so Galois theory is the primary domain.
+This problem involves splitting fields, Galois automorphisms, and restrictions to a symmetric Galois group, which are part of Abstract Algebra and Galois theory.
+The problem also involves counting permutations with prescribed cycle structures, which are part of Discrete Mathematics.
+However, the permutation count is secondary because the main difficulty is determining which root permutations can arise from compatible field automorphisms.
