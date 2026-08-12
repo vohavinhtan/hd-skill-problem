@@ -38,11 +38,11 @@ $$
 w_{s;r,q}(t)^{\mathsf T}Q_{s;r,q}w_{s;r,q}(t)
 =\frac{\beta}{s}+\gamma\tau(r-q\tau)^2.
 $$
-Define
+By the prompt definition
 $$
-H:=\max_{0\leq\tau\leq1}\tau(r-q\tau)^2.
+H=\max_{0\leq u\leq1}u(r-qu)^2,
 $$
-The maximum exists by continuity on $[0,1]$, and containment of the $w$-curve is equivalent to
+and the maximum exists by continuity on $[0,1]$. Therefore containment of the $w$-curve is equivalent to
 $$
 \beta+sH\gamma\leq s.
 $$
@@ -220,13 +220,13 @@ For the second curve, Step 2 shows that the contact set is the fixed nonempty ma
 
 Hence the boundary $(2-3H)s=1$ changes $B_{s;r,q}$, and the admissible roots of $H(2-H)s^2-s+1=0$ change whether $0$ belongs to $A_{s;r,q}$. Step 3 exhausts the possible active sets, so no other contact change can occur. The tangency case $4H^2-8H+1=0$ is excluded because neither contact set changes across it.
 
-Final Answer: $\boxed{H:=\max_{0\le u\le1}u(r-qu)^2;\{s>0:(2-3H)s=1\}\cup\{s>H^{-1}:H(2-H)s^2-s+1=0,4H^2-8H+1>0\}}$
+Final Answer: $\boxed{\{s>0:(2-3H)s=1\}\cup\{s>H^{-1}:H(2-H)s^2-s+1=0,4H^2-8H+1>0\}}$
 
 ---
 
 ## Answer
 
-$H:=\max_{0\le u\le1}u(r-qu)^2;\{s>0:(2-3H)s=1\}\cup\{s>H^{-1}:H(2-H)s^2-s+1=0,4H^2-8H+1>0\}$
+$\{s>0:(2-3H)s=1\}\cup\{s>H^{-1}:H(2-H)s^2-s+1=0,4H^2-8H+1>0\}$
 
 ---
 
