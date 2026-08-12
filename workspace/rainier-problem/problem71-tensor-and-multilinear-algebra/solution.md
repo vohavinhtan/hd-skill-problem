@@ -1,5 +1,7 @@
 ## Steps
 
+Throughout, $J_m$ denotes a single nilpotent Jordan block of size $m$ (with eigenvalue $0$).
+
 Step 1: Determine the Jordan type of $N_q$ on $R_q$
 Write $T=N_q$, so $T$ is multiplication by $x+y$. Since $q=p^e$, Frobenius gives
 $$
@@ -85,7 +87,35 @@ Identify $A\otimes A$ with
 $$
 T=\mathbb F_p[x,y]/(x^{2q-1},y^{2q-1}),
 $$
-and let $V$ be multiplication by $x+y$. Since $p$ is odd, $\operatorname{Sym}^2(A)$ is the subspace fixed by swapping $x$ and $y$. Frobenius gives
+and let $V$ be multiplication by $x+y$. Define the swap operator
+$$
+\sigma:A\otimes A\longrightarrow A\otimes A,
+\qquad \sigma(u\otimes v)=v\otimes u.
+$$
+By definition,
+$$
+\operatorname{Sym}^2(A)
+=(A\otimes A)/\operatorname{im}(1-\sigma).
+$$
+Because $p$ is odd, $2$ is invertible in $\mathbb F_p$, so
+$$
+e_+=\frac{1+\sigma}{2}
+$$
+is an idempotent projection. Its image is exactly the fixed subspace
+$$
+(A\otimes A)^\sigma=\{z:\sigma z=z\},
+$$
+and its kernel is $\operatorname{im}(1-\sigma)$: indeed $e_+(1-\sigma)=0$, while if $e_+z=0$, then $\sigma z=-z$ and
+$$
+z=\frac12(1-\sigma)z.
+$$
+Hence the map
+$$
+[z]\longmapsto e_+z
+$$
+identifies the symmetric-square quotient canonically with $(A\otimes A)^\sigma$. Under the polynomial model for $T$, $\sigma$ exchanges $x$ and $y$, so we may identify $\operatorname{Sym}^2(A)$ with the subspace of polynomials fixed by swapping $x$ and $y$.
+
+Frobenius gives
 $$
 V^{3q}=(x^q+y^q)^3=0,
 $$
