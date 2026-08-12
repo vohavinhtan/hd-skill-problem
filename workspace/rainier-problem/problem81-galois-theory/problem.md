@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Let $r\geq7$ satisfy $r\equiv1\pmod6$, and put $n=12r+2$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
+Let $t\geq22$ be even, put $r=3t+1$, and put $n=12r+2$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
 $$
 \operatorname{Gal}(K/\mathbb Q)\cong S_n
 $$
@@ -42,7 +42,7 @@ Q(x)=p^N R\left(\frac{x^3}{p}\right),
 $$
 and let $L$ be the splitting field of $f(y)P(x)Q(x)$ over $\mathbb Q$. Let $\omega\in L$ be a primitive cube root of unity. For $\sigma\in\operatorname{Gal}(L/\mathbb Q)$, let $\pi_\sigma\in S_n$ be the permutation induced by the restriction of $\sigma$ to $K$.
 
-Determine, as a closed formula in $r$, the number of automorphisms $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ satisfying all three conditions below:
+Determine, as a closed formula in $t$ (with $r=3t+1$ as above), the number of automorphisms $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ satisfying all three conditions below:
 
 1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has one cycle of length $2$, exactly $r$ cycles of length $5$, and exactly $r$ cycles of length $7$.
 2. On the roots of $P$, the automorphism $\sigma$ has exactly
