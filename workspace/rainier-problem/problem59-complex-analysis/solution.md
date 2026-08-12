@@ -1,202 +1,209 @@
 ## Steps
 
-Step 1: Reduce the equivariant map to a positive-real function
+Step 1: Convert the Taylor data into boundary moments
 
-Conjugating the relation $f\circ\sigma=\sigma\circ f$ by $\kappa$ gives
+By the Herglotz representation theorem, the conditions $\operatorname{Re}p>0$ on $\mathbb D$ and $p(0)=1$ give a unique probability measure $\mu$ on the unit circle such that
 $$
-F(\zeta w)=\zeta F(w).
+p(z)=\int_{|\xi|=1}\frac{\xi+z}{\xi-z}\,d\mu(\xi).
 $$
-Put $H(w)=F(w)/w$, using the holomorphic value at $0$. Since $F(w)=wG(w)^4$ with $G$ zero free and $|G|<1$, $H=G^4$ is zero free and $|H|<1$. The jet gives $H(0)=e^{-1}$. Choose the holomorphic logarithm
+Indeed, this is the normalized positive-real representation, and the normalization $p(0)=1$ makes the representing measure have total mass $1$. Expanding
 $$
-P(w)=-\log H(w),\qquad P(0)=1.
+\frac{\xi+z}{\xi-z}=1+2\sum_{n\geq1}z^n\xi^{-n}
 $$
-Then $\operatorname{Re}P=-\log|H|>0$. Also $H(\zeta w)=H(w)$, so
-$P(\zeta w)-P(w)$ takes values in $2\pi i\mathbb Z$; it is holomorphic and is $0$ at $w=0$, hence it vanishes identically. Therefore the Taylor series of $P$ contains only powers divisible by $5$, and there is a holomorphic $p:\mathbb D\to\mathbb C$ with
+for $|z|<1$ gives
 $$
-\operatorname{Re}p>0,\qquad p(0)=1,\qquad P(w)=p(w^5).
+p(z)=1+2\sum_{n\geq1}m_nz^n,
+\qquad
+m_n=\int\xi^{-n}\,d\mu(\xi).
 $$
-Thus
-$$
-F(w)=w e^{-p(w^5)}.
-$$
-
-Write $u=w^5$ and
-$$
-eH(w)=1+c_1u+c_2u^2+c_3u^3+O(u^4),
-$$
-where
-$$
-c_1=\frac13+\frac{2i}{15},\quad
-c_2=\frac{37}{150}+\frac{i}{9},\quad
-c_3=\frac{4837}{4050}+\frac{161i}{10125}.
-$$
-Since $p=1-\log(eH)$,
-$$
-p(u)=1-c_1u-\left(c_2-\frac{c_1^2}{2}\right)u^2
--\left(c_3-c_1c_2+\frac{c_1^3}{3}\right)u^3+O(u^4),
-$$
-hence
-$$
-p(u)=1+\left(-\frac13-\frac{2i}{15}\right)u
-+\left(-\frac15-\frac{i}{15}\right)u^2
-+\left(-\frac{17}{15}+\frac{i}{25}\right)u^3+O(u^4).
-$$
-
-Step 2: Translate the problem to a constrained boundary moment problem
-
-By the Herglotz representation theorem, the conditions $\operatorname{Re}p>0$ and $p(0)=1$ give a unique probability measure $\mu$ on the unit circle such that
-$$
-p(u)=\int_{|\xi|=1}\frac{\xi+u}{\xi-u}\,d\mu(\xi).
-$$
-Writing
-$$
-p(u)=1+2\sum_{n\geq1}m_nu^n
-$$
-and expanding the kernel gives
-$$
-m_n=\int\xi^{-n}\,d\mu(\xi),
-$$
-so the first three coefficients from Step 1 yield
+The prescribed Taylor coefficients therefore give
 $$
 m_1=-\frac16-\frac{i}{15},\qquad
 m_2=-\frac1{10}-\frac{i}{30},\qquad
 m_3=-\frac{17}{30}+\frac{i}{50}.
 $$
 Let $X=\operatorname{Re}\xi$. Taking real parts and using
-$\cos 2t=2\cos^2t-1$ and $\cos 3t=4\cos^3t-3\cos t$ gives
 $$
-\mathbb E X=-\frac16,\qquad
-\mathbb E X^2=\frac9{20},\qquad
+\cos2t=2\cos^2t-1,
+\qquad
+\cos3t=4\cos^3t-3\cos t,
+$$
+yields
+$$
+\mathbb E X=-\frac16,
+\qquad
+\mathbb E X^2=\frac9{20},
+\qquad
 \mathbb E X^3=-\frac4{15}.
 $$
 
-For real $u$,
+Step 2: Express the objective and the extra constraint as Poisson-kernel averages
+
+For real $r\in(-1,1)$, the Herglotz formula gives
 $$
-\operatorname{Re}p(u)
-=\int\frac{1-u^2}{1+u^2-2uX}\,d\mu.
+\operatorname{Re}p(r)
+=\int\frac{1-r^2}{1+r^2-2rX}\,d\mu.
 $$
-Since $\tau^5=1/2$, define
+At $r=\pm1/2$, put
 $$
-K_+(x)=\frac3{5-4x},\qquad K_-(x)=\frac3{5+4x}.
+K_+(x)=\frac3{5-4x},
+\qquad
+K_-(x)=\frac3{5+4x}.
 $$
 Then
 $$
-\operatorname{Re}p(1/2)=\mathbb E K_+(X),\qquad
-\mathbb E K_-(X)=\operatorname{Re}p(-1/2)=\frac{77}{57}.
+\operatorname{Re}p\left(\frac12\right)=\mathbb E K_+(X),
+\qquad
+\mathbb E K_-(X)=\operatorname{Re}p\left(-\frac12\right)=\frac{77}{57}.
 $$
-Therefore maximizing $|F(\tau)/\tau|$ is equivalent to minimizing
-$\mathbb E K_+(X)$ under these four real constraints.
+Thus the original problem is exactly the minimization of $\mathbb E K_+(X)$ subject to the three fixed moments from Step 1 and the fixed value of $\mathbb E K_-(X)$.
 
-Step 3: Build and verify the sharp dual certificate
+Step 3: Construct a sharp dual certificate
 
-To locate a sharp nonnegative gap, seek an equality support with one endpoint contact and two double interior contacts. Put
+To discover the equality set, write
 $$
 g(x)=(x+1)(x^2-sx+t).
 $$
-For a measure supported on the zeros of $g$, the three moments from Step 2 give
+If an equality measure is supported on the zeros of $g$, then the moments from Step 1 give
 $$
 0=\mathbb E g(X)=-\frac{17s-50t-11}{60},
 $$
-so $17s-50t=11$. Also
+so
 $$
-K_-(x)=\frac{3}{4(x+5/4)},\qquad
+17s-50t=11.
+$$
+Also
+$$
+K_-(x)=\frac{3}{4(x+5/4)},
+$$
+so the fixed negative-point value gives
+$$
 \mathbb E\frac1{X+5/4}=\frac{308}{171}.
 $$
-The division identity
+Polynomial division gives
 $$
 \frac{g(x)}{x+5/4}
 =x^2-\left(s+\frac14\right)x+t+\frac{s}{4}+\frac5{16}
--\frac{\frac{5s}{16}+\frac t4+\frac{25}{64}}{x+5/4}
+-\frac{\frac{5s}{16}+\frac t4+\frac{25}{64}}{x+5/4}.
 $$
-then gives $125s-470t=86$. Solving the two linear equations gives
+Taking expectations and imposing $g(X)=0$ on the candidate equality support gives
 $$
-s=\frac12,\qquad t=-\frac1{20},
+125s-470t=86.
 $$
-so the interior contacts are the roots of $20x^2-10x-1$.
+Solving the two linear equations gives
+$$
+s=\frac12,
+\qquad
+t=-\frac1{20},
+$$
+so the two interior contacts are the roots of
+$$
+P(x)=20x^2-10x-1.
+$$
 
-Let $P(x)=20x^2-10x-1$ and seek
+Now seek
 $$
 K_+(x)-\lambda K_-(x)-q(x)
 =C\frac{(1+x)P(x)^2}{25-16x^2},
 $$
-with $q$ cubic. After multiplication by $25-16x^2$, evaluating at
-$x=5/4$ and $x=-5/4$ removes the $q$ term and gives
+where $q$ is cubic. Multiplying by $25-16x^2$ gives
 $$
-C=\frac{640}{15123},\qquad \lambda=\frac{3249}{5041}.
+3(5+4x)-3\lambda(5-4x)-q(x)(25-16x^2)
+=C(1+x)P(x)^2.
 $$
-Consequently
+At $x=5/4$, $P(5/4)=71/4$, hence
 $$
-q(x)=\frac{3(5+4x)-3\lambda(5-4x)-C(1+x)P(x)^2}{25-16x^2}
-=\frac{200(80x^3+57x+16)}{15123},
+30=C\frac94\left(\frac{71}{4}\right)^2,
 $$
-and hence the exact identity
+which gives
+$$
+C=\frac{640}{15123}.
+$$
+At $x=-5/4$, $P(-5/4)=171/4$, so
+$$
+-30\lambda=-C\frac14\left(\frac{171}{4}\right)^2,
+$$
+and therefore
+$$
+\lambda=\frac{3249}{5041}.
+$$
+With these constants, the remaining numerator factors as
+$$
+3(5+4x)-3\lambda(5-4x)-C(1+x)P(x)^2
+=(25-16x^2)\frac{200(80x^3+57x+16)}{15123}.
+$$
+Hence
 $$
 \frac3{5-4x}
 -\frac{3249}{5041}\frac3{5+4x}
 -\frac{200(80x^3+57x+16)}{15123}
 =
-\frac{640(1+x)(20x^2-10x-1)^2}
-{15123(25-16x^2)}.
+\frac{640(1+x)(20x^2-10x-1)^2}{15123(25-16x^2)}.
 $$
-For $-1\leq x\leq1$ the right side is nonnegative. Moreover
+For $-1\leq x\leq1$, the right-hand side is nonnegative. Taking expectations and using the three moments gives
 $$
-\mathbb E q(X)
-=\frac{200}{15123}\left(80\left(-\frac4{15}\right)
-+57\left(-\frac16\right)+16\right)
+\mathbb E\frac{200(80X^3+57X+16)}{15123}
 =-\frac{8900}{45369}.
 $$
-Taking expectations therefore gives
+Therefore
 $$
-\operatorname{Re}p(1/2)
+\operatorname{Re}p\left(\frac12\right)
 \geq
 \frac{3249}{5041}\frac{77}{57}-\frac{8900}{45369}
 =\frac{431}{639}.
 $$
-Thus every admissible map satisfies
-$$
-\left|\frac{F(\tau)}{\tau}\right|\leq e^{-431/639}.
-$$
 
-Step 4: Determine every equality measure
+Step 4: Determine the equality measure and prove its uniqueness
 
-Equality in the bound of Step 3 forces the nonnegative gap to vanish $\mu$-almost everywhere. Hence $X$ is supported on
+Equality in the certificate from Step 3 forces
 $$
--1,\qquad
-r_+=\frac{5+3\sqrt5}{20},\qquad
-r_-=\frac{5-3\sqrt5}{20},
+(1+X)(20X^2-10X-1)^2=0
 $$
-the three zeros of $(1+x)(20x^2-10x-1)^2$. They satisfy
+$\mu$-almost everywhere. Thus $X$ is supported on
 $$
-r_++r_-=\frac12,\qquad
-r_+r_-=-\frac1{20},\qquad
+-1,
+\qquad
+r_+=\frac{5+3\sqrt5}{20},
+\qquad
+r_-=\frac{5-3\sqrt5}{20}.
+$$
+These numbers satisfy
+$$
+r_++r_-=\frac12,
+\qquad
+r_+r_-=-\frac1{20},
+\qquad
 r_+^2+r_-^2=\frac7{20}.
 $$
-If $W_{-1},W_+,W_-$ are the total masses of the three real-part classes, the equations for total mass, $\mathbb EX$, and $\mathbb EX^2$ form a nonsingular Vandermonde system. The values
+Let $W_{-1},W_+,W_-$ be the total masses of the three real-part classes. Total mass together with $\mathbb EX$ and $\mathbb EX^2$ gives a nonsingular Vandermonde system. The values
 $$
 W_{-1}=W_+=W_-=\frac13
 $$
-satisfy all three equations, so they are the unique solution. They also satisfy the remaining real moment because
+satisfy it, so they are the unique solution. They also satisfy the third real moment because
 $$
 \frac{-1+r_+^3+r_-^3}{3}
 =\frac{-1+\frac15}{3}
-=-\frac4{15},
+=-\frac4{15}.
 $$
-where $r_+^3+r_-^3=(r_++r_-)^3-3r_+r_-(r_++r_-)=1/5$.
 
-Put $s_{\pm}=\sqrt{1-r_{\pm}^2}$ and
-$\eta_{\pm}=r_{\pm}+i s_{\pm}$. Let $\delta_{\pm}$ be the mass at $\eta_{\pm}$ minus the mass at $\overline{\eta_{\pm}}$. Since
-$m_n=\int\xi^{-n}\,d\mu$, the imaginary parts of $m_1,m_2$ give
+Put
+$$
+s_{\pm}=\sqrt{1-r_{\pm}^2},
+\qquad
+\eta_{\pm}=r_{\pm}+is_{\pm}.
+$$
+Let $\delta_{\pm}$ be the mass at $\eta_{\pm}$ minus the mass at $\overline{\eta_{\pm}}$. The imaginary parts of $m_1$ and $m_2$ give
 $$
 s_+\delta_++s_-\delta_-=\frac1{15},
 $$
 $$
 2r_+s_+\delta_++2r_-s_-\delta_-=\frac1{30}.
 $$
-Because $r_+\neq r_-$ and $r_++r_-=1/2$, the unique solution is
+Since $r_+\neq r_-$ and $r_++r_-=1/2$, the unique solution is
 $$
 s_+\delta_+=s_-\delta_-=\frac1{30}.
 $$
-Thus equality forces the unique probability measure
+Consequently equality forces the unique probability measure
 $$
 \mu_*=\frac13\delta_{-1}
 +\sum_{\epsilon\in\{+,-\}}
@@ -205,87 +212,57 @@ $$
 +\left(\frac16-\frac1{60s_\epsilon}\right)\delta_{\overline{\eta_\epsilon}}
 \right].
 $$
-Here $|r_{\pm}|<3/5$, so $s_{\pm}>4/5$ and all weights are positive. The third imaginary moment also matches:
+Because $|r_{\pm}|<3/5$, we have $s_{\pm}>4/5$, so every displayed weight is positive. The third imaginary moment is
 $$
-\operatorname{Im}m_3
-=-\frac1{30}\left((4r_+^2-1)+(4r_-^2-1)\right)
-=\frac1{50}.
+-\frac1{30}\left((4r_+^2-1)+(4r_-^2-1)\right)=\frac1{50},
 $$
-Thus $\mu_*$ has exactly the three complex moments fixed in Step 2. Its real-part masses also give
+which matches $\operatorname{Im}m_3$. Finally,
 $$
 \mathbb E_{\mu_*}K_-(X)
 =\frac13\left(3+\frac3{5+4r_+}+\frac3{5+4r_-}\right)
 =\frac{77}{57},
 $$
-using $r_++r_-=1/2$ and $r_+r_-=-1/20$.
+so $\mu_*$ satisfies every constraint.
 
-Step 5: Reconstruct the unique extremal map and attain the bound
+Step 5: Reconstruct the extremal function
 
-The Herglotz function of $\mu_*$ is
+The Herglotz function represented by $\mu_*$ is
 $$
-p_*(u)=\frac13\frac{1-u}{1+u}
+p_*(z)=\frac13\frac{1-z}{1+z}
 +\sum_{\epsilon\in\{+,-\}}
-\frac{\frac13(1-u^2)-\frac{i}{15}u}
-{1-2r_\epsilon u+u^2}.
+\frac{\frac13(1-z^2)-\frac{i}{15}z}{1-2r_\epsilon z+z^2}.
 $$
-Since
+Using $r_++r_-=1/2$ and $r_+r_-=-1/20$, the common denominator satisfies
 $$
-(1+u)\prod_{\epsilon\in\{+,-\}}
-(1-2r_\epsilon u+u^2)
-=u^5+\frac45u^3+\frac45u^2+1,
+(1+z)\prod_{\epsilon\in\{+,-\}}(1-2r_\epsilon z+z^2)
+=z^5+\frac45z^3+\frac45z^2+1.
 $$
-putting the three terms over this common denominator gives
+Combining the three fractions gives
 $$
-p_*(u)=
-\frac{
--15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15
-}{
-15u^5+12u^3+12u^2+15
-}.
+p_*(z)=
+\frac{-15z^5+(5-2i)z^4-(9+i)z^3+(9-i)z^2-(5+2i)z+15}{15z^5+12z^3+12z^2+15}.
 $$
-The measure construction gives $\operatorname{Re}p_*>0$ and the first three Taylor coefficients from Step 1; since $eF(w)/w=e^{1-p(w^5)}$, these coefficients reproduce the prescribed jet. At $u=1/2$ the numerator and denominator are
+Its Taylor expansion is
 $$
-\frac{431}{32}-\frac{3i}{2},\qquad \frac{639}{32},
+1+\left(-\frac13-\frac{2i}{15}\right)z
++\left(-\frac15-\frac{i}{15}\right)z^2
++\left(-\frac{17}{15}+\frac{i}{25}\right)z^3+O(z^4),
 $$
-while at $u=-1/2$ they are
+and the representing measure proves $\operatorname{Re}p_*>0$ on $\mathbb D$. Direct substitution gives
 $$
-\frac{693}{32}+\frac{3i}{4},\qquad \frac{513}{32}.
+p_*\left(\frac12\right)=\frac{431}{639}-\frac{16i}{213},
+\qquad
+p_*\left(-\frac12\right)=\frac{77}{57}+\frac{8i}{171}.
 $$
-Hence
-$$
-p_*(1/2)=\frac{431}{639}-\frac{16i}{213},\qquad
-p_*(-1/2)=\frac{77}{57}+\frac{8i}{171}.
-$$
+Thus $p_*$ attains the lower bound $431/639$. Any other minimizer would force equality in the nonnegative certificate and therefore the same measure $\mu_*$ by Step 4; uniqueness in the Herglotz representation then forces the same function. Hence $p_*$ is the unique minimizer.
 
-Define
-$$
-F_*(w)=w\exp\left(
--\frac{
--15w^{25}+(5-2i)w^{20}-(9+i)w^{15}+(9-i)w^{10}-(5+2i)w^5+15
-}{
-15w^{25}+12w^{15}+12w^{10}+15
-}
-\right).
-$$
-Then
-$$
-G_*(w)=\exp\left(-\frac14p_*(w^5)\right)
-$$
-is holomorphic, zero free, and satisfies $|G_*|<1$, while
-$F_*(w)=wG_*(w)^4$. Also $F_*(\zeta w)=\zeta F_*(w)$. Thus
-$f_*=\kappa^{-1}\circ F_*\circ\kappa$ belongs to $\mathcal F$, and $F_*$ belongs to $\mathcal A$. The value of $p_*(-1/2)$ gives the required modulus at $-\tau$, and the value at $1/2$ gives
-$$
-\left|\frac{F_*(\tau)}{\tau}\right|=e^{-431/639}.
-$$
-Therefore the upper bound is attained. If another admissible map attained it, equality in the dual identity would force the same measure $\mu_*$ by Step 4; uniqueness in the Herglotz representation would then force the same $p_*$ and the same $F_*$. Hence the maximizer is unique.
-
-Final Answer: $\boxed{(e^{-431/639},u\mapsto\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})}$
+Final Answer: $\boxed{\frac{-15z^5+(5-2i)z^4-(9+i)z^3+(9-i)z^2-(5+2i)z+15}{15z^5+12z^3+12z^2+15}}$
 
 ---
 
 ## Answer
 
-$(e^{-431/639},u\mapsto\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})$
+$\frac{-15z^5+(5-2i)z^4-(9+i)z^3+(9-i)z^2-(5+2i)z+15}{15z^5+12z^3+12z^2+15}$
 
 ---
 
@@ -293,14 +270,14 @@ $(e^{-431/639},u\mapsto\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^
 
 **Problem Type:** Optimization
 
-**Answer Type:** Tuple or ordered list
+**Answer Type:** Function or mapping
 
 ---
 
 ## Solution Concepts
 
-- disk automorphisms
 - positive-real functions
 - Herglotz representation
-- moment duality
+- boundary moments
+- rational dual certificate
 - equality-support rigidity
