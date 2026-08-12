@@ -10,7 +10,7 @@ e^{-p/x}(1-x), & 0<x\le 1,\\
 0, & x=0,
 \end{cases}
 $$
-and, for $k\in\{2,3,4\}$,
+and, for $k\in\{2,3,4,5,6\}$,
 $$
 M_{k,n}(p)=
 \frac{\displaystyle\int_0^1 (1-x)^k e^{-p/x}
@@ -18,14 +18,20 @@ M_{k,n}(p)=
 {\displaystyle\int_0^1 e^{-p/x}
 \exp\!\left(-n\,\psi_p(x)\right)\,dx}.
 $$
-Set
+For $k\in\{2,3,4\}$, set
 $$
-H_n(p)=M_{2,n}(p)M_{4,n}(p)-M_{3,n}(p)^2.
+\Delta_{k,n}(p)
+=M_{k,n}(p)M_{k+2,n}(p)-M_{k+1,n}(p)^2,
+$$
+and define
+$$
+T_n(p)=
+\frac{\Delta_{2,n}(p)\Delta_{4,n}(p)}{\Delta_{3,n}(p)^2}-1.
 $$
 For each $p>1$, determine the unique pair
 $(\beta_p,L_p)\in\mathbb{R}\times(0,\infty)$ such that
 $$
-\lim_{n\to\infty}(\log n)^{\beta_p}H_n(p)=L_p.
+\lim_{n\to\infty}(\log n)^{\beta_p}T_n(p)=L_p.
 $$
 Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
@@ -44,4 +50,4 @@ Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ## Domain Explanation
 
-The task asks for the exact logarithmic scale and leading coefficient of a Hankel-type gap formed from normalized moments of a parameterized family of integrals. The leading moment contributions cancel, so determining the surviving asymptotic behavior requires resolving the concentration width of a flat endpoint layer and proving competing endpoint configurations are negligible. The requested final object is the ordered pair of asymptotic parameters for each $p>1$.
+The task asks for the exact logarithmic scale and leading coefficient of a ratio built from consecutive Hankel-type moment gaps. The leading rare-layer mass, the leading deterministic location of the flat endpoint layer, and the first Hankel-gap scale all cancel in the displayed ratio, so the surviving term depends on finer fluctuations inside the boundary layer. Determining that term and proving that competing endpoint contributions remain negligible makes asymptotic analysis the appropriate sub-domain.
