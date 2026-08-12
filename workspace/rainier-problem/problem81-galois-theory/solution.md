@@ -89,15 +89,26 @@ Set $A=15x+9$ and $C=5d$. The first quadratic equation is
 $$
 A^2-3C^2=81.
 $$
-Reducing twice modulo $3$ shows $9\mid A$ and $9\mid C$, so $(A+C\sqrt3)/9$ has norm $1$ in $\mathbb Z[\sqrt3]$. The standard Pell description for $a^2-3b^2=1$, whose fundamental positive solution is $2+\sqrt3$, gives
+Modulo $3$, first $3\mid A$, then division by $3$ and reduction again gives $3\mid C$; repeating once more gives $9\mid A$ and $9\mid C$. Thus
 $$
-\frac{A+C\sqrt3}{9}=\pm(2+\sqrt3)^k.
+U=\frac A9,\qquad V=\frac C9
 $$
-Since $5\mid C$, the coefficient of $\sqrt3$ must vanish modulo $5$. Because
+are integers satisfying $U^2-3V^2=1$.
+
+We now classify these solutions directly. Put $\lambda=2+\sqrt3$, so $\lambda^{-1}=2-\sqrt3$. For any solution, after multiplying $U+V\sqrt3$ by $-1$ and/or replacing it by its conjugate if necessary, assume $\varepsilon=U+V\sqrt3\geq1$. Choose $k\geq0$ with
 $$
-(2+\sqrt3)^3=26+15\sqrt3\equiv1\pmod5,
+\lambda^k\leq\varepsilon<\lambda^{k+1}.
 $$
-while the first two powers have nonzero $\sqrt3$-coefficient modulo $5$, this forces $3\mid k$. The congruence $A\equiv9\pmod{15}$ fixes the positive sign. Interchanging the labels $1$ and $2$ if necessary permits $d\geq0$, so
+Then $\delta=\varepsilon\lambda^{-k}$ still lies in $\mathbb Z[\sqrt3]$, has norm $1$, and satisfies $1\leq\delta<\lambda$. Write $\delta=m+n\sqrt3$. Since its conjugate is $\delta^{-1}\leq1$, we have $n\geq0$. If $n\geq1$, then $m^2=1+3n^2$ gives $m\geq2$, hence $\delta\geq2+\sqrt3=\lambda$, a contradiction. Therefore $n=0$, $m=1$, and $\delta=1$. Undoing the sign and conjugation shows that every solution is
+$$
+U+V\sqrt3=\pm(2+\sqrt3)^k,\qquad k\in\mathbb Z.
+$$
+
+Since $C=9V$ is divisible by $5$, also $5\mid V$. Modulo $5$,
+$$
+(2+\sqrt3)^3=26+15\sqrt3\equiv1,
+$$
+while the coefficients of $\sqrt3$ in the powers with exponents $1$ and $2$ are $1$ and $4$. Hence $k\equiv0\pmod3$. Interchanging the labels $1$ and $2$ permits $d\geq0$, so $V\geq0$. The congruence $A\equiv9\pmod{15}$ gives $U\equiv1\pmod5$, excluding the negative conjugate branch. Consequently
 $$
 A+5d\sqrt3=9(2+\sqrt3)^{3j},\qquad j\geq0.
 $$
