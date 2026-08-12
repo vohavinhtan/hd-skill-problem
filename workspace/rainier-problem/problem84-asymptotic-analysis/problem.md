@@ -59,7 +59,7 @@ $$
 $$
 The existence and uniqueness of this triple are part of what must be justified.
 
-For each $p>1$, prove that the following three limits exist and determine them exactly:
+For each $p>1$, prove that the following four limits exist and determine them exactly:
 $$
 A_p
 =
@@ -77,9 +77,23 @@ $$
 $$
 C_p
 =
-\lim_{n\to\infty}a_n(p)^3\bigl(\tau_n(p)-1\bigr).
+\lim_{n\to\infty}a_n(p)^3\bigl(\tau_n(p)-1\bigr),
 $$
-Give the ordered triple $(A_p,B_p,C_p)$ exactly as a function of $p$.
+and
+$$
+D_p
+=
+\lim_{n\to\infty}a_n(p)^3
+\left[
+\int_0^1\bigl(\log R_n(x)\bigr)^2
+\,d\mu_{n,p,\lambda_n(p),\eta_n(p),\tau_n(p)}(x)
+-
+\psi_0\!\left(\frac1p\right)^2
+-
+\psi_1\!\left(\frac1p\right)
+\right].
+$$
+Give the ordered quadruple $(A_p,B_p,C_p,D_p)$ exactly as a function of $p$.
 
 ---
 
@@ -96,4 +110,4 @@ Give the ordered triple $(A_p,B_p,C_p)$ exactly as a function of $p$.
 
 ## Domain Explanation
 
-The problem defines three coupled parameters through simultaneous moment constraints for a family with two competing endpoint layers. The power tilt $R_n^\eta$ calibrates the limiting Gamma shape while $\tau$ calibrates its rate; after the leading endpoint balance, the first rate correction cancels and a further asymptotic order is required. Proving existence and uniqueness of the triple and resolving the three distinct correction scales are asymptotic-analysis tasks.
+The problem defines three coupled parameters through simultaneous moment constraints for a family with two competing endpoint layers. The power tilt $R_n^\eta$ and exponential tilt calibrate the first logarithmic and ordinary energy moments, while the fourth requested limit measures the first residual fluctuation not removed by those calibrations. Resolving it requires one more projection/cancellation step beyond the parameter asymptotics, together with the same existence, uniqueness, and endpoint-control arguments. The primary mathematical content is asymptotic analysis.
