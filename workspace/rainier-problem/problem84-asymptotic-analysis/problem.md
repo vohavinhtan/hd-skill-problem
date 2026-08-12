@@ -2,38 +2,30 @@
 
 ## LaTeX (Normalized)
 
-For a real number $p>1$, an integer $n\ge 3$, and a real parameter $\lambda$, define
+For a real number $p>1$ and an integer $n\ge 3$, define
 $$
-\phi_\lambda(x)=
+\psi_p(x)=
 \begin{cases}
-x^{-\lambda}e^{-1/x}(1-x), & 0<x\le 1,\\
+e^{-p/x}(1-x), & 0<x\le 1,\\
 0, & x=0,
 \end{cases}
 $$
-and
+and, for $k\in\{2,3,4\}$,
 $$
-Q_n(p,\lambda)=
-\frac{\displaystyle\int_0^1 x^{-\lambda}e^{-1/x}
-\exp\!\left(-n\,\phi_\lambda(x)^p\right)\,dx}
-{\displaystyle\int_0^1 \phi_\lambda(x)
-\exp\!\left(-n\,\phi_\lambda(x)^p\right)\,dx},
+M_{k,n}(p)=
+\frac{\displaystyle\int_0^1 (1-x)^k e^{-p/x}
+\exp\!\left(-n\,\psi_p(x)\right)\,dx}
+{\displaystyle\int_0^1 e^{-p/x}
+\exp\!\left(-n\,\psi_p(x)\right)\,dx}.
 $$
-where $x^{-\lambda}e^{-1/x}$ at $x=0$ is understood by its continuous extension, equal to $0$.
-
 Set
 $$
-C_n(p)=
-\left.
-\frac{\partial^3}{\partial\lambda^3}
-\log Q_n(p,\lambda)
-\right|_{\lambda=0}.
+H_n(p)=M_{2,n}(p)M_{4,n}(p)-M_{3,n}(p)^2.
 $$
 For each $p>1$, determine the unique pair
 $(\beta_p,L_p)\in\mathbb{R}\times(0,\infty)$ such that
 $$
-\lim_{n\to\infty}
-\frac{(\log n)^3}{(\log\log n)^{\beta_p}}\,C_n(p)
-=L_p.
+\lim_{n\to\infty}(\log n)^{\beta_p}H_n(p)=L_p.
 $$
 Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
@@ -52,4 +44,4 @@ Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ## Domain Explanation
 
-The task asks for the asymptotic scale and leading coefficient of a third-order parameter sensitivity of a logarithmic ratio of integrals. The dominant behavior comes from the interaction between a flat endpoint and differentiation with respect to the parameter, so asymptotic analysis is the appropriate sub-domain. The requested final object is the ordered pair of scaling parameters for each $p>1$.
+The task asks for the exact logarithmic scale and leading coefficient of a Hankel-type gap formed from normalized moments of a parameterized family of integrals. The leading moment contributions cancel, so determining the surviving asymptotic behavior requires resolving the concentration width of a flat endpoint layer and proving competing endpoint configurations are negligible. The requested final object is the ordered pair of asymptotic parameters for each $p>1$.
