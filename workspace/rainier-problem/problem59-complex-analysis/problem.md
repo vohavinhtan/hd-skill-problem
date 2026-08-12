@@ -4,66 +4,30 @@
 
 Let
 $$
-\mathbb D=\{z\in\mathbb C:|z|<1\},\qquad
-\zeta=e^{2\pi i/5},
+\mathbb D=\{z\in\mathbb C:|z|<1\}.
 $$
-and define
+Let $\mathcal P$ be the class of holomorphic functions $p:\mathbb D\to\mathbb C$ satisfying
 $$
-\kappa(z)=\frac{3z-1}{3-z},\qquad
-\kappa^{-1}(w)=\frac{3w+1}{w+3},\qquad
-\sigma=\kappa^{-1}\circ(w\mapsto\zeta w)\circ\kappa.
+\operatorname{Re}p(z)>0\qquad(z\in\mathbb D),
 $$
-
-Let $\mathcal F$ be the class of holomorphic maps $f:\mathbb D\to\mathbb D$ satisfying
 $$
-f\circ\sigma=\sigma\circ f.
+p(0)=1,
 $$
-For $f\in\mathcal F$, put
+and, as $z\to0$,
 $$
-F(w)=\kappa\bigl(f(\kappa^{-1}(w))\bigr).
+p(z)=1+\left(-\frac13-\frac{2i}{15}\right)z
++\left(-\frac15-\frac{i}{15}\right)z^2
++\left(-\frac{17}{15}+\frac{i}{25}\right)z^3
++O(z^4).
 $$
-Assume that $F$ has a zero-free fourth Schur lift: there is a zero-free holomorphic map $G:\mathbb D\to\mathbb D$ such that
+Assume also that
 $$
-F(w)=wG(w)^4.
+\operatorname{Re}p\left(-\frac12\right)=\frac{77}{57}.
 $$
 
-Suppose that, as $w\to0$,
+Determine exactly the unique function $p_*\in\mathcal P$ minimizing
 $$
-e\,\frac{F(w)}{w}
-=
-1+\left(\frac13+\frac{2i}{15}\right)w^5
-+\left(\frac{37}{150}+\frac{i}{9}\right)w^{10}
-+\left(\frac{4837}{4050}+\frac{161i}{10125}\right)w^{15}
-+O(w^{20}),
-$$
-where $F(w)/w$ is understood by its holomorphic extension at $w=0$.
-
-Set
-$$
-\tau=2^{-1/5}.
-$$
-Assume in addition that
-$$
-\left|\frac{F(-\tau)}{-\tau}\right|=e^{-77/57}.
-$$
-
-Let $\mathcal A$ be the set of all maps $F$ arising in this way and satisfying both the displayed jet and the modulus constraint at $-\tau$.
-
-For $F\in\mathcal A$, the zero-free lift and the order-five equivariance give a unique holomorphic function $p_F:\mathbb D\to\mathbb C$ satisfying
-$$
-\operatorname{Re}p_F>0,\qquad p_F(0)=1,\qquad
-F(w)=w e^{-p_F(w^5)}.
-$$
-
-Determine the ordered pair
-$$
-(M,p_*),
-\qquad
-M=\sup_{F\in\mathcal A}\left|\frac{F(\tau)}{\tau}\right|,
-$$
-where $p_*=p_{F_*}$ for the unique maximizing map $F_*\in\mathcal A$. In particular, a complete solution must prove that the supremum is attained uniquely; the exact extremal map is then
-$$
-F_*(w)=w e^{-p_*(w^5)}.
+\operatorname{Re}p\left(\frac12\right).
 $$
 
 ---
@@ -75,10 +39,10 @@ $$
 | **Domain** | Analysis |
 | **Sub-domain** | Complex analysis |
 | **Problem Type** | Optimization |
-| **Answer Type** | Tuple or ordered list |
+| **Answer Type** | Function or mapping |
 
 ---
 
 ## Domain Explanation
 
-This is a Complex Analysis extremal problem. The order-five disk symmetry and the zero-free Schur lift lead to a positive-real function whose first three complex Herglotz moments are fixed by the jet, while the modulus constraint fixes one Poisson-kernel average. The objective is the opposite Poisson-kernel average, and sharpness requires a rational dual certificate, equality-support reconstruction, and recovery of the unique extremal holomorphic map.
+This problem involves extremal holomorphic functions with positive real part on the unit disk. The prescribed Taylor coefficients and one interior real-part value become moment constraints for a representing boundary measure. The sharp minimizer is determined by a dual rational inequality together with rigidity in its equality set.
