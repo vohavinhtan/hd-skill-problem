@@ -29,8 +29,7 @@ $$
 \kappa_{n,\lambda}
 =
 \min\left\{
-c\geq0:
-t^c\mathbb C[[t]]\subseteq A_{n,\lambda}
+c\geq0:t^c\mathbb C[[t]]\subseteq A_{n,\lambda}
 \right\}.
 $$
 For fixed $n$, let
@@ -41,8 +40,7 @@ be the largest and the second-largest distinct values of $\kappa_{n,\lambda}$ as
 $$
 E_n=
 \left\{
-\lambda\in\mathbb C^\times:
-\kappa_{n,\lambda}=\beta_n
+\lambda\in\mathbb C^\times:\kappa_{n,\lambda}=\beta_n
 \right\}.
 $$
 
@@ -67,4 +65,4 @@ in closed form as a function of $n$.
 
 ## Domain Explanation
 
-The rings $A_{n,\lambda}$ are one-dimensional complete local subrings of the discrete valuation ring $\mathbb C[[t]]$. The requested invariant is the conductor exponent of such a ring inside its normalization. Determining the second extremal conductor across the parameter family requires recovering parameter-dependent cancellation in the ring, the resulting value-semigroup filtration, and the exact threshold beyond which every valuation occurs.
+This problem involves complete local subrings, conductor ideals, and normalization inside a discrete valuation ring, which are part of Abstract Algebra and Ring theory. The problem also involves numerical semigroups and residue classes, which are part of Number Theory. However, those number theoretic objects serve only to encode valuations, while the central task is to determine a ring theoretic conductor across the parameter family.
