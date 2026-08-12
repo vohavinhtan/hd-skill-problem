@@ -44,7 +44,11 @@ Step 3: Classify the possible linear maps $\Psi$
 
 By Step 2, $\ker\Psi$ contains no rank-one matrix. If $\operatorname{rank}\Psi\leq1$, then $\dim\ker\Psi\geq3$, so the kernel has at least $7$ nonzero elements; since $V$ has only $6$ invertible matrices, one would be nonzero singular, hence rank one. Thus $\operatorname{rank}\Psi\geq2$.
 
-If the rank were $3$, normalize its one-dimensional kernel to $\langle I\rangle$. For rank-one $X$, $\det(X+I)=\operatorname{tr}X+1$; exactly six of the nine $X=uv^T$ have $v^Tu=1$, forming three pairs $\{X,X+I\}$. Hence the image hyperplane would contain at least six rank-one points. A hyperplane has normal form $x_{11}=0$ or $\operatorname{tr}X=0$. In the first,
+If the rank were $3$, normalize its one-dimensional kernel to $\langle I\rangle$. For rank-one $X$, $\det(X+I)=\operatorname{tr}X+1$; exactly six of the nine $X=uv^T$ have $v^Tu=1$, forming three pairs $\{X,X+I\}$. Hence the image hyperplane would contain at least six rank-one points. Every hyperplane has the form
+$$
+H_D=\{X:\operatorname{tr}(D^TX)=0\},\qquad 0\neq D\in M_2(\mathbb F_2).
+$$
+Under $X\mapsto AXB$ the coefficient becomes $A^TDB^T$, so invertible left-right changes preserve $\operatorname{rank}D$ and reduce $D$ to $E_{11}$ when its rank is $1$, or to $I$ when its rank is $2$. Thus the two normal forms are $x_{11}=0$ and $\operatorname{tr}X=0$. In the first,
 $$
 X=\begin{pmatrix}0&b\\c&d\end{pmatrix},\quad \det X=bc,
 $$
@@ -54,7 +58,15 @@ X=\begin{pmatrix}a&b\\c&a\end{pmatrix},\quad \det X=a+bc,
 $$
 and each $(b,c)$ fixes $a=bc$, giving three nonzero singular matrices. Thus rank $3$ is impossible.
 
-For nonzero $u,v\in\mathbb F_2^2$, the six spaces $L_u=\{uv^T:v\in\mathbb F_2^2\}$ and $R_v=\{uv^T:u\in\mathbb F_2^2\}$ are exactly the two-dimensional rank-one cone subspaces: two distinct rank-one matrices sum to rank one exactly when their left or right factors agree. Their incidence graph is $K_{3,3}$. A rank-four $\Psi$ preserves or swaps the two rulings. Independent permutations of the three left and three right factors are induced by unique elements of $\operatorname{GL}_2(\mathbb F_2)$, so $\Psi(X)=AXB$ or $AX^TB$. Hence there are $6\cdot6+6\cdot6=72$ rank-four maps.
+For nonzero $u,v\in\mathbb F_2^2$, put
+$$
+L_u=\{uw^T:w\in\mathbb F_2^2\},\qquad R_v=\{wv^T:w\in\mathbb F_2^2\}.
+$$
+These are exactly the six two-dimensional rank-one cone subspaces: two distinct rank-one matrices sum to rank one exactly when their left or right factors agree. Their incidence graph is $K_{3,3}$, whose two parts are the two rulings, so a cone automorphism must preserve the rulings or swap them. The action of $\operatorname{GL}_2(\mathbb F_2)$ on the three nonzero vectors is faithful, and both $\operatorname{GL}_2(\mathbb F_2)$ and $S_3$ have order $6$; hence every permutation of those three vectors is induced by a unique invertible matrix. Therefore, in the ruling-preserving case, the induced permutations are realized by some $A$ on left factors and $B^T$ on right factors, forcing $\Psi(uv^T)=Auv^TB$ on all rank-one matrices and hence $\Psi(X)=AXB$ on $V$. If the rulings swap, composing with transpose reduces to the preserving case and gives $\Psi(X)=AX^TB$. Thus there are
+$$
+6\cdot6+6\cdot6=72
+$$
+rank-four maps.
 
 For rank $2$, the kernel is a two-dimensional subspace with three nonzero invertible elements. Put
 $$
@@ -70,7 +82,15 @@ The phase identity
 $$
 \operatorname{Tr}_{K/\mathbb F_2}(\gamma^TY\alpha)=\operatorname{tr}(\Psi^{-1}Y)
 $$
-holds on the spanning rank-one matrices. By Step 3 the right side has an invertible coefficient matrix, so invertible changes of $\alpha,\gamma$ reduce the equations to $\operatorname{Tr}(\gamma_i\alpha_j)=\delta_{ij}$. Thus $\alpha_1,\alpha_2$ are independent, giving $(q-1)(q-2)$ choices, and each $\gamma_i$ has $q/4$ choices. Every rank-four $\Psi$ contributes
+holds on the spanning rank-one matrices. If $\Psi(X)=AXB$, then
+$$
+\operatorname{tr}(\Psi^{-1}Y)=\operatorname{tr}(A^{-1}YB^{-1})=\operatorname{tr}(B^{-1}A^{-1}Y).
+$$
+If $\Psi(X)=AX^TB$, then $\Psi^{-1}(Y)=B^{-T}Y^TA^{-T}$ and invariance of matrix trace under transpose gives the same expression $\operatorname{tr}(B^{-1}A^{-1}Y)$. Thus, when the functional is written as $\operatorname{tr}(D^TY)$, its coefficient $D=(B^{-1}A^{-1})^T$ is invertible. Taking invertible $\mathbb F_2$-linear combinations of the coordinates of $\alpha$ or $\gamma$ reduces this coefficient matrix to $I$, so the equations become
+$$
+\operatorname{Tr}_{K/\mathbb F_2}(\gamma_i\alpha_j)=\delta_{ij}.
+$$
+Thus $\alpha_1,\alpha_2$ are independent, giving $(q-1)(q-2)$ choices, and each $\gamma_i$ has $q/4$ choices. Every rank-four $\Psi$ contributes
 $$
 A(q)=\frac{q^2(q-1)(q-2)}{16}.
 $$
