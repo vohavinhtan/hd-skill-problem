@@ -1,22 +1,35 @@
 ## Steps
 
-Step 1: Convert the Taylor data into boundary moments
+Step 1: Construct a boundary measure and read off its moments
 
-By the Herglotz representation theorem, the conditions $\operatorname{Re}p>0$ on $\mathbb D$ and $p(0)=1$ give a unique probability measure $\mu$ on the unit circle such that
+Write
 $$
-p(z)=\int_{|\xi|=1}\frac{\xi+z}{\xi-z}\,d\mu(\xi).
+p(z)=1+2\sum_{n\geq1}m_nz^n.
 $$
-Indeed, this is the normalized positive-real representation, and the normalization $p(0)=1$ makes the representing measure have total mass $1$. Expanding
+For $0<\rho<1$, define a probability measure on the unit circle by
+$$
+d\mu_\rho(e^{it})=\frac{\operatorname{Re}p(\rho e^{it})}{2\pi}\,dt.
+$$
+The density is positive, and its integral is $\operatorname{Re}p(0)=1$ by the mean-value property for the harmonic function $\operatorname{Re}p$. Expanding the Taylor series and taking Fourier coefficients gives, for every $n\geq1$,
+$$
+\int e^{-int}\,d\mu_\rho(e^{it})=\rho^n m_n.
+$$
+Choose $\rho_k\uparrow1$. A subsequence converges weakly to a probability measure $\mu$ on the unit circle. For completeness, one may obtain such a subsequence directly by partitioning the circle into $2^j$ equal half-open arcs for each $j$, taking a diagonal subsequence on the finitely many arc masses at every level, and then using uniform continuity to pass from step functions on these partitions to continuous test functions. Passing to the limit in the displayed Fourier coefficients yields
+$$
+m_n=\int_{|\xi|=1}\xi^{-n}\,d\mu(\xi)
+\qquad(n\geq1).
+$$
+For $|z|<1$ the expansion
 $$
 \frac{\xi+z}{\xi-z}=1+2\sum_{n\geq1}z^n\xi^{-n}
 $$
-for $|z|<1$ gives
+is uniformly convergent in $\xi$ on every disk $|z|\leq r<1$. Hence termwise integration gives the representation
 $$
-p(z)=1+2\sum_{n\geq1}m_nz^n,
-\qquad
-m_n=\int\xi^{-n}\,d\mu(\xi).
+p(z)=\int_{|\xi|=1}\frac{\xi+z}{\xi-z}\,d\mu(\xi).
 $$
-The prescribed Taylor coefficients therefore give
+Thus the required boundary measure has been constructed directly from $p$.
+
+The prescribed Taylor coefficients give
 $$
 m_1=-\frac16-\frac{i}{15},\qquad
 m_2=-\frac1{10}-\frac{i}{30},\qquad
@@ -39,7 +52,7 @@ $$
 
 Step 2: Express the objective and the extra constraint as Poisson-kernel averages
 
-For real $r\in(-1,1)$, the Herglotz formula gives
+For real $r\in(-1,1)$, taking the real part of the representation from Step 1 gives
 $$
 \operatorname{Re}p(r)
 =\int\frac{1-r^2}{1+r^2-2rX}\,d\mu.
@@ -175,11 +188,15 @@ r_+r_-=-\frac1{20},
 \qquad
 r_+^2+r_-^2=\frac7{20}.
 $$
-Let $W_{-1},W_+,W_-$ be the total masses of the three real-part classes. Total mass together with $\mathbb EX$ and $\mathbb EX^2$ gives a nonsingular Vandermonde system. The values
+Let $W_{-1},W_+,W_-$ be the total masses of the three real-part classes. Total mass together with $\mathbb EX$ and $\mathbb EX^2$ gives the Vandermonde system with nodes $-1,r_+,r_-$. Its determinant is
+$$
+(r_++1)(r_-+1)(r_--r_+),
+$$
+which is nonzero because the three nodes are distinct. The values
 $$
 W_{-1}=W_+=W_-=\frac13
 $$
-satisfy it, so they are the unique solution. They also satisfy the third real moment because
+satisfy the system, so they are its unique solution. They also satisfy the third real moment because
 $$
 \frac{-1+r_+^3+r_-^3}{3}
 =\frac{-1+\frac15}{3}
@@ -226,7 +243,7 @@ so $\mu_*$ satisfies every constraint.
 
 Step 5: Reconstruct the extremal function
 
-The Herglotz function represented by $\mu_*$ is
+The boundary representation from Step 1 applied to $\mu_*$ gives
 $$
 p_*(z)=\frac13\frac{1-z}{1+z}
 +\sum_{\epsilon\in\{+,-\}}
@@ -254,7 +271,7 @@ p_*\left(\frac12\right)=\frac{431}{639}-\frac{16i}{213},
 \qquad
 p_*\left(-\frac12\right)=\frac{77}{57}+\frac{8i}{171}.
 $$
-Thus $p_*$ attains the lower bound $431/639$. Any other minimizer would force equality in the nonnegative certificate and therefore the same measure $\mu_*$ by Step 4; uniqueness in the Herglotz representation then forces the same function. Hence $p_*$ is the unique minimizer.
+Thus $p_*$ attains the lower bound $431/639$. Any other minimizer has a boundary measure constructed as in Step 1; equality in the nonnegative certificate forces that measure to be exactly $\mu_*$ by Step 4, and the integral representation then forces the same function $p_*$. Hence the minimizer is unique.
 
 Final Answer: $\boxed{\frac{-15z^5+(5-2i)z^4-(9+i)z^3+(9-i)z^2-(5+2i)z+15}{15z^5+12z^3+12z^2+15}}$
 
@@ -277,7 +294,7 @@ $\frac{-15z^5+(5-2i)z^4-(9+i)z^3+(9-i)z^2-(5+2i)z+15}{15z^5+12z^3+12z^2+15}$
 ## Solution Concepts
 
 - positive-real functions
-- Herglotz representation
+- boundary integral representation
 - boundary moments
 - rational dual certificate
 - equality-support rigidity
