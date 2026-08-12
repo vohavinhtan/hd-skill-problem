@@ -6,94 +6,59 @@ For a real number $p>1$ and an integer $n\ge3$, define
 $$
 \phi(x)=
 \begin{cases}
-e^{-1/x}(1-x), & 0<x\le1,\\
-0, & x=0,
+e^{-1/x}(1-x)\left|x-\frac12\right|,&0<x\le1,\\
+0,&x=0,
 \end{cases}
 $$
 and
 $$
 R_n(x)=n\phi(x)^p.
 $$
-For real $\lambda$, real $\eta>-1/p$, and $\tau>0$, set
+For real $\lambda$, set
 $$
-Z_n(p,\lambda,\eta,\tau)
+Z_n(p,\lambda)
 =
-\int_0^1 x^{-\lambda}e^{-1/x}R_n(x)^\eta
-\exp\!\left(-\tau R_n(x)\right)\,dx,
+\int_0^1 x^{-\lambda}e^{-1/x}
+\exp\!\left(-R_n(x)\right)\,dx,
 $$
-and define the probability measure
+and define
 $$
-d\mu_{n,p,\lambda,\eta,\tau}(x)
+m_n(p,\lambda)
 =
-\frac{x^{-\lambda}e^{-1/x}R_n(x)^\eta
-\exp\!\left(-\tau R_n(x)\right)}
-{Z_n(p,\lambda,\eta,\tau)}\,dx.
-$$
-Put
-$$
-a_n(p)=\frac{\log n}{p},
-$$
-and, for $j\ge0$, write
-$$
-\psi_j(z)=\frac{d^{j+1}}{dz^{j+1}}\log\Gamma(z).
+\frac{\displaystyle\int_0^1 x^{1-\lambda}e^{-1/x}
+\exp\!\left(-R_n(x)\right)\,dx}
+{Z_n(p,\lambda)}.
 $$
 
-For each fixed $p>1$, prove that for all sufficiently large $n$ there is a unique triple
+For each fixed $p>1$ and $n\ge3$, let $\lambda_n(p)$ be the unique real number satisfying
 $$
-(\lambda_n(p),\eta_n(p),\tau_n(p))
-\in\mathbb R\times(-1/p,\infty)\times(0,\infty)
+m_n\bigl(p,\lambda_n(p)\bigr)=\frac12.
 $$
-satisfying the three simultaneous conditions
-$$
-\int_0^1(-\log x)\,d\mu_{n,p,\lambda_n(p),\eta_n(p),\tau_n(p)}(x)
-=\frac12\log a_n(p),
-$$
-$$
-\int_0^1\log R_n(x)\,d\mu_{n,p,\lambda_n(p),\eta_n(p),\tau_n(p)}(x)
-=\psi_0\!\left(\frac1p\right),
-$$
-and
-$$
-\int_0^1R_n(x)\,d\mu_{n,p,\lambda_n(p),\eta_n(p),\tau_n(p)}(x)
-=\frac1p.
-$$
-The existence and uniqueness of this triple are part of what must be justified.
+The existence and uniqueness of $\lambda_n(p)$ are part of what must be justified.
 
-For each $p>1$, prove that the following four limits exist and determine them exactly:
+For $k\in\{0,1,\dots,8\}$, define
 $$
-A_p
+M_{k,n}(p)
 =
-\lim_{n\to\infty}
-\log a_n(p)
-\left[
-a_n(p)\log a_n(p)\bigl(2-\lambda_n(p)\bigr)-1
-\right],
+\frac{\displaystyle\int_0^1 x^{k-\lambda_n(p)}e^{-1/x}
+\exp\!\left(-R_n(x)\right)\,dx}
+{Z_n\bigl(p,\lambda_n(p)\bigr)}.
 $$
+Thus $M_{0,n}(p)=1$ and $M_{1,n}(p)=\tfrac12$.
+
+Set
 $$
-B_p
+H_n(p)
 =
-\lim_{n\to\infty}\bigl[-a_n(p)^2\eta_n(p)\bigr],
+\det\!\bigl[M_{i+j,n}(p)\bigr]_{i,j=0}^{4}.
 $$
+
+For each $p>1$, determine the unique pair
+$(\beta_p,L_p)\in\mathbb R\times(0,\infty)$ such that
 $$
-C_p
-=
-\lim_{n\to\infty}a_n(p)^3\bigl(\tau_n(p)-1\bigr),
+\lim_{n\to\infty}(\log n)^{\beta_p}H_n(p)=L_p.
 $$
-and
-$$
-D_p
-=
-\lim_{n\to\infty}a_n(p)^3
-\left[
-\int_0^1\bigl(\log R_n(x)\bigr)^2
-\,d\mu_{n,p,\lambda_n(p),\eta_n(p),\tau_n(p)}(x)
--
-\psi_0\!\left(\frac1p\right)^2
--
-\psi_1\!\left(\frac1p\right)
-\right].
-$$
-Give the ordered quadruple $(A_p,B_p,C_p,D_p)$ exactly as a function of $p$.
+Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ---
 
@@ -110,4 +75,4 @@ Give the ordered quadruple $(A_p,B_p,C_p,D_p)$ exactly as a function of $p$.
 
 ## Domain Explanation
 
-The problem defines three coupled parameters through simultaneous moment constraints for a family with two competing endpoint layers. The power tilt $R_n^\eta$ and exponential tilt calibrate the first logarithmic and ordinary energy moments, while the fourth requested limit measures the first residual fluctuation not removed by those calibrations. Resolving it requires one more projection/cancellation step beyond the parameter asymptotics, together with the same existence, uniqueness, and endpoint-control arguments. The primary mathematical content is asymptotic analysis.
+The normalized measure develops three competing concentration layers, at the flat endpoint $x=0$, the interior zero $x=\tfrac12$, and the algebraic endpoint $x=1$. The implicit first-moment condition fixes their critical balance. The limiting three-point measure makes the $5\times5$ Hankel matrix rank deficient, so the first nonzero determinant term depends on a finer multi-sample fluctuation inside the widest boundary layer and on proving that all configurations involving algebraic-width collisions are negligible. Determining that surviving scale and coefficient is an asymptotic-analysis problem.
