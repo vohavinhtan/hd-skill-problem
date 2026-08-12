@@ -279,13 +279,13 @@ $$
 $$
 Therefore the upper bound is attained. If another admissible map attained it, equality in the dual identity would force the same measure $\mu_*$ by Step 4; uniqueness in the Herglotz representation would then force the same $p_*$ and the same $F_*$. Hence the maximizer is unique.
 
-Final Answer: $\boxed{(e^{-431/639},\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})}$
+Final Answer: $\boxed{(e^{-431/639},u\mapsto\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})}$
 
 ---
 
 ## Answer
 
-$(e^{-431/639},\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})$
+$(e^{-431/639},u\mapsto\frac{-15u^5+(5-2i)u^4-(9+i)u^3+(9-i)u^2-(5+2i)u+15}{15u^5+12u^3+12u^2+15})$
 
 ---
 
