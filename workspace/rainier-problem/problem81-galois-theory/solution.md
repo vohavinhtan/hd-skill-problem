@@ -19,11 +19,11 @@ The pair classes span the quotient because, for distinct $i,j,k$,
 $$
 2e_i=(e_i+e_j)+(e_i+e_k)-(e_j+e_k).
 $$
-Every $g_i$ is a $p$-adic unit, since the $g_i$ are integral and their product $c^3=f(-a)$ is a $p$-adic unit. As $p$ is unramified, $v_{\mathfrak p}(p)=1$, so $p\prod g_i^{a_i}$ cannot be a cube. Thus $p$ is independent of the pair classes. Consequently every $M$-automorphism is uniquely described by
+Every $g_i$ is a $p$-adic unit, since the $g_i$ are integral and their product $c^3=f(-a)$ is a $p$-adic unit. As $p$ is unramified, $v_{\mathfrak p}(p)=1$, so $p\prod g_i^{a_i}$ cannot be a cube. Thus $p$ is independent of the pair classes. Consequently every $M$-automorphism is uniquely described by a pair $(u,s)$ where $u\in\mathbb F_3^n$ and $s\in\mathbb F_3$, subject to the relation
 $$
-(u,s)\in\left\{u\in\mathbb F_3^n:\sum_i u_i=0\right\}\times\mathbb F_3,
+\sum_i u_i=0.
 $$
-and every such pair defines an automorphism by multiplying chosen cube roots by the corresponding powers of $\omega$.
+Every such pair defines an automorphism by multiplying chosen cube roots by the corresponding powers of $\omega$.
 
 Step 2: Convert the root-cycle conditions into orbit twists
 Choose $\alpha_i^3=g_i$ with $\prod_i\alpha_i=c$, and choose $\eta^3=p$. For an extension fixing $\omega$ and inducing $\pi\in S_n$,
