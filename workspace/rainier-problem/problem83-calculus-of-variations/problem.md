@@ -2,41 +2,62 @@
 
 ## LaTeX (Normalized)
 
-Fix real parameters
+Fix an integer $m\geq2$. For each real $\lambda>0$, let $u_{m,\lambda}$ be the unique minimizer of
 $$
-0<\delta<1,
-\qquad
-\frac{52}{49}<\rho<\frac{27}{25}.
+\mathcal E_{m,\lambda}(u)
+=
+\int_{-1}^{1}
+\left[
+\frac12\bigl(u'(x)\bigr)^2
++
+\bigl(\lambda x^{2m}-x^{2m+2}\bigr)u(x)
+\right]dx
 $$
-Let $\mathcal{A}_{\delta,\rho}$ be the set of all absolutely continuous concave functions $\varphi:[0,1]\to\mathbb{R}$ such that $\varphi'\in L^2(0,1)$ and
+over all $u\in H^1(-1,1)$ satisfying
 $$
-\varphi(0)=\varphi(1)=0,
-\qquad
-\varphi(x)=\varphi(1-x)\quad\text{for every }x\in[0,1],
+u(x)\geq0\quad\text{for almost every }x\in(-1,1),
 $$
 $$
-\int_0^1\varphi(x)\,dx=\frac14+\frac{\delta}{2},
+u(-1)=u(1)
+=
+\frac{2(4m+5)}
+{(2m+1)(2m+2)(2m+3)(2m+4)},
 $$
-$$
-\int_0^1 12|1-2x|\bigl(1-|1-2x|\bigr)\varphi(x)\,dx
-=\frac12+\rho\delta.
-$$
+where the endpoint conditions are understood in the Sobolev trace sense.
+
 Define
 $$
-E(\varphi)=\int_0^1\left(\left|\varphi'(x)\right|-1\right)^2\,dx.
+a_m(\lambda)
+=
+\sup\left\{
+a\in[0,1]:
+u_{m,\lambda}(x)=0
+\text{ for almost every }x\in[-a,a]
+\right\},
 $$
-The functional $E$ has a unique minimizer in $\mathcal{A}_{\delta,\rho}$. Let $\ell$ be the length of the maximal interval adjacent to $0$ on which the derivative of this minimizer is constant almost everywhere.
-
-There is a unique rational function
+and
 $$
-R(X)=\frac{P(X)}{Q(X)}
+\lambda_m
+=
+\inf\left\{
+\lambda>0:
+a_m(\lambda)>0
+\right\}.
 $$
-such that $\rho=R(\ell)$ for every allowed pair $(\delta,\rho)$, where $P,Q\in\mathbb{Z}[X]$ are coprime expanded polynomials, the greatest common divisor of all coefficients of $P$ and $Q$ is $1$, and $Q(0)>0$.
-
-Determine the ordered pair
+There are unique real numbers $\alpha_m>0$ and $C_m>0$ such that
 $$
-\bigl(P(0),Q(0)\bigr).
+a_m(\lambda)
+\sim
+C_m\bigl(\lambda-\lambda_m\bigr)^{\alpha_m}
+\qquad
+\text{as }\lambda\downarrow\lambda_m
+\text{ with }\lambda>\lambda_m.
 $$
+Determine the ordered triple
+$$
+\bigl(\lambda_m,\alpha_m,C_m\bigr)
+$$
+for every integer $m\geq2$.
 
 ---
 
@@ -53,4 +74,4 @@ $$
 
 ## Domain Explanation
 
-The task minimizes a quadratic derivative energy over symmetric concave functions subject to two moment constraints and then reconstructs a normalized invariant of the resulting free-boundary law, so calculus of variations is the primary subject. Optimization and Numerical Mathematics is the strongest competing domain because convex projection and active-constraint arguments support the derivation, but the central mathematical object is a variational minimizer in a function space.
+The problem studies a one-dimensional obstacle-constrained variational minimizer and asks for the exact onset and scaling law of its contact set. Determining the answer requires identifying when the obstacle first becomes active, reconstructing the resulting free boundary from the variational inequality, and resolving a degenerate asymptotic transition. Calculus of variations is therefore the primary subject, with real analysis and asymptotic analysis providing supporting tools.
