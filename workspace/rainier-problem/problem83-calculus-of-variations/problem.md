@@ -15,10 +15,10 @@ $$
 $$
 over all $u\in H^1(-1,1)$ satisfying
 $$
-u(x)\geq0\quad\text{for almost every }x\in(-1,1),
+ u(x)\geq0\quad\text{for almost every }x\in(-1,1),
 $$
 $$
-u(-1)=u(1)
+ u(-1)=u(1)
 =
 \frac{2(4m+5)}
 {(2m+1)(2m+2)(2m+3)(2m+4)},
@@ -30,8 +30,7 @@ $$
 a_m(\lambda)
 =
 \sup\left\{
-a\in[0,1]:
-u_{m,\lambda}(x)=0
+ a\in[0,1]:u_{m,\lambda}(x)=0
 \text{ for almost every }x\in[-a,a]
 \right\},
 $$
@@ -40,8 +39,7 @@ $$
 \lambda_m
 =
 \inf\left\{
-\lambda>0:
-a_m(\lambda)>0
+\lambda>0:a_m(\lambda)>0
 \right\}.
 $$
 There are unique real numbers $\alpha_m>0$ and $C_m>0$ such that
