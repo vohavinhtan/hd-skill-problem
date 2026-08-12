@@ -1,9 +1,7 @@
 ## Steps
 
-Throughout, $J_m$ denotes a single nilpotent Jordan block of size $m$ (with eigenvalue $0$).
-
 Step 1: Determine the Jordan type of $N_q$ on $R_q$
-Write $T=N_q$, so $T$ is multiplication by $x+y$. Since $q=p^e$, Frobenius gives
+Here and below, $J_m$ denotes a single nilpotent Jordan block of size $m$ (with eigenvalue $0$). Write $T=N_q$, so $T$ is multiplication by $x+y$. Since $q=p^e$, Frobenius gives
 $$
 T^q=(x+y)^q=x^q+y^q=x^q
 $$
