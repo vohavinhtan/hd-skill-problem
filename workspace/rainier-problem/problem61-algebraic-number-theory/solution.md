@@ -8,7 +8,11 @@ Put $B_h(a,b)=D_aD_bh(0)$. Vanishing third differences make $D_aD_bh(w)$ indepen
 $$
 B_h((x,y),(x',y'))=\beta(x,y')+\beta(x',y).
 $$
-By trace nondegeneracy, $\beta(x,y)=\operatorname{Tr}_{K/\mathbb F_2}(x^TT(y))$ for a unique $\mathbb F_2$-linear $T:K^2\to K^2$. The defining vanishing condition puts each coordinate of $T(y_1,y_2)$ in $\operatorname{span}_{\mathbb F_2}\{y_1,y_2\}$. Setting one input coordinate to $0$ gives $f(z)\in\mathbb F_2z$ for each component $f$; linearity on independent $z,w$ forces the coefficients for $z,w,z+w$ to agree. Hence $T(y)=Cy$ for some $C\in M_2(\mathbb F_2)$, and $B_h(a,b)=\langle C,[a,b]\rangle$.
+By trace nondegeneracy, $\beta(x,y)=\operatorname{Tr}_{K/\mathbb F_2}(x^TT(y))$ for a unique $\mathbb F_2$-linear $T:K^2\to K^2$. Fix $y=(y_1,y_2)$ and put $W=\operatorname{span}_{\mathbb F_2}\{y_1,y_2\}\subseteq K$. If $z\in W^\perp$ for the trace pairing, then with $x=(z,0)$ every entry of $xy^T$ has trace $0$ against every coefficient in $\mathbb F_2$, so the defining vanishing condition gives
+$$
+0=\beta((z,0),y)=\operatorname{Tr}_{K/\mathbb F_2}(zT_1(y)).
+$$
+Hence $T_1(y)\in W^{\perp\perp}$; using $x=(0,z)$ gives $T_2(y)\in W^{\perp\perp}$. Nondegeneracy implies $\dim W^\perp=m-\dim W$, so $W^{\perp\perp}=W$. Thus each coordinate of $T(y_1,y_2)$ lies in $\operatorname{span}_{\mathbb F_2}\{y_1,y_2\}$. Setting one input coordinate to $0$ gives $f(z)\in\mathbb F_2z$ for each component $f$; linearity on independent $z,w$ forces the coefficients for $z,w,z+w$ to agree. Hence $T(y)=Cy$ for some $C\in M_2(\mathbb F_2)$, and $B_h(a,b)=\langle C,[a,b]\rangle$.
 
 Set $Q_C(x,y)=\operatorname{Tr}_{K/\mathbb F_2}(x^TCy)$. If $g=h-Q_C$, then $D_aD_bg=0$, so $D_ag(w)$ is constant in $w$. With $\ell(a)=D_ag(0)$, $g(w+a)+g(w)=\ell(a)$ and $D_aD_{a'}g=0$ gives $\ell(a+a')=\ell(a)+\ell(a')$. Thus $g=g(0)+\ell$ is affine; here $g(0)=0$. Applying the trace pairing coordinatewise,
 $$
@@ -72,7 +76,7 @@ For rank $2$, the kernel is a two-dimensional subspace with three nonzero invert
 $$
 R=\begin{pmatrix}0&1\\1&1\end{pmatrix},\quad R^2=\begin{pmatrix}1&1\\1&0\end{pmatrix},\quad J=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
 $$
-The six invertibles are $I,R,R^2,J,JR,JR^2$. For a line through $I$, $I+C$ must be invertible; $I+J,I+JR,I+JR^2$ are singular, while $I+R=R^2$ and $I+R^2=R$. Thus the only external line through $I$ is $E_0=\{0,I,R,R^2\}$. Left multiplication sends any external line to one through $I$, so the only two are $E_0$ and $JE_0=\{0,J,JR,JR^2\}$. The three nonzero kernel cosets all contain rank-one matrices, so the image is one of the six generator lines. Therefore there are $2\cdot6\cdot6=72$ rank-two maps.
+The six invertibles are $I,R,R^2,J,JR,JR^2$. For a line through $I$, $I+C$ must be invertible; $I+J,I+JR,I+JR^2$ are singular, while $I+R=R^2$ and $I+R^2=R$. Thus the only external line through $I$ is $E_0=\{0,I,R,R^2\}$. Left multiplication sends any external line to one through $I$, so the only two are $E_0$ and $JE_0=\{0,J,JR,JR^2\}$. The kernel contains three of the six invertible matrices, so only three invertibles lie outside it. Each of the three nonzero kernel cosets has four elements and excludes $0$, so none can consist entirely of invertibles; hence each contains a nonzero singular, therefore rank-one, matrix. Thus each nonzero image point is rank one, so the two-dimensional image is one of the six generator lines. Therefore there are $2\cdot6\cdot6=72$ rank-two maps.
 
 Step 4: Count the linear parts for the rank-four maps
 
