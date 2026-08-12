@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-For a real number $p>1$, an integer $n\ge3$, and a real parameter $\lambda$, define
+For a real number $p>1$ and an integer $n\ge3$, define
 $$
 \phi(x)=
 \begin{cases}
@@ -12,56 +12,61 @@ e^{-1/x}(1-x), & 0<x\le1,\\
 $$
 and
 $$
-Z_n(p,\lambda)
+R_n(x)=n\phi(x)^p.
+$$
+For real $\lambda$ and $\tau>0$, set
+$$
+Z_n(p,\lambda,\tau)
 =
 \int_0^1 x^{-\lambda}e^{-1/x}
-\exp\!\left(-n\phi(x)^p\right)\,dx,
+\exp\!\left(-\tau R_n(x)\right)\,dx,
 $$
+and define the probability measure
 $$
-m_n(p,\lambda)
+d\mu_{n,p,\lambda,\tau}(x)
 =
-\frac{\displaystyle\int_0^1 x^{1-\lambda}e^{-1/x}
-\exp\!\left(-n\phi(x)^p\right)\,dx}
-{Z_n(p,\lambda)}.
+\frac{x^{-\lambda}e^{-1/x}
+\exp\!\left(-\tau R_n(x)\right)}
+{Z_n(p,\lambda,\tau)}\,dx.
+$$
+Put
+$$
+a_n(p)=\frac{\log n}{p}.
 $$
 
-For each $p>1$ and $n\ge3$, let $\lambda_n(p)$ be the unique real number satisfying
+For each fixed $p>1$, prove that for all sufficiently large $n$ there is a unique pair
 $$
-m_n\bigl(p,\lambda_n(p)\bigr)=\frac12.
+(\lambda_n(p),\tau_n(p))\in\mathbb R\times(0,\infty)
 $$
-The existence and uniqueness of $\lambda_n(p)$ are part of what must be justified.
+satisfying the two conditions
+$$
+\int_0^1(-\log x)\,d\mu_{n,p,\lambda_n(p),\tau_n(p)}(x)
+=\frac12\log a_n(p),
+$$
+and
+$$
+\int_0^1 R_n(x)\,d\mu_{n,p,\lambda_n(p),\tau_n(p)}(x)
+=\frac1p.
+$$
+The existence and uniqueness of this pair are part of what must be justified.
 
-Define the probability measure
+For each $p>1$, prove that the following limits exist and determine them exactly:
 $$
-d\mu_{n,p}(x)
+A_p
 =
-\frac{x^{-\lambda_n(p)}e^{-1/x}
-\exp\!\left(-n\phi(x)^p\right)}
-{Z_n\bigl(p,\lambda_n(p)\bigr)}\,dx,
-$$
-put
-$$
-R_n(x)=n\phi(x)^p,
-$$
-and set
-$$
-C_n(p)
-=
-\int_0^1
-\left(x-\frac12\right)
-\left[
-R_n(x)^2-\left(1+\frac2p\right)R_n(x)
-\right]
-\,d\mu_{n,p}(x).
-$$
-
-For each $p>1$, determine the unique pair
-$(\beta_p,L_p)\in\mathbb{R}\times(0,\infty)$ such that
-$$
 \lim_{n\to\infty}
-(\log n)^{\beta_p}C_n(p)=L_p.
+\log a_n(p)
+\left[
+ a_n(p)\log a_n(p)\bigl(2-\lambda_n(p)\bigr)-1
+\right],
 $$
-Give $\beta_p$ and $L_p$ exactly as functions of $p$.
+$$
+B_p
+=
+\lim_{n\to\infty}
+ a_n(p)^2\bigl(\tau_n(p)-1\bigr).
+$$
+Give the ordered pair $(A_p,B_p)$ exactly as a function of $p$.
 
 ---
 
@@ -78,4 +83,4 @@ Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ## Domain Explanation
 
-The parameter $\lambda_n(p)$ is defined implicitly by a normalized first-moment condition, and the requested quantity is a tuned covariance-type observable under the resulting critical endpoint balance. The two endpoint layers have the same leading scaled-energy law, while the polynomial in $R_n$ removes the first surviving logarithmic covariance correction. Determining the next nonzero term therefore requires resolving the internal flat-layer geometry one order further, together with the effect of the implicit critical tilt and all competing endpoint contributions. The primary mathematical content is asymptotic analysis.
+The problem defines two parameters implicitly through simultaneous moment constraints for a family of endpoint-concentrated probability measures. Determining their asymptotics requires proving existence and uniqueness of the coupled parameter pair, identifying the competing boundary layers, and resolving two different correction scales in the implicit system. The primary mathematical content is therefore asymptotic analysis.
