@@ -6,8 +6,8 @@ For a real number $p>1$, an integer $n\ge3$, and a real parameter $\lambda$, def
 $$
 \phi(x)=
 \begin{cases}
-e^{-1/x}(1-x),&0<x\le1,\\
-0,&x=0,
+e^{-1/x}(1-x), & 0<x\le1,\\
+0, & x=0,
 \end{cases}
 $$
 and
@@ -31,32 +31,28 @@ m_n\bigl(p,\lambda_n(p)\bigr)=\frac12.
 $$
 The existence and uniqueness of $\lambda_n(p)$ are part of what must be justified.
 
-For $k\in\{0,1,2,3,4,5,6\}$, define
+Define the probability measure
 $$
-M_{k,n}(p)
+d\mu_{n,p}(x)
 =
-\frac{\displaystyle\int_0^1 x^{k-\lambda_n(p)}e^{-1/x}
-\exp\!\left(-n\phi(x)^p\right)\,dx}
-{Z_n\bigl(p,\lambda_n(p)\bigr)}.
+\frac{x^{-\lambda_n(p)}e^{-1/x}
+\exp\!\left(-n\phi(x)^p\right)}
+{Z_n\bigl(p,\lambda_n(p)\bigr)}\,dx,
 $$
-Thus $M_{0,n}(p)=1$ and $M_{1,n}(p)=\tfrac12$.
-
-Set
+and set
 $$
-H_n(p)
+C_n(p)
 =
-\det\!\begin{pmatrix}
-M_{0,n}(p)&M_{1,n}(p)&M_{2,n}(p)&M_{3,n}(p)\\
-M_{1,n}(p)&M_{2,n}(p)&M_{3,n}(p)&M_{4,n}(p)\\
-M_{2,n}(p)&M_{3,n}(p)&M_{4,n}(p)&M_{5,n}(p)\\
-M_{3,n}(p)&M_{4,n}(p)&M_{5,n}(p)&M_{6,n}(p)
-\end{pmatrix}.
+\int_0^1
+\left(x-\frac12\right)
+\,n\phi(x)^p\,d\mu_{n,p}(x).
 $$
 
 For each $p>1$, determine the unique pair
 $(\beta_p,L_p)\in\mathbb{R}\times(0,\infty)$ such that
 $$
-\lim_{n\to\infty}(\log n)^{\beta_p}H_n(p)=L_p.
+\lim_{n\to\infty}
+(\log n)^{\beta_p}C_n(p)=L_p.
 $$
 Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
@@ -75,4 +71,4 @@ Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ## Domain Explanation
 
-The parameter $\lambda_n(p)$ is defined implicitly by a normalized first-moment condition, while the requested quantity is a fourth-order Hankel determinant of moments under the resulting critical tilt. The limiting measure separates into two endpoint layers, making the leading two-point approximation rank deficient; the first nonzero determinant term therefore comes from finer fluctuations inside the flat endpoint layer. Establishing the critical tilt, identifying the dominant endpoint configuration, and resolving the surviving determinant scale are asymptotic-analysis tasks.
+The parameter $\lambda_n(p)$ is defined implicitly by a normalized first-moment condition, and the requested quantity is a covariance-type observable evaluated under the resulting critical tilt. The two endpoint layers have the same leading scaled-energy law, so the leading covariance cancels; the first nonzero term comes from finer fluctuations in the flat endpoint layer together with the second-order mismatch between the endpoint energy means. Determining that surviving scale and coefficient, while proving existence and uniqueness of the critical tilt and controlling discarded regions, is an asymptotic-analysis problem.
