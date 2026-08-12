@@ -41,7 +41,7 @@ in closed form as a function of $q$.
 | Field | Value |
 |---|---|
 | **Domain** | Linear Algebra |
-| **Sub-domain** | Tensor and multilinear algebra |
+| **Sub-domain** | Matrix decompositions and canonical forms |
 | **Problem Type** | Parameter identification |
 | **Answer Type** | Tuple or ordered list |
 
@@ -49,4 +49,4 @@ in closed form as a function of $q$.
 
 ## Domain Explanation
 
-The problem asks for the second Jordan layer of a nilpotent operator induced on a symmetric square. The multiplication operator on the truncated two-variable algebra has a hidden modular Jordan decomposition created by the Frobenius identity, and the symmetric-square operator mixes its diagonal and cross terms differently. Determining the second distinct block size and its multiplicity therefore requires both recovering that decomposition and resolving the characteristic-$p$ cancellations in the induced tensor action.
+This is a Linear Algebra problem centered on the Jordan canonical structure of a nilpotent endomorphism. The symmetric-square and tensor-product constructions are tools used to transport the multiplication operator to a larger space, but the quantity to be determined is the second distinct Jordan-block size and its multiplicity. The decisive work is therefore the recovery and comparison of Jordan block sizes under the induced operator, so the appropriate sub-domain is Matrix decompositions and canonical forms.
