@@ -4,7 +4,7 @@
 
 Fix $n\geq1$, let $K=\mathbb F_{8^n}$, $q=8^n$, $V=M_2(\mathbb F_2)$, and $U=K^2\times K^2$; vectors are columns. For $a=(x,y),b=(x',y')\in U$, set $[a,b]=xy'^T+x'y^T$, $\langle C,Z\rangle=\operatorname{Tr}_{K/\mathbb F_2}(\operatorname{tr}(C^TZ))$, and $D_ah(w)=h(w+a)+h(w)$. Let $\mathcal H_n$ be the functions $h:U\to\mathbb F_2$ with $h(0)=0$, $D_aD_bD_ch(w)=0$ for all $w,a,b,c\in U$, and $D_aD_bh(w)=0$ for all $w$ whenever $\langle C,[a,b]\rangle=0$ for every $C\in V$.
 
-Let $B_{16}=C_2^{16}\rtimes S_{16}$ act on $\{\pm1,\ldots,\pm16\}$, with $\eta(1)=0,\eta(-1)=1$. For each $u\in U$, let $F_u/\mathbb Q$ have degree $32$, Galois closure $L_u$, group $B_{16}$, all $L_u^{C_2^{16}}$ equal, and assume for their compositum $L$ that
+Let $B_{16}=C_2^{16}\rtimes S_{16}$ act on $\{\pm1,\ldots,\pm16\}$, with $\eta(1)=0,\eta(-1)=1$. For each $u\in U$, let $F_u/\mathbb Q$ have degree $32$, Galois closure $L_u$, group $B_{16}$, and identify $\operatorname{Gal}(L_u/\mathbb Q)\cong B_{16}$ so that this signed action is its permutation action on the $32$ embeddings of $F_u$ into an algebraic closure. Assume all $L_u^{C_2^{16}}$ are equal, and assume for their compositum $L$ that
 $$
 \operatorname{Gal}(L/\mathbb Q)=\{(\sigma,(\varepsilon_u)):\sigma\in S_{16},\ \varepsilon_u\in\{\pm1\}^{16},\ u\mapsto\eta(\varepsilon_{u,j})\in\mathcal H_n\ (1\leq j\leq16)\}.
 $$
