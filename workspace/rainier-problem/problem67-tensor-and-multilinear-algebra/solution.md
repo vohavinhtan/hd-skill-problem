@@ -160,20 +160,34 @@ $$
 h=\frac{G(s-11)}{24(q^4-1)}.
 $$
 
-Counting ordered bases gives
+Since $K$ has dimension $m$ over $\mathbb F_q$, the number of $4$-spaces in $K$ is
 $$
-T=\frac{(Q-1)(Q-q)(Q-q^2)(Q-q^3)}{G}
+\binom{m}{4}_q
+=\frac{(Q-1)(Q-q)(Q-q^2)(Q-q^3)}{G},
 $$
-four-spaces in $K$. Counting triples that extend the fixed vector $1$ gives
+and the number containing the fixed vector $1$ is
 $$
-C=\frac{(Q-q)(Q-q^2)(Q-q^3)}
-{(q^4-q)(q^4-q^2)(q^4-q^3)}
+\binom{m-1}{3}_q
+=\frac{(Q-q)(Q-q^2)(Q-q^3)}{(q^4-q)(q^4-q^2)(q^4-q^3)}.
 $$
-four-spaces containing $1$. Every rank-$4$ set has a unique span, so the required count is $Tf-Ch$. Cancelling the displayed factors yields
+Every rank-$4$ set has a unique span. Hence the global count is
+$$
+N_4'=\binom{m}{4}_q f-\binom{m-1}{3}_q h.
+$$
+Substituting the displayed formulas for $f$ and $h$ gives
+$$
+\begin{aligned}
+N_4'
+&=\frac{(Q-q)(Q-q^2)(Q-q^3)}{120}
+\left((Q-1)(s-10)-5(s-11)\right)\\
+&=\frac{(Q-q)(Q-q^2)(Q-q^3)}{120}
+\left((Q-6)(s-10)+5\right).
+\end{aligned}
+$$
+Since $s=q^4+q^3+q^2+q$,
 $$
 N_4'
-=
-\frac{(Q-q)(Q-q^2)(Q-q^3)}{120}
+=\frac{(Q-q)(Q-q^2)(Q-q^3)}{120}
 \left((Q-6)(q^4+q^3+q^2+q-10)+5\right).
 $$
 
@@ -187,16 +201,22 @@ $$
 $$
 Every $A_j=I+S^{q^j}$ and $S+S^Q$ is a polynomial in $S$, hence preserves every $E_\lambda$. Therefore both $\Psi$ and $\mathcal D$ preserve each displayed summand, so the total rank is the sum of the sector ranks.
 
-If some $a_\lambda=2$, decomposables spanning that sector contain two factors from one $E_\lambda$, and Step 1 proves $\Psi=0$ there. Otherwise all $a_\lambda$ are $0$ or $1$, so the sector uses exactly five distinct blocks and is one of those in Step 2. For its five $z_i$, exactly one of the mutually exclusive conditions holds: rank $5$; rank $4$ with $\sum z_i\neq0$; rank $4$ with $\sum z_i=0$; or rank at most $3$. Step 2 gives the corresponding sector ranks $16,8,0,0$. Thus repeated-block sectors and these four distinct-block cases exhaust $\bigwedge^5V_K$, and
+If some $a_\lambda=2$, decomposables spanning that sector contain two factors from one $E_\lambda$, and Step 1 proves $\Psi=0$ there. Otherwise all $a_\lambda$ are $0$ or $1$, so the sector uses exactly five distinct blocks and is one of those in Step 2. For its five $z_i$, exactly one of the mutually exclusive conditions holds: rank $5$; rank $4$ with $\sum z_i\neq0$; rank $4$ with $\sum z_i=0$; or rank at most $3$. Step 2 gives the corresponding sector ranks $16,8,0,0$. Thus repeated-block sectors and these four distinct-block cases exhaust $\bigwedge^5V_K$.
+
+Recall from Step 2 that
 $$
 \operatorname{rank}(\mathcal D\Psi)=16N_5+8N_4'.
 $$
-Substituting Steps 3 and 4 gives
+Substituting the formulas from Steps 3 and 4 gives
 $$
+\begin{aligned}
 \operatorname{rank}(\mathcal D\Psi)
-=
-\frac{(Q-q)(Q-q^2)(Q-q^3)}{15}
+&=16\frac{(Q-6)(Q-q)(Q-q^2)(Q-q^3)(Q-q^4)}{120}\\
+&\quad+8\frac{(Q-q)(Q-q^2)(Q-q^3)}{120}
+\left((Q-6)(q^4+q^3+q^2+q-10)+5\right)\\
+&=\frac{(Q-q)(Q-q^2)(Q-q^3)}{15}
 \left((Q-6)(2Q-q^4+q^3+q^2+q-10)+5\right).
+\end{aligned}
 $$
 
 Final Answer: $\boxed{\frac{(Q-q)(Q-q^{2})(Q-q^{3})}{15}\left[(Q-6)(2Q-q^{4}+q^{3}+q^{2}+q-10)+5\right]}$
