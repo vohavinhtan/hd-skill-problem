@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-For real numbers $p>1$ and $\lambda\ge 0$, and an integer $n\ge 3$, define
+For a real number $p>1$, an integer $n\ge 3$, and a real parameter $\lambda$, define
 $$
 \phi_\lambda(x)=
 \begin{cases}
@@ -20,17 +20,22 @@ Q_n(p,\lambda)=
 $$
 where $x^{-\lambda}e^{-1/x}$ at $x=0$ is understood by its continuous extension, equal to $0$.
 
-For each $p>1$ and $\lambda\ge0$, determine the unique pair
-$(\beta_{p,\lambda},L_{p,\lambda})\in\mathbb{R}\times(0,\infty)$ such that
+Set
+$$
+C_n(p)=
+\left.
+\frac{\partial^3}{\partial\lambda^3}
+\log Q_n(p,\lambda)
+\right|_{\lambda=0}.
+$$
+For each $p>1$, determine the unique pair
+$(\beta_p,L_p)\in\mathbb{R}\times(0,\infty)$ such that
 $$
 \lim_{n\to\infty}
-\frac{\log n}{(\log\log n)^{\beta_{p,\lambda}}}
-\left(
-\frac{p^2Q_n(p,\lambda)}{(\log n)^2}-1
-\right)
-=L_{p,\lambda}.
+\frac{(\log n)^3}{(\log\log n)^{\beta_p}}\,C_n(p)
+=L_p.
 $$
-Give $\beta_{p,\lambda}$ and $L_{p,\lambda}$ exactly as functions of $p$ and $\lambda$.
+Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ---
 
@@ -47,4 +52,4 @@ Give $\beta_{p,\lambda}$ and $L_{p,\lambda}$ exactly as functions of $p$ and $\l
 
 ## Domain Explanation
 
-The task asks for the first nontrivial correction to a logarithmically normalized ratio of parameterized integrals, including the change in correction scale at a boundary value of the parameter $\lambda$. Determining the correction exponent and coefficient requires second-order asymptotic analysis, so Asymptotic analysis is the appropriate sub-domain. The requested final object is an ordered pair of asymptotic parameters for each $(p,\lambda)$.
+The task asks for the asymptotic scale and leading coefficient of a third-order parameter sensitivity of a logarithmic ratio of integrals. The dominant behavior comes from the interaction between a flat endpoint and differentiation with respect to the parameter, so asymptotic analysis is the appropriate sub-domain. The requested final object is the ordered pair of scaling parameters for each $p>1$.
