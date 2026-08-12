@@ -39,13 +39,20 @@ d\mu_{n,p}(x)
 \exp\!\left(-n\phi(x)^p\right)}
 {Z_n\bigl(p,\lambda_n(p)\bigr)}\,dx,
 $$
+put
+$$
+R_n(x)=n\phi(x)^p,
+$$
 and set
 $$
 C_n(p)
 =
 \int_0^1
 \left(x-\frac12\right)
-\,n\phi(x)^p\,d\mu_{n,p}(x).
+\left[
+R_n(x)^2-\left(1+\frac2p\right)R_n(x)
+\right]
+\,d\mu_{n,p}(x).
 $$
 
 For each $p>1$, determine the unique pair
@@ -71,4 +78,4 @@ Give $\beta_p$ and $L_p$ exactly as functions of $p$.
 
 ## Domain Explanation
 
-The parameter $\lambda_n(p)$ is defined implicitly by a normalized first-moment condition, and the requested quantity is a covariance-type observable evaluated under the resulting critical tilt. The two endpoint layers have the same leading scaled-energy law, so the leading covariance cancels; the first nonzero term comes from finer fluctuations in the flat endpoint layer together with the second-order mismatch between the endpoint energy means. Determining that surviving scale and coefficient, while proving existence and uniqueness of the critical tilt and controlling discarded regions, is an asymptotic-analysis problem.
+The parameter $\lambda_n(p)$ is defined implicitly by a normalized first-moment condition, and the requested quantity is a tuned covariance-type observable under the resulting critical endpoint balance. The two endpoint layers have the same leading scaled-energy law, while the polynomial in $R_n$ removes the first surviving logarithmic covariance correction. Determining the next nonzero term therefore requires resolving the internal flat-layer geometry one order further, together with the effect of the implicit critical tilt and all competing endpoint contributions. The primary mathematical content is asymptotic analysis.
