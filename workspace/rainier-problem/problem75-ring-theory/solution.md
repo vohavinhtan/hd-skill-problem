@@ -53,7 +53,7 @@ $$
 and
 $$
 \begin{aligned}
-G={}&-u^{19}+\left(2\lambda^2u^{18}-u^{19}+2(\lambda-1)u^{20}\right)s\\
+G&=-u^{19}+\left(2\lambda^2u^{18}-u^{19}+2(\lambda-1)u^{20}\right)s\\
 &+\left(\lambda^4u^{18}+2\lambda^2(\lambda-1)u^{20}+(\lambda-1)^2u^{22}\right)s^2.
 \end{aligned}
 $$
