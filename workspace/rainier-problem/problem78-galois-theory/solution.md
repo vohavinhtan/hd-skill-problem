@@ -30,23 +30,15 @@ Z(N_r)\cong R/(h),\qquad |Z(N_r)|=2^8,\qquad |N_r|=2^8\,9828^r.
 $$
 If $H$ is admissible, choose $t\in H$ over $\tau$. Then $K=H\cap N_r$ is normalized by $t$. The subgroup $K\cap Z(N_r)$ is $\tau$-stable and central, hence normal in $G_r$; core-freeness gives $K\cap Z(N_r)=1$. Thus $K$ embeds in $S^r$, and its image $\overline K$ is subdirect.
 
-Fix two coordinates $i,j$ and let $M\leq S\times S$ be the corresponding two-coordinate image of $\overline K$. Both projections of $M$ are onto. Put
+Fix coordinates $i,j$ and let $M\leq S\times S$ be their two-coordinate image. Define
 $$
-A=\{a\in S:(a,1)\in M\},
-\qquad
-B=\{b\in S:(1,b)\in M\}.
+A=\{a:(a,1)\in M\},\qquad B=\{b:(1,b)\in M\}.
 $$
-Surjectivity shows $A$ and $B$ are normal in $S$: for example, if $(s,t)\in M$ and $(a,1)\in M$, then $(sas^{-1},1)\in M$. Since $S$ is simple, each of $A,B$ is either $1$ or $S$. If $A=S$, then $S\times\{1\}\leq M$, and surjectivity to the second factor gives $M=S\times S$. If $A=1$, then for every $s\in S$ there is a unique $t\in S$ with $(s,t)\in M$; uniqueness follows because two such $t$'s would differ by an element of $B$, and the same argument with the factors reversed gives $B=1$. Hence $s\mapsto t$ is a bijective homomorphism, so $M$ is the graph of an automorphism of $S$.
+Both are normal in $S$: conjugating $(a,1)$ by any $(s,t)\in M$ gives $(sas^{-1},1)$, and similarly for $B$. Since $S$ is simple, $A,B\in\{1,S\}$. If $A=S$, surjectivity to the second factor gives $M=S\times S$. Otherwise $A=1$, and the same argument gives $B=1$; each first coordinate then has a unique second coordinate, so $M$ is the graph of a bijective homomorphism $S\to S$, hence of an automorphism.
 
-Declare $i\sim j$ when this two-coordinate image is a graph. This is an equivalence relation: reflexivity and symmetry are immediate, and if $i\sim j$ and $j\sim k$, then the $j$-coordinate is an automorphic function of the $i$-coordinate and the $k$-coordinate is an automorphic function of the $j$-coordinate, so the $k$-coordinate is an automorphic function of the $i$-coordinate, giving $i\sim k$.
+Write $i\sim j$ in the graph case. If $i\sim j$ and $j\sim k$, composition of the two automorphisms gives $i\sim k$, so this is an equivalence relation. Choose one representative from each of $c$ classes. We claim the projection of $\overline K$ to these representatives is $S^c$. Induct on $c$. For the last coordinate, the kernel of the projection onto the first $c-1$ coordinates is normal in its copy of $S$, hence is $1$ or $S$. If it is $S$, the image is $S^c$. If it is $1$, the last coordinate is a surjective homomorphism $\varphi:S^{c-1}\to S$. Each direct factor has normal image in $S$, so each image is $1$ or $S$; two factors cannot both map onto $S$ because their images commute. Thus exactly one factor maps isomorphically onto $S$, making the last representative graph-related to an earlier one, a contradiction. Therefore the image is $S^c$.
 
-It remains to prove that different equivalence classes are independent. Choose one representative from each of $c$ classes and project $\overline K$ to those $c$ coordinates. We prove by induction on $c$ that the image is $S^c$. The claim is clear for $c=1$. Assume it for $c-1$, and let $M_c\leq S^c$ be the image on $c$ representatives. Its projection to the first $c-1$ coordinates is $S^{c-1}$. The kernel of this projection is a normal subgroup of the last factor $S$, so it is either $1$ or $S$. If it is $S$, then $M_c=S^c$. If it is $1$, then $M_c$ is the graph of a surjective homomorphism
-$$
-\varphi:S^{c-1}\to S.
-$$
-For each direct factor $S_i\leq S^{c-1}$, the image $\varphi(S_i)$ is normal in $S$, hence is $1$ or $S$. Since distinct factors commute, two of them cannot both have image $S$, because that would make every pair of elements of $S$ commute. Surjectivity therefore forces exactly one factor to map onto $S$, and on that factor $\varphi$ is an automorphism. The last representative would then be graph-related to that earlier representative, contradicting that they were chosen from different equivalence classes. Thus the kernel is $S$ and $M_c=S^c$.
-
-Consequently $\overline K$ is exactly a product of twisted full diagonals, one on each equivalence class. The cyclic shift preserves this partition. If $B$ is the block containing $0$, then $a\in B$ implies $(a+B)\cap B\neq\varnothing$, so $a+B=B$; conversely $a+B=B$ implies $a\in B$. Hence $B=L$ is a subgroup of $\mathbb Z/r$ and all blocks are its cosets. Writing
+Hence $\overline K$ is exactly a product of twisted full diagonals, one per equivalence class. The cyclic shift preserves this partition. If $B$ is the block containing $0$, then $a\in B$ implies $(a+B)\cap B\neq\varnothing$, so $a+B=B$; conversely $a+B=B$ implies $a\in B$. Thus $B=L$ is a subgroup of $\mathbb Z/r$ and all blocks are its cosets. Writing
 $$
 |L|=\ell,\qquad b=\frac r\ell,
 $$
