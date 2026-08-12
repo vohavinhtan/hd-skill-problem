@@ -19,7 +19,7 @@ $$
 \begin{aligned}
 \mathcal E_{m,\lambda}(u)
 ={}&
-\frac12\int_0^\pi
+\frac{1}{2}\int_0^\pi
 \bigl(u^{(4)}+5u''+4u\bigr)^2\,dx
 \\
 &+
@@ -27,7 +27,7 @@ $$
 \int_0^\pi
 \bigl(u^{(4)}+5u''+4u\bigr)G_u\,dx
 +
-\frac12\int_0^\pi G_u^2\,dx
+\frac{1}{2}\int_0^\pi G_u^2\,dx
 \\
 &-
 \frac{\lambda}{2}\int_0^\pi u^2\,dx
