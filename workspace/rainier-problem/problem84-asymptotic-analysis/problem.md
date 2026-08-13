@@ -1,53 +1,40 @@
 # Normalized Math Problem
 
-For \(p>1\), set \(q=p-1\), \(a_n=(\log n)/p\), and for \(n\ge3\),
+For \(p>1\), set \(q=p-1,\ a_n=(\log n)/p\), and
 \[
-\phi_p(x)=
-\begin{cases}
-e^{-1/x-(1-x)^{-q}}|x-\tfrac12|,&0<x<1,\\
-0,&x\in\{0,1\},
-\end{cases}
-\qquad R_n(x)=n\phi_p(x)^p.
+\phi_p(x)=e^{-1/x-(1-x)^{-q}}|x-\tfrac12|\ (0<x<1),\qquad \phi_p(0)=\phi_p(1)=0.
 \]
-For \(\lambda,\mu\in\mathbb R\), let
+Let \(R_n=n\phi_p^p\). For \(\lambda,\mu\in\mathbb R\), let \(\nu_{n,\lambda,\mu}\) be the probability measure on \((0,1)\) with density proportional to
 \[
-w_{n,\lambda,\mu}(x)=x^{-\lambda}(1-x)^{-\mu}
-e^{-1/x-(1-x)^{-q}-R_n(x)},
-\quad
-d\nu_{n,\lambda,\mu}=\frac{w_{n,\lambda,\mu}(x)\,dx}{\int_0^1w_{n,\lambda,\mu}}.
+x^{-\lambda}(1-x)^{-\mu}e^{-1/x-(1-x)^{-q}-R_n(x)}.
 \]
-
-For each fixed \(p>1\), prove that for all sufficiently large \(n\) there is a unique pair
-\((\lambda_n,\mu_n)\in\mathbb R^2\) such that
+For each fixed \(p>1\), prove that for all large \(n\) there is a unique pair \((\lambda_n,\mu_n)\) satisfying
 \[
-\int_0^1(-\log x)\,d\nu_n=\frac13\log a_n,\qquad
-\int_0^1-\log(1-x)\,d\nu_n=\frac{\log a_n}{3q},
+\int-\log x\,d\nu_n=\tfrac13\log a_n,\qquad
+\int-\log(1-x)\,d\nu_n=\frac{\log a_n}{3q},
 \]
 where \(\nu_n=\nu_{n,\lambda_n,\mu_n}\).
 
-For \(0\le k\le12\), set
+Put \(M_{k,n}=\int x^k\,d\nu_n\) \((0\le k\le14)\) and
 \[
-M_{k,n}=\int_0^1x^k\,d\nu_n,\qquad
-H_n=\det[M_{i+j,n}]_{i,j=0}^{6},
+H_{r,n}=\det[M_{i+j,n}]_{i,j=0}^{r-1}\qquad(r=6,7,8),
+\qquad
+Q_n=\frac{H_{8,n}H_{6,n}}{H_{7,n}^2}.
 \]
-and for \(m\ge1\),
+For \(m\ge1\), define
 \[
-\Xi_{m,p}=
-\det\!\left[
-\frac{\Gamma^{(i+j)}(1/p)}{\Gamma(1/p)}
-\right]_{i,j=0}^{m-1}.
+\Xi_{m,p}=\det\!\left[\frac{\Gamma^{(i+j)}(1/p)}{\Gamma(1/p)}\right]_{i,j=0}^{m-1}.
 \]
 
 Determine exactly
 \[
-A_p=\lim_{n\to\infty}\log a_n(\lambda_n-2),\qquad
-B_p=\lim_{n\to\infty}\log a_n(\mu_n-p),
+A_p=\lim\log a_n(\lambda_n-2),\qquad
+B_p=\lim\log a_n(\mu_n-p),
 \]
-and the unique \(\beta_p\in\mathbb R,\ L_p>0\) such that
+and the unique \(\gamma_p\in\mathbb R,\ K_p>0\) such that
 \[
-\lim_{n\to\infty}(\log n)^{\beta_p}H_n=L_p.
+\lim_{n\to\infty}(\log n)^{\gamma_p}Q_n=K_p.
 \]
-Give \((A_p,B_p,\beta_p,L_p)\) exactly for every \(p>1\), proving every required case distinction and every transition value where several sampling configurations contribute at the same leading order.
+Give \((A_p,B_p,\gamma_p,K_p)\) for every \(p>1\), proving every transition value and summing all tied leading configurations when necessary.
 
-**Domain:** Analysis — Asymptotic analysis.  
-**Problem type:** Parameter identification. **Answer type:** ordered tuple.
+**Domain:** Analysis — Asymptotic analysis. **Type:** Parameter identification. **Answer:** ordered tuple.
