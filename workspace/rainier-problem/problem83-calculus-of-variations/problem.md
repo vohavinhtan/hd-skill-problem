@@ -2,93 +2,86 @@
 
 ## LaTeX (Normalized)
 
-Fix a real number $p>0$. Define
+For $0<\lambda<1$, let $\mathcal A_\lambda$ be the set of all $u\in L^2(-1,1)$ such that $u\geq0$ almost everywhere and
 $$
-W_p(s)=
-\begin{cases}
-\dfrac{p^2}{2}\left(s+\dfrac{1}{p}\right)^2,&s\leq0,\\
-\dfrac{1}{2}(s-1)^2,&s\geq0.
-\end{cases}
+\int_{-1}^1u(x)\,dx=1,
 $$
-For $0<\varepsilon<1$, let
 $$
-\mathcal A_p=
-\left\{
- u\in H^1(0,1):
- u(0)=u(1)=1,
- \quad
- \int_0^1u(x)\,dx=0,
- \quad
- \int_0^1x u(x)\,dx=\frac{1}{6(p+1)}
-\right\},
+\int_{-1}^1x u(x)\,dx=\lambda,
 $$
-and define
 $$
-\mathcal E_{\varepsilon,p}(u)
-=
-\int_0^1
-\left[
-\frac{\varepsilon^2}{2}(u'(x))^2+W_p(u(x))
-\right]dx.
-$$
-
-Prove that $\mathcal E_{\varepsilon,p}$ attains its global minimum on $\mathcal A_p$. For each fixed $p>0$, prove that for all sufficiently small $\varepsilon>0$, every global minimizer $u_{\varepsilon,p}$ has exactly two zeros
-$$
-0<z^-_{\varepsilon,p}<z^+_{\varepsilon,p}<1.
-$$
-Put
-$$
-d_{\varepsilon,p}=z^+_{\varepsilon,p}-z^-_{\varepsilon,p}.
-$$
-
-Let $\eta_{\varepsilon,p}$ and $\xi_{\varepsilon,p}$ be the Lagrange multipliers associated respectively with
-$$
-\int_0^1u(x)\,dx=0
+\int_{-1}^1x^2u(x)\,dx=\frac{5}{7}+\lambda,
 $$
 and
 $$
-\int_0^1x u(x)\,dx=\frac{1}{6(p+1)},
+\int_{-1}^1x^4u(x)\,dx=\frac{5}{9}.
 $$
-with the sign convention that the constrained functional is
-$$
-\mathcal E_{\varepsilon,p}(u)
-+\eta_{\varepsilon,p}\int_0^1u(x)\,dx
-+\xi_{\varepsilon,p}
-\left(
-\int_0^1x u(x)\,dx-\frac{1}{6(p+1)}
-\right).
-$$
-Prove that this multiplier pair is uniquely determined for every sufficiently small $\varepsilon>0$.
+Let $\widetilde{\mathcal A}_\lambda$ be defined by the same four moment conditions but without the requirement $u\geq0$.
 
-The following limits exist and are independent of the choice of global minimizer:
+Define
 $$
-A_p
+J_\lambda
 =
-\lim_{\varepsilon\downarrow0}
-\frac{d_{\varepsilon,p}-\frac{p}{p+1}}{\varepsilon},
-$$
-$$
-B_p
-=
--\lim_{\varepsilon\downarrow0}
-\varepsilon
-\log\left|
-d_{\varepsilon,p}-\frac{p}{p+1}-\varepsilon A_p
-\right|,
+\inf_{u\in\mathcal A_\lambda}
+\frac{1}{2}\int_{-1}^1u(x)^2\,dx
 $$
 and
 $$
-C_p
+\widetilde J_\lambda
 =
--\lim_{\varepsilon\downarrow0}
-\varepsilon
-\log\sqrt{\eta_{\varepsilon,p}^2+\xi_{\varepsilon,p}^2}.
+\inf_{u\in\widetilde{\mathcal A}_\lambda}
+\frac{1}{2}\int_{-1}^1u(x)^2\,dx.
 $$
-Determine the ordered triple
+
+Prove that for all sufficiently small $\lambda>0$, both infima are attained and their minimizers are unique. Let $u_\lambda$ denote the minimizer defining $J_\lambda$.
+
+Prove that for all sufficiently small $\lambda>0$ there are unique numbers
 $$
-(A_p,B_p,C_p)
+-1<\alpha_\lambda<0<\beta_\lambda<1
 $$
-for every $p>0$.
+such that, up to changing $u_\lambda$ on a null set,
+$$
+u_\lambda(x)=0
+\quad\text{for }\alpha_\lambda\leq x\leq\beta_\lambda,
+$$
+and
+$$
+u_\lambda(x)>0
+\quad\text{for }-1\leq x<\alpha_\lambda
+\text{ and }\beta_\lambda<x\leq1.
+$$
+Set
+$$
+a_\lambda=\frac{\beta_\lambda-\alpha_\lambda}{2},
+\qquad
+h_\lambda=\frac{\alpha_\lambda+\beta_\lambda}{2}.
+$$
+
+Prove that the limits
+$$
+L
+=
+\lim_{\lambda\downarrow0}
+\frac{a_\lambda}{\lambda^{1/4}}
+$$
+and
+$$
+H
+=
+\lim_{\lambda\downarrow0}
+\frac{h_\lambda}{\lambda^{1/2}}
+$$
+exist. Also prove that there are unique real numbers $\gamma>0$ and $K>0$ such that
+$$
+\lim_{\lambda\downarrow0}
+\frac{J_\lambda-\widetilde J_\lambda}{\lambda^\gamma}
+=K.
+$$
+
+Determine the ordered quadruple
+$$
+(L,H,\gamma,K).
+$$
 
 ---
 
@@ -105,4 +98,4 @@ for every $p>0$.
 
 ## Domain Explanation
 
-The problem studies a singularly perturbed two-phase variational energy under simultaneous mass and first-moment constraints. The two constraints force a coupled two-interface geometry, and the requested limits require separating algebraic interface shifts from two different exponentially small interaction mechanisms. Calculus of variations is the primary subject, while singular perturbation and asymptotic analysis provide supporting tools.
+The problem studies a strictly convex integral functional under moment constraints and a pointwise nonnegativity condition. Near a degenerate limiting minimizer, the active set opens on a fractional scale, while an asymmetric moment perturbation moves that set on a different scale and the positivity constraint contributes only at a still higher order to the optimal value. Calculus of variations is therefore the primary subject, with convex duality and asymptotic analysis providing supporting tools.
