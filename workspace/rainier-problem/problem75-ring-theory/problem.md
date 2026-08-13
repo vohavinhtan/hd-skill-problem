@@ -12,13 +12,13 @@ $$
 $$
 by
 $$
-\Psi_{n,\lambda}(X)=t^{4n},
+\Psi_{n,\lambda}(X)=t^5,
 $$
 $$
-\Psi_{n,\lambda}(Y)=t^{6n}+t^{7n}+t^{7n+1},
+\Psi_{n,\lambda}(Y)=(\lambda^4-\lambda)t^{5n+1}+t^{5n+6},
 $$
 $$
-\Psi_{n,\lambda}(Z)=t^{9n}+\lambda^2t^{9n+1}+(\lambda-1)t^{11n+1}.
+\Psi_{n,\lambda}(Z)=(\lambda^3-\lambda)t^{5n-3}+t^{5n+2}.
 $$
 Let
 $$
