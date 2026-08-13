@@ -45,4 +45,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves extremal holomorphic functions with positive real part on the unit disk. The prescribed Taylor coefficients and one interior real-part value become moment constraints for a representing boundary measure. The sharp minimizer is determined by a dual rational inequality together with rigidity in its equality set.
+This problem involves holomorphic functions with positive real part on the unit disk, which are part of Analysis and Complex analysis. The problem also involves fixed Taylor data and an interior value constraint, which are part of analytic function theory. However, these conditions specify the admissible family while the core task is the extremal behavior of a holomorphic function.
