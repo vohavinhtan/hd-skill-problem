@@ -2,86 +2,98 @@
 
 ## LaTeX (Normalized)
 
-For $0<\lambda<1$, let $\mathcal A_\lambda$ be the set of all $u\in L^2(-1,1)$ such that $u\geq0$ almost everywhere and
+Fix a real number $p$ with $0<p<1$. For $0<\lambda<1$, let $\mathcal A_{p,\lambda}$ be the set of all $u\in L^2(-1,1)$ such that $u\geq0$ almost everywhere and
 $$
-\int_{-1}^1u(x)\,dx=1,
+\int_{-1}^1u(x)\,dx
+=
+\frac{2}{7}+\frac{2p^2}{5}-2\lambda,
 $$
 $$
-\int_{-1}^1x u(x)\,dx=\lambda,
+\int_{-1}^1x^4u(x)\,dx
+=
+\frac{2}{11}+\frac{2p^2}{9}-\frac{2\lambda}{5},
 $$
 $$
-\int_{-1}^1x^2u(x)\,dx=\frac{5}{7}+\lambda,
+\int_{-1}^1x^5u(x)\,dx
+=
+-\frac{4p}{11},
 $$
 and
 $$
-\int_{-1}^1x^4u(x)\,dx=\frac{5}{9}.
+\int_{-1}^1x^6u(x)\,dx
+=
+\frac{2}{13}+\frac{2p^2}{11}-\frac{2\lambda}{7}.
 $$
-Let $\widetilde{\mathcal A}_\lambda$ be defined by the same four moment conditions but without the requirement $u\geq0$.
+Let $\widetilde{\mathcal A}_{p,\lambda}$ be defined by the same four moment conditions but without the requirement $u\geq0$.
 
 Define
 $$
-J_\lambda
+J_{p,\lambda}
 =
-\inf_{u\in\mathcal A_\lambda}
+\inf_{u\in\mathcal A_{p,\lambda}}
 \frac{1}{2}\int_{-1}^1u(x)^2\,dx
 $$
 and
 $$
-\widetilde J_\lambda
+\widetilde J_{p,\lambda}
 =
-\inf_{u\in\widetilde{\mathcal A}_\lambda}
+\inf_{u\in\widetilde{\mathcal A}_{p,\lambda}}
 \frac{1}{2}\int_{-1}^1u(x)^2\,dx.
 $$
 
-Prove that for all sufficiently small $\lambda>0$, both infima are attained and their minimizers are unique. Let $u_\lambda$ denote the minimizer defining $J_\lambda$.
+Prove that for each fixed $p\in(0,1)$ and all sufficiently small $\lambda>0$, both infima are attained and their minimizers are unique. Let $u_{p,\lambda}$ denote the minimizer defining $J_{p,\lambda}$.
 
-Prove that for all sufficiently small $\lambda>0$ there are unique numbers
+Prove that for each fixed $p\in(0,1)$ and all sufficiently small $\lambda>0$, there are unique numbers
 $$
--1<\alpha_\lambda<0<\beta_\lambda<1
+-1<\alpha_{p,\lambda}<0<\beta_{p,\lambda}<\gamma_{p,\lambda}<p<\delta_{p,\lambda}<1
 $$
-such that, up to changing $u_\lambda$ on a null set,
+such that, up to changing $u_{p,\lambda}$ on a null set,
 $$
-u_\lambda(x)=0
-\quad\text{for }\alpha_\lambda\leq x\leq\beta_\lambda,
+u_{p,\lambda}(x)=0
 $$
-and
+exactly on
 $$
-u_\lambda(x)>0
-\quad\text{for }-1\leq x<\alpha_\lambda
-\text{ and }\beta_\lambda<x\leq1.
+[\alpha_{p,\lambda},\beta_{p,\lambda}]
+\cup
+[\gamma_{p,\lambda},\delta_{p,\lambda}],
 $$
+and $u_{p,\lambda}(x)>0$ elsewhere on $[-1,1]$.
+
 Set
 $$
-a_\lambda=\frac{\beta_\lambda-\alpha_\lambda}{2},
+\Delta_{p,\lambda}=J_{p,\lambda}-\widetilde J_{p,\lambda}.
+$$
+Prove that for every fixed $p\in(0,1)$ there are unique real numbers
+$$
+0<\gamma_0(p)<\gamma_1(p)
+$$
+and unique constants
+$$
+K_0(p)>0,
 \qquad
-h_\lambda=\frac{\alpha_\lambda+\beta_\lambda}{2}.
+K_1(p)>0,
 $$
-
-Prove that the limits
+such that
 $$
-L
-=
 \lim_{\lambda\downarrow0}
-\frac{a_\lambda}{\lambda^{1/4}}
+\frac{\Delta_{p,\lambda}}{\lambda^{\gamma_0(p)}}
+=
+K_0(p)
 $$
 and
 $$
-H
+\lim_{\lambda\downarrow0}
+\frac{\Delta_{p,\lambda}-K_0(p)\lambda^{\gamma_0(p)}}
+{\lambda^{\gamma_1(p)}}
 =
-\lim_{\lambda\downarrow0}
-\frac{h_\lambda}{\lambda^{1/2}}
-$$
-exist. Also prove that there are unique real numbers $\gamma>0$ and $K>0$ such that
-$$
-\lim_{\lambda\downarrow0}
-\frac{J_\lambda-\widetilde J_\lambda}{\lambda^\gamma}
-=K.
+K_1(p).
 $$
 
 Determine the ordered quadruple
 $$
-(L,H,\gamma,K).
+\bigl(\gamma_0(p),K_0(p),\gamma_1(p),K_1(p)\bigr)
 $$
+for every $0<p<1$.
 
 ---
 
@@ -98,4 +110,4 @@ $$
 
 ## Domain Explanation
 
-The problem studies a strictly convex integral functional under moment constraints and a pointwise nonnegativity condition. Near a degenerate limiting minimizer, the active set opens on a fractional scale, while an asymmetric moment perturbation moves that set on a different scale and the positivity constraint contributes only at a still higher order to the optimal value. Calculus of variations is therefore the primary subject, with convex duality and asymptotic analysis providing supporting tools.
+The problem studies a strictly convex $L^2$ variational problem with moment constraints and a pointwise nonnegativity condition. The limiting dual polynomial has two degenerate contact points of different orders, so the active set opens on two different scales. Determining the second nonzero term of the positivity penalty requires combining the local contribution of the second contact with the global feedback imposed by all four moment constraints. Calculus of variations is therefore the primary subject, with convex duality and asymptotic analysis providing supporting tools.
