@@ -2,84 +2,78 @@
 
 ## LaTeX (Normalized)
 
-For a real number $p>1$ and an integer $n\ge3$, define
+For a real number $p>1$, put $q=p-1$. For an integer $n\ge3$, define
 $$
-\phi(x)=
+\phi_p(x)=
 \begin{cases}
-e^{-1/x}(1-x)\left|x-\frac13\right|\left|x-\frac23\right|,&0<x\le1,\\
-0,&x=0,
+\exp\!\left(-\dfrac1x-\dfrac1{(1-x)^q}\right)\left|x-\dfrac12\right|,&0<x<1,\\
+0,&x\in\{0,1\},
 \end{cases}
 $$
 and
 $$
-R_n(x)=n\phi(x)^p.
+R_n(x)=n\phi_p(x)^p.
 $$
 
-For real parameters $\lambda,\theta,\kappa$, set
+For real parameters $\lambda,\mu$, set
 $$
-Z_n(p,\lambda,\theta,\kappa)
+Z_n(p,\lambda,\mu)
 =
-\int_0^1 x^{-\lambda}e^{\theta x+\kappa x^2}e^{-1/x}
+\int_0^1
+x^{-\lambda}(1-x)^{-\mu}
+\exp\!\left(-\frac1x-\frac1{(1-x)^q}\right)
 \exp\!\left(-R_n(x)\right)\,dx,
 $$
 and define the probability measure
 $$
-d\mu_{n,p,\lambda,\theta,\kappa}(x)
+d\nu_{n,p,\lambda,\mu}(x)
 =
-\frac{x^{-\lambda}e^{\theta x+\kappa x^2}e^{-1/x}
-\exp\!\left(-R_n(x)\right)}
-{Z_n(p,\lambda,\theta,\kappa)}\,dx.
+\frac{
+ x^{-\lambda}(1-x)^{-\mu}
+ \exp\!\left(-\frac1x-\frac1{(1-x)^q}\right)
+ \exp\!\left(-R_n(x)\right)
+}{Z_n(p,\lambda,\mu)}\,dx.
 $$
 Put
 $$
 a_n(p)=\frac{\log n}{p}.
 $$
 
-For each fixed $p>1$, prove that for all sufficiently large $n$ there is a unique triple
+For each fixed $p>1$, prove that for all sufficiently large $n$ there is a unique pair
 $$
-(\lambda_n(p),\theta_n(p),\kappa_n(p))\in\mathbb R^3
+(\lambda_n(p),\mu_n(p))\in\mathbb R^2
 $$
-satisfying the three simultaneous moment conditions
+satisfying the two simultaneous conditions
 $$
-\int_0^1(-\log x)\,d\mu_n(x)
-=\frac14\log a_n(p),
-$$
-$$
-\int_0^1x\,d\mu_n(x)=\frac12,
+\int_0^1(-\log x)\,d\nu_n(x)
+=\frac13\log a_n(p),
 $$
 and
 $$
-\int_0^1x^2\,d\mu_n(x)=\frac7{18},
+\int_0^1\bigl(-\log(1-x)\bigr)\,d\nu_n(x)
+=\frac1{3(p-1)}\log a_n(p),
 $$
 where, for brevity,
 $$
-\mu_n=\mu_{n,p,\lambda_n(p),\theta_n(p),\kappa_n(p)}.
+\nu_n=\nu_{n,p,\lambda_n(p),\mu_n(p)}.
 $$
-The existence and uniqueness of this triple are part of what must be justified.
+The existence and uniqueness of this pair are part of what must be justified.
 
-For $k\in\{0,1,\dots,12\}$, define
+For $k\in\{0,1,\dots,8\}$, define
 $$
-M_{k,n}(p)=\int_0^1x^k\,d\mu_n(x),
+M_{k,n}(p)=\int_0^1x^k\,d\nu_n(x),
 $$
 and set
 $$
-H_n(p)=\det\!\bigl[M_{i+j,n}(p)\bigr]_{i,j=0}^{6}.
+H_n(p)=\det\!\bigl[M_{i+j,n}(p)\bigr]_{i,j=0}^{4}.
 $$
 
-Put
+For $j\ge0$, write
 $$
-\ell_2=\log2,\qquad \ell_3=\log3,
-$$
-and define
-$$
-\Xi_p
-=
-\det\!\left[
-\frac{\Gamma^{(i+j)}(1/p)}{\Gamma(1/p)}
-\right]_{i,j=0}^{3}.
+\psi_j(z)=\frac{d^{j+1}}{dz^{j+1}}\log\Gamma(z).
 $$
 
-For each $p>1$, prove that the following five quantities exist and determine them exactly:
+For each $p>1$, prove that the following four quantities exist and determine them exactly:
 $$
 A_p
 =
@@ -89,23 +83,19 @@ $$
 $$
 B_p
 =
-\lim_{n\to\infty}\theta_n(p),
-$$
-$$
-C_p
-=
-\lim_{n\to\infty}\kappa_n(p),
+\lim_{n\to\infty}
+\log a_n(p)\bigl(\mu_n(p)-p\bigr),
 $$
 and the unique $\beta_p\in\mathbb R$ and $L_p>0$ such that
 $$
 \lim_{n\to\infty}(\log n)^{\beta_p}H_n(p)=L_p.
 $$
 
-Give the ordered quintuple
+Give the ordered quadruple
 $$
-(A_p,B_p,C_p,\beta_p,L_p)
+(A_p,B_p,\beta_p,L_p)
 $$
-exactly as a function of $p$.
+exactly as a function of $p$. Any case distinction in $p$ that is required by the asymptotics must be identified and justified.
 
 ---
 
@@ -122,4 +112,4 @@ exactly as a function of $p$.
 
 ## Domain Explanation
 
-The three parameters are determined by a coupled exponential-family moment map, while the normalized measure develops four competing concentration layers at $0$, $\tfrac13$, $\tfrac23$, and $1$. The three moment conditions force a four-point limiting measure, making the $7\times7$ Hankel matrix rank deficient. Its first nonzero term requires four samples in the flat endpoint layer and one sample in each algebraic layer, so the surviving coefficient depends on a fourth-order log-Gamma moment determinant. Proving global uniqueness of the implicit triple, resolving the four-layer balance, and identifying the dominant Vandermonde configuration are asymptotic-analysis tasks.
+The two parameters are defined through a coupled exponential-family moment map. The normalized measure develops three concentration layers, but the two endpoint layers are flat on different logarithmic spatial scales, while the interior zero is algebraic. The limiting three-point measure makes the $5\times5$ Hankel matrix rank deficient, and the first nonzero Vandermonde contribution depends on how repeated samples are distributed between the two flat layers. Determining the parameter drift, proving which multi-layer configurations dominate, and resolving the transition between competing logarithmic scales are asymptotic-analysis tasks.
