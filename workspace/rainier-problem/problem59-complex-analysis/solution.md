@@ -6,30 +6,29 @@ Write
 $$
 p(z)=1+2\sum_{n\geq1}m_nz^n.
 $$
-For $0<\rho<1$, define a probability measure on the unit circle by
+For $0<\rho<1$, define
 $$
 d\mu_\rho(e^{it})=\frac{\operatorname{Re}p(\rho e^{it})}{2\pi}\,dt.
 $$
-The density is positive, and its integral is $\operatorname{Re}p(0)=1$ by the mean-value property for the harmonic function $\operatorname{Re}p$. Expanding the Taylor series and taking Fourier coefficients gives, for every $n\geq1$,
+This is a probability measure because its density is positive and its integral is $\operatorname{Re}p(0)=1$ by the mean-value property. Taylor expansion and Fourier integration give
 $$
-\int e^{-int}\,d\mu_\rho(e^{it})=\rho^n m_n.
-$$
-Choose $\rho_k\uparrow1$. A subsequence converges weakly to a probability measure $\mu$ on the unit circle. For completeness, one may obtain such a subsequence directly by partitioning the circle into $2^j$ equal half-open arcs for each $j$, taking a diagonal subsequence on the finitely many arc masses at every level, and then using uniform continuity to pass from step functions on these partitions to continuous test functions. Passing to the limit in the displayed Fourier coefficients yields
-$$
-m_n=\int_{|\xi|=1}\xi^{-n}\,d\mu(\xi)
+\int e^{-int}\,d\mu_\rho(e^{it})=\rho^n m_n
 \qquad(n\geq1).
 $$
-For $|z|<1$ the expansion
+Choose $\rho_k\uparrow1$. For each $j$, partition the circle into $2^j$ equal half-open arcs. Successive subsequence extraction followed by a diagonal choice makes every dyadic arc mass converge. Uniform continuity then lets step functions on sufficiently fine partitions approximate any continuous function uniformly, so this diagonal subsequence has a weak limit probability measure $\mu$. Passing to the limit gives
+$$
+m_n=\int_{|\xi|=1}\xi^{-n}\,d\mu(\xi).
+$$
+For $|z|<1$,
 $$
 \frac{\xi+z}{\xi-z}=1+2\sum_{n\geq1}z^n\xi^{-n}
 $$
-is uniformly convergent in $\xi$ on every disk $|z|\leq r<1$. Hence termwise integration gives the representation
+uniformly in $\xi$ on every disk $|z|\leq r<1$, hence
 $$
 p(z)=\int_{|\xi|=1}\frac{\xi+z}{\xi-z}\,d\mu(\xi).
 $$
-Thus the required boundary measure has been constructed directly from $p$.
 
-The prescribed Taylor coefficients give
+The prescribed coefficients give
 $$
 m_1=-\frac16-\frac{i}{15},\qquad
 m_2=-\frac1{10}-\frac{i}{30},\qquad
@@ -41,7 +40,7 @@ $$
 \qquad
 \cos3t=4\cos^3t-3\cos t,
 $$
-yields
+gives
 $$
 \mathbb E X=-\frac16,
 \qquad
@@ -52,12 +51,11 @@ $$
 
 Step 2: Express the objective and the extra constraint as Poisson-kernel averages
 
-For real $r\in(-1,1)$, taking the real part of the representation from Step 1 gives
+For real $r\in(-1,1)$, Step 1 gives
 $$
-\operatorname{Re}p(r)
-=\int\frac{1-r^2}{1+r^2-2rX}\,d\mu.
+\operatorname{Re}p(r)=\int\frac{1-r^2}{1+r^2-2rX}\,d\mu.
 $$
-At $r=\pm1/2$, put
+Set
 $$
 K_+(x)=\frac3{5-4x},
 \qquad
@@ -67,126 +65,90 @@ Then
 $$
 \operatorname{Re}p\left(\frac12\right)=\mathbb E K_+(X),
 \qquad
-\mathbb E K_-(X)=\operatorname{Re}p\left(-\frac12\right)=\frac{77}{57}.
+\mathbb E K_-(X)=\frac{77}{57}.
 $$
-Thus the original problem is exactly the minimization of $\mathbb E K_+(X)$ subject to the three fixed moments from Step 1 and the fixed value of $\mathbb E K_-(X)$.
+Thus we must minimize $\mathbb E K_+(X)$ subject to the three moments from Step 1 and the fixed value of $\mathbb E K_-(X)$.
 
 Step 3: Derive and construct the sharp dual certificate
 
-For a real number $\lambda$ and a real cubic polynomial $q$, define the dual slack
+For real $\lambda$ and a real cubic $q$, put
 $$
-S(x)=K_+(x)-\lambda K_-(x)-q(x).
-$$
-If $S(x)\geq0$ on $[-1,1]$, then taking expectations gives a lower bound for the objective because $\mathbb E K_-(X)$ and the expectations of $1,X,X^2,X^3$ are fixed. Put
-$$
+S(x)=K_+(x)-\lambda K_-(x)-q(x),
+\qquad
 R(x)=(25-16x^2)S(x).
 $$
-Since $25-16x^2>0$ on $[-1,1]$ and $q$ is cubic, $R$ is a real polynomial of degree at most $5$, nonnegative on $[-1,1]$. If the lower bound is attained, then $\mathbb E S(X)=0$; since $S(X)\geq0$, this forces $S(X)=0$ almost surely. Because $25-16X^2>0$, the attaining measure is therefore supported on zeros of $R$. Every zero of a nonnegative polynomial in $(-1,1)$ has even multiplicity.
+If $S\geq0$ on $[-1,1]$, it gives a lower bound because all expectations on the right are fixed. The polynomial $R$ has degree at most $5$ and is nonnegative on $[-1,1]$. If the bound is attained, then $\mathbb E S(X)=0$, hence $S(X)=0$ almost surely; thus the attaining measure is supported on zeros of $R$. Every interior zero of a nonnegative polynomial has even multiplicity.
 
-We first show that an attaining measure must use at least three distinct real-part classes. A one-point law is impossible because
+At least three distinct real-part classes are necessary. A one-point law is excluded by
 $$
 \mathbb E X^2-(\mathbb E X)^2=\frac{19}{45}>0.
 $$
-If the support had at most two points, there would be real $s,t$ with
-$$
-X^2-sX+t=0
-$$
-almost surely. Taking expectations of this identity and of its product with $X$ gives
-$$
-\frac9{20}+\frac{s}{6}+t=0,
-\qquad
--\frac4{15}-\frac{9s}{20}-\frac{t}{6}=0,
-$$
-so
+If the support had at most two points, some $x^2-sx+t$ would vanish on it. Taking expectations after multiplying by $1$ and by $X$ gives
 $$
 s=-\frac{69}{152},
 \qquad
 t=-\frac{569}{1520}.
 $$
-On the roots of $x^2-sx+t$, the identity
+On its roots,
 $$
-\frac1{x+5/4}
-=\frac{s+5/4-x}{t+\frac54s+\frac{25}{16}}
-$$
-holds. Hence such a law would satisfy
-$$
-\mathbb E K_-(X)
-=\frac34\frac{s+5/4-\mathbb E X}{t+\frac54s+\frac{25}{16}}
-=\frac{2195}{1887},
-$$
-which is not $77/57$. Thus at least three distinct zeros of $R$ are needed.
-
-A degree-$5$ polynomial nonnegative on $[-1,1]$ cannot have four distinct zeros there, because at most two can be endpoints and every interior zero contributes multiplicity at least $2$. Three interior zeros would already contribute degree at least $6$. The only remaining three-point patterns are one endpoint with two interior points, or both endpoints with one interior point. The latter is incompatible with the data. Indeed, if the support were $\{-1,c,1\}$, then
-$$
-(X^2-1)(X-c)=0
-$$
-almost surely, and the first three moments give
-$$
-c=\frac{\mathbb E X-\mathbb E X^3}{1-\mathbb E X^2}=\frac2{11}.
-$$
-Since the three nodes $-1,2/11,1$ are distinct, the equations for total mass, $\mathbb E X$, and $\mathbb E X^2$ have a unique solution. Solving them gives
-$$
-W_{-1}=\frac{547}{1560},
-\qquad
-W_c=\frac{1331}{2340},
-\qquad
-W_1=\frac{377}{4680}.
-$$
-For these weights,
-$$
-\mathbb E K_-(X)=\frac{1301}{945}\neq\frac{77}{57}.
-$$
-Therefore a sharp certificate must have exactly one endpoint contact and two interior double contacts.
-
-The endpoint cannot be $1$. If it were, then necessarily
-$$
-R(x)=C(1-x)(x-a)^2(x-b)^2
-$$
-with $a,b\in(-1,1)$ and $C>0$. But from the definition of $R$,
-$$
-R\left(\frac54\right)=30,
-$$
-whereas the displayed factorization is negative at $5/4$, a contradiction. Thus the endpoint contact is $-1$. Consequently
-$$
-R(x)=C(1+x)(x-a)^2(x-b)^2,
-$$
-and if
-$$
-(x-a)(x-b)=x^2-sx+t,
-$$
-then the equality support is the zero set of
-$$
-g(x)=(x+1)(x^2-sx+t).
-$$
-This derives the contact pattern before any values of $s,t$ are chosen.
-
-Since $g(X)=0$ on an attaining measure, the moments from Step 1 give
-$$
-0=\mathbb E g(X)=-\frac{17s-50t-11}{60},
+\frac1{x+5/4}=\frac{s+5/4-x}{t+\frac54s+\frac{25}{16}},
 $$
 so
 $$
-17s-50t=11.
+\mathbb E K_-(X)=\frac{2195}{1887}\neq\frac{77}{57}.
 $$
-Also
+Hence an attaining measure has at least three classes.
+
+A degree-$5$ nonnegative polynomial cannot have four distinct zeros in $[-1,1]$: at most two are endpoints and every interior zero counts at least twice. Three interior zeros are also impossible. If the three classes were $\{-1,c,1\}$, then
 $$
-K_-(x)=\frac{3}{4(x+5/4)},
+(X^2-1)(X-c)=0
 $$
-so the fixed negative-point value gives
+would give
+$$
+c=\frac{\mathbb E X-\mathbb E X^3}{1-\mathbb E X^2}=\frac2{11}.
+$$
+On the three nodes $-1,2/11,1$,
+$$
+K_-(x)=\frac{139}{189}-\frac43x+\frac{176}{189}x^2,
+$$
+so the fixed moments would give
+$$
+\mathbb E K_-(X)=\frac{1301}{945}\neq\frac{77}{57}.
+$$
+Therefore a sharp certificate has one endpoint contact and two interior double contacts.
+
+The endpoint cannot be $1$. Otherwise
+$$
+R(x)=C(1-x)(x-a)^2(x-b)^2,
+\qquad C>0,
+$$
+with $a,b\in(-1,1)$. But the definition of $R$ gives $R(5/4)=30$, while this factorization is negative at $5/4$. Thus the endpoint is $-1$, so
+$$
+R(x)=C(1+x)(x-a)^2(x-b)^2.
+$$
+Write
+$$
+(x-a)(x-b)=x^2-sx+t,
+\qquad
+g(x)=(x+1)(x^2-sx+t).
+$$
+This derives the contact pattern before choosing $s,t$.
+
+On an attaining measure, $g(X)=0$. The moments give
+$$
+0=\mathbb E g(X)=-\frac{17s-50t-11}{60},
+$$
+so $17s-50t=11$. Also
 $$
 \mathbb E\frac1{X+5/4}=\frac{308}{171}.
 $$
-Polynomial division gives
+Using
 $$
 \frac{g(x)}{x+5/4}
 =x^2-\left(s+\frac14\right)x+t+\frac{s}{4}+\frac5{16}
--\frac{\frac{5s}{16}+\frac t4+\frac{25}{64}}{x+5/4}.
+-\frac{\frac{5s}{16}+\frac t4+\frac{25}{64}}{x+5/4}
 $$
-Taking expectations and using $g(X)=0$ gives
-$$
-125s-470t=86.
-$$
-Thus
+and taking expectations gives $125s-470t=86$. Hence
 $$
 s=\frac12,
 \qquad
@@ -196,48 +158,29 @@ and the two interior contacts are
 $$
 r_+=\frac{5+3\sqrt5}{20},
 \qquad
-r_-=\frac{5-3\sqrt5}{20},
+r_-=\frac{5-3\sqrt5}{20}.
 $$
-which both lie in $(-1,1)$. Put
-$$
-P(x)=20x^2-10x-1.
-$$
-
-We now seek
+Put $P(x)=20x^2-10x-1$. We seek
 $$
 S(x)=C\frac{(1+x)P(x)^2}{25-16x^2}.
 $$
-After multiplication by $25-16x^2$,
-$$
-3(5+4x)-3\lambda(5-4x)-q(x)(25-16x^2)
-=C(1+x)P(x)^2.
-$$
-At $x=5/4$, $P(5/4)=71/4$, so
+After clearing denominators and evaluating at $x=5/4$ and $x=-5/4$,
 $$
 30=C\frac94\left(\frac{71}{4}\right)^2,
-$$
-which gives
-$$
-C=\frac{640}{15123}.
-$$
-At $x=-5/4$, $P(-5/4)=171/4$, so
-$$
+\qquad
 -30\lambda=-C\frac14\left(\frac{171}{4}\right)^2,
 $$
-and therefore
+so
 $$
+C=\frac{640}{15123},
+\qquad
 \lambda=\frac{3249}{5041}.
 $$
-With these values, subtracting $C(1+x)P(x)^2$ from the first two terms leaves
-$$
-\frac{-256000x^5+217600x^3-51200x^2+285000x+80000}{15123}
-=(25-16x^2)\frac{200(80x^3+57x+16)}{15123}.
-$$
-Thus
+Solving the remaining polynomial identity for $q$ gives
 $$
 q(x)=\frac{200(80x^3+57x+16)}{15123},
 $$
-and the exact slack identity is
+and therefore
 $$
 \frac3{5-4x}
 -\frac{3249}{5041}\frac3{5+4x}
@@ -245,13 +188,13 @@ $$
 =
 \frac{640(1+x)(20x^2-10x-1)^2}{15123(25-16x^2)}.
 $$
-The right-hand side is nonnegative for $-1\leq x\leq1$. Taking expectations and using the three moments gives
+The right side is nonnegative on $[-1,1]$. Moreover
 $$
 \mathbb E q(X)
 =\frac{200}{15123}\left(80\left(-\frac4{15}\right)+57\left(-\frac16\right)+16\right)
 =-\frac{8900}{45369}.
 $$
-Therefore
+Thus
 $$
 \operatorname{Re}p\left(\frac12\right)
 \geq
@@ -261,19 +204,11 @@ $$
 
 Step 4: Determine the equality measure and prove its uniqueness
 
-Equality in the certificate from Step 3 forces
+Equality in Step 3 forces
 $$
-(1+X)(20X^2-10X-1)^2=0
+X\in\{-1,r_+,r_-\}
 $$
-$\mu$-almost everywhere. Thus $X$ is supported on
-$$
--1,
-\qquad
-r_+=\frac{5+3\sqrt5}{20},
-\qquad
-r_-=\frac{5-3\sqrt5}{20}.
-$$
-These numbers satisfy
+almost surely. The contact points satisfy
 $$
 r_++r_-=\frac12,
 \qquad
@@ -281,19 +216,17 @@ r_+r_-=-\frac1{20},
 \qquad
 r_+^2+r_-^2=\frac7{20}.
 $$
-Let $W_{-1},W_+,W_-$ be the total masses of the three real-part classes. Total mass together with $\mathbb EX$ and $\mathbb EX^2$ gives the Vandermonde system with nodes $-1,r_+,r_-$. Its determinant is
+Let $W_{-1},W_+,W_-$ be their total masses. Total mass, $\mathbb EX$, and $\mathbb EX^2$ form a Vandermonde system with determinant
 $$
-(r_++1)(r_-+1)(r_--r_+),
+(r_++1)(r_-+1)(r_--r_+)\neq0,
 $$
-which is nonzero because the three nodes are distinct. The values
+so the solution is unique. Substitution gives
 $$
-W_{-1}=W_+=W_-=\frac13
+W_{-1}=W_+=W_-=\frac13.
 $$
-satisfy the system, so they are its unique solution. They also satisfy the third real moment because
+It also gives the third real moment because
 $$
-\frac{-1+r_+^3+r_-^3}{3}
-=\frac{-1+\frac15}{3}
-=-\frac4{15}.
+\frac{-1+r_+^3+r_-^3}{3}=-\frac4{15}.
 $$
 
 Put
@@ -302,52 +235,52 @@ s_{\pm}=\sqrt{1-r_{\pm}^2},
 \qquad
 \eta_{\pm}=r_{\pm}+is_{\pm}.
 $$
-Let $\delta_{\pm}$ be the mass at $\eta_{\pm}$ minus the mass at $\overline{\eta_{\pm}}$. The imaginary parts of $m_1$ and $m_2$ give
+Let $\delta_{\pm}$ be the mass at $\eta_{\pm}$ minus the mass at $\overline{\eta_{\pm}}$. The imaginary parts of $m_1,m_2$ give
 $$
 s_+\delta_++s_-\delta_-=\frac1{15},
-$$
-$$
+\qquad
 2r_+s_+\delta_++2r_-s_-\delta_-=\frac1{30}.
 $$
-Since $r_+\neq r_-$ and $r_++r_-=1/2$, the unique solution is
+Since $r_+\neq r_-$, the unique solution is
 $$
 s_+\delta_+=s_-\delta_-=\frac1{30}.
 $$
-Consequently equality forces the unique probability measure
+Thus equality forces
 $$
 \mu_*=\frac13\delta_{-1}
 +\sum_{\epsilon\in\{+,-\}}
 \left[
 \left(\frac16+\frac1{60s_\epsilon}\right)\delta_{\eta_\epsilon}
-+\left(\frac16-\frac1{60s_\epsilon}\right)\delta_{\overline{\eta_\epsilon}}
++
+\left(\frac16-\frac1{60s_\epsilon}\right)\delta_{\overline{\eta_\epsilon}}
 \right].
 $$
-Because $|r_{\pm}|<3/5$, we have $s_{\pm}>4/5$, so every displayed weight is positive. The third imaginary moment is
+Since $|r_{\pm}|<3/5$, all weights are positive. Also
 $$
--\frac1{30}\left((4r_+^2-1)+(4r_-^2-1)\right)=\frac1{50},
+\operatorname{Im}m_3
+=-\frac1{30}\left((4r_+^2-1)+(4r_-^2-1)\right)=\frac1{50},
 $$
-which matches $\operatorname{Im}m_3$. Finally,
+and
 $$
 \mathbb E_{\mu_*}K_-(X)
-=\frac13\left(3+\frac3{5+4r_+}+\frac3{5+4r_-}\right)
-=\frac{77}{57},
+=\frac13\left(3+\frac3{5+4r_+}+\frac3{5+4r_-}\right)=\frac{77}{57}.
 $$
-so $\mu_*$ satisfies every constraint.
+Hence $\mu_*$ satisfies every constraint.
 
 Step 5: Reconstruct the extremal function
 
-The boundary representation from Step 1 applied to $\mu_*$ gives
+Step 1 applied to $\mu_*$ gives
 $$
 p_*(z)=\frac13\frac{1-z}{1+z}
 +\sum_{\epsilon\in\{+,-\}}
 \frac{\frac13(1-z^2)-\frac{i}{15}z}{1-2r_\epsilon z+z^2}.
 $$
-Using $r_++r_-=1/2$ and $r_+r_-=-1/20$, the common denominator satisfies
+Using $r_++r_-=1/2$ and $r_+r_-=-1/20$,
 $$
 (1+z)\prod_{\epsilon\in\{+,-\}}(1-2r_\epsilon z+z^2)
-=z^5+\frac45z^3+\frac45z^2+1.
+=z^5+\frac45z^3+\frac45z^2+1,
 $$
-Combining the three fractions gives
+so
 $$
 p_*(z)=
 \frac{-15z^5+(5-2i)z^4-(9+i)z^3+(9-i)z^2-(5+2i)z+15}{15z^5+12z^3+12z^2+15}.
@@ -358,13 +291,13 @@ $$
 +\left(-\frac15-\frac{i}{15}\right)z^2
 +\left(-\frac{17}{15}+\frac{i}{25}\right)z^3+O(z^4),
 $$
-and the representing measure proves $\operatorname{Re}p_*>0$ on $\mathbb D$. Direct substitution gives
+and the positive representing measure gives $\operatorname{Re}p_*>0$ on $\mathbb D$. Direct substitution yields
 $$
 p_*\left(\frac12\right)=\frac{431}{639}-\frac{16i}{213},
 \qquad
 p_*\left(-\frac12\right)=\frac{77}{57}+\frac{8i}{171}.
 $$
-Thus $p_*$ attains the lower bound $431/639$. Any other minimizer has a boundary measure constructed as in Step 1; equality in the nonnegative certificate forces that measure to be exactly $\mu_*$ by Step 4, and the integral representation then forces the same function $p_*$. Hence the minimizer is unique.
+Thus the lower bound is attained. Any other minimizer has a boundary measure from Step 1; equality in Step 3 forces that measure to be $\mu_*$ by Step 4, and the integral representation then forces the same function. Hence $p_*$ is the unique minimizer.
 
 Final Answer: $\boxed{\frac{-15z^5+(5-2i)z^4-(9+i)z^3+(9-i)z^2-(5+2i)z+15}{15z^5+12z^3+12z^2+15}}$
 
