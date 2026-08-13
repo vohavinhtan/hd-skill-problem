@@ -8,17 +8,25 @@ n\geq2.
 $$
 For each $\lambda\in\mathbb C^\times$, define a continuous $\mathbb C$-algebra homomorphism
 $$
-\Psi_{n,\lambda}:\mathbb C[[X,Y,Z]]\longrightarrow\mathbb C[[t]]
+\Psi_{n,\lambda}:\mathbb C[[X,Y,Z,U,V]]\longrightarrow\mathbb C[[t]]
 $$
 by
 $$
-\Psi_{n,\lambda}(X)=t^5,
+\Psi_{n,\lambda}(X)=t^8,
 $$
 $$
-\Psi_{n,\lambda}(Y)=(\lambda^4-\lambda)t^{5n+1}+t^{5n+6},
+\Psi_{n,\lambda}(Y)=t^{12},
 $$
 $$
-\Psi_{n,\lambda}(Z)=(\lambda^3-\lambda)t^{5n-3}+t^{5n+2}.
+\Psi_{n,\lambda}(Z)=t^{8n+1},
+$$
+$$
+\Psi_{n,\lambda}(U)
+=t^{8n+1}+(\lambda^3-1)t^{8n+5}+(\lambda^2-1)t^{8n+7},
+$$
+$$
+\Psi_{n,\lambda}(V)
+=t^{8n+1}+(\lambda^6-1)t^{8n+5}+(\lambda^4-1)t^{8n+7}.
 $$
 Let
 $$
