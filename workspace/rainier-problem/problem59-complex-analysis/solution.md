@@ -71,13 +71,96 @@ $$
 $$
 Thus the original problem is exactly the minimization of $\mathbb E K_+(X)$ subject to the three fixed moments from Step 1 and the fixed value of $\mathbb E K_-(X)$.
 
-Step 3: Construct a sharp dual certificate
+Step 3: Derive and construct the sharp dual certificate
 
-To discover the equality set, write
+For a real number $\lambda$ and a real cubic polynomial $q$, define the dual slack
+$$
+S(x)=K_+(x)-\lambda K_-(x)-q(x).
+$$
+If $S(x)\geq0$ on $[-1,1]$, then taking expectations gives a lower bound for the objective because $\mathbb E K_-(X)$ and the expectations of $1,X,X^2,X^3$ are fixed. Put
+$$
+R(x)=(25-16x^2)S(x).
+$$
+Since $25-16x^2>0$ on $[-1,1]$ and $q$ is cubic, $R$ is a real polynomial of degree at most $5$, nonnegative on $[-1,1]$. If such a certificate is sharp, every attaining measure must be supported on zeros of $R$. Every zero of a nonnegative polynomial in $(-1,1)$ has even multiplicity.
+
+We first show that an attaining measure must use at least three distinct real-part classes. A one-point law is impossible because
+$$
+\mathbb E X^2-(\mathbb E X)^2=\frac{19}{45}>0.
+$$
+If the support had at most two points, there would be real $s,t$ with
+$$
+X^2-sX+t=0
+$$
+almost surely. Taking expectations of this identity and of its product with $X$ gives
+$$
+\frac9{20}+\frac{s}{6}+t=0,
+\qquad
+-\frac4{15}-\frac{9s}{20}-\frac{t}{6}=0,
+$$
+so
+$$
+s=-\frac{69}{152},
+\qquad
+t=-\frac{569}{1520}.
+$$
+On the roots of $x^2-sx+t$, the identity
+$$
+\frac1{x+5/4}
+=\frac{s+5/4-x}{t+\frac54s+\frac{25}{16}}
+$$
+holds. Hence such a law would satisfy
+$$
+\mathbb E K_-(X)
+=\frac34\frac{s+5/4-\mathbb E X}{t+\frac54s+\frac{25}{16}}
+=\frac{2195}{1887},
+$$
+which is not $77/57$. Thus at least three distinct zeros of $R$ are needed.
+
+A degree-$5$ polynomial nonnegative on $[-1,1]$ cannot have four distinct zeros there, because at most two can be endpoints and every interior zero contributes multiplicity at least $2$. Three interior zeros would already contribute degree at least $6$. The only remaining three-point patterns are one endpoint with two interior points, or both endpoints with one interior point. The latter is incompatible with the data. Indeed, if the support were $\{-1,c,1\}$, then
+$$
+(X^2-1)(X-c)=0
+$$
+almost surely, and the first three moments give
+$$
+c=\frac{\mathbb E X-\mathbb E X^3}{1-\mathbb E X^2}=\frac2{11}.
+$$
+The equations for total mass, $\mathbb E X$, and $\mathbb E X^2$ then give the unique weights
+$$
+W_{-1}=\frac{547}{1560},
+\qquad
+W_c=\frac{1331}{2340},
+\qquad
+W_1=\frac{377}{4680}.
+$$
+For these weights,
+$$
+\mathbb E K_-(X)=\frac{1301}{945}\neq\frac{77}{57}.
+$$
+Therefore a sharp certificate must have exactly one endpoint contact and two interior double contacts.
+
+The endpoint cannot be $1$. If it were, then necessarily
+$$
+R(x)=C(1-x)(x-a)^2(x-b)^2
+$$
+with $a,b\in(-1,1)$ and $C>0$. But from the definition of $R$,
+$$
+R\left(\frac54\right)=30,
+$$
+whereas the displayed factorization is negative at $5/4$, a contradiction. Thus the endpoint contact is $-1$. Consequently
+$$
+R(x)=C(1+x)(x-a)^2(x-b)^2,
+$$
+and if
+$$
+(x-a)(x-b)=x^2-sx+t,
+$$
+then the equality support is the zero set of
 $$
 g(x)=(x+1)(x^2-sx+t).
 $$
-If an equality measure is supported on the zeros of $g$, then the moments from Step 1 give
+This is the required derivation of the contact pattern.
+
+Since $g(X)=0$ on an attaining measure, the moments from Step 1 give
 $$
 0=\mathbb E g(X)=-\frac{17s-50t-11}{60},
 $$
@@ -99,32 +182,32 @@ $$
 =x^2-\left(s+\frac14\right)x+t+\frac{s}{4}+\frac5{16}
 -\frac{\frac{5s}{16}+\frac t4+\frac{25}{64}}{x+5/4}.
 $$
-Taking expectations and imposing $g(X)=0$ on the candidate equality support gives
+Taking expectations and using $g(X)=0$ gives
 $$
 125s-470t=86.
 $$
-Solving the two linear equations gives
+Thus
 $$
 s=\frac12,
 \qquad
 t=-\frac1{20},
 $$
-so the two interior contacts are the roots of
+and the two interior contacts are the roots of
 $$
 P(x)=20x^2-10x-1.
 $$
+They both lie in $(-1,1)$.
 
-Now seek
+We now seek
 $$
-K_+(x)-\lambda K_-(x)-q(x)
-=C\frac{(1+x)P(x)^2}{25-16x^2},
+S(x)=C\frac{(1+x)P(x)^2}{25-16x^2}.
 $$
-where $q$ is cubic. Multiplying by $25-16x^2$ gives
+After multiplication by $25-16x^2$,
 $$
 3(5+4x)-3\lambda(5-4x)-q(x)(25-16x^2)
 =C(1+x)P(x)^2.
 $$
-At $x=5/4$, $P(5/4)=71/4$, hence
+At $x=5/4$, $P(5/4)=71/4$, so
 $$
 30=C\frac94\left(\frac{71}{4}\right)^2,
 $$
@@ -140,12 +223,16 @@ and therefore
 $$
 \lambda=\frac{3249}{5041}.
 $$
-With these constants, the remaining numerator factors as
+With these values, subtracting $C(1+x)P(x)^2$ from the first two terms leaves
 $$
-3(5+4x)-3\lambda(5-4x)-C(1+x)P(x)^2
+\frac{-256000x^5+217600x^3-51200x^2+285000x+80000}{15123}
 =(25-16x^2)\frac{200(80x^3+57x+16)}{15123}.
 $$
-Hence
+Thus
+$$
+q(x)=\frac{200(80x^3+57x+16)}{15123},
+$$
+and the exact slack identity is
 $$
 \frac3{5-4x}
 -\frac{3249}{5041}\frac3{5+4x}
@@ -153,12 +240,11 @@ $$
 =
 \frac{640(1+x)(20x^2-10x-1)^2}{15123(25-16x^2)}.
 $$
-For $-1\leq x\leq1$, the right-hand side is nonnegative. Taking expectations and using the three moments gives
+The right-hand side is nonnegative for $-1\leq x\leq1$. Taking expectations and using the three moments gives
 $$
-\mathbb E\frac{200(80X^3+57X+16)}{15123}
-=-\frac{8900}{45369}.
+\mathbb E q(X)=-\frac{8900}{45369},
 $$
-Therefore
+so
 $$
 \operatorname{Re}p\left(\frac12\right)
 \geq
