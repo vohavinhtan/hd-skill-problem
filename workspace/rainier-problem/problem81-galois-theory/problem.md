@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Let $t\geq1$ and put $n=36t+2$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
+Let $t\geq1$ and put $n=69t+1$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
 $$
 \operatorname{Gal}(K/\mathbb Q)\cong S_n
 $$
@@ -20,9 +20,9 @@ p\nmid \Delta f(-a).
 $$
 Suppose further that
 $$
-f(y)\equiv(y-u)h(y)\pmod p,
+f(y)\equiv(y-u)(y-v)h(y)\pmod p,
 $$
-where $u\in\mathbb F_p$, $h\in\mathbb F_p[y]$ is irreducible of degree $n-1$, and $a+u$ is not a cube in $\mathbb F_p^\times$.
+where $u,v\in\mathbb F_p$ are distinct, $h\in\mathbb F_p[y]$ is irreducible of degree $n-2$, and $a+u$ is not a cube in $\mathbb F_p^\times$.
 
 For $1\leq i<j\leq n$, put
 $$
@@ -46,12 +46,12 @@ over $\mathbb Q$. Let $\omega\in L$ be a primitive cube root of unity. For $\sig
 
 Determine, as a closed formula in $t$, the number of automorphisms $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ satisfying both conditions below:
 
-1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has one cycle of length $2$, exactly $3t$ cycles of length $5$, and exactly $3t$ cycles of length $7$.
+1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has one fixed point, exactly $3t$ cycles of length $5$, exactly $3t$ cycles of length $7$, and exactly $3t$ cycles of length $11$.
 2. The three permutations induced by $\sigma$ on the roots of $P_0$, $P_1$, and $P_2$ have the same number of cycles. Moreover, if each permutation is restricted to those roots $x$ for which
 $$
 x^3=p^kB_{ij}
 $$
-with at least one of $i,j$ lying in the unique $2$-cycle of $\pi_\sigma$, then the three restricted permutations also have the same number of cycles.
+with one of $i,j$ equal to the unique fixed point of $\pi_\sigma$, then the three restricted permutations also have the same number of cycles.
 
 ---
 
@@ -69,5 +69,5 @@ with at least one of $i,j$ lying in the unique $2$-cycle of $\pi_\sigma$, then t
 ## Domain Explanation
 
 This problem involves splitting fields, Galois automorphisms, and restrictions to a symmetric Galois group, which are part of Abstract Algebra and Galois theory.
-The cubic radical extensions produce three related permutation representations, while the unique two-cycle determines a canonical invariant family of pair-product roots inside each representation.
+The cubic radical extensions produce three related permutation representations, while the unique fixed root determines a canonical invariant family of pair-product roots inside each representation.
 The main task is to recover the compatible Kummer phases from the coupled global and restricted cycle statistics and then count the resulting automorphisms.
