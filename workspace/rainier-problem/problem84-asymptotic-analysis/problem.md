@@ -59,19 +59,24 @@ $$
 $$
 The existence and uniqueness of this pair are part of what must be justified.
 
-For $k\in\{0,1,\dots,8\}$, define
+For $k\in\{0,1,\dots,12\}$, define
 $$
 M_{k,n}(p)=\int_0^1x^k\,d\nu_n(x),
 $$
 and set
 $$
-H_n(p)=\det\!\bigl[M_{i+j,n}(p)\bigr]_{i,j=0}^{4}.
+H_n(p)=\det\!\bigl[M_{i+j,n}(p)\bigr]_{i,j=0}^{6}.
 $$
 
-For $j\ge0$, write
+For each integer $m\ge1$, define
 $$
-\psi_j(z)=\frac{d^{j+1}}{dz^{j+1}}\log\Gamma(z).
+\Xi_{m,p}
+=
+\det\!\left[
+\frac{\Gamma^{(i+j)}(1/p)}{\Gamma(1/p)}
+\right]_{i,j=0}^{m-1}.
 $$
+Thus $\Xi_{1,p}=1$.
 
 For each $p>1$, prove that the following four quantities exist and determine them exactly:
 $$
@@ -95,7 +100,7 @@ Give the ordered quadruple
 $$
 (A_p,B_p,\beta_p,L_p)
 $$
-exactly as a function of $p$. Any case distinction in $p$ that is required by the asymptotics must be identified and justified.
+exactly as a function of $p$. Every case distinction in $p$ required by the asymptotics must be identified and justified, including every transition value at which more than one sampling configuration contributes at the same leading order.
 
 ---
 
@@ -112,4 +117,4 @@ exactly as a function of $p$. Any case distinction in $p$ that is required by th
 
 ## Domain Explanation
 
-The two parameters are defined through a coupled exponential-family moment map. The normalized measure develops three concentration layers, but the two endpoint layers are flat on different logarithmic spatial scales, while the interior zero is algebraic. The limiting three-point measure makes the $5\times5$ Hankel matrix rank deficient, and the first nonzero Vandermonde contribution depends on how repeated samples are distributed between the two flat layers. Determining the parameter drift, proving which multi-layer configurations dominate, and resolving the transition between competing logarithmic scales are asymptotic-analysis tasks.
+The two parameters are defined through a coupled exponential-family moment map. The normalized measure develops three concentration layers, with two flat endpoint layers whose logarithmic spatial widths are different and depend asymmetrically on $p$, together with an algebraic interior layer. The limiting three-point measure makes the $7\times7$ Hankel matrix rank deficient. Its first nonzero term is determined by a discrete optimization over how six repeated samples are split between the two flat layers, producing several changes of dominant configuration as $p$ varies. At transition values, multiple configurations survive simultaneously and their exact constants must be combined. Proving global uniqueness, resolving the endpoint-layer geometry, and deriving all transition regimes are asymptotic-analysis tasks.
