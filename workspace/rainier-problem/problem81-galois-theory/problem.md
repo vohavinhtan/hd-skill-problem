@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Let $t\geq1$, put $r=3t$, and put $n=12r$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
+Let $t\geq1$ and put $n=36t$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
 $$
 \operatorname{Gal}(K/\mathbb Q)\cong S_n
 $$
@@ -46,7 +46,7 @@ over $\mathbb Q$. Let $\omega\in L$ be a primitive cube root of unity. For $\sig
 
 Determine, as a closed formula in $t$, the number of automorphisms $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ such that:
 
-1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has exactly $r$ cycles of length $5$ and exactly $r$ cycles of length $7$.
+1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has exactly $3t$ cycles of length $5$ and exactly $3t$ cycles of length $7$.
 2. The three permutations induced by $\sigma$ on the roots of $P_0$, $P_1$, and $P_2$ have the same cycle type.
 
 ---
