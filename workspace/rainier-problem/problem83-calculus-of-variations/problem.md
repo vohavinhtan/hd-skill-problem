@@ -52,12 +52,10 @@ $$
 Prove also that $u_\lambda$ is $C^2$ and piecewise smooth. Define the inner free-boundary jumps
 $$
 \Delta_b(\lambda)
-=
-u_\lambda'''(b_\lambda^+)-u_\lambda'''(b_\lambda^-),
+=u_\lambda'''(b_\lambda^+)-u_\lambda'''(b_\lambda^-),
 \qquad
 \Delta_c(\lambda)
-=
-u_\lambda'''(c_\lambda^+)-u_\lambda'''(c_\lambda^-).
+=u_\lambda'''(c_\lambda^+)-u_\lambda'''(c_\lambda^-).
 $$
 Prove that these jumps are positive for all sufficiently small $\lambda>0$.
 
