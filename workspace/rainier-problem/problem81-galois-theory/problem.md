@@ -2,56 +2,52 @@
 
 ## LaTeX (Normalized)
 
-Let $t\geq1$ and put $n=69t+1$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
+Let $m\geq1$ be an integer with $3\nmid m$, and put $n=5m$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
 $$
 \operatorname{Gal}(K/\mathbb Q)\cong S_n
 $$
-through its action on the roots $y_1,\ldots,y_n$ of $f$. Write $\Delta$ for the discriminant of $f$.
+through its action on the roots $y_1,\ldots,y_n$ of $f$.
 
-Let $a,c\in\mathbb Q^\times$ satisfy
+Let $\omega$ be a primitive cube root of unity, assume $\omega\notin K$, and put $M=K(\omega)$. Choose $a,c\in\mathbb Q^\times$ such that
 $$
 (-1)^n f(-a)=c^3,
 $$
-and suppose that $-3\Delta$ is not a square in $\mathbb Q$.
+and put $g_i=a+y_i$.
 
-Assume there is a prime $p\equiv1\pmod3$ such that the coefficients of $f$ and the number $a$ are $p$-integral, meaning their denominators are not divisible by $p$, and
-$$
-p\nmid \Delta f(-a).
-$$
-Suppose further that
-$$
-f(y)\equiv(y-u)(y-v)h(y)\pmod p,
-$$
-where $u,v\in\mathbb F_p$ are distinct, $h\in\mathbb F_p[y]$ is irreducible of degree $n-2$, and $a+u$ is not a cube in $\mathbb F_p^\times$.
+Assume the following two cubic-independence conditions in $M$:
 
-For $1\leq i<j\leq n$, put
+1. If $e_1,\ldots,e_n\in\{0,1,2\}$ and $\prod_i g_i^{e_i}$ is a cube in $M$, then $e_1=\cdots=e_n$.
+2. There is a rational prime $p$ such that for every $d\in\{1,2\}$ and every $e_1,\ldots,e_n\in\{0,1,2\}$, the element
 $$
-B_{ij}=(a+y_i)(a+y_j),
+p^d\prod_i g_i^{e_i}
 $$
-and define
-$$
-R(z)=\prod_{1\leq i<j\leq n}(z-B_{ij})\in\mathbb Q[z],
-\qquad
-N=\binom n2.
-$$
-For $k\in\{0,1,2\}$, set
-$$
-P_k(x)=p^{kN}R\left(\frac{x^3}{p^k}\right),
-$$
-and let $L$ be the splitting field of
-$$
-f(y)P_0(x)P_1(x)P_2(x)
-$$
-over $\mathbb Q$. Let $\omega\in L$ be a primitive cube root of unity. For $\sigma\in\operatorname{Gal}(L/\mathbb Q)$, let $\pi_\sigma\in S_n$ be the permutation induced by the restriction of $\sigma$ to $K$.
+is not a cube in $M$.
 
-Determine, as a closed formula in $t$, the number of automorphisms $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ satisfying both conditions below:
+Let $L$ be the splitting field over $\mathbb Q$ of
+$$
+f(y)(x^3-p)f(x^3-a).
+$$
+Choose $\alpha_i,\rho\in L$ so that
+$$
+\alpha_i^3=g_i,\qquad \prod_i\alpha_i=c,\qquad \rho^3=p.
+$$
+For $h\in\{0,1,2\}$, define
+$$
+\Omega_h=
+\left\{
+\omega^q\rho^h\alpha_i\alpha_j\alpha_k:
+q\in\{0,1,2\},\ 1\leq i<j<k\leq n
+\right\}.
+$$
+For $\sigma\in\operatorname{Gal}(L/\mathbb Q)$, let $\pi_\sigma\in S_n$ be the permutation induced by the restriction of $\sigma$ to $K$.
 
-1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has one fixed point, exactly $3t$ cycles of length $5$, exactly $3t$ cycles of length $7$, and exactly $3t$ cycles of length $11$.
-2. The three permutations induced by $\sigma$ on the roots of $P_0$, $P_1$, and $P_2$ have the same number of cycles. Moreover, if each permutation is restricted to those roots $x$ for which
-$$
-x^3=p^kB_{ij}
-$$
-with one of $i,j$ equal to the unique fixed point of $\pi_\sigma$, then the three restricted permutations also have the same number of cycles.
+Determine exactly which values of $m$ admit an automorphism $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ satisfying all three conditions below:
+
+1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has exactly $m$ cycles, all of length $5$.
+2. The automorphism $\sigma$ does not fix $\rho$.
+3. The three permutations induced by $\sigma$ on $\Omega_0$, $\Omega_1$, and $\Omega_2$ have the same cycle type.
+
+Give the admissible values of $m$ as an explicit parametrized family.
 
 ---
 
@@ -61,13 +57,13 @@ with one of $i,j$ equal to the unique fixed point of $\pi_\sigma$, then the thre
 |---|---|
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Galois theory |
-| **Problem Type** | Symbolic derivation |
+| **Problem Type** | Parameter identification |
 | **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-This problem involves splitting fields, Galois automorphisms, and restrictions to a symmetric Galois group, which are part of Abstract Algebra and Galois theory.
-The cubic radical extensions produce three related permutation representations, while the unique fixed root determines a canonical invariant family of pair-product roots inside each representation.
-The main task is to recover the compatible Kummer phases from the coupled global and restricted cycle statistics and then count the resulting automorphisms.
+This problem concerns a cubic Kummer extension of an $S_n$-extension and the induced Galois actions on natural sets of triple products of radicals.
+The existence of the required automorphism is controlled by the interaction between the cycle structure on the original roots and the cubic phases accumulated on orbits of three-element subsets.
+The requested output is the exact parameter locus on which a nontrivial cubic twist has the same cycle structure in all three induced actions.
