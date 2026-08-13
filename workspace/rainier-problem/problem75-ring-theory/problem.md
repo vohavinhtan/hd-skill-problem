@@ -4,11 +4,15 @@
 
 Fix an integer
 $$
-n\geq2.
+n\geq2,
+$$
+and put
+$$
+m=8n+1.
 $$
 For each $\lambda\in\mathbb C^\times$, define a continuous $\mathbb C$-algebra homomorphism
 $$
-\Psi_{n,\lambda}:\mathbb C[[X,Y,Z,U,V]]\longrightarrow\mathbb C[[t]]
+\Psi_{n,\lambda}:\mathbb C[[X,Y,Z,U,V,W]]\longrightarrow\mathbb C[[t]]
 $$
 by
 $$
@@ -18,15 +22,20 @@ $$
 \Psi_{n,\lambda}(Y)=t^{12},
 $$
 $$
-\Psi_{n,\lambda}(Z)=t^{8n+1},
+\Psi_{n,\lambda}(Z)=t^m,
 $$
 $$
 \Psi_{n,\lambda}(U)
-=t^{8n+1}+(\lambda^3-1)t^{8n+5}+(\lambda^2-1)t^{8n+7},
+=t^m+(\lambda^3-1)t^{m+4}+(\lambda^2-1)t^{m+6},
 $$
 $$
 \Psi_{n,\lambda}(V)
-=t^{8n+1}+(\lambda^6-1)t^{8n+5}+(\lambda^4-1)t^{8n+7}.
+=t^m+(\lambda^6-1)t^{m+4}+(\lambda^4-1)t^{m+6},
+$$
+and
+$$
+\Psi_{n,\lambda}(W)
+=t^{2m}+(\lambda^3-1)t^{2m+4}+(\lambda^5-\lambda^2)t^{2m+5}+(\lambda^2-1)t^{2m+6}.
 $$
 Let
 $$
