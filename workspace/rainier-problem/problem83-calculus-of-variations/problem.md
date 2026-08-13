@@ -8,9 +8,10 @@ $$
 =
 x^2(1-x)^2
 \left(
-\frac{121}{16}+\lambda
+\frac{121}{16}
 -11x(1-x)
 -144x^2(1-x)^2
++\lambda(3+4x)
 \right),
 \qquad 0\leq x\leq1.
 $$
@@ -29,54 +30,69 @@ and set
 $$
 \mathcal J(u)
 =
-\frac{1}{2}\int_0^1\bigl(u''(x)\bigr)^2\,dx.
+\frac12\int_0^1\bigl(u''(x)\bigr)^2\,dx.
 $$
 
 Prove that $\mathcal J$ has a unique global minimizer $u_\lambda$ on $\mathcal K_\lambda$.
 
-For all sufficiently small $\lambda>0$, prove that the contact set
+For all sufficiently small $\lambda>0$, prove that the interior contact set
 $$
-\mathcal C_\lambda
+\mathcal C_\lambda^\circ
 =
-\left\{x\in[0,1]:u_\lambda(x)=\psi_\lambda(x)\right\}
+\left\{x\in(0,1):u_\lambda(x)=\psi_\lambda(x)\right\}
 $$
 has exactly two connected components and can be written
 $$
-\mathcal C_\lambda
+\mathcal C_\lambda^\circ
 =
-[a_\lambda,b_\lambda]\cup[1-b_\lambda,1-a_\lambda],
+[a_\lambda,b_\lambda]\cup[c_\lambda,d_\lambda],
 \qquad
-0<a_\lambda<b_\lambda<\frac12.
+0<a_\lambda<b_\lambda<c_\lambda<d_\lambda<1.
 $$
-Prove also that $u_\lambda$ is $C^2$ and piecewise smooth, so that the one-sided third derivatives appearing below exist.
+Prove also that $u_\lambda$ is $C^2$ and piecewise smooth. Define the inner free-boundary jumps
+$$
+\Delta_b(\lambda)
+=
+u_\lambda'''(b_\lambda^+)-u_\lambda'''(b_\lambda^-),
+\qquad
+\Delta_c(\lambda)
+=
+u_\lambda'''(c_\lambda^+)-u_\lambda'''(c_\lambda^-).
+$$
+Prove that these jumps are positive for all sufficiently small $\lambda>0$.
 
 Prove that the limits
 $$
 A
 =
 \lim_{\lambda\downarrow0}
-\frac{b_\lambda-a_\lambda}{\lambda},
+\frac{b_\lambda-a_\lambda}{d_\lambda-c_\lambda},
 $$
 $$
 B
 =
 \lim_{\lambda\downarrow0}
-\frac{a_\lambda-\frac{1}{12}}{\lambda},
+\frac{b_\lambda+c_\lambda-1}{\lambda},
 $$
-and
 $$
 C
 =
 \lim_{\lambda\downarrow0}
-\frac{
- u_\lambda'''(b_\lambda^+)-u_\lambda'''(b_\lambda^-)
-}{
- u_\lambda'''(a_\lambda^+)-u_\lambda'''(a_\lambda^-)
-}
+\frac{b_\lambda+c_\lambda-1-B\lambda}{\lambda^2},
 $$
-exist, and determine the ordered triple
+and
 $$
-(A,B,C).
+D
+=
+\lim_{\lambda\downarrow0}
+\frac1\lambda
+\left(
+\frac{\Delta_c(\lambda)}{\Delta_b(\lambda)}-1
+\right)
+$$
+exist, and determine the ordered quadruple
+$$
+(A,B,C,D).
 $$
 
 ---
@@ -94,4 +110,4 @@ $$
 
 ## Domain Explanation
 
-The problem is a fourth-order obstacle problem for bending energy. Its difficulty lies in determining the global contact geometry, certifying the minimizer through the variational inequality and the contact reaction, and then resolving the first-order splitting of a degenerate contact point. Calculus of variations is therefore the primary subject, with free-boundary and spline methods providing supporting tools.
+The problem is a fourth-order obstacle problem for bending energy. Its difficulty lies in determining the global contact geometry, certifying the minimizer through the variational inequality and the contact reaction, and then resolving an asymmetric free-boundary splitting together with a second-order cancellation. Calculus of variations is therefore the primary subject, with free-boundary and spline methods providing supporting tools.
