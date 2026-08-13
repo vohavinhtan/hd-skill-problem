@@ -2,44 +2,82 @@
 
 ## LaTeX (Normalized)
 
-Fix a real number $p>0$. Let $\mathcal A$ be the set of all measurable functions $\rho:\mathbb R\to\mathbb R$ such that
+For $0<\lambda<1$, define
 $$
-0\leq\rho(x)\leq1
+\psi_\lambda(x)
+=
+x^2(1-x)^2
+\left(
+\frac{121}{16}+\lambda
+-11x(1-x)
+-144x^2(1-x)^2
+\right),
+\qquad 0\leq x\leq1.
 $$
-for almost every $x\in\mathbb R$ and
+Let
 $$
-\int_{\mathbb R}\rho(x)\,dx=2,
+\mathcal K_\lambda
+=
+\left\{
+ u\in H^2(0,1):
+ u(0)=u'(0)=u(1)=u'(1)=0,
+ \quad
+ u(x)\geq\psi_\lambda(x)\ \text{for every }x\in[0,1]
+\right\},
+$$
+and set
+$$
+\mathcal J(u)
+=
+\frac{1}{2}\int_0^1\bigl(u''(x)\bigr)^2\,dx.
+$$
+
+Prove that $\mathcal J$ has a unique global minimizer $u_\lambda$ on $\mathcal K_\lambda$.
+
+For all sufficiently small $\lambda>0$, prove that the contact set
+$$
+\mathcal C_\lambda
+=
+\left\{x\in[0,1]:u_\lambda(x)=\psi_\lambda(x)\right\}
+$$
+has exactly two connected components and can be written
+$$
+\mathcal C_\lambda
+=
+[a_\lambda,b_\lambda]\cup[1-b_\lambda,1-a_\lambda],
 \qquad
-\int_{\mathbb R}x\rho(x)\,dx=1,
-\qquad
-\int_{\mathbb R}x^4\rho(x)\,dx<\infty.
+0<a_\lambda<b_\lambda<\frac12.
 $$
-For $\rho\in\mathcal A$, set
+Prove also that $u_\lambda$ is $C^2$ and piecewise smooth, so that the one-sided third derivatives appearing below exist.
+
+Prove that the limits
 $$
-M_2(\rho)=\int_{\mathbb R}x^2\rho(x)\,dx
+A
+=
+\lim_{\lambda\downarrow0}
+\frac{b_\lambda-a_\lambda}{\lambda},
+$$
+$$
+B
+=
+\lim_{\lambda\downarrow0}
+\frac{a_\lambda-\frac{1}{12}}{\lambda},
 $$
 and
 $$
-\mathcal F_p(\rho)
+C
 =
-\int_{\mathbb R}\left(x^4-2px^2\right)\rho(x)\,dx
-+
-\frac{1}{2}M_2(\rho)^2.
+\lim_{\lambda\downarrow0}
+\frac{
+ u_\lambda'''(b_\lambda^+)-u_\lambda'''(b_\lambda^-)
+}{
+ u_\lambda'''(a_\lambda^+)-u_\lambda'''(a_\lambda^-)
+}
 $$
-
-Prove that $\mathcal F_p$ attains its global minimum on $\mathcal A$ at a function $\rho_p$ that is unique up to equality almost everywhere.
-
-Define
+exist, and determine the ordered triple
 $$
-M_p=M_2(\rho_p),
-\qquad
-E_p=\mathcal F_p(\rho_p).
+(A,B,C).
 $$
-Determine the ordered pair
-$$
-(M_p,E_p)
-$$
-for every $p>0$.
 
 ---
 
@@ -56,4 +94,4 @@ for every $p>0$.
 
 ## Domain Explanation
 
-The problem studies an infinite-dimensional variational minimization under pointwise bounds and moment constraints. The nonlocal second-moment term couples the Euler condition back to the unknown minimizer, so determining the minimum requires resolving the global active-set geometry and its parameter-dependent change of regime. Calculus of variations is therefore the primary subject, with convex duality and moment methods providing supporting tools.
+The problem is a fourth-order obstacle problem for bending energy. Its difficulty lies in determining the global contact geometry, certifying the minimizer through the variational inequality and the contact reaction, and then resolving the first-order splitting of a degenerate contact point. Calculus of variations is therefore the primary subject, with free-boundary and spline methods providing supporting tools.
