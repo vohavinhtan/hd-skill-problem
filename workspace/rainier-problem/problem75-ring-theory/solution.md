@@ -1,130 +1,142 @@
 ## Steps
 
-Step 1: Reduce each parameter stratum to a monomial ring
+Step 1: Find the cancellation matrix
 Put
 $$
-a=5n+1,\qquad b=5n-3.
+b=8n+1,
 $$
-Since $t^5\in A_{n,\lambda}$, we have $\mathbb C[[t^5]]\subset A_{n,\lambda}$. If $c\neq0$, then $c+t^5$ is a unit of $\mathbb C[[t^5]]$, with inverse
+and abbreviate the five images by $x,y,z,u,v$. Then
 $$
-(c+t^5)^{-1}=c^{-1}\sum_{j\geq0}\left(-\frac{t^5}{c}\right)^j.
+x=t^8,\qquad y=t^{12},\qquad z=t^b,
 $$
-Now
+while
 $$
-\Psi_{n,\lambda}(Y)=t^a\left(\lambda(\lambda^3-1)+t^5\right),
+u-z=(\lambda^3-1)t^{b+4}+(\lambda^2-1)t^{b+6},
 $$
-so it generates $t^a$ when $\lambda^3\neq1$, while it equals $t^{a+5}$ when $\lambda^3=1$. Likewise
 $$
-\Psi_{n,\lambda}(Z)=t^b\left(\lambda(\lambda^2-1)+t^5\right),
+v-z=(\lambda^6-1)t^{b+4}+(\lambda^4-1)t^{b+6}.
 $$
-so it generates $t^b$ when $\lambda^2\neq1$, while it equals $t^{b+5}$ when $\lambda^2=1$.
+Thus the two possible new monomials are controlled by
+$$
+M(\lambda)=
+\begin{pmatrix}
+\lambda^3-1&\lambda^2-1\\
+\lambda^6-1&\lambda^4-1
+\end{pmatrix}.
+$$
+Its determinant factors without expansion:
+$$
+\begin{aligned}
+\det M(\lambda)
+&=(\lambda^3-1)(\lambda^4-1)-(\lambda^2-1)(\lambda^6-1)\\
+&=(\lambda^3-1)(\lambda^2-1)\bigl((\lambda^2+1)-(\lambda^3+1)\bigr)\\
+&=-\lambda^2(\lambda-1)^3(\lambda+1)(\lambda^2+\lambda+1).
+\end{aligned}
+$$
+Since $\lambda\neq0$, the matrix is singular exactly for $\lambda=1$, $\lambda=-1$, or $\lambda^2+\lambda+1=0$.
 
-Define
+Step 2: Identify the four semigroup rings
+If $\det M(\lambda)\neq0$, constant linear combinations of $u-z$ and $v-z$ give both $t^{b+4}$ and $t^{b+6}$. Conversely $u$ and $v$ are linear combinations of $z,t^{b+4},t^{b+6}$. Hence
 $$
-\varepsilon=
-\begin{cases}
-1,&\lambda^3=1,\\
-0,&\lambda^3\neq1,
-\end{cases}
-\qquad
-\eta=
-\begin{cases}
-1,&\lambda^2=1,\\
-0,&\lambda^2\neq1.
-\end{cases}
-$$
-Then
-$$
-A_{n,\lambda}
-=\mathbb C[[t^5,t^{a+5\varepsilon},t^{b+5\eta}]].
-$$
-Indeed, the unit inverses above show that the three displayed monomials lie in $A_{n,\lambda}$, while the original generators $\Psi_{n,\lambda}(X),\Psi_{n,\lambda}(Y),\Psi_{n,\lambda}(Z)$ all lie in the ring on the right. Hence the two rings contain each other.
-
-Therefore the valuation set is the numerical semigroup
-$$
-S_{\varepsilon,\eta}=\langle5,A,B\rangle,
-\qquad
-A=a+5\varepsilon,
-\qquad
-B=b+5\eta.
-$$
-It is cofinite because $A\equiv1\pmod5$.
-
-Step 2: Compute the conductor from four residue representatives
-We have
-$$
-A\equiv1\pmod5,\qquad B\equiv2\pmod5.
-$$
-Also, for all $n\geq2$ and $\varepsilon,\eta\in\{0,1\}$,
-$$
-3B-A=10n-10+15\eta-5\varepsilon>0,
-$$
-$$
-2A-B=5n+5+10\varepsilon-5\eta>0.
-$$
-Thus
-$$
-A<3B,\qquad B<2A.
+A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^b,t^{b+4},t^{b+6}]].
 $$
 
-The least elements of $S_{\varepsilon,\eta}$ in residues $1,2,3,4$ modulo $5$ are
+At the singular parameters the rank drops in three different ways. If $\lambda=1$, then $u=v=z$, so
 $$
-A,\qquad B,\qquad A+B,\qquad2B.
+A_{n,1}=\mathbb C[[t^8,t^{12},t^b]].
 $$
-For residue $1$, the one-generator representative $A$ beats every other representation, since any other one uses at least three copies of $A$ and $B$, and both $3A>A$ and $3B>A$. For residue $2$, the only two-copy competitor to $B$ is $2A$, and $B<2A$; longer representations are larger. For residue $3$, the only competitors using at most four copies are $3A$ and $4B$, and
+If $\lambda=-1$, then
 $$
-A+B<3A,\qquad A+B<4B
+u-z=-2t^{b+4},\qquad v=z,
 $$
-by the two inequalities above; any representation using at least five copies is larger still. For residue $4$, the two-copy representative $2B$ beats the first other possibilities $2A+B$ and $4A$ because $B<2A$, and every longer representation is larger.
+so
+$$
+A_{n,-1}=\mathbb C[[t^8,t^{12},t^b,t^{b+4}]].
+$$
+If $\lambda^2+\lambda+1=0$, then $\lambda^3=1$ and $\lambda\neq1$, hence both differences are nonzero scalar multiples of $t^{b+6}$ and
+$$
+A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^b,t^{b+6}]].
+$$
+Therefore no other parameter stratum occurs.
 
-Hence the largest missing integer in each nonzero residue class is obtained by subtracting $5$ from these four representatives. Therefore
+Step 3: Compute the four conductors conceptually
+For a numerical semigroup $S$ containing $8$, let $w_r$ be its least element congruent to $r$ modulo $8$. The largest missing integer in that residue is $w_r-8$, so the conductor is
 $$
-\kappa_{n,\lambda}
-=\max\{A,B,A+B,2B\}-4
-=\max\{A+B,2B\}-4.
+\max_r w_r-7.
 $$
-Now
+We use that
 $$
-A+B=10n-2+5(\varepsilon+\eta),
+\langle8,12\rangle=\{0\}\cup\{4m:m\geq2\},
+$$
+so the least positive element in residue $4$ modulo $8$ is $12$. Also $b\equiv1\pmod8$ and $b\geq17$.
+
+For
+$$
+S_0=\langle8,12,b\rangle,
+$$
+residues $1,2,3$ need one, two, three copies of $b$, and their partners in residues $5,6,7$ require an additional $12$. Thus the largest Apéry representative is $3b+12$, giving
+$$
+c(S_0)=3b+5=24n+8.
+$$
+
+For
+$$
+S_4=\langle8,12,b,b+4\rangle,
+$$
+the generator $b+4$ replaces that extra $12$ in the odd residue classes. The largest least representative is $2b+(b+4)=3b+4$, so
+$$
+c(S_4)=3b-3=24n.
+$$
+
+For
+$$
+S_6=\langle8,12,b,b+6\rangle,
+$$
+residue $6$ requires two copies of $b+6$, giving $2b+12$. Every other residue has a representative at most $b+18$ or $2b$, and $2b+12>b+18$ because $b>6$. Hence
+$$
+c(S_6)=2b+5=16n+7.
+$$
+
+Finally, for
+$$
+S_{46}=\langle8,12,b,b+4,b+6\rangle,
+$$
+residue $6$ is represented by $b+(b+4)=2b+4$, while the largest competing least representative is at most $b+18$. Since $b\geq17$, the maximum is $2b+4$, and therefore
+$$
+c(S_{46})=2b-3=16n-1.
+$$
+
+Step 4: Order the parameter levels
+Step 2 and Step 3 give
+$$
+\kappa_{n,1}=24n+8,
 $$
 $$
-2B=10n-6+10\eta,
+\kappa_{n,-1}=24n,
+$$
+$$
+\kappa_{n,\lambda}=16n+7
+\qquad(\lambda^2+\lambda+1=0),
 $$
 and
 $$
-(A+B)-2B=4+5\varepsilon-5\eta.
+\kappa_{n,\lambda}=16n-1
 $$
-
-Step 3: Determine the parameter levels
-Because $\lambda\neq0$, the possible pairs $(\varepsilon,\eta)$ are determined by the roots of $\lambda^3=1$ and $\lambda^2=1$.
-
-If $\lambda=1$, then $(\varepsilon,\eta)=(1,1)$, so
+for every remaining $\lambda$. For $n\geq2$,
 $$
-\kappa_{n,1}=10n+4.
+24n+8>24n>16n+7>16n-1,
 $$
-If $\lambda=-1$, then $(\varepsilon,\eta)=(0,1)$, so
+because $24n-(16n+7)=8n-7>0$. Hence the second-largest conductor is attained only at $\lambda=-1$:
 $$
-\kappa_{n,-1}=10n.
+\beta_n=24n,\qquad E_n=\{-1\}.
 $$
-If $\lambda^3=1$ but $\lambda\neq1$, then $(\varepsilon,\eta)=(1,0)$, so
-$$
-\kappa_{n,\lambda}=10n-1.
-$$
-For every remaining $\lambda$, $(\varepsilon,\eta)=(0,0)$, so
-$$
-\kappa_{n,\lambda}=10n-6.
-$$
-Thus the largest conductor is attained uniquely at $\lambda=1$, and the second-largest conductor is attained uniquely at $\lambda=-1$. Hence
-$$
-\beta_n=10n,\qquad E_n=\{-1\}.
-$$
-Final Answer: $\boxed{\left(10n,\{-1\}\right)}$
+Final Answer: $\boxed{\left(24n,\{-1\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(10n,\{-1\}\right)$
+$\left(24n,\{-1\}\right)$
 
 ---
 
@@ -138,8 +150,8 @@ $\left(10n,\{-1\}\right)$
 
 ## Solution Concepts
 
-- units in formal power series rings
+- rank drop of a cancellation matrix
+- roots of unity
 - numerical semigroup rings
-- conductor exponent
-- residue classes modulo five
 - Apéry representatives
+- conductor exponent
