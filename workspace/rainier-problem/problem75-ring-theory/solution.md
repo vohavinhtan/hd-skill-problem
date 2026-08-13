@@ -81,12 +81,12 @@ $$
 c(S_0)=3m+5=24n+8.
 $$
 
-For $S_{4,*}=\langle8,12,m,m+4,2m+5\rangle$, residue $3$ is the only hard residue. Without $2m+5$ its least representative is $3m$; any representation using $2m+5$ must add residue $4$, whose least positive representative is $12$, so the best such value is $2m+17$. Since $m\geq17$, the minimum is $2m+17$, while every other residue has a representative at most $2m+5$. Hence
+For $S_{4,*}=\langle8,12,m,m+4,2m+5\rangle$, residue $3$ is the only hard residue. Ignoring $2m+5$, the odd generators have residues $1$ and $5$; one or two of them cannot sum to residue $3$, so the cheapest residue-$3$ value is $3m$. If a representation uses $2m+5$, remove one copy of it; the remainder must have residue $4$, whose least positive value is $12$, so the best such value is $2m+17$. Since $m\geq17$, the minimum is $2m+17$, while every other residue has a representative at most $2m+5$. Hence
 $$
 c(S_{4,*})=2m+10=16n+12.
 $$
 
-For $S_6=\langle8,12,m,m+6\rangle$, residue $6$ has least representative $2m+12$. The other residues have representatives among
+For $S_6=\langle8,12,m,m+6\rangle$, the odd generators have residues $1$ and $7$. Reaching the even residue $6$ requires at least two odd generators; the cheapest possibilities are two copies of $m+6$, or two copies of $m$ followed by the least residue-$4$ correction $12$, and both give $2m+12$. The other residues have representatives among
 $$
 0,\ m,\ 2m,\ m+18,\ 12,\ m+12,\ m+6,
 $$
@@ -99,7 +99,7 @@ Finally, for
 $$
 S_{46}=\langle8,12,m,m+4,m+6\rangle,
 $$
-residue $6$ is represented by $m+(m+4)=2m+4$, while every other residue has a representative at most $\max\{2m,m+18\}<2m+4$. Hence
+the odd-generator residues are $1,5,7$. A residue-$6$ element needs at least two odd generators, and the cheapest compatible pair is $m+(m+4)=2m+4$; the alternative pair $(m+6)+(m+6)$ and any residue-$4$ correction are larger. Every other residue has a representative at most $\max\{2m,m+18\}<2m+4$. Hence
 $$
 c(S_{46})=2m-3=16n-1.
 $$
