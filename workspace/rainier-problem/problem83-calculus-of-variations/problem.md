@@ -110,4 +110,4 @@ for every $0<p<1$.
 
 ## Domain Explanation
 
-The problem studies a strictly convex $L^2$ variational problem with moment constraints and a pointwise nonnegativity condition. The limiting dual polynomial has two degenerate contact points of different orders, so the active set opens on two different scales. Determining the second nonzero term of the positivity penalty requires combining the local contribution of the second contact with the global feedback imposed by all four moment constraints. Calculus of variations is therefore the primary subject, with convex duality and asymptotic analysis providing supporting tools.
+The problem studies a strictly convex $L^2$ variational problem with moment constraints and a pointwise nonnegativity condition. Determining the requested two-term penalty asymptotics requires resolving how the active set and the moment constraints influence one another beyond leading order. Calculus of variations is therefore the primary subject, with convex duality and asymptotic analysis providing supporting tools.
