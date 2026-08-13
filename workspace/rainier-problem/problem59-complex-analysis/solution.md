@@ -81,7 +81,7 @@ If $S(x)\geq0$ on $[-1,1]$, then taking expectations gives a lower bound for the
 $$
 R(x)=(25-16x^2)S(x).
 $$
-Since $25-16x^2>0$ on $[-1,1]$ and $q$ is cubic, $R$ is a real polynomial of degree at most $5$, nonnegative on $[-1,1]$. If such a certificate is sharp, every attaining measure must be supported on zeros of $R$. Every zero of a nonnegative polynomial in $(-1,1)$ has even multiplicity.
+Since $25-16x^2>0$ on $[-1,1]$ and $q$ is cubic, $R$ is a real polynomial of degree at most $5$, nonnegative on $[-1,1]$. If the lower bound is attained, then $\mathbb E S(X)=0$; since $S(X)\geq0$, this forces $S(X)=0$ almost surely. Because $25-16X^2>0$, the attaining measure is therefore supported on zeros of $R$. Every zero of a nonnegative polynomial in $(-1,1)$ has even multiplicity.
 
 We first show that an attaining measure must use at least three distinct real-part classes. A one-point law is impossible because
 $$
@@ -124,7 +124,7 @@ almost surely, and the first three moments give
 $$
 c=\frac{\mathbb E X-\mathbb E X^3}{1-\mathbb E X^2}=\frac2{11}.
 $$
-The equations for total mass, $\mathbb E X$, and $\mathbb E X^2$ then give the unique weights
+Since the three nodes $-1,2/11,1$ are distinct, the equations for total mass, $\mathbb E X$, and $\mathbb E X^2$ have a unique solution. Solving them gives
 $$
 W_{-1}=\frac{547}{1560},
 \qquad
@@ -158,7 +158,7 @@ then the equality support is the zero set of
 $$
 g(x)=(x+1)(x^2-sx+t).
 $$
-This is the required derivation of the contact pattern.
+This derives the contact pattern before any values of $s,t$ are chosen.
 
 Since $g(X)=0$ on an attaining measure, the moments from Step 1 give
 $$
@@ -192,11 +192,16 @@ s=\frac12,
 \qquad
 t=-\frac1{20},
 $$
-and the two interior contacts are the roots of
+and the two interior contacts are
+$$
+r_+=\frac{5+3\sqrt5}{20},
+\qquad
+r_-=\frac{5-3\sqrt5}{20},
+$$
+which both lie in $(-1,1)$. Put
 $$
 P(x)=20x^2-10x-1.
 $$
-They both lie in $(-1,1)$.
 
 We now seek
 $$
@@ -242,9 +247,11 @@ $$
 $$
 The right-hand side is nonnegative for $-1\leq x\leq1$. Taking expectations and using the three moments gives
 $$
-\mathbb E q(X)=-\frac{8900}{45369},
+\mathbb E q(X)
+=\frac{200}{15123}\left(80\left(-\frac4{15}\right)+57\left(-\frac16\right)+16\right)
+=-\frac{8900}{45369}.
 $$
-so
+Therefore
 $$
 \operatorname{Re}p\left(\frac12\right)
 \geq
