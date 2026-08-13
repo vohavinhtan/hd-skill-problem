@@ -12,7 +12,7 @@ The minimizer satisfies
 $$
 \int_0^1u_\lambda''(v-u_\lambda)''\,dx\geq0\qquad(v\in\mathcal K_\lambda).
 $$
-If $\varphi\geq0$ is smooth and compactly supported, $u_\lambda+\varphi$ is admissible, so $u_\lambda''''$ is a nonnegative Radon measure. On an open set where $u_\lambda>\psi_\lambda$, both signs of sufficiently small compactly supported perturbations are admissible, hence $u_\lambda''''=0$ there. Thus $u_\lambda'''$ is locally of bounded variation and $u_\lambda\in C^2[0,1]$; on each noncontact component it is cubic.
+If $\varphi\geq0$ is smooth and compactly supported, $u_\lambda+\varphi$ is admissible, so $u_\lambda''''$ is a nonnegative Radon measure. On an open set where $u_\lambda>\psi_\lambda$, both signs of sufficiently small compactly supported perturbations are admissible, hence $u_\lambda''''=0$ there. On each connected open subset of the noncontact set, $u_\lambda''''=0$, so $u_\lambda$ agrees there with a cubic polynomial. The global $C^2$ regularity will follow from the verified spline construction below.
 
 Conversely, if $U\in\mathcal K_\lambda$ is $C^2$, piecewise smooth, and $\mu=U''''$ is a nonnegative measure supported on $\{U=\psi_\lambda\}$, then for every $v\in\mathcal K_\lambda$,
 $$
