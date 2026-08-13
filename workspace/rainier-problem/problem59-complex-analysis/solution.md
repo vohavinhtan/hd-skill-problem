@@ -80,8 +80,9 @@ $$
 If $S\geq0$ on $[-1,1]$, then integrating against $\mu_\rho$ and taking
 $\rho\uparrow1$ gives a lower bound because all limiting moments in Steps 1
 and 2 are fixed. The polynomial $R$ has degree at most $5$ and is
-nonnegative on $[-1,1]$. Every interior zero of such a polynomial has even
-multiplicity.
+nonnegative on $[-1,1]$. Also $R(5/4)=30$, so it is not the zero polynomial
+and has only finitely many zeros. Every interior zero of such a polynomial
+has even multiplicity.
 
 We first determine the possible contact pattern of a sharp certificate.
 If equality is attained, then
@@ -233,10 +234,18 @@ $$
 s_\pm=\sqrt{1-r_\pm^2}.
 $$
 Indeed these are exactly the points whose real parts are the three zeros of
-the slack. Choose disjoint small arcs around them. Along any sequence
-$\rho\uparrow1$, the five arc masses have a convergent subsequence; uniform
-continuity of $1,X,X^2,X^3,\xi^{-1},\xi^{-2}$ turns the limiting Fourier and
-moment identities into linear equations for those five masses.
+the slack. Partition the circle into five disjoint arcs $A_j$, each
+containing exactly one contact point $\xi_j$. Step 3 implies that the mass
+outside arbitrarily small neighborhoods of these five points tends to $0$.
+Hence, for every continuous $f$,
+$$
+\int f\,d\mu_\rho-\sum_j f(\xi_j)\mu_\rho(A_j)\longrightarrow0:
+$$
+inside small neighborhoods this follows from uniform continuity, and the
+remaining mass tends to $0$. Along any sequence $\rho\uparrow1$, the five
+numbers $\mu_\rho(A_j)$ have a convergent subsequence, and the displayed
+limit turns the Fourier and moment identities into exact linear equations
+for its limiting masses.
 
 Let $W_{-1},W_+,W_-$ be the total limiting masses of the three real-part
 classes. Since
