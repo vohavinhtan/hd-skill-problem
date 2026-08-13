@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Let $t\geq1$ and put $n=36t$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
+Let $t\geq1$ and put $n=36t+2$. Let $f\in\mathbb Q[y]$ be monic of degree $n$, and suppose its splitting field $K$ satisfies
 $$
 \operatorname{Gal}(K/\mathbb Q)\cong S_n
 $$
@@ -20,9 +20,9 @@ p\nmid \Delta f(-a).
 $$
 Suppose further that
 $$
-f(y)\equiv(y-u)(y-v)h(y)\pmod p,
+f(y)\equiv(y-u)h(y)\pmod p,
 $$
-where $u,v\in\mathbb F_p$ are distinct, $h\in\mathbb F_p[y]$ is irreducible of degree $n-2$, $a+u$ is not a cube in $\mathbb F_p^\times$, and $a+v$ is a cube in $\mathbb F_p^\times$.
+where $u\in\mathbb F_p$, $h\in\mathbb F_p[y]$ is irreducible of degree $n-1$, and $a+u$ is not a cube in $\mathbb F_p^\times$.
 
 For $1\leq i<j\leq n$, put
 $$
@@ -44,10 +44,14 @@ f(y)P_0(x)P_1(x)P_2(x)
 $$
 over $\mathbb Q$. Let $\omega\in L$ be a primitive cube root of unity. For $\sigma\in\operatorname{Gal}(L/\mathbb Q)$, let $\pi_\sigma\in S_n$ be the permutation induced by the restriction of $\sigma$ to $K$.
 
-Determine, as a closed formula in $t$, the number of automorphisms $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ such that:
+Determine, as a closed formula in $t$, the number of automorphisms $\sigma\in\operatorname{Gal}(L/\mathbb Q)$ satisfying both conditions below:
 
-1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has exactly $3t$ cycles of length $5$ and exactly $3t$ cycles of length $7$.
-2. The three permutations induced by $\sigma$ on the roots of $P_0$, $P_1$, and $P_2$ have the same cycle type.
+1. The automorphism $\sigma$ fixes $\omega$, and $\pi_\sigma$ has one cycle of length $2$, exactly $3t$ cycles of length $5$, and exactly $3t$ cycles of length $7$.
+2. The three permutations induced by $\sigma$ on the roots of $P_0$, $P_1$, and $P_2$ have the same number of cycles. Moreover, if each permutation is restricted to those roots $x$ for which
+$$
+x^3=p^kB_{ij}
+$$
+with at least one of $i,j$ lying in the unique $2$-cycle of $\pi_\sigma$, then the three restricted permutations also have the same number of cycles.
 
 ---
 
@@ -65,5 +69,5 @@ Determine, as a closed formula in $t$, the number of automorphisms $\sigma\in\op
 ## Domain Explanation
 
 This problem involves splitting fields, Galois automorphisms, and restrictions to a symmetric Galois group, which are part of Abstract Algebra and Galois theory.
-The cubic radical extensions produce three naturally related permutation representations whose cycle structures must be compared.
-The main task is to determine how the Kummer phases interact with the prescribed root permutation and then count the compatible automorphisms.
+The cubic radical extensions produce three related permutation representations, while the unique two-cycle determines a canonical invariant family of pair-product roots inside each representation.
+The main task is to recover the compatible Kummer phases from the coupled global and restricted cycle statistics and then count the resulting automorphisms.
