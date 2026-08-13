@@ -92,7 +92,7 @@ For
 $$
 S_6=\langle8,12,b,b+6\rangle,
 $$
-residue $6$ requires two copies of $b+6$, giving $2b+12$. Every other residue has a representative at most $b+18$ or $2b$, and $2b+12>b+18$ because $b>6$. Hence
+residue $6$ requires two copies of $b+6$, giving $2b+12$. Every other residue has a representative at most $b+18$ or $2b$, and both are smaller than $2b+12$. Hence
 $$
 c(S_6)=2b+5=16n+7.
 $$
@@ -101,7 +101,7 @@ Finally, for
 $$
 S_{46}=\langle8,12,b,b+4,b+6\rangle,
 $$
-residue $6$ is represented by $b+(b+4)=2b+4$, while the largest competing least representative is at most $b+18$. Since $b\geq17$, the maximum is $2b+4$, and therefore
+residue $6$ is represented by $b+(b+4)=2b+4$. Every other residue has a representative at most $\max\{2b,b+18\}$, and both quantities are smaller than $2b+4$ because $b\geq17$. Therefore
 $$
 c(S_{46})=2b-3=16n-1.
 $$
