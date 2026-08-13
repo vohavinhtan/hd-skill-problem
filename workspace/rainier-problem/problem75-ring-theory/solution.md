@@ -1,71 +1,74 @@
 ## Steps
 
-Step 1: Find the linear cancellation locus
-Write the six images as $x,y,z,u,v,w$. Then
+Step 1: Derive the two root-of-unity cancellation loci
+Write the six images as $x,y,z,u,v,w$, and put
+$$
+\mu=\lambda^n.
+$$
+Then
 $$
 x=t^8,\qquad y=t^{12},\qquad z=t^m,
 $$
 while
 $$
-u-z=(\lambda^3-1)t^{m+4}+(\lambda^2-1)t^{m+6},
+u-z=(\mu-1)t^{m+4}+(\mu\lambda-1)t^{m+6},
 $$
 $$
-v-z=(\lambda^6-1)t^{m+4}+(\lambda^4-1)t^{m+6}.
+v-z=(\mu^2-1)t^{m+4}+(\mu^2\lambda^2-1)t^{m+6}.
 $$
-Thus the two candidate monomials $t^{m+4},t^{m+6}$ are controlled by
+Thus the two possible linear corrections are controlled by
 $$
 M(\lambda)=
 \begin{pmatrix}
-\lambda^3-1&\lambda^2-1\\
-\lambda^6-1&\lambda^4-1
+\mu-1&\mu\lambda-1\\
+\mu^2-1&\mu^2\lambda^2-1
 \end{pmatrix}.
 $$
-Its determinant is
+Using difference-of-squares factorizations,
 $$
 \begin{aligned}
 \det M(\lambda)
-&=(\lambda^3-1)(\lambda^4-1)-(\lambda^2-1)(\lambda^6-1)\\
-&=(\lambda^3-1)(\lambda^2-1)\bigl((\lambda^2+1)-(\lambda^3+1)\bigr)\\
-&=-\lambda^2(\lambda-1)^3(\lambda+1)(\lambda^2+\lambda+1).
+&=(\mu-1)(\mu\lambda-1)\bigl((\mu\lambda+1)-(\mu+1)\bigr)\\
+&=\mu(\mu-1)(\lambda-1)(\mu\lambda-1)\\
+&=\lambda^n(\lambda^n-1)(\lambda-1)(\lambda^{n+1}-1).
 \end{aligned}
 $$
-Since $\lambda\neq0$, the rank drops exactly at $\lambda=1$, $\lambda=-1$, and the two roots of $\lambda^2+\lambda+1=0$.
+Since $\lambda\neq0$, rank can drop only when $\lambda^n=1$ or $\lambda^{n+1}=1$. Their only common solution is $\lambda=1$: if both hold, division gives $\lambda=1$.
 
-Step 2: Use the multiplicative cancellation that the rank test misses
-The last generator is not redundant on every rank-drop stratum. Indeed,
+Step 2: Find the nonlinear correction and identify the four rings
+The last generator is arranged so that its useful cancellation is not linear. Indeed,
 $$
-zu=t^{2m}+(\lambda^3-1)t^{2m+4}+(\lambda^2-1)t^{2m+6},
+\lambda^nzu+(1-\lambda^n)z^2
+=t^{2m}+(\lambda^{2n}-\lambda^n)t^{2m+4}+(\lambda^{2n+1}-\lambda^n)t^{2m+6},
 $$
 so
 $$
-w-zu=(\lambda^5-\lambda^2)t^{2m+5}
-=\lambda^2(\lambda^3-1)t^{2m+5}.
+w-\lambda^nzu-(1-\lambda^n)z^2=(\lambda^n-1)t^{2m+5}.
 $$
-Thus whenever $\lambda^3\neq1$ this identity supplies $t^{2m+5}$. When $\lambda^3=1$ it reduces to $w=zu$, so $W$ contributes no new generator.
 
-Combining this with Step 1 gives precisely four monomial rings. If $\lambda=1$, then
+If $\lambda=1$, all corrections vanish and
 $$
 A_{n,1}=\mathbb C[[t^8,t^{12},t^m]].
 $$
-If $\lambda=-1$, then $u-z=-2t^{m+4}$, $v=z$, and the multiplicative cancellation supplies $t^{2m+5}$, so
+If $\lambda^{n+1}=1$ but $\lambda\neq1$, then $\lambda^n=\lambda^{-1}\neq1$ and $\mu\lambda-1=0$. Hence $u-z$ is a nonzero multiple of $t^{m+4}$, while the displayed nonlinear identity supplies $t^{2m+5}$:
 $$
-A_{n,-1}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{2m+5}]].
+A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{2m+5}]].
 $$
-If $\lambda^2+\lambda+1=0$, then $\lambda^3=1$ and $\lambda\neq1$; both $u-z$ and $v-z$ are nonzero multiples of $t^{m+6}$ and $w=zu$. Thus
+If $\lambda^n=1$ but $\lambda\neq1$, then $u-z=(\lambda-1)t^{m+6}$ and the nonlinear identity contributes nothing new, so
 $$
 A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+6}]].
 $$
-For every remaining $\lambda$, Step 1 gives both $t^{m+4}$ and $t^{m+6}$. Moreover
+For every remaining $\lambda$, the matrix in Step 1 is invertible, hence both $t^{m+4}$ and $t^{m+6}$ lie in the ring. The nonlinear identity also supplies $t^{2m+5}$, but here it is redundant because
 $$
-t^{2m+5}=t^{m+6}(t^8)^n,
+t^{2m+5}=t^{m+6}(t^8)^n.
 $$
-so the last generator adds nothing further and
+Thus
 $$
 A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{m+6}]].
 $$
-In each case the reverse inclusion follows directly from the displayed formulas for $u,v,w$, so these equalities are exact.
+In each case the reverse inclusion follows from the displayed formulas for $u,v,w$, so these equalities are exact.
 
-Step 3: Compute the four conductors with one residue argument
+Step 3: Compute the four conductor levels
 For a numerical semigroup $S$ containing $8$, let $w_r$ be its least element in residue $r$ modulo $8$. Then its conductor is
 $$
 \max_r w_r-7.
@@ -74,23 +77,31 @@ We use
 $$
 \langle8,12\rangle=\{0\}\cup\{4j:j\geq2\},
 $$
-so the least positive element in residue $4$ modulo $8$ is $12$. Also $m\equiv1\pmod8$ and $m\geq17$.
+so the least positive residue-$4$ element is $12$. Also $m\equiv1\pmod8$ and $m\geq17$.
 
-For $S_0=\langle8,12,m\rangle$, residues $1,2,3$ require $m,2m,3m$, and residues $5,6,7$ require one additional $12$. Thus the largest Apéry representative is $3m+12$ and
+For
+$$
+S_0=\langle8,12,m\rangle,
+$$
+residues $1,2,3$ require $m,2m,3m$, and residues $5,6,7$ require one additional $12$. Hence the largest Apéry representative is $3m+12$ and
 $$
 c(S_0)=3m+5=24n+8.
 $$
 
-For $S_{4,*}=\langle8,12,m,m+4,2m+5\rangle$, residue $3$ is the only hard residue. Ignoring $2m+5$, the odd generators have residues $1$ and $5$; one or two of them cannot sum to residue $3$, so the cheapest residue-$3$ value is $3m$. If a representation uses $2m+5$, remove one copy of it; the remainder must have residue $4$, whose least positive value is $12$, so the best such value is $2m+17$. Since $m\geq17$, the minimum is $2m+17$, while every other residue has a representative at most $2m+5$. Hence
+For
+$$
+S_{4,*}=\langle8,12,m,m+4,2m+5\rangle,
+$$
+residue $3$ is decisive. Without $2m+5$, the odd-generator residues $1,5$ require three odd generators, giving at least $3m$. If $2m+5$ is used, the remainder must have residue $4$, whose least positive value is $12$, giving $2m+17$. Thus the residue-$3$ minimum is $2m+17$ because $m\geq17$, while every other residue is represented by at most $2m+5$. Therefore
 $$
 c(S_{4,*})=2m+10=16n+12.
 $$
 
-For $S_6=\langle8,12,m,m+6\rangle$, the odd generators have residues $1$ and $7$. Reaching the even residue $6$ requires at least two odd generators; the cheapest possibilities are two copies of $m+6$, or two copies of $m$ followed by the least residue-$4$ correction $12$, and both give $2m+12$. The other residues have representatives among
+For
 $$
-0,\ m,\ 2m,\ m+18,\ 12,\ m+12,\ m+6,
+S_6=\langle8,12,m,m+6\rangle,
 $$
-all smaller because $m>6$. Therefore
+residue $6$ needs at least two odd generators. The two cheapest possibilities, $(m+6)+(m+6)$ and $m+m+12$, both equal $2m+12$. Every other residue has a representative smaller than this, so
 $$
 c(S_6)=2m+5=16n+7.
 $$
@@ -99,22 +110,27 @@ Finally, for
 $$
 S_{46}=\langle8,12,m,m+4,m+6\rangle,
 $$
-the odd-generator residues are $1,5,7$. A residue-$6$ element needs at least two odd generators, and the cheapest compatible pair is $m+(m+4)=2m+4$; the alternative pair $(m+6)+(m+6)$ and any residue-$4$ correction are larger. Every other residue has a representative at most $\max\{2m,m+18\}<2m+4$. Hence
+residue $6$ again needs at least two odd generators, and the cheapest compatible pair is
+$$
+m+(m+4)=2m+4.
+$$
+Every other residue has a representative at most $\max\{2m,m+18\}<2m+4$. Hence
 $$
 c(S_{46})=2m-3=16n-1.
 $$
 
-Step 4: Order the parameter levels
+Step 4: Identify the second-largest stratum
 Steps 2 and 3 give
 $$
 \kappa_{n,1}=24n+8,
 $$
 $$
-\kappa_{n,-1}=16n+12,
+\kappa_{n,\lambda}=16n+12
+\qquad(\lambda^{n+1}=1,\ \lambda\neq1),
 $$
 $$
 \kappa_{n,\lambda}=16n+7
-\qquad(\lambda^2+\lambda+1=0),
+\qquad(\lambda^n=1,\ \lambda\neq1),
 $$
 and
 $$
@@ -124,17 +140,19 @@ for every remaining $\lambda$. Since $n\geq2$,
 $$
 24n+8>16n+12>16n+7>16n-1.
 $$
-Thus the second-largest conductor is attained only at $\lambda=-1$:
+Nontrivial $(n+1)$-st roots of unity exist because $n+1\geq3$. Therefore
 $$
-\beta_n=16n+12,\qquad E_n=\{-1\}.
+\beta_n=16n+12,
+\qquad
+E_n=\{\lambda\in\mathbb C^\times:\lambda^{n+1}=1,\ \lambda\neq1\}.
 $$
-Final Answer: $\boxed{\left(16n+12,\{-1\}\right)}$
+Final Answer: $\boxed{\left(16n+12,\{\lambda\in\mathbb C^\times:\lambda^{n+1}=1,\lambda\neq1\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(16n+12,\{-1\}\right)$
+$\left(16n+12,\{\lambda\in\mathbb C^\times:\lambda^{n+1}=1,\lambda\neq1\}\right)$
 
 ---
 
@@ -149,7 +167,7 @@ $\left(16n+12,\{-1\}\right)$
 ## Solution Concepts
 
 - rank drop of a cancellation matrix
-- multiplicative cancellation
 - roots of unity
+- multiplicative cancellation
 - numerical semigroup rings
 - conductor exponent
