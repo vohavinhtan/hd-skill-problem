@@ -101,7 +101,11 @@ For
 $$
 S_6=\langle8,12,m,m+6\rangle,
 $$
-residue $6$ needs at least two odd generators. The two cheapest possibilities, $(m+6)+(m+6)$ and $m+m+12$, both equal $2m+12$. Every other residue has a representative smaller than this, so
+residue $6$ needs at least two odd generators. The two cheapest possibilities, $(m+6)+(m+6)$ and $m+m+12$, both equal $2m+12$. The remaining residues have representatives
+$$
+0,\ m,\ 2m,\ m+18,\ 12,\ m+12,\ m+6,
+$$
+all smaller than $2m+12$ because $m>6$. Hence
 $$
 c(S_6)=2m+5=16n+7.
 $$
