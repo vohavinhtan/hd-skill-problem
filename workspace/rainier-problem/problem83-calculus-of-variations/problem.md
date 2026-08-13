@@ -27,7 +27,7 @@ For $\lambda>0$, define
 $$
 \begin{aligned}
 \mathcal E_{m,\lambda}(u)
-={}&
+&=
 \frac{1}{2}\int_0^\pi (L_m u)^2\,dx
 +\gamma\int_0^\pi (L_m u)G_u\,dx
 +\frac{1}{2}\int_0^\pi G_u^2\,dx
