@@ -33,35 +33,49 @@ $$
 0,&\lambda^2\neq1.
 \end{cases}
 $$
-Then, in every case,
+Then
 $$
 A_{n,\lambda}
 =\mathbb C[[t^5,t^{a+5\varepsilon},t^{b+5\eta}]].
 $$
-Thus the valuation set is the numerical semigroup
+Indeed, the unit inverses above show that the three displayed monomials lie in $A_{n,\lambda}$, while the original generators $\Psi_{n,\lambda}(X),\Psi_{n,\lambda}(Y),\Psi_{n,\lambda}(Z)$ all lie in the ring on the right. Hence the two rings contain each other.
+
+Therefore the valuation set is the numerical semigroup
 $$
-S_{\varepsilon,\eta}
-=\langle5,A,B\rangle,
+S_{\varepsilon,\eta}=\langle5,A,B\rangle,
 \qquad
 A=a+5\varepsilon,
 \qquad
 B=b+5\eta.
 $$
+It is cofinite because $A\equiv1\pmod5$.
 
 Step 2: Compute the conductor from four residue representatives
 We have
 $$
 A\equiv1\pmod5,\qquad B\equiv2\pmod5.
 $$
-For $n\geq2$,
+Also, for all $n\geq2$ and $\varepsilon,\eta\in\{0,1\}$,
+$$
+3B-A=10n-10+15\eta-5\varepsilon>0,
+$$
+$$
+2A-B=5n+5+10\varepsilon-5\eta>0.
+$$
+Thus
 $$
 A<3B,\qquad B<2A.
 $$
-These inequalities imply that the least elements of $S_{\varepsilon,\eta}$ in residues $1,2,3,4$ modulo $5$ are respectively
+
+The least elements of $S_{\varepsilon,\eta}$ in residues $1,2,3,4$ modulo $5$ are
 $$
 A,\qquad B,\qquad A+B,\qquad2B.
 $$
-Indeed, residues $1$ and $2$ are already represented by one generator; residue $3$ first occurs as $A+B$, and the only smaller-length competitors are $3A$ and $4B$, both larger by $B<2A$ and $A<3B$; residue $4$ first occurs as $2B$, while its competitors are larger for the same inequalities.
+For residue $1$, the one-generator representative $A$ beats every other representation, since any other one uses at least three copies of $A$ and $B$, and both $3A>A$ and $3B>A$. For residue $2$, the only two-copy competitor to $B$ is $2A$, and $B<2A$; longer representations are larger. For residue $3$, the only competitors using at most four copies are $3A$ and $4B$, and
+$$
+A+B<3A,\qquad A+B<4B
+$$
+by the two inequalities above; any representation using at least five copies is larger still. For residue $4$, the two-copy representative $2B$ beats the first other possibilities $2A+B$ and $4A$ because $B<2A$, and every longer representation is larger.
 
 Hence the largest missing integer in each nonzero residue class is obtained by subtracting $5$ from these four representatives. Therefore
 $$
@@ -76,7 +90,7 @@ $$
 $$
 2B=10n-6+10\eta,
 $$
-and their difference is
+and
 $$
 (A+B)-2B=4+5\varepsilon-5\eta.
 $$
