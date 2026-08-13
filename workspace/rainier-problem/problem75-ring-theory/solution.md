@@ -32,7 +32,7 @@ $$
 Since $\lambda\neq0$, the rank drops exactly at $\lambda=1$, $\lambda=-1$, and the two roots of $\lambda^2+\lambda+1=0$.
 
 Step 2: Use the multiplicative cancellation that the rank test misses
-The last generator is not redundant. Indeed,
+The last generator is not redundant on every rank-drop stratum. Indeed,
 $$
 zu=t^{2m}+(\lambda^3-1)t^{2m+4}+(\lambda^2-1)t^{2m+6},
 $$
@@ -41,25 +41,29 @@ $$
 w-zu=(\lambda^5-\lambda^2)t^{2m+5}
 =\lambda^2(\lambda^3-1)t^{2m+5}.
 $$
-Hence $t^{2m+5}$ lies in $A_{n,\lambda}$ exactly when $\lambda^3\neq1$.
+Thus whenever $\lambda^3\neq1$ this identity supplies $t^{2m+5}$. When $\lambda^3=1$ it reduces to $w=zu$, so $W$ contributes no new generator.
 
 Combining this with Step 1 gives precisely four monomial rings. If $\lambda=1$, then
 $$
 A_{n,1}=\mathbb C[[t^8,t^{12},t^m]].
 $$
-If $\lambda=-1$, then $u-z=-2t^{m+4}$, $v=z$, and Step 2 supplies $t^{2m+5}$, so
+If $\lambda=-1$, then $u-z=-2t^{m+4}$, $v=z$, and the multiplicative cancellation supplies $t^{2m+5}$, so
 $$
 A_{n,-1}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{2m+5}]].
 $$
-If $\lambda^2+\lambda+1=0$, then $\lambda^3=1$ and $\lambda\neq1$; both $u-z$ and $v-z$ are nonzero multiples of $t^{m+6}$, while Step 2 contributes nothing. Thus
+If $\lambda^2+\lambda+1=0$, then $\lambda^3=1$ and $\lambda\neq1$; both $u-z$ and $v-z$ are nonzero multiples of $t^{m+6}$ and $w=zu$. Thus
 $$
 A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+6}]].
 $$
-For every remaining $\lambda$, Step 1 gives both $t^{m+4},t^{m+6}$ and Step 2 gives $t^{2m+5}$:
+For every remaining $\lambda$, Step 1 gives both $t^{m+4}$ and $t^{m+6}$. Moreover
 $$
-A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{m+6},t^{2m+5}]].
+t^{2m+5}=t^{m+6}(t^8)^n,
 $$
-In each case the reverse inclusion is immediate from the displayed formulas for the original generators, so these equalities are exact.
+so the last generator adds nothing further and
+$$
+A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{m+6}]].
+$$
+In each case the reverse inclusion follows directly from the displayed formulas for $u,v,w$, so these equalities are exact.
 
 Step 3: Compute the four conductors with one residue argument
 For a numerical semigroup $S$ containing $8$, let $w_r$ be its least element in residue $r$ modulo $8$. Then its conductor is
@@ -77,7 +81,7 @@ $$
 c(S_0)=3m+5=24n+8.
 $$
 
-For $S_{4,*}=\langle8,12,m,m+4,2m+5\rangle$, residue $3$ is the only hard residue. Without $2m+5$ its least representative is $3m$; using $2m+5$ it is $(2m+5)+12=2m+17$. Since $m\geq17$, the latter is no larger, and every other residue has a representative at most $2m+5$. Hence
+For $S_{4,*}=\langle8,12,m,m+4,2m+5\rangle$, residue $3$ is the only hard residue. Without $2m+5$ its least representative is $3m$; any representation using $2m+5$ must add residue $4$, whose least positive representative is $12$, so the best such value is $2m+17$. Since $m\geq17$, the minimum is $2m+17$, while every other residue has a representative at most $2m+5$. Hence
 $$
 c(S_{4,*})=2m+10=16n+12.
 $$
@@ -93,11 +97,11 @@ $$
 
 Finally, for
 $$
-S_{46,*}=\langle8,12,m,m+4,m+6,2m+5\rangle,
+S_{46}=\langle8,12,m,m+4,m+6\rangle,
 $$
-the generator $2m+5$ is not Apéry-minimal because it has the same residue $7$ as the smaller generator $m+6$. Residue $6$ is represented by $m+(m+4)=2m+4$, while every other residue has a representative at most $\max\{2m,m+18\}<2m+4$. Hence
+residue $6$ is represented by $m+(m+4)=2m+4$, while every other residue has a representative at most $\max\{2m,m+18\}<2m+4$. Hence
 $$
-c(S_{46,*})=2m-3=16n-1.
+c(S_{46})=2m-3=16n-1.
 $$
 
 Step 4: Order the parameter levels
