@@ -40,8 +40,8 @@ For a point stabilizer $H\cong S_{n-1}$ in $S_n=\Gamma/A$, let $\Gamma_H$ be its
 
 Determine exactly those integers $r\geq2$ for which both of the following hold:
 
-1. The complements to $A$ in $\Gamma$ form exactly three equivalence classes.
-2. For every point stabilizer $H$, the intersections with $\Gamma_H$ of representatives of those three classes remain pairwise inequivalent under conjugation by $A$.
+1. There exist two inequivalent complements to $A$ in $\Gamma$.
+2. For every point stabilizer $H$, any two inequivalent complements $C_1,C_2$ to $A$ in $\Gamma$ have $C_1\cap\Gamma_H$ and $C_2\cap\Gamma_H$ inequivalent under conjugation by $A$.
 
 Give the set of all such $r$ by an explicit condition in base $3$.
 
@@ -60,4 +60,4 @@ Give the set of all such $r$ by an explicit condition in base $3$.
 
 ## Domain Explanation
 
-This problem concerns complements in a split cubic Kummer extension of an $S_n$-extension. The cubic radical kernel is an augmentation submodule of the permutation module on $r$-element subsets, and conjugacy of complements is governed by how this module changes when restricted from $S_n$ to a point stabilizer. The requested parameter set is determined by the interaction between that Galois-theoretic restriction problem and arithmetic in characteristic $3$.
+This problem studies conjugacy of complements in a cubic Kummer extension carrying a symmetric Galois action on subset-indexed radicals. The requested parameter classification concerns when distinct global complements remain distinct after restriction to point stabilizers.
