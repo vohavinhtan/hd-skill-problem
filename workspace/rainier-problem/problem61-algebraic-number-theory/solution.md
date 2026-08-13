@@ -16,7 +16,7 @@ for every $C=(c_{ij})\in V$, so $\operatorname{Tr}(zT_1(y))=0$. Thus $T_1(y)\in 
 
 Write $T_i(y_1,y_2)=f_{i1}(y_1)+f_{i2}(y_2)$. Setting one input to $0$ gives $f(z)\in\mathbb F_2z$. For independent $z,w$, linearity at $z+w$ forces the coefficients of $z,w,z+w$ to agree, so each $f$ is $0$ or the identity. Hence $T(y)=Cy$ for $C\in V$, and $B_h(a,b)=\langle C,[a,b]\rangle$.
 
-Let $Q_C(x,y)=\operatorname{Tr}(x^TCy)$. If $g=h-Q_C$, then $D_aD_bg=0$, so $D_ag$ is constant. Writing $\ell(a)=D_ag(0)$ gives $g(w+a)+g(w)=\ell(a)$ and $\ell(a+a')=\ell(a)+\ell(a')$. Since $g(0)=0$, $g=\ell$. Therefore
+Let $Q_C(x,y)=\operatorname{Tr}(x^TCy)$; its polar form is $B_h$. If $g=h-Q_C$, then $D_aD_bg=0$, so $D_ag$ is constant. Writing $\ell(a)=D_ag(0)$ gives $g(w+a)+g(w)=\ell(a)$ and $\ell(a+a')=\ell(a)+\ell(a')$. Since $g(0)=0$, $g=\ell$. Therefore
 $$
 \mathcal H_n=\{Q_C+\operatorname{Tr}(s^Tx+t^Ty):C\in V,\ s,t\in K^2\},
 \qquad |\mathcal H_n|=16q^4.
@@ -33,7 +33,7 @@ $$
 W(C,s,t)=\sum_{x,y}(-1)^{\operatorname{Tr}(x^TCy+s^Tx+t^Ty)}
 =q^2\sum_{Cy=s}(-1)^{\operatorname{Tr}(t^Ty)}.
 $$
-Thus $W=0$ unless $s\in\operatorname{im}C$ and $t\in\operatorname{im}C^T$; otherwise, for $Cy_0=s$,
+Thus $W=0$ unless $s\in\operatorname{im}C$ and $t\in\operatorname{im}C^T$; if so and $Cy_0=s$,
 $$
 W(C,s,t)=q^{4-r}(-1)^{\operatorname{Tr}(t^Ty_0)}.
 $$
@@ -50,7 +50,7 @@ Step 3: Classify $\Psi$
 
 No rank-one matrix lies in $\ker\Psi$. If $\operatorname{rank}\Psi\leq1$, then $\ker\Psi$ has at least $7$ nonzero elements, but $V$ has only $6$ invertibles, contradiction. Thus the rank is at least $2$.
 
-Rank $3$ is impossible. Normalize its kernel to $\langle I\rangle$. For rank-one $X$, $\det(X+I)=\operatorname{tr}X+1$; six rank-one $X$ form three pairs $\{X,X+I\}$ and the other three lie in distinct kernel cosets, so the image hyperplane contains at least six rank-one points. Every hyperplane is
+Rank $3$ is impossible. Its nonzero kernel generator is invertible, so left multiplication normalizes the kernel to $\langle I\rangle$. For rank-one $X$, $\det(X+I)=\operatorname{tr}X+1$; six rank-one $X$ form three pairs $\{X,X+I\}$ and the other three lie in distinct kernel cosets, so the image hyperplane contains at least six rank-one points. Every hyperplane is
 $$
 H_D=\{X:\operatorname{tr}(D^TX)=0\},\qquad D\neq0.
 $$
@@ -60,7 +60,7 @@ For nonzero $u,v\in\mathbb F_2^2$, let
 $$
 L_u=\{uw^T:w\in\mathbb F_2^2\},\qquad R_v=\{wv^T:w\in\mathbb F_2^2\}.
 $$
-These are exactly the six two-dimensional rank-one subspaces: two distinct rank-one matrices sum to rank one exactly when their left or right factors agree. Their incidence graph is $K_{3,3}$. A rank-four $\Psi$ permutes the nine cone points, hence preserves or swaps the rulings. Since $\operatorname{GL}_2(\mathbb F_2)$ acts faithfully on the three nonzero vectors and has order $6=|S_3|$, every ruling permutation is induced uniquely. Thus, for $A,B\in\operatorname{GL}_2(\mathbb F_2)$,
+These are exactly the six two-dimensional rank-one subspaces: two distinct rank-one matrices sum to rank one exactly when their left or right factors agree. Their incidence graph is $K_{3,3}$. A rank-four $\Psi$ permutes the nine cone points, so it preserves or swaps the rulings. The faithful action of $\operatorname{GL}_2(\mathbb F_2)$ on the three nonzero vectors has order $6=|S_3|$, so each ruling permutation is induced uniquely. Thus, for $A,B\in\operatorname{GL}_2(\mathbb F_2)$,
 $$
 \Psi(X)=AXB\quad\text{or}\quad AX^TB,
 $$
@@ -74,7 +74,7 @@ J=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
 $$
 The six invertibles are $I,R,R^2,J,JR,JR^2$. Any external line can be left-normalized to one through $I$; only $C=R,R^2$ work: $I+R=R^2$, $I+R^2=R$, while $I+J,I+JR,I+JR^2$ are singular. Thus the unique such line is $E_0=\{0,I,R,R^2\}$. Since the six invertibles split as $E_0\setminus\{0\}$ and $JE_0\setminus\{0\}$, the only external lines are $E_0$ and $JE_0$.
 
-The kernel contains three invertibles, so only three invertibles remain outside it. Each of its three nonzero cosets has four elements, hence contains a rank-one matrix. Therefore every nonzero image point is rank one, so the image is one of the six $L_u,R_v$. For fixed kernel $K$ and image $I$, valid maps are exactly the isomorphisms $V/K\to I$, of which there are $|\operatorname{GL}_2(\mathbb F_2)|=6$. Thus there are
+The kernel contains three invertibles, leaving only three outside it. Each nonzero coset has four elements, hence contains a rank-one matrix. Therefore every nonzero image point is rank one, so the image is one of the six $L_u,R_v$. For fixed $K,I$, valid maps are exactly the isomorphisms $V/K\to I$: rank-one $X$ lie outside $K$ and nonzero points of $I$ have rank one. There are $|\operatorname{GL}_2(\mathbb F_2)|=6$ such isomorphisms. Thus there are
 $$
 2\cdot6\cdot6=72
 $$
@@ -105,13 +105,13 @@ $$
 =\begin{pmatrix}a+d&b+c+d\\0&0\end{pmatrix},\quad
 K_0=\ker\Psi_0=\left\{\begin{pmatrix}a&b\\a+b&a\end{pmatrix}:a,b\in\mathbb F_2\right\}=JE_0.
 $$
-First precompose by $P^{-1}$ with $P(\ker\Psi)=K_0$; this changes only the kernel. Then, using the transitivity from Step 3, postcompose by a cone automorphism $Q$ sending the image line to $\operatorname{im}\Psi_0$; this leaves kernel $K_0$. Finally adjust the induced isomorphism $V/K_0\to\operatorname{im}\Psi_0$ by right multiplication on $e_1v^T$. Thus every rank-two $\Psi$ reduces to $\Psi_0$.
+First precompose by $P^{-1}$ with $P(\ker\Psi)=K_0$; only the kernel changes. Then Step 3 lets us postcompose by a cone automorphism $Q$ sending the image line to $\operatorname{im}\Psi_0$; kernel $K_0$ stays fixed. Finally right multiplication on $e_1v^T$ adjusts the induced isomorphism $V/K_0\to\operatorname{im}\Psi_0$, giving $\Psi_0$.
 
-These operations preserve counts. Precomposition sends $(S,T)$ to $(S\circ P^{-1},T\circ P^{-1})$ and replaces $\operatorname{tr}X$ by $\tau(X)=\operatorname{tr}(P^{-1}X)\neq0$. For $C\mapsto ACB$, use $(S,T)\mapsto(AS,B^TT)$. For $C\mapsto AC^TB$, use $(S,T)\mapsto(AT,B^TS)$; if $Cy=S$ and $C^Tx=T$, then $B^{-1}x$ solves the new equation and
+These operations preserve counts. Precomposition sends $(S,T)$ to $(S\circ P^{-1},T\circ P^{-1})$ and replaces $\operatorname{tr}X$ by $\tau(X)=\operatorname{tr}(P^{-1}X)\neq0$. For $C\mapsto ACB$, use $(S,T)\mapsto(AS,B^TT)$: from $Cy=S,C^Tx=T$, the vectors $B^{-1}y,A^{-T}x$ verify both image conditions and the phase is unchanged. For $C\mapsto AC^TB$, use $(S,T)\mapsto(AT,B^TS)$: $B^{-1}x,A^{-T}y$ verify both image conditions and
 $$
 (B^TS)^TB^{-1}x=S^Tx=T^Ty.
 $$
-So both postcomposition types give bijections.
+Thus both types give bijections.
 
 Write $\ell(X)=(a+d,b+c+d)$, so $\Psi_0(X)=e_1\ell(X)$. Since the rank-one basis $E_{ij}$ spans $V$, $S(X)=e_1A(X)$ for a linear $A:V\to K$. Write
 $$
@@ -121,14 +121,14 @@ The rank-one tests $E_{22},E_{21},E_{21}+E_{22},E_{12},E_{12}+E_{22},E_{11},E_{1
 $$
 \delta=\delta',\ \gamma=0,\ \gamma'=\delta',\ \beta=0,\ \beta'=\delta',\ \alpha'=0,\ \alpha=\gamma',
 $$
-hence $T(X)=z\ell(X)^T$. The phase condition is $\operatorname{Tr}(zA(X))=\tau(X)$. Since both sides are linear and $E_{ij}$ is a rank-one basis, this is equivalent to four trace equations. Thus $z\neq0$, and for each of its $q-1$ values every $A(E_{ij})$ has $q/2$ choices. Hence
+hence $T(X)=z\ell(X)^T$. The phase condition is $\operatorname{Tr}(zA(X))=\tau(X)$. Since both sides are linear and $E_{ij}$ is a rank-one basis, this is equivalent to four trace equations. Thus $z\neq0$, and for each of its $q-1$ values every $A(E_{ij})$ has $q/2$ choices by Step 1. Hence
 $$
 D(q)=\frac{(q-1)q^4}{16}.
 $$
 
 Step 6: Match cycles and apply Chebotarev
 
-At $u=0$, the target is $\Pi_{0000}=(7,7,5,5,3,3,1,1)$. A signed $e$-cycle gives two $e$-cycles when its sign product is positive and one $2e$-cycle when negative. Hence the underlying cycle lengths are $7,5,3,1$, all positive. As the lengths are distinct, arranging the letters and dividing by cyclic rotations gives
+At $u=0$, the target is $\Pi_{0000}=(7,7,5,5,3,3,1,1)$. A signed $e$-cycle gives two $e$-cycles for positive sign product and one $2e$-cycle for negative sign product. Hence the underlying cycle lengths are $7,5,3,1$, all positive. As the lengths are distinct, arranging the letters and dividing by cyclic rotations gives
 $$
 \frac{16!}{7\cdot5\cdot3}=\frac{16!}{105}
 $$
@@ -140,7 +140,7 @@ $$
 $$
 The cycle sign product is $(-1)^{\rho_{ij}(u)}$, so the embedding action has partition $\Pi_{(\rho_{11},\rho_{12},\rho_{21},\rho_{22})}$. Since $7,5,3,1,14,10,6,2$ are distinct, $b\mapsto\Pi_b$ is injective; hence the residue condition is exactly $\rho_{ij}=r_{ij}$.
 
-For fixed $\sigma$, the map $\mathcal H_n^{16}\to\mathcal H_n^4$, $(h_j)\mapsto(\rho_{ij})$, is surjective by choosing one coordinate on each disjoint cycle last, and every fiber has size $|\mathcal H_n|^{12}$. Conjugation preserves cycle lengths and cycle-sign products, so the admissible set is conjugacy-stable. Put $G=\operatorname{Gal}(L/\mathbb Q)$. Then $|G|=16!|\mathcal H_n|^{16}$ because $\sigma$ and the $16$ functions $h_j$ are independent choices. Chebotarev gives, with
+For fixed $\sigma$, $(h_j)\mapsto(\rho_{ij})$ maps $\mathcal H_n^{16}$ onto $\mathcal H_n^4$: choose one coordinate on each cycle last. Every fiber has size $|\mathcal H_n|^{12}$. Conjugation preserves cycle lengths and cycle-sign products, so the admissible set is conjugacy-stable. Put $G=\operatorname{Gal}(L/\mathbb Q)$. Then $|G|=16!|\mathcal H_n|^{16}$ because $\sigma$ and the $16$ functions $h_j$ are independent choices. Chebotarev gives, with
 $$
 N=72A(q)+72D(q)=\frac92q^2(q-1)^2(q+2),
 $$
