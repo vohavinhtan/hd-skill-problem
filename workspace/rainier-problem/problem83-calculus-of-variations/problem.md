@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Fix a real number $p>0$. Define the continuous double-well potential
+Fix a real number $p>0$. Define
 $$
 W_p(s)=
 \begin{cases}
@@ -12,11 +12,14 @@ W_p(s)=
 $$
 For $0<\varepsilon<1$, let
 $$
-\mathcal A=
+\mathcal A_p=
 \left\{
  u\in H^1(0,1):
+ u(0)=u(1)=1,
+ \quad
  \int_0^1u(x)\,dx=0,
- \quad u(1)\geq1
+ \quad
+ \int_0^1x u(x)\,dx=\frac{1}{6(p+1)}
 \right\},
 $$
 and define
@@ -29,25 +32,40 @@ $$
 \right]dx.
 $$
 
-Prove that $\mathcal E_{\varepsilon,p}$ attains its global minimum on $\mathcal A$. For each fixed $p>0$, prove that for all sufficiently small $\varepsilon>0$, every global minimizer $u_{\varepsilon,p}$ satisfies $u_{\varepsilon,p}(1)=1$ and has exactly one zero $z_{\varepsilon,p}\in(0,1)$.
-
-Let $\eta_{\varepsilon,p}$ be the Lagrange multiplier associated with the constraint
+Prove that $\mathcal E_{\varepsilon,p}$ attains its global minimum on $\mathcal A_p$. For each fixed $p>0$, prove that for all sufficiently small $\varepsilon>0$, every global minimizer $u_{\varepsilon,p}$ has exactly two zeros
 $$
-\int_0^1u(x)\,dx=0,
+0<z^-_{\varepsilon,p}<z^+_{\varepsilon,p}<1.
+$$
+Put
+$$
+d_{\varepsilon,p}=z^+_{\varepsilon,p}-z^-_{\varepsilon,p}.
+$$
+
+Let $\eta_{\varepsilon,p}$ and $\xi_{\varepsilon,p}$ be the Lagrange multipliers associated respectively with
+$$
+\int_0^1u(x)\,dx=0
+$$
+and
+$$
+\int_0^1x u(x)\,dx=\frac{1}{6(p+1)},
 $$
 with the sign convention that the constrained functional is
 $$
 \mathcal E_{\varepsilon,p}(u)
-+\eta_{\varepsilon,p}\int_0^1u(x)\,dx.
++\eta_{\varepsilon,p}\int_0^1u(x)\,dx
++\xi_{\varepsilon,p}
+\left(
+\int_0^1x u(x)\,dx-\frac{1}{6(p+1)}
+\right).
 $$
-Prove that $\eta_{\varepsilon,p}>0$ for all sufficiently small $\varepsilon$.
+Prove that this multiplier pair is uniquely determined for every sufficiently small $\varepsilon>0$.
 
 The following limits exist and are independent of the choice of global minimizer:
 $$
 A_p
 =
 \lim_{\varepsilon\downarrow0}
-\frac{z_{\varepsilon,p}-\frac{p}{p+1}}{\varepsilon},
+\frac{d_{\varepsilon,p}-\frac{p}{p+1}}{\varepsilon},
 $$
 $$
 B_p
@@ -55,7 +73,7 @@ B_p
 -\lim_{\varepsilon\downarrow0}
 \varepsilon
 \log\left|
-z_{\varepsilon,p}-\frac{p}{p+1}-\varepsilon A_p
+d_{\varepsilon,p}-\frac{p}{p+1}-\varepsilon A_p
 \right|,
 $$
 and
@@ -63,7 +81,8 @@ $$
 C_p
 =
 -\lim_{\varepsilon\downarrow0}
-\varepsilon\log\eta_{\varepsilon,p}.
+\varepsilon
+\log\sqrt{\eta_{\varepsilon,p}^2+\xi_{\varepsilon,p}^2}.
 $$
 Determine the ordered triple
 $$
@@ -86,4 +105,4 @@ for every $p>0$.
 
 ## Domain Explanation
 
-The problem studies minimizers of a mass-constrained singularly perturbed phase-field energy with asymmetric wells and a one-sided boundary constraint. The requested constants depend on the precise location of the transition layer and on exponentially small interactions between the interface, the boundary, and the mass multiplier. Calculus of variations is the primary subject, while singular perturbation and asymptotic analysis provide the supporting tools.
+The problem studies a singularly perturbed two-phase variational energy under simultaneous mass and first-moment constraints. The two constraints force a coupled two-interface geometry, and the requested limits require separating algebraic interface shifts from two different exponentially small interaction mechanisms. Calculus of variations is the primary subject, while singular perturbation and asymptotic analysis provide supporting tools.
