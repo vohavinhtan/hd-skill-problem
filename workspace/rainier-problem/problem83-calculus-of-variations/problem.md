@@ -33,15 +33,15 @@ $$
 \frac12\int_0^1\bigl(u''(x)\bigr)^2\,dx.
 $$
 
-Prove that $\mathcal J$ has a unique global minimizer $u_\lambda$ on $\mathcal K_\lambda$.
+For each $0<\lambda<1$, let $u_\lambda$ denote the unique global minimizer of $\mathcal J$ on $\mathcal K_\lambda$.
 
-For all sufficiently small $\lambda>0$, prove that the interior contact set
+For all sufficiently small $\lambda>0$, its interior contact set
 $$
 \mathcal C_\lambda^\circ
 =
 \left\{x\in(0,1):u_\lambda(x)=\psi_\lambda(x)\right\}
 $$
-has exactly two connected components and can be written
+has exactly two connected components and is of the form
 $$
 \mathcal C_\lambda^\circ
 =
@@ -49,7 +49,7 @@ $$
 \qquad
 0<a_\lambda<b_\lambda<c_\lambda<d_\lambda<1.
 $$
-Prove also that $u_\lambda$ is $C^2$ and piecewise smooth. Define the inner free-boundary jumps
+The minimizer $u_\lambda$ is $C^2$ and piecewise smooth. Define the inner free-boundary jumps
 $$
 \Delta_b(\lambda)
 =u_\lambda'''(b_\lambda^+)-u_\lambda'''(b_\lambda^-),
@@ -57,9 +57,9 @@ $$
 \Delta_c(\lambda)
 =u_\lambda'''(c_\lambda^+)-u_\lambda'''(c_\lambda^-).
 $$
-Prove that these jumps are positive for all sufficiently small $\lambda>0$.
+For all sufficiently small $\lambda>0$, these jumps are positive.
 
-Prove that the limits
+The following limits exist:
 $$
 A
 =
@@ -86,9 +86,9 @@ D
 \frac1\lambda
 \left(
 \frac{\Delta_c(\lambda)}{\Delta_b(\lambda)}-1
-\right)
+\right).
 $$
-exist, and determine the ordered quadruple
+Determine the ordered quadruple
 $$
 (A,B,C,D).
 $$
@@ -108,4 +108,4 @@ $$
 
 ## Domain Explanation
 
-The problem is a fourth-order obstacle problem for bending energy. Its difficulty lies in determining the global contact geometry, certifying the minimizer through the variational inequality and the contact reaction, and then resolving an asymmetric free-boundary splitting together with a second-order cancellation. Calculus of variations is therefore the primary subject, with free-boundary and spline methods providing supporting tools.
+The problem is a fourth-order obstacle problem for bending energy. The existence and qualitative free-boundary structure of the minimizer are supplied as part of the setup; the task is to extract a four-parameter asymptotic signature from the asymmetric splitting of the two contact intervals, including a second-order cancellation and the first-order imbalance of the inner jump ratio. Calculus of variations is therefore the primary subject, with free-boundary and spline methods providing supporting tools.
