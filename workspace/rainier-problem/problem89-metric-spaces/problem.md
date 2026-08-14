@@ -2,11 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Let $r\geq6$, let $d$ be an integer with
-$$
-2\leq d<r,\qquad d\mid r,
-$$
-and put
+Let $r\geq30$ be divisible by $30$, and put
 $$
 q=2^r,\qquad n=q^2=2^{2r}.
 $$
@@ -29,8 +25,7 @@ $$
 $$
 put
 $$
-\langle\alpha,v\rangle
-=\operatorname{Tr}(au+bw).
+\langle\alpha,v\rangle=\operatorname{Tr}(au+bw).
 $$
 For $0\neq\alpha\in V$, define the linear word $\ell_\alpha\in\mathbb F_2^V$ by
 $$
@@ -43,41 +38,52 @@ $$
 
 For each $s\in E^\times$, define the quadratic word $\mathbf q_s\in\mathbb F_2^V$ by
 $$
-(\mathbf q_s)_{(u,w)}
-=\operatorname{Tr}(suw),
+(\mathbf q_s)_{(u,w)}=\operatorname{Tr}(suw),
 $$
-and define the affine family
+and define
 $$
-\mathcal Q_s
-=\{\mathbf q_s+\ell_\alpha:\alpha\in V\}.
+\mathcal Q_s=\{\mathbf q_s+\ell_\alpha:\alpha\in V\},
+\qquad
+\mathscr Q=\bigcup_{s\in E^\times}\mathcal Q_s.
 $$
 All words in $\mathcal L$ and in every $\mathcal Q_s$ have even weight, hence belong to $X_n$.
 
-Put
+For $m\in\{6,10\}$ put
 $$
-H=\langle\tau^{2^d-1}\rangle\leq E^\times,
-$$
-so
-$$
-|H|=\frac{2^r-1}{2^d-1}.
-$$
-Define
-$$
-\mathscr Q=\bigcup_{s\in E^\times}\mathcal Q_s,
+M_m=2^m-1,
 \qquad
-\mathscr H=\bigcup_{s\in H}\mathcal Q_s,
-\qquad
-\mathscr C=\bigcup_{s\in\tau H}\mathcal Q_s.
+H_m=\langle\tau^{M_m}\rangle\leq E^\times.
 $$
+For an integer $c$, define
+$$
+\Omega_{m,c}
+=
+\bigcup_{i=0}^{m-1}\tau^{\,c+2^i}H_m
+\subseteq E^\times,
+$$
+and
+$$
+\mathscr R_{m,c}
+=
+\bigcup_{s\in\Omega_{m,c}}\mathcal Q_s.
+$$
+Since $6\mid r$ and $10\mid r$, both $M_6=63$ and $M_{10}=1023$ divide $q-1$.
+
 For $z\in X_n$, set
 $$
 \lambda(z)=\mathbf1_{\mathcal L}(z),
 \qquad
 \mu(z)=\mathbf1_{\mathscr Q}(z),
+$$
+$$
+\alpha_0(z)=\mathbf1_{\mathscr R_{6,1}}(z),
 \qquad
-\eta(z)=\mathbf1_{\mathscr H}(z),
+\alpha_1(z)=\mathbf1_{\mathscr R_{6,10}}(z),
+$$
+$$
+\beta_0(z)=\mathbf1_{\mathscr R_{10,1}}(z),
 \qquad
-\xi(z)=\mathbf1_{\mathscr C}(z).
+\beta_1(z)=\mathbf1_{\mathscr R_{10,34}}(z).
 $$
 
 For $x,y\in X_n$, define
@@ -85,8 +91,10 @@ $$
 d_n(x,y)=
 \begin{cases}
 0,&x=y,\\
-32n+16\operatorname{wt}(x+y)
-+8\lambda(x+y)+4\mu(x+y)+2\eta(x+y)+\xi(x+y),&x\neq y,
+256n+128\operatorname{wt}(x+y)
++64\lambda(x+y)+32\mu(x+y)
++16\alpha_0(x+y)+8\alpha_1(x+y)
++4\beta_0(x+y)+2\beta_1(x+y),&x\neq y,
 \end{cases}
 $$
 where addition is coordinatewise modulo $2$.
@@ -97,17 +105,19 @@ $$
 d_n(F(x),F(y))=d_n(x,y)
 \qquad(x,y\in X_n),
 $$
-and determine $|\operatorname{Iso}(X_n,d_n)|$ in closed form as a function of $r$ and $d$.
+and determine $|\operatorname{Iso}(X_n,d_n)|$ in closed form as a function of $r$.
 
-Your answer must give a single explicit normal form for every isometry and must specify the exact admissible choices of every parameter. In particular, if a coordinate permutation of $V=E^2$ is written using a matrix
+Your answer must give one explicit normal form for every isometry and must specify the exact admissible choices of every parameter. In particular, if the coordinate action on $V=E^2$ is written as
 $$
-M=\begin{pmatrix}a&b\\c&e\end{pmatrix}\in M_2(E)
+\Phi_{M,k}(v)=Mv^{2^k},
+\qquad
+M=\begin{pmatrix}a&b\\c&e\end{pmatrix}\in M_2(E),
 $$
-and a Frobenius power, then the allowed values of the Frobenius exponent and the exact condition on
+then the allowed values of $k$ and the exact condition coupling $k$ to
 $$
 \det M=ae+bc
 $$
-must be stated explicitly. Naming an abstract semilinear or classical group alone is not sufficient.
+must be stated explicitly. Naming an abstract semilinear group, giving independent conditions on $k$ and $\det M$, or leaving the determinant condition as an unspecified stabilizer is not sufficient.
 
 ---
 
@@ -124,4 +134,4 @@ must be stated explicitly. Naming an abstract semilinear or classical group alon
 
 ## Domain Explanation
 
-This is a finite metric-space isometry classification problem. The distance shells encode Hamming weight together with a linear-code marker and a structured pencil of quadratic-refinement families over a finite field. Recovering the isometries requires reconstructing the coordinate action from the metric and then resolving how that action normalizes the quadratic pencil, its distinguished multiplicative-subgroup part, and a distinguished coset. Finite-field, semilinear, and quadratic-form ideas provide the rigidity mechanism, but the primary object being classified is the complete isometry set of the explicitly defined metric space $(X_n,d_n)$, so Analysis and Metric spaces is the appropriate primary classification.
+This is a finite metric-space isometry classification problem. Its distance shells encode Hamming weight, a linear-code marker, a full quadratic pencil over a finite field, and four distinguished unions of pencil fibers whose parameter sets are shifted Frobenius orbits in two different cyclic quotients of $E^\times$. Recovering every isometry therefore requires metric reconstruction of the coordinate action, semilinear reconstruction from the quadratic pencil, and then a coupled congruence analysis linking the Frobenius exponent to the determinant coset simultaneously modulo $63$ and $1023$. The finite-field and coding structures provide the rigidity mechanism, while the primary object being classified remains the complete isometry set of the explicit metric space $(X_n,d_n)$.
