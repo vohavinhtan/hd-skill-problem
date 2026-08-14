@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Decode the metric invariants
+Step 1: Decode the metric invariants and verify the metric
 
 The absolute trace pairing on $E$ is nondegenerate. Indeed, if $c\neq0$ and
 $$
@@ -11,49 +11,66 @@ $$
 \operatorname{Tr}(z)=z+z^2+\cdots+z^{2^{r-1}}
 $$
 is a nonzero polynomial of degree $2^{r-1}<2^r$, so it cannot vanish on all of $E$.
+The matrix pairing
+$$
+(C,X)\longmapsto \operatorname{tr}(C^T X)
+$$
+is nondegenerate over $E$, hence the displayed $\mathbb F_2$-valued pairing
+$$
+\langle C,X\rangle
+=
+\operatorname{Tr}(\operatorname{tr}(C^T X))
+$$
+is nondegenerate as well.
 
-Every nonzero linear word has weight $n/2$, hence even. Every word in $\mathcal Q_s$ is the evaluation vector of a Boolean polynomial of degree at most $2$ in $2r$ binary variables. Since $2<2r$, every monomial omits at least one variable, and summing over that variable shows that the total weight is even. Thus all marked words lie in $X_n$ as stated.
+Every nonzero linear word $\ell_C$ has weight $n/2$, hence even. If $W\leq V$ is a nonzero $E$-subspace, then
+$$
+\operatorname{wt}(\chi_W)=|W|=q^{\dim_E W},
+$$
+which is even. Thus all words in $\mathcal P,\mathcal R,\mathcal U,\mathcal Z$ have even weight. Every $H_t$ is an $E$-hyperplane in the four-dimensional $E$-space $V$, so
+$$
+\operatorname{wt}(h_t)=q^3,
+$$
+also even.
+
+Finally, $X\mapsto\operatorname{Tr}(\tau\det X)$ is a Boolean polynomial of degree at most $2$ in the $4r$ binary coordinates of $X$. Adding a linear word keeps degree at most $2<4r$. The parity of the weight of such a Boolean function is its total sum over $\mathbb F_2^{4r}$; every monomial omits at least one binary variable, so that sum is even. Hence every word in $\mathcal D_\tau$ also belongs to $X_n$.
 
 For nonzero $z\in X_n$, put
 $$
-R(z)=d_n(0,z)-256n.
+R(z)=d_n(0,z)-4096n.
 $$
 Because $\operatorname{wt}(z)$ is even,
 $$
-128\operatorname{wt}(z)\equiv0\pmod{256}.
+1024\operatorname{wt}(z)\equiv0\pmod{2048}.
 $$
-The remainder of $R(z)$ modulo $128$ is
+The marker contribution is
 $$
-64\lambda(z)+32\mu(z)+16\alpha_0(z)+8\alpha_1(z)+4\beta_0(z)+2\beta_1(z),
+512\lambda+256\pi+128\kappa+64\upsilon+32\zeta+16\alpha+8\beta+4\varepsilon+2\delta,
 $$
-which lies between $0$ and $126$ and therefore determines the six marker bits uniquely. Subtracting those bits then determines $\operatorname{wt}(z)$. Hence every isometry fixing $0$ preserves Hamming weight and each of
-$$
-\mathcal L,\quad \mathscr Q,\quad
-\mathscr R_{6,1},\quad \mathscr R_{6,10},\quad
-\mathscr R_{10,1},\quad \mathscr R_{10,34}. \tag{1}
-$$
+which lies between $0$ and $1022$. Therefore $R(z)$ modulo $1024$ determines all nine marker bits uniquely, and after subtracting them the remaining term determines $\operatorname{wt}(z)$. Every isometry fixing the zero word consequently preserves Hamming weight and each of the nine marked families.
 
 The displayed function is a metric. A nonzero element of $X_n$ has weight at least $2$, so every nonzero distance is at least
 $$
-256n+256,
+4096n+2048.
 $$
-while every distance is at most
+Every distance is at most
 $$
-256n+128n+126=384n+126.
+4096n+1024n+1022=5120n+1022.
 $$
 Thus for three distinct points,
 $$
-384n+126<512n+512,
+5120n+1022<8192n+4096,
 $$
-so the triangle inequality is automatic; the cases with a repeated point are immediate.
+so the triangle inequality is automatic. Cases with a repeated point are immediate.
 
-Step 2: Remove translations and reconstruct the coordinate permutation
+Step 2: Remove translations and reconstruct a coordinate permutation
 
-For every $a\in X_n$, translation
+Since $d_n(x,y)$ depends only on $x+y$, every translation
 $$
 T_a(x)=a+x
+\qquad(a\in X_n)
 $$
-is an isometry because $d_n(x,y)$ depends only on $x+y$. For an arbitrary isometry $F$, let
+is an isometry. Given an arbitrary isometry $F$, let
 $$
 a=F(0),
 \qquad
@@ -61,457 +78,587 @@ G=T_a\circ F.
 $$
 Then $G(0)=0$.
 
-For $u\in V$, let $e_u$ be the unit word at coordinate $u$, and for $u\neq v$ put
+For $P\in V$, let $e_P$ be the unit word supported at the coordinate $P$. The weight-$2$ words are
 $$
-p_{uv}=e_u+e_v.
+p_{PQ}=e_P+e_Q
+\qquad(P\neq Q).
 $$
-These are exactly the weight-$2$ words, so $G$ permutes them. For two distinct such words,
+Since $G$ preserves weight, it permutes these words. For distinct $p_{PQ}$ and $p_{RS}$,
 $$
-\operatorname{wt}(p_{uv}+p_{rs})
+\operatorname{wt}(p_{PQ}+p_{RS})
 =
 \begin{cases}
-2,&|\{u,v\}\cap\{r,s\}|=1,\\
-4,&\{u,v\}\cap\{r,s\}=\varnothing.
-\end{cases} \tag{2}
+2,&|\{P,Q\}\cap\{R,S\}|=1,\\
+4,&\{P,Q\}\cap\{R,S\}=\varnothing.
+\end{cases}
 $$
-Hence the metric recovers the intersection graph of the $2$-subsets of $V$.
+Hence the metric on the weight-$2$ shell recovers the intersection graph of the two-subsets of the $n$-element coordinate set $V$.
 
-For each $u\in V$, the star
+For each $P\in V$, the star
 $$
-\Sigma_u=\{p_{uv}:v\neq u\}
+\Sigma_P=\{p_{PQ}:Q\neq P\}
 $$
-is a clique of size $n-1$. Any clique with no common coordinate has size at most $3$: after choosing $\{u,v\}$ and $\{u,w\}$, any member meeting both while avoiding $u$ must be $\{v,w\}$. Since $n-1>3$, the stars are exactly the cliques of size $n-1$. Thus there is a unique permutation $\phi$ of $V$ such that
+is a clique of size $n-1$. A clique with no common coordinate has size at most $3$: after two members $\{P,Q\}$ and $\{P,R\}$ are chosen, a member meeting both while avoiding $P$ must be $\{Q,R\}$. Since $n-1>3$, the stars are exactly the cliques of size $n-1$. Thus there is a unique permutation
 $$
-G(p_{uv})=p_{\phi(u)\phi(v)}. \tag{3}
-$$
-
-Let $x\in X_n$ have support $A$ and weight $k$. From the weight of $x+p_{uv}$ one recovers
-$$
-|A\cap\{u,v\}|
-=\frac{k+2-\operatorname{wt}(x+p_{uv})}{2}. \tag{4}
-$$
-The support $A'$ of $G(x)$ therefore satisfies
-$$
-|A'\cap\{\phi(u),\phi(v)\}|
-=|A\cap\{u,v\}| \tag{5}
-$$
-for every distinct $u,v$. Taking three distinct coordinates recovers each individual membership indicator, so $A'=\phi(A)$. Hence every $0$-fixing isometry is exactly the coordinate permutation
-$$
-(P_\phi x)_v=x_{\phi^{-1}(v)}. \tag{6}
-$$
-
-Step 3: The linear marker forces $\phi$ to be $\mathbb F_2$-linear
-
-For
-$$
-\alpha=(a,b),\qquad v=(u,w),
-$$
-write
-$$
-\langle\alpha,v\rangle=\operatorname{Tr}(au+bw).
-$$
-This pairing on $V$ is nondegenerate by Step 1.
-
-Since $P_\phi$ preserves $\mathcal L$, for every nonzero $\alpha\in V$ there is a nonzero $\beta\in V$ such that
-$$
-\langle\alpha,\phi^{-1}(v)\rangle
-=\langle\beta,v\rangle
-\qquad(v\in V). \tag{7}
-$$
-Putting $v=0$ and varying $\alpha$ gives $\phi^{-1}(0)=0$. Applying (7) to $u+v$ and using additivity on the right gives
-$$
-\left\langle\alpha,
-\phi^{-1}(u+v)+\phi^{-1}(u)+\phi^{-1}(v)
-\right\rangle=0
-$$
-for every $\alpha$, so nondegeneracy implies
-$$
-\phi^{-1}(u+v)=\phi^{-1}(u)+\phi^{-1}(v).
-$$
-Thus $\phi$ is an $\mathbb F_2$-linear bijection.
-
-Step 4: The full quadratic pencil forces an $E$-semilinear action
-
-For $s\in E$, define
-$$
-B_s\bigl((u,w),(u',w')\bigr)
-=\operatorname{Tr}\bigl(s(uw'+u'w)\bigr). \tag{8}
-$$
-For $s\neq0$, this is the polar form of every word in $\mathcal Q_s$. Distinct $s$ give distinct forms: if $B_s=B_t$, then
-$$
-\operatorname{Tr}((s+t)uw')=0
-$$
-for all $u,w'$, hence $s=t$ by nondegeneracy of the trace pairing.
-
-Put
-$$
-R=\phi^{-1}.
-$$
-Since $P_\phi$ preserves the full union $\mathscr Q$, for each $s\in E^\times$ there is a unique $\Psi(s)\in E^\times$ such that
-$$
-B_s(Rx,Ry)=B_{\Psi(s)}(x,y)
-\qquad(x,y\in V). \tag{9}
-$$
-Let $T_s$ denote scalar multiplication by $s$ on $V$. Since
-$$
-B_s(x,y)=B_1(T_sx,y), \tag{10}
-$$
-and $B_1$ is nondegenerate, if $R^*$ is the $B_1$-adjoint of $R$, then
-$$
-R^*T_sR=T_{\Psi(s)}. \tag{11}
-$$
-Writing
-$$
-\delta=\Psi(1),
-$$
-we get
-$$
-R^*R=T_\delta. \tag{12}
-$$
-Combining (11) and (12),
-$$
-R^{-1}T_sR=T_{\delta^{-1}\Psi(s)}. \tag{13}
-$$
-Define
-$$
-\sigma(0)=0,
-\qquad
-\sigma(s)=\delta^{-1}\Psi(s)\quad(s\neq0).
-$$
-Conjugation preserves sums and products of the scalar operators, so
-$$
-\sigma(s+t)=\sigma(s)+\sigma(t),
-\qquad
-\sigma(st)=\sigma(s)\sigma(t),
-\qquad
-\sigma(1)=1.
-$$
-Thus $\sigma$ is a field automorphism of $E$.
-
-Since $E=\mathbb F_{2^r}$ and $\tau$ is primitive, every $\mathbb F_2$-automorphism is a unique Frobenius power
-$$
-\sigma(s)=s^{2^k},
-\qquad
-0\leq k<r. \tag{14}
-$$
-Indeed, the conjugates of $\tau$ over $\mathbb F_2$ are the distinct elements
-$$
-\tau,\tau^2,\ldots,\tau^{2^{r-1}},
-$$
-and the image of $\tau$ determines the automorphism.
-
-Equation (13) now gives
-$$
-sR(x)=R(s^{2^k}x),
-$$
-so $R$ is $2^{r-k}$-semilinear and $\phi$ is $2^k$-semilinear. Therefore there is a unique
-$$
-M\in\operatorname{GL}_2(E)
+\phi:V\to V
 $$
 such that
 $$
-\phi(v)=Mv^{2^k}. \tag{15}
+G(p_{PQ})=p_{\phi(P)\phi(Q)}.
 $$
 
-Write
+Let a word $x$ have support $S\subseteq V$ and weight $k$. From the weight of $x+p_{PQ}$ one recovers
 $$
-M=\begin{pmatrix}a&b\\c&e\end{pmatrix},
+|S\cap\{P,Q\}|
+=
+\frac{k+2-\operatorname{wt}(x+p_{PQ})}{2}.
+$$
+The support $S'$ of $G(x)$ therefore satisfies
+$$
+|S'\cap\{\phi(P),\phi(Q)\}|
+=|S\cap\{P,Q\}|
+$$
+for every distinct $P,Q$. Using three distinct coordinates recovers each individual membership indicator, so
+$$
+S'=\phi(S).
+$$
+Therefore
+$$
+(Gx)_X=x_{\phi^{-1}(X)}.
+$$
+Every zero-fixing isometry is exactly the coordinate permutation $P_\phi$ induced by a unique permutation $\phi$ of $V$.
+
+Step 3: The linear marker forces $\phi$ to be $\mathbb F_2$-linear
+
+Preservation of $\mathcal L$ means that for every nonzero $C\in V$ there is a nonzero $D\in V$ such that
+$$
+\langle C,\phi^{-1}(X)\rangle
+=
+\langle D,X\rangle
+\qquad(X\in V).
+$$
+At $X=0$, varying $C$ and using nondegeneracy gives
+$$
+\phi^{-1}(0)=0.
+$$
+For $X,Y\in V$, the same identity gives
+$$
+\left\langle C,
+\phi^{-1}(X+Y)+\phi^{-1}(X)+\phi^{-1}(Y)
+\right\rangle=0
+$$
+for every $C$. Hence
+$$
+\phi^{-1}(X+Y)=\phi^{-1}(X)+\phi^{-1}(Y).
+$$
+Thus $\phi$ is an $\mathbb F_2$-linear bijection of the additive group of $V$.
+
+Step 4: The $E$-line marker forces $E$-semilinearity
+
+The coordinate permutation sends an indicator word $\chi_W$ to $\chi_{\phi(W)}$. Preservation of $\mathcal P$ therefore says that $\phi$ maps every one-dimensional $E$-subspace of $V$ to another one-dimensional $E$-subspace.
+
+Choose an $E$-basis $E_1,E_2,E_3,E_4$ of $V$, for example the four matrix units, and put
+$$
+f_i=\phi(E_i).
+$$
+The $E$-lines $E E_i$ form a direct sum. Since $\phi$ is additive and bijective, their images $E f_i$ also form a direct sum, so $f_1,\ldots,f_4$ are $E$-linearly independent.
+
+For each $i$ there is an additive bijection $\sigma_i:E\to E$ with
+$$
+\phi(tE_i)=\sigma_i(t)f_i,
 \qquad
-\Delta=\det M=ae+bc\in E^\times. \tag{16}
+\sigma_i(1)=1.
 $$
-Since
+For $i\neq j$, the $E$-line $E(E_i+E_j)$ maps to the line containing
 $$
-R(v)=\bigl(M^{-1}v\bigr)^{2^{r-k}},
+\phi(E_i+E_j)=f_i+f_j,
 $$
-a direct substitution into (8), using invariance of the absolute trace under Frobenius, gives
+namely $E(f_i+f_j)$. Hence
 $$
-\Psi(s)=\Delta^{-1}s^{2^k}. \tag{17}
-$$
-This is the induced action on the quadratic-pencil parameter.
-
-Step 5: A cyclic-orbit stabilizer lemma
-
-Fix an integer $m\geq3$ and put
-$$
-N_m=2^m-1.
-$$
-In the cyclic group $\mathbb Z/N_m\mathbb Z$, set
-$$
-C_m=\{2^i:0\leq i<m\}. \tag{18}
-$$
-For every integer $k$, multiplication by $2^k$ permutes $C_m$.
-
-We need the following elementary fact.
-
-**Lemma.** If
-$$
-x\longmapsto 2^k x+b
-$$
-is an affine permutation of $\mathbb Z/N_m\mathbb Z$ carrying $C_m$ onto itself, then
-$$
-b\equiv0\pmod{N_m}.
-$$
-
-To prove it, compose with multiplication by $2^{-k}$ modulo $N_m$. It is enough to show that no nonzero translation preserves $C_m$. Represent the elements of $C_m$ in increasing order as
-$$
-1,2,4,\ldots,2^{m-1}.
-$$
-Their cyclic successive gaps are
-$$
-1,2,4,\ldots,2^{m-2},2^{m-1}, \tag{19}
-$$
-all distinct. A translation preserving $C_m$ induces a cyclic shift of this ordered gap sequence. Since all gaps are distinct, the only possible shift is the zero shift, and then the translation fixes $1$, so it is zero. This proves the lemma.
-
-For an integer $c$, let
-$$
-C_{m,c}=c+C_m\subseteq\mathbb Z/N_m\mathbb Z. \tag{20}
-$$
-The affine map
-$$
-f_{k,h}(x)=2^k x-h \tag{21}
-$$
-preserves $C_{m,c}$ exactly when
-$$
-h\equiv(2^k-1)c\pmod{N_m}. \tag{22}
-$$
-Indeed, after subtracting $c$, its action becomes
-$$
-y\longmapsto2^k y+\bigl(2^kc-h-c\bigr),
-$$
-and the lemma forces the translation term to vanish.
-
-Step 6: Apply the four orbit markers and solve the coupled congruences
-
-Write the determinant as
-$$
-\Delta=\tau^h,
-\qquad
-h\in\mathbb Z/(q-1)\mathbb Z. \tag{23}
-$$
-For $m\in\{6,10\}$, the quotient $E^\times/H_m$ is cyclic of order
-$$
-N_m=2^m-1,
-$$
-and the set $\Omega_{m,c}$ corresponds exactly to the residue set $C_{m,c}$ from (20). By (17), on exponent classes modulo $N_m$ the pencil parameter transforms as
-$$
-j\longmapsto2^k j-h. \tag{24}
-$$
-Therefore preservation of $\mathscr R_{m,c}$ is equivalent to (22).
-
-For the two $m=6$ markers, with $N_6=63$, we obtain
-$$
-h\equiv2^k-1\pmod{63}, \tag{25}
-$$
-$$
-h\equiv10(2^k-1)\pmod{63}. \tag{26}
-$$
-Subtracting gives
-$$
-63\mid9(2^k-1),
+\sigma_i(t)f_i+\sigma_j(t)f_j
+=
+\phi(tE_i+tE_j)
+\in E(f_i+f_j),
 $$
 so
 $$
-7\mid2^k-1.
+\sigma_i(t)=\sigma_j(t)
 $$
-The multiplicative order of $2$ modulo $7$ is $3$, hence
-$$
-3\mid k. \tag{27}
-$$
-Conversely, if $3\mid k$, then $7\mid2^k-1$, so (25) and (26) agree. Thus the two $m=6$ markers are equivalent to (27) together with (25).
+for all $t$. Thus all $\sigma_i$ are one additive bijection $\sigma$.
 
-For the two $m=10$ markers, with $N_{10}=1023$, we obtain
+Now $s(E_i+tE_j)$ lies in the same $E$-line as $E_i+tE_j$. Therefore
 $$
-h\equiv2^k-1\pmod{1023}, \tag{28}
+\phi(sE_i+stE_j)
+=
+\sigma(s)f_i+\sigma(st)f_j
 $$
+must lie in the line generated by
 $$
-h\equiv34(2^k-1)\pmod{1023}. \tag{29}
+f_i+\sigma(t)f_j.
 $$
-Subtracting gives
+Comparing the $f_i$-coefficient gives the scalar $\sigma(s)$, and comparing the $f_j$-coefficient gives
 $$
-1023\mid33(2^k-1).
+\sigma(st)=\sigma(s)\sigma(t).
 $$
-Since
+Thus $\sigma$ is a field automorphism of $E$. Hence
 $$
-1023=33\cdot31,
-$$
-we get
-$$
-31\mid2^k-1.
-$$
-The multiplicative order of $2$ modulo $31$ is $5$, so
-$$
-5\mid k. \tag{30}
-$$
-Conversely, if $5\mid k$, then (28) and (29) agree. Thus the two $m=10$ markers are equivalent to (30) together with (28).
-
-Combining (27) and (30),
-$$
-15\mid k. \tag{31}
-$$
-Since $0\leq k<r$ and $30\mid r$, the allowed exponents are exactly
-$$
-k\in\{0,15,30,\ldots,r-15\}. \tag{32}
-$$
-There are $r/15$ such values.
-
-The remaining determinant congruences are
-$$
-h\equiv2^k-1\pmod{63},
-\qquad
-h\equiv2^k-1\pmod{1023}. \tag{33}
-$$
-Their common modulus is
-$$
-L=\operatorname{lcm}(63,1023)
-=\frac{63\cdot1023}{3}
-=21483. \tag{34}
-$$
-Hence
-$$
-h\equiv2^k-1\pmod{21483}. \tag{35}
-$$
-Because $21483$ divides $2^{30}-1$ and $30\mid r$, it divides $q-1$. Thus (35) is equivalent to
-$$
-\Delta
-=\tau^{\,2^k-1+21483j} \tag{36}
+\sigma(t)=t^{2^k}
 $$
 for a unique integer
 $$
-0\leq j<\frac{q-1}{21483}. \tag{37}
+0\leq k<r.
 $$
-Equivalently,
+There is consequently a unique $E$-linear map $T\in\operatorname{GL}_E(V)$ such that
 $$
-\det M\in\tau^{\,2^k-1}\langle\tau^{21483}\rangle. \tag{38}
+\phi(X)=T(X^{2^k}),
 $$
-This is the required coupling between the Frobenius exponent and the determinant coset.
+where the Frobenius power is applied entrywise.
 
-Conversely, if (32) and (38) hold, then (35), hence all four congruences (25), (26), (28), (29), hold. By the cyclic-orbit lemma, all four marked parameter sets are preserved. The semilinear coordinate map also preserves $\mathcal L$ and the full pencil $\mathscr Q$, so it preserves every marker and therefore the metric.
+Step 5: Rank-one preservation and the chosen ruling force $T(X)=AXB$
 
-Step 7: State the normal form and count the isometries
+Preservation of $\mathcal R$ says that $T$ preserves rank-one matrices in both directions. The maximal two-dimensional $E$-subspaces all of whose nonzero elements have rank $1$ are exactly the two rulings
+$$
+U_{[u]}=\{uv^T:v\in E^2\}
+$$
+and
+$$
+W_{[v]}=\{uv^T:u\in E^2\}.
+$$
+Indeed, if two independent rank-one matrices $uv^T$ and $xy^T$ have both $u,x$ independent and $v,y$ independent, then after changing row and column bases their sum becomes the identity matrix and has rank $2$. Therefore a two-dimensional subspace consisting entirely of rank-at-most-one matrices must have a common column direction or a common row direction.
 
-For admissible $M$ and $k$, define
-$$
-\Phi_{M,k}(v)=Mv^{2^k}
-\qquad(v\in E^2). \tag{39}
-$$
-Then
-$$
-\Phi_{M,k}^{-1}(v)
-=\bigl(M^{-1}v\bigr)^{2^{r-k}}, \tag{40}
-$$
-where $2^r$ acts as the identity when $k=0$.
+The marker $\mathcal U$ says that the $U$-ruling is preserved rather than exchanged with the $W$-ruling.
 
-Every isometry is uniquely of the form
+Let $E_{ij}$ be the matrix units. Write
 $$
-(F_{a,M,k}(x))_v
-=a_v+x_{\Phi_{M,k}^{-1}(v)}, \tag{41}
+T(E_{ij})=a_i r_{ij}^T
+$$
+with the same column direction $a_i$ for fixed $i$, because $T$ preserves each left-ruling type. The vectors $a_1,a_2$ are independent. Since the right-ruling subspaces are then also preserved, for each fixed $j$ the matrices $T(E_{1j})$ and $T(E_{2j})$ share a row direction. Thus, after absorbing nonzero scalars into the $a_i$ and row vectors $b_j$, one may arrange
+$$
+T(E_{11})=a_1b_1^T,
+\qquad
+T(E_{12})=a_1b_2^T,
+\qquad
+T(E_{21})=a_2b_1^T,
+$$
+and
+$$
+T(E_{22})=c\,a_2b_2^T
+$$
+for some $c\in E^\times$.
+
+The rank-one matrix
+$$
+(E_{11}+E_{12}+E_{21}+E_{22})
+=(e_1+e_2)(e_1+e_2)^T
+$$
+must map to a rank-one matrix. In the bases $a_1,a_2$ and $b_1,b_2$, its coefficient matrix is
+$$
+\begin{pmatrix}1&1\\1&c\end{pmatrix},
+$$
+whose determinant is $c+1$. Hence $c=1$.
+
+Let $A$ be the matrix with columns $a_1,a_2$, and let $B$ be the matrix whose $j$-th row is $b_j^T$. Then
+$$
+T(X)=AXB
+\qquad(X\in M_2(E)).
+$$
+Both $A$ and $B$ are invertible.
+
+The representation has the scalar ambiguity
+$$
+(A,B)\sim(tA,t^{-1}B).
+$$
+Because $q-1$ is odd, the squaring map on $E^\times$ is bijective. There is therefore a unique choice of $t$ for which
+$$
+\det(tA)=1.
+$$
+From now on use this normalization, so
+$$
+\det A=1.
+$$
+
+Step 6: The trace-zero line marker collapses the two-sided action to scalar conjugation
+
+Preservation of $\mathcal Z$ says that for nonzero $X$,
+$$
+\operatorname{tr}X=0
+\quad\Longleftrightarrow\quad
+\operatorname{tr}(\phi(X))=0.
+$$
+Since
+$$
+\phi(X)=A X^{2^k}B,
+$$
+and Frobenius preserves the equation $\operatorname{tr}X=0$, this is equivalent, after writing $Y=X^{2^k}$, to
+$$
+\operatorname{tr}(BA\,Y)=0
+\quad\Longleftrightarrow\quad
+\operatorname{tr}Y=0
+\qquad(Y\in M_2(E)).
+$$
+Two nonzero $E$-linear functionals with the same kernel are proportional. The matrix trace pairing is nondegenerate, so there is a unique
+$$
+\gamma\in E^\times
+$$
+with
+$$
+BA=\gamma I_2.
+$$
+Thus
+$$
+B=\gamma A^{-1},
+$$
+and every coordinate map has the form
+$$
+\phi(X)
+=
+\gamma A X^{2^k}A^{-1},
+\qquad
+\det A=1. \tag{1}
+$$
+
+Step 7: The nilpotent hyperplane markers determine the projective matrix from $k$
+
+For finite $t$, put
+$$
+u_t=\binom{t}{1},
+\qquad
+N_t=\nu_t(1,t),
+$$
+so $N_t$ is rank one, nilpotent, and both its image and kernel are the projective line $E\nu_t$. The same statement holds for $t=\infty$ with
+$$
+\nu_\infty=\binom10.
+$$
+
+For
+$$
+A=\begin{pmatrix}a&b\\c&e\end{pmatrix},
+$$
+define the projective semilinear map
+$$
+g_{A,k}(t)
+=
+\frac{a t^{2^k}+b}{c t^{2^k}+e}
+$$
+with the usual conventions at poles and at $\infty$.
+Because
+$$
+A N_t^{2^k}A^{-1}
+$$
+is a nonzero rank-one nilpotent whose image and kernel are both
+$$
+A(E\nu_t^{2^k}),
+$$
+it is a nonzero scalar multiple of
+$$
+N_{g_{A,k}(t)}.
+$$
+Consequently the coordinate permutation sends
+$$
+h_t\longmapsto h_{g_{A,k}(t)}. \tag{2}
+$$
+The scalar $\gamma$ in (1) does not affect a hyperplane equation.
+
+Preservation of
+$$
+\mathcal A=\{h_\infty,h_0,h_1\}
+$$
+forces the projective transformation represented by $A$ to permute
+$$
+\{\infty,0,1\}.
+$$
+Frobenius fixes those three points. Thus the projective map of $A$ is one of the six anharmonic transformations
+$$
+t,
+\quad
+\frac1t,
+\quad
+t+1,
+\quad
+\frac1{t+1},
+\quad
+\frac{t}{t+1},
+\quad
+\frac{t+1}{t}. \tag{3}
+$$
+Each has a determinant-one matrix over $\mathbb F_2$, and the normalization $\det A=1$ makes that representative unique.
+
+We now use the two singleton markers $h_\rho$ and $h_\eta$.
+
+Consider an element $\xi$ of order
+$$
+N=2^m+1>3.
+$$
+Its Frobenius orbit lies in the cyclic group $\langle\xi\rangle$. Among the six anharmonic values
+$$
+\xi,
+\quad
+\xi^{-1},
+\quad
+1+\xi,
+\quad
+(1+\xi)^{-1},
+\quad
+\frac{\xi}{1+\xi},
+\quad
+\frac{1+\xi}{\xi},
+$$
+only $\xi$ and $\xi^{-1}$ can lie in $\langle\xi\rangle$. Indeed, if any of the other four belonged to $\langle\xi\rangle$, then $1+\xi$ would belong to $\langle\xi\rangle$, say
+$$
+1+\xi=\xi^s.
+$$
+Since $\xi^{2^m}=\xi^{-1}$, applying the $2^m$-th power gives
+$$
+1+\xi^{-1}=\xi^{-s}.
+$$
+But the left side equals
+$$
+\frac{1+\xi}{\xi}=\xi^{s-1},
+$$
+so
+$$
+2s\equiv1\pmod N.
+$$
+Hence
+$$
+s\equiv\frac{N+1}{2}=2^{m-1}+1\pmod N.
+$$
+Squaring $1+\xi=\xi^s$ then gives
+$$
+1+\xi^2=\xi^{2s}=\xi,
+$$
+so $\xi^2+\xi+1=0$, forcing order $3$, a contradiction.
+
+For $\rho$, whose order is $9=2^3+1$, the multiplicative order of $2$ modulo $9$ is $6$. Therefore
+$$
+\rho^{2^k}
+\in\{\rho,\rho^{-1}\}
+$$
+holds exactly when
+$$
+k\equiv0\pmod6
+\quad\text{or}\quad
+k\equiv3\pmod6,
+$$
+respectively. Since the anharmonic action on an element of order different from $3$ is free, preservation of $h_\rho$ gives exactly
+$$
+\begin{cases}
+A=I_2,&k\equiv0\pmod6,\\
+A=J,&k\equiv3\pmod6,
+\end{cases} \tag{4}
+$$
+where
+$$
+J=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+$$
+represents $t\mapsto1/t$.
+
+For $\eta$, whose order is $33=2^5+1$, the multiplicative order of $2$ modulo $33$ is $10$. The same argument gives
+$$
+\begin{cases}
+A=I_2,&k\equiv0\pmod{10},\\
+A=J,&k\equiv5\pmod{10}.
+\end{cases} \tag{5}
+$$
+
+Combining (4) and (5), there are only two possibilities modulo $30$:
+$$
+\begin{cases}
+A=I_2,&k\equiv0\pmod{30},\\
+A=J,&k\equiv15\pmod{30}.
+\end{cases} \tag{6}
+$$
+Thus
+$$
+k\in\{0,15,30,\ldots,r-15\}. \tag{7}
+$$
+There are exactly $r/15$ admissible exponents, and once $k$ is known the matrix $A$ is already forced.
+
+Step 8: The determinant quadratic marker determines the scalar $\gamma$
+
+For any $s\in E$, define
+$$
+\mathcal D_s
+=
+\{\mathbf d_s+\ell_C:C\in V\}.
+$$
+The polar form of $\mathbf d_s$ is
+$$
+(X,Y)
+\longmapsto
+\operatorname{Tr}\!\left(
+ s(x_{11}y_{22}+x_{22}y_{11}+x_{12}y_{21}+x_{21}y_{12})
+\right).
+$$
+Distinct values of $s$ give distinct polar forms by nondegeneracy of the absolute trace pairing. Hence
+$$
+\mathcal D_s=\mathcal D_t
+\quad\Longleftrightarrow\quad
+s=t. \tag{8}
+$$
+
+Let $\sigma=2^k$. From (1),
+$$
+\phi(X)=\gamma A X^\sigma A^{-1}.
+$$
+For $Y\in V$,
+$$
+\phi^{-1}(Y)
+=
+\bigl(\gamma^{-1}A^{-1}YA\bigr)^{\sigma^{-1}}.
+$$
+Therefore
+$$
+\det(\phi^{-1}(Y))
+=
+\bigl(\gamma^{-2}\det Y\bigr)^{\sigma^{-1}}.
+$$
+Using invariance of the absolute trace under Frobenius,
+$$
+\operatorname{Tr}\!\left(s\det(\phi^{-1}(Y))\right)
+=
+\operatorname{Tr}\!\left(s^\sigma\gamma^{-2}\det Y\right).
+$$
+Composition with $\phi^{-1}$ sends linear words to linear words, so
+$$
+P_\phi(\mathcal D_s)
+=
+\mathcal D_{s^{2^k}\gamma^{-2}}. \tag{9}
+$$
+Preservation of the marked family $\mathcal D_\tau$, together with (8), is therefore equivalent to
+$$
+\tau^{2^k}\gamma^{-2}=\tau,
+$$
+or
+$$
+\gamma^2=\tau^{2^k-1}. \tag{10}
+$$
+Since the squaring map on $E^\times$ is bijective, (10) has exactly one solution,
+$$
+\gamma=\gamma_k
+:=
+\bigl(\tau^{2^k-1}\bigr)^{2^{r-1}}. \tag{11}
+$$
+Indeed, squaring the right side gives
+$$
+(\tau^{2^k-1})^{2^r}=\tau^{2^k-1}.
+$$
+Thus the scalar is also uniquely determined by $k$.
+
+Step 9: State the normal form, verify sufficiency, and count
+
+For every
+$$
+k\in\{0,15,30,\ldots,r-15\},
+$$
+define
+$$
+A_k
+=
+\begin{cases}
+I_2,&k\equiv0\pmod{30},\\
+J,&k\equiv15\pmod{30},
+\end{cases}
+$$
+and
+$$
+\gamma_k
+=
+\bigl(\tau^{2^k-1}\bigr)^{2^{r-1}}.
+$$
+Define the coordinate permutation
+$$
+\Phi_k:V\to V,
+\qquad
+\Phi_k(X)
+=
+\gamma_k A_k X^{2^k}A_k^{-1}. \tag{12}
+$$
+
+Every zero-fixing isometry is exactly $P_{\Phi_k}$ for one admissible $k$. Conversely, each $\Phi_k$ preserves the $E$-line spread, rank, the chosen rank-one ruling, and the trace-zero condition. By (6) it preserves the three-point hyperplane marker and fixes both $h_\rho$ and $h_\eta$. By (10) it preserves $\mathcal D_\tau$. It therefore preserves every marker and Hamming weight, hence preserves $d_n$.
+
+Restoring translations, every isometry is uniquely
+$$
+(F_{a,k}(x))_X
+=
+a_X+x_{\Phi_k^{-1}(X)}, \tag{13}
 $$
 with
 $$
 a\in X_n,
-$$
-$$
-k=15t,
 \qquad
-0\leq t<\frac r{15}, \tag{42}
+k\in\{0,15,30,\ldots,r-15\}.
 $$
-and
-$$
-M=\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\in M_2(E)
-$$
-satisfying
-$$
-a_{11}a_{22}+a_{12}a_{21}
-=\tau^{\,2^k-1+21483j} \tag{43}
-$$
-for exactly one integer
-$$
-0\leq j<\frac{q-1}{21483}. \tag{44}
-$$
-The determinant in (43) is nonzero, so $M$ is automatically invertible. Uniqueness follows because $a=F(0)$, the weight-$2$ shell determines the coordinate permutation, and a semilinear map $Mv^{2^k}$ has unique $k\in[0,r)$ and unique $M$.
+The translation parameter is $a=F(0)$, and the semilinear reconstruction makes $k$ unique.
 
-It remains to count matrices. For a fixed nonzero determinant $\Delta$, choose the first column of a $2\times2$ matrix arbitrarily nonzero; there are
+Since
 $$
-q^2-1
+|X_n|=2^{n-1}
 $$
-choices. For each first column, the determinant equation for the second column is one nontrivial affine linear equation in two variables, hence has exactly $q$ solutions. Therefore exactly
-$$
-q(q^2-1) \tag{45}
-$$
-matrices have any prescribed nonzero determinant.
-
-For each allowed $k$, equation (43) permits exactly
-$$
-\frac{q-1}{21483} \tag{46}
-$$
-values of the determinant. There are $r/15$ allowed values of $k$, and
-$$
-|X_n|=2^{n-1}.
-$$
-Thus
-$$
-|\operatorname{Iso}(X_n,d_n)|
-=2^{n-1}\frac r{15}\frac{q-1}{21483}q(q^2-1). \tag{47}
-$$
-Since $q=2^r$ and $n=2^{2r}$,
+and there are $r/15$ admissible values of $k$,
 $$
 \boxed{
 |\operatorname{Iso}(X_n,d_n)|
 =
-2^{n+r-1}\frac r{15}\,
-\frac{(2^r-1)(2^{2r}-1)}{21483},
-\qquad n=2^{2r}.
-} \tag{48}
+2^{n-1}\frac r{15},
+\qquad
+n=2^{4r}.
+} \tag{14}
 $$
 
 Final Answer:
 
 Let
 $$
-\Phi_{M,k}(v)=Mv^{2^k}.
+J=\begin{pmatrix}0&1\\1&0\end{pmatrix},
 $$
-Then all isometries, and only the isometries, are
+and for
 $$
-\boxed{
-(F_{a,M,k}(x))_v
-=a_v+x_{\Phi_{M,k}^{-1}(v)},
-}
+k\in\{0,15,30,\ldots,r-15\}
 $$
-with the exact and unique parameter choices
+put
 $$
-a\in X_n,
+A_k
+=
+\begin{cases}
+I_2,&k\equiv0\pmod{30},\\
+J,&k\equiv15\pmod{30},
+\end{cases}
 $$
 $$
-k\in\{0,15,30,\ldots,r-15\},
+\gamma_k
+=
+\bigl(\tau^{2^k-1}\bigr)^{2^{r-1}},
 $$
 and
 $$
-M=\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\in M_2(E)
+\Phi_k(X)
+=
+\gamma_k A_k X^{2^k}A_k^{-1}
+\qquad(X\in M_2(E)).
 $$
-satisfying
+Then
 $$
 \boxed{
-\det M
-=a_{11}a_{22}+a_{12}a_{21}
-=\tau^{\,2^k-1+21483j}
+\operatorname{Iso}(X_n,d_n)
+=
+\left\{
+F_{a,k}:
+(F_{a,k}(x))_X
+=a_X+x_{\Phi_k^{-1}(X)},
+\quad
+a\in X_n,
+\quad
+k\in\{0,15,30,\ldots,r-15\}
+\right\}.
 }
 $$
-for exactly one
-$$
-0\leq j<\frac{2^r-1}{21483}.
-$$
-Equivalently,
-$$
-\det M\in\tau^{\,2^k-1}\langle\tau^{21483}\rangle.
-$$
-Moreover,
+The pair $(a,k)$ is unique, and
 $$
 \boxed{
 |\operatorname{Iso}(X_n,d_n)|
 =
-2^{n+r-1}\frac r{15}\,
-\frac{(2^r-1)(2^{2r}-1)}{21483},
-\qquad n=2^{2r}.
+2^{2^{4r}-1}\frac r{15}.
 }
 $$
 
@@ -519,46 +666,45 @@ $$
 
 ## Answer
 
-Let
+For
 $$
-\Phi_{M,k}(v)=Mv^{2^k}\qquad(v\in E^2).
-$$
-Then
-$$
-\operatorname{Iso}(X_n,d_n)
-=
-\left\{
-F_{a,M,k}:
-(F_{a,M,k}(x))_v
-=a_v+x_{\Phi_{M,k}^{-1}(v)}
-\right\},
-$$
-where
-$$
-a\in X_n,
+J=\begin{pmatrix}0&1\\1&0\end{pmatrix},
 \qquad
-k=15t\ \text{ with }\ 0\leq t<r/15,
+k\in\{0,15,30,\ldots,r-15\},
+$$
+set
+$$
+A_k
+=
+\begin{cases}
+I_2,&30\mid k,\\
+J,&k\equiv15\pmod{30},
+\end{cases}
+\qquad
+\gamma_k
+=
+\bigl(\tau^{2^k-1}\bigr)^{2^{r-1}},
 $$
 and
 $$
-M=\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
+\Phi_k(X)=\gamma_k A_k X^{2^k}A_k^{-1}.
 $$
-satisfies
+Then the complete isometry set is
 $$
-a_{11}a_{22}+a_{12}a_{21}
-=\tau^{\,2^k-1+21483j}
+\left\{
+F_{a,k}:
+(F_{a,k}(x))_X=a_X+x_{\Phi_k^{-1}(X)},
+\quad
+a\in X_n,
+\quad
+k\in\{0,15,30,\ldots,r-15\}
+\right\},
 $$
-for a unique integer
-$$
-0\leq j<\frac{2^r-1}{21483}.
-$$
-Each isometry has a unique triple $(a,M,k)$, and
+with unique parameters $(a,k)$, and
 $$
 |\operatorname{Iso}(X_n,d_n)|
 =
-2^{n+r-1}\frac r{15}\,
-\frac{(2^r-1)(2^{2r}-1)}{21483},
-\qquad n=2^{2r}.
+2^{2^{4r}-1}\frac r{15}.
 $$
 
 ---
@@ -574,9 +720,11 @@ $$
 ## Solution Concepts
 
 - finite metric isometry reconstruction
-- weight-two shell and star reconstruction
-- quadratic polar-form pencils
-- semilinear reconstruction from scalar conjugation
-- Frobenius action on cyclic quotient parameters
-- shifted Frobenius-orbit stabilizers
-- coupled congruences modulo $63$ and $1023$
+- $E$-line spreads and semilinearity
+- rank-one linear preserver reconstruction
+- Segre rulings
+- trace-zero hyperplane rigidity
+- projective nilpotent directions
+- anharmonic transformations on $\mathbb P^1$
+- Frobenius constraints from elements of orders $9$ and $33$
+- determinant quadratic refinements
