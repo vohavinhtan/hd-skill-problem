@@ -72,7 +72,12 @@ d_n(F(x),F(y))=d_n(x,y)\qquad(x,y\in X_n),
 $$
 and determine $|\operatorname{Iso}(X_n,d_n)|$ in closed form as a function of $m$.
 
-Your answer must give a single explicit normal form for every isometry, including the exact admissible choices of every parameter. In particular, naming an abstract linear, symplectic, or orthogonal group without an explicit condition on its matrices is not sufficient.
+Your answer must give a single explicit normal form for every isometry, including the exact admissible choices of every parameter. If a matrix parameter
+$$
+A=\begin{pmatrix}P&Q\\R&S\end{pmatrix},
+\qquad P,Q,R,S\in M_m(\mathbb F_2),
+$$
+is used, the admissibility conditions must be stated explicitly as algebraic conditions on the four blocks. Naming an abstract linear, symplectic, or orthogonal group alone is not sufficient.
 
 ---
 
