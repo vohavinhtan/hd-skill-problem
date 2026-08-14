@@ -49,49 +49,62 @@ This alternating bilinear form ignores affine summands. Write $\phi^{-1}(X)=L(X)
 $$
 \beta_{q\circ L}+\beta_q\in\beta(\mathcal M).
 $$
-Indeed, if $C=L(H)$ then $D(LX+C)+D(LX)=D(X+H)+D(X)$, so as $C$ varies the quadratic determinant defect runs bijectively through $\mathcal M$. Therefore every admissible $L$ has exactly one translation part $C$ for which $f\circ\phi^{-1}+f$ is affine.
+Indeed, if $C=L(H)$ then $D(LX+C)+D(LX)=D(X+H)+D(X)$, so as $C$ varies the quadratic determinant defect runs bijectively through $\mathcal M$. Since the polar map is injective on homogeneous quadratic forms, every admissible $L$ has exactly one translation part $C$ for which $f\circ\phi^{-1}+f$ is affine.
 
 Step 5: Recover the quotient class from its restrictions to the two rulings
 Every $2\times2$ minor vanishes on each rank-one $3$-space, so every form in $\beta(\mathcal M)$ restricts to zero on every $U_u$ and $W_v$. Conversely, let $\beta$ be an alternating bilinear form with all these restrictions zero. Restriction to $U_{e_i}$ and $W_{e_j}$ kills coefficients joining two entries in one row or one column. Restriction to $U_{e_i+e_k}$ then forces the two remaining coefficients in every $2\times2$ rectangle to be equal. Hence $\beta$ is a linear combination of the polars of the $2\times2$ minors. Thus the class modulo $\beta(\mathcal M)$ is determined exactly by the restrictions to the two rulings.
 
 Put
 $$
-a(u)=u_1u_2+u_1u_3+u_2u_3.
+a(u)=u_1u_2+u_1u_3+u_2u_3,
+\qquad
+c(v)=v_1v_2.
 $$
-For $X=uv^T$, the definition of $q$ gives $q(X)=a(u)a(v)$. If $X=uv^T$ and $Y=uw^T$ lie in $U_u$, then
+For $X=uv^T$, the definition of $q$ gives $q(X)=a(u)c(v)$. On $U_u$,
 $$
-\beta_q(X,Y)=a(u)\bigl(a(v+w)+a(v)+a(w)\bigr).
+\beta_q(uv^T,uw^T)=a(u)\bigl(c(v+w)+c(v)+c(w)\bigr),
 $$
-The form in parentheses is nonzero, for example at $(v,w)=(e_1,e_2)$. Hence $\beta_q|_{U_u}$ is nonzero exactly when $a(u)=1$, and the same statement holds for $W_v$. Among the seven nonzero vectors,
+so this restriction is nonzero exactly when $a(u)=1$. On $W_v$ the analogous restriction is nonzero exactly when $c(v)=1$. Therefore the nonzero restrictions occur on
 $$
-S=\{u:a(u)=1\}=\mathbb F_2^3\setminus\{0,e_1,e_2,e_3\}.
+S=\mathbb F_2^3\setminus\{0,e_1,e_2,e_3\}
 $$
+in the $U$-ruling and on
+$$
+T=\{(1,1,0),(1,1,1)\}
+$$
+in the $W$-ruling. In particular, there are four nonzero $U$-restrictions but only two nonzero $W$-restrictions.
 
 Step 6: Count the admissible affine coordinate maps
-For $L(X)=AXB$, the ruling restrictions from Step 5 are preserved exactly when
+For $L(X)=AXB$, preservation of the quotient class from Step 5 is equivalent to
 $$
-A(S)=S,\qquad B^T(S)=S.
+A(S)=S,
+\qquad
+B^T(T)=T.
 $$
-The same condition holds for $L(X)=AX^TB$, with the two rulings interchanged. Preserving $S$ is equivalent to permuting its complement $\{e_1,e_2,e_3\}$, so its stabilizer in $\operatorname{GL}_3(\mathbb F_2)$ consists of the six permutation matrices.
+A matrix preserving $S$ permutes its complement $\{e_1,e_2,e_3\}$, so there are exactly $6$ possibilities for $A$. The group $\operatorname{GL}_3(\mathbb F_2)$ has
+$$
+(2^3-1)(2^3-2)(2^3-4)=168
+$$
+elements and acts transitively on the $\binom72=21$ unordered pairs of distinct nonzero vectors, so the stabilizer of $T$ has size $168/21=8$. Hence there are
+$$
+6\cdot8=48
+$$
+admissible maps of type $AXB$.
 
-Hence there are $6^2=36$ admissible maps of type $AXB$ and another $36$ of transpose type. The two types are disjoint because one preserves the rulings and the other swaps them. Step 4 gives exactly one affine translation part for each linear map, so the zero-word stabilizer has
-$$
-72
-$$
-elements.
+A transpose-type map swaps the two rulings, but Step 5 shows that the quotient class has four nonzero restrictions on one ruling and two on the other. Therefore no map of type $AX^TB$ is admissible. Step 4 gives exactly one affine translation part for each of the $48$ linear maps, so the zero-word stabilizer has $48$ elements.
 
 Step 7: Restore code translations and count
-The even-weight code on $n=512$ coordinates has $|X_n|=2^{511}$. Every isometry is uniquely a code translation followed by one of the $72$ zero-fixing isometries. Therefore
+The even-weight code on $n=512$ coordinates has $|X_n|=2^{511}$. Every isometry is uniquely a code translation followed by one of the $48$ zero-fixing isometries. Therefore
 $$
-|\operatorname{Iso}(X_n,d)|=72\cdot2^{511}=9\cdot2^{514}.
+|\operatorname{Iso}(X_n,d)|=48\cdot2^{511}=3\cdot2^{515}.
 $$
-Final Answer: $\boxed{9\cdot2^{514}}$
+Final Answer: $\boxed{3\cdot2^{515}}$
 
 ---
 
 ## Answer
 
-$9\cdot2^{514}$
+$3\cdot2^{515}$
 
 ---
 
