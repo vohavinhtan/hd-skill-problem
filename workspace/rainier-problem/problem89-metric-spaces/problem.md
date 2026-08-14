@@ -23,7 +23,7 @@ and set $d_n(x,x)=0$. Determine $|\operatorname{Iso}(X_n,d_n)|$ exactly.
 |---|---|
 | **Domain** | Analysis |
 | **Sub-domain** | Metric spaces |
-| **Problem Type** | Exhaustive enumeration |
+| **Problem Type** | Exact computation |
 | **Answer Type** | Exact scalar |
 
 ---
