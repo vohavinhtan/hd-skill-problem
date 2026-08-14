@@ -14,15 +14,23 @@ K_a=\mathbb{R}^2/\Gamma_a
 $$
 its quotient flat metric. For $0\leq u\leq\frac12$, let $p_u$ be the image of $(u,0)$.
 
-Define
+Define the eccentricity of $p_u$ by
 $$
-C_a(u)=\left\{q\in K_a:\text{there exist at least two distinct minimizing geodesic segments from }p_u\text{ to }q\right\}.
+E_a(u)=\max_{q\in K_a} d_{K_a}(p_u,q).
 $$
-Equip $C_a(u)$ with its intrinsic path metric: the length of a path contained in $C_a(u)$ is measured using the quotient flat metric on $K_a$, and the distance between two points of $C_a(u)$ is the infimum of the lengths of such paths joining them.
+Let $\iota_a(u)$ be the injectivity radius at $p_u$; in this flat quotient, equivalently, $\iota_a(u)$ is the largest $r>0$ such that every point $q\in K_a$ with
+$$
+d_{K_a}(p_u,q)<r
+$$
+is joined to $p_u$ by a unique minimizing geodesic segment.
 
-Let $\operatorname{Isom}(C_a(u))$ denote the isometry group of this intrinsic metric space.
+For each $u\in[0,\frac12]$, define
+$$
+S(u)=\operatorname*{argmin}_{a>0}\frac{E_a(u)}{\iota_a(u)},
+$$
+where $\operatorname*{argmin}$ denotes the set of all minimizing values of $a$.
 
-Determine exactly the set of pairs $(a,u)$ in the stated parameter strip for which $\operatorname{Isom}(C_a(u))$ contains an element of order exactly $6$. Give the answer as an explicit finite set, including every degenerate and boundary case in the analysis.
+Determine $S(u)$ exactly for every $0\leq u\leq\frac12$. Your answer must include the endpoint cases and every value of $u$ for which the minimizer is not unique. You must also justify that the minimum is attained for every $u$.
 
 ---
 
@@ -32,11 +40,11 @@ Determine exactly the set of pairs $(a,u)$ in the stated parameter strip for whi
 |---|---|
 | **Domain** | Topology and Geometry |
 | **Sub-domain** | Riemannian geometry |
-| **Problem Type** | Parameter identification |
-| **Answer Type** | Set or multiset of objects |
+| **Problem Type** | Optimization |
+| **Answer Type** | Function or mapping |
 
 ---
 
 ## Domain Explanation
 
-This problem concerns the cut locus of a point on a flat Klein bottle, viewed with the intrinsic metric induced by the quotient Riemannian metric. Solving it requires reconstructing the lifted Dirichlet-Voronoi cell, understanding how its boundary edges and vertices are identified in the quotient, and determining when the resulting metric graph has an isometry of prescribed finite order. The decisive structure therefore comes from quotient flat geometry and metric cut loci, so Riemannian geometry is the appropriate primary classification.
+This problem optimizes a pointwise ratio between the eccentricity and injectivity radius on a flat Klein bottle. Solving it requires passing to the Euclidean universal cover, reconstructing the relevant Dirichlet-Voronoi geometry of the deck orbit, comparing the competing injectivity and covering-radius regimes, and resolving the equality and duality cases as the flat aspect parameter varies. These are intrinsic quotient-metric and geodesic phenomena, so Riemannian geometry is the appropriate primary classification.
