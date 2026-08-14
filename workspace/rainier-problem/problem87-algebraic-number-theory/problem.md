@@ -2,11 +2,17 @@
 
 ## LaTeX (Normalized)
 
-Let $q>3$ and $\ell$ be distinct odd primes such that
+Let $q>3$ and $\ell$ be distinct odd primes. Put
+$$
+n=q-1,
+\qquad
+f=\frac{q-1}{2},
+$$
+and assume
 $$
 q\equiv3\pmod4,
 \qquad
-\operatorname{ord}_q(\ell)=\frac{q-1}{2}.
+\operatorname{ord}_q(\ell)=f.
 $$
 Let $M/\mathbb Q$ be a Galois extension with
 $$
@@ -19,25 +25,24 @@ M\cap\mathbb Q(\zeta_\ell)=\mathbb Q,
 $$
 where $\zeta_\ell$ is a primitive $\ell$th root of unity.
 
-Choose $\pi,\eta\in\mathcal O_M$ such that
+Choose $\pi_1,\pi_2,\pi_3,\pi_4\in\mathcal O_M$ such that
 $$
-\rho(\pi)=\pi,
+\rho(\pi_r)=\pi_r
+\qquad(1\le r\le4),
+$$
+and the $4q$ principal ideals
+$$
+(\sigma^i(\pi_r))
 \qquad
-\rho(\eta)=\eta,
-$$
-and the $2q$ principal ideals
-$$
-(\sigma^i(\pi)),\qquad (\sigma^i(\eta))
-\qquad(0\le i\le q-1)
+(1\le r\le4,\ 0\le i\le q-1)
 $$
 are pairwise distinct prime ideals of $\mathcal O_M$.
 
 For indices modulo $q$, put
 $$
-a_i=\frac{\sigma^i(\pi)}{\sigma^{i+1}(\pi)},
+a_{r,i}=\frac{\sigma^i(\pi_r)}{\sigma^{i+1}(\pi_r)}
 \qquad
-b_i=\frac{\sigma^i(\eta)}{\sigma^{i+1}(\eta)}
-\qquad(0\le i\le q-1).
+(1\le r\le4,\ 0\le i\le q-1).
 $$
 Set
 $$
@@ -47,26 +52,27 @@ F_\ell=M(\zeta_\ell),
 $$
 and let $L$ be the splitting field over $F_\ell$ of
 $$
-\prod_{i=0}^{q-1}(x^\ell-a_i)(x^\ell-b_i).
+\prod_{r=1}^{4}\prod_{i=0}^{q-1}(x^\ell-a_{r,i}).
 $$
 
 For every intermediate field $E$ satisfying
 $$
 F_\ell\subset E\subset L,
 \qquad
-[E:F_\ell]=\ell^{q-1},
+[E:F_\ell]=\ell^n,
 $$
 let $\widetilde E$ denote its normal closure over $F_{0,\ell}$.
 
-For integers $n\ge k\ge0$, write
+For a prime power $t$ and integers $m\ge k\ge0$, write
 $$
-\binom{n}{k}_{\!\ell}
-=\prod_{j=0}^{k-1}\frac{\ell^{\,n-j}-1}{\ell^{\,k-j}-1}.
+[m:k]_t
+=\prod_{j=0}^{k-1}\frac{t^{\,m-j}-1}{t^{\,k-j}-1},
 $$
+with $[m:0]_t=1$.
 
 Determine the number of such fields $E$ for which
 $$
-[\widetilde E:F_{0,\ell}]=2q\ell^{2q-2}.
+[\widetilde E:F_{0,\ell}]=2q\ell^{4n}.
 $$
 
 ---
