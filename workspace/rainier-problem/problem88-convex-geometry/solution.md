@@ -36,7 +36,7 @@ and multiplying the relation for $P(x)$ by $x$ gives
 $$
 x^6\equiv (e_1^2-e_2)x^4+\text{terms of degree at most }3.
 $$
-Therefore, after dividing the oriented $5\times5$ determinant by its nonzero Vandermonde factor, its sign is the sign of
+Subtracting these lower-degree combinations from the last determinant column reduces that column to a multiple of $x^4$. Therefore, after dividing the oriented $5\times5$ determinant by its nonzero Vandermonde factor, its sign is the sign of
 $$
 D_\lambda(E)=h_2(E)+\lambda e_1(E),
 \qquad
@@ -239,9 +239,9 @@ $$
 
 Step 5: Convert orientation stability into facet stability and prove maximality
 
-Inside the interval from Step 4, every five-point determinant has the same sign as at $\lambda=0$. For any four-set $F$, adjoining one remaining vertex at a time therefore gives exactly the same side of the affine hyperplane through $F$ as at $\lambda=0$. Hence the supporting tetrahedra, and therefore $\mathcal F(\lambda)$, are unchanged throughout that interval.
+Inside the interval from Step 4, every five-point determinant is nonzero and has the same sign as at $\lambda=0$. Hence every four-set is affinely independent, and adjoining one remaining vertex at a time gives exactly the same side of its affine hyperplane as at $\lambda=0$. The supporting tetrahedra, and therefore $\mathcal F(\lambda)$, are unchanged throughout that interval.
 
-At $\lambda=0$, four consecutive vertices form a facet. Indeed, for consecutive abscissas $x_j,x_{j+1},x_{j+2},x_{j+3}$, the polynomial
+Step 1 shows that the side signs at $\lambda=0$ agree with those of the ordinary moment curve $(x,x^2,x^3,x^4)$. On that curve, four consecutive vertices form a facet: for consecutive abscissas $x_j,x_{j+1},x_{j+2},x_{j+3}$, the polynomial
 $$
 \prod_{r=j}^{j+3}(x-x_r)
 $$
