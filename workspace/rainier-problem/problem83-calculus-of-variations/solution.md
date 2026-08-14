@@ -2,11 +2,11 @@
 
 Step 1: Use the variational principle
 
-For $v\in\mathcal K_\lambda$, the segment from $u_\lambda$ to $v$ is admissible. Differentiating $\mathcal J$ along it at $u_\lambda$ gives
+For $v\in\mathcal K_\lambda$, convexity makes the segment from $u_\lambda$ to $v$ admissible, and differentiation gives
 $$
 \int_0^1u_\lambda''(v-u_\lambda)''\,dx\geq0.
 $$
-Taking $v=u_\lambda+\varphi$ for compactly supported $\varphi\geq0$ makes $u_\lambda''''$ a nonnegative Radon measure. Off contact, both signs are allowed locally, so $u_\lambda''''=0$ and $u_\lambda$ is cubic.
+For compactly supported $\varphi\geq0$, take $v=u_\lambda+\varphi$; then $u_\lambda''''$ is a nonnegative Radon measure. Off contact both signs are allowed, so $u_\lambda''''=0$ and $u_\lambda$ is cubic.
 
 Conversely, if $U\in\mathcal K_\lambda$ is $C^2$, piecewise smooth, and $\mu=U''''$ is nonnegative and supported on $\{U=\psi_\lambda\}$, integration by parts gives
 $$
@@ -34,7 +34,7 @@ $$
 q_0''(x)=-\frac{1}{8}(12x-1)P(x),\qquad
 P(x)=2880x^3-7440x^2+6204x-1655.
 $$
-On $[0,\frac{1}{2}]$, $P''<0$, $P'(\frac{1}{2})=924>0$, and $P(\frac{1}{2})=-53$; so $P'>0$ and $P<0$. So the only left-half root is $s=\frac{1}{12}$.
+On $[0,\frac{1}{2}]$, $P''<0$, $P'(\frac{1}{2})=924>0$, and $P(\frac{1}{2})=-53$; so $P'>0$ and $P<0$. The only left-half root is $s=\frac{1}{12}$.
 
 At $s$,
 $$
@@ -47,7 +47,7 @@ $$
 \qquad
 L(x)=\frac{14641}{20736}x^2(-48x+11).
 $$
-Symmetry gives the right cubic $L(1-x)$ and a middle cubic $M(x)=\eta+\theta x(1-x)$, where
+Hermite uniqueness makes the middle cubic symmetric, so $M(x)=\eta+\theta x(1-x)$, while the right cubic is $L(1-x)$. Here
 $$
 \theta=\frac{\psi_0'(s)}{1-2s}=\frac{14641}{20736},\qquad
 \eta=\psi_0(s)-\theta s(1-s)=-\frac{14641}{746496}.
@@ -56,7 +56,7 @@ Also
 $$
 M''=-\frac{14641}{10368}=\psi_0''(s)=\psi_0''(r),
 $$
-so the matching is $C^2$. So
+so the matching is $C^2$. This gives
 $$
 U_0(x)=
 \begin{cases}
@@ -67,12 +67,12 @@ U_0(x)=
 $$
 The left and middle gaps are
 $$
-\frac{x^2(1-12x)^3}{20736}(-1728x^3+6480x^2-8580x+4235),
+\frac{x^2(-12x+1)^3}{20736}(-1728x^3+6480x^2-8580x+4235),
 $$
 $$
 \frac{(12x-11)^3(12x-1)^3(36x^2-36x-11)}{746496},
 $$
-the right gap is its reflection. The first residual cubic has derivative at most $-8580+\frac{12960}{12}<0$ and value $3564$ at $s$; the middle product has signs $-,+,-$. So $U_0>\psi_0$ except at $s,r$.
+the right gap is its reflection. The first residual cubic has derivative at most $-8580+\frac{12960}{12}<0$ and value $3564$ at $s$; the middle factors have signs $-,+,-$. So $U_0>\psi_0$ off $s,r$.
 
 Their third derivatives are $-\frac{14641}{72},0,\frac{14641}{72}$, so
 $$
@@ -82,7 +82,7 @@ Step 1 verifies $U_0$ as the minimizer at $\lambda=0$.
 
 Step 3: Derive the free-boundary equations
 
-Suppress endpoint subscripts in this step. Write $\psi_\lambda=x^2q_\lambda=(1-x)^2\rho_\lambda$. The endpoint calculation in Step 2 and its reflection give
+Write $\psi_\lambda=x^2q_\lambda=(1-x)^2\rho_\lambda$. Step 2 and reflection give
 $$
 q_\lambda''(a)=0,\qquad \rho_\lambda''(d)=0.
 $$
@@ -95,7 +95,7 @@ with
 $$
 q_0'''(s)=1782,\qquad \rho_0'''(r)=-1782.
 $$
-These derivatives are nonzero, so the implicit function theorem applies. Writing
+They are nonzero, so the implicit function theorem applies. Writing
 $a=s+a_1\lambda+O(\lambda^2)$ and $d=r+d_1\lambda+O(\lambda^2)$ gives
 $$
 1782a_1-8=0,\qquad -1782d_1+28=0,
@@ -246,10 +246,11 @@ $$
 b_\lambda-a_\lambda=\frac{8}{405}\lambda+O(\lambda^2),\qquad
 d_\lambda-c_\lambda=\frac{26}{405}\lambda+O(\lambda^2).
 $$
+So $0<a_\lambda<b_\lambda<c_\lambda<d_\lambda<1$ for small $\lambda>0$.
 
 Step 5: Verify contact and reaction signs
 
-Build $U_\lambda$ from the three cubics and $\psi_\lambda$ on the contact intervals. Step 3 makes it $C^2$. For $G_\lambda=U_\lambda-\psi_\lambda$, the contact multiplicities force
+Build $U_\lambda$ from the three cubics and the two contact pieces. Step 3 makes it $C^2$. For $G_\lambda=U_\lambda-\psi_\lambda$, contact multiplicities force
 $$
 \begin{aligned}
 G_\lambda&=x^2(a_\lambda-x)^3Q_{L,\lambda}(x),\\
@@ -257,19 +258,19 @@ G_\lambda&=(x-b_\lambda)^3(c_\lambda-x)^3Q_{M,\lambda}(x),\\
 G_\lambda&=(1-x)^2(x-d_\lambda)^3Q_{R,\lambda}(x).
 \end{aligned}
 $$
-The quotient coefficients vary continuously, and Step 2 gives
+The quotients vary continuously, and Step 2 gives
 $$
 Q_{L,0}=\frac{1}{12}(-1728x^3+6480x^2-8580x+4235)>0,
 $$
 $$
-Q_{M,0}=44+144x(1-x)>0,\qquad Q_{R,0}(x)=Q_{L,0}(1-x)>0.
+Q_{M,0}=-144x^2+144x+44>0,\qquad Q_{R,0}(x)=Q_{L,0}(1-x)>0.
 $$
-They remain positive on the moving intervals for small $\lambda>0$, so the contact set is
+They stay positive on the moving intervals, so the contact set is
 $$
 [a_\lambda,b_\lambda]\cup[c_\lambda,d_\lambda].
 $$
 
-On contact, the density $\psi_\lambda''''$ stays positive since the intervals shrink to $s,r$ and
+On contact, $\psi_\lambda''''$ stays positive since the intervals shrink to $s,r$ and
 $$
 \psi_0''''(s)=\psi_0''''(r)=\frac{3250}{3}.
 $$
@@ -284,7 +285,7 @@ $$
 $$
 \frac{14641}{72}-\frac{6875}{36}=\frac{99}{8}.
 $$
-They stay positive. So $U_\lambda''''$ is nonnegative and supported on contact, so Step 1 gives $U_\lambda=u_\lambda$.
+They stay positive. The measure $U_\lambda''''$ is therefore nonnegative and supported on contact; Step 1 gives $U_\lambda=u_\lambda$.
 
 Step 6: Evaluate the four limits
 
@@ -296,7 +297,7 @@ $$
 $$
 C=\frac{-928+4768}{499125}=\frac{256}{33275}.
 $$
-For the middle cubic,
+For the middle cubic set
 $$
 \kappa_\lambda=Q'''=
 \frac{\psi_\lambda''(c_\lambda)-\psi_\lambda''(b_\lambda)}
@@ -328,18 +329,18 @@ $$
 \Delta_b=\kappa_\lambda-\psi_\lambda'''(b_\lambda),\qquad
 \Delta_c=\psi_\lambda'''(c_\lambda)-\kappa_\lambda,
 $$
-so
+which gives
 $$
 \Delta_b=\frac{6875}{36}-\frac{950}{99}\lambda+O(\lambda^2),\qquad
 \Delta_c=\frac{6875}{36}+\frac{3050}{99}\lambda+O(\lambda^2).
 $$
-So
+Therefore
 $$
 \frac{\Delta_c}{\Delta_b}
 =1+\frac{4000}{99}\frac{36}{6875}\lambda+O(\lambda^2)
 =1+\frac{128}{605}\lambda+O(\lambda^2),
 $$
-so $D=\frac{128}{605}$.
+and $D=\frac{128}{605}$.
 
 Final Answer: $\boxed{\left(\frac{4}{13},-\frac{4}{165},\frac{256}{33275},\frac{128}{605}\right)}$
 
