@@ -193,7 +193,7 @@ Check 6 (Answer Length Gate): pass. The answer has $85$ characters before adding
 
 **Domain/Sub-domain:** Differential Equations and Dynamical Systems / Stability theory
 
-**Problem Type:** Parameter identification
+**Problem Type:** Symbolic derivation
 
 **Answer Type:** Interval or region description
 
