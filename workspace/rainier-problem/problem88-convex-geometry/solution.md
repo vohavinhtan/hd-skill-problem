@@ -49,7 +49,6 @@ Therefore, for every fixed $(\lambda,\mu)$, a global minimum of $D_{\lambda,\mu}
 $$
 W_j=\{r_j,r_{j+1},r_{j+2},r_{j+3},r_{j+4}\}.
 $$
-This will allow the simultaneous two-parameter condition to be checked through a one-dimensional sliding family without enumerating all five-subsets.
 
 Step 3: Locate the unique critical retained window for both dangerous corners
 
@@ -106,7 +105,7 @@ A_{j+1}^{\varepsilon}-A_j^{\varepsilon}
 $$
 The quantity in parentheses is strictly decreasing with $j$, because both the window sum and the entering abscissa strictly decrease.
 
-We now show that its sign changes exactly at $j=m-3$ for both values of $\varepsilon$. For the slide from $W_{m-4}$ to $W$, the sum of the old window and the entering value $x_{m+4}$ is
+For the slide from $W_{m-4}$ to $W$, the sum of the old window and the entering value $x_{m+4}$ is
 $$
 \begin{aligned}
 &x_{m-4}+x_{m-3}+x_{m-1}+x_{m+1}+x_{m+3}+x_{m+4}\\
@@ -121,17 +120,13 @@ $$
 \qquad
 \cos(4t)>\frac9{10},
 $$
-and $\sin(3t)>5(3t)/6=5t/2$. The first cosine bound follows from $16t<\pi/4$ and $\sqrt2/2>7/10$; the other two follow from $\cos x>1-x^2/2$.
+and $\sin(3t)>5(3t)/6=5t/2$. The first cosine bound follows from $16t<\pi/4$ and $\sqrt2/2>7/10$. For the second, $12t<6\pi/35<4/7$ and $1-(4/7)^2/2>4/5$; for the third, $4t<2\pi/35<1/5$ and $1-(1/5)^2/2>9/10$. In both cases we used $\cos x>1-x^2/2$.
 
-On the other hand,
-$$
-|S|<5t
-$$
-and
+Also
 $$
 Q<\bigl(15^2+7^2+1^2+9^2+13^2\bigr)t^2=525t^2.
 $$
-Since the factor multiplying $\sin t$ in the formula for $S$ has absolute value less than $3$, in fact $S^2<9t^2$, and therefore
+The factor multiplying $\sin t$ in the formula for $S$ has absolute value less than $3$, so $S^2<9t^2$. Hence
 $$
 \rho_0<h<267t^2.
 $$
