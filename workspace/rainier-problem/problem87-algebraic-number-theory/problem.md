@@ -2,20 +2,20 @@
 
 ## LaTeX (Normalized)
 
-Let $p\ge 11$ be a prime. Let $A$ be the additive group of the vector space
+Let $p>3$ be a prime. Let $A$ be the additive group of the vector space
 $$
 \mathbf F_p^4
 $$
 with basis $e_0,e_1,e_2,e_3$. Let $\sigma$ act on $A$ by
 $$
-\sigma(e_0)=e_0+e_1,
+\sigma(e_0)=e_0,
 \qquad
-\sigma(e_1)=e_1+e_2,
+\sigma(e_1)=e_1+e_0,
 $$
 $$
-\sigma(e_2)=e_2+e_3,
+\sigma(e_2)=e_2+e_1,
 \qquad
-\sigma(e_3)=e_3.
+\sigma(e_3)=e_3+e_2.
 $$
 Thus $\sigma$ has order $p$. Put
 $$
@@ -30,7 +30,12 @@ and put
 $$
 K=H^A.
 $$
-Hence $\operatorname{Gal}(H/K)=A$ and $[K:F]=p$.
+Hence
+$$
+\operatorname{Gal}(H/K)=A,
+\qquad
+[K:F]=p.
+$$
 
 For every $t\in\mathbf F_p$, choose distinct finite prime ideals
 $$
@@ -44,7 +49,7 @@ $$
 $$
 $$
 \operatorname{Frob}_{\mathfrak q_t}
-=e_1+2t e_2+3t^2e_3.
+=e_0+t^2e_1+t e_2+t^3e_3.
 $$
 Assume all $2p$ chosen prime ideals are pairwise distinct.
 
@@ -52,7 +57,7 @@ For every intermediate field $E$ satisfying
 $$
 K\subset E\subset H,
 \qquad
-[E:K]=p,
+[E:K]=p^2,
 $$
 let $\widetilde E$ denote its normal closure over $F$, and let $s(E)$ be the number of prime ideals among
 $$
@@ -84,4 +89,4 @@ determine the ordered pair consisting of
 
 ## Domain Explanation
 
-The primary domain is algebraic number theory because the problem is formulated in a finite Galois extension of number fields and asks about normal closures and complete splitting of explicitly prescribed prime ideals. The Galois action on the elementary abelian layer controls which degree-$p$ intermediate fields are admissible, while the Frobenius data determine the arithmetic optimization.
+The primary domain is algebraic number theory because the problem is formulated inside a finite Galois extension of number fields and asks about normal closures and complete splitting of prescribed prime ideals. The semidirect Galois action controls which degree-$p^2$ intermediate fields are admissible, while the Frobenius data turn the splitting condition into a finite geometric incidence problem.
