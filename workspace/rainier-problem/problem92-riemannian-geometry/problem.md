@@ -12,16 +12,17 @@ and give
 $$
 K_a=\mathbb{R}^2/\Gamma_a
 $$
-its quotient flat metric. For $0\leq u\leq\frac{1}{2}$, let $p_u$ be the image of $(u,0)$. Define
-$$
-E_a(u)=\max_{q\in K_a}\operatorname{dist}_{K_a}(p_u,q)
-$$
-and
-$$
-M_a(u)=\#\left\{q\in K_a:\operatorname{dist}_{K_a}(p_u,q)=E_a(u)\right\}.
-$$
+its quotient flat metric. For $0\leq u\leq\frac12$, let $p_u$ be the image of $(u,0)$.
 
-Determine exactly the set of pairs $(a,u)$ in the stated parameter strip for which $M_a(u)=2$. Give the set directly by equalities and inequalities, including every boundary case.
+Define
+$$
+C_a(u)=\left\{q\in K_a:\text{there exist at least two distinct minimizing geodesic segments from }p_u\text{ to }q\right\}.
+$$
+Equip $C_a(u)$ with its intrinsic path metric: the length of a path contained in $C_a(u)$ is measured using the quotient flat metric on $K_a$, and the distance between two points of $C_a(u)$ is the infimum of the lengths of such paths joining them.
+
+Let $\operatorname{Isom}(C_a(u))$ denote the isometry group of this intrinsic metric space.
+
+Determine exactly the set of pairs $(a,u)$ in the stated parameter strip for which $\operatorname{Isom}(C_a(u))$ contains an element of order exactly $6$. Give the answer as an explicit finite set, including every degenerate and boundary case in the analysis.
 
 ---
 
@@ -32,10 +33,10 @@ Determine exactly the set of pairs $(a,u)$ in the stated parameter strip for whi
 | **Domain** | Topology and Geometry |
 | **Sub-domain** | Riemannian geometry |
 | **Problem Type** | Parameter identification |
-| **Answer Type** | Interval or region description |
+| **Answer Type** | Set or multiset of objects |
 
 ---
 
 ## Domain Explanation
 
-This problem involves farthest point multiplicity and Dirichlet Voronoi cells for a family of quotient flat metrics, which are part of Topology and Geometry and Riemannian geometry. The problem also involves planar distance comparisons and affine bisectors, which are part of Euclidean, Coordinate, and Transformational Geometry. However, those planar calculations only analyze the lifted metric, while the requested parameter region depends on quotient identifications on a flat Klein bottle, so Riemannian geometry is the more appropriate primary classification.
+This problem concerns the cut locus of a point on a flat Klein bottle, viewed with the intrinsic metric induced by the quotient Riemannian metric. Solving it requires reconstructing the lifted Dirichlet-Voronoi cell, understanding how its boundary edges and vertices are identified in the quotient, and determining when the resulting metric graph has an isometry of prescribed finite order. The decisive structure therefore comes from quotient flat geometry and metric cut loci, so Riemannian geometry is the appropriate primary classification.
