@@ -118,7 +118,7 @@ so $\operatorname{Tr}(\gamma_i\alpha_j)=D_{ij}$. Replacing $\gamma$ by $D^{-1}\g
 $$
 \operatorname{Tr}(\gamma_i\alpha_j)=\delta_{ij}.
 $$
-These equations give $\alpha_1,\alpha_2\neq0$ and $\alpha_1\neq\alpha_2$ (compare the first row), hence independence over $\mathbb F_2$. Conversely independence makes the two trace functionals independent, so each prescribed pair of trace values has $q/4$ preimages. Therefore
+Here $\operatorname{Tr}(\gamma_1\alpha_1)=\operatorname{Tr}(\gamma_2\alpha_2)=1$ gives $\alpha_1,\alpha_2\neq0$, while $\operatorname{Tr}(\gamma_1\alpha_2)=0$ gives $\alpha_1\neq\alpha_2$; hence they are independent over $\mathbb F_2$. Conversely the two trace functionals are independent, so each value pair has $\frac{q}{4}$ preimages. Therefore
 $$
 A(q)=(q-1)(q-2)\left(\frac{q}{4}\right)^2
 =\frac{q^2(q-1)(q-2)}{16}.
@@ -160,7 +160,7 @@ The phase becomes
 $$
 \operatorname{Tr}(zA(X))=\tau(X).
 $$
-Both sides are linear, so the rank-one basis $E_{ij}$ reduces the phase conditions to four equations. Since $\tau\not\equiv0$, $z\neq0$. For each of the $q-1$ choices of $z$, every $A(E_{ij})$ has exactly $q/2$ choices by nondegeneracy of the trace pairing; these choices are also sufficient. Hence
+Both sides are linear, so the rank-one basis $E_{ij}$ reduces the phase conditions to four equations. Since $\tau\not\equiv0$, $z\neq0$. For each of the $q-1$ choices of $z$, every $A(E_{ij})$ has exactly $\frac{q}{2}$ choices by nondegeneracy of the trace pairing; these choices are also sufficient. Hence
 $$
 D(q)=\frac{(q-1)q^4}{16}.
 $$
