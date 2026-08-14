@@ -80,4 +80,4 @@ $$
 
 ## Domain Explanation
 
-The primary domain is algebraic number theory because the problem combines prime-ideal valuations, cyclotomic base change, Kummer extensions, and conjugacy of intermediate number fields. The decisive supporting structure is the dihedral action on the Kummer radical space, whose hidden multiplicative relation changes the relevant permutation representation into an augmentation module; the final count then depends on stabilizers of codimension-two subspaces under that action.
+The primary domain is algebraic number theory because the problem combines prime-ideal arithmetic, cyclotomic base change, Kummer extensions, Galois actions, and conjugacy of intermediate number fields. The requested output is an exact symbolic count determined by the interaction of these structures.
