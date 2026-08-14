@@ -2,70 +2,72 @@
 
 ## LaTeX (Normalized)
 
-Let $q>3$ and $\ell$ be distinct odd primes such that
+Let $p\ge 11$ be a prime. Let $A$ be the additive group of the vector space
 $$
-\operatorname{ord}_q(\ell)=q-1.
+\mathbf F_p^4
 $$
-Let $K/\mathbb Q$ be a cyclic extension of degree $q$, and fix a generator
+with basis $e_0,e_1,e_2,e_3$. Let $\sigma$ act on $A$ by
 $$
-\sigma\in\operatorname{Gal}(K/\mathbb Q).
-$$
-Assume
-$$
-K\cap\mathbb Q(\zeta_\ell)=\mathbb Q,
-$$
-where $\zeta_\ell$ is a primitive $\ell$th root of unity.
-
-Choose $\pi_1,\pi_2,\pi_3\in\mathcal O_K$ such that the $3q$ principal ideals
-$$
-(\sigma^i(\pi_r))
+\sigma(e_0)=e_0+e_1,
 \qquad
-(1\le r\le3,\ 0\le i\le q-1)
+\sigma(e_1)=e_1+e_2,
 $$
-are pairwise distinct prime ideals of $\mathcal O_K$.
-For each $r$, let $p_r$ be the rational prime below $(\pi_r)$, and assume that $p_r$ has multiplicative order $\ell-1$ modulo $\ell$.
-
-Indices below are taken modulo $q$. Define
 $$
-a_i=
-\frac{\sigma^i(\pi_1)\,\sigma^{i+1}(\pi_3)}
-{\sigma^{i+1}(\pi_1)\,\sigma^i(\pi_3)},
-$$
-and
-$$
-b_i=
-\frac{\sigma^i(\pi_2)\,\sigma^{i+2}(\pi_3)}
-{\sigma^{i+1}(\pi_2)\,\sigma^i(\pi_3)}
-\qquad(0\le i\le q-1).
-$$
-
-Set
-$$
-F_{0,\ell}=\mathbb Q(\zeta_\ell),
+\sigma(e_2)=e_2+e_3,
 \qquad
-F_\ell=K(\zeta_\ell),
+\sigma(e_3)=e_3.
 $$
-and let $L$ be the splitting field over $F_\ell$ of
+Thus $\sigma$ has order $p$. Put
 $$
-\prod_{i=0}^{q-1}(x^\ell-a_i)(x^\ell-b_i).
+G=A\rtimes\langle\sigma\rangle.
 $$
+
+Let $H/F$ be a Galois extension of number fields together with an identification
+$$
+\operatorname{Gal}(H/F)\cong G,
+$$
+and put
+$$
+K=H^A.
+$$
+Hence $\operatorname{Gal}(H/K)=A$ and $[K:F]=p$.
+
+For every $t\in\mathbf F_p$, choose distinct finite prime ideals
+$$
+\mathfrak p_t,\mathfrak q_t\subset\mathcal O_K
+$$
+that are unramified in $H/K$ and whose Frobenius elements in
+$\operatorname{Gal}(H/K)=A$ are respectively
+$$
+\operatorname{Frob}_{\mathfrak p_t}
+=e_0+t e_1+t^2e_2+t^3e_3,
+$$
+$$
+\operatorname{Frob}_{\mathfrak q_t}
+=e_1+2t e_2+3t^2e_3.
+$$
+Assume all $2p$ chosen prime ideals are pairwise distinct.
 
 For every intermediate field $E$ satisfying
 $$
-F_\ell\subset E\subset L,
+K\subset E\subset H,
 \qquad
-[E:F_\ell]=\ell^2,
+[E:K]=p,
 $$
-let $\widetilde E$ denote its normal closure over $F_{0,\ell}$, and let $r(E)$ be the number of finite prime ideals of $F_\ell$ lying above $p_1p_2p_3$ that ramify in $E/F_\ell$.
+let $\widetilde E$ denote its normal closure over $F$, and let $s(E)$ be the number of prime ideals among
+$$
+\{\mathfrak p_t,\mathfrak q_t:t\in\mathbf F_p\}
+$$
+that split completely in $E/K$.
 
 Among the fields $E$ for which
 $$
-\widetilde E=L,
+\widetilde E=H,
 $$
 determine the ordered pair consisting of
 
-1. the minimum possible value of $r(E)$;
-2. the number of fields attaining that minimum.
+1. the maximum possible value of $s(E)$;
+2. the number of fields attaining that maximum.
 
 ---
 
@@ -82,4 +84,4 @@ determine the ordered pair consisting of
 
 ## Domain Explanation
 
-The primary domain is algebraic number theory because the problem combines prime-ideal arithmetic, cyclotomic base change, Kummer extensions, Galois conjugation, normal closures, and ramification in intermediate number fields. The optimization is controlled by translating these arithmetic conditions into the interaction between a cyclic Kummer module and the supports of its valuation vectors.
+The primary domain is algebraic number theory because the problem is formulated in a finite Galois extension of number fields and asks about normal closures and complete splitting of explicitly prescribed prime ideals. The Galois action on the elementary abelian layer controls which degree-$p$ intermediate fields are admissible, while the Frobenius data determine the arithmetic optimization.
