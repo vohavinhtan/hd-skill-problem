@@ -8,7 +8,7 @@ u_b=F_{b+3}-1.
 $$
 The initial values and recurrence are
 $$
-u_0=1,qquad u_1=2,qquad u_b=u_{b-1}+u_{b-2}+1\quad(b\geq 2).
+u_0=1,\qquad u_1=2,\qquad u_b=u_{b-1}+u_{b-2}+1\quad(b\geq 2).
 $$
 If a move replaces $(0,b)$ by at most two lower labels, the largest possible sum of their $u$-weights is $0$ for $b=0$, $u_0$ for $b=1$, and $u_{b-1}+u_{b-2}$ for $b\geq2$. In every case the total weight drops by at least $1$.
 
@@ -55,14 +55,14 @@ Step 3: Construct an ordinal that decreases under every move
 
 For each $a\geq0$, define
 $$
-B_a=\{b\in\mathbb{Z}_{\geq0}:(a,b)\in S\},qquad
+B_a=\{b\in\mathbb{Z}_{\geq0}:(a,b)\in S\},\qquad
 K_a=\sum_{b\in B_a}F_{b+2}.
 $$
 Consider the Cantor normal form
 $$
 \rho(S)=
 \sum_{\substack{a\geq1,\ B_a\neq\varnothing\\
-\text{in decreasing order}}}\omega^aK_a
+\text{in decreasing order}}}\omega^a\cdot K_a
 +\sum_{b\in B_0}(F_{b+3}-1)
 +\sum_{\substack{a\geq1\\B_a\neq\varnothing}}
 \bigl(\mu(K_a)-|B_a|\bigr). \tag{4}
@@ -83,15 +83,15 @@ Step 4: Recover every required predecessor and limit
 
 It remains to match the supremum in the definition of the height. Use transfinite induction on $\rho(S)$, so every option $T$ already satisfies $h(T)=\rho(T)$. Let $a\geq1$ be the largest occupied first coordinate, let $B=B_a$, and let $L$ contain all labels of lower first coordinate. Then
 $$
-\rho(S)=\omega^aK_a+\rho(L)+\mu(K_a)-|B|. \tag{6}
+\rho(S)=\omega^a\cdot K_a+\rho(L)+\mu(K_a)-|B|. \tag{6}
 $$
 
 If $\mu(K_a)-|B|>0$, the set $B$ is not terminal. A split is available and produces an option whose value is exactly $\rho(S)-1$.
 
 If $\mu(K_a)-|B|=0$ and $\rho(L)>0$, moves made inside $L$ are also moves from $S$. The induction hypothesis for $L$ and continuity of ordinal addition in its right argument give
 $$
-\sup_{L\to L'}\left(\omega^aK_a+\rho(L')+1\right)
-=\omega^aK_a+\rho(L)=\rho(S). \tag{7}
+\sup_{L\to L'}\left(\omega^a\cdot K_a+\rho(L')+1\right)
+=\omega^a\cdot K_a+\rho(L)=\rho(S). \tag{7}
 $$
 
 The remaining case has $L=\varnothing$ and $B$ terminal. Every nonempty terminal set contains $0$ or $1$, since its least element cannot be at least $2$. If $0\in B$, remove $(a,0)$ and insert $(a-1,e)$. If $0\notin B$, then $1\in B$; replace $(a,1)$ by $(a,0)$ and $(a-1,e)$. There is no collision because $L$ is empty, and in both cases the coefficient $K_a$ drops by exactly $1$. The finite correction of the new top-level set does not depend on $e$. As $e$ grows,
@@ -100,7 +100,7 @@ $$
 $$
 For $a=1$ this follows from $F_{e+3}-1\to\infty$; for $a>1$ it follows from the unbounded coefficients $F_{e+2}$ of $\omega^{a-1}$. The resulting options are cofinal in
 $$
-\omega^a(K_a-1)+\omega^a=\omega^aK_a=\rho(S). \tag{8}
+\omega^a\cdot(K_a-1)+\omega^a=\omega^a\cdot K_a=\rho(S). \tag{8}
 $$
 Equations (5)-(8), together with the exact integer recursion on level zero, show that $\rho$ satisfies the defining recursion for $h$. Therefore $h(S)=\rho(S)$ for every finite position.
 
@@ -132,17 +132,25 @@ $$
 For $S=\{(a,b)\}$ with the fixed $a\geq1$, formula (4) has $K_a=F_{b+2}$, $|B_a|=1$, and no lower-level term. Formula (4) now gives
 $$
 h(\{(a,b)\})
-=\omega^aF_{b+2}+\left\lfloor\frac{b}{2}\right\rfloor.
+=\omega^a\cdot F_{b+2}+\left\lfloor\frac{b}{2}\right\rfloor.
 $$
-The first five terms are $\omega^a$, $2\omega^a$, $3\omega^a+1$, $5\omega^a+1$, and $8\omega^a+2$. In particular, the finite correction grows only after every second Fibonacci refinement; this rules out the tempting independent weight $\omega^aF_{b+2}+F_{b+1}-1$ already at $b=3$.
+The first five terms are
+$$
+\omega^a,\quad
+\omega^a\cdot2,\quad
+\omega^a\cdot3+1,\quad
+\omega^a\cdot5+1,\quad
+\omega^a\cdot8+2.
+$$
+In particular, the finite correction grows only after every second coefficient-preserving Fibonacci split; this rules out the tempting independent weight $\omega^a\cdot F_{b+2}+F_{b+1}-1$ already at $b=3$.
 
-Final Answer: $\boxed{\left(\omega^aF_{b+2}+\lfloor b/2\rfloor\right)_{b\geq0},\ F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n}$
+Final Answer: $\boxed{\left(\omega^a\cdot F_{b+2}+\lfloor b/2\rfloor\right)_{b\geq0},\ F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n}$
 
 ---
 
 ## Answer
 
-$\left(\omega^aF_{b+2}+\lfloor b/2\rfloor\right)_{b\geq0},\ F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n$
+$\left(\omega^a\cdot F_{b+2}+\lfloor b/2\rfloor\right)_{b\geq0},\ F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n$
 
 ---
 
@@ -158,6 +166,6 @@ $\left(\omega^aF_{b+2}+\lfloor b/2\rfloor\right)_{b\geq0},\ F_0=0,F_1=1,F_{n+2}=
 
 - ordinal rank recursion
 - Cantor normal form
-- Fibonacci refinements
+- Fibonacci representations
 - cofinality arguments
 - distinct-part representations
