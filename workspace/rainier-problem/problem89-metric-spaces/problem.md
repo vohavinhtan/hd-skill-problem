@@ -19,7 +19,8 @@ and let $\mathcal R$ consist of the indicator words of all affine cosets $C+U_u$
 
 Define
 $$
-q(X)=\sum_{1\le i<k\le3}x_{i1}x_{k2},
+q(X)=x_{11}x_{12}+x_{21}x_{23}+x_{31}x_{32}+x_{32}x_{33}
++x_{21}x_{31}+x_{12}x_{22}+x_{13}x_{23},
 \qquad
 f(X)=\det X+q(X),
 $$
