@@ -1,223 +1,244 @@
 ## Steps
 
-Step 1: Isolate the common mass and identify the minimizing transport structure
+Step 1: Construct a feasible three-point kernel
 
-Write $b=a-1$ and let $\mu$ and $\nu$ denote the uniform laws on $[-1,1]$ and $[-a,a]$. Their densities are
+Write $b=a-1$, and let $\mu$ and $\eta$ denote the uniform probability laws on $[-1,1]$ and $[-a,a]$, respectively. For $x\in[-1,1]$, define
 $$
-f_\mu(x)=\frac{1}{2}\mathbf 1_{[-1,1]}(x),
+d(x)=\sqrt{(a+1)(2a-bx^2)},
 \qquad
-f_\nu(x)=\frac{1}{2a}\mathbf 1_{[-a,a]}(x).
-$$
-The two laws have mean zero. They are in convex order: if $U$ is uniform on $[-1,1]$ and $\varphi$ is convex, then $t\mapsto\varphi(t)+\varphi(-t)$ is nondecreasing for $t\geq0$, so
-$$
-\mathbb E[\varphi(aU)]\geq\mathbb E[\varphi(U)].
-$$
-The common part is
-$$
-\mu\wedge\nu=\frac{1}{2a}\mathbf 1_{[-1,1]}(x)\,dx.
-$$
-Also, $(\mu-\nu)^+$ is supported on $(-1,1)$, while $(\nu-\mu)^+$ is supported on $[-a,-1]\cup[1,a]$.
-
-The one-dimensional Hobson-Klimmek dispersion theorem for the lower martingale transport cost $|y-x|$ now applies. It states that the unique minimizer couples $\mu\wedge\nu$ on the diagonal. The remaining mass at each $x\in(-1,1)$ is sent to two points $p(x)\in[-a,-1]$ and $q(x)\in[1,a]$, where both maps are decreasing. If
-$$
-\Delta F=F_\nu-F_\mu,
-\qquad
-\Delta G(z)=\int_{-\infty}^{z}t\,(\nu-\mu)(dt),
-$$
-then these maps are characterized by
-$$
-\Delta F(p(x))+\Delta F(q(x))=\Delta F(x),
-\qquad
-\Delta G(p(x))+\Delta G(q(x))=\Delta G(x).
-$$
-This theorem supplies the lower-bound and uniqueness certificate; the remaining work is to solve its two equations and verify the resulting kernel directly.
-
-Step 2: Recover the two decreasing branches from the cumulative data
-
-For $p\in[-a,-1]$, $x\in[-1,1]$, and $q\in[1,a]$, the cumulative differences are
-$$
-\Delta F(p)=\frac{p+a}{2a},
-\qquad
-\Delta F(x)=-\frac{bx}{2a},
-\qquad
-\Delta F(q)=\frac{q-a}{2a}.
-$$
-The corresponding first-moment differences are
-$$
-\Delta G(p)=\frac{p^2-a^2}{4a},
-\qquad
-\Delta G(q)=\frac{q^2-a^2}{4a}.
-$$
-Inside $[-1,1]$, the density of $\nu-\mu$ is $-b/(2a)$, so
-$$
-\begin{aligned}
-\Delta G(x)
-&=\frac{1-a^2}{4a}-\frac{b}{2a}\int_{-1}^{x}t\,dt\\
-&=-\frac{b(a+x^2)}{4a}.
-\end{aligned}
-$$
-Substitution into the two dispersion equations gives
-$$
-p(x)+q(x)=-bx
-$$
-and
-$$
-p(x)^2+q(x)^2=a^2+a-bx^2.
-$$
-This gives
-$$
-(q(x)-p(x))^2
-=2\bigl(p(x)^2+q(x)^2\bigr)-\bigl(p(x)+q(x)\bigr)^2
-=(a+1)(2a-bx^2).
-$$
-Set
-$$
-d(x)=\sqrt{(a+1)(2a-bx^2)}.
-$$
-The required ordering $p(x)<q(x)$ fixes the two branches:
-$$
 p(x)=\frac{-bx-d(x)}{2},
 \qquad
 q(x)=\frac{-bx+d(x)}{2}.
 $$
-They satisfy
+The endpoint values are
 $$
-p(-1)=-1,
-\quad p(1)=-a,
+p(-1)=-1,\quad p(1)=-a,
 \qquad
-q(-1)=a,
-\quad q(1)=1.
+q(-1)=a,\quad q(1)=1.
 $$
-For $-1<x<1$, the identity
+Moreover,
 $$
-d(x)^2-(a+1)^2x^2=2a(a+1)(1-x^2)>0
+d(x)^2-(a+1)^2x^2=2a(a+1)(1-x^2),
 $$
-gives $d(x)>(a+1)|x|$. Since
-$$
-x-p(x)=\frac{d(x)+(a+1)x}{2}>0,
-\qquad
-q(x)-x=\frac{d(x)-(a+1)x}{2}>0,
-$$
-the branch locations satisfy $p(x)<x<q(x)$ throughout the interior.
-
-Step 3: Determine the conditional probabilities
-
-The diagonal part has conditional mass
-$$
-\frac{f_\nu(x)}{f_\mu(x)}=\frac{1}{a}.
-$$
-So the two off-diagonal probabilities obey
-$$
-\ell_a(x)+u_a(x)=\frac{b}{a}.
-$$
-The conditional-mean constraint adds
-$$
-\frac{x}{a}+\ell_a(x)p(x)+u_a(x)q(x)=x.
-$$
-Solving these two linear equations and using $q(x)-p(x)=d(x)$ yields
-$$
-\ell_a(x)=\frac{b}{a}\frac{q(x)-x}{q(x)-p(x)}
-=\frac{b\bigl(d(x)-(a+1)x\bigr)}{2a\,d(x)},
-$$
-$$
-u_a(x)=\frac{b}{a}\frac{x-p(x)}{q(x)-p(x)}
-=\frac{b\bigl(d(x)+(a+1)x\bigr)}{2a\,d(x)}.
-$$
-The inequality $d(x)>(a+1)|x|$ for $-1<x<1$ proves that both probabilities are positive. Therefore the candidate disintegration is
-$$
-K_{a,x}^*
-=\frac{1}{a}\delta_x
-+\ell_a(x)\delta_{p(x)}
-+u_a(x)\delta_{q(x)}.
-$$
-
-Step 4: Verify both marginals and certify uniqueness
-
-Differentiating the two branch maps gives
+so $p(x)<x<q(x)$ for $-1<x<1$. Differentiation gives
 $$
 p'(x)=-\frac{b}{2}+\frac{(a^2-1)x}{2d(x)},
 \qquad
 q'(x)=-\frac{b}{2}-\frac{(a^2-1)x}{2d(x)}.
 $$
-The probability formulas match these Jacobians exactly:
+Define
 $$
+\ell_a(x)=\frac{b\bigl(d(x)-(a+1)x\bigr)}{2a\,d(x)},
+\qquad
+\nu_a(x)=\frac{b\bigl(d(x)+(a+1)x\bigr)}{2a\,d(x)}.
+$$
+Both are positive on $(-1,1)$, and
+$$
+\ell_a(x)+\nu_a(x)=\frac{b}{a},
+\qquad
 -p'(x)=a\ell_a(x),
 \qquad
--q'(x)=au_a(x).
+-q'(x)=a\nu_a(x).
 $$
-Since the source density is $1/2$, the pushforward density along the lower branch is
+Since
 $$
-\frac{\frac{1}{2}\ell_a(x)}{|p'(x)|}=\frac{1}{2a}
+\ell_a(x)=\frac{b}{a}\frac{q(x)-x}{q(x)-p(x)},
+\qquad
+\nu_a(x)=\frac{b}{a}\frac{x-p(x)}{q(x)-p(x)},
 $$
-on $[-a,-1]$. The upper branch gives the same density on $[1,a]$, while the diagonal mass gives density
+one also has
+$$
+\ell_a(x)p(x)+\nu_a(x)q(x)=\frac{bx}{a}.
+$$
+Hence
+$$
+K_x^0=\frac{1}{a}\delta_x+\ell_a(x)\delta_{p(x)}+\nu_a(x)\delta_{q(x)}
+$$
+is a probability measure with mean $x$.
+
+Step 2: Verify the prescribed second marginal
+
+Because $p'(x)=-a\ell_a(x)<0$ and $q'(x)=-a\nu_a(x)<0$ on $(-1,1)$, $p$ and $q$ are strictly decreasing bijections from $[-1,1]$ onto $[-a,-1]$ and $[1,a]$, respectively, with the latter interval traversed from $a$ to $1$.
+
+The source density is $1/2$. Along the lower branch the pushforward density is
+$$
+\frac{\frac{1}{2}\ell_a(x)}{|p'(x)|}=\frac{1}{2a},
+$$
+and along the upper branch it is
+$$
+\frac{\frac{1}{2}\nu_a(x)}{|q'(x)|}=\frac{1}{2a}.
+$$
+The diagonal part has density
 $$
 \frac{1}{2}\cdot\frac{1}{a}=\frac{1}{2a}
 $$
-on $[-1,1]$. The second marginal is therefore exactly uniform on $[-a,a]$. The identities
+on $[-1,1]$. Therefore the second marginal of
 $$
-\ell_a(x)+u_a(x)=\frac{b}{a},
+\pi^0(dx,dy)=\frac{1}{2}\,dx\,K_x^0(dy)
+$$
+is uniform on $[-a,a]$. By Step 1 its conditional mean is $x$, so $\pi^0\in\mathcal M_a$.
+
+Step 3: Build a pointwise lower-bound certificate
+
+Set
+$$
+h(x)=-2\int_0^x\frac{dt}{d(t)},
 \qquad
-\ell_a(x)p(x)+u_a(x)q(x)=\frac{bx}{a}
+A(x)=\frac{(a+1)x}{d(x)}.
 $$
-also give
+Then $h'(x)=-2/d(x)<0$. Let $P=p^{-1}$ on $[-a,-1]$ and $Q=q^{-1}$ on $[1,a]$. Define a continuous function $\psi$ on $[-a,a]$ by
 $$
-\int_{-a}^{a}y\,K_{a,x}^*(dy)=x.
+\psi(x)=\int_0^x\bigl(A(t)-h(t)\bigr)\,dt
+\quad(-1\leq x\leq1),
 $$
-This is a feasible martingale coupling. Its two decreasing branches solve both dispersion equations, so the equality characterization in the Hobson-Klimmek theorem makes it the unique minimizer.
+$$
+\psi(y)=\psi(-1)+\int_{-1}^y\bigl(-1-h(P(s))\bigr)\,ds
+\quad(-a\leq y\leq-1),
+$$
+and
+$$
+\psi(y)=\psi(1)+\int_1^y\bigl(1-h(Q(s))\bigr)\,ds
+\quad(1\leq y\leq a).
+$$
+For fixed $x\in(-1,1)$ put
+$$
+R_x(y)=|y-x|-\psi(y)+\psi(x)-h(x)(y-x).
+$$
+On the lower tail,
+$$
+R_x'(y)=h(P(y))-h(x).
+$$
+Since both $p$ and $h$ are decreasing, this derivative is negative for $y<p(x)$ and positive for $y>p(x)$; hence the unique lower-tail minimum occurs at $p(x)$. Let $L(x)=R_x(p(x))$. Using
+$$
+\psi'(p(x))=-1-h(x),
+\qquad
+x-p(x)=\frac{d(x)+(a+1)x}{2},
+$$
+we obtain
+$$
+\begin{aligned}
+L'(x)
+&=h'(x)(x-p(x))+(1+h(x))+\psi'(x)\\
+&=-\left(1+A(x)\right)+(1+h(x))+A(x)-h(x)=0.
+\end{aligned}
+$$
+As $p(-1)=-1$, continuity gives $L(-1)=0$, so $R_x(p(x))=0$.
+
+Similarly, on the upper tail,
+$$
+R_x'(y)=h(Q(y))-h(x),
+$$
+whose unique minimum is at $q(x)$. If $U(x)=R_x(q(x))$, then
+$$
+\begin{aligned}
+U'(x)
+&=-h'(x)(q(x)-x)-(1-h(x))+\psi'(x)\\
+&=\left(1-A(x)\right)-1+h(x)+A(x)-h(x)=0.
+\end{aligned}
+$$
+Since $q(1)=1$, one has $U(1)=0$. Thus
+$$
+R_x(p(x))=R_x(x)=R_x(q(x))=0,
+$$
+and $R_x(y)\geq0$ on both tails.
+
+Step 4: Prove optimality and uniqueness without an external transport theorem
+
+For $-1<y<1$ with $y\neq x$,
+$$
+R_x''(y)=-\psi''(y).
+$$
+Now
+$$
+d'(y)=-\frac{(a^2-1)y}{d(y)},
+\qquad
+A'(y)=\frac{2a(a+1)^2}{d(y)^3},
+$$
+and therefore
+$$
+\psi''(y)=A'(y)-h'(y)
+=\frac{2a(a+1)^2}{d(y)^3}+\frac{2}{d(y)}>0.
+$$
+Hence $R_x$ is strictly concave on each of $[-1,x]$ and $[x,1]$. Step 3 gives $R_x(-1)\geq0$, $R_x(1)\geq0$, and $R_x(x)=0$. A concave function lies above each chord joining its endpoint values, so
+$$
+R_x(y)\geq0\qquad(-1\leq y\leq1).
+$$
+For $x\in(-1,1)$ one has $p(x)<-1$ and $q(x)>1$, so the tail minima are attained strictly outside the central interval. Consequently the equality set is exactly
+$$
+R_x(y)=0
+\quad\Longleftrightarrow\quad
+y\in\{p(x),x,q(x)\}.
+$$
+Thus, for every $x\in(-1,1)$ and $y\in[-a,a]$,
+$$
+|y-x|\geq\psi(y)-\psi(x)+h(x)(y-x).
+$$
+Integrating this pointwise inequality against any $\pi\in\mathcal M_a$, the martingale constraint gives
+$$
+\int h(x)(y-x)\,d\pi(x,y)=0,
+$$
+while the fixed marginals give
+$$
+\int\bigl(\psi(y)-\psi(x)\bigr)\,d\pi(x,y)
+=\int\psi\,d\eta-\int\psi\,d\mu.
+$$
+Therefore every feasible coupling has cost at least this common lower bound. The coupling $\pi^0$ from Step 2 is supported on the equality set, so it attains the bound and is a minimizer.
+
+If another feasible coupling attains the same cost, then the nonnegative gap $R_x(y)$ has integral zero, so its conditional kernel is supported on $\{p(x),x,q(x)\}$ for almost every $x$. Write $r(x)$ for its mass at $x$. Since the two off-diagonal branches lie outside $[-1,1]$, for every Borel set $B\subset(-1,1)$ the second marginal gives
+$$
+\frac{1}{2}\int_B r(x)\,dx=\frac{|B|}{2a}.
+$$
+Hence $r(x)=1/a$ almost everywhere. The remaining two masses have sum $b/a$, and the conditional-mean equation uniquely determines them as
+$$
+\frac{b}{a}\frac{q(x)-x}{q(x)-p(x)}
+\quad\text{and}\quad
+\frac{b}{a}\frac{x-p(x)}{q(x)-p(x)}.
+$$
+They are exactly $\ell_a(x)$ and $\nu_a(x)$. Thus $\pi^0$ is the unique minimizer and equals $\pi_a^*$.
 
 Step 5: Integrate the product of the two off-diagonal probabilities
 
-Multiplication of the two probabilities gives
+Multiplication gives
 $$
 \begin{aligned}
-\ell_a(x)u_a(x)
+\ell_a(x)\nu_a(x)
 &=\frac{b^2\bigl(d(x)^2-(a+1)^2x^2\bigr)}{4a^2d(x)^2}\\
 &=\frac{b^2(1-x^2)}{2a(2a-bx^2)}.
 \end{aligned}
 $$
-Use the decomposition
+Use
 $$
 \frac{1-x^2}{2a-bx^2}
 =\frac{1}{b}-\frac{a+1}{b(2a-bx^2)}.
 $$
-Put $s=\sqrt{b/(2a)}$ and substitute $t=x\sqrt{b/(2a)}$. Then
+With $s=\sqrt{b/(2a)}$ and $t=x\sqrt{b/(2a)}$,
 $$
 \int_{-1}^{1}\frac{dx}{2a-bx^2}
-=\frac{1}{\sqrt{2ab}}\int_{-s}^{s}\frac{dt}{1-t^2}
-=\frac{2}{\sqrt{2ab}}\operatorname{artanh}s
 =\frac{2}{\sqrt{2ab}}\operatorname{artanh}\sqrt{\frac{b}{2a}}.
 $$
 Therefore
 $$
-\begin{aligned}
-J(a)
-&=\frac{b^2}{2a}\int_{-1}^{1}\frac{1-x^2}{2a-bx^2}\,dx\\
-&=\frac{b}{a}\left(
+J(a)=\frac{b}{a}\left(
 1-\frac{a+1}{\sqrt{2ab}}
 \operatorname{artanh}\sqrt{\frac{b}{2a}}
 \right).
-\end{aligned}
 $$
-Replacing $b$ by $a-1$ gives the requested function.
+Replacing $b$ by $a-1$ gives the requested expression.
 
-Step 6: Check the boundary behavior and reject the symmetric false trail
+Step 6: Check limiting and special cases
 
-At $a=2$, the formula uses $\operatorname{artanh}(1/2)=\frac{1}{2}\log 3$ and becomes
+At $a=2$, $\operatorname{artanh}(1/2)=\frac{1}{2}\log 3$, so
 $$
 J(2)=\frac{1}{2}-\frac{3}{8}\log 3.
 $$
-For $b=a-1\to0^+$, the exact integrand satisfies
+As $a\to1^+$, the exact integrand from Step 5 satisfies
 $$
-\frac{\ell_a(x)u_a(x)}{b^2}
-\longrightarrow\frac{1-x^2}{4},
+\frac{\ell_a(x)\nu_a(x)}{(a-1)^2}\longrightarrow\frac{1-x^2}{4}
 $$
-uniformly for $x\in[-1,1]$. Integration gives $J(a)/(a-1)^2\to1/3$. This agrees with the collapse to the diagonal coupling when the two marginals coincide.
-
-The tempting ansatz $p(x)=-q(x)$ cannot describe the minimizer. It would give $p(x)+q(x)=0$, whereas the forced cumulative-mass equation is
+uniformly on $[-1,1]$ because its denominator converges uniformly to $4$. Hence $J(a)/(a-1)^2\to1/3$. The symmetric guess $p(x)=-q(x)$ is also impossible except at $x=0$, since the explicit branches satisfy
 $$
-p(x)+q(x)=-(a-1)x,
+p(x)+q(x)=-(a-1)x.
 $$
-which is nonzero for almost every $x$. This also explains why a kernel supported at $\pm r(|x|)$ produces the wrong value of $J(a)$.
 Final Answer: $\boxed{\frac{a-1}{a}\left(1-\frac{a+1}{\sqrt{2a(a-1)}}\operatorname{artanh}\sqrt{\frac{a-1}{2a}}\right)}$
 
 ---
@@ -239,7 +260,7 @@ $\frac{a-1}{a}\left(1-\frac{a+1}{\sqrt{2a(a-1)}}\operatorname{artanh}\sqrt{\frac
 ## Solution Concepts
 
 - martingale transport
-- convex order
-- common-mass decomposition
-- cumulative shadow equations
+- explicit dual certificate
+- pushforward densities
+- concavity
 - change of variables
