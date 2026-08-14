@@ -1,38 +1,90 @@
 ## Steps
 
-Step 1: Construct a feasible three-point kernel
+Step 1: Derive and verify the three-point kernel
 
-Write $b=a-1$, and let $\mu$ and $\eta$ denote the uniform probability laws on $[-1,1]$ and $[-a,a]$, respectively. For $x\in[-1,1]$, define
+Write $b=a-1$, and let $\mu$ and $\eta$ denote the uniform probability laws on $[-1,1]$ and $[-a,a]$, respectively. Rather than guess the branch formulas, seek a feasible kernel with one atom at $x$, one point $p(x)$ in the lower tail, and one point $q(x)$ in the upper tail:
 $$
-d(x)=\sqrt{(a+1)(2a-bx^2)},
-\qquad
-p(x)=\frac{-bx-d(x)}{2},
-\qquad
-q(x)=\frac{-bx+d(x)}{2}.
+K_x=r(x)\delta_x+\ell(x)\delta_{p(x)}+\nu(x)\delta_{q(x)}.
 $$
-The endpoint values are
+Take $p$ and $q$ decreasing, with
 $$
 p(-1)=-1,\quad p(1)=-a,
 \qquad
 q(-1)=a,\quad q(1)=1.
 $$
-Moreover,
+The two off-diagonal branches then fill exactly the two tails. On the common central interval $[-1,1]$, only the diagonal atom contributes to the second marginal. Matching its density with the target density gives
 $$
-d(x)^2-(a+1)^2x^2=2a(a+1)(1-x^2),
+\frac{1}{2}r(x)=\frac{1}{2a},
+\qquad\text{so}\qquad
+r(x)=\frac{1}{a}.
 $$
-so $p(x)<x<q(x)$ for $-1<x<1$. Differentiation gives
+Therefore
+$$
+\ell(x)+\nu(x)=1-\frac{1}{a}=\frac{b}{a}.
+$$
+Tail marginal balance gives
+$$
+\frac{\frac{1}{2}\ell(x)}{-p'(x)}=\frac{1}{2a},
+\qquad
+\frac{\frac{1}{2}\nu(x)}{-q'(x)}=\frac{1}{2a},
+$$
+and therefore
+$$
+p'(x)=-a\ell(x),
+\qquad
+q'(x)=-a\nu(x).
+$$
+Adding these equations yields $p'(x)+q'(x)=-b$. The endpoint values at $x=-1$ fix the integration constant, so
+$$
+p(x)+q(x)=-bx.
+$$
+The martingale condition reads
+$$
+\frac{x}{a}+\ell(x)p(x)+\nu(x)q(x)=x.
+$$
+Using the derivative relations just obtained,
+$$
+p(x)p'(x)+q(x)q'(x)=-bx.
+$$
+After integration and the endpoint values at $x=-1$,
+$$
+p(x)^2+q(x)^2=a(a+1)-bx^2.
+$$
+It follows that
+$$
+\begin{aligned}
+(q(x)-p(x))^2
+&=2\bigl(p(x)^2+q(x)^2\bigr)-\bigl(p(x)+q(x)\bigr)^2\\
+&=(a+1)(2a-bx^2).
+\end{aligned}
+$$
+Since $q(x)>p(x)$, set
+$$
+d(x)=\sqrt{(a+1)(2a-bx^2)}.
+$$
+Solving for the two branches now gives
+$$
+p(x)=\frac{-bx-d(x)}{2},
+\qquad
+q(x)=\frac{-bx+d(x)}{2}.
+$$
+Differentiating and using $\ell=-p'/a$, $\nu=-q'/a$ produces
 $$
 p'(x)=-\frac{b}{2}+\frac{(a^2-1)x}{2d(x)},
 \qquad
-q'(x)=-\frac{b}{2}-\frac{(a^2-1)x}{2d(x)}.
+q'(x)=-\frac{b}{2}-\frac{(a^2-1)x}{2d(x)},
 $$
-Define
+and
 $$
 \ell_a(x)=\frac{b\bigl(d(x)-(a+1)x\bigr)}{2a\,d(x)},
 \qquad
 \nu_a(x)=\frac{b\bigl(d(x)+(a+1)x\bigr)}{2a\,d(x)}.
 $$
-Both are positive on $(-1,1)$, and
+These are the formulas to be verified. First,
+$$
+d(x)^2-(a+1)^2x^2=2a(a+1)(1-x^2),
+$$
+so $p(x)<x<q(x)$ for $-1<x<1$. Both weights are positive there, and
 $$
 \ell_a(x)+\nu_a(x)=\frac{b}{a},
 \qquad
@@ -40,17 +92,17 @@ $$
 \qquad
 -q'(x)=a\nu_a(x).
 $$
-Since
+Also,
 $$
 \ell_a(x)=\frac{b}{a}\frac{q(x)-x}{q(x)-p(x)},
 \qquad
 \nu_a(x)=\frac{b}{a}\frac{x-p(x)}{q(x)-p(x)},
 $$
-one also has
+so
 $$
 \ell_a(x)p(x)+\nu_a(x)q(x)=\frac{bx}{a}.
 $$
-Hence
+Therefore
 $$
 K_x^0=\frac{1}{a}\delta_x+\ell_a(x)\delta_{p(x)}+\nu_a(x)\delta_{q(x)}
 $$
@@ -78,15 +130,61 @@ $$
 $$
 is uniform on $[-a,a]$. By Step 1 its conditional mean is $x$, so $\pi^0\in\mathcal M_a$.
 
-Step 3: Build a pointwise lower-bound certificate
+Step 3: Derive and verify the pointwise lower-bound certificate
 
+For a dual certificate, write the gap as
+$$
+R_x(y)=|y-x|-\psi(y)+\psi(x)-h(x)(y-x).
+$$
+The candidate kernel from Step 1 suggests imposing equality at $y=p(x),x,q(x)$ and tangency at the two off-diagonal contacts. Since $p(x)<x<q(x)$, tangency gives
+$$
+\psi'(p(x))=-1-h(x),
+\qquad
+\psi'(q(x))=1-h(x).
+$$
+The identity $R_x(x)=0$ is automatic. Differentiate the desired contacts $R_x(p(x))=0$ and $R_x(q(x))=0$ with respect to $x$. The terms containing $p'(x)$ and $q'(x)$ cancel by the two tangency equations, leaving
+$$
+0=h'(x)(x-p(x))+1+h(x)+\psi'(x)
+$$
+and
+$$
+0=-h'(x)(q(x)-x)-1+h(x)+\psi'(x).
+$$
+Subtracting the second relation from the first gives
+$$
+h'(x)(q(x)-p(x))+2=0,
+$$
+so, because $q(x)-p(x)=d(x)$,
+$$
+h'(x)=-\frac{2}{d(x)}.
+$$
+Choose the harmless normalization $h(0)=0$. Then
+$$
+h(x)=-2\int_0^x\frac{dt}{d(t)}.
+$$
+Substituting $h'=-2/d$ back into the first contact derivative gives
+$$
+\psi'(x)=-1-h(x)+\frac{2(x-p(x))}{d(x)}.
+$$
+Since $2(x-p(x))=d(x)+(a+1)x$,
+$$
+\psi'(x)=\frac{(a+1)x}{d(x)}-h(x).
+$$
 Set
 $$
-h(x)=-2\int_0^x\frac{dt}{d(t)},
-\qquad
 A(x)=\frac{(a+1)x}{d(x)}.
 $$
-Then $h'(x)=-2/d(x)<0$. Let $P=p^{-1}$ on $[-a,-1]$ and $Q=q^{-1}$ on $[1,a]$. Define a continuous function $\psi$ on $[-a,a]$ by
+The tangency equations also determine the derivatives on the tails. If $P=p^{-1}$ on $[-a,-1]$ and $Q=q^{-1}$ on $[1,a]$, they become
+$$
+\psi'(y)=-1-h(P(y))
+\quad(-a<y<-1),
+$$
+and
+$$
+\psi'(y)=1-h(Q(y))
+\quad(1<y<a).
+$$
+With the normalization $\psi(0)=0$ and continuity at $\pm1$, these derivative relations generate
 $$
 \psi(x)=\int_0^x\bigl(A(t)-h(t)\bigr)\,dt
 \quad(-1\leq x\leq1),
@@ -100,15 +198,11 @@ $$
 \psi(y)=\psi(1)+\int_1^y\bigl(1-h(Q(s))\bigr)\,ds
 \quad(1\leq y\leq a).
 $$
-For fixed $x\in(-1,1)$ put
-$$
-R_x(y)=|y-x|-\psi(y)+\psi(x)-h(x)(y-x).
-$$
-On the lower tail,
+It remains to verify that these generated functions really give the required global inequality. On the lower tail,
 $$
 R_x'(y)=h(P(y))-h(x).
 $$
-Since both $p$ and $h$ are decreasing, this derivative is negative for $y<p(x)$ and positive for $y>p(x)$; hence the unique lower-tail minimum occurs at $p(x)$. Let $L(x)=R_x(p(x))$. Using
+Since both $p$ and $h$ are decreasing, this derivative is negative for $y<p(x)$ and positive for $y>p(x)$; so the unique lower-tail minimum occurs at $p(x)$. Let $L(x)=R_x(p(x))$. Using
 $$
 \psi'(p(x))=-1-h(x),
 \qquad
@@ -136,7 +230,7 @@ U'(x)
 &=\left(1-A(x)\right)-1+h(x)+A(x)-h(x)=0.
 \end{aligned}
 $$
-Since $q(1)=1$, one has $U(1)=0$. Thus
+Since $q(1)=1$, one has $U(1)=0$. Therefore
 $$
 R_x(p(x))=R_x(x)=R_x(q(x))=0,
 $$
