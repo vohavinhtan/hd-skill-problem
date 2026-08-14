@@ -1,100 +1,308 @@
 ## Steps
 
-Step 1: Identify the antipodal pairs
+Step 1: Decode the metric invariants
 
-Put $\mathbf 1=(1,\ldots,1)$. Every nonzero value of $d_n$ lies between $n$ and $2n$, so the triangle inequality follows from
+The quadratic word $\mathbf q$ is not linear: if $e_1,e_{m+1}$ are the corresponding standard basis vectors of $V$, then
 $$
-d_n(x,z)\leq 2n\leq d_n(x,y)+d_n(y,z)
-$$
-whenever $x,y,z$ are distinct. If two vertices coincide, the triangle inequality reduces either to equality or to nonnegativity. So $d_n$ is a metric.
-
-For fixed $x$, the equation $d_n(x,y)=2n$ holds exactly when $y=x+\mathbf1$. Indeed, the third branch is smaller than $2n$, while $r(x,y)=0$ for distinct $x,y$ forces $\operatorname{wt}(x+y)=n$. Every isometry therefore satisfies
-$$
-F(x+\mathbf1)=F(x)+\mathbf1.
-$$
-It must permute the pairs $\{x,x+\mathbf1\}$.
-
-Step 2: Pass to the folded quotient
-
-Let
-$$
-Q_n=X_n/\langle\mathbf1\rangle,
+q(e_1)=q(e_{m+1})=0,
 \qquad
-\delta([x],[y])=r(x,y).
+q(e_1+e_{m+1})=1.
 $$
-The function $\delta$ is well defined because replacing either representative by its complement changes $\operatorname{wt}(x+y)$ to $n-\operatorname{wt}(x+y)$. For distinct classes,
-$$
-d_n(x,y)=n+\delta([x],[y])-2.
-$$
-An isometry of $X_n$ therefore induces an isometry of $(Q_n,\delta)$. Conversely, any quotient isometry can be lifted, with either ordering chosen independently in every two-point fiber, because complementing one representative leaves $\delta$ unchanged.
+Hence $\mathbf q\notin\mathcal L_m$, so $\lambda(z)$ and $\theta(z)$ are never simultaneously $1$.
 
-Fix $s(C)$ as the unique member of $C\in Q_n$ whose last coordinate is $0$. Every $x\in X_n$ then has the unique expression
+If $x\neq y$, then $z=x+y$ is a nonzero even-weight word, so $\operatorname{wt}(z)\geq2$. Thus every nonzero distance is at least $8n+8$ and at most $12n+2$. Consequently, for three distinct points,
 $$
-x=s(C)+t\mathbf1,\qquad C\in Q_n,\quad t\in\mathbb F_2.
+d_n(x,z)\leq12n+2<16n+16\leq d_n(x,y)+d_n(y,z),
+$$
+while the cases with repeated points are immediate. Therefore $d_n$ is a metric.
+
+For nonzero $z\in X_n$, write
+$$
+D(z)=d_n(0,z)-8n
+=4\operatorname{wt}(z)+2\lambda(z)+\theta(z). \tag{1}
+$$
+Because $2\lambda(z)+\theta(z)\in\{0,1,2\}$, the value $D(z)$ determines all three quantities separately: its parity gives $\theta(z)$, its residue modulo $4$ then gives $\lambda(z)$, and the remaining multiple of $4$ gives $\operatorname{wt}(z)$. Hence every isometry fixing $0$ preserves Hamming weight, the set $\mathcal L_m$, and the single word $\mathbf q$.
+
+Step 2: Remove the translational part
+
+For every $a\in X_n$, the translation
+$$
+T_a(x)=a+x
+$$
+is an isometry because the metric depends only on $x+y$. Therefore, given any isometry $F$, put
+$$
+a=F(0),
+\qquad
+G=T_a\circ F.
+$$
+Since the characteristic is $2$, $T_a^{-1}=T_a$, and $G(0)=0$. It is enough to classify the isometries fixing $0$.
+
+Step 3: Reconstruct the underlying coordinate permutation
+
+For $u\in V$, let $e_u$ denote the unit word supported at the coordinate $u$, and for distinct $u,v\in V$ put
+$$
+p_{uv}=e_u+e_v.
+$$
+These are exactly the weight-$2$ words, so $G$ permutes the set
+$$
+\mathcal P=\{p_{uv}:u\neq v\}.
+$$
+Since $m\geq3$, both the words in $\mathcal L_m$ and the word $\mathbf q$ have weight greater than $4$. Thus, for two distinct elements of $\mathcal P$, the marker terms vanish and
+$$
+\operatorname{wt}(p_{uv}+p_{rs})=
+\begin{cases}
+2,&|\{u,v\}\cap\{r,s\}|=1,\\
+4,&\{u,v\}\cap\{r,s\}=\varnothing.
+\end{cases} \tag{2}
+$$
+Hence the metric on $\mathcal P$ recovers the intersection graph of the $2$-subsets of $V$.
+
+For each $u\in V$, the set
+$$
+\mathcal S_u=\{p_{uv}:v\neq u\}
+$$
+is a clique of size $n-1$. Conversely, any clique not having a common coordinate has size at most $3$: after two members $\{u,v\}$ and $\{u,w\}$ are chosen, any member meeting both but avoiding $u$ must be $\{v,w\}$. Since $n-1>3$, the cliques of size $n-1$ are exactly the $\mathcal S_u$. Therefore $G$ permutes these stars, so there is a unique permutation $\phi$ of $V$ such that
+$$
+G(p_{uv})=p_{\phi(u)\phi(v)}. \tag{3}
 $$
 
-Step 3: Resolve the exceptional value $n=6$
+Let $P_\phi$ be the coordinate permutation
+$$
+(P_\phi x)_v=x_{\phi^{-1}(v)}.
+$$
+After replacing $G$ by $P_\phi^{-1}G$, assume that every $p_{uv}$ is fixed. We show that then every word is fixed.
 
-Every nonzero class in $Q_6$ has a representative of weight $2$: weights $4$ and $6$ become weights $2$ and $0$ after complementation. So any two distinct classes have $\delta$-distance $2$, and $(Q_6,\delta)$ is the equilateral metric on $|Q_6|=2^{6-2}=16$ points. Its isometry group is the full symmetric group on $Q_6$.
+Let $z$ have support $A\subseteq V$, and put $k=|A|$. From the Hamming weight of $z+p_{uv}$ one recovers
+$$
+|A\cap\{u,v\}|=
+\frac{k+2-\operatorname{wt}(z+p_{uv})}{2}. \tag{4}
+$$
+The left side is therefore preserved for every pair $u,v$. If $u,v,w$ are distinct, then
+$$
+\mathbf1_A(u)=
+\frac{|A\cap\{u,v\}|+|A\cap\{u,w\}|-|A\cap\{v,w\}|}{2}. \tag{5}
+$$
+Thus all coordinate-membership indicators are recovered from the metric data. Hence an isometry fixing $0$ and every $p_{uv}$ is the identity. It follows that every $0$-fixing isometry is exactly one coordinate permutation $P_\phi$.
 
-The lifts are exactly
-$$
-F_{\tau,\eta}\bigl(s(C)+t\mathbf1\bigr)
-=s\bigl(\tau(C)\bigr)+\bigl(t+\eta(C)\bigr)\mathbf1,
-$$
-where $\tau\in\operatorname{Sym}(Q_6)$ and $\eta:Q_6\to\mathbb F_2$ are arbitrary. The parameters are unique because the induced quotient permutation determines $\tau$, and the image of $s(C)$ then determines $\eta(C)$.
+Step 4: Use the linear-word marker to force $\phi$ to be linear
 
-Step 4: Classify the quotient isometries for $n\geq8$
+Because $G=P_\phi$ preserves $\mathcal L_m$, for every nonzero $\alpha\in V$ there is a nonzero $\beta\in V$ such that
+$$
+\alpha\cdot\phi^{-1}(v)=\beta\cdot v
+\qquad(v\in V). \tag{6}
+$$
+At $v=0$, equation (6) gives
+$$
+\alpha\cdot\phi^{-1}(0)=0
+$$
+for every nonzero $\alpha$, so $\phi^{-1}(0)=0$. Taking $\alpha$ successively to be the standard basis vectors shows that every coordinate function of $\phi^{-1}$ is a linear functional of $v$. Therefore $\phi^{-1}$, and hence $\phi$, is linear.
 
-Translations by $Q_n$ preserve $\delta$. After one translation, a quotient isometry may be assumed to fix $[0]$. Its sphere of radius $2$ consists of
+Thus there is a unique matrix
 $$
-p_{ij}=[e_i+e_j],\qquad 1\leq i<j\leq n.
+A\in\operatorname{GL}(2m,2)
 $$
-Two such points have distance $2$ exactly when their index pairs meet in one element; disjoint pairs have distance $4$. The resulting graph is the line graph of $K_n$.
-
-Its cliques of size $n-1$ are precisely the stars $\{p_{ij}:j\neq i\}$. To see the alternative, take two incident edges $\{a,b\}$ and $\{a,c\}$ in a clique. An edge meeting both but missing $a$ must be $\{b,c\}$, so a clique without a common endpoint has size at most $3$. Since $n\geq8$, an automorphism must permute the stars. Their pairwise intersections recover every $p_{ij}$, so the action on this sphere is induced by a unique coordinate permutation $\pi\in S_n$.
-
-Compose with $\pi^{-1}$ and suppose every $p_{ij}$ is fixed. Represent $C\in Q_n$ by an even set $A$ of size $k\leq n/2$. The identity
+with
 $$
-\left|A\triangle\{i,j\}\right|
-=k+2-2\left|A\cap\{i,j\}\right|
-$$
-gives, when $0<k<n/2$,
-$$
-\delta(C,p_{ij})=k-2
-\quad\Longleftrightarrow\quad
-\{i,j\}\subseteq A.
-$$
-The pairs on the right recover $A$. If $k=n/2$, which can occur only when $4\mid n$, then
-$$
-\delta(C,p_{ij})=k-2
-\quad\Longleftrightarrow\quad
-\{i,j\}\subseteq A\text{ or }\{i,j\}\subseteq A^c.
-$$
-These pairs recover the unordered bipartition $\{A,A^c\}$ and recover $C$. The class $[0]$ was already fixed. So a quotient isometry fixing $[0]$ and all $p_{ij}$ is the identity, and
-$$
-\operatorname{Iso}(Q_n,\delta)=Q_n\rtimes S_n
-\qquad(n\geq8).
+\phi(v)=Av. \tag{7}
 $$
 
-Step 5: Lift the quotient actions and state the normal forms
+Step 5: Use the quadratic marker to determine the exact matrix condition
 
-For even $n\geq8$, choose the unique translation representative $a\in X_n$ with $a_n=0$. Every lift is then
+The coordinate permutation induced by $A$ sends the quadratic word to
 $$
-F_{a,\pi,\varepsilon}(x)
-=a+\pi(x)+\varepsilon([x])\mathbf1,
+(P_A\mathbf q)_v=q(A^{-1}v).
 $$
-where $\pi\in S_n$ and $\varepsilon:Q_n\to\mathbb F_2$ are arbitrary. These parameters are unique: the quotient action determines $[a]$ and $\pi$, the condition $a_n=0$ determines $a$, and each fiber image determines $\varepsilon([x])$.
+Since $\theta$ singles out $\mathbf q$, preservation of $\theta$ is equivalent to
+$$
+P_A\mathbf q=\mathbf q,
+$$
+that is,
+$$
+q(A^{-1}v)=q(v)
+\qquad(v\in V).
+$$
+Equivalently,
+$$
+q(Av)=q(v)
+\qquad(v\in V). \tag{8}
+$$
 
-For $n=6$ these lifts are the maps $L_{\tau,\eta}$ with $(\tau,\eta)\in A_6\times E_6$. For even $n\geq8$, the affine quotient map $\sigma:[x]\mapsto[a+\pi(x)]$ gives $L_{\sigma,\varepsilon}$ with $(\sigma,\varepsilon)\in A_n\times E_n$. Substitution into $d_n$ shows that every displayed map preserves antipodal distance and all cross-fiber distances. That gives sufficiency; the quotient reconstruction gives necessity. Uniqueness also gives the counts $2^{16}16!$ for $n=6$ and $2^{2^{n-2}}2^{n-2}n!$ for even $n\geq8$. For boundary checks, an arbitrary transposition of two quotient classes is valid for $n=6$, but for $n\geq8$ it fails unless it preserves the star incidence. Swapping only one antipodal fiber is valid in both regimes and is captured by a function supported on that fiber.
+Conversely, if $A\in\operatorname{GL}(2m,2)$ satisfies (8), then $P_A$ preserves Hamming weight, sends every linear word $\ell_\alpha$ to another linear word, and fixes $\mathbf q$. Therefore it preserves all terms in the definition of $d_n$. Combining this with translations, every isometry is uniquely of the form
+$$
+F_{a,A}(x)_v
+=a_v+x_{A^{-1}v}, \tag{9}
+$$
+where
+$$
+a\in X_n,
+\qquad
+A\in\operatorname{GL}(2m,2),
+\qquad
+q(Av)=q(v)\ \text{for all }v\in V.
+$$
+Uniqueness follows from $a=F(0)$ and from the unique action on the weight-$2$ shell.
 
-Final Answer: $\boxed{\{L_{\sigma,\varepsilon}:(\sigma,\varepsilon)\in A_n\times E_n\}}$
+Step 6: Count the admissible matrices without using a group-order formula
+
+Write an element of $V$ as $(u,w)$ with $u,w\in\mathbb F_2^m$, so
+$$
+q(u,w)=u\cdot w.
+$$
+Its polar form is
+$$
+B(x,y)=q(x+y)+q(x)+q(y).
+$$
+For $x=(u,w)$ and $y=(u',w')$,
+$$
+B(x,y)=u\cdot w'+u'\cdot w, \tag{10}
+$$
+which is nondegenerate.
+
+Call $(e,f)$ a hyperbolic pair if
+$$
+q(e)=q(f)=0,
+\qquad
+B(e,f)=1.
+$$
+An ordered hyperbolic basis is a basis
+$$
+e_1,f_1,\ldots,e_m,f_m
+$$
+with
+$$
+q(e_i)=q(f_i)=0,
+\quad
+B(e_i,e_j)=B(f_i,f_j)=0,
+\quad
+B(e_i,f_j)=\delta_{ij}. \tag{11}
+$$
+Every matrix satisfying (8) sends the standard hyperbolic basis to an ordered hyperbolic basis. Conversely, (11) gives
+$$
+q\left(\sum_i a_i e_i+\sum_i b_i f_i\right)=\sum_i a_i b_i,
+$$
+so every ordered hyperbolic basis determines a unique matrix satisfying (8). We therefore count such bases.
+
+First count the zeros of $q$. If $u=0$, all $2^m$ choices of $w$ give $q(u,w)=0$. If $u\neq0$, exactly $2^{m-1}$ choices of $w$ satisfy $u\cdot w=0$. Hence
+$$
+Z_m:=|\{x:q(x)=0\}|
+=2^m+(2^m-1)2^{m-1}
+=2^{2m-1}+2^{m-1}. \tag{12}
+$$
+Thus the number of nonzero singular vectors is
+$$
+S_m=Z_m-1
+=(2^{m-1}+1)(2^m-1). \tag{13}
+$$
+
+Fix a nonzero singular vector $e$. Since $B$ is nondegenerate, choose $h$ with $B(e,h)=1$. If $q(h)=1$, replace $h$ by $h+e$; then
+$$
+q(h+e)=q(h)+q(e)+B(h,e)=0.
+$$
+So at least one singular $f_0$ with $B(e,f_0)=1$ exists. Put
+$$
+U=\langle e,f_0\rangle^\perp.
+$$
+Every $f$ satisfying $B(e,f)=1$ has a unique expression
+$$
+f=f_0+c e+u,
+\qquad c\in\mathbb F_2,\ u\in U.
+$$
+Because $e,f_0$ are singular and $U$ is orthogonal to their span,
+$$
+q(f)=c+q(u).
+$$
+For each $u\in U$, exactly one choice $c=q(u)$ makes $f$ singular. Since $\dim U=2m-2$, the number of possible partners $f$ is therefore
+$$
+2^{2m-2}. \tag{14}
+$$
+
+The plane $\langle e,f\rangle$ has three zeros and one nonzero value of $q$. If $Z_U$ denotes the number of zeros of $q$ on its orthogonal complement, then
+$$
+Z_m=3Z_U+(2^{2m-2}-Z_U),
+$$
+so by (12)
+$$
+Z_U=2^{2m-3}+2^{m-2}=Z_{m-1}. \tag{15}
+$$
+Thus the same counting argument repeats on the orthogonal complement. If $G_m$ is the number of ordered hyperbolic bases in dimension $2m$, then
+$$
+G_m=S_m\,2^{2m-2}G_{m-1},
+\qquad
+G_1=2. \tag{16}
+$$
+Using (13),
+$$
+G_m
+=2^{m(m-1)}\prod_{j=1}^m(2^{j-1}+1)(2^j-1)
+$$
+and hence
+$$
+G_m
+=2^{1+m(m-1)}(2^m-1)
+\prod_{j=1}^{m-1}(2^{2j}-1). \tag{17}
+$$
+
+Finally,
+$$
+|X_n|=2^{n-1}.
+$$
+Each translation parameter $a$ and each admissible matrix $A$ occur independently and uniquely, so
+$$
+|\operatorname{Iso}(X_n,d_n)|
+=2^{n-1}G_m
+=2^{n+m(m-1)}(2^m-1)
+\prod_{j=1}^{m-1}(2^{2j}-1). \tag{18}
+$$
+
+Final Answer:
+$$
+\boxed{
+\operatorname{Iso}(X_n,d_n)
+=
+\left\{
+F_{a,A}:\
+(F_{a,A}(x))_v=a_v+x_{A^{-1}v},\
+\ a\in X_n,\
+A\in\operatorname{GL}(2m,2),\
+q(Av)=q(v)\ \forall v\in\mathbb F_2^{2m}
+\right\},
+}
+$$
+with the pair $(a,A)$ unique for every isometry, and
+$$
+\boxed{
+|\operatorname{Iso}(X_n,d_n)|
+=
+2^{n+m(m-1)}(2^m-1)
+\prod_{j=1}^{m-1}(2^{2j}-1),
+\qquad n=2^{2m}.
+}
+$$
 
 ---
 
 ## Answer
 
-$\{L_{\sigma,\varepsilon}:(\sigma,\varepsilon)\in A_n\times E_n\}$
+For $n=2^{2m}$,
+$$
+\left\{
+F_{a,A}:\
+(F_{a,A}(x))_v=a_v+x_{A^{-1}v},\
+\ a\in X_n,\
+A\in\operatorname{GL}(2m,2),\
+\sum_{i=1}^m(Av)_i(Av)_{m+i}
+=
+\sum_{i=1}^m v_i v_{m+i}
+\ \text{for every }v\in\mathbb F_2^{2m}
+\right\},
+$$
+with unique parameters $(a,A)$, and
+$$
+|\operatorname{Iso}(X_n,d_n)|
+=
+2^{n+m(m-1)}(2^m-1)
+\prod_{j=1}^{m-1}(2^{2j}-1).
+$$
 
 ---
 
@@ -108,7 +316,8 @@ $\{L_{\sigma,\varepsilon}:(\sigma,\varepsilon)\in A_n\times E_n\}$
 
 ## Solution Concepts
 
-- quotient metric spaces
-- antipodal fibers
-- line graphs and star reconstruction
-- distance-profile reconstruction
+- finite metric isometry reconstruction
+- weight-two shell and star reconstruction
+- binary simplex-code invariance
+- quadratic forms over $\mathbb F_2$
+- hyperbolic-basis enumeration
