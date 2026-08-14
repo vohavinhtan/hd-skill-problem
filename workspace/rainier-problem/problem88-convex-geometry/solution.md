@@ -74,11 +74,12 @@ $$
 2D_\lambda(E)=S_E^2+Q_E+2\lambda S_E.
 \tag{4}
 $$
-For each fixed $\lambda$, the minimum of the right side of (4) over all
-five-subsets is attained by five consecutive sample nodes. Indeed, if a
-minimizing set is not consecutive, choose selected values $u<v$ with an
-unselected sample value $z$ strictly between them, and let $S$ be the
-sum of the selected values. Replacing $u$ by $z$ changes (4) by
+For fixed $\lambda$, choose among all five-sets minimizing the right side
+of (4) one whose selected sample values have the smallest span. We claim
+that this minimizing set is consecutive. Otherwise there is an unselected
+sample value $z$ strictly between its smallest selected value $u$ and its
+largest selected value $v$. Let $S$ be the sum of the five selected
+values. Replacing $u$ by $z$ changes (4) by
 $$
 2(z-u)(S+\lambda+z),
 \tag{5}
@@ -88,11 +89,11 @@ $$
 2(z-v)(S+\lambda+z).
 \tag{6}
 $$
-The two prefactors $z-u$ and $z-v$ have opposite signs, so one change is
-nonpositive. In the equality case choose the replacement that reduces
-the number of skipped sample nodes inside the selected span. Repeating
-this finite operation reaches five consecutive nodes with no larger
-value.
+Since $z-u>0$ and $z-v<0$, one of (5), (6) is nonpositive. It cannot be
+negative, by minimality of the original five-set. Hence one replacement
+has change $0$; it is another minimizer, but replacing either extreme by
+an interior sample value strictly shortens the selected span, a
+contradiction. Thus a minimizing five-set is consecutive.
 
 Consequently
 $$
@@ -252,8 +253,7 @@ R(\nu_{m+2})-R(\nu_{m+1})
 $$
 By (13), (14),
 $$
-\frac ba=\nu_*^2>
-u_{m+1}\nu_{m+2},
+\frac ba=\nu_*^2>\nu_{m+1}\nu_{m+2},
 $$
 so this difference is negative. Therefore the strongest upper bound is
 $$
