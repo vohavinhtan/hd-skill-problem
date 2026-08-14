@@ -1,275 +1,197 @@
 ## Steps
 
-Step 1: Reduce every candidate facet to a four-root sign problem
+Step 1: Reduce every candidate plane to a moving fourth root
 
 Write
 $$
-x_r=c_r=\cos\frac{2\pi r}{n},
+x_r=\cos(2r\delta),
 $$
 so
 $$
 x_1>x_2>\cdots>x_h.
 $$
-Three distinct points $Q_a,Q_b,Q_c$ determine a nonvertical plane: a vertical plane would give a nonzero polynomial of degree at most $2$ vanishing at the three distinct numbers $x_a,x_b,x_c$. Hence the plane has the form
+For a triple $F=\{a,b,c\}$, the plane through $Q_a(\lambda),Q_b(\lambda),Q_c(\lambda)$ is not vertical: otherwise its equation would give a nonzero polynomial of degree at most $2$ in $x$ vanishing at the three distinct numbers $x_a,x_b,x_c$. Hence it has the form
 $$
-z=p(x),\qquad \deg p\le2.
+z=p(x),\qquad \deg p\le 2.
 $$
 Therefore
 $$
-G_F(x):=x^4-p(x)
-=(x-x_a)(x-x_b)(x-x_c)(x-d_F),
-\qquad
-d_F=-(x_a+x_b+x_c),
+G_F(x)
+=
+x^4+\lambda x^3-p(x)
+=
+(x-x_a)(x-x_b)(x-x_c)(x-d_F),
 \tag{1}
 $$
-for $F=\{a,b,c\}$, because the $x^3$ coefficient of $G_F$ is zero.
-
-We shall use the following sign rule without changing conventions. If
+and comparison of the $x^3$-coefficients gives
 $$
-\lambda_1>\lambda_2>\lambda_3>\lambda_4,
-$$
-then the monic quartic $\prod_{i=1}^4(x-\lambda_i)$ has signs
-$$
-+,-,+,-,+
+d_F=-\lambda-(x_a+x_b+x_c).
 \tag{2}
 $$
-from right to left on
-$$
-(\lambda_1,\infty),\ (\lambda_2,\lambda_1),\
-(\lambda_3,\lambda_2),\ (\lambda_4,\lambda_3),\
-(-\infty,\lambda_4).
-$$
-Thus the plane through $Q_a,Q_b,Q_c$ supports $K_s$ exactly when all retained nonzero values $G_F(x_r)$ have the same sign. It is new exactly when $G_F(x_s)$ has the opposite sign. Notice that multiplying the plane equation by $-1$ changes every sign simultaneously; it does not permit one to relabel the two negative intervals in (2) as the only possible exceptional intervals.
 
-Step 2: Determine the link of the deleted vertex
+All nonzero values $G_F(x_r)$ for $r\notin F\cup\{s,t\}$ have one sign exactly when the plane supports $K_{\{s,t\}}(\lambda)$. If it is jointly new, then $G_F(x_s)$ and $G_F(x_t)$ must both have the opposite sign: reinserting $Q_t$ must destroy support for $K_{\{s\}}(\lambda)$, and reinserting $Q_s$ must destroy support for $K_{\{t\}}(\lambda)$. Conversely, when these signs are strict, the plane contains no additional retained sample point and the corresponding triangle is jointly new.
 
-Put
+Step 2: Show that only four triples can ever be jointly new
+
+Since
 $$
-\delta=\frac{\pi}{n},\qquad x_r=\cos(2r\delta).
+s\le \frac{h-1}{4},
 $$
-For adjacent pairs define
+we have
 $$
-\begin{aligned}
-S(p,q)
-&=x_p+x_{p+1}+x_q+x_{q+1}\\
-&=4\cos\delta\cos((p+q+1)\delta)\cos((p-q)\delta).
-\end{aligned}
+t-s=h-2s\ge 2s+1>1.
 \tag{3}
 $$
-Since $|p-q|\delta<\pi/2$,
+Thus $x_s$ and $x_t$ are separated by retained sample nodes.
+
+Along the strictly ordered nodes $x_1>\cdots>x_h$, the sign of the quartic in (1) changes only when a root is crossed. For $x_s$ to be the only wrong-sign sample in its local block, there must be a root in each adjacent gap beside $x_s$; the same is true for $x_t$. Hence four sign boundaries are required. Three of them are the selected sample roots $x_a,x_b,x_c$, while the remaining one is $d_F$. Therefore one deleted node is bracketed by its two selected neighbours and the other by one selected neighbour together with $d_F$.
+
+The only possibilities are
 $$
-S(p,q)>0\quad(p+q\le h-1),
-\qquad
-S(p,q)<0\quad(p+q\ge h).
+\begin{array}{c|c}
+F&\text{required position of }d_F\\ \hline
+F_A=\{s-1,s+1,t-1\}&x_t>d_F>x_{t+1}\\
+F_B=\{s-1,s+1,t+1\}&x_{t-1}>d_F>x_t\\
+F_C=\{s-1,t-1,t+1\}&x_s>d_F>x_{s+1}\\
+F_D=\{s+1,t-1,t+1\}&x_{s-1}>d_F>x_s.
+\end{array}
 \tag{4}
 $$
-For the endpoint pattern set
-$$
-T_i=x_1+x_h+x_i+x_{i+1}
-=\cos(2\delta)-\cos\delta
-+2\cos\delta\cos((2i+1)\delta).
-\tag{5}
-$$
-The sequence $T_i$ is strictly decreasing. Its two values around the middle have opposite signs: if $h=2m$, they are
-$$
-2\sin\frac{3\delta}{2}\left(\cos\delta-\sin\frac{\delta}{2}\right)>0,
-\qquad
--2\sin\frac{\delta}{2}\left(\sin\frac{3\delta}{2}+\cos\delta\right)<0,
-$$
-and if $h=2m+1$, they are
-$$
-2\sin\frac{\delta}{2}\left(\cos\delta-\sin\frac{3\delta}{2}\right)>0,
-\qquad
--2\sin\frac{3\delta}{2}\left(\sin\frac{\delta}{2}+\cos\delta\right)<0.
-$$
+The inequalities are strict because equality would put a fourth sample point on the plane, so the intersection would not be the required triangular facet.
 
-Applying the sign rule (2), every bounded interval carrying the sign opposite to the supporting sign must contain no unselected node. Hence its sample-node endpoints must be adjacent unless the fourth root $d_F$ lies inside that empty gap. Equations (4) and (5) locate $d_F$ in each possible adjacent gap and give exactly
-$$
-\begin{aligned}
-\mathcal F_0
-={}&\bigl\{\{i,i+1,h-i\}:1\le i\le\lfloor h/2\rfloor-1\bigr\}\\
-&\cup\bigl\{\{i,h-i,h-i+1\}:1\le i\le\lfloor(h-1)/2\rfloor\bigr\}\\
-&\cup\bigl\{\{1,i,i+1\}:2\le i\le\lfloor(h-1)/2\rfloor\bigr\}\\
-&\cup\bigl\{\{i,i+1,h\}:\lceil h/2\rceil\le i\le h-2\bigr\}\\
-&\cup\bigl\{\{1,\lceil h/2\rceil,h\}\bigr\}.
-\end{aligned}
-\tag{6}
-$$
-All inequalities are strict, so these faces are triangular and no fourth sample point is coplanar with one of them.
-
-Because
-$$
-s\le\frac{n-3}{8}=\frac{h-1}{4},
-$$
-reading the occurrences of $s$ in (6) gives exactly the five facets incident to $Q_s$:
-$$
-\{1,s-1,s\},\quad
-\{1,s,s+1\},\quad
-\{s-1,s,h-s+1\},\quad
-\{s,s+1,h-s\},\quad
-\{s,h-s,h-s+1\}.
-\tag{7}
-$$
-Their link cycle is
-$$
-1,\ s-1,\ h-s+1,\ h-s,\ s+1,\ 1.
-\tag{8}
-$$
-
-Step 3: Prove that $F_1=\{1,s-1,s+1\}$ is new
-
-Let
-$$
-d_1=-(x_1+x_{s-1}+x_{s+1}).
-$$
-Since $x_h=-\cos\delta$,
-$$
-x_1+x_{s-1}+x_{s+1}+x_h
-=\cos(2\delta)\bigl(1+2\cos(2s\delta)\bigr)-\cos\delta.
-\tag{9}
-$$
-Now $2s\delta<\pi/4$ and $2\delta<\pi/3$, so
-$$
-\cos(2s\delta)>\frac{\sqrt2}{2},\qquad
-\cos(2\delta)>\frac12.
-$$
-Consequently the right side of (9) is larger than
-$$
-\frac{1+\sqrt2}{2}-1>0,
-$$
-and therefore
-$$
-d_1<x_h.
-\tag{10}
-$$
-The four roots of $G_{F_1}$ are thus ordered as
-$$
-x_1>x_{s-1}>x_{s+1}>d_1,
-$$
-while the sample nodes satisfy the sharper chain
-$$
-x_1>x_{s-1}>x_s>x_{s+1}>\cdots>x_h>d_1.
-\tag{11}
-$$
-By (2), $G_{F_1}(x_s)>0$. Every retained nonroot with index $2\le r\le s-2$ lies in $(x_{s-1},x_1)$, where $G_{F_1}<0$, and every retained nonroot with $r\ge s+2$ lies in $(d_1,x_{s+1})$, where again $G_{F_1}<0$. Hence
-$$
-G_{F_1}(x_s)>0,
-\qquad
-G_{F_1}(x_r)<0\quad(r\notin F_1\cup\{s\}).
-\tag{12}
-$$
-Thus the plane through $F_1$ supports $K_s$ and strictly separates $Q_s$; $F_1$ is a new facet.
-
-Step 4: Prove that the other two proposed facets are new
+Step 3: Convert the four root placements into four parameter intervals
 
 Set
 $$
-F_2=\{s-1,s+1,h-s\},
-\qquad
-d_2=-(x_{s-1}+x_{s+1}+x_{h-s}).
+C=x_{s-1}+x_{s+1},
 $$
-Let $A=2s\delta$. Since $x_{h-s}=-\cos(A+\delta)$,
+and define
 $$
 \begin{aligned}
-x_{s-1}+x_{s+1}+2x_{h-s}
-&=2\cos A\cos(2\delta)-2\cos(A+\delta)\\
-&=2\sin\delta\cos A
-\left(\tan A-\frac{\sin(3\delta/2)}{\cos(\delta/2)}\right).
+U&=C+x_{t-1}+x_{t+1},&
+V&=C+x_t+x_{t+1},\\
+R&=C+x_{t-1}+x_t,&
+W&=x_{s-1}+x_s+x_{t-1}+x_{t+1},\\
+Z&=x_s+x_{s+1}+x_{t-1}+x_{t+1}.
 \end{aligned}
-\tag{13}
+\tag{5}
 $$
-Here $0<A<\pi/4$ and $A\ge6\delta$. Also
+Using (2), the four rows of (4) are respectively equivalent to
 $$
-\frac{\sin(3\delta/2)}{\cos(\delta/2)}<3\delta<6\delta\le A<\tan A,
+\begin{aligned}
+F_A&:\quad -R<\lambda<-U,\\
+F_B&:\quad -U<\lambda<-V,\\
+F_C&:\quad -W<\lambda<-U,\\
+F_D&:\quad -U<\lambda<-Z.
+\end{aligned}
+\tag{6}
 $$
-so (13) is positive. On the other hand,
+For example, for $F_B$,
 $$
-x_{s-1}+x_{s+1}+x_{h-s}+x_{h-s+1}
-=2\cos A\bigl(\cos(2\delta)-\cos\delta\bigr)<0.
-\tag{14}
+d_F=-\lambda-(C+x_{t+1}),
 $$
-Therefore
+and $x_{t-1}>d_F>x_t$ is exactly
 $$
-x_{h-s}>d_2>x_{h-s+1}.
-\tag{15}
+-U<\lambda<-V.
 $$
-The root order is
-$$
-x_{s-1}>x_{s+1}>x_{h-s}>d_2.
-$$
-By (2), $x_s$ lies in the negative interval $(x_{s+1},x_{s-1})$. Every retained nonroot lies either above $x_{s-1}$, between $x_{s+1}$ and $x_{h-s}$, or below $d_2$, all positive intervals; the other negative interval $(d_2,x_{h-s})$ contains no sample node by (15). Hence $F_2$ is new.
+The other three rows follow directly from their two adjacent-gap inequalities.
 
-Now set
+Step 4: Locate the four intervals relative to $0$
+
+Recall $t=h-s$ and $A=2s\delta$. Since
 $$
-F_3=\{s-1,h-s,h-s+1\},
+x_{h-s+k}=-\cos\bigl((2s+1-2k)\delta\bigr),
+\tag{7}
+$$
+we obtain
+$$
+C=2\cos A\cos(2\delta).
+$$
+Hence
+$$
+\begin{aligned}
+U
+&=
+2\cos(2\delta)\bigl(\cos A-\cos(A+\delta)\bigr)>0,\\
+V
+&=
+2\cos A\bigl(\cos(2\delta)-\cos\delta\bigr)<0,\\
+Z
+&=
+2\cos(A+\delta)\bigl(\cos\delta-\cos(2\delta)\bigr)>0.
+\end{aligned}
+\tag{8}
+$$
+Indeed, $0<A<\pi/4$, so all displayed cosine factors are positive, and cosine is strictly decreasing on the relevant interval.
+
+Moreover,
+$$
+R-U=x_t-x_{t+1}>0,
 \qquad
-d_3=-(x_{s-1}+x_{h-s}+x_{h-s+1}).
+W-U=x_s-x_{s+1}>0,
+\qquad
+U-Z=x_{s-1}-x_s>0.
+\tag{9}
 $$
-Equation (4) with $(p,q)=(s-1,h-s)$ gives
-$$
-x_{s-1}+x_s+x_{h-s}+x_{h-s+1}>0,
-$$
-while (14) gives
-$$
-x_{s-1}+x_{s+1}+x_{h-s}+x_{h-s+1}<0.
-$$
-Thus
-$$
-x_s>d_3>x_{s+1}.
-\tag{16}
-$$
-The four roots now satisfy
-$$
-x_{s-1}>d_3>x_{h-s}>x_{h-s+1}.
-$$
-By (2), the only sample node in the negative interval $(d_3,x_{s-1})$ is $x_s$, while the other negative interval $(x_{h-s+1},x_{h-s})$ contains no sample node because its endpoints are consecutive. All retained nonroots therefore have the opposite sign from $x_s$, so $F_3$ is new.
-
-Step 5: Prove exhaustion by the vertex-deletion patch
-
-Every facet of $K$ avoiding $Q_s$ remains a facet of $K_s$, because its original supporting plane still supports the smaller convex hull and still contains the same three affinely independent retained vertices. On the boundary sphere $\partial K$, the union $B$ of all facets avoiding $Q_s$ is a closed disk whose boundary is exactly the link cycle (8); the complementary open disk is the star of $Q_s$ formed by the five triangles in (7).
-
-The three new facets from Steps 3 and 4 have pairwise disjoint relative interiors and their union is the closed disk
-$$
-D=
-\operatorname{conv}\{Q_1,Q_{s-1},Q_{s+1}\}
-\cup
-\operatorname{conv}\{Q_{s-1},Q_{s+1},Q_{h-s}\}
-\cup
-\operatorname{conv}\{Q_{s-1},Q_{h-s},Q_{h-s+1}\},
-$$
-whose boundary is precisely the same cycle (8). Thus $B\cup D$ is a union of facets of $K_s$ with no boundary edge: every edge in the union belongs to exactly two of its triangles.
-
-The facet-adjacency graph of the boundary of any convex $3$-polytope is connected. If $B\cup D$ were a proper subset of $\partial K_s$, some facet in $B\cup D$ would be adjacent along an edge to a facet outside it, making that edge a boundary edge of $B\cup D$, contradiction. Hence
-$$
-B\cup D=\partial K_s,
-$$
-so no fourth new facet exists.
-
 Therefore
 $$
-\boxed{\mathcal N_{n,s}=\{\{1,s-1,s+1\},\{s-1,s+1,h-s\},\{s-1,h-s,h-s+1\}\}}.
+R>U>Z>0>V,
+\qquad
+W>U.
+\tag{10}
 $$
+
+Now (6) and (10) completely order the possible changes. The intervals for $F_A$ and $F_C$ lie entirely to the left of $-U$. The interval for $F_D$ is
+$$
+(-U,-Z),
+$$
+while the interval for $F_B$ is
+$$
+(-U,-V).
+$$
+Thus at $\lambda=0$ the only jointly new facet is $F_B$. For
+$$
+-Z<\lambda<-V,
+$$
+$F_B$ remains jointly new and none of $F_A,F_C,F_D$ is jointly new. Immediately to the left of $-Z$, $F_D$ is also jointly new; immediately to the right of $-V$, $F_B$ is no longer jointly new. Hence this is the largest open interval containing $0$ on which $\mathcal J(\lambda)$ is constant.
+
+Step 5: Substitute the two critical values
+
+From (8),
+$$
+-Z
+=
+-2\cos(A+\delta)\bigl(\cos\delta-\cos(2\delta)\bigr),
+$$
+and
+$$
+-V
+=
+2\cos A\bigl(\cos\delta-\cos(2\delta)\bigr).
+$$
+
+Final Answer: $\boxed{(-2\cos(A+\delta)(\cos\delta-\cos(2\delta)),2\cos A(\cos\delta-\cos(2\delta)))}$
 
 ---
 
 ## Answer
 
-$\{\{1,s-1,s+1\},\{s-1,s+1,h-s\},\{s-1,h-s,h-s+1\}\}$
+$(-2\cos(A+\delta)(\cos\delta-\cos(2\delta)),2\cos A(\cos\delta-\cos(2\delta)))$
 
 ---
 
 ## Classification
 
-**Problem Type:** Exhaustive enumeration
+**Problem Type:** Parameter identification
 
-**Answer Type:** Set or multiset of objects
+**Answer Type:** Interval or region description
 
 ---
 
 ## Solution Concepts
 
-- supporting planes of convex polytopes
+- supporting planes of convex hulls
 - quartic root-order sign analysis
+- parametric face stability
 - trigonometric gap identities
-- vertex links and deletion patches
-- exhaustive facet replacement
+- simultaneous vertex deletion
