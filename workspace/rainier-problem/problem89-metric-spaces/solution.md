@@ -117,7 +117,7 @@ For each $k$ with $0\le k<r$ and $3\mid k$, let $s\equiv k\pmod5$, take $A_s$ fr
 $$
 \Phi_k(X)=\gamma_kA_sX^{2^k}A_s^{-1}.
 $$
-This map is $\mathbb F_2$-linear and preserves $E$-lines, rank, the chosen ruling and trace zero. Step 6 gives preservation of $h_D$, Step 7 gives preservation of $h_K$, Step 8 gives preservation of $\mathcal B$, and Step 9 gives preservation of $\mathcal C_\tau$. Thus its coordinate permutation preserves every marker and is a zero-fixing isometry.
+This map is $\mathbb F_2$-linear and preserves $E$-lines, rank, the chosen ruling and trace zero. Its monomial matrix $A_s$ also preserves $\mathcal E$. Step 6 gives preservation of $h_D$, Step 7 gives preservation of $h_K$, Step 8 gives preservation of $\mathcal B$, and Step 9 gives preservation of $\mathcal C_\tau$. Thus its coordinate permutation preserves every marker and is a zero-fixing isometry.
 
 Step 11: Prove completeness and uniqueness of the zero stabilizer
 Conversely, Steps 2 through 9 force any zero-fixing isometry to have exactly the form induced by $\Phi_k$ with $3\mid k$. The coordinate permutation is unique by Step 2; its field automorphism determines $k$ uniquely in $0\le k<r$; Step 6 fixes $P_s$, Step 7 fixes the normalized diagonal part of $A_s$, and Step 9 fixes $\gamma_k$. Hence there is exactly one zero-fixing isometry for each $k=0,3,\ldots,r-3$, so the zero stabilizer has $r/3$ elements.
