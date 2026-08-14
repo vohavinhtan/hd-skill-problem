@@ -32,11 +32,8 @@ c-e_1=\lambda,
 e_2-ce_1=0.
 \tag{1}
 $$
-If $e_1=0$, then
-$$
-e_2=-\frac Q2<0,
-$$
-so (1) is impossible. If $e_1\ne0$, then
+If $e_1=0$, then $e_2=-Q/2<0$, so (1) is impossible. If $e_1\ne0$,
+then
 $$
 \lambda
 =
@@ -47,11 +44,11 @@ $$
 -\frac{e_1^2+Q}{2e_1}.
 \tag{2}
 $$
-Thus the unique degeneracy parameter for the five-set $E$ is precisely
+Thus the unique degeneracy parameter for the five-set $E$ is exactly
 $\Lambda(E)$.
 
-More generally, the oriented $5\times5$ determinant for these points is,
-up to the nonzero Vandermonde factor in the $y_i$,
+The oriented $5\times5$ determinant for these points is, up to the
+nonzero Vandermonde factor in the $y_i$,
 $$
 D_\lambda(E)
 =
@@ -64,9 +61,9 @@ $$
 Hence at $\lambda=0$ every five-point orientation has the same sign as
 for the ordinary moment curve $(x,x^2,x^3,x^4)$.
 
-Step 2: Reduce the global sign problem to consecutive five-blocks
+Step 2: Compress the global sign problem to consecutive five-blocks
 
-For a five-set $E$, write
+For a five-set $E$, put
 $$
 S_E=\sum_{r\in E}x_r,
 \qquad
@@ -77,13 +74,11 @@ $$
 2D_\lambda(E)=S_E^2+Q_E+2\lambda S_E.
 \tag{4}
 $$
-
-We claim that, for each fixed $\lambda$, the minimum of the right side of
-(4) over all five-subsets is attained by five consecutive nodes.
-Suppose a minimizing five-set is not consecutive. Then there are two
-selected values $u<v$ with an unselected node $z$ strictly between them.
-Let $S$ be the sum of the five selected values. Replacing $u$ by $z$
-changes the right side of (4) by
+For each fixed $\lambda$, the minimum of the right side of (4) over all
+five-subsets is attained by five consecutive sample nodes. Indeed, if a
+minimizing set is not consecutive, choose selected values $u<v$ with an
+unselected sample value $z$ strictly between them, and let $S$ be the
+sum of the selected values. Replacing $u$ by $z$ changes (4) by
 $$
 2(z-u)(S+\lambda+z),
 \tag{5}
@@ -93,10 +88,13 @@ $$
 2(z-v)(S+\lambda+z).
 \tag{6}
 $$
-Because $z-u>0$ and $z-v<0$, one of (5), (6) is nonpositive. If it is
-zero, choose the replacement that reduces the number of skipped sample
-nodes inside the selected span. Iterating produces a consecutive
-five-set with no larger value. Thus
+The two prefactors $z-u$ and $z-v$ have opposite signs, so one change is
+nonpositive. In the equality case choose the replacement that reduces
+the number of skipped sample nodes inside the selected span. Repeating
+this finite operation reaches five consecutive nodes with no larger
+value.
+
+Consequently
 $$
 D_\lambda(E)>0\quad\text{for every five-set }E
 $$
@@ -108,7 +106,7 @@ B_k=\{k-2,k-1,k,k+1,k+2\},
 \tag{7}
 $$
 
-Step 3: Compute the threshold of a consecutive block
+Step 3: Compute and order the consecutive-block thresholds
 
 Put
 $$
@@ -116,11 +114,10 @@ C=1+2\cos(2\delta)+2\cos(4\delta),
 \qquad
 D=1+2\cos(4\delta)+2\cos(8\delta).
 $$
-Since $5\delta<\pi$ and $10\delta<\pi$, both constants are positive.
-For the block $B_k$, the cosine-sum identities give
+The identities $C=\sin(5\delta)/\sin\delta$ and
+$D=\sin(10\delta)/\sin(2\delta)$ show that $C,D>0$. For $B_k$,
 $$
-S_k:=\sum_{r\in B_k}x_r
-=C\cos(2k\delta),
+S_k:=\sum_{r\in B_k}x_r=C\cos(2k\delta),
 \tag{8}
 $$
 and
@@ -129,15 +126,11 @@ Q_k:=\sum_{r\in B_k}x_r^2
 =\frac52+\frac D2\cos(4k\delta).
 \tag{9}
 $$
-Let
+Set
 $$
-u_k=\left|\cos(2k\delta)\right|.
-$$
-From (8), (9),
-$$
-\frac{h_2(B_k)}{|S_k|}
-=a\nu_k+\frac b{\nu_k},
-\tag{10}
+\nu_k=|\cos(2k\delta)|,
+\qquad
+R(\nu)=a\nu+\frac b\nu,
 $$
 where
 $$
@@ -145,27 +138,29 @@ a=\frac{C^2+D}{2C},
 \qquad
 b=\frac{5-D}{4C}.
 $$
+Then
+$$
+\frac{h_2(B_k)}{|S_k|}=R(\nu_k).
+\tag{10}
+$$
 
-Set $c=\cos(2\delta)$. Direct simplification gives
+Let $c=\cos(2\delta)$. Algebra gives
 $$
-a=4c^2-1
-$$
-and
-$$
+a=4c^2-1,
+\qquad
 \nu_*^2:=\frac ba
 =
 \frac{(1-c^2)(4c^2+1)}
 {(4c^2+2c-1)(4c^2-1)}.
 \tag{11}
 $$
-Thus the right side of (10) decreases for $0<\nu<\nu_*$ and increases
-for $\nu>\nu_*$.
+Thus $R$ decreases on $(0,\nu_*)$ and increases on $(\nu_*,\infty)$.
 
-We now locate $\nu_*$. Since
+We need only coarse but strict bounds on $\nu_*$. Since
 $$
-c=\cos(2\delta)>1-2\delta^2
+c>1-2\delta^2
 \ge1-\frac{2\pi^2}{27^2}
->\frac{97}{100},
+>1-\frac{20}{729}>rac{97}{100},
 $$
 we have
 $$
@@ -176,14 +171,17 @@ because the difference after cross-multiplication is
 $$
 -2(c-1)(8c^3+12c^2+2c+1)>0.
 $$
-The same fraction is less than $3/8$: after cross-multiplication it is
-enough to check
+The same fraction is less than $3/8$. After cross-multiplication this is
 $$
-48c^4+24c^3-56c^2-6c-5>0.
+P(c):=48c^4+24c^3-56c^2-6c-5>0.
 $$
-This polynomial is increasing on $[97/100,1]$ and at $97/100$ equals
+For $c\ge97/100$,
 $$
-\frac{5548793}{6250000}>0.
+P'(c)=2(96c^3+36c^2-56c-3)>0,
+$$
+and
+$$
+P(97/100)=\frac{5548793}{6250000}>0.
 $$
 Since $2\delta<1/4$,
 $$
@@ -191,29 +189,27 @@ $$
 2\delta\left(1-\frac1{96}\right)
 >\frac{39}{20}\delta.
 $$
-Using (11), (12), and $\sin(2\delta)<2\delta$ gives
+Combining this with (11), (12), and $\sin(2\delta)<2\delta$ yields
 $$
 \frac54\delta^2<\nu_*^2<\frac32\delta^2.
 \tag{13}
 $$
-Also, with $3\delta/2<1/4$,
+Also $3\delta/2<1/4$, so
 $$
-\sin\frac{3\delta}{2}>\frac56\cdot\frac{3\delta}{2}
-=\frac54\delta,
+\sin\frac{3\delta}{2}>\frac56\cdot\frac{3\delta}{2}=\frac54\delta,
 $$
-so
+and hence
 $$
 \sin^2\frac{3\delta}{2}>\frac32\delta^2.
 $$
 Finally,
 $$
 \sin\frac{\delta}{2}\sin\frac{5\delta}{2}
-<\frac{\delta}{2}\frac{5\delta}{2}
-=\frac54\delta^2.
+<\frac54\delta^2.
 \tag{14}
 $$
 
-Step 4: Find the two first sign changes
+Step 4: Determine the first lower and upper degeneracies
 
 Because $n=4m+3$,
 $$
@@ -226,13 +222,12 @@ $$
 \cos(2(m+2)\delta)=-\sin\frac{5\delta}{2}<0.
 \tag{15}
 $$
-
-For $k\le m$ we have
+For $k\le m$,
 $$
-\nu_k\ge\nu_m=\sin\frac{3\delta}{2}>\nu_*
+\nu_k\ge\nu_m=\sin\frac{3\delta}{2}>\nu_*,
 $$
-by (13), (14). Hence (10) is smallest on the positive-sum side exactly
-at $k=m$. Therefore the strongest lower bound is
+so $R(\nu_k)$ is smallest on the positive-sum side exactly at $k=m$.
+Thus the strongest lower bound is
 $$
 \lambda>
 \Lambda(B_m)
@@ -247,23 +242,20 @@ $$
 \qquad
 \nu_{m+2}=\sin\frac{5\delta}{2},
 $$
-and $\nu_k\ge\nu_{m+2}>\nu_*$ for $k\ge m+2$. Thus only $m+1$ and
-$m+2$ need comparison. From (10),
+and $\nu_k\ge\nu_{m+2}>\nu_*$ for $k\ge m+2$. Hence only the first two
+negative blocks need comparison. From the definition of $R$,
 $$
 R(\nu_{m+2})-R(\nu_{m+1})
 =
 (\nu_{m+2}-\nu_{m+1})
-\left(
-a-\frac{b}{\nu_{m+1}\nu_{m+2}}
-\right).
+\left(a-\frac{b}{\nu_{m+1}\nu_{m+2}}\right).
 $$
 By (13), (14),
 $$
-\frac ba=\nu_*^2
->
-\nu_{m+1}\nu_{m+2},
+\frac ba=\nu_*^2>
+u_{m+1}\nu_{m+2},
 $$
-so the difference is negative. Therefore the strongest upper bound is
+so this difference is negative. Therefore the strongest upper bound is
 $$
 \lambda<
 \Lambda(B_{m+2})
@@ -271,51 +263,65 @@ $$
 \Lambda(\{m,m+1,m+2,m+3,m+4\}).
 \tag{17}
 $$
-Equations (7), (16), and (17) show that every five-point orientation is
-unchanged throughout
+By Step 2, every five-point orientation agrees with its value at $0$
+precisely throughout
 $$
 I=
-\left(
-\Lambda(B_m),
-\Lambda(B_{m+2})
-\right).
+\left(\Lambda(B_m),\Lambda(B_{m+2})\right).
 \tag{18}
 $$
 
-Step 5: Pass from orientations to facets and prove maximality
+Step 5: Convert orientation stability into facet stability and show maximality
 
-For a fixed four-set $F$, the signs of the five-point determinants
-obtained by adjoining each remaining vertex tell exactly on which side of
-the affine hyperplane through $F$ that vertex lies. Therefore, while all
-five-point determinant signs agree with their values at $\lambda=0$, the
-family $\mathcal F(\lambda)$ is unchanged. Hence (18) lies inside the
-desired stability interval.
+For a fixed four-set $F$, adjoining a fifth vertex and taking the oriented
+$5\times5$ determinant tells on which side of the affine hyperplane
+through $F$ that vertex lies. Therefore (18) preserves every side
+relation and hence preserves $\mathcal F(\lambda)$.
 
-At $\lambda=0$ these side signs agree with those of the ordinary moment
-curve. For four consecutive nodes, the polynomial
+At $\lambda=0$ these side signs are the same as for the ordinary moment
+curve. Four consecutive vertices therefore form a facet: for consecutive
+abscissas $x_j,x_{j+1},x_{j+2},x_{j+3}$, the polynomial
 $$
-q(x)=\prod_{r=j}^{j+3}(x-x_r)
+\prod_{r=j}^{j+3}(x-x_r)
 $$
-has the same sign at every other sample node, because there is no sample
-node between two consecutive selected roots. Thus every four consecutive
-vertices form a facet of $K(0)$.
+has one sign at every other sample node.
 
-At the left endpoint the five consecutive vertices indexed by $B_m$
-become affinely dependent, and immediately to the left the determinant
-for the four-set
+It remains to see that each endpoint really destroys such a facet. Let
+$v=\sin(3\delta/2)$ and $c=\cos(2\delta)$. For $B_m$ we have
+$S_{B_m}=Cv$ and, by (10),
+$$
+\Lambda(B_m)=-av-\frac bv.
+$$
+Since $C-a=2c$, at the left endpoint
+$$
+S_{B_m}+\Lambda(B_m)+x_{2m+1}
+=2cv-\frac bv-\cos\delta<0,
+$$
+because $2cv<3\delta<\cos\delta$. Replacing the vertex $m+2$ in
+$B_m$ by the vertex $2m+1$ therefore gives a strictly positive value in
+(4), while the determinant for $B_m$ changes sign immediately to the
+left. Hence the facet
 $$
 \{m-2,m-1,m,m+1\}
 $$
-with the vertex $m+2$ has the opposite sign from its value at $0$. Since
-(16) is the first global sign change, the remaining side signs have not
-all reversed with it; this supporting tetrahedron is therefore lost.
-Likewise, immediately to the right of the upper endpoint, the vertex $m$
-crosses the hyperplane through
+loses its supporting property there.
+
+For the right endpoint put $u=\sin(5\delta/2)$. Then
+$S_{B_{m+2}}=-Cu$ and
+$$
+\Lambda(B_{m+2})=au+\frac bu.
+$$
+Again using $C-a=2c$,
+$$
+S_{B_{m+2}}+\Lambda(B_{m+2})+x_1
+=c(1-2u)+\frac bu>0,
+$$
+because $u<1/2$. Thus, when the vertex $m$ crosses the hyperplane through
 $$
 \{m+1,m+2,m+3,m+4\},
 $$
-so that facet is lost. Thus no larger open interval containing $0$ can
-have the same facet family.
+the vertex $1$ remains strictly on its old side, so this facet is lost.
+Therefore (18) is the largest possible open stability interval.
 
 Final Answer:
 $$
