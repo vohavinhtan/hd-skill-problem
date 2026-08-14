@@ -226,17 +226,24 @@ By (2), the only sample node in the negative interval $(d_3,x_{s-1})$ is $x_s$, 
 
 Step 5: Prove exhaustion by the vertex-deletion patch
 
-Every facet of $K$ avoiding $Q_s$ remains a facet of $K_s$, because its original supporting plane still supports the smaller convex hull and still contains the same three affinely independent retained vertices. On the boundary sphere $\partial K$, the union of all facets avoiding $Q_s$ is a closed disk whose boundary is exactly the link cycle (8); its complementary open disk is the star of $Q_s$ with the five incident triangles (7).
+Every facet of $K$ avoiding $Q_s$ remains a facet of $K_s$, because its original supporting plane still supports the smaller convex hull and still contains the same three affinely independent retained vertices. On the boundary sphere $\partial K$, the union $B$ of all facets avoiding $Q_s$ is a closed disk whose boundary is exactly the link cycle (8); the complementary open disk is the star of $Q_s$ formed by the five triangles in (7).
 
-The three new facets $F_1,F_2,F_3$ have pairwise disjoint relative interiors and form the triangulated disk
+The three new facets from Steps 3 and 4 have pairwise disjoint relative interiors and their union is the closed disk
 $$
-\operatorname{conv}\{1,s-1,s+1\}
+D=
+\operatorname{conv}\{Q_1,Q_{s-1},Q_{s+1}\}
 \cup
-\operatorname{conv}\{s-1,s+1,h-s\}
+\operatorname{conv}\{Q_{s-1},Q_{s+1},Q_{h-s}\}
 \cup
-\operatorname{conv}\{s-1,h-s,h-s+1\},
+\operatorname{conv}\{Q_{s-1},Q_{h-s},Q_{h-s+1}\},
 $$
-whose boundary is again precisely the cycle (8). Steps 3 and 4 place this whole disk in $\partial K_s$. Gluing it to the unchanged old-facet disk produces a closed polyhedral $2$-sphere contained in the boundary sphere $\partial K_s$. Since a proper collection of facets of a convex $3$-polytope has nonempty boundary edges, while this union has none, it must equal all of $\partial K_s$. Hence there is no fourth new facet.
+whose boundary is precisely the same cycle (8). Thus $B\cup D$ is a union of facets of $K_s$ with no boundary edge: every edge in the union belongs to exactly two of its triangles.
+
+The facet-adjacency graph of the boundary of any convex $3$-polytope is connected. If $B\cup D$ were a proper subset of $\partial K_s$, some facet in $B\cup D$ would be adjacent along an edge to a facet outside it, making that edge a boundary edge of $B\cup D$, contradiction. Hence
+$$
+B\cup D=\partial K_s,
+$$
+so no fourth new facet exists.
 
 Therefore
 $$
