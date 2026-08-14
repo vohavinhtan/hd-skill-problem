@@ -45,11 +45,11 @@ For a quadratic Boolean function $h$, write
 $$
 \beta_h(X,Y)=h(X+Y)+h(X)+h(Y)+h(0).
 $$
-This alternating bilinear form ignores affine summands. Write $\phi^{-1}(X)=L(X)+C$. Because $D(LX)=D(X)$, and translating $q$ changes it only by an affine function, preservation of $\mathcal F$ is equivalent to
+This alternating bilinear form ignores affine summands. Since $\mathcal A$ is $\phi$-invariant, preservation of $\mathcal F$ is equivalent to $f\circ\phi+f\in\mathcal A$. Using $\phi(X)=L(X)+C$ from Step 2, $D(LX)=D(X)$ from Step 3, and the fact that translating $q$ changes it only by an affine function, this is equivalent to
 $$
 \beta_{q\circ L}+\beta_q\in\beta(\mathcal M).
 $$
-Indeed, if $C=L(H)$ then $D(LX+C)+D(LX)=D(X+H)+D(X)$, so as $C$ varies the quadratic determinant defect runs bijectively through $\mathcal M$. Since the polar map is injective on homogeneous quadratic forms, every admissible $L$ has exactly one translation part $C$ for which $f\circ\phi^{-1}+f$ is affine.
+Indeed, write $C=L(H)$. Then $D(LX+C)+D(LX)=D(X+H)+D(X)$, so as $C$ varies the quadratic determinant defect runs bijectively through $\mathcal M$. Since the polar map is injective on homogeneous quadratic forms, every admissible $L$ has exactly one translation part $C$ for which $f\circ\phi+f$ is affine.
 
 Step 5: Recover the quotient class from its restrictions to the two rulings
 Every $2\times2$ minor vanishes on each rank-one $3$-space, so every form in $\beta(\mathcal M)$ restricts to zero on every $U_u$ and $W_v$. Conversely, let $\beta$ be an alternating bilinear form with all these restrictions zero. Restriction to $U_{e_i}$ and $W_{e_j}$ kills coefficients joining two entries in one row or one column. Restriction to $U_{e_i+e_k}$ then forces the two remaining coefficients in every $2\times2$ rectangle to be equal. Hence $\beta$ is a linear combination of the polars of the $2\times2$ minors. Thus the class modulo $\beta(\mathcal M)$ is determined exactly by the restrictions to the two rulings.
@@ -81,7 +81,7 @@ A(S)=S,
 \qquad
 B^T(T)=T.
 $$
-A matrix preserving $S$ permutes its complement $\{e_1,e_2,e_3\}$, so there are exactly $6$ possibilities for $A$. The group $\operatorname{GL}_3(\mathbb F_2)$ has
+Indeed, $S$ and $T$ are exactly the supports of $a$ and $c$ on nonzero vectors, so these setwise conditions preserve $a,c$ themselves and therefore also their polar forms. A matrix preserving $S$ permutes its complement $\{e_1,e_2,e_3\}$, so there are exactly $6$ possibilities for $A$. The group $\operatorname{GL}_3(\mathbb F_2)$ has
 $$
 (2^3-1)(2^3-2)(2^3-4)=168
 $$
