@@ -8,9 +8,9 @@ z=x^2-\frac{1}{2}.
 $$
 Since $P$ is even of degree at most $4$, there is a quadratic polynomial
 $$
-q(z)=A+Bz+Cz^2
+q(z)=Cz^2+Bz+A
 $$
-such that $P(x)=q(x^2-1/2)$. As $x$ runs through $[-1,1]$, one has $z\in[-1/2,1/2]$. Also,
+such that $P(x)=q(x^2-\frac{1}{2})$. As $x$ runs through $[-1,1]$, one has $z\in[-\frac{1}{2},\frac{1}{2}]$. Also,
 $$
 2-x^2=\frac{3}{2}-z,
 \qquad
@@ -46,12 +46,12 @@ M_2
 =\frac{11\lambda+49}{210}.
 \end{aligned}
 $$
-Thus the objective applied to $q(z)=A+Bz+Cz^2$ is
+Thus the objective applied to $q(z)=Cz^2+Bz+A$ is
 $$
 M_0A+M_1B+M_2C.
 $$
 
-Step 2: Build a two-point certificate for every feasible quadratic
+Step 2: Build a positive two-point moment certificate for every feasible quadratic
 
 Set
 $$
@@ -66,7 +66,7 @@ because
 $$
 11\lambda+49<35(\lambda+3)
 $$
-is equivalent to $24\lambda+56>0$. Hence $0<h<1/2$.
+is equivalent to $24\lambda+56>0$. Hence $0<h<\frac{1}{2}$.
 
 Define
 $$
@@ -74,13 +74,13 @@ $$
 \qquad
 \beta=\frac{1}{2}\left(M_0+\frac{M_1}{h}\right).
 $$
-The weight $1+\lambda x^2$ is strictly positive on $[-1,1]$, and $x^2-1/2$ is not constant. Therefore strict Cauchy-Schwarz gives
+The weight $1+\lambda x^2$ is strictly positive on $[-1,1]$, and $x^2-\frac{1}{2}$ is not constant. Therefore strict Cauchy-Schwarz gives
 $$
 M_1^2<M_0M_2=M_0^2h^2,
 $$
 so $\alpha,\beta>0$.
 
-For every quadratic $q(z)=A+Bz+Cz^2$,
+For every quadratic $q(z)=Cz^2+Bz+A$,
 $$
 \begin{aligned}
 \alpha q(-h)+\beta q(h)
@@ -103,7 +103,7 @@ $$
 
 Step 3: Construct an attaining quartic and certify the global pointwise bound
 
-Put $a=3/2$ and define
+Put $a=\frac{3}{2}$ and define
 $$
 q_h(z)=\frac{1}{a+h}-\frac{z^2-h^2}{2h(a+h)^2}.
 $$
@@ -119,7 +119,7 @@ Thus
 $$
 q_h(z)\leq\frac{1}{\frac{3}{2}+|z|}
 $$
-for every $z\in[-1/2,1/2]$. Therefore
+for every $z\in[-\frac{1}{2},\frac{1}{2}]$. Therefore
 $$
 P_h(x)=q_h\left(x^2-\frac{1}{2}\right)
 $$
@@ -136,7 +136,7 @@ $$
 $$
 so the upper bound is attained. In particular the supremum is a maximum.
 
-The equality case is also forced. Since $\alpha,\beta>0$, any maximizing quadratic must satisfy equality at both $z=-h$ and $z=h$. These are interior contact points of the smooth branches of the bound, so a feasible quadratic touching there must also have the corresponding tangent slopes. Those two values and two tangent conditions determine the quadratic uniquely, giving $q=q_h$.
+The equality case is also forced. Since $\alpha,\beta>0$, any maximizing quadratic must satisfy equality at both $z=-h$ and $z=h$. These are interior contact points of the smooth branches of the bound, so a feasible quadratic touching there must also have the corresponding tangent slopes. The two contact values and either tangent slope determine the quadratic uniquely, giving $q=q_h$.
 
 Step 4: Substitute the moments and state the optimal-value function
 
@@ -177,5 +177,5 @@ $\frac{2(\lambda+3)}{3\left(\frac{3}{2}+\sqrt{\frac{11\lambda+49}{140(\lambda+3)
 
 - semi-infinite linear programming
 - moment matching
-- two-point quadrature certificate
+- positive moment representation
 - tangent minorants
