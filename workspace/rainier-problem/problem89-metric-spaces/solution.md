@@ -20,7 +20,7 @@ Preservation of $\mathcal L$ gives, for each $C\ne0$, a $D$ with
 $$
 \langle C,\phi^{-1}(X)\rangle=\langle D,X\rangle.
 $$
-Nondegeneracy implies $\phi(0)=0$ and $\phi(X+Y)=\phi(X)+\phi(Y)$, so $\phi$ is $\mathbb F_2$-linear. Preservation of $\mathcal P$ means that every one-dimensional $E$-subspace maps to one. For an $E$-basis $E_1,\ldots,E_{25}$, write $\phi(tE_i)=\sigma_i(t)f_i$. Applying $\phi$ to $E(E_i+E_j)$ gives $\sigma_i=\sigma_j=:\sigma$, and applying it to $E(E_i+tE_j)$ gives $\sigma(st)=\sigma(s)\sigma(t)$. Thus $\sigma$ is an $\mathbb F_2$-automorphism of $E$. The primitive element $\tau$ lies in no proper subfield, so it has degree $r$; the roots of its minimal polynomial are its Frobenius conjugates $\tau^{2^k}$. Hence, for a unique $0\le k<r$,
+Nondegeneracy implies $\phi(0)=0$ and $\phi(X+Y)=\phi(X)+\phi(Y)$, so $\phi$ is $\mathbb F_2$-linear. Preservation of $\mathcal P$ means that every one-dimensional $E$-subspace maps to one. For an $E$-basis $E_1,\ldots,E_{25}$, write $\phi(tE_i)=\sigma_i(t)f_i$. Applying $\phi$ to $E(E_i+E_j)$ gives $\sigma_i=\sigma_j=:\sigma$. Since $s(E_i+tE_j)$ and $E_i+tE_j$ lie on the same $E$-line, their images are proportional; comparing the $f_i,f_j$ coefficients gives $\sigma(st)=\sigma(s)\sigma(t)$. Thus $\sigma$ is an $\mathbb F_2$-automorphism of $E$. The primitive element $\tau$ lies in no proper subfield, so it has degree $r$; the roots of its minimal polynomial are its Frobenius conjugates $\tau^{2^k}$. Hence, for a unique $0\le k<r$,
 $$
 \phi(X)=T(X^{2^k})
 $$
@@ -29,11 +29,11 @@ with $T$ $E$-linear.
 Step 4: Determine the rank-one preserver
 By preservation of $\mathcal R$, $T$ preserves rank-one matrices. Let $S$ be an $E$-subspace all of whose nonzero elements have rank $1$, and take $uv^T\in S$. If every element has column direction $Eu$, then $S\subseteq U_{[u]}$. Otherwise $S$ contains $xv^T$ with $x\notin Eu$. For any $yz^T\in S$, $\operatorname{rank}(uv^T+yz^T)\le1$ gives either $y\in Eu$ or $z\in Ev$. In the first case, $\operatorname{rank}(xv^T+yz^T)\le1$ and $x\notin Eu$ force $z\in Ev$ as well. Thus $S\subseteq W_{[v]}$. Hence the maximal rank-one subspaces are exactly the two rulings $U_{[u]}$ and $W_{[v]}$.
 
-The marker $\mathcal U$ preserves the $U$-ruling, so bijectivity forces preservation of the $W$-ruling too. Therefore
+The marker $\mathcal U$ preserves the $U$-ruling, so bijectivity forces preservation of the $W$-ruling too. The five coordinate $U$-subspaces and the five coordinate $W$-subspaces are direct sums, so their images give bases $(a_i)$ and $(b_j)$. Therefore
 $$
-T(E_{ij})=\lambda_{ij}a_i b_j^T
+T(E_{ij})=\lambda_{ij}a_i b_j^T.
 $$
-for bases $(a_i)$ and $(b_j)$. Since $(e_i+e_{i'})(e_j+e_{j'})^T$ has rank $1$, its image gives
+Since $(e_i+e_{i'})(e_j+e_{j'})^T$ has rank $1$, its image gives
 $$
 \lambda_{ij}\lambda_{i'j'}=\lambda_{ij'}\lambda_{i'j}.
 $$
