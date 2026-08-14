@@ -321,7 +321,7 @@ Step 7: The nilpotent hyperplane markers determine the projective matrix from $k
 
 For finite $t$, put
 $$
-u_t=\binom{t}{1},
+\nu_t=\binom{t}{1},
 \qquad
 N_t=\nu_t(1,t),
 $$
