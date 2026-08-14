@@ -42,9 +42,9 @@ $$
 $$
 as subgroups of $\Gamma_a/Z_a$.
 
-For compactness, set
+For compactness, write
 $$
-c(u)=\min\{2u,1-2u\}.
+c=c(u)=\min\{2u,1-2u\}.
 $$
 
 Determine exactly the set of pairs $(a,u)$ with $a>0$ and $0\leq u\leq\frac12$ for which
