@@ -6,17 +6,17 @@ Let
 $$
 H=\{u\in H^2(0,1):u(0)=u'(0)=u(1)=u'(1)=0\}.
 $$
-On $H$, two integrations show $\|u''\|_{L^2}\asymp\|u\|_{H^2}$. Since $\psi_\lambda\in H$ and $H^2(0,1)\hookrightarrow C^1[0,1]$, $\mathcal K_\lambda$ is nonempty, closed, and convex. The direct method and strict convexity give a unique minimizer satisfying
+On $H$, two integrations show that $\|u''\|_{L^2}$ is equivalent to the $H^2$ norm. Since $\psi_\lambda\in H$ and $H^2(0,1)\hookrightarrow C^1[0,1]$, $\mathcal K_\lambda$ is nonempty, closed, and convex. The direct method and strict convexity give a unique minimizer satisfying
 $$
 \int_0^1u_\lambda''(v-u_\lambda)''\,dx\geq0\qquad(v\in\mathcal K_\lambda).
 $$
-For compactly supported $\varphi\geq0$, $u_\lambda+\varphi$ is admissible, so $u_\lambda''''$ is a nonnegative Radon measure. On $\{u_\lambda>\psi_\lambda\}$ both perturbation signs are admissible, so $u_\lambda''''=0$ and $u_\lambda$ is cubic.
+For compactly supported $\varphi\geq0$, $u_\lambda+\varphi$ is admissible, so $u_\lambda''''$ is a nonnegative Radon measure. On $\{u_\lambda>\psi_\lambda\}$ both signs are admissible, so $u_\lambda''''=0$ and $u_\lambda$ is cubic.
 
-Conversely, if $U\in\mathcal K_\lambda$ is $C^2$, piecewise smooth, and $\mu=U''''$ is nonnegative and supported on $\{U=\psi_\lambda\}$, then
+If $U\in\mathcal K_\lambda$ is $C^2$, piecewise smooth, and $\mu=U''''$ is nonnegative and supported on $\{U=\psi_\lambda\}$, then
 $$
-\int_0^1U''(v-U)''\,dx=\int_0^1(v-U)\,d\mu\geq0.
+\int_0^1U''(v-U)''\,dx=\int_0^1(v-U)\,d\mu\geq0,
 $$
-So $U$ is the unique minimizer.
+so $U$ is the unique minimizer.
 
 Step 2: Derive the limiting spline and verify its contact points
 
@@ -24,7 +24,7 @@ Put
 $$
 s=\frac{1}{12},\qquad r=\frac{11}{12},\qquad \psi_0(x)=x^2q_0(x).
 $$
-A clamped cubic is $L(x)=x^2(\alpha+\beta x)$. Second-order contact at $t>0$ requires
+A cubic clamped at $0$ is $L(x)=x^2(\alpha+\beta x)$. Second-order contact at $t>0$ requires
 $$
 t^2\psi_0''(t)-4t\psi_0'(t)+6\psi_0(t)=t^4q_0''(t)=0,
 $$
@@ -48,10 +48,10 @@ and therefore
 $$
 L(x)=\frac{14641}{20736}x^2(-48x+11).
 $$
-Since $\psi_0(x)=\psi_0(1-x)$, the right cubic is $L(1-x)$. The middle Hermite cubic is symmetric, so $M(x)=A+Bx(1-x)$. Matching at $s$ gives
+Since $\psi_0(x)=\psi_0(1-x)$, the right cubic is $L(1-x)$. The symmetric endpoint data and uniqueness of Hermite interpolation give $M(x)=\eta+\theta x(1-x)$. Matching at $s$ gives
 $$
-B=\frac{\psi_0'(s)}{1-2s}=\frac{14641}{20736},\qquad
-A=\psi_0(s)-Bs(1-s)=-\frac{14641}{746496}.
+\theta=\frac{\psi_0'(s)}{1-2s}=\frac{14641}{20736},\qquad
+\eta=\psi_0(s)-\theta s(1-s)=-\frac{14641}{746496}.
 $$
 This gives
 $$
@@ -168,7 +168,7 @@ F_{c,bb}=2(f''(c)-f''(b))-2hf'''(b),\quad
 F_{c,bc}=2(f''(c)-f''(b))-2hf'''(c),\quad
 F_{c,cc}=h^2f''''(c).
 $$
-Since $\psi_\lambda=\psi_0+\lambda\chi$, mixed $\lambda$ derivatives use $f=\chi$ above and second $\lambda$ derivatives vanish. At $s=\frac{1}{12}$, $r=\frac{11}{12}$, $h=\frac{5}{6}$ this gives
+Since $\psi_\lambda=\psi_0+\lambda\chi$, mixed $\lambda$ derivatives use $f=\chi$ above and second $\lambda$ derivatives vanish. At $s=\frac{1}{12}$, $r=\frac{11}{12}$, $h=\frac{5}{6}$, with variables $(b,c,\lambda)$, this gives
 $$
 \nabla G_b=(-825,0,20),\qquad
 D^2G_b=
@@ -244,15 +244,15 @@ $$
 
 Step 5: Certify the contact set and positivity of the reaction
 
-Build $U_\lambda$ from these cubics and $\psi_\lambda$ on the two contact intervals. Step 3 makes it $C^2$. The gaps factor as
+Build $U_\lambda$ from these cubics and $\psi_\lambda$ on the contact intervals. Step 3 makes it $C^2$. With $G_\lambda=U_\lambda-\psi_\lambda$,
 $$
 \begin{aligned}
-U_\lambda-\psi_\lambda&=x^2(a_\lambda-x)^3Q_{L,\lambda}(x),\\
-U_\lambda-\psi_\lambda&=(x-b_\lambda)^3(c_\lambda-x)^3Q_{M,\lambda}(x),\\
-U_\lambda-\psi_\lambda&=(1-x)^2(x-d_\lambda)^3Q_{R,\lambda}(x).
+G_\lambda&=x^2(a_\lambda-x)^3Q_{L,\lambda}(x),\\
+G_\lambda&=(x-b_\lambda)^3(c_\lambda-x)^3Q_{M,\lambda}(x),\\
+G_\lambda&=(1-x)^2(x-d_\lambda)^3Q_{R,\lambda}(x).
 \end{aligned}
 $$
-Their coefficients are continuous in $\lambda$. Step 2 gives
+The coefficients are continuous in $\lambda$. Step 2 gives
 $$
 Q_{L,0}=\frac{1}{12}(-1728x^3+6480x^2-8580x+4235)>0,
 $$
@@ -263,19 +263,19 @@ They stay positive for small $\lambda$; Step 4 gives
 $$
 \mathcal C_\lambda^\circ=[a_\lambda,b_\lambda]\cup[c_\lambda,d_\lambda].
 $$
-There $U_\lambda''''$ has density $\psi_\lambda''''$, positive for small $\lambda$ since
+There $U_\lambda''''$ has density $\psi_\lambda''''$, positive for small $\lambda$ because
 $$
 \psi_0''''(s)=\psi_0''''(r)=\frac{3250}{3}.
 $$
-The four boundary jumps tend to
+Using Step 2 and
+$$
+\psi_0'''(s)=-\frac{6875}{36},\qquad \psi_0'''(r)=\frac{6875}{36},
+$$
+the four jumps tend to
 $$
 \frac{99}{8},\qquad\frac{6875}{36},\qquad\frac{6875}{36},\qquad\frac{99}{8},
 $$
-from Step 2 and
-$$
-\psi_0'''(s)=-\frac{6875}{36},\qquad \psi_0'''(r)=\frac{6875}{36}.
-$$
-They remain positive. Then $U_\lambda''''$ is nonnegative and supported on the contact set, so Step 1 gives $U_\lambda=u_\lambda$.
+so they remain positive. Then $U_\lambda''''$ is nonnegative and supported on the contact set, so Step 1 gives $U_\lambda=u_\lambda$.
 
 Step 6: Evaluate the four limits and derive the jump correction
 
@@ -300,30 +300,31 @@ $$
 \chi''(s)=\frac{125}{27},\quad \chi''(r)=\frac{335}{54},\quad
 \chi'''(s)=-\frac{61}{3},\quad \chi'''(r)=\frac{239}{3}.
 $$
-With $b_1=\frac{4}{165}$, $c_1=-\frac{8}{165}$ and Step 5,
+With $b_1=\frac{4}{165}$, $c_1=-\frac{8}{165}$ and Step 5, the numerator coefficient is
+$$
+\psi_0'''(r)c_1-\psi_0'''(s)b_1+\chi''(r)-\chi''(s)
+=-\frac{250}{27}+\frac{125}{27}+\frac{85}{54}=-\frac{55}{18}.
+$$
+So
 $$
 \psi_\lambda''(c_\lambda)-\psi_\lambda''(b_\lambda)
-=\left[
--\frac{250}{27}+\frac{125}{27}+\frac{85}{54}
-\right]\lambda+O(\lambda^2)
 =-\frac{55}{18}\lambda+O(\lambda^2).
 $$
 Since $c_\lambda-b_\lambda=\frac{5}{6}+O(\lambda)$,
 $$
 \kappa_\lambda=-\frac{11}{3}\lambda+O(\lambda^2).
 $$
-Also
+The two first-order Taylor coefficients are
 $$
-\psi_\lambda'''(b_\lambda)
-=-\frac{6875}{36}
-+\left(\frac{2600}{99}-\frac{2013}{99}\right)\lambda+O(\lambda^2)
-=-\frac{6875}{36}+\frac{587}{99}\lambda+O(\lambda^2),
+\psi_0''''(s)b_1+\chi'''(s)=\frac{2600-2013}{99}=\frac{587}{99},
+\qquad
+\psi_0''''(r)c_1+\chi'''(r)=\frac{-5200+7887}{99}=\frac{2687}{99}.
 $$
+So
 $$
-\psi_\lambda'''(c_\lambda)
-=\frac{6875}{36}
-+\left(-\frac{5200}{99}+\frac{7887}{99}\right)\lambda+O(\lambda^2)
-=\frac{6875}{36}+\frac{2687}{99}\lambda+O(\lambda^2).
+\psi_\lambda'''(b_\lambda)=-\frac{6875}{36}+\frac{587}{99}\lambda+O(\lambda^2),
+\qquad
+\psi_\lambda'''(c_\lambda)=\frac{6875}{36}+\frac{2687}{99}\lambda+O(\lambda^2).
 $$
 By definition,
 $$
