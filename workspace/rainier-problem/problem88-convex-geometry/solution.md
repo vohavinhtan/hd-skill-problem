@@ -1,182 +1,337 @@
 ## Steps
 
-Step 1: Reduce every candidate plane to a moving fourth root
+Step 1: Identify every five-point degeneracy parameter
 
-Write
+Fix five distinct indices and write their corresponding abscissas as
+$y_1,\ldots,y_5$. Let
 $$
-x_r=\cos(2r\delta),
+e_1=\sum_{i=1}^5y_i,
+\qquad
+e_2=\sum_{1\le i<j\le5}y_iy_j,
+\qquad
+Q=\sum_{i=1}^5y_i^2.
 $$
-so
+The five points are affinely dependent exactly when there is a polynomial
+$p$ of degree at most $3$ such that
 $$
-x_1>x_2>\cdots>x_h.
+x^6+\lambda x^5-p(x)
 $$
-For a triple $F=\{a,b,c\}$, the plane through $Q_a(\lambda),Q_b(\lambda),Q_c(\lambda)$ is not vertical: otherwise its equation would give a nonzero polynomial of degree at most $2$ in $x$ vanishing at the three distinct numbers $x_a,x_b,x_c$. Hence it has the form
+vanishes at all $y_i$. If
 $$
-z=p(x),\qquad \deg p\le 2.
+P(x)=\prod_{i=1}^5(x-y_i)
+=x^5-e_1x^4+e_2x^3-\cdots,
 $$
-Therefore
+this is equivalent to
 $$
-G_F(x)
-=
-x^4+\lambda x^3-p(x)
-=
-(x-x_a)(x-x_b)(x-x_c)(x-d_F),
+x^6+\lambda x^5-p(x)=P(x)(x+c)
+$$
+for some real $c$. Comparing the coefficients of $x^5$ and $x^4$ gives
+$$
+c-e_1=\lambda,
+\qquad
+e_2-ce_1=0.
 \tag{1}
 $$
-and comparison of the $x^3$-coefficients gives
+If $e_1=0$, then
 $$
-d_F=-\lambda-(x_a+x_b+x_c).
+e_2=-\frac Q2<0,
+$$
+so (1) is impossible. If $e_1\ne0$, then
+$$
+\lambda
+=
+\frac{e_2}{e_1}-e_1
+=
+-\frac{e_1^2-e_2}{e_1}
+=
+-\frac{e_1^2+Q}{2e_1}.
 \tag{2}
 $$
+Thus the unique degeneracy parameter for the five-set $E$ is precisely
+$\Lambda(E)$.
 
-All nonzero values $G_F(x_r)$ for $r\notin F\cup\{s,t\}$ have one sign exactly when the plane supports $K_{\{s,t\}}(\lambda)$. If it is jointly new, then $G_F(x_s)$ and $G_F(x_t)$ must both have the opposite sign: reinserting $Q_t$ must destroy support for $K_{\{s\}}(\lambda)$, and reinserting $Q_s$ must destroy support for $K_{\{t\}}(\lambda)$. Conversely, when these signs are strict, the plane contains no additional retained sample point and the corresponding triangle is jointly new.
-
-Step 2: Show that only four triples can ever be jointly new
-
-Since
+More generally, the oriented $5\times5$ determinant for these points is,
+up to the nonzero Vandermonde factor in the $y_i$,
 $$
-s\le \frac{h-1}{4},
-$$
-we have
-$$
-t-s=h-2s\ge 2s+1>1.
+D_\lambda(E)
+=
+h_2(E)+\lambda e_1(E),
+\qquad
+h_2(E)=e_1(E)^2-e_2(E)
+=\frac{e_1(E)^2+\sum_{r\in E}x_r^2}{2}>0.
 \tag{3}
 $$
-Thus $x_s$ and $x_t$ are separated by retained sample nodes.
+Hence at $\lambda=0$ every five-point orientation has the same sign as
+for the ordinary moment curve $(x,x^2,x^3,x^4)$.
 
-Along the strictly ordered nodes $x_1>\cdots>x_h$, the sign of the quartic in (1) changes only when a root is crossed. For $x_s$ to be the only wrong-sign sample in its local block, there must be a root in each adjacent gap beside $x_s$; the same is true for $x_t$. Hence four sign boundaries are required. Three of them are the selected sample roots $x_a,x_b,x_c$, while the remaining one is $d_F$. Therefore one deleted node is bracketed by its two selected neighbours and the other by one selected neighbour together with $d_F$.
+Step 2: Reduce the global sign problem to consecutive five-blocks
 
-The only possibilities are
+For a five-set $E$, write
 $$
-\begin{array}{c|c}
-F&\text{required position of }d_F\\ \hline
-F_A=\{s-1,s+1,t-1\}&x_t>d_F>x_{t+1}\\
-F_B=\{s-1,s+1,t+1\}&x_{t-1}>d_F>x_t\\
-F_C=\{s-1,t-1,t+1\}&x_s>d_F>x_{s+1}\\
-F_D=\{s+1,t-1,t+1\}&x_{s-1}>d_F>x_s.
-\end{array}
+S_E=\sum_{r\in E}x_r,
+\qquad
+Q_E=\sum_{r\in E}x_r^2.
+$$
+By (3),
+$$
+2D_\lambda(E)=S_E^2+Q_E+2\lambda S_E.
 \tag{4}
 $$
-The inequalities are strict because equality would put a fourth sample point on the plane, so the intersection would not be the required triangular facet.
 
-Step 3: Convert the four root placements into four parameter intervals
-
-Set
+We claim that, for each fixed $\lambda$, the minimum of the right side of
+(4) over all five-subsets is attained by five consecutive nodes.
+Suppose a minimizing five-set is not consecutive. Then there are two
+selected values $u<v$ with an unselected node $z$ strictly between them.
+Let $S$ be the sum of the five selected values. Replacing $u$ by $z$
+changes the right side of (4) by
 $$
-C=x_{s-1}+x_{s+1},
-$$
-and define
-$$
-\begin{aligned}
-U&=C+x_{t-1}+x_{t+1},&
-V&=C+x_t+x_{t+1},\\
-R&=C+x_{t-1}+x_t,&
-W&=x_{s-1}+x_s+x_{t-1}+x_{t+1},\\
-Z&=x_s+x_{s+1}+x_{t-1}+x_{t+1}.
-\end{aligned}
+2(z-u)(S+\lambda+z),
 \tag{5}
 $$
-Using (2), the four rows of (4) are respectively equivalent to
+whereas replacing $v$ by $z$ changes it by
 $$
-\begin{aligned}
-F_A&:\quad -R<\lambda<-U,\\
-F_B&:\quad -U<\lambda<-V,\\
-F_C&:\quad -W<\lambda<-U,\\
-F_D&:\quad -U<\lambda<-Z.
-\end{aligned}
+2(z-v)(S+\lambda+z).
 \tag{6}
 $$
-For example, for $F_B$,
+Because $z-u>0$ and $z-v<0$, one of (5), (6) is nonpositive. If it is
+zero, choose the replacement that reduces the number of skipped sample
+nodes inside the selected span. Iterating produces a consecutive
+five-set with no larger value. Thus
 $$
-d_F=-\lambda-(C+x_{t+1}),
+D_\lambda(E)>0\quad\text{for every five-set }E
 $$
-and $x_{t-1}>d_F>x_t$ is exactly
+if and only if it holds for every block
 $$
--U<\lambda<-V.
-$$
-The other three rows follow directly from their two adjacent-gap inequalities.
-
-Step 4: Locate the four intervals relative to $0$
-
-Recall $t=h-s$ and $A=2s\delta$. Since
-$$
-x_{h-s+k}=-\cos\bigl((2s+1-2k)\delta\bigr),
+B_k=\{k-2,k-1,k,k+1,k+2\},
+\qquad
+3\le k\le2m-1.
 \tag{7}
 $$
-we obtain
+
+Step 3: Compute the threshold of a consecutive block
+
+Put
 $$
-C=2\cos A\cos(2\delta).
+C=1+2\cos(2\delta)+2\cos(4\delta),
+\qquad
+D=1+2\cos(4\delta)+2\cos(8\delta).
 $$
-Hence
+Since $5\delta<\pi$ and $10\delta<\pi$, both constants are positive.
+For the block $B_k$, the cosine-sum identities give
 $$
-\begin{aligned}
-U
-&=
-2\cos(2\delta)\bigl(\cos A-\cos(A+\delta)\bigr)>0,\\
-V
-&=
-2\cos A\bigl(\cos(2\delta)-\cos\delta\bigr)<0,\\
-Z
-&=
-2\cos(A+\delta)\bigl(\cos\delta-\cos(2\delta)\bigr)>0.
-\end{aligned}
+S_k:=\sum_{r\in B_k}x_r
+=C\cos(2k\delta),
 \tag{8}
-$$
-Indeed, $0<A<\pi/4$, so all displayed cosine factors are positive, and cosine is strictly decreasing on the relevant interval.
-
-Moreover,
-$$
-R-U=x_t-x_{t+1}>0,
-\qquad
-W-U=x_s-x_{s+1}>0,
-\qquad
-U-Z=x_{s-1}-x_s>0.
-\tag{9}
-$$
-Therefore
-$$
-R>U>Z>0>V,
-\qquad
-W>U.
-\tag{10}
-$$
-
-Now (6) and (10) completely order the possible changes. The intervals for $F_A$ and $F_C$ lie entirely to the left of $-U$. The interval for $F_D$ is
-$$
-(-U,-Z),
-$$
-while the interval for $F_B$ is
-$$
-(-U,-V).
-$$
-Thus at $\lambda=0$ the only jointly new facet is $F_B$. For
-$$
--Z<\lambda<-V,
-$$
-$F_B$ remains jointly new and none of $F_A,F_C,F_D$ is jointly new. Immediately to the left of $-Z$, $F_D$ is also jointly new; immediately to the right of $-V$, $F_B$ is no longer jointly new. Hence this is the largest open interval containing $0$ on which $\mathcal J(\lambda)$ is constant.
-
-Step 5: Substitute the two critical values
-
-From (8),
-$$
--Z
-=
--2\cos(A+\delta)\bigl(\cos\delta-\cos(2\delta)\bigr),
 $$
 and
 $$
--V
-=
-2\cos A\bigl(\cos\delta-\cos(2\delta)\bigr).
+Q_k:=\sum_{r\in B_k}x_r^2
+=\frac52+\frac D2\cos(4k\delta).
+\tag{9}
+$$
+Let
+$$
+u_k=\left|\cos(2k\delta)\right|.
+$$
+From (8), (9),
+$$
+\frac{h_2(B_k)}{|S_k|}
+=a\nu_k+\frac b{\nu_k},
+\tag{10}
+$$
+where
+$$
+a=\frac{C^2+D}{2C},
+\qquad
+b=\frac{5-D}{4C}.
 $$
 
-Final Answer: $\boxed{(-2\cos(A+\delta)(\cos\delta-\cos(2\delta)),2\cos A(\cos\delta-\cos(2\delta)))}$
+Set $c=\cos(2\delta)$. Direct simplification gives
+$$
+a=4c^2-1
+$$
+and
+$$
+\nu_*^2:=\frac ba
+=
+\frac{(1-c^2)(4c^2+1)}
+{(4c^2+2c-1)(4c^2-1)}.
+\tag{11}
+$$
+Thus the right side of (10) decreases for $0<\nu<\nu_*$ and increases
+for $\nu>\nu_*$.
+
+We now locate $\nu_*$. Since
+$$
+c=\cos(2\delta)>1-2\delta^2
+\ge1-\frac{2\pi^2}{27^2}
+>\frac{97}{100},
+$$
+we have
+$$
+\frac{4c^2+1}{(4c^2+2c-1)(4c^2-1)}>\frac13,
+\tag{12}
+$$
+because the difference after cross-multiplication is
+$$
+-2(c-1)(8c^3+12c^2+2c+1)>0.
+$$
+The same fraction is less than $3/8$: after cross-multiplication it is
+enough to check
+$$
+48c^4+24c^3-56c^2-6c-5>0.
+$$
+This polynomial is increasing on $[97/100,1]$ and at $97/100$ equals
+$$
+\frac{5548793}{6250000}>0.
+$$
+Since $2\delta<1/4$,
+$$
+\sin(2\delta)>
+2\delta\left(1-\frac1{96}\right)
+>\frac{39}{20}\delta.
+$$
+Using (11), (12), and $\sin(2\delta)<2\delta$ gives
+$$
+\frac54\delta^2<\nu_*^2<\frac32\delta^2.
+\tag{13}
+$$
+Also, with $3\delta/2<1/4$,
+$$
+\sin\frac{3\delta}{2}>\frac56\cdot\frac{3\delta}{2}
+=\frac54\delta,
+$$
+so
+$$
+\sin^2\frac{3\delta}{2}>\frac32\delta^2.
+$$
+Finally,
+$$
+\sin\frac{\delta}{2}\sin\frac{5\delta}{2}
+<\frac{\delta}{2}\frac{5\delta}{2}
+=\frac54\delta^2.
+\tag{14}
+$$
+
+Step 4: Find the two first sign changes
+
+Because $n=4m+3$,
+$$
+\cos(2m\delta)=\sin\frac{3\delta}{2}>0,
+\qquad
+\cos(2(m+1)\delta)=-\sin\frac{\delta}{2}<0,
+$$
+and
+$$
+\cos(2(m+2)\delta)=-\sin\frac{5\delta}{2}<0.
+\tag{15}
+$$
+
+For $k\le m$ we have
+$$
+\nu_k\ge\nu_m=\sin\frac{3\delta}{2}>\nu_*
+$$
+by (13), (14). Hence (10) is smallest on the positive-sum side exactly
+at $k=m$. Therefore the strongest lower bound is
+$$
+\lambda>
+\Lambda(B_m)
+=
+\Lambda(\{m-2,m-1,m,m+1,m+2\}).
+\tag{16}
+$$
+
+On the negative-sum side,
+$$
+\nu_{m+1}=\sin\frac{\delta}{2},
+\qquad
+\nu_{m+2}=\sin\frac{5\delta}{2},
+$$
+and $\nu_k\ge\nu_{m+2}>\nu_*$ for $k\ge m+2$. Thus only $m+1$ and
+$m+2$ need comparison. From (10),
+$$
+R(\nu_{m+2})-R(\nu_{m+1})
+=
+(\nu_{m+2}-\nu_{m+1})
+\left(
+a-\frac{b}{\nu_{m+1}\nu_{m+2}}
+\right).
+$$
+By (13), (14),
+$$
+\frac ba=\nu_*^2
+>
+\nu_{m+1}\nu_{m+2},
+$$
+so the difference is negative. Therefore the strongest upper bound is
+$$
+\lambda<
+\Lambda(B_{m+2})
+=
+\Lambda(\{m,m+1,m+2,m+3,m+4\}).
+\tag{17}
+$$
+Equations (7), (16), and (17) show that every five-point orientation is
+unchanged throughout
+$$
+I=
+\left(
+\Lambda(B_m),
+\Lambda(B_{m+2})
+\right).
+\tag{18}
+$$
+
+Step 5: Pass from orientations to facets and prove maximality
+
+For a fixed four-set $F$, the signs of the five-point determinants
+obtained by adjoining each remaining vertex tell exactly on which side of
+the affine hyperplane through $F$ that vertex lies. Therefore, while all
+five-point determinant signs agree with their values at $\lambda=0$, the
+family $\mathcal F(\lambda)$ is unchanged. Hence (18) lies inside the
+desired stability interval.
+
+At $\lambda=0$ these side signs agree with those of the ordinary moment
+curve. For four consecutive nodes, the polynomial
+$$
+q(x)=\prod_{r=j}^{j+3}(x-x_r)
+$$
+has the same sign at every other sample node, because there is no sample
+node between two consecutive selected roots. Thus every four consecutive
+vertices form a facet of $K(0)$.
+
+At the left endpoint the five consecutive vertices indexed by $B_m$
+become affinely dependent, and immediately to the left the determinant
+for the four-set
+$$
+\{m-2,m-1,m,m+1\}
+$$
+with the vertex $m+2$ has the opposite sign from its value at $0$. Since
+(16) is the first global sign change, the remaining side signs have not
+all reversed with it; this supporting tetrahedron is therefore lost.
+Likewise, immediately to the right of the upper endpoint, the vertex $m$
+crosses the hyperplane through
+$$
+\{m+1,m+2,m+3,m+4\},
+$$
+so that facet is lost. Thus no larger open interval containing $0$ can
+have the same facet family.
+
+Final Answer:
+$$
+\boxed{
+\left(
+\Lambda(\{m-2,m-1,m,m+1,m+2\}),
+\Lambda(\{m,m+1,m+2,m+3,m+4\})
+\right)
+}.
+$$
 
 ---
 
 ## Answer
 
-$(-2\cos(A+\delta)(\cos\delta-\cos(2\delta)),2\cos A(\cos\delta-\cos(2\delta)))$
+$\left(\Lambda(\{m-2,m-1,m,m+1,m+2\}),\Lambda(\{m,m+1,m+2,m+3,m+4\})\right)$
 
 ---
 
@@ -190,8 +345,8 @@ $(-2\cos(A+\delta)(\cos\delta-\cos(2\delta)),2\cos A(\cos\delta-\cos(2\delta)))$
 
 ## Solution Concepts
 
-- supporting planes of convex hulls
-- quartic root-order sign analysis
-- parametric face stability
-- trigonometric gap identities
-- simultaneous vertex deletion
+- generalized moment-curve orientations
+- five-point affine-dependence thresholds
+- gap-compression by an exchange identity
+- trigonometric block extremization
+- facet stability in four-dimensional convex hulls
