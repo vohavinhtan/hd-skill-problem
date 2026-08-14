@@ -1,62 +1,41 @@
 ## Steps
 
-Step 1: Derive the critical parameter of every five-point set
+Step 1: Reduce every five-point orientation to one affine expression in the parameters
 
-Fix a five-element set $E$ and write its distinct abscissas as $y_1,\ldots,y_5$. Put
+Fix a five-element set $E\subset R_m$ and write its distinct abscissas as $y_1,\ldots,y_5$. Put
 $$
-e_1=\sum_{i=1}^5 y_i,\qquad
-e_2=\sum_{1\leq i<j\leq5}y_iy_j,\qquad
-Q=\sum_{i=1}^5 y_i^2.
+e_1=\sum_{i=1}^5y_i,
+\qquad
+e_2=\sum_{1\leq i<j\leq5}y_iy_j.
 $$
-Let
+If
 $$
 P(x)=\prod_{i=1}^5(x-y_i)
-=x^5-e_1x^4+e_2x^3+\text{terms of degree at most }2.
+=x^5-e_1x^4+e_2x^3+\text{terms of degree at most }2,
 $$
-The five points indexed by $E$ are affinely dependent exactly when there is a polynomial $p$ of degree at most $3$ such that
+then modulo $P(x)$,
 $$
-x^6+\lambda x^5-p(x)=P(x)(x+c)
+x^5\equiv e_1x^4+\text{terms of degree at most }3
 $$
-for some real $c$. Comparing the coefficients of $x^5$ and $x^4$ gives
+and
 $$
-c-e_1=\lambda,\qquad e_2-ce_1=0.
+x^6\equiv(e_1^2-e_2)x^4+\text{terms of degree at most }3.
 $$
-If $e_1=0$, then $e_2=-Q/2<0$, so these equations are inconsistent. If $e_1\neq0$, then
+Subtracting the corresponding combinations of the first four determinant columns from the last column therefore shows that the oriented $5\times5$ determinant, divided by its nonzero Vandermonde factor, has the sign of
 $$
-\lambda=\frac{e_2}{e_1}-e_1
-=-\frac{e_1^2+Q}{2e_1}
-=\Lambda(E).
+D_{\lambda,\mu}(E)
+=h(E)+\lambda S(E)+\mu,
 $$
+where
+$$
+h(E)=e_1^2-e_2
+=\frac{S(E)^2+Q(E)}{2}>0.
+$$
+Thus every normalized five-point orientation is positive at $(\lambda,\mu)=(0,0)$.
 
-We also need the sign, not only the zero. Modulo $P(x)$,
-$$
-x^5\equiv e_1x^4+\text{terms of degree at most }3,
-$$
-and multiplying the relation for $P(x)$ by $x$ gives
-$$
-x^6\equiv (e_1^2-e_2)x^4+\text{terms of degree at most }3.
-$$
-Subtracting these lower-degree combinations from the last determinant column reduces that column to a multiple of $x^4$. Therefore, after dividing the oriented $5\times5$ determinant by its nonzero Vandermonde factor, its sign is the sign of
-$$
-D_\lambda(E)=h_2(E)+\lambda e_1(E),
-\qquad
-h_2(E)=e_1(E)^2-e_2(E)
-=\frac{e_1(E)^2+\sum_{r\in E}x_r^2}{2}>0.
-$$
-Thus every normalized five-point orientation is positive at $\lambda=0$.
+Step 2: Compress every fixed-parameter orientation minimum to five consecutive retained vertices
 
-Step 2: Compress the global orientation condition to consecutive five-blocks
-
-For a five-set $E$, write
-$$
-S_E=\sum_{r\in E}x_r,\qquad
-Q_E=\sum_{r\in E}x_r^2.
-$$
-Step 1 gives
-$$
-2D_\lambda(E)=S_E^2+Q_E+2\lambda S_E.
-$$
-For fixed $\lambda$, choose a five-set minimizing the right-hand side, and among all minimizers choose one whose selected sample values have the smallest span. Suppose it is not consecutive. Then an unselected sample value $z$ lies strictly between its smallest and largest selected values $u<v$. If $S$ is the selected sum, replacing $u$ by $z$ changes the displayed quantity by
+Fix $(\lambda,\mu)$. Since there are finitely many five-sets, choose one minimizing $D_{\lambda,\mu}$, and among all minimizers choose one whose selected abscissas have the smallest span. Suppose it is not consecutive in the retained order. Then an unselected retained abscissa $z$ lies strictly between its smallest and largest selected values $u<v$. If $S$ is the sum of the five selected values, replacing $u$ by $z$ changes $2D_{\lambda,\mu}$ by
 $$
 2(z-u)(S+\lambda+z),
 $$
@@ -64,263 +43,209 @@ whereas replacing $v$ by $z$ changes it by
 $$
 2(z-v)(S+\lambda+z).
 $$
-Since $z-u>0$ and $z-v<0$, one change is nonpositive. It cannot be negative by minimality. Hence one replacement has change $0$, producing another minimizer with strictly smaller span, a contradiction.
+The two prefactors have opposite signs, so one change is nonpositive. It cannot be negative by minimality. Hence one replacement has change $0$ and gives another minimizer with strictly smaller span, a contradiction.
 
-Therefore a global minimizer is always a consecutive block
+Therefore, for every fixed $(\lambda,\mu)$, a global minimum of $D_{\lambda,\mu}(E)$ over all five-sets is attained by one of
 $$
-B_k=\{k-2,k-1,k,k+1,k+2\},
-\qquad
-3\leq k\leq2m-1.
+W_j=\{r_j,r_{j+1},r_{j+2},r_{j+3},r_{j+4}\}.
 $$
-Consequently all normalized five-point orientations are positive exactly when $D_\lambda(B_k)>0$ for every such $k$.
+This will allow the simultaneous two-parameter condition to be checked through a one-dimensional sliding family without enumerating all five-subsets.
 
-Step 3: Express all consecutive-block thresholds through one unimodal function
+Step 3: Locate the unique critical retained window for both dangerous corners
 
 Set
 $$
-C=1+2\cos(2\delta)+2\cos(4\delta),\qquad
-D=1+2\cos(4\delta)+2\cos(8\delta).
+W=W_{m-3}.
 $$
-The finite cosine-sum formulas give
+Because the deleted indices are $m-2,m,m+2$, the five indices in $W$ are
 $$
-C=\frac{\sin(5\delta)}{\sin\delta}>0,\qquad
-D=\frac{\sin(10\delta)}{\sin(2\delta)}>0.
+W=\{m-3,m-1,m+1,m+3,m+4\}.
 $$
-For $B_k$,
+Write
 $$
-S_k=C\cos(2k\delta),
+S=S(W),
 \qquad
-Q_k=\frac52+\frac D2\cos(4k\delta).
+Q=Q(W),
+\qquad
+h=\frac{S^2+Q}{2},
 $$
-With
+and define
 $$
-\nu_k=|\cos(2k\delta)|,
+\rho_0=\frac{h}{1+|S|}.
 $$
-we have $\cos(4k\delta)=2\nu_k^2-1$, and hence
+Put $t=\delta/2$. Since $n=4m+3$,
+$$
+x_{m+j}=-\sin((4j-3)t).
+$$
+Hence
 $$
 \begin{aligned}
-\frac{h_2(B_k)}{|S_k|}
-&=\frac{S_k^2+Q_k}{2|S_k|}\\
-&=\frac{C\nu_k}{2}
-+\frac{D\nu_k}{2C}
-+\frac{5-D}{4C\nu_k}\\
-&=R(\nu_k),
+S
+&=\sin(15t)+\sin(7t)-\sin t-\sin(9t)-\sin(13t)\\
+&=\sin t\bigl(2\cos(14t)-2\cos(8t)-1\bigr)<0.
 \end{aligned}
 $$
-where
-$$
-R(\nu)=a\nu+\frac b\nu,\qquad
-a=\frac{C^2+D}{2C},\qquad
-b=\frac{5-D}{4C}.
-$$
+Thus $\rho_0=h/(1-S)$.
 
-Put $c=\cos(2\delta)$. Since
+Let
 $$
-C=4c^2+2c-1,\qquad
-D=16c^4-12c^2+1,
+z_j=x_{r_j},
 $$
-we obtain
+so $z_1>z_2>\cdots>z_{2m-2}$. For either choice $\varepsilon\in\{-1,1\}$, define
 $$
-a=4c^2-1,
+A_j^{\varepsilon}=D_{\varepsilon\rho_0,-\rho_0}(W_j).
+$$
+If the slide from $W_j$ to $W_{j+1}$ removes $a=z_j$ and adds $b=z_{j+5}$, then
+$$
+h(W_{j+1})-h(W_j)=(b-a)(S(W_j)+b),
+$$
+so
+$$
+A_{j+1}^{\varepsilon}-A_j^{\varepsilon}
+=(b-a)\bigl(S(W_j)+\varepsilon\rho_0+b\bigr).
+$$
+The quantity in parentheses is strictly decreasing with $j$, because both the window sum and the entering abscissa strictly decrease.
+
+We now show that its sign changes exactly at $j=m-3$ for both values of $\varepsilon$. For the slide from $W_{m-4}$ to $W$, the sum of the old window and the entering value $x_{m+4}$ is
+$$
+\begin{aligned}
+&x_{m-4}+x_{m-3}+x_{m-1}+x_{m+1}+x_{m+3}+x_{m+4}\\
+&=2\sin(3t)\bigl(\cos(16t)+\cos(12t)+\cos(4t)\bigr).
+\end{aligned}
+$$
+This is larger than $12t$. Indeed, $t\leq\pi/70$, so
+$$
+\cos(16t)>\frac{7}{10},
 \qquad
-b=\frac{(1-c^2)(4c^2+1)}{4c^2+2c-1}.
-$$
-Hence $R$ decreases before and increases after the unique point $\nu_*>0$ satisfying
-$$
-\nu_*^2=\frac ba
-=\frac{(1-c^2)(4c^2+1)}
-{(4c^2+2c-1)(4c^2-1)}.
-$$
-
-Since $m\geq6$, we have $\delta\leq\pi/27$, so
-$$
-c=\cos(2\delta)>1-2\delta^2
-\geq1-\frac{2\pi^2}{27^2}
->1-\frac{20}{729}
->\frac{97}{100}.
-$$
-For $97/100<c<1$,
-$$
-\frac13<
-\frac{4c^2+1}{(4c^2+2c-1)(4c^2-1)}
-<\frac38.
-$$
-For the left inequality, the cross-multiplied difference is
-$$
--2(c-1)(8c^3+12c^2+2c+1)>0.
-$$
-For the right inequality, the required numerator equals
-$$
-48c^4+24c^3-56c^2-6c-5
-=5-2(1-c)(24c^3+36c^2+8c+5)>0,
-$$
-because $1-c<3/100$, the last parenthesis is $<73$, and
-$$
-2\cdot\frac{3}{100}\cdot73=\frac{219}{50}<5.
-$$
-
-Also $2\delta<1/4$, so
-$$
-\sin(2\delta)>
-2\delta\left(1-\frac{(2\delta)^2}{6}\right)
->\frac{39}{20}\delta,
+\cos(12t)>\frac45,
 \qquad
-\sin(2\delta)<2\delta.
+\cos(4t)>\frac9{10},
 $$
-Thus
+and $\sin(3t)>5(3t)/6=5t/2$. The first cosine bound follows from $16t<\pi/4$ and $\sqrt2/2>7/10$; the other two follow from $\cos x>1-x^2/2$.
+
+On the other hand,
 $$
-\frac54\delta^2<\nu_*^2<\frac32\delta^2.
+|S|<5t
 $$
-Finally,
+and
 $$
-\sin\frac{\delta}{2}\sin\frac{5\delta}{2}<\frac54\delta^2,
+Q<\bigl(15^2+7^2+1^2+9^2+13^2\bigr)t^2=525t^2.
+$$
+Since the factor multiplying $\sin t$ in the formula for $S$ has absolute value less than $3$, in fact $S^2<9t^2$, and therefore
+$$
+\rho_0<h<267t^2.
+$$
+Using $t\leq\pi/70<11/245$ gives
+$$
+267t<12.
+$$
+Thus the transition quantity before $W$ is positive even for $\varepsilon=-1$.
+
+For the slide from $W$ to $W_{m-2}$, the entering value is
+$$
+x_{m+5}=-\sin(17t).
+$$
+Because $S<0$,
+$$
+S+x_{m+5}< -\sin(17t).
+$$
+Also $17t<1$, so
+$$
+\sin(17t)>\frac56(17t)=\frac{85}{6}t>267t^2>\rho_0.
+$$
+Hence the transition quantity after $W$ is negative even for $\varepsilon=1$.
+
+Since the transition quantity decreases strictly with $j$, both sequences $A_j^{1}$ and $A_j^{-1}$ decrease strictly up to $W$ and increase strictly after $W$. Moreover,
+$$
+A_{m-3}^{1}=h+\rho_0S-\rho_0=0
+$$
+because $h=\rho_0(1-S)$, while
+$$
+A_{m-3}^{-1}=h-\rho_0S-\rho_0=-2\rho_0S>0.
+$$
+Therefore $W$ is the unique minimizing retained window at the corner $(\rho_0,-\rho_0)$, and the minimum there is $0$; at the corner $(-\rho_0,-\rho_0)$ every retained-window determinant is strictly positive.
+
+Step 4: Prove that the whole open square of radius $\rho_0$ preserves every facet
+
+By Step 2 and Step 3,
+$$
+D_{\rho_0,-\rho_0}(E)\geq0
+$$
+for every five-set $E\subset R_m$, and
+$$
+D_{-\rho_0,-\rho_0}(E)>0
+$$
+for every such $E$. Since $D_{\lambda,\mu}(E)$ is affine in $(\lambda,\mu)$ and the coefficient of $\mu$ is $1$, its minimum on the closed square
+$$
+|\lambda|\leq\rho_0,
 \qquad
-\sin^2\frac{3\delta}{2}>\frac32\delta^2,
+|\mu|\leq\rho_0
 $$
-where the second inequality follows from
-$$
-\sin\frac{3\delta}{2}>
-\frac56\cdot\frac{3\delta}{2}
-=\frac54\delta.
-$$
-Therefore
-$$
-\sin\frac{\delta}{2}\sin\frac{5\delta}{2}
-<\nu_*^2
-<\sin^2\frac{3\delta}{2}.
-$$
+is attained at one of these two lower corners. Hence every normalized determinant is nonnegative on the closed square and strictly positive throughout its interior.
 
-Step 4: Identify the nearest lower and upper degeneracy parameters
-
-Because $n=4m+3$, the sign of $\cos(2k\delta)$ changes between $k=m$ and $k=m+1$, and
+Thus, for
 $$
-\nu_m=\sin\frac{3\delta}{2},\qquad
-\nu_{m+1}=\sin\frac{\delta}{2},\qquad
-\nu_{m+2}=\sin\frac{5\delta}{2}.
-$$
-For $k\leq m$, $\nu_k\geq\nu_m>\nu_*$, so Step 3 shows that $R(\nu_k)$ is smallest at $k=m$. Since $S_k>0$ on this side,
-$$
-D_\lambda(B_k)>0
-\quad\Longleftrightarrow\quad
-\lambda>\Lambda(B_k),
-$$
-and the strongest lower constraint is
-$$
-\lambda>\Lambda(B_m).
-$$
-
-For $k\geq m+2$, $|\cos(2k\delta)|$ increases with $k$, so $\nu_k\geq\nu_{m+2}>\nu_*$. Only $B_{m+1}$ and $B_{m+2}$ can therefore minimize $R$ on the negative-sum side. Their difference is
-$$
-R(\nu_{m+2})-R(\nu_{m+1})
-=(\nu_{m+2}-\nu_{m+1})
-\left(
-a-\frac{b}{\nu_{m+1}\nu_{m+2}}
-\right).
-$$
-Step 3 gives
-$$
-\frac ba=\nu_*^2>
-\nu_{m+1}\nu_{m+2},
-$$
-so the difference is negative. Since $S_k<0$ on this side,
-$$
-D_\lambda(B_k)>0
-\quad\Longleftrightarrow\quad
-\lambda<\Lambda(B_k),
-$$
-and the strongest upper constraint is
-$$
-\lambda<\Lambda(B_{m+2}).
-$$
-Combining this with Step 2, every five-point orientation has its $\lambda=0$ sign exactly for
-$$
-\Lambda(B_m)<\lambda<\Lambda(B_{m+2}).
-$$
-
-Step 5: Convert orientation stability into facet stability and prove maximality
-
-Inside the interval from Step 4, every five-point determinant is nonzero and has the same sign as at $\lambda=0$. Hence every four-set is affinely independent, and adjoining one remaining vertex at a time gives exactly the same side of its affine hyperplane as at $\lambda=0$. The supporting tetrahedra, and therefore $\mathcal F(\lambda)$, are unchanged throughout that interval.
-
-Step 1 shows that the side signs at $\lambda=0$ agree with those of the ordinary moment curve $(x,x^2,x^3,x^4)$. On that curve, four consecutive vertices form a facet: for consecutive abscissas $x_j,x_{j+1},x_{j+2},x_{j+3}$, the polynomial
-$$
-\prod_{r=j}^{j+3}(x-x_r)
-$$
-has the same sign at every other sample node because no unselected sample lies between two consecutive selected roots.
-
-The lower endpoint really destroys a facet. Let
-$$
-F_-=\{m-2,m-1,m,m+1\},
+|\lambda|<\rho_0,
 \qquad
-B_m=F_-\cup\{m+2\}.
+|\mu|<\rho_0,
 $$
-Put $v=\sin(3\delta/2)$ and $c=\cos(2\delta)$. From Step 3,
+every five-point orientation has exactly its sign at $(0,0)$. Consequently every four-set has the same side relations to all remaining vertices, so the supporting tetrahedra are unchanged:
 $$
-S_{B_m}=Cv,\qquad
-\Lambda(B_m)=-av-\frac bv,
-\qquad
-C-a=2c.
+\mathcal F(\lambda,\mu)=\mathcal F(0,0).
 $$
-At $\lambda=\Lambda(B_m)$,
-$$
-S_{B_m}+\lambda+x_{2m+1}
-=2cv-\frac bv-\cos\delta<0,
-$$
-because
-$$
-2cv<3\delta\leq\frac{\pi}{9}<\frac12<\cos\delta.
-$$
-Replacing $x_{m+2}$ by $x_{2m+1}$ changes $2D_\lambda$ by
-$$
-2(x_{2m+1}-x_{m+2})
-\left(S_{B_m}+\lambda+x_{2m+1}\right)>0.
-$$
-Thus the determinant for $B_m$ changes sign immediately to the left of the endpoint while the determinant using $F_-\cup\{2m+1\}$ stays positive. The two vertices then lie on opposite sides of the hyperplane through $F_-$, so $F_-$ ceases to be a facet.
 
-For the upper endpoint let
-$$
-F_+=\{m+1,m+2,m+3,m+4\},
-\qquad
-B_{m+2}=F_+\cup\{m\}.
-$$
-Put $u=\sin(5\delta/2)$. Then
-$$
-S_{B_{m+2}}=-Cu,\qquad
-\Lambda(B_{m+2})=au+\frac bu,
-$$
-and at $\lambda=\Lambda(B_{m+2})$,
-$$
-S_{B_{m+2}}+\lambda+x_1
-=c(1-2u)+\frac bu>0
-$$
-because $c>0$, $b>0$, and
-$$
-u=\sin\frac{5\delta}{2}
-\leq\sin\frac{5\pi}{54}<\sin\frac{\pi}{6}=\frac12.
-$$
-Replacing $x_m$ by $x_1$ therefore gives a strictly positive normalized determinant while the determinant for $B_{m+2}$ changes sign immediately to the right. Hence $F_+$ also loses its supporting property. No larger open interval containing $0$ can preserve the facet family.
+Step 5: Show that any larger square loses a facet
 
-Final Answer: $\boxed{\left(\Lambda(\{m-2,m-1,m,m+1,m+2\}),\Lambda(\{m,m+1,m+2,m+3,m+4\})\right)}$
+Let
+$$
+F=\{m-3,m-1,m+1,m+3\}.
+$$
+These are four consecutive retained vertices. At $(0,0)$ their side signs agree with those of the ordinary moment curve $(x,x^2,x^3,x^4)$, so $F$ is a facet: the polynomial with these four retained abscissas as roots has one sign at every other retained abscissa because there is no retained node between consecutive roots.
+
+At the boundary corner $(\rho_0,-\rho_0)$, the five-set
+$$
+W=F\cup\{m+4\}
+$$
+has normalized determinant $0$. Step 3 shows that the preceding retained window
+$$
+W_{m-4}=F\cup\{m-4\}
+$$
+has strictly positive normalized determinant there. Move slightly beyond the corner along
+$$
+(\lambda,\mu)=(\rho_0+\eta,-\rho_0-\eta),
+\qquad
+\eta>0.
+$$
+For $W$ the normalized determinant becomes
+$$
+\eta(S-1)<0,
+$$
+while the determinant for $W_{m-4}$ remains positive for sufficiently small $\eta$. With the four rows of $F$ kept in increasing-index order, placing the test vertex $m-4$ last differs from sorted order by four row swaps, so these two determinant signs genuinely represent opposite sides of the same hyperplane through $F$. Hence $F$ is no longer supporting.
+
+Every square of radius greater than $\rho_0$ contains such a point for sufficiently small $\eta$, so no larger radius works.
+
+Final Answer: $\boxed{\frac{S(W_{m-3})^2+Q(W_{m-3})}{2(1+|S(W_{m-3})|)}}$
 
 ---
 
 ## Answer
 
-$\left(\Lambda(\{m-2,m-1,m,m+1,m+2\}),\Lambda(\{m,m+1,m+2,m+3,m+4\})\right)$
+$\frac{S(W_{m-3})^2+Q(W_{m-3})}{2(1+|S(W_{m-3})|)}$
 
 ---
 
 ## Classification
 
-**Problem Type:** Parameter identification
+**Problem Type:** Optimization
 
-**Answer Type:** Interval or region description
+**Answer Type:** Exact scalar
 
 ---
 
 ## Solution Concepts
 
 - generalized Vandermonde determinants
-- affine dependence thresholds
 - exchange argument
-- unimodal extremization
+- robust parameter optimization
+- discrete unimodality
 - convex polytope facet stability
