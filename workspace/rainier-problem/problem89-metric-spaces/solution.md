@@ -28,103 +28,105 @@ U_u\cap W_v=\{0,uv^T\}.
 $$
 Hence $L$ either preserves the two rulings or swaps them.
 
-Suppose first that the rulings are preserved. Write $L(U_{e_i})=U_{a_i}$ and $L(W_{e_j})=W_{b_j}$. Since $V=U_{e_1}\oplus U_{e_2}\oplus U_{e_3}=W_{e_1}\oplus W_{e_2}\oplus W_{e_3}$ and $L$ is invertible, $(a_1,a_2,a_3)$ and $(b_1,b_2,b_3)$ are bases. The one-dimensional intersections then give $L(E_{ij})=a_ib_j^T$, so $L(X)=AXB$. If the rulings are swapped, the same argument gives $L(X)=AX^TB$. Here $A,B\in\operatorname{GL}_3(\mathbb F_2)$. Since every invertible $3\times3$ matrix over $\mathbb F_2$ has determinant $1$,
+Suppose first that the rulings are preserved. Write $L(U_{e_i})=U_{a_i}$ and $L(W_{e_j})=W_{b_j}$. Since $V=U_{e_1}\oplus U_{e_2}\oplus U_{e_3}=W_{e_1}\oplus W_{e_2}\oplus W_{e_3}$ and $L$ is invertible, $(a_1,a_2,a_3)$ and $(b_1,b_2,b_3)$ are bases. The one-dimensional intersections give $L(E_{ij})=a_ib_j^T$, so $L(X)=AXB$. If the rulings are swapped, the same argument gives $L(X)=AX^TB$. Here $A,B\in\operatorname{GL}_3(\mathbb F_2)$, and every invertible $3\times3$ matrix over $\mathbb F_2$ has determinant $1$. Thus
 $$
 \det L(X)=\det X
 $$
 in both cases.
 
-Step 4: Translate the cubic coset into a quotient of quadratic forms
+Step 4: Convert preservation of $\mathcal F$ into a quadratic quotient condition
 Let $D(X)=\det X$. For $C\in V$, let $Q_C(X)$ be the squarefree quadratic part of $D(X+C)+D(X)$. Choosing one entry from $C$ and two from $X$ in the determinant expansion gives
 $$
 Q_C(X)=\sum_{i,j}c_{ij}M_{ij}(X),
 $$
 where $M_{ij}$ is the complementary $2\times2$ minor. Each product of entries in distinct rows and distinct columns occurs in exactly one $M_{ij}$, so the nine minors are linearly independent. Thus $C\mapsto Q_C$ is a bijection from $V$ onto their span $\mathcal M$.
 
-For a quadratic Boolean function $h$, write
+For a quadratic Boolean function $h$, put
 $$
 \beta_h(X,Y)=h(X+Y)+h(X)+h(Y)+h(0).
 $$
-This alternating bilinear form ignores affine summands. The coordinate permutation induced by $\phi$ sends the truth table of $f$ to that of $f\circ\phi^{-1}$. Since $\mathcal A$ is $\phi$-invariant, preservation of $\mathcal F$ is equivalent to $f\circ\phi^{-1}+f\in\mathcal A$, or equivalently after composition with $\phi$, to $f\circ\phi+f\in\mathcal A$. Using $\phi(X)=L(X)+C$, $\det L(X)=\det X$, and the fact that translating $q$ changes it only by an affine function, the quadratic obstruction is
+The coordinate permutation induced by $\phi$ sends the truth table of $f$ to that of $f\circ\phi^{-1}$. Since $\mathcal A$ is $\phi$-invariant, preserving $\mathcal F$ is equivalent to $f\circ\phi+f\in\mathcal A$. Using $\phi(X)=L(X)+C$, $\det L(X)=\det X$, and the fact that translating $q$ changes it only by an affine function, this is equivalent to
 $$
 \beta_{q\circ L}+\beta_q\in\beta(\mathcal M).
 $$
-Indeed, writing $C=L(H)$ gives
-$$
-D(LX+C)+D(LX)=D(X+H)+D(X),
-$$
-whose quadratic part is $Q_H$. As $C$ varies, so does $H$, and $Q_H$ runs bijectively through $\mathcal M$. The polar map is injective on squarefree homogeneous quadratic forms because the coefficient of $x_rx_s$ is recovered as $\beta_h(e_r,e_s)$. Hence an admissible $L$ determines a unique $H$, therefore a unique $C$, and the remaining difference has degree at most $1$, exactly as required.
+Writing $C=L(H)$ shows that the quadratic determinant defect is $Q_H$, which runs bijectively through $\mathcal M$. The polar map is injective on squarefree homogeneous quadratics because the coefficient of $x_rx_s$ is $\beta_h(e_r,e_s)$. Hence every admissible $L$ has exactly one translation part $C$.
 
-Step 5: Recover the quotient class from its restrictions to the two rulings
-Every $2\times2$ minor vanishes on each rank-one $3$-space, so every form in $\beta(\mathcal M)$ restricts to zero on every $U_u$ and $W_v$. Conversely, let $\beta$ be an alternating bilinear form with all these restrictions zero. Restriction to $U_{e_i}$ and $W_{e_j}$ kills coefficients joining two entries in one row or one column. For rows $i\ne k$ and columns $j\ne l$, restriction to $U_{e_i+e_k}$ gives
-$$
-\beta(E_{ij},E_{kl})=\beta(E_{il},E_{kj}).
-$$
-Thus each $2\times2$ rectangle contributes one common coefficient, exactly the polar of its complementary minor. Hence $\beta$ is a linear combination of the polars of the nine minors, so the class modulo $\beta(\mathcal M)$ is determined exactly by the restrictions to the two rulings.
+Step 5: Encode the quotient class by two coupled linear maps
+Every $2\times2$ minor vanishes on every rank-one $3$-space. Conversely, if an alternating bilinear form vanishes on all $U_u$ and $W_v$, then restrictions to $U_{e_i}$ and $W_{e_j}$ kill same-row and same-column coefficients, while restriction to $U_{e_i+e_k}$ equates the two coefficients in each $2\times2$ rectangle. Hence it lies in $\beta(\mathcal M)$. Therefore the quotient class in Step 4 is determined exactly by the restrictions to the two rulings.
 
-Put
+For $r=(r_1,r_2,r_3)^T$, define
 $$
-a(u)=u_1u_2+u_1u_3+u_2u_3,
+\Omega_r(y,z)=\det[r,y,z].
+$$
+This identifies alternating bilinear forms on $\mathbb F_2^3$ with vectors $r$. For $X=uv^T$, the quadratic part in the varying $v$ on $U_u$ is
+$$
+u_1v_1v_2+u_2v_1v_3+u_3(v_1v_2+v_2v_3),
+$$
+while the quadratic part in the varying $u$ on $W_v$ is
+$$
+v_1u_2u_3+(v_2+v_3)u_1u_2.
+$$
+Therefore
+$$
+\beta_q|_{U_u}=\Omega_{Ru},
 \qquad
-c(v)=v_1v_2.
+\beta_q|_{W_v}=\Omega_{Sv},
 $$
-For $X=uv^T$, the definition of $q$ gives $q(X)=a(u)c(v)$. On $U_u$,
+where
 $$
-\beta_q(uv^T,uw^T)=a(u)\bigl(c(v+w)+c(v)+c(w)\bigr),
+R=\begin{pmatrix}0&0&1\\0&1&0\\1&0&1\end{pmatrix},
+\qquad
+S=\begin{pmatrix}1&0&0\\0&0&0\\0&1&1\end{pmatrix}.
 $$
-while on $W_v$,
-$$
-\beta_q(uv^T,wv^T)=c(v)\bigl(a(u+w)+a(u)+a(w)\bigr).
-$$
-Both parenthesized polar forms are nonzero, for instance at $(e_1,e_2)$. Therefore the nonzero restrictions occur on
-$$
-S=\mathbb F_2^3\setminus\{0,e_1,e_2,e_3\}
-$$
-in the $U$-ruling and on
-$$
-T=\{(1,1,0),(1,1,1)\}
-$$
-in the $W$-ruling. Thus there are four nonzero $U$-restrictions and two nonzero $W$-restrictions.
+Thus $\operatorname{rank}R=3$ and $\operatorname{rank}S=2$.
 
-Step 6: Count the admissible affine coordinate maps
+Step 6: Reduce the stabilizer to the centralizer of one matrix
 For $L(X)=AXB$,
 $$
 L(uv^T)=(Au)(B^Tv)^T.
 $$
-Hence equality of the $U$-restrictions from Step 5 gives, for every nonzero $u$,
+Since $\Omega_r(B^Ty,B^Tz)=\Omega_{B^{-T}r}(y,z)$, equality of the two ruling-restriction maps from Step 5 is equivalent to
 $$
-a(Au)\,\beta_{c\circ B^T}=a(u)\,\beta_c.
+B^{-T}RA=R,
+\qquad
+A^{-1}SB^T=S.
 $$
-Because $B$ is invertible, $\beta_{c\circ B^T}$ is nonzero. Thus the zero and nonzero cases force $a(Au)=a(u)$ for all $u$, equivalently $A(S)=S$; choosing any $u\in S$ also gives $\beta_{c\circ B^T}=\beta_c$. Likewise equality of the $W$-restrictions gives
+The first equation gives $A=R^{-1}B^TR$. Substituting this into the second and putting
 $$
-c(B^Tv)\,\beta_{a\circ A}=c(v)\,\beta_a.
+K=RS=\begin{pmatrix}0&1&1\\0&0&0\\1&1&1\end{pmatrix}
 $$
-Since $\beta_{a\circ A}$ is nonzero, this forces $c(B^Tv)=c(v)$ for all $v$, equivalently $B^T(T)=T$. Conversely, these two setwise conditions preserve the Boolean functions $a$ and $c$ themselves, hence both displayed restriction identities. Therefore they are necessary and sufficient.
+gives
+$$
+KB^T=B^TK.
+$$
+Hence $A$ is uniquely determined by $B$, and the non-transpose stabilizer is the centralizer of $K$ in $\operatorname{GL}_3(\mathbb F_2)$.
 
-Since a linear map fixes $0$, preserving $S$ is equivalent to permuting the three vectors $e_1,e_2,e_3$, so there are exactly $6$ possibilities for $A$. Also
+Now
 $$
-|\operatorname{GL}_3(\mathbb F_2)|=(2^3-1)(2^3-2)(2^3-4)=168.
+\ker K=\langle(0,1,1)^T\rangle,
+\qquad
+\operatorname{im}K=\{(a,0,c)^T:a,c\in\mathbb F_2\},
 $$
-Any two distinct nonzero vectors are linearly independent over $\mathbb F_2$, so $\operatorname{GL}_3(\mathbb F_2)$ is transitive on the $\binom72=21$ unordered pairs of distinct nonzero vectors. Hence the stabilizer of $T$ has size $168/21=8$. There are therefore
+and these subspaces are complementary. Any invertible matrix commuting with $K$ preserves both. On $\ker K$ it fixes the unique nonzero vector. On $\operatorname{im}K$, the map $K$ cycles the three nonzero vectors
 $$
-6\cdot8=48
+e_1\mapsto e_3\mapsto e_1+e_3\mapsto e_1.
 $$
-admissible maps of type $AXB$.
+An invertible linear map of this $2$-space commuting with that cycle is one of its three powers. Therefore the non-transpose stabilizer has exactly $3$ elements.
 
-A transpose-type map sends every $U$-space to a $W$-space and conversely. It would therefore exchange the two restriction-support sizes, but Step 5 gives sizes $4$ and $2$. Hence no map of type $AX^TB$ is admissible. Step 4 gives exactly one affine translation part for each of the $48$ linear maps, so the zero-word stabilizer has $48$ elements.
+For a transpose-type map the two restriction maps are interchanged. Their ranks would therefore have to agree, contradicting $\operatorname{rank}R=3$ and $\operatorname{rank}S=2$. Thus there are no transpose-type elements. By Step 4 each of the three admissible linear parts has exactly one coordinate-translation part, so the zero-word stabilizer has size $3$.
 
 Step 7: Restore code translations and count
-The even-weight code on $n=512$ coordinates has $|X_n|=2^{511}$. Every isometry is uniquely a code translation followed by one of the $48$ zero-fixing isometries. Therefore
+The even-weight code on $n=512$ coordinates has $|X_n|=2^{511}$. Every isometry is uniquely a code translation followed by one of the three zero-fixing isometries. Therefore
 $$
-|\operatorname{Iso}(X_n,d)|=48\cdot2^{511}=3\cdot2^{515}.
+|\operatorname{Iso}(X_n,d)|=3\cdot2^{511}.
 $$
-Final Answer: $\boxed{3\cdot2^{515}}$
+Final Answer: $\boxed{3\cdot2^{511}}$
 
 ---
 
 ## Answer
 
-$3\cdot2^{515}$
+$3\cdot2^{511}$
 
 ---
 
@@ -142,4 +144,4 @@ $3\cdot2^{515}$
 - rank one matrix geometry
 - quadratic form polarizations
 - determinant finite differences
-- orbit stabilizer counting
+- matrix centralizers
