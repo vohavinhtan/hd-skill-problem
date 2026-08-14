@@ -1,315 +1,434 @@
 ## Steps
 
-Step 1: Decode the metric invariants
+Step 1: Decode the metric and check the marked families
 
-The quadratic word $\mathbf q$ is not linear: if $e_1,e_{m+1}$ are the corresponding standard basis vectors of $V$, then
+The trace pairing on $E$ is nondegenerate. Indeed, if
 $$
-q(e_1)=q(e_{m+1})=0,
-\qquad
-q(e_1+e_{m+1})=1.
+\operatorname{Tr}(cz)=0\qquad(z\in E)
 $$
-Hence $\mathbf q\notin\mathcal L_m$, so $\lambda(z)$ and $\theta(z)$ are never simultaneously $1$.
+with $c\neq0$, then multiplication by $c$ would imply that $\operatorname{Tr}$ vanishes identically. But
+$$
+\operatorname{Tr}(z)=z+z^2+\cdots+z^{2^{r-1}}
+$$
+is a nonzero polynomial of degree $2^{r-1}<2^r$, so it cannot vanish on all $2^r$ elements of $E$.
 
-If $x\neq y$, then $z=x+y$ is a nonzero even-weight word, so $\operatorname{wt}(z)\geq2$. Thus every nonzero distance is at least $8n+8$ and at most $12n+2$. Consequently, for three distinct points,
-$$
-d_n(x,z)\leq12n+2<16n+16\leq d_n(x,y)+d_n(y,z),
-$$
-while the cases with repeated points are immediate. Therefore $d_n$ is a metric.
+Every nonzero linear word has weight $n/2$, hence even. Also every word in $\mathcal Q_s$ is the evaluation vector of a Boolean polynomial in $2r$ binary variables of degree at most $2$. Its weight modulo $2$ is the sum of that polynomial over all of $\mathbb F_2^{2r}$. Every monomial occurring has degree strictly smaller than $2r$, so at least one variable is absent; summing over that variable gives an even contribution. Thus every word in every $\mathcal Q_s$ has even weight, as asserted in the statement.
 
 For nonzero $z\in X_n$, write
 $$
-D(z)=d_n(0,z)-8n
-=4\operatorname{wt}(z)+2\lambda(z)+\theta(z). \tag{1}
+R(z)=d_n(0,z)-32n.
 $$
-Because $2\lambda(z)+\theta(z)\in\{0,1,2\}$, the value $D(z)$ determines all three quantities separately: its parity gives $\theta(z)$, its residue modulo $4$ then gives $\lambda(z)$, and the remaining multiple of $4$ gives $\operatorname{wt}(z)$. Hence every isometry fixing $0$ preserves Hamming weight, the set $\mathcal L_m$, and the single word $\mathbf q$.
+Because $\operatorname{wt}(z)$ is even,
+$$
+16\operatorname{wt}(z)\equiv0\pmod{32}.
+$$
+Hence the residue of $R(z)$ modulo $32$ is exactly
+$$
+8\lambda(z)+4\mu(z)+2\eta(z)+\xi(z),
+$$
+which determines the four marker bits individually. Subtracting those bits then determines $\operatorname{wt}(z)$. Therefore every isometry fixing $0$ preserves Hamming weight and preserves each of the sets
+$$
+\mathcal L,\qquad \mathscr Q,\qquad \mathscr H,\qquad \mathscr C. \tag{1}
+$$
 
-Step 2: Remove the translational part
+The displayed function is a metric. If $x\neq y$, then $x+y$ is a nonzero even-weight word, so its weight is at least $2$. Thus every nonzero distance is at least
+$$
+32n+32,
+$$
+while every distance is at most
+$$
+32n+16n+15=48n+15.
+$$
+For three distinct points,
+$$
+48n+15<64n+64,
+$$
+so the triangle inequality is automatic; the cases with a repeated point are immediate.
 
-For every $a\in X_n$, the translation
+Step 2: Remove translations and reconstruct a coordinate permutation
+
+For every $a\in X_n$, translation
 $$
 T_a(x)=a+x
 $$
-is an isometry because the metric depends only on $x+y$. Therefore, given any isometry $F$, put
+is an isometry because $d_n(x,y)$ depends only on $x+y$. Given an arbitrary isometry $F$, put
 $$
 a=F(0),
 \qquad
 G=T_a\circ F.
 $$
-Since the characteristic is $2$, $T_a^{-1}=T_a$, and $G(0)=0$. It is enough to classify the isometries fixing $0$.
+Then $G(0)=0$. It remains to classify the $0$-fixing isometries.
 
-Step 3: Reconstruct the underlying coordinate permutation
-
-For $u\in V$, let $e_u$ denote the unit word supported at the coordinate $u$, and for distinct $u,v\in V$ put
+For $u\in V$, let $e_u$ be the unit word supported at coordinate $u$, and for $u\neq v$ put
 $$
 p_{uv}=e_u+e_v.
 $$
-These are exactly the weight-$2$ words, so $G$ permutes the set
+These are exactly the weight-$2$ words, so $G$ permutes their set. For distinct $p_{uv}$ and $p_{rs}$, the weight decoded from their mutual distance is
 $$
-\mathcal P=\{p_{uv}:u\neq v\}.
-$$
-Since $m\geq3$, both the words in $\mathcal L_m$ and the word $\mathbf q$ have weight greater than $4$. Thus, for two distinct elements of $\mathcal P$, the marker terms vanish and
-$$
-\operatorname{wt}(p_{uv}+p_{rs})=
+\operatorname{wt}(p_{uv}+p_{rs})
+=
 \begin{cases}
 2,&|\{u,v\}\cap\{r,s\}|=1,\\
 4,&\{u,v\}\cap\{r,s\}=\varnothing.
 \end{cases} \tag{2}
 $$
-Hence the metric on $\mathcal P$ recovers the intersection graph of the $2$-subsets of $V$.
+Thus the metric on the weight-$2$ shell recovers the intersection graph of the $2$-subsets of the $n$-element set $V$.
 
-For each $u\in V$, the set
+For each $u\in V$, the star
 $$
-\mathcal S_u=\{p_{uv}:v\neq u\}
+\Sigma_u=\{p_{uv}:v\neq u\}
 $$
-is a clique of size $n-1$. Conversely, any clique not having a common coordinate has size at most $3$: after two members $\{u,v\}$ and $\{u,w\}$ are chosen, any member meeting both but avoiding $u$ must be $\{v,w\}$. Since $n-1>3$, the cliques of size $n-1$ are exactly the $\mathcal S_u$. Therefore $G$ permutes these stars, so there is a unique permutation $\phi$ of $V$ such that
+is a clique of size $n-1$. Any clique with no common coordinate has size at most $3$: after choosing $\{u,v\}$ and $\{u,w\}$, any member meeting both while avoiding $u$ must be $\{v,w\}$. Since $n-1>3$, the cliques of size $n-1$ are exactly the stars. Hence there is a unique permutation $\phi$ of $V$ such that
 $$
 G(p_{uv})=p_{\phi(u)\phi(v)}. \tag{3}
 $$
 
-Let $P_\phi$ be the coordinate permutation
+Now let $x\in X_n$ have support $A$ and weight $k$. From the weight of $x+p_{uv}$ one recovers
 $$
-(P_\phi x)_v=x_{\phi^{-1}(v)}.
+|A\cap\{u,v\}|
+=\frac{k+2-\operatorname{wt}(x+p_{uv})}{2}. \tag{4}
 $$
-After replacing $G$ by $P_\phi^{-1}G$, assume that every $p_{uv}$ is fixed. We show that then every word is fixed.
-
-Let $z$ have support $A\subseteq V$, and put $k=|A|$. From the Hamming weight of $z+p_{uv}$ one recovers
+Because $G$ preserves all these distances and satisfies (3), the support $A'$ of $G(x)$ satisfies
 $$
-|A\cap\{u,v\}|=
-\frac{k+2-\operatorname{wt}(z+p_{uv})}{2}. \tag{4}
+|A'\cap\{\phi(u),\phi(v)\}|
+=|A\cap\{u,v\}| \tag{5}
 $$
-The left side is therefore preserved for every pair $u,v$. If $u,v,w$ are distinct, then
+for every distinct $u,v$. Taking three distinct coordinates recovers each individual membership indicator from the pair-intersection numbers, so
 $$
-\mathbf1_A(u)=
-\frac{|A\cap\{u,v\}|+|A\cap\{u,w\}|-|A\cap\{v,w\}|}{2}. \tag{5}
+A'=\phi(A).
 $$
-Thus all coordinate-membership indicators are recovered from the metric data. Hence an isometry fixing $0$ and every $p_{uv}$ is the identity. It follows that every $0$-fixing isometry is exactly one coordinate permutation $P_\phi$.
-
-Step 4: Use the linear-word marker to force $\phi$ to be linear
-
-Because $G=P_\phi$ preserves $\mathcal L_m$, for every nonzero $\alpha\in V$ there is a nonzero $\beta\in V$ such that
+Therefore every $0$-fixing isometry is the coordinate permutation
 $$
-\alpha\cdot\phi^{-1}(v)=\beta\cdot v
-\qquad(v\in V). \tag{6}
-$$
-At $v=0$, equation (6) gives
-$$
-\alpha\cdot\phi^{-1}(0)=0
-$$
-for every nonzero $\alpha$, so $\phi^{-1}(0)=0$. Taking $\alpha$ successively to be the standard basis vectors shows that every coordinate function of $\phi^{-1}$ is a linear functional of $v$. Therefore $\phi^{-1}$, and hence $\phi$, is linear.
-
-Thus there is a unique matrix
-$$
-A\in\operatorname{GL}(2m,2)
-$$
-with
-$$
-\phi(v)=Av. \tag{7}
+(P_\phi x)_v=x_{\phi^{-1}(v)}. \tag{6}
 $$
 
-Step 5: Resolve the quadratic marker into explicit block conditions
+Step 3: The linear-word marker forces $\phi$ to be $\mathbb F_2$-linear
 
-The coordinate permutation induced by $A$ sends the quadratic word to
+For
 $$
-(P_A\mathbf q)_v=q(A^{-1}v).
+\alpha=(a,b),\qquad v=(u,w),
 $$
-Since $\theta$ singles out $\mathbf q$, preservation of $\theta$ is equivalent to
+write
 $$
-q(Av)=q(v)
-\qquad(v\in V). \tag{8}
+\langle\alpha,v\rangle=\operatorname{Tr}(au+bw).
+$$
+This pairing on $V$ is nondegenerate by the nondegeneracy of the trace pairing proved in Step 1.
+
+Since $P_\phi$ preserves $\mathcal L$, for every nonzero $\alpha\in V$ there is a nonzero $\beta\in V$ such that
+$$
+\langle\alpha,\phi^{-1}(v)\rangle
+=\langle\beta,v\rangle
+\qquad(v\in V). \tag{7}
+$$
+Putting $v=0$ and varying $\alpha$ gives $\phi^{-1}(0)=0$. For $u,v\in V$, equation (7) gives
+$$
+\left\langle\alpha,
+\phi^{-1}(u+v)+\phi^{-1}(u)+\phi^{-1}(v)
+\right\rangle=0
+$$
+for every $\alpha$. Nondegeneracy therefore gives
+$$
+\phi^{-1}(u+v)=\phi^{-1}(u)+\phi^{-1}(v).
+$$
+Thus $\phi$, and also
+$$
+R:=\phi^{-1},
+$$
+are $\mathbb F_2$-linear bijections of $V$.
+
+Step 4: The full quadratic pencil forces semilinearity
+
+For $s\in E$, define the alternating bilinear form
+$$
+B_s\bigl((u,w),(u',w')\bigr)
+=\operatorname{Tr}\bigl(s(uw'+u'w)\bigr). \tag{8}
+$$
+For $s\neq0$, this is the polar form of every word in $\mathcal Q_s$. Distinct $s$ give distinct forms: if $B_s=B_t$, then
+$$
+\operatorname{Tr}((s+t)uw')=0
+$$
+for all $u,w'$, and the trace pairing gives $s=t$.
+
+The difference of two quadratic functions with the same polar form is $\mathbb F_2$-linear. Hence, because $P_\phi$ preserves the union $\mathscr Q$, for each $s\in E^\times$ there is a unique $\Psi(s)\in E^\times$ such that
+$$
+B_s(Rx,Ry)=B_{\Psi(s)}(x,y)
+\qquad(x,y\in V). \tag{9}
+$$
+The map $\Psi$ is a permutation of $E^\times$. Put
+$$
+\delta=\Psi(1).
 $$
 
-Write $v=(u,w)$ with $u,w\in\mathbb F_2^m$ and write $A$ in $m\times m$ blocks as
+Let $T_s:V\to V$ be scalar multiplication by $s$. Then
 $$
-A=
-\begin{pmatrix}
-P&Q\\
-R&S
-\end{pmatrix}.
+B_s(x,y)=B_1(T_sx,y). \tag{10}
 $$
-Then
+The form $B_1$ is nondegenerate. Let $R^*$ be the adjoint of $R$ with respect to $B_1$. Equations (9)-(10) give
 $$
-q(Av)
-=(Pu+Qw)^T(Ru+Sw),
+R^*T_sR=T_{\Psi(s)} \tag{11}
+$$
+for every $s\neq0$, and for $s=1$ they give
+$$
+R^*R=T_\delta. \tag{12}
+$$
+Combining (11) and (12),
+$$
+R^{-1}T_sR
+=T_{\delta^{-1}\Psi(s)}. \tag{13}
+$$
+Define
+$$
+\sigma(0)=0,
+\qquad
+\sigma(s)=\delta^{-1}\Psi(s)\quad(s\neq0).
+$$
+Conjugation in (13) preserves sums and products of the scalar operators $T_s$, so
+$$
+\sigma(s+t)=\sigma(s)+\sigma(t),
+\qquad
+\sigma(st)=\sigma(s)\sigma(t),
+\qquad
+\sigma(1)=1.
+$$
+Thus $\sigma$ is a field automorphism of $E$.
+
+Every field automorphism of $E$ is a Frobenius power, and here this can be seen directly from the chosen primitive element $\tau$. The element $\tau$ generates $E$ over $\mathbb F_2$, so its minimal polynomial has degree $r$. The $r$ elements
+$$
+\tau,\tau^2,\tau^{2^2},\ldots,\tau^{2^{r-1}}
+$$
+are distinct roots of that polynomial. Any $\mathbb F_2$-automorphism must send $\tau$ to one of these roots, and hence
+$$
+\sigma(s)=s^{2^k} \tag{14}
+$$
+for a unique
+$$
+0\leq k<r.
+$$
+
+Equation (13) says
+$$
+sR(x)=R(\sigma(s)x).
+$$
+Hence $R$ is $\sigma^{-1}$-semilinear, and therefore its inverse $\phi$ is $\sigma$-semilinear. Consequently there is a unique matrix
+$$
+M\in\operatorname{GL}_2(E)
+$$
+such that
+$$
+\phi(v)=M v^{2^k}, \tag{15}
+$$
+where the Frobenius power is applied coordinatewise.
+
+Step 5: The subgroup and coset markers determine the determinant and the Frobenius exponent
+
+Write
+$$
+M=
+\begin{pmatrix}a&b\\c&e\end{pmatrix},
+\qquad
+\Delta=\det M=ae+bc\in E^\times. \tag{16}
+$$
+Since
+$$
+R(v)=\bigl(M^{-1}v\bigr)^{2^{r-k}},
+$$
+a direct calculation with (8), using invariance of the absolute trace under Frobenius, gives
+$$
+B_1(Rx,Ry)=B_{\Delta^{-1}}(x,y). \tag{17}
+$$
+Thus
+$$
+\delta=\Delta^{-1}. \tag{18}
+$$
+Together with $\Psi(s)=\delta\sigma(s)$, this gives the explicit action of the coordinate permutation on the pencil parameter:
+$$
+\Psi(s)=\Delta^{-1}s^{2^k}. \tag{19}
+$$
+
+The subgroup
+$$
+H=\langle\tau^{2^d-1}\rangle
+$$
+is invariant under every Frobenius automorphism. Preservation of $\mathscr H$ therefore means
+$$
+\Psi(H)=H.
+$$
+By (19), this is equivalent to
+$$
+\Delta^{-1}H=H,
 $$
 so
 $$
-q(Av)
-=u^T P^TRu
-+u^T(P^TS+R^TQ)w
-+w^TQ^TSw. \tag{9}
+\Delta\in H. \tag{20}
 $$
-Over $\mathbb F_2$, a matrix $M$ satisfies $x^TMx=0$ for every $x$ exactly when $M$ is symmetric with zero diagonal. Therefore (8) is equivalent to the three explicit conditions
+Equivalently, there is a unique integer
 $$
-P^TR\text{ is symmetric with zero diagonal}, \tag{10}
+0\leq j<\frac{2^r-1}{2^d-1}
+$$
+such that
+$$
+\Delta=\tau^{(2^d-1)j}. \tag{21}
+$$
+
+Now preserve the coset marker $\mathscr C$. Since $\Delta\in H$, equation (19) gives
+$$
+\Psi(\tau H)=\tau H
+\quad\Longleftrightarrow\quad
+\tau^{2^k}H=\tau H.
+$$
+This is equivalent to
+$$
+\tau^{2^k-1}\in H,
+$$
+that is,
+$$
+2^d-1\mid 2^k-1. \tag{22}
+$$
+Because $0\leq k<r$ and $d\mid r$, condition (22) holds exactly when
+$$
+d\mid k. \tag{23}
+$$
+Indeed, writing $k=qd+s$ with $0\leq s<d$, one has
+$$
+2^k\equiv2^s\pmod{2^d-1};
+$$
+if $s>0$, then
+$$
+0<2^s-1<2^d-1,
+$$
+so divisibility is impossible. Therefore
+$$
+k\in\{0,d,2d,\ldots,r-d\}. \tag{24}
+$$
+
+Conversely, if (20) and (24) hold, then (19) preserves $E^\times$, $H$, and $\tau H$. The coordinate permutation also preserves Hamming weight and $\mathcal L$, so it preserves every term occurring in $d_n$.
+
+Step 6: State the unique normal form and count the parameters
+
+For an allowed matrix $M$ and allowed exponent $k$, define
+$$
+\Phi_{M,k}(v)=M v^{2^k}
+\qquad(v\in E^2). \tag{25}
+$$
+Its inverse is
+$$
+\Phi_{M,k}^{-1}(v)
+=\bigl(M^{-1}v\bigr)^{2^{r-k}}, \tag{26}
+$$
+where for $k=0$ the exponent $2^r$ acts as the identity on $E$.
+
+Every isometry is uniquely of the form
+$$
+(F_{a,M,k}(x))_v
+=a_v+x_{\Phi_{M,k}^{-1}(v)}, \tag{27}
+$$
+where
+$$
+a\in X_n,
 $$
 $$
-Q^TS\text{ is symmetric with zero diagonal}, \tag{11}
+k=dt,
+\qquad
+0\leq t<\frac rd,
 $$
 and
 $$
-P^TS+R^TQ=I_m. \tag{12}
+M=
+\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\in\operatorname{GL}_2(E)
 $$
-These equations also imply
+satisfies
 $$
-A^T
-\begin{pmatrix}0&I_m\\I_m&0\end{pmatrix}
-A
-=
-\begin{pmatrix}0&I_m\\I_m&0\end{pmatrix},
+a_{11}a_{22}+a_{12}a_{21}
+=\tau^{(2^d-1)j}
 $$
-so $A$ is automatically invertible.
+for some unique
+$$
+0\leq j<\frac{2^r-1}{2^d-1}. \tag{28}
+$$
+The translation parameter is $F(0)$, the coordinate permutation is recovered from the weight-$2$ shell, and the semilinear representation has unique Frobenius exponent and unique matrix, so the parameters in (27) are unique.
 
-Conversely, if the four blocks satisfy (10)-(12), then (9) gives $q(Av)=q(v)$ for all $v$. Such an $A$ sends every linear word $\ell_\alpha$ to another linear word, fixes $\mathbf q$, and permutes coordinates, hence preserves every term in the definition of $d_n$.
-
-Combining this with translations, every isometry is uniquely of the form
+It remains to count the matrices. Fix a nonzero determinant value $\Delta\in E^\times$. Choose the first column of a $2\times2$ matrix arbitrarily nonzero; there are
 $$
-F_{a,A}(x)_v
-=a_v+x_{A^{-1}v}, \tag{13}
+q^2-1
 $$
-where $a\in X_n$ and $A$ has block form above satisfying (10)-(12). Uniqueness follows from $a=F(0)$ and from the unique action on the weight-$2$ shell.
-
-Step 6: Count the admissible matrices from hyperbolic bases
-
-For $x=(u,w)$ and $y=(u',w')$, the polar form of $q$ is
+choices. For each such first column $(u,v)^T$, the determinant equation
 $$
-B(x,y)=q(x+y)+q(x)+q(y)
-=u\cdot w'+u'\cdot w. \tag{14}
+us+vt=\Delta
 $$
-It is nondegenerate.
-
-Call $(e,f)$ a hyperbolic pair if
+is one nontrivial affine linear equation in the two entries $(t,s)$ of the second column, so it has exactly $q$ solutions. Therefore the number of matrices with any fixed nonzero determinant is
 $$
-q(e)=q(f)=0,
-\qquad
-B(e,f)=1.
+q(q^2-1). \tag{29}
 $$
-An ordered hyperbolic basis is a basis
+There are
 $$
-e_1,f_1,\ldots,e_m,f_m
+|H|=\frac{q-1}{2^d-1}
 $$
-with
+allowed determinant values and
 $$
-q(e_i)=q(f_i)=0,
-\quad
-B(e_i,e_j)=B(f_i,f_j)=0,
-\quad
-B(e_i,f_j)=\delta_{ij}. \tag{15}
+\frac rd
 $$
-Every admissible matrix sends the standard hyperbolic basis to an ordered hyperbolic basis. Conversely, (15) gives
-$$
-q\left(\sum_i a_i e_i+\sum_i b_i f_i\right)=\sum_i a_i b_i,
-$$
-so every ordered hyperbolic basis determines a unique admissible matrix. It remains to count these bases.
-
-First count the zeros of $q$. If $u=0$, all $2^m$ choices of $w$ give $q(u,w)=0$. If $u\neq0$, exactly $2^{m-1}$ choices of $w$ satisfy $u\cdot w=0$. Hence
-$$
-Z_m:=|\{x:q(x)=0\}|
-=2^m+(2^m-1)2^{m-1}
-=2^{2m-1}+2^{m-1}. \tag{16}
-$$
-Thus the number of nonzero singular vectors is
-$$
-S_m=Z_m-1
-=(2^{m-1}+1)(2^m-1). \tag{17}
-$$
-
-Fix a nonzero singular vector $e$. Since $B$ is nondegenerate, choose $h$ with $B(e,h)=1$. If $q(h)=1$, replace $h$ by $h+e$; then
-$$
-q(h+e)=q(h)+q(e)+B(h,e)=0.
-$$
-So a singular $f_0$ with $B(e,f_0)=1$ exists. The plane
-$$
-H=\langle e,f_0\rangle
-$$
-has $B$-matrix
-$$
-\begin{pmatrix}0&1\\1&0\end{pmatrix},
-$$
-so it is nondegenerate. Consequently
-$$
-V=H\oplus U,
-\qquad
-U=H^\perp,
-$$
-and the restriction of $B$ to $U$ is again nondegenerate.
-
-Every $f$ satisfying $B(e,f)=1$ has a unique expression
-$$
-f=f_0+c e+u,
-\qquad c\in\mathbb F_2,\ u\in U.
-$$
-Because $e,f_0$ are singular and $U$ is orthogonal to $H$,
-$$
-q(f)=c+q(u).
-$$
-For each $u\in U$, exactly one choice $c=q(u)$ makes $f$ singular. Since $\dim U=2m-2$, the number of singular partners of $e$ is therefore
-$$
-2^{2m-2}. \tag{18}
-$$
-
-For any chosen hyperbolic pair $(e,f)$, its orthogonal complement is nondegenerate of dimension $2m-2$. The plane $\langle e,f\rangle$ has three zeros and one vector on which $q$ equals $1$. If $Z_U$ denotes the number of zeros of $q$ on the orthogonal complement, then
-$$
-Z_m=3Z_U+(2^{2m-2}-Z_U),
-$$
-so by (16)
-$$
-Z_U=2^{2m-3}+2^{m-2}=Z_{m-1}. \tag{19}
-$$
-Thus, after removing any first hyperbolic pair, the remaining nondegenerate quadratic space has exactly the same dimension-and-zero-count data needed for the next stage. Repeating the preceding counting argument gives a recursion without invoking any classification theorem for quadratic forms.
-
-If $G_m$ denotes the number of ordered hyperbolic bases in dimension $2m$, then
-$$
-G_m=S_m\,2^{2m-2}G_{m-1},
-\qquad
-G_1=2. \tag{20}
-$$
-Using (17),
-$$
-G_m
-=2^{m(m-1)}\prod_{j=1}^m(2^{j-1}+1)(2^j-1)
-$$
-and hence
-$$
-G_m
-=2^{1+m(m-1)}(2^m-1)
-\prod_{j=1}^{m-1}(2^{2j}-1). \tag{21}
-$$
-
-Finally,
+allowed Frobenius exponents. Finally,
 $$
 |X_n|=2^{n-1}.
 $$
-Each translation parameter $a$ and each admissible matrix occur independently and uniquely, so
+Hence
 $$
 |\operatorname{Iso}(X_n,d_n)|
-=2^{n-1}G_m
-=2^{n+m(m-1)}(2^m-1)
-\prod_{j=1}^{m-1}(2^{2j}-1). \tag{22}
+=2^{n-1}\frac rd\frac{q-1}{2^d-1}q(q^2-1). \tag{30}
+$$
+Since $q=2^r$ and $n=2^{2r}$,
+$$
+\boxed{
+|\operatorname{Iso}(X_n,d_n)|
+=
+2^{n+r-1}\frac rd\,
+\frac{(2^r-1)(2^{2r}-1)}{2^d-1},
+\qquad n=2^{2r}.
+} \tag{31}
 $$
 
 Final Answer:
+
+For
+$$
+\Phi_{M,k}(v)=Mv^{2^k},
+$$
+all isometries, and only the isometries, are
 $$
 \boxed{
-\operatorname{Iso}(X_n,d_n)
-=
-\left\{
-F_{a,A}:\
-(F_{a,A}(x))_v=a_v+x_{A^{-1}v},\
-\ a\in X_n,\
-A=\begin{pmatrix}P&Q\\R&S\end{pmatrix},\
-P^TR\text{ and }Q^TS\text{ symmetric with zero diagonal},\
-P^TS+R^TQ=I_m
-\right\}.
+(F_{a,M,k}(x))_v
+=a_v+x_{\Phi_{M,k}^{-1}(v)},
 }
 $$
-The pair $(a,A)$ is unique for every isometry, and
+with the following exact and unique parameter choices:
+$$
+a\in X_n,
+$$
+$$
+k\in\{0,d,2d,\ldots,r-d\},
+$$
+and
+$$
+M=
+\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\in M_2(E)
+$$
+with
+$$
+a_{11}a_{22}+a_{12}a_{21}
+=\tau^{(2^d-1)j}
+$$
+for exactly one
+$$
+0\leq j<\frac{2^r-1}{2^d-1}.
+$$
+The determinant condition is nonzero, so such an $M$ is automatically invertible. Moreover,
 $$
 \boxed{
 |\operatorname{Iso}(X_n,d_n)|
 =
-2^{n+m(m-1)}(2^m-1)
-\prod_{j=1}^{m-1}(2^{2j}-1),
-\qquad n=2^{2m}.
+2^{n+r-1}\frac rd\,
+\frac{(2^r-1)(2^{2r}-1)}{2^d-1},
+\qquad n=2^{2r}.
 }
 $$
 
@@ -317,32 +436,47 @@ $$
 
 ## Answer
 
-For $n=2^{2m}$, every isometry occurs uniquely as
+Let
 $$
-(F_{a,A}(x))_v=a_v+x_{A^{-1}v},
+\Phi_{M,k}(v)=Mv^{2^k}\qquad(v\in E^2).
 $$
-where $a\in X_n$ and
+Then
 $$
-A=\begin{pmatrix}P&Q\\R&S\end{pmatrix},
-\qquad P,Q,R,S\in M_m(\mathbb F_2),
+\operatorname{Iso}(X_n,d_n)
+=
+\left\{
+F_{a,M,k}:
+(F_{a,M,k}(x))_v
+=a_v+x_{\Phi_{M,k}^{-1}(v)}
+\right\},
 $$
-satisfies
+where the parameters are exactly
 $$
-P^TR=(P^TR)^T,\qquad \operatorname{diag}(P^TR)=0,
-$$
-$$
-Q^TS=(Q^TS)^T,\qquad \operatorname{diag}(Q^TS)=0,
+a\in X_n,
+\qquad
+k=dt\ \text{ with }\ 0\leq t<r/d,
 $$
 and
 $$
-P^TS+R^TQ=I_m.
+M=
+\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
 $$
-These conditions make $A$ invertible. The exact number of isometries is
+satisfies
+$$
+a_{11}a_{22}+a_{12}a_{21}
+=\tau^{(2^d-1)j}
+$$
+for a unique integer
+$$
+0\leq j<\frac{2^r-1}{2^d-1}.
+$$
+Each isometry has a unique triple $(a,M,k)$, and
 $$
 |\operatorname{Iso}(X_n,d_n)|
 =
-2^{n+m(m-1)}(2^m-1)
-\prod_{j=1}^{m-1}(2^{2j}-1).
+2^{n+r-1}\frac rd\,
+\frac{(2^r-1)(2^{2r}-1)}{2^d-1},
+\qquad n=2^{2r}.
 $$
 
 ---
@@ -359,7 +493,7 @@ $$
 
 - finite metric isometry reconstruction
 - weight-two shell and star reconstruction
-- binary simplex-code invariance
-- quadratic forms over $\mathbb F_2$
-- explicit block-matrix isometry constraints
-- hyperbolic-basis enumeration
+- quadratic polar-form pencils
+- semilinear reconstruction from scalar conjugation
+- Frobenius automorphisms of finite fields
+- multiplicative subgroup and coset stabilizers
