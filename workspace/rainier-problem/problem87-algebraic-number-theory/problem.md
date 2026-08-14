@@ -29,7 +29,12 @@ $$
 $$
 are pairwise distinct prime ideals of $\mathcal O_M$.
 
-Put
+For indices modulo $q$, put
+$$
+a_i=\frac{\sigma^i(\pi)}{\sigma^{i+1}(\pi)}
+\qquad(0\le i\le q-1).
+$$
+Set
 $$
 F_{0,\ell}=\mathbb Q(\zeta_\ell),
 \qquad
@@ -37,7 +42,7 @@ F_\ell=M(\zeta_\ell),
 $$
 and let $L$ be the splitting field over $F_\ell$ of
 $$
-\prod_{i=0}^{q-1}\left(x^\ell-\sigma^i(\pi)\right).
+\prod_{i=0}^{q-1}(x^\ell-a_i).
 $$
 
 For every intermediate field $E$ satisfying
@@ -46,11 +51,18 @@ F_\ell\subset E\subset L,
 \qquad
 [E:F_\ell]=\ell^2,
 $$
-let $\widetilde E$ denote its normal closure over $F_{0,\ell}$.
+let $c(E)$ be the number of distinct fields $g(E)$ as $g$ ranges over
+$\operatorname{Gal}(L/F_{0,\ell})$.
+
+For integers $n\ge k\ge0$, write
+$$
+\binom{n}{k}_{\!\ell}
+=\prod_{j=0}^{k-1}\frac{\ell^{\,n-j}-1}{\ell^{\,k-j}-1}.
+$$
 
 Determine the number of such fields $E$ for which
 $$
-[\widetilde E:F_{0,\ell}]=2q\ell^q.
+c(E)=2q.
 $$
 
 ---
@@ -68,4 +80,4 @@ $$
 
 ## Domain Explanation
 
-The primary domain is algebraic number theory because the problem combines prime-ideal arithmetic, cyclotomic base change, Kummer extensions, and normal closures of number fields. Abstract Galois and representation theory provide the main supporting machinery through the dihedral action on the Kummer radical space. The requested output is nevertheless an exact count of number-field intermediates determined by that arithmetic structure.
+The primary domain is algebraic number theory because the problem combines prime-ideal valuations, cyclotomic base change, Kummer extensions, and conjugacy of intermediate number fields. The decisive supporting structure is the dihedral action on the Kummer radical space, whose hidden multiplicative relation changes the relevant permutation representation into an augmentation module; the final count then depends on stabilizers of codimension-two subspaces under that action.
