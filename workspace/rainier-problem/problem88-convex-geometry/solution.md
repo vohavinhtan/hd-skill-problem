@@ -24,22 +24,16 @@ $$
 Hence, after subtracting suitable combinations of the first four determinant columns from the last column, the oriented affine determinant divided by its nonzero Vandermonde factor has the sign of
 $$
 D_{\lambda,\mu}(E)
-=h(E)+\lambda S(E)+\mu,
+=h(E)+\lambda s_E+\mu,
 $$
 where
 $$
-S(E)=\sum_{r\in E}x_r,
-\qquad
-Q(E)=\sum_{r\in E}x_r^2,
-$$
-and
-$$
 h(E)=e_1^2-e_2
-=\frac{S(E)^2+Q(E)}2>0.
+=\frac{s_E^2+q_E}{2}>0.
 $$
 Thus every normalized five-point orientation is positive at $(0,0)$. For a fixed radius $r$, the minimum of $D_{\lambda,\mu}(E)$ on the closed square $|\lambda|\leq r$, $|\mu|\leq r$ is
 $$
-h(E)-r\bigl(1+|S(E)|\bigr),
+h(E)-r(1+|s_E|),
 $$
 attained at one of the two lower corners $(r,-r)$ or $(-r,-r)$.
 
@@ -49,7 +43,7 @@ Write the retained indices as
 $$
 r_1<r_2<\cdots<r_{2m-2},
 $$
-and define the consecutive five-windows
+and define
 $$
 W_j=\{r_j,r_{j+1},r_{j+2},r_{j+3},r_{j+4}\}.
 $$
@@ -63,7 +57,7 @@ $$
 $$
 The two prefactors have opposite signs, so one change is nonpositive. It cannot be negative by minimality; if it is zero, the replacement is another minimizer with smaller span. Both alternatives contradict the choice of the original set. Therefore a global minimum is attained by a consecutive retained window.
 
-Consequently, to prove that every five-point orientation stays positive at either lower corner of a parameter square, it is enough to check the windows $W_j$.
+Consequently, positivity of all five-point orientations at either lower corner is decided by the windows $W_j$.
 
 Step 3: Locate the first critical window at the two lower corners
 
@@ -71,11 +65,11 @@ Put
 $$
 W=\{m-1,m,m+2,m+3,m+4\},
 $$
-and set
+and write
 $$
-S=S(W),
+S=s_W,
 \qquad
-Q=Q(W),
+Q=q_W,
 \qquad
 h=\frac{S^2+Q}{2},
 \qquad
@@ -115,21 +109,20 @@ $$
 
 Let $z_j=x_{r_j}$, so $z_1>\cdots>z_{2m-2}$. For $\varepsilon\in\{-1,1\}$ define
 $$
-A_j^{\varepsilon}
-=D_{\varepsilon\rho_0,-\rho_0}(W_j).
+A_j^{\varepsilon}=D_{\varepsilon\rho_0,-\rho_0}(W_j).
 $$
 If the slide $W_j\to W_{j+1}$ removes $a=z_j$ and adds $b=z_{j+5}$, then
 $$
-h(W_{j+1})-h(W_j)=(b-a)(S(W_j)+b),
+h(W_{j+1})-h(W_j)=(b-a)(s_{W_j}+b),
 $$
 so
 $$
 A_{j+1}^{\varepsilon}-A_j^{\varepsilon}
-=(b-a)\bigl(S(W_j)+\varepsilon\rho_0+b\bigr).
+=(b-a)(s_{W_j}+\varepsilon\rho_0+b).
 $$
 The bracket decreases strictly with $j$, because both the window sum and the entering abscissa strictly decrease.
 
-Consider the three consecutive windows
+Consider
 $$
 U=\{m-5,m-4,m-1,m,m+2\},
 $$
@@ -144,14 +137,13 @@ For the slide $U\to P$, the bracket before the term $\varepsilon\rho_0$ is
 $$
 \sin(23t)+\sin(19t)+\sin(7t)+\sin(3t)-\sin(5t)-\sin(9t).
 $$
-Since $\sin(23t)>\sin(9t)$ and $\sin(19t)>\sin(5t)$, this is larger than $\sin(7t)+\sin(3t)>9t$, hence it is still positive for $\varepsilon=-1$.
+Since $\sin(23t)>\sin(9t)$ and $\sin(19t)>\sin(5t)$, this is larger than $\sin(7t)+\sin(3t)>9t$, hence it remains positive for $\varepsilon=-1$.
 
 For the slide $P\to W$, the corresponding quantity is
 $$
-B=
-\sin(19t)+\sin(7t)+\sin(3t)-\sin(5t)-\sin(9t)-\sin(13t).
+B=\sin(19t)+\sin(7t)+\sin(3t)-\sin(5t)-\sin(9t)-\sin(13t).
 $$
-The same sine bounds give
+The sine bounds give
 $$
 B>2t-\frac{7229}{6}t^3>0.
 $$
@@ -163,10 +155,9 @@ S-\sin(17t)<-\sin(17t)<-16t.
 $$
 Since $\rho_0<329t/250<2t$, the bracket is negative even for $\varepsilon=1$.
 
-It follows from strict monotonicity of the brackets that $A_j^1$ decreases strictly up to $W$ and increases strictly after $W$. Moreover,
+It follows that $A_j^1$ decreases strictly up to $W$ and increases strictly after $W$. Moreover,
 $$
-D_{\rho_0,-\rho_0}(W)
-=h+\rho_0S-\rho_0=0,
+D_{\rho_0,-\rho_0}(W)=h+\rho_0S-\rho_0=0,
 $$
 because $h=\rho_0(1-S)$. Hence $W$ is the unique consecutive-window minimizer at $(\rho_0,-\rho_0)$.
 
@@ -174,29 +165,33 @@ For the corner $(-\rho_0,-\rho_0)$, the first and third transition estimates sho
 $$
 D_{-\rho_0,-\rho_0}(W)=-2\rho_0S>0.
 $$
-For $P$, write $S_P=S(P)$ and $Q_P=Q(P)$. The sine bounds give
+For $P$, write $S_P=s_P$ and $Q_P=q_P$. From the same sine inequalities,
 $$
-\frac{149}{10}t<S_P<16t.
-$$
-Also, for every $k\leq19$,
-$$
-\sin(kt)>\frac{999}{1000}kt,
+15t-\frac{7229}{6}t^3<S_P<15t+\frac{854}{6}t^3,
 $$
 so
 $$
+\frac{149}{10}t<S_P<16t.
+$$
+For every $k\leq19$,
+$$
+\sin(kt)>\frac{999}{1000}kt,
+$$
+therefore
+$$
 Q_P>523t^2.
 $$
-Therefore
+Thus
 $$
 h(P)=\frac{S_P^2+Q_P}{2}>372t^2,
 $$
-while
+whereas
 $$
 \rho_0(1+S_P)
 <329t^2\left(1+\frac{16}{250}\right)
 <351t^2.
 $$
-Thus
+Consequently
 $$
 D_{-\rho_0,-\rho_0}(P)>21t^2>0.
 $$
@@ -214,7 +209,7 @@ and among consecutive retained five-sets equality at the first corner occurs onl
 $$
 W=\{m-1,m,m+2,m+3,m+4\}.
 $$
-Since the minimum of $D_{\lambda,\mu}(E)$ on a square is attained at one of its two lower corners, every normalized orientation is strictly positive throughout
+Since the minimum of $D_{\lambda,\mu}(E)$ on a square occurs at one of its two lower corners, every normalized orientation is strictly positive throughout
 $$
 |\lambda|<\rho_0,
 \qquad
@@ -226,7 +221,7 @@ $$
 $$
 throughout this open square. Therefore $\rho_m\geq\rho_0$.
 
-Step 5: Prove maximality and read off the requested pair
+Step 5: Prove maximality and determine the full critical certificate
 
 Let
 $$
@@ -256,18 +251,18 @@ $$
 $$
 while the determinant for $P$ remains positive for sufficiently small $\eta$. Placing the test vertex $m-4$ after the four rows of $F$ changes the sorted row order by four swaps, so these two determinant signs represent opposite sides of the same hyperplane through $F$. Hence $F$ is no longer supporting. Every square of radius greater than $\rho_0$ contains such a point, so
 $$
-\rho_m=\rho_0.
+\rho_m=\rho_0=\frac{s_W^2+q_W}{2(1-s_W)}.
 $$
 
-Step 3 then shows that among consecutive five-element subsets of $R_m$, affine dependence at either lower corner $(\pm\rho_m,-\rho_m)$ occurs only for $W$ and only at the positive-$\lambda$ corner.
+Step 3 shows that affine dependence at either lower corner $(\pm\rho_m,-\rho_m)$ occurs among consecutive five-sets only for $W$ and only at the positive-$\lambda$ corner. Thus $E_m=W$ and $\sigma_m=1$.
 
-Final Answer: $\boxed{(\{m-1,m,m+2,m+3,m+4\},1)}$
+Final Answer: $\boxed{(\{m-1,m,m+2,m+3,m+4\},\frac{s_{E_m}^2+q_{E_m}}{2(1-s_{E_m})},1)}$
 
 ---
 
 ## Answer
 
-$(\{m-1,m,m+2,m+3,m+4\},1)$
+$(\{m-1,m,m+2,m+3,m+4\},\frac{s_{E_m}^2+q_{E_m}}{2(1-s_{E_m})},1)$
 
 ---
 
