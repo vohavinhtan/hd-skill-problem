@@ -1,345 +1,167 @@
 ## Steps
 
-Step 1: Derive and verify the three-point kernel
+Step 1: Convert the constraints to a quadratic minorant problem and compute the objective moments
 
-Write $b=a-1$, and let $\mu$ and $\eta$ denote the uniform probability laws on $[-1,1]$ and $[-a,a]$, respectively. Rather than guess the branch formulas, seek a feasible kernel with one atom at $x$, one point $p(x)$ in the lower tail, and one point $q(x)$ in the upper tail:
+Write
 $$
-K_x=r(x)\delta_x+\ell(x)\delta_{p(x)}+\nu(x)\delta_{q(x)}.
+z=x^2-\frac{1}{2}.
 $$
-Take $p$ and $q$ decreasing, with
+Since $P$ is even of degree at most $4$, there is a quadratic polynomial
 $$
-p(-1)=-1,\quad p(1)=-a,
+q(z)=A+Bz+Cz^2
+$$
+such that $P(x)=q(x^2-1/2)$. As $x$ runs through $[-1,1]$, one has $z\in[-1/2,1/2]$. Also,
+$$
+2-x^2=\frac{3}{2}-z,
 \qquad
-q(-1)=a,\quad q(1)=1.
+1+x^2=\frac{3}{2}+z.
 $$
-The two off-diagonal branches then fill exactly the two tails. On the common central interval $[-1,1]$, only the diagonal atom contributes to the second marginal. Matching its density with the target density gives
+Both factors are positive on this interval, so the two pointwise constraints are equivalent to
 $$
-\frac{1}{2}r(x)=\frac{1}{2a},
-\qquad\text{so}\qquad
-r(x)=\frac{1}{a}.
+q(z)\leq \min\left(\frac{1}{\frac{3}{2}-z},\frac{1}{\frac{3}{2}+z}\right)
+=\frac{1}{\frac{3}{2}+|z|}.
 $$
-Therefore
+
+Let
 $$
-\ell(x)+\nu(x)=1-\frac{1}{a}=\frac{b}{a}.
+M_k(\lambda)=\int_{-1}^{1}(1+\lambda x^2)\left(x^2-\frac{1}{2}\right)^k dx
+\qquad(k=0,1,2).
 $$
-Tail marginal balance gives
+Direct integration gives
 $$
-\frac{\frac{1}{2}\ell(x)}{-p'(x)}=\frac{1}{2a},
-\qquad
-\frac{\frac{1}{2}\nu(x)}{-q'(x)}=\frac{1}{2a},
+M_0=2+\frac{2\lambda}{3}=\frac{2(\lambda+3)}{3},
 $$
-and therefore
 $$
-p'(x)=-a\ell(x),
-\qquad
-q'(x)=-a\nu(x).
+M_1=\left(\frac{2}{3}-1\right)
++\lambda\left(\frac{2}{5}-\frac{1}{3}\right)
+=\frac{\lambda-5}{15},
 $$
-Adding these equations yields $p'(x)+q'(x)=-b$. The endpoint values at $x=-1$ fix the integration constant, so
-$$
-p(x)+q(x)=-bx.
-$$
-The martingale condition reads
-$$
-\frac{x}{a}+\ell(x)p(x)+\nu(x)q(x)=x.
-$$
-Using the derivative relations just obtained,
-$$
-p(x)p'(x)+q(x)q'(x)=-bx.
-$$
-After integration and the endpoint values at $x=-1$,
-$$
-p(x)^2+q(x)^2=a(a+1)-bx^2.
-$$
-It follows that
+and
 $$
 \begin{aligned}
-(q(x)-p(x))^2
-&=2\bigl(p(x)^2+q(x)^2\bigr)-\bigl(p(x)+q(x)\bigr)^2\\
-&=(a+1)(2a-bx^2).
+M_2
+&=\left(\frac{2}{5}-\frac{2}{3}+\frac{1}{2}\right)
++\lambda\left(\frac{2}{7}-\frac{2}{5}+\frac{1}{6}\right)\\
+&=\frac{7}{30}+\frac{11\lambda}{210}
+=\frac{11\lambda+49}{210}.
 \end{aligned}
 $$
-Since $q(x)>p(x)$, set
+Thus the objective applied to $q(z)=A+Bz+Cz^2$ is
 $$
-d(x)=\sqrt{(a+1)(2a-bx^2)}.
+M_0A+M_1B+M_2C.
 $$
-Solving for the two branches now gives
-$$
-p(x)=\frac{-bx-d(x)}{2},
-\qquad
-q(x)=\frac{-bx+d(x)}{2}.
-$$
-Differentiating and using $\ell=-p'/a$, $\nu=-q'/a$ produces
-$$
-p'(x)=-\frac{b}{2}+\frac{(a^2-1)x}{2d(x)},
-\qquad
-q'(x)=-\frac{b}{2}-\frac{(a^2-1)x}{2d(x)},
-$$
-and
-$$
-\ell_a(x)=\frac{b\bigl(d(x)-(a+1)x\bigr)}{2a\,d(x)},
-\qquad
-\nu_a(x)=\frac{b\bigl(d(x)+(a+1)x\bigr)}{2a\,d(x)}.
-$$
-These are the formulas to be verified. First,
-$$
-d(x)^2-(a+1)^2x^2=2a(a+1)(1-x^2),
-$$
-so $p(x)<x<q(x)$ for $-1<x<1$. Both weights are positive there, and
-$$
-\ell_a(x)+\nu_a(x)=\frac{b}{a},
-\qquad
--p'(x)=a\ell_a(x),
-\qquad
--q'(x)=a\nu_a(x).
-$$
-Also,
-$$
-\ell_a(x)=\frac{b}{a}\frac{q(x)-x}{q(x)-p(x)},
-\qquad
-\nu_a(x)=\frac{b}{a}\frac{x-p(x)}{q(x)-p(x)},
-$$
-so
-$$
-\ell_a(x)p(x)+\nu_a(x)q(x)=\frac{bx}{a}.
-$$
-Therefore
-$$
-K_x^0=\frac{1}{a}\delta_x+\ell_a(x)\delta_{p(x)}+\nu_a(x)\delta_{q(x)}
-$$
-is a probability measure with mean $x$.
 
-Step 2: Verify the prescribed second marginal
+Step 2: Build a two-point certificate for every feasible quadratic
 
-Because $p'(x)=-a\ell_a(x)<0$ and $q'(x)=-a\nu_a(x)<0$ on $(-1,1)$, $p$ and $q$ are strictly decreasing bijections from $[-1,1]$ onto $[-a,-1]$ and $[1,a]$, respectively, with the latter interval traversed from $a$ to $1$.
-
-The source density is $1/2$. Along the lower branch the pushforward density is
-$$
-\frac{\frac{1}{2}\ell_a(x)}{|p'(x)|}=\frac{1}{2a},
-$$
-and along the upper branch it is
-$$
-\frac{\frac{1}{2}\nu_a(x)}{|q'(x)|}=\frac{1}{2a}.
-$$
-The diagonal part has density
-$$
-\frac{1}{2}\cdot\frac{1}{a}=\frac{1}{2a}
-$$
-on $[-1,1]$. Therefore the second marginal of
-$$
-\pi^0(dx,dy)=\frac{1}{2}\,dx\,K_x^0(dy)
-$$
-is uniform on $[-a,a]$. By Step 1 its conditional mean is $x$, so $\pi^0\in\mathcal M_a$.
-
-Step 3: Derive and verify the pointwise lower-bound certificate
-
-For a dual certificate, write the gap as
-$$
-R_x(y)=|y-x|-\psi(y)+\psi(x)-h(x)(y-x).
-$$
-The candidate kernel from Step 1 suggests imposing equality at $y=p(x),x,q(x)$ and tangency at the two off-diagonal contacts. Since $p(x)<x<q(x)$, tangency gives
-$$
-\psi'(p(x))=-1-h(x),
-\qquad
-\psi'(q(x))=1-h(x).
-$$
-The identity $R_x(x)=0$ is automatic. Differentiate the desired contacts $R_x(p(x))=0$ and $R_x(q(x))=0$ with respect to $x$. The terms containing $p'(x)$ and $q'(x)$ cancel by the two tangency equations, leaving
-$$
-0=h'(x)(x-p(x))+1+h(x)+\psi'(x)
-$$
-and
-$$
-0=-h'(x)(q(x)-x)-1+h(x)+\psi'(x).
-$$
-Subtracting the second relation from the first gives
-$$
-h'(x)(q(x)-p(x))+2=0,
-$$
-so, because $q(x)-p(x)=d(x)$,
-$$
-h'(x)=-\frac{2}{d(x)}.
-$$
-Choose the harmless normalization $h(0)=0$. Then
-$$
-h(x)=-2\int_0^x\frac{dt}{d(t)}.
-$$
-Substituting $h'=-2/d$ back into the first contact derivative gives
-$$
-\psi'(x)=-1-h(x)+\frac{2(x-p(x))}{d(x)}.
-$$
-Since $2(x-p(x))=d(x)+(a+1)x$,
-$$
-\psi'(x)=\frac{(a+1)x}{d(x)}-h(x).
-$$
 Set
 $$
-A(x)=\frac{(a+1)x}{d(x)}.
+h=\sqrt{\frac{M_2}{M_0}}
+=\sqrt{\frac{11\lambda+49}{140(\lambda+3)}}.
 $$
-The tangency equations also determine the derivatives on the tails. If $P=p^{-1}$ on $[-a,-1]$ and $Q=q^{-1}$ on $[1,a]$, they become
+For $\lambda>-1$, one has $h>0$, and
 $$
-\psi'(y)=-1-h(P(y))
-\quad(-a<y<-1),
+h^2<\frac{1}{4}
 $$
-and
+because
 $$
-\psi'(y)=1-h(Q(y))
-\quad(1<y<a).
+11\lambda+49<35(\lambda+3)
 $$
-With the normalization $\psi(0)=0$ and continuity at $\pm1$, these derivative relations generate
+is equivalent to $24\lambda+56>0$. Hence $0<h<1/2$.
+
+Define
 $$
-\psi(x)=\int_0^x\bigl(A(t)-h(t)\bigr)\,dt
-\quad(-1\leq x\leq1),
-$$
-$$
-\psi(y)=\psi(-1)+\int_{-1}^y\bigl(-1-h(P(s))\bigr)\,ds
-\quad(-a\leq y\leq-1),
-$$
-and
-$$
-\psi(y)=\psi(1)+\int_1^y\bigl(1-h(Q(s))\bigr)\,ds
-\quad(1\leq y\leq a).
-$$
-It remains to verify that these generated functions really give the required global inequality. On the lower tail,
-$$
-R_x'(y)=h(P(y))-h(x).
-$$
-Since both $p$ and $h$ are decreasing, this derivative is negative for $y<p(x)$ and positive for $y>p(x)$; so the unique lower-tail minimum occurs at $p(x)$. Let $L(x)=R_x(p(x))$. Using
-$$
-\psi'(p(x))=-1-h(x),
+\alpha=\frac{1}{2}\left(M_0-\frac{M_1}{h}\right),
 \qquad
-x-p(x)=\frac{d(x)+(a+1)x}{2},
+\beta=\frac{1}{2}\left(M_0+\frac{M_1}{h}\right).
 $$
-we obtain
+The weight $1+\lambda x^2$ is strictly positive on $[-1,1]$, and $x^2-1/2$ is not constant. Therefore strict Cauchy-Schwarz gives
+$$
+M_1^2<M_0M_2=M_0^2h^2,
+$$
+so $\alpha,\beta>0$.
+
+For every quadratic $q(z)=A+Bz+Cz^2$,
 $$
 \begin{aligned}
-L'(x)
-&=h'(x)(x-p(x))+(1+h(x))+\psi'(x)\\
-&=-\left(1+A(x)\right)+(1+h(x))+A(x)-h(x)=0.
+\alpha q(-h)+\beta q(h)
+&=(\alpha+\beta)A+h(\beta-\alpha)B+h^2(\alpha+\beta)C\\
+&=M_0A+M_1B+M_2C.
 \end{aligned}
 $$
-As $p(-1)=-1$, continuity gives $L(-1)=0$, so $R_x(p(x))=0$.
-
-Similarly, on the upper tail,
+Hence the original weighted integral equals this two-point expression. If $q$ is feasible, Step 1 gives
 $$
-R_x'(y)=h(Q(y))-h(x),
-$$
-whose unique minimum is at $q(x)$. If $U(x)=R_x(q(x))$, then
-$$
-\begin{aligned}
-U'(x)
-&=-h'(x)(q(x)-x)-(1-h(x))+\psi'(x)\\
-&=\left(1-A(x)\right)-1+h(x)+A(x)-h(x)=0.
-\end{aligned}
-$$
-Since $q(1)=1$, one has $U(1)=0$. Therefore
-$$
-R_x(p(x))=R_x(x)=R_x(q(x))=0,
-$$
-and $R_x(y)\geq0$ on both tails.
-
-Step 4: Prove optimality and uniqueness without an external transport theorem
-
-For $-1<y<1$ with $y\neq x$,
-$$
-R_x''(y)=-\psi''(y).
-$$
-Now
-$$
-d'(y)=-\frac{(a^2-1)y}{d(y)},
+q(-h)\leq\frac{1}{\frac{3}{2}+h},
 \qquad
-A'(y)=\frac{2a(a+1)^2}{d(y)^3},
+q(h)\leq\frac{1}{\frac{3}{2}+h}.
 $$
-and therefore
+Because $\alpha,\beta>0$,
 $$
-\psi''(y)=A'(y)-h'(y)
-=\frac{2a(a+1)^2}{d(y)^3}+\frac{2}{d(y)}>0.
+\int_{-1}^{1}(1+\lambda x^2)P(x)\,dx
+\leq\frac{\alpha+\beta}{\frac{3}{2}+h}
+=\frac{M_0}{\frac{3}{2}+h}.
 $$
-Hence $R_x$ is strictly concave on each of $[-1,x]$ and $[x,1]$. Step 3 gives $R_x(-1)\geq0$, $R_x(1)\geq0$, and $R_x(x)=0$. A concave function lies above each chord joining its endpoint values, so
-$$
-R_x(y)\geq0\qquad(-1\leq y\leq1).
-$$
-For $x\in(-1,1)$ one has $p(x)<-1$ and $q(x)>1$, so the tail minima are attained strictly outside the central interval. Consequently the equality set is exactly
-$$
-R_x(y)=0
-\quad\Longleftrightarrow\quad
-y\in\{p(x),x,q(x)\}.
-$$
-Thus, for every $x\in(-1,1)$ and $y\in[-a,a]$,
-$$
-|y-x|\geq\psi(y)-\psi(x)+h(x)(y-x).
-$$
-Integrating this pointwise inequality against any $\pi\in\mathcal M_a$, the martingale constraint gives
-$$
-\int h(x)(y-x)\,d\pi(x,y)=0,
-$$
-while the fixed marginals give
-$$
-\int\bigl(\psi(y)-\psi(x)\bigr)\,d\pi(x,y)
-=\int\psi\,d\eta-\int\psi\,d\mu.
-$$
-Therefore every feasible coupling has cost at least this common lower bound. The coupling $\pi^0$ from Step 2 is supported on the equality set, so it attains the bound and is a minimizer.
 
-If another feasible coupling attains the same cost, then the nonnegative gap $R_x(y)$ has integral zero, so its conditional kernel is supported on $\{p(x),x,q(x)\}$ for almost every $x$. Write $r(x)$ for its mass at $x$. Since the two off-diagonal branches lie outside $[-1,1]$, for every Borel set $B\subset(-1,1)$ the second marginal gives
-$$
-\frac{1}{2}\int_B r(x)\,dx=\frac{|B|}{2a}.
-$$
-Hence $r(x)=1/a$ almost everywhere. The remaining two masses have sum $b/a$, and the conditional-mean equation uniquely determines them as
-$$
-\frac{b}{a}\frac{q(x)-x}{q(x)-p(x)}
-\quad\text{and}\quad
-\frac{b}{a}\frac{x-p(x)}{q(x)-p(x)}.
-$$
-They are exactly $\ell_a(x)$ and $\nu_a(x)$. Thus $\pi^0$ is the unique minimizer and equals $\pi_a^*$.
+Step 3: Construct an attaining quartic and certify the global pointwise bound
 
-Step 5: Integrate the product of the two off-diagonal probabilities
-
-Multiplication gives
+Put $a=3/2$ and define
+$$
+q_h(z)=\frac{1}{a+h}-\frac{z^2-h^2}{2h(a+h)^2}.
+$$
+For $r=|z|\geq0$,
 $$
 \begin{aligned}
-\ell_a(x)\nu_a(x)
-&=\frac{b^2\bigl(d(x)^2-(a+1)^2x^2\bigr)}{4a^2d(x)^2}\\
-&=\frac{b^2(1-x^2)}{2a(2a-bx^2)}.
+\frac{1}{a+r}-q_h(z)
+&=\frac{1}{a+r}-\frac{1}{a+h}+\frac{r^2-h^2}{2h(a+h)^2}\\
+&=\frac{(r-h)^2(a+2h+r)}{2h(a+h)^2(a+r)}\geq0.
 \end{aligned}
 $$
-Use
+Thus
 $$
-\frac{1-x^2}{2a-bx^2}
-=\frac{1}{b}-\frac{a+1}{b(2a-bx^2)}.
+q_h(z)\leq\frac{1}{\frac{3}{2}+|z|}
 $$
-With $s=\sqrt{b/(2a)}$ and $t=x\sqrt{b/(2a)}$,
+for every $z\in[-1/2,1/2]$. Therefore
 $$
-\int_{-1}^{1}\frac{dx}{2a-bx^2}
-=\frac{2}{\sqrt{2ab}}\operatorname{artanh}\sqrt{\frac{b}{2a}}.
+P_h(x)=q_h\left(x^2-\frac{1}{2}\right)
 $$
-Therefore
-$$
-J(a)=\frac{b}{a}\left(
-1-\frac{a+1}{\sqrt{2ab}}
-\operatorname{artanh}\sqrt{\frac{b}{2a}}
-\right).
-$$
-Replacing $b$ by $a-1$ gives the requested expression.
+is an admissible even polynomial of degree at most $4$.
 
-Step 6: Check limiting and special cases
+Moreover,
+$$
+q_h(-h)=q_h(h)=\frac{1}{\frac{3}{2}+h}.
+$$
+The identity from Step 2 then gives
+$$
+\int_{-1}^{1}(1+\lambda x^2)P_h(x)\,dx
+=\frac{M_0}{\frac{3}{2}+h},
+$$
+so the upper bound is attained. In particular the supremum is a maximum.
 
-At $a=2$, $\operatorname{artanh}(1/2)=\frac{1}{2}\log 3$, so
+The equality case is also forced. Since $\alpha,\beta>0$, any maximizing quadratic must satisfy equality at both $z=-h$ and $z=h$. These are interior contact points of the smooth branches of the bound, so a feasible quadratic touching there must also have the corresponding tangent slopes. Those two values and two tangent conditions determine the quadratic uniquely, giving $q=q_h$.
+
+Step 4: Substitute the moments and state the optimal-value function
+
+From Step 1,
 $$
-J(2)=\frac{1}{2}-\frac{3}{8}\log 3.
+M_0=\frac{2(\lambda+3)}{3},
 $$
-As $a\to1^+$, the exact integrand from Step 5 satisfies
+and from Step 2,
 $$
-\frac{\ell_a(x)\nu_a(x)}{(a-1)^2}\longrightarrow\frac{1-x^2}{4}
+h=\sqrt{\frac{11\lambda+49}{140(\lambda+3)}}.
 $$
-uniformly on $[-1,1]$ because its denominator converges uniformly to $4$. Hence $J(a)/(a-1)^2\to1/3$. The symmetric guess $p(x)=-q(x)$ is also impossible except at $x=0$, since the explicit branches satisfy
+Substitution into the attained bound from Step 3 yields
 $$
-p(x)+q(x)=-(a-1)x.
+V(\lambda)
+=\frac{2(\lambda+3)}{3\left(\frac{3}{2}+\sqrt{\frac{11\lambda+49}{140(\lambda+3)}}\right)}
+\qquad(\lambda>-1).
 $$
-Final Answer: $\boxed{\frac{a-1}{a}\left(1-\frac{a+1}{\sqrt{2a(a-1)}}\operatorname{artanh}\sqrt{\frac{a-1}{2a}}\right)}$
+
+Final Answer: $\boxed{\frac{2(\lambda+3)}{3\left(\frac{3}{2}+\sqrt{\frac{11\lambda+49}{140(\lambda+3)}}\right)}}$
 
 ---
 
 ## Answer
 
-$\frac{a-1}{a}\left(1-\frac{a+1}{\sqrt{2a(a-1)}}\operatorname{artanh}\sqrt{\frac{a-1}{2a}}\right)$
+$\frac{2(\lambda+3)}{3\left(\frac{3}{2}+\sqrt{\frac{11\lambda+49}{140(\lambda+3)}}\right)}$
 
 ---
 
@@ -347,14 +169,13 @@ $\frac{a-1}{a}\left(1-\frac{a+1}{\sqrt{2a(a-1)}}\operatorname{artanh}\sqrt{\frac
 
 **Problem Type:** Optimization
 
-**Answer Type:** Exact symbolic expression
+**Answer Type:** Function or mapping
 
 ---
 
 ## Solution Concepts
 
-- martingale transport
-- explicit dual certificate
-- pushforward densities
-- concavity
-- change of variables
+- semi-infinite linear programming
+- moment matching
+- two-point quadrature certificate
+- tangent minorants
