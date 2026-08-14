@@ -106,7 +106,7 @@ $$
 \phi(v)=Av. \tag{7}
 $$
 
-Step 5: Use the quadratic marker to determine the exact matrix condition
+Step 5: Resolve the quadratic marker into explicit block conditions
 
 The coordinate permutation induced by $A$ sends the quadratic word to
 $$
@@ -114,49 +114,68 @@ $$
 $$
 Since $\theta$ singles out $\mathbf q$, preservation of $\theta$ is equivalent to
 $$
-P_A\mathbf q=\mathbf q,
-$$
-that is,
-$$
-q(A^{-1}v)=q(v)
-\qquad(v\in V).
-$$
-Equivalently,
-$$
 q(Av)=q(v)
 \qquad(v\in V). \tag{8}
 $$
 
-Conversely, if $A\in\operatorname{GL}(2m,2)$ satisfies (8), then $P_A$ preserves Hamming weight, sends every linear word $\ell_\alpha$ to another linear word, and fixes $\mathbf q$. Therefore it preserves all terms in the definition of $d_n$. Combining this with translations, every isometry is uniquely of the form
+Write $v=(u,w)$ with $u,w\in\mathbb F_2^m$ and write $A$ in $m\times m$ blocks as
+$$
+A=
+\begin{pmatrix}
+P&Q\\
+R&S
+\end{pmatrix}.
+$$
+Then
+$$
+q(Av)
+=(Pu+Qw)^T(Ru+Sw),
+$$
+so
+$$
+q(Av)
+=u^T P^TRu
++u^T(P^TS+R^TQ)w
++w^TQ^TSw. \tag{9}
+$$
+Over $\mathbb F_2$, a matrix $M$ satisfies $x^TMx=0$ for every $x$ exactly when $M$ is symmetric with zero diagonal. Therefore (8) is equivalent to the three explicit conditions
+$$
+P^TR\text{ is symmetric with zero diagonal}, \tag{10}
+$$
+$$
+Q^TS\text{ is symmetric with zero diagonal}, \tag{11}
+$$
+and
+$$
+P^TS+R^TQ=I_m. \tag{12}
+$$
+These equations also imply
+$$
+A^T
+\begin{pmatrix}0&I_m\\I_m&0\end{pmatrix}
+A
+=
+\begin{pmatrix}0&I_m\\I_m&0\end{pmatrix},
+$$
+so $A$ is automatically invertible.
+
+Conversely, if the four blocks satisfy (10)-(12), then (9) gives $q(Av)=q(v)$ for all $v$. Such an $A$ sends every linear word $\ell_\alpha$ to another linear word, fixes $\mathbf q$, and permutes coordinates, hence preserves every term in the definition of $d_n$.
+
+Combining this with translations, every isometry is uniquely of the form
 $$
 F_{a,A}(x)_v
-=a_v+x_{A^{-1}v}, \tag{9}
+=a_v+x_{A^{-1}v}, \tag{13}
 $$
-where
-$$
-a\in X_n,
-\qquad
-A\in\operatorname{GL}(2m,2),
-\qquad
-q(Av)=q(v)\ \text{for all }v\in V.
-$$
-Uniqueness follows from $a=F(0)$ and from the unique action on the weight-$2$ shell.
+where $a\in X_n$ and $A$ has block form above satisfying (10)-(12). Uniqueness follows from $a=F(0)$ and from the unique action on the weight-$2$ shell.
 
-Step 6: Count the admissible matrices without using a group-order formula
+Step 6: Count the admissible matrices from hyperbolic bases
 
-Write an element of $V$ as $(u,w)$ with $u,w\in\mathbb F_2^m$, so
+For $x=(u,w)$ and $y=(u',w')$, the polar form of $q$ is
 $$
-q(u,w)=u\cdot w.
+B(x,y)=q(x+y)+q(x)+q(y)
+=u\cdot w'+u'\cdot w. \tag{14}
 $$
-Its polar form is
-$$
-B(x,y)=q(x+y)+q(x)+q(y).
-$$
-For $x=(u,w)$ and $y=(u',w')$,
-$$
-B(x,y)=u\cdot w'+u'\cdot w, \tag{10}
-$$
-which is nondegenerate.
+It is nondegenerate.
 
 Call $(e,f)$ a hyperbolic pair if
 $$
@@ -174,63 +193,77 @@ q(e_i)=q(f_i)=0,
 \quad
 B(e_i,e_j)=B(f_i,f_j)=0,
 \quad
-B(e_i,f_j)=\delta_{ij}. \tag{11}
+B(e_i,f_j)=\delta_{ij}. \tag{15}
 $$
-Every matrix satisfying (8) sends the standard hyperbolic basis to an ordered hyperbolic basis. Conversely, (11) gives
+Every admissible matrix sends the standard hyperbolic basis to an ordered hyperbolic basis. Conversely, (15) gives
 $$
 q\left(\sum_i a_i e_i+\sum_i b_i f_i\right)=\sum_i a_i b_i,
 $$
-so every ordered hyperbolic basis determines a unique matrix satisfying (8). We therefore count such bases.
+so every ordered hyperbolic basis determines a unique admissible matrix. It remains to count these bases.
 
 First count the zeros of $q$. If $u=0$, all $2^m$ choices of $w$ give $q(u,w)=0$. If $u\neq0$, exactly $2^{m-1}$ choices of $w$ satisfy $u\cdot w=0$. Hence
 $$
 Z_m:=|\{x:q(x)=0\}|
 =2^m+(2^m-1)2^{m-1}
-=2^{2m-1}+2^{m-1}. \tag{12}
+=2^{2m-1}+2^{m-1}. \tag{16}
 $$
 Thus the number of nonzero singular vectors is
 $$
 S_m=Z_m-1
-=(2^{m-1}+1)(2^m-1). \tag{13}
+=(2^{m-1}+1)(2^m-1). \tag{17}
 $$
 
 Fix a nonzero singular vector $e$. Since $B$ is nondegenerate, choose $h$ with $B(e,h)=1$. If $q(h)=1$, replace $h$ by $h+e$; then
 $$
 q(h+e)=q(h)+q(e)+B(h,e)=0.
 $$
-So at least one singular $f_0$ with $B(e,f_0)=1$ exists. Put
+So a singular $f_0$ with $B(e,f_0)=1$ exists. The plane
 $$
-U=\langle e,f_0\rangle^\perp.
+H=\langle e,f_0\rangle
 $$
+has $B$-matrix
+$$
+\begin{pmatrix}0&1\\1&0\end{pmatrix},
+$$
+so it is nondegenerate. Consequently
+$$
+V=H\oplus U,
+\qquad
+U=H^\perp,
+$$
+and the restriction of $B$ to $U$ is again nondegenerate.
+
 Every $f$ satisfying $B(e,f)=1$ has a unique expression
 $$
 f=f_0+c e+u,
 \qquad c\in\mathbb F_2,\ u\in U.
 $$
-Because $e,f_0$ are singular and $U$ is orthogonal to their span,
+Because $e,f_0$ are singular and $U$ is orthogonal to $H$,
 $$
 q(f)=c+q(u).
 $$
-For each $u\in U$, exactly one choice $c=q(u)$ makes $f$ singular. Since $\dim U=2m-2$, the number of possible partners $f$ is therefore
+For each $u\in U$, exactly one choice $c=q(u)$ makes $f$ singular. Since $\dim U=2m-2$, the number of singular partners of $e$ is therefore
 $$
-2^{2m-2}. \tag{14}
+2^{2m-2}. \tag{18}
 $$
 
-The plane $\langle e,f\rangle$ has three zeros and one nonzero value of $q$. If $Z_U$ denotes the number of zeros of $q$ on its orthogonal complement, then
+For any chosen hyperbolic pair $(e,f)$, its orthogonal complement is nondegenerate of dimension $2m-2$. The plane $\langle e,f\rangle$ has three zeros and one vector on which $q$ equals $1$. If $Z_U$ denotes the number of zeros of $q$ on the orthogonal complement, then
 $$
 Z_m=3Z_U+(2^{2m-2}-Z_U),
 $$
-so by (12)
+so by (16)
 $$
-Z_U=2^{2m-3}+2^{m-2}=Z_{m-1}. \tag{15}
+Z_U=2^{2m-3}+2^{m-2}=Z_{m-1}. \tag{19}
 $$
-Thus the same counting argument repeats on the orthogonal complement. If $G_m$ is the number of ordered hyperbolic bases in dimension $2m$, then
+Thus, after removing any first hyperbolic pair, the remaining nondegenerate quadratic space has exactly the same dimension-and-zero-count data needed for the next stage. Repeating the preceding counting argument gives a recursion without invoking any classification theorem for quadratic forms.
+
+If $G_m$ denotes the number of ordered hyperbolic bases in dimension $2m$, then
 $$
 G_m=S_m\,2^{2m-2}G_{m-1},
 \qquad
-G_1=2. \tag{16}
+G_1=2. \tag{20}
 $$
-Using (13),
+Using (17),
 $$
 G_m
 =2^{m(m-1)}\prod_{j=1}^m(2^{j-1}+1)(2^j-1)
@@ -239,19 +272,19 @@ and hence
 $$
 G_m
 =2^{1+m(m-1)}(2^m-1)
-\prod_{j=1}^{m-1}(2^{2j}-1). \tag{17}
+\prod_{j=1}^{m-1}(2^{2j}-1). \tag{21}
 $$
 
 Finally,
 $$
 |X_n|=2^{n-1}.
 $$
-Each translation parameter $a$ and each admissible matrix $A$ occur independently and uniquely, so
+Each translation parameter $a$ and each admissible matrix occur independently and uniquely, so
 $$
 |\operatorname{Iso}(X_n,d_n)|
 =2^{n-1}G_m
 =2^{n+m(m-1)}(2^m-1)
-\prod_{j=1}^{m-1}(2^{2j}-1). \tag{18}
+\prod_{j=1}^{m-1}(2^{2j}-1). \tag{22}
 $$
 
 Final Answer:
@@ -263,12 +296,13 @@ $$
 F_{a,A}:\
 (F_{a,A}(x))_v=a_v+x_{A^{-1}v},\
 \ a\in X_n,\
-A\in\operatorname{GL}(2m,2),\
-q(Av)=q(v)\ \forall v\in\mathbb F_2^{2m}
-\right\},
+A=\begin{pmatrix}P&Q\\R&S\end{pmatrix},\
+P^TR\text{ and }Q^TS\text{ symmetric with zero diagonal},\
+P^TS+R^TQ=I_m
+\right\}.
 }
 $$
-with the pair $(a,A)$ unique for every isometry, and
+The pair $(a,A)$ is unique for every isometry, and
 $$
 \boxed{
 |\operatorname{Iso}(X_n,d_n)|
@@ -283,20 +317,27 @@ $$
 
 ## Answer
 
-For $n=2^{2m}$,
+For $n=2^{2m}$, every isometry occurs uniquely as
 $$
-\left\{
-F_{a,A}:\
-(F_{a,A}(x))_v=a_v+x_{A^{-1}v},\
-\ a\in X_n,\
-A\in\operatorname{GL}(2m,2),\
-\sum_{i=1}^m(Av)_i(Av)_{m+i}
-=
-\sum_{i=1}^m v_i v_{m+i}
-\ \text{for every }v\in\mathbb F_2^{2m}
-\right\},
+(F_{a,A}(x))_v=a_v+x_{A^{-1}v},
 $$
-with unique parameters $(a,A)$, and
+where $a\in X_n$ and
+$$
+A=\begin{pmatrix}P&Q\\R&S\end{pmatrix},
+\qquad P,Q,R,S\in M_m(\mathbb F_2),
+$$
+satisfies
+$$
+P^TR=(P^TR)^T,\qquad \operatorname{diag}(P^TR)=0,
+$$
+$$
+Q^TS=(Q^TS)^T,\qquad \operatorname{diag}(Q^TS)=0,
+$$
+and
+$$
+P^TS+R^TQ=I_m.
+$$
+These conditions make $A$ invertible. The exact number of isometries is
 $$
 |\operatorname{Iso}(X_n,d_n)|
 =
@@ -320,4 +361,5 @@ $$
 - weight-two shell and star reconstruction
 - binary simplex-code invariance
 - quadratic forms over $\mathbb F_2$
+- explicit block-matrix isometry constraints
 - hyperbolic-basis enumeration
