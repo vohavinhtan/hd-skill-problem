@@ -1,280 +1,217 @@
 ## Steps
 
-Step 1: Localize at the ramified prime and evaluate the scalar factor
+Step 1: Translate intermediate fields, normal closure, and splitting into linear algebra
 
 Let
 $$
-V=\mathbb Z_p[\pi],
+B=\operatorname{Gal}(H/E)\leq A.
 $$
-and normalize the valuation by $v_\pi(\pi)=1$. The polynomial $X^2-p$ is Eisenstein at $p$, so $V$ is a discrete valuation ring, $p=\pi^2$, and
+Since $|A|=p^4$ and $[E:K]=p^2$, the subspace $B$ has dimension $2$ over $\mathbf F_p$. Conversely, every $2$-dimensional subspace gives such a field.
+
+Because $H/K$ is abelian, an unramified prime of $K$ splits completely in $E/K$ exactly when its Frobenius element has trivial image in $A/B$, equivalently when that Frobenius vector lies in $B$.
+
+The normal closure of $E=H^B$ over $F$ is fixed by
 $$
-v_\pi(a)=2v_p(a)\qquad(a\in\mathbb Z\setminus\{0\}).
+\operatorname{core}_G(B)=\bigcap_{j=0}^{p-1}\sigma^j(B).
+$$
+Put $N=\sigma-1$. Then
+$$
+N(e_0)=0,\qquad N(e_1)=e_0,\qquad N(e_2)=e_1,\qquad N(e_3)=e_2.
+$$
+If $U\neq0$ is $\sigma$-stable, it is $N$-stable. For a nonzero vector
+$$
+u=c_0e_0+\cdots+c_me_m,\qquad c_m\neq0,
+$$
+with maximal $m$, one has $N^m(u)=c_me_0$, so $e_0\in U$. Hence every nonzero $\sigma$-stable subspace contains $e_0$. Conversely $\langle e_0\rangle$ is $\sigma$-stable. Therefore
+$$
+\widetilde E=H
+\iff
+\operatorname{core}_G(B)=0
+\iff
+e_0\notin B.
 $$
 
-Write $N=p^\nu m$ with $p\nmid m$. In the binomial expansion of $(1+\pi)^m-1$, the term $m\pi$ has valuation $1$, while every remaining term has valuation at least $2$. Therefore
-$$
-v_\pi\bigl((1+\pi)^m-1\bigr)=1.
-$$
-If $v_\pi(w)=h\geq1$, then
-$$
-(1+w)^p-1=pw+\sum_{j=2}^{p-1}\binom pjw^j+w^p.
-$$
-The first term has valuation $h+2$. The middle terms have valuation at least $2+2h>h+2$, and the last term has valuation $ph>h+2$ because $p\geq5$. Each passage from an exponent to $p$ times that exponent raises the valuation by $2$. Therefore
-$$
-s:=v_\pi(z_N)=1+2\nu=1+2v_p(N).
-$$
-In particular, $z_N$ is a unit times $\pi^s$ in $V$.
+Step 2: Convert the splitting count into incidences of two point families
 
-The localized congruence order is
+Write
 $$
-\Lambda:=\mathcal R_n\otimes_{\mathbb Z}\mathbb Z_p
-=\left\{u\in V^n:u_i\equiv u_j\pmod\pi\right\}.
+v_t=(1,t,t^2,t^3),\qquad
+w_t=(1,t^2,t,t^3)
 $$
-It is free over $V$ with basis
+in the basis $e_0,e_1,e_2,e_3$. By Step 1,
 $$
-b_1=(1,\ldots,1),\qquad b_j=\pi e_j\quad(2\leq j\leq n).
+s(E)=\#\{t\in\mathbf F_p:v_t\in B\}
++\#\{t\in\mathbf F_p:w_t\in B\}.
 $$
-Since $s\geq1$, every coordinate of $\Phi_{N,\mathbf r,L,\sigma}(u)$ is divisible by $\pi$. This also verifies directly that the displayed formula in the problem maps $\Lambda$ into itself.
+The projectivization of a $2$-dimensional subspace $B$ is a projective line. Three distinct vectors $v_a,v_b,v_c$ are linearly independent because the determinant of their first three coordinates is
+$$
+\det
+\begin{pmatrix}
+1&a&a^2\\
+1&b&b^2\\
+1&c&c^2
+\end{pmatrix}
+=(b-a)(c-a)(c-b)\neq0.
+$$
+Thus a line contains at most two of the points represented by the $v_t$. Swapping the second and third coordinates sends every $v_t$ to $w_t$, so the same bound holds for the $w_t$. Consequently
+$$
+s(E)\leq4.
+$$
 
-Step 2: Encode the ambient minors by weighted matchings
+Step 3: Classify all lines containing two points from each family
 
-Put $\ell=L-1$ and define the $V$-linear map on $V^n$
+Take distinct $a,b$ and put
 $$
-A=\operatorname{diag}\left(\pi^{r_1},\ldots,\pi^{r_n}\right)-2\pi^\ell P_\sigma,
+s=a+b,\qquad r=ab.
 $$
-where $(P_\sigma u)_i=u_{\sigma(i)}$. Its bipartite support graph has left and right vertex sets both equal to $\{1,\ldots,n\}$. From the left vertex $i$ there are two possible edges:
+For the line spanned by $v_a,v_b$, divide its six $2\times2$ minors by $b-a$. In the coordinate order $01,02,03,12,13,23$ this gives
 $$
-i\longrightarrow i\quad\text{with weight }r_i,
+(1,\ s,\ s^2-r,\ r,\ rs,\ r^2).
+$$
+Similarly, for distinct $c,d$, with
+$$
+S=c+d,\qquad R=cd,
+$$
+the line spanned by $w_c,w_d$ has normalized minors
+$$
+(S,\ 1,\ S^2-R,\ -R,\ R^2,\ RS).
+$$
+Two $2$-dimensional subspaces are equal exactly when these six minors are proportional, since the minors are the coordinates of the nonzero exterior products spanning their one-dimensional spaces in $\bigwedge^2 A$.
+
+Suppose the two secant lines are equal. If the proportionality factor is $\lambda$, the first two coordinates give
+$$
+1=\lambda S,\qquad s=\lambda,
+$$
+hence $sS=1$. The $12$ and $13$ coordinates give
+$$
+r=-sR,\qquad rs=sR^2,
+$$
+so $r=R^2$. Substituting $R=-r/s$ yields
+$$
+r=\frac{r^2}{s^2},
+$$
+and therefore either $r=0$ or $r=s^2$.
+
+If $r=0$, then $R=0$ and the $03$ coordinate gives $s^3=1$. But $r=ab=0$, so the line contains $v_0=e_0$ and is forbidden by Step 1.
+
+If $r=s^2$, then $R=-s$, $S=1/s$, and the $23$ coordinate gives
+$$
+s^4=-s,
+$$
+so $s^3=-1$; the $03$ coordinate becomes the same condition. The two parameters $a,b$ are the roots of
+$$
+X^2-sX+s^2,
+$$
+whose discriminant is $-3s^2$. Thus this valid branch exists exactly when $-3$ is a square in $\mathbf F_p$. This is equivalent to the existence of a nontrivial root of $X^2+X+1$, hence to a nontrivial cube root of unity in $\mathbf F_p$, which occurs exactly when $p\equiv1\pmod3$.
+
+When $p\equiv1\pmod3$, let $1,\omega,\omega^2$ be the cube roots of unity. The three values
+$$
+s=-1,\ -\omega,\ -\omega^2
+$$
+are exactly the solutions of $s^3=-1$. They give three distinct lines because the normalized second minor equals $s$. Since $r=s^2\neq0$, none contains $e_0$.
+
+Therefore, when $p\equiv1\pmod3$,
+$$
+\max s(E)=4,
+$$
+and exactly $3$ fields attain the maximum.
+
+Step 4: Count the maximizing lines when $p\equiv2\pmod3$
+
+Assume $p\equiv2\pmod3$. Step 3 shows that no admissible line contains two $v$-points and two $w$-points, so $s(E)\leq3$.
+
+Consider a line through $v_a,v_b$, with $a\neq b$, and retain
+$$
+s=a+b,\qquad r=ab.
+$$
+Because both vectors have first coordinate $1$, use affine coordinates
+$$
+v_u\longmapsto (u,u^2,u^3),\qquad
+w_t\longmapsto (t^2,t,t^3).
+$$
+The secant through $(a,a^2,a^3)$ and $(b,b^2,b^3)$ satisfies
+$$
+y=sx-r,
 \qquad
-i\longrightarrow\sigma(i)\quad\text{with weight }\ell.
+z=(s^2-r)x-rs.
 $$
-Parallel edges are retained when $\sigma(i)=i$.
-
-For subsets $I,J\subseteq\{1,\ldots,n\}$ with $|I|=|J|$, restrict this bipartite multigraph to left vertices $I$ and right vertices $J$. Every connected component has degree at most $2$. If it has a perfect matching, it is either a path with one perfect matching or a closed alternating cycle with two perfect matchings. A closed component contains an entire cycle $C$ of $\sigma$.
-
-For a cycle $C$, set
+For $(t^2,t,t^3)$ to lie on this secant, the two equations are
 $$
-R_C=\sum_{i\in C}r_i,
+t=st^2-r,
 \qquad
-q_C=v_\pi\left(\pi^{R_C}-2^{|C|}\pi^{|C|\ell}\right).
+t^3=(s^2-r)t^2-rs.
 $$
-The two matchings on $C$ give the two terms inside this valuation. More explicitly,
+The first gives $r=st^2-t$; substituting this into the second and simplifying gives
 $$
-q_C=
+st(t^3-1)=0.
+$$
+If $t=0$, then $r=0$, so the line contains $v_0=e_0$ and is inadmissible. Since $p\equiv2\pmod3$, $\gcd(3,p-1)=1$. If $3m\equiv1\pmod{p-1}$, then $y\mapsto y^m$ is the inverse of $x\mapsto x^3$ on $\mathbf F_p^\times$, so $t^3=1$ forces $t=1$. Hence every admissible line of type two $v$-points plus one $w$-point belongs to one of two families.
+
+For $s=0$, the unordered pair is $\{a,-a\}$ with $a\neq0$. Here $r=-a^2$, so the first incidence equation forces $t=-r=a^2$, and the second equation is then satisfied. Thus this family gives
+$$
+\frac{p-1}{2}
+$$
+lines. For $t=1$, the relation $r=s-1$ makes the second incidence equation automatic, and the parameter pair is determined by
+$$
+X^2-sX+s-1=(X-1)(X-(s-1)).
+$$
+Thus the unordered pair is $\{1,u\}$ with $u\neq0,1$, giving $p-2$ lines. The two families meet only at the pair $\{1,-1\}$. Therefore the number of admissible lines containing two $v$-points and one $w$-point is
+$$
+\frac{p-1}{2}+(p-2)-1=\frac{3p-7}{2}.
+$$
+
+The coordinate involution
+$$
+(x_0,x_1,x_2,x_3)\longmapsto(x_0,x_2,x_1,x_3)
+$$
+fixes $e_0$ and exchanges the two Frobenius families. Hence it gives a bijection to the admissible lines containing one $v$-point and two $w$-points, so there are also $(3p-7)/2$ of those. The two collections are disjoint, because a line in both would contain two points from each family, contradicting Step 3. Consequently
+$$
+\max s(E)=3,
+\qquad
+\#\{E:s(E)=3,\ \widetilde E=H\}=3p-7.
+$$
+
+Step 5: Express both residue classes by one validator-safe ordered pair
+
+Since $p>3$ is prime,
+$$
+\gcd(3,p-1)=
 \begin{cases}
-\min\left(R_C,|C|\ell\right),&R_C\neq|C|\ell,\\
-R_C+2v_p\left(2^{|C|}-1\right),&R_C=|C|\ell.
+3,&p\equiv1\pmod3,\\
+1,&p\equiv2\pmod3.
 \end{cases}
 $$
-The second line is the cancellation missed by treating the two cycle matchings independently.
+Substitution into
+$$
+\left(
+\frac{\gcd(3,p-1)+5}{2},
+\frac{9p-24+(10-3p)\gcd(3,p-1)}{2}
+\right)
+$$
+gives $(4,3)$ in the first residue class and $(3,3p-7)$ in the second.
 
-If the restricted graph on $(I,J)$ has a perfect matching, define $w(I,J)$ by adding the weights in the unique matching on every path component and adding $q_C$ for every closed component $C$. Set $w(I,J)=\infty$ when no perfect matching exists. Finally, put
-$$
-\Gamma_0=0,
-\qquad
-\Gamma_k=\min_{\substack{I,J\subseteq\{1,\ldots,n\}\\|I|=|J|=k}}w(I,J)
-\quad(1\leq k\leq n).
-$$
-
-Step 3: Recover the Smith exponents of the ambient permutation matrix
-
-Expanding $\det A_{I,J}$ gives one term for each perfect matching of the restricted graph. A path component contributes one monomial, so its valuation is the sum of its matching-edge weights. A closed component corresponding to a cycle $C$ contributes, up to a unit sign,
-$$
-\pi^{R_C}-2^{|C|}\pi^{|C|\ell}.
-$$
-Different connected components use disjoint rows and columns, so their determinant contributions multiply. The valuation of every nonzero minor is therefore $w(I,J)$. This proves
-$$
-v_\pi\bigl(\mathfrak d_k(A)\bigr)=\Gamma_k,
-$$
-where $\mathfrak d_k(A)$ is the ideal generated by the $k\times k$ minors of $A$.
-
-Let
-$$
-\alpha_k=\Gamma_k-\Gamma_{k-1}\qquad(1\leq k\leq n).
-$$
-The determinantal-divisor criterion over a discrete valuation ring gives
-$$
-\operatorname{coker}(A)
-\cong\bigoplus_{k=1}^n V/\pi^{\alpha_k}V.
-$$
-The sequence $\alpha_1\leq\cdots\leq\alpha_n$ is nondecreasing. Also, $\alpha_1=0$: the $(1,1)$ entry of $A$ is either $1$ or $1-2\pi^\ell$, both units. Reduction modulo $\pi$ has rank $1$, so $\alpha_2\geq1$.
-
-The determinant is nonzero. Indeed, its factor belonging to a cycle $C$ is
-$$
-\pi^{R_C}-2^{|C|}\pi^{|C|\ell}.
-$$
-Terms with unequal valuations cannot cancel. If their valuations agree, the remaining coefficient is $1-2^{|C|}\neq0$. Therefore $A$ has full rank, and the requested $p$-primary cokernel is finite.
-
-Step 4: Compute the correction caused by the congruence lattice
-
-Let $S$ be the matrix with columns $b_1,\ldots,b_n$. Multiplication by $z_N/\pi^s$, which is a unit of $V$, does not change Smith exponents. The matrix of $\Phi_{N,\mathbf r,L,\sigma}$ on the basis $b_1,\ldots,b_n$ is therefore equivalent over $V$ to
-$$
-M_s=\pi^sS^{-1}AS.
-$$
-
-The correction can be read from its minors. First take $s=1$. In the basis $b_1,\ldots,b_n$, the entries of $M_1=\pi S^{-1}AS$ are
-$$
-\begin{aligned}
-(M_1)_{11}&=\pi\left(1-2\pi^\ell\right),\\
-(M_1)_{1j}&=-2\pi^{\ell+2}\mathbf 1_{\{\sigma(1)=j\}}\quad(j\geq2),\\
-(M_1)_{i1}&=\pi^{r_i}-1\quad(i\geq2),\\
-(M_1)_{ij}&=\pi^{r_i+1}\mathbf 1_{\{i=j\}}
--2\pi^{\ell+1}\left(\mathbf 1_{\{\sigma(i)=j\}}-\mathbf 1_{\{\sigma(1)=j\}}\right)
-\quad(i,j\geq2).
-\end{aligned}
-$$
-The entries $(M_1)_{i1}=\pi^{r_i}-1$ are units. The exact minor shift can be certified without reducing the whole matrix. The nonzero minors of $S$ have valuation at least $k-1$ in size $k$, and those attaining $k-1$ use the first column of $S$. The nonzero proper minors of $\pi S^{-1}$ have valuation at least $0$, and those attaining $0$ avoid its first row. Cauchy-Binet applied to
-$$
-M_1=(\pi S^{-1})AS
-$$
-therefore gives
-$$
-v_\pi\bigl(\mathfrak d_k(M_1)\bigr)\geq\Gamma_k+k-1
-\quad(1\leq k<n).
-$$
-
-For the reverse inequality, choose a path-cycle configuration of weight $\Gamma_k$. When $k<n$, at least one vertex is unused. Cutting the alternating component at the first unused vertex turns its contribution into an open path; if all chosen components are already closed, join the first closed component to that unused vertex through the first column of $S$ and the corresponding unit $\pi^{r_i}-1$. In the Cauchy-Binet expansion, use the first column of $S$ at one endpoint and use rows $2,\ldots,n$ of $\pi S^{-1}$ at the other endpoint. The corresponding minors of $S$ and $\pi S^{-1}$ have valuations $k-1$ and $0$. Expanding the endpoint unit reproduces the two endpoint choices. All internal path edges reproduce their original matching monomials. If another closed component occurs, its two terms stay paired as
-$$
-\pi^{R_C}-2^{|C|}\pi^{|C|\ell},
-$$
-so its leading coefficient is nonzero after the factor $\pi^{q_C}$ is removed. Ordering the components by their least vertex fixes the endpoint choice and prevents cancellation between distinct opened configurations. The resulting minor has valuation $\Gamma_k+k-1$, which proves equality. When $k=n$, no unused vertex remains; the determinant identity
-$$
-\det M_1=\pi^n\det A
-$$
-supplies the full-size shift.
-
-The determinantal-divisor identities are
-$$
-v_\pi\bigl(\mathfrak d_k(M_1)\bigr)=\Gamma_k+k-1
-\quad(1\leq k<n),
-$$
-and
-$$
-v_\pi\bigl(\det M_1\bigr)=\Gamma_n+n.
-$$
-The Smith exponents of $S$ are $0,1,\ldots,1$, while those of $\pi S^{-1}$ are $0,\ldots,0,1$. The displayed minors attain the Cauchy-Binet lower bounds and keep each closed-cycle correction $q_C$ intact.
-
-Since $M_s=\pi^{s-1}M_1$, its determinantal divisors satisfy
-$$
-v_\pi\bigl(\mathfrak d_k(M_s)\bigr)
-=
-\begin{cases}
-k(s-1)+\Gamma_k+k-1,&1\leq k<n,\\
-n(s-1)+\Gamma_n+n,&k=n.
-\end{cases}
-$$
-Taking successive differences and using $s=1+2v_p(N)$ gives the Smith exponents
-$$
-\beta_1=2v_p(N),
-$$
-$$
-\beta_j=2v_p(N)+1+\Gamma_j-\Gamma_{j-1}
-\quad(2\leq j\leq n-1),
-$$
-and
-$$
-\beta_n=2v_p(N)+2+\Gamma_n-\Gamma_{n-1}.
-$$
-Their sum is
-$$
-\sum_{j=1}^n\beta_j=n\left(1+2v_p(N)\right)+\Gamma_n,
-$$
-which matches $v_\pi(\det M_s)$. This determinant identity is an internal certificate for the two endpoint corrections.
-
-Step 5: Convert the ramified elementary divisors to cyclic groups
-
-For $a\geq0$, multiplication by $\pi^a$ on the $\mathbb Z_p$-basis $1,\pi$ shows
-$$
-V/\pi^aV
-\cong
-\mathbb Z/p^{\lfloor a/2\rfloor}\mathbb Z
-\oplus
-\mathbb Z/p^{\lceil a/2\rceil}\mathbb Z.
-$$
-When $a=0$, both factors have order $1$ and are omitted. Form the multiset
-$$
-\mathcal E=
-\left\{
-\left\lfloor\frac{\beta_j+\varepsilon}{2}\right\rfloor:
-1\leq j\leq n,\ \varepsilon\in\{0,1\},\
-\left\lfloor\frac{\beta_j+\varepsilon}{2}\right\rfloor>0
-\right\}.
-$$
-List its elements with multiplicity as
-$$
-e_1\leq e_2\leq\cdots\leq e_m.
-$$
-Then
-$$
-H_{N,\mathbf r,L,\sigma}[p^\infty]
-\cong\bigoplus_{h=1}^m\mathbb Z/p^{e_h}\mathbb Z.
-$$
-The ordering gives $p^{e_1}\mid\cdots\mid p^{e_m}$, so this is the invariant factor decomposition requested in the problem.
-
-For a concrete attack on the tempting claim that the answer is independent of $\sigma$, take
-$$
-p=7,\quad N=1,\quad n=4,\quad L=3,
-\quad(r_1,r_2,r_3,r_4)=(0,1,2,3).
-$$
-For $\sigma=\operatorname{id}$, the ambient exponents are $(0,1,2,2)$, so
-$$
-(\beta_1,\beta_2,\beta_3,\beta_4)=(0,2,3,4)
-$$
-and the $7$-primary exponents are $(1,1,1,2,2,2)$. For $\sigma=(1)(234)$, the cycle $C=(234)$ satisfies
-$$
-R_C=6=3(L-1),
-$$
-but
-$$
-v_\pi\left(\pi^6-8\pi^6\right)
-=v_\pi\left(-7\pi^6\right)=8.
-$$
-This changes the ambient exponents to $(0,1,2,5)$, the lattice exponents to $(0,2,3,7)$, and the $7$-primary exponents to $(1,1,1,2,3,4)$. The two groups are different.
-
-For a self-contained statement of the answer, let $A_{I,J}$ denote the submatrix of
-$$
-\left(\pi^{r_i}\mathbf 1_{\{i=j\}}-2\pi^{L-1}\mathbf 1_{\{\sigma(i)=j\}}\right)_{1\leq i,j\leq n}
-$$
-with rows $I$ and columns $J$. Define
-$$
-\Gamma_0=0,
-\qquad
-\Gamma_k=min_{\substack{I,J\subseteq\{1,\ldots,n\}\\|I|=|J|=k\\\det A_{I,J}\neq0}}
-v_\pi(\det A_{I,J}),
-$$
-$$
-\beta_j=2v_p(N)+\Gamma_j-\Gamma_{j-1}
-+\mathbf 1_{\{j\geq2\}}+\mathbf 1_{\{j=n\}},
-$$
-and let $e_1\leq\cdots\leq e_m$ be the positive elements, with multiplicity, of
-$$
-\left\{
-\left\lfloor\frac{\beta_j+\varepsilon}{2}\right\rfloor:
-1\leq j\leq n,\ \varepsilon\in\{0,1\}
-\right\}.
-$$
-Final Answer: $\boxed{\bigoplus_{h=1}^m\mathbb Z/p^{e_h}\mathbb Z}$
+Final Answer: $\boxed{\left(\frac{\gcd(3,p-1)+5}{2},\frac{9p-24+(10-3p)\gcd(3,p-1)}{2}\right)}$
 
 ---
 
 ## Answer
 
-$\bigoplus_{h=1}^m\mathbb Z/p^{e_h}\mathbb Z$
+$\left(\frac{\gcd(3,p-1)+5}{2},\frac{9p-24+(10-3p)\gcd(3,p-1)}{2}\right)$
 
 ---
 
 ## Classification
 
-Problem Type: Canonicalization or normalization
+**Problem Type:** Optimization
 
-Answer Type: Canonical form
+**Answer Type:** Tuple or ordered list
 
 ---
 
 ## Solution Concepts
 
-- ramified discrete valuation rings
-- determinantal divisors and Smith form
-- weighted bipartite matchings
-- permutation-cycle cancellation
-- congruence-lattice correction
+- galois correspondence
+- normal core of a subgroup
+- finite-field projective incidence
+- plucker coordinates
+- finite-field secant counting
