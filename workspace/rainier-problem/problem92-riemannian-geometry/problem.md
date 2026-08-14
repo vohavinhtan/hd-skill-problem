@@ -47,11 +47,15 @@ $$
 c(u)=\min\{2u,1-2u\}.
 $$
 
-Determine exactly the set of pairs $(a,u)$ with $a>0$ and $0\leq u\leq\frac12$ for which all three conditions hold:
-
-1. $\overline N_a(u)$ has order exactly $2$;
-2. $\overline F_a(u)$ has order exactly $2$ and is distinct from $\overline N_a(u)$;
-3. $\langle\overline N_a(u),\overline F_a(u)\rangle=\Gamma_a/Z_a$.
+Determine exactly the set of pairs $(a,u)$ with $a>0$ and $0\leq u\leq\frac12$ for which
+$$
+\left\langle\overline N_a(u),\overline F_a(u)\right\rangle
+=\Gamma_a/Z_a
+$$
+and simultaneously
+$$
+\overline N_a(u)\cap\overline F_a(u)=\{Z_a\}.
+$$
 
 Give the answer as one explicit region in the $(a,u)$-plane, and justify every equality and boundary case.
 
@@ -70,4 +74,4 @@ Give the answer as one explicit region in the $(a,u)$-plane, and justify every e
 
 ## Domain Explanation
 
-The problem couples two metric scales on a flat Klein bottle: shortest deck displacements from a marked point and multiplicities of minimizing geodesics to its farthest points. These produce subgroups of the deck group whose behavior changes across different Dirichlet-Voronoi regimes. The final condition is imposed only after passing to the quotient by the center, so solving the problem requires both the quotient Riemannian geometry and the noncommutative deck-group structure rather than a scalar distance optimization alone.
+The problem couples two metric scales on a flat Klein bottle: shortest deck displacements from a marked point and multiplicities of minimizing geodesics to its farthest points. These produce subgroups of the deck group whose behavior changes across different Dirichlet-Voronoi regimes. The final condition compares their join and intersection only after quotienting by the center, so the answer depends on both quotient Riemannian geometry and the noncommutative deck-group structure rather than on a scalar distance calculation alone.
