@@ -27,14 +27,14 @@ A plane $H$ is called a supporting plane of a convex set $C\subset\mathbb R^3$ i
 $$
 \operatorname{conv}\{Q_a,Q_b,Q_c\}=K_s\cap H
 $$
-for some supporting plane $H$ of $K_s$. Call such a facet **new** if the same plane $H$ is not a supporting plane of $K$.
+for some supporting plane $H$ of $K_s$. Call such a facet new if the same plane $H$ is not a supporting plane of $K$.
 
 Determine exactly the set
 $$
 \mathcal N_{n,s}
 =
 \left\{
-\{a,b,c\}:
+\{a,b,c\}\subset\{1,\ldots,h\}\setminus\{s\}:
 \operatorname{conv}\{Q_a,Q_b,Q_c\}
 \text{ is a new facet of }K_s
 \right\}.
