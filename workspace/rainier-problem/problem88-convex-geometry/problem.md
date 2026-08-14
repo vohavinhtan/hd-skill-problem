@@ -2,48 +2,64 @@
 
 ## LaTeX (Normalized)
 
-Let $n\geq 27$ be odd and set
+Let $m\geq 6$ be an integer, and set
 $$
-h=\frac{n-1}{2},
+n=4m+3,
 \qquad
 \delta=\frac{\pi}{n}.
 $$
-Let $s$ be an integer satisfying
+For $1\le r\le 2m+1$, define
 $$
-3\leq s\leq \frac{n-3}{8},
+x_r=\cos(2r\delta).
 $$
-and put
+For a real parameter $\lambda$, put
 $$
-t=h-s,
-\qquad
-A=2s\delta.
-$$
-For $\lambda\in\mathbb R$ and $1\leq r\leq h$, define
-$$
-x_r=\cos(2r\delta),
-\qquad
-Q_r(\lambda)=\bigl(x_r,x_r^2,x_r^4+\lambda x_r^3\bigr)\in\mathbb R^3.
-$$
-For $D\subseteq\{1,\ldots,h\}$, define
-$$
-K_D(\lambda)
+P_r(\lambda)
 =
-\operatorname{conv}\{Q_r(\lambda):r\notin D\}.
+\bigl(
+x_r,
+x_r^2,
+x_r^3,
+x_r^6+\lambda x_r^5
+\bigr)
+\in\mathbb R^4,
 $$
-
-A plane $H$ is a supporting plane of a convex set $C\subset\mathbb R^3$ if $C$ is contained in one of the two closed half-spaces bounded by $H$ and $H\cap C\neq\varnothing$.
-
-For distinct $a,b,c\notin\{s,t\}$, let $H_{abc}(\lambda)$ be the affine plane through $Q_a(\lambda),Q_b(\lambda),Q_c(\lambda)$. Call $\{a,b,c\}$ jointly new at $\lambda$ if
+and
 $$
-K_{\{s,t\}}(\lambda)\cap H_{abc}(\lambda)
+K(\lambda)
 =
-\operatorname{conv}\{Q_a(\lambda),Q_b(\lambda),Q_c(\lambda)\},
+\operatorname{conv}\{P_r(\lambda):1\le r\le 2m+1\}.
 $$
-$H_{abc}(\lambda)$ is a supporting plane of $K_{\{s,t\}}(\lambda)$, and the same plane is a supporting plane of neither $K_{\{s\}}(\lambda)$ nor $K_{\{t\}}(\lambda)$.
 
-Let $\mathcal J(\lambda)$ be the set of all triples that are jointly new at $\lambda$.
+For a $4$-element set $F\subset\{1,\ldots,2m+1\}$, write
+$F\in\mathcal F(\lambda)$ if there is an affine hyperplane $H\subset\mathbb R^4$
+such that $K(\lambda)$ lies in one of the two closed half-spaces bounded by
+$H$ and
+$$
+K(\lambda)\cap H
+=
+\operatorname{conv}\{P_r(\lambda):r\in F\}.
+$$
 
-Determine exactly the largest open interval $I\subset\mathbb R$ containing $0$ for which $\mathcal J(\lambda)$ is independent of $\lambda\in I$.
+For every $5$-element set $E\subset\{1,\ldots,2m+1\}$ with
+$\sum_{r\in E}x_r\ne0$, define
+$$
+\Lambda(E)
+=
+-\frac{
+\left(\sum_{r\in E}x_r\right)^2+\sum_{r\in E}x_r^2
+}{
+2\sum_{r\in E}x_r
+}.
+$$
+
+Determine exactly the largest open interval $I\subset\mathbb R$ containing
+$0$ such that
+$$
+\mathcal F(\lambda)=\mathcal F(0)
+\qquad
+\text{for every }\lambda\in I.
+$$
 
 ---
 
@@ -60,4 +76,4 @@ Determine exactly the largest open interval $I\subset\mathbb R$ containing $0$ f
 
 ## Domain Explanation
 
-The problem asks for the exact stability interval of a face configuration in a one-parameter family of three-dimensional convex hulls. The difficulty lies in identifying which supporting planes depend simultaneously on two deleted vertices and then locating the first parameter values at which that joint face structure changes.
+The problem asks for the exact parameter range on which a four-dimensional convex hull keeps the same supporting tetrahedra. The decisive structure is global: one must control all five-point affine-dependence signs, compress that global family to the critical local blocks, and then identify the first two parameter values at which the facet structure changes.
