@@ -19,19 +19,24 @@ M\cap\mathbb Q(\zeta_\ell)=\mathbb Q,
 $$
 where $\zeta_\ell$ is a primitive $\ell$th root of unity.
 
-Choose $\pi\in\mathcal O_M$ such that
+Choose $\pi,\eta\in\mathcal O_M$ such that
 $$
-\rho(\pi)=\pi
+\rho(\pi)=\pi,
+\qquad
+\rho(\eta)=\eta,
 $$
-and the principal ideals
+and the $2q$ principal ideals
 $$
-(\pi),\ (\sigma(\pi)),\ \ldots,\ (\sigma^{q-1}(\pi))
+(\sigma^i(\pi)),\qquad (\sigma^i(\eta))
+\qquad(0\le i\le q-1)
 $$
 are pairwise distinct prime ideals of $\mathcal O_M$.
 
 For indices modulo $q$, put
 $$
-a_i=\frac{\sigma^i(\pi)}{\sigma^{i+1}(\pi)}
+a_i=\frac{\sigma^i(\pi)}{\sigma^{i+1}(\pi)},
+\qquad
+b_i=\frac{\sigma^i(\eta)}{\sigma^{i+1}(\eta)}
 \qquad(0\le i\le q-1).
 $$
 Set
@@ -42,17 +47,16 @@ F_\ell=M(\zeta_\ell),
 $$
 and let $L$ be the splitting field over $F_\ell$ of
 $$
-\prod_{i=0}^{q-1}(x^\ell-a_i).
+\prod_{i=0}^{q-1}(x^\ell-a_i)(x^\ell-b_i).
 $$
 
 For every intermediate field $E$ satisfying
 $$
 F_\ell\subset E\subset L,
 \qquad
-[E:F_\ell]=\ell^2,
+[E:F_\ell]=\ell^{q-1},
 $$
-let $c(E)$ be the number of distinct fields $g(E)$ as $g$ ranges over
-$\operatorname{Gal}(L/F_{0,\ell})$.
+let $\widetilde E$ denote its normal closure over $F_{0,\ell}$.
 
 For integers $n\ge k\ge0$, write
 $$
@@ -62,7 +66,7 @@ $$
 
 Determine the number of such fields $E$ for which
 $$
-c(E)=2q.
+[\widetilde E:F_{0,\ell}]=2q\ell^{2q-2}.
 $$
 
 ---
@@ -80,4 +84,4 @@ $$
 
 ## Domain Explanation
 
-The primary domain is algebraic number theory because the problem combines prime-ideal arithmetic, cyclotomic base change, Kummer extensions, Galois actions, and conjugacy of intermediate number fields. The requested output is an exact symbolic count determined by the interaction of these structures.
+The primary domain is algebraic number theory because the problem combines prime-ideal arithmetic, cyclotomic base change, Kummer extensions, Galois actions, and normal closures of intermediate number fields. The requested output is an exact symbolic count determined by the interaction of these structures.
