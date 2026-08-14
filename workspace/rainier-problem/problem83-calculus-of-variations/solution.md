@@ -20,12 +20,12 @@ Put
 $$
 s=\frac{1}{12},\qquad r=\frac{11}{12},\qquad \psi_0(x)=x^2q_0(x).
 $$
-A cubic clamped at $0$ has the form $L(x)=x^2(\alpha+\beta x)$. Matching $L,L'$ to $\psi_0,\psi_0'$ at $t>0$ gives
+Write the left clamped cubic as $L(x)=x^2(\alpha+\beta x)$. Matching value and slope at $t>0$ gives
 $$
 \alpha=\frac{3\psi_0(t)-t\psi_0'(t)}{t^2},\qquad
 \beta=\frac{t\psi_0'(t)-2\psi_0(t)}{t^3}.
 $$
-The remaining condition $L''(t)=\psi_0''(t)$ is
+Matching the second derivative requires
 $$
 t^2\psi_0''(t)-4t\psi_0'(t)+6\psi_0(t)=t^4q_0''(t)=0.
 $$
@@ -34,7 +34,7 @@ $$
 q_0''(x)=-\frac{1}{8}(12x-1)P(x),\qquad
 P(x)=2880x^3-7440x^2+6204x-1655.
 $$
-On $[0,\frac{1}{2}]$, $P''<0$, $P'(\frac{1}{2})=924>0$, and $P(\frac{1}{2})=-53$; so $P'>0$ and $P<0$. The only left-half root is $s=\frac{1}{12}$.
+On $[0,\frac{1}{2}]$, $P''=17280x-14880<0$, $P'(\frac{1}{2})=924>0$, and $P(\frac{1}{2})=-53$; so $P'>0$ and $P<0$. The only left-half root is $s=\frac{1}{12}$.
 
 At $s$,
 $$
@@ -89,13 +89,13 @@ $$
 Also,
 $$
 q_\lambda''=q_0''+\lambda(-10+24x),\qquad
-\rho_\lambda''=\rho_0''+\lambda(6+24x),
+\rho_\lambda''=\rho_0''+\lambda(6+24x).
 $$
-with
+The polynomial in Step 2 has $P(s)=-1188$, hence
 $$
-q_0'''(s)=1782,\qquad \rho_0'''(r)=-1782.
+q_0'''(s)=-\frac{12}{8}P(s)=1782,\qquad \rho_0'''(r)=-1782
 $$
-They are nonzero, so the implicit function theorem applies. Writing
+by reflection. They are nonzero, so the implicit function theorem applies. Writing
 $a=s+a_1\lambda+O(\lambda^2)$ and $d=r+d_1\lambda+O(\lambda^2)$ gives
 $$
 1782a_1-8=0,\qquad -1782d_1+28=0,
@@ -137,11 +137,15 @@ $$
 \beta=b-s,\qquad \gamma=c-r,\qquad
 G_b=\frac{3888}{625}F_b,\qquad G_c=\frac{3888}{625}F_c.
 $$
-Differentiating the obstacle, with
+Expand
 $$
-\chi=\frac{\partial\psi_\lambda}{\partial\lambda}=4x^5-5x^4-2x^3+3x^2,
+\psi_0=-144x^8+576x^7-853x^6+543x^5-\frac{1655}{16}x^4-\frac{209}{8}x^3+\frac{121}{16}x^2,
 $$
-gives at $s=\frac{1}{12}$ and $r=\frac{11}{12}$
+and
+$$
+\chi=\frac{\partial\psi_\lambda}{\partial\lambda}=4x^5-5x^4-2x^3+3x^2.
+$$
+Differentiation at $s=\frac{1}{12}$ and $r=\frac{11}{12}$ gives
 $$
 \begin{aligned}
 &\psi_0'(s)=\frac{73205}{124416},\quad
@@ -156,7 +160,7 @@ $$
 \chi'''(s)=-\frac{61}{3},\quad \chi'''(r)=\frac{239}{3}.
 \end{aligned}
 $$
-For fixed $f$ and $h=c-b$, differentiating the formulas in Step 3 gives
+Differentiating Step 3 for fixed $f$ and $h=c-b$ gives
 $$
 \begin{aligned}
 F_{b,b}&=h^2f'''(b)+2hf''(b)+2(f'(b)-f'(c)),\\
@@ -195,7 +199,7 @@ D^2G_c=
 -144&264&0
 \end{pmatrix},
 $$
-with variables ordered as $(b,c,\lambda)$. Also $G_b=G_c=0$ there. For example,
+for variables $(b,c,\lambda)$, and $G_b=G_c=0$ there. For example,
 $$
 G_{b,b\lambda}=\frac{3888}{625}\left[
 \left(\frac{5}{6}\right)^2\left(-\frac{61}{3}\right)
@@ -303,7 +307,7 @@ $$
 \frac{\psi_\lambda''(c_\lambda)-\psi_\lambda''(b_\lambda)}
 {c_\lambda-b_\lambda}.
 $$
-Using Step 4, its numerator has linear coefficient
+Step 4 gives numerator coefficient
 $$
 \psi_0'''(r)c_1-\psi_0'''(s)b_1+\chi''(r)-\chi''(s)
 =-\frac{250}{27}+\frac{125}{27}+\frac{85}{54}=-\frac{55}{18}.
