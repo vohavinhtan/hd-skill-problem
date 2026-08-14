@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Let $m\geq 8$ be an integer, and set
+Let $m\geq 100$ be an integer, and set
 $$
 n=4m+3,
 \qquad
@@ -14,7 +14,7 @@ x_r=\cos(2r\delta).
 $$
 Delete the three indices
 $$
-D_m=\{m-2,m,m+2\},
+D_m=\{m-3,m-2,m+1\},
 $$
 and write
 $$
@@ -46,31 +46,23 @@ K(\lambda,\mu)\cap H
 \operatorname{conv}\{P_r(\lambda,\mu):r\in F\}.
 $$
 
-For every $5$-element set $E\subset R_m$, define
+Define
 $$
-S(E)=\sum_{r\in E}x_r,
-\qquad
-Q(E)=\sum_{r\in E}x_r^2.
-$$
-Let
-$$
-r_1<r_2<\cdots<r_{2m-2}
-$$
-be the elements of $R_m$, and for $1\leq j\leq2m-6$ set
-$$
-W_j=\{r_j,r_{j+1},r_{j+2},r_{j+3},r_{j+4}\}.
-$$
-
-Determine exactly the largest real number $\rho>0$ such that
-$$
+\rho_m
+=
+\sup\left\{
+\rho>0:
 \mathcal F(\lambda,\mu)=\mathcal F(0,0)
+\text{ whenever }|\lambda|<\rho\text{ and }|\mu|<\rho
+\right\}.
 $$
-for every pair $(\lambda,\mu)$ satisfying
+Call a $5$-element subset of $R_m$ consecutive if its elements are consecutive in the increasing order on $R_m$.
+
+Prove that there is exactly one ordered pair $(E_m,\sigma_m)$, where $E_m\subset R_m$ is a consecutive $5$-element set and $\sigma_m\in\{-1,1\}$, such that the five points
 $$
-|\lambda|<\rho,
-\qquad
-|\mu|<\rho.
+\{P_r(\sigma_m\rho_m,-\rho_m):r\in E_m\}
 $$
+are affinely dependent. Determine $(E_m,\sigma_m)$ exactly.
 
 ---
 
@@ -81,10 +73,10 @@ $$
 | **Domain** | Topology and Geometry |
 | **Sub-domain** | Convex geometry |
 | **Problem Type** | Optimization |
-| **Answer Type** | Exact scalar |
+| **Answer Type** | Tuple or ordered list |
 
 ---
 
 ## Domain Explanation
 
-The problem asks for the exact robust stability radius of a two-parameter family of four-dimensional convex hulls after three prescribed vertices are removed. The key difficulty is global: one must translate simultaneous parameter perturbations into orientation margins, prove that a worst five-point configuration can be compressed to consecutive retained vertices, and then locate the unique critical retained block.
+The problem asks for the unique five-vertex circuit and parameter-corner direction responsible for the first loss of facet stability in a two-parameter family of four-dimensional convex hulls. The main difficulty is to reconstruct a global orientation margin, compress all possible five-point obstructions to retained consecutive windows, and then prove which asymmetric window is the unique first obstruction.
