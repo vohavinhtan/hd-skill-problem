@@ -23,7 +23,7 @@ Determine the complete set of parameter pairs $(a,\lambda)\in\mathbb{R}^2$ for w
 |---|---|
 | **Domain** | Differential Equations and Dynamical Systems |
 | **Sub-domain** | Stability theory |
-| **Problem Type** | Parameter identification |
+| **Problem Type** | Symbolic derivation |
 | **Answer Type** | Interval or region description |
 
 ---
