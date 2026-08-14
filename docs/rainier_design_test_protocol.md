@@ -14,6 +14,35 @@ Read this before designing or hardening any frontier problem. Goal: measure diff
 
 Never copy a limit into this file. Read it from `hard_gates.md` so the two cannot drift apart.
 
+If `skills/_shared/hard_gates.md` is missing, unreadable, or does not state the active Answer Length limit, stop before candidate generation and report the broken gate source. Never infer the limit from memory, reuse an old portal value silently, or continue with an uncounted answer.
+
+## MANDATORY STOP GATE — literal Answer before candidate creation
+
+> **STOP. Do not draft, save, verify, or test a new problem until this gate passes.** The first artifact of every candidate is the exact literal string intended for `## Answer`, not a description of the answer and not an estimate of its length.
+
+Run these checks in this order:
+
+1. Write the exact raw LaTeX that will appear between the `$...$` delimiters in `## Answer`.
+2. Expand every helper symbol, alias, named family, case label, local parameter, and shorthand that is not independently required by the mathematical setup. A symbol defined only to shorten the answer counts as its full expansion.
+3. For a parameterized, piecewise, classification, set, or mapping answer, write every branch and every exceptional case before counting. Never assume it can be compacted later.
+4. Count the literal characters with a script. Do not estimate by eye, count rendered glyphs, or postpone the count until `solution.md`.
+5. Check all three conditions at once: the answer is explicit, self-contained from the statement, and within the current Answer Length limit from `hard_gates.md`.
+
+If any condition fails, **REJECT or redesign the requested answer object immediately**. Do not spend a verification run or model test on that candidate.
+
+The piecewise-helper allowance in `format-solution` is not a repair for a candidate that failed this design gate. It may address a portal-parser issue only after the honest literal answer has already passed the Answer Length and Answer Compaction gates. In particular, boxing `\Phi`, `F`, `R`, or another locally defined object does not make its expanded classification shorter.
+
+### Late-discovery rule
+
+If an Answer Length failure is discovered during testing, while writing `solution.md`, or after a model response has been graded, invalidate the candidate version and its test result. Do not:
+
+- shorten the field to an alias;
+- move the case split or answer-derived notation into `problem.md`;
+- claim that formatting fixed a design failure;
+- continue Phase 4 on the failed version.
+
+Return to Phase 1 and redesign the requested object, or replace the candidate. The Phase 0 record and the Phase 3b handoff must both include the literal `## Answer` string, its exact scripted character count, and a `PASS` or `REJECT` verdict.
+
 ## Core rules
 
 1. Free checks first. No model quota is spent until Phase 0 passes.
