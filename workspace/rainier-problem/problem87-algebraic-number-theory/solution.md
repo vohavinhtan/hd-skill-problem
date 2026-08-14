@@ -102,13 +102,21 @@ so $s^3=-1$; the $03$ coordinate becomes the same condition. The two parameters 
 $$
 X^2-sX+s^2,
 $$
-whose discriminant is $-3s^2$. Thus this valid branch exists exactly when $-3$ is a square in $\mathbf F_p$. This is equivalent to the existence of a nontrivial root of $X^2+X+1$, hence to a nontrivial cube root of unity in $\mathbf F_p$, which occurs exactly when $p\equiv1\pmod3$.
+whose discriminant is
+$$
+\Delta_C=-3s^2.
+$$
+The corresponding $w$-parameters are roots of $X^2-SX+R$ with $S=1/s$ and $R=-s$, so their discriminant is
+$$
+\Delta_D=\frac{1}{s^2}+4s=3s=s^2\Delta_C,
+$$
+where $s^3=-1$ was used. Thus both parameter pairs are distinct and lie in $\mathbf F_p$ exactly when $-3$ is a square in $\mathbf F_p$. This is equivalent to $X^2+X+1$ having a root, hence to a nontrivial cube root of unity in $\mathbf F_p$. Since $\mathbf F_p^\times$ is cyclic of order $p-1$, this occurs exactly when $p\equiv1\pmod3$.
 
 When $p\equiv1\pmod3$, let $1,\omega,\omega^2$ be the cube roots of unity. The three values
 $$
 s=-1,\ -\omega,\ -\omega^2
 $$
-are exactly the solutions of $s^3=-1$. They give three distinct lines because the normalized second minor equals $s$. Since $r=s^2\neq0$, none contains $e_0$.
+are exactly the solutions of $s^3=-1$. They give three distinct lines because the normalized second minor equals $s$. Since $r=s^2\neq0$, both $a$ and $b$ are nonzero; the Vandermonde determinant from Step 2 applied to $0,a,b$ shows that none of these lines contains $e_0$.
 
 Therefore, when $p\equiv1\pmod3$,
 $$
