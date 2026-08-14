@@ -46,6 +46,12 @@ K(\lambda,\mu)\cap H
 \operatorname{conv}\{P_r(\lambda,\mu):r\in F\}.
 $$
 
+For every $5$-element set $E\subset R_m$, define
+$$
+s_E=\sum_{r\in E}x_r,
+\qquad
+q_E=\sum_{r\in E}x_r^2.
+$$
 Define
 $$
 \rho_m
@@ -62,7 +68,11 @@ Prove that there is exactly one ordered pair $(E_m,\sigma_m)$, where $E_m\subset
 $$
 \{P_r(\sigma_m\rho_m,-\rho_m):r\in E_m\}
 $$
-are affinely dependent. Determine $(E_m,\sigma_m)$ exactly.
+are affinely dependent. Determine the ordered triple
+$$
+(E_m,\rho_m,\sigma_m)
+$$
+exactly.
 
 ---
 
@@ -79,4 +89,4 @@ are affinely dependent. Determine $(E_m,\sigma_m)$ exactly.
 
 ## Domain Explanation
 
-The problem asks for the unique five-vertex circuit and parameter-corner direction responsible for the first loss of facet stability in a two-parameter family of four-dimensional convex hulls. The main difficulty is to reconstruct a global orientation margin, compress all possible five-point obstructions to retained consecutive windows, and then prove which asymmetric window is the unique first obstruction.
+The problem asks for the complete critical certificate for the first loss of facet stability in a two-parameter family of four-dimensional convex hulls: the responsible five-vertex circuit, the exact robust radius, and the corner direction. The main difficulty is to reconstruct a global orientation margin, compress all possible five-point obstructions to retained consecutive windows, and then prove which asymmetric window is the unique first obstruction.
