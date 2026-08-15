@@ -16,11 +16,11 @@ so $m=0$. Therefore
 $$
 Z_a=\langle B^2\rangle.
 $$
-Thus
+Modulo $Z_a$, normal-form uniqueness gives unique representatives $A^mB^\epsilon Z_a$ with $\epsilon\in\{0,1\}$. Hence there are no further relations in
 $$
 \Gamma_a/Z_a=\langle \overline A,\overline B:\overline B^2=e,\ \overline B\overline A\overline B=\overline A^{-1}\rangle,
 $$
-the infinite dihedral group. The reflection subgroups $\langle\overline B\rangle$ and $\langle\overline{AB}\rangle$ are distinct, intersect in the identity coset $Z_a$, and generate the whole quotient because
+so this quotient is the infinite dihedral group. The reflection subgroups $\langle\overline B\rangle$ and $\langle\overline{AB}\rangle$ are distinct, intersect in the identity coset $Z_a$, and generate the whole quotient because
 $$
 \overline{AB}\,\overline B=\overline A.
 $$
@@ -73,7 +73,15 @@ Put $d=1-c$. After reflecting the shifted $x$-coordinate when $u>\frac14$, the f
 $$
 (m,2ka),\qquad (m-c,(2k+1)a),\qquad m,k\in\mathbb Z,
 $$
-with $0\leq c\leq\frac12$. For an orbit vector $v$, its Dirichlet inequality is $2(x,y)\cdot v\leq\|v\|^2$. Let $P$ be the intersection of the inequalities from
+with $0\leq c\leq\frac12$. For $u<\frac14$, the sites at horizontal offsets $-c$ and $d$ represent the classes $\overline B$ and $\overline{AB}$; for $u>\frac14$ these two classes are interchanged.
+
+For every lift $z$,
+$$
+d_{K_a}(p_u,\pi(z))=\min_{g\in\Gamma_a}\|z-g\widetilde p_u\|.
+$$
+The orbit is discrete, so a minimizer $g$ exists; replacing $z$ by $g^{-1}z$ puts it in the Dirichlet cell, where the distance is its norm after translating $\widetilde p_u$ to $0$. Hence farthest points are exactly norm-maximizers of that cell, and active equalities give the minimizing orbit labels defining $F_a(u)$.
+
+After translating $\widetilde p_u$ to the origin, the Dirichlet inequality for an orbit vector $v$ is $2(x,y)\cdot v\leq\|v\|^2$. Let $P$ be the intersection of the inequalities from
 $$
 (\pm1,0),\quad(0,\pm2a),\quad(-c,\pm a),\quad(d,\pm a).
 $$
@@ -97,7 +105,13 @@ where the last inequality is equality only when $c=0$ and $n=1$. Hence every tra
 $$
 2rx+2jay\leq r^2+a^2+2(|j|-1)a^2<r^2+j^2a^2.
 $$
-Thus every farther odd row is strictly redundant. Consequently $P$ is exactly the Dirichlet cell. The only possible omitted odd equality is the case $c=0$, $m=-1$, $|j|=1$; then $c(1-c)=0$, so it occurs only in the regime where the farthest subgroup found below is already the whole quotient. Since every point of $P$ is a convex combination of its vertices and squared Euclidean norm is convex, every farthest point is a vertex.
+Thus every farther odd row is strictly redundant. Since the full Dirichlet cell $D$ satisfies $D\subseteq P$, while all omitted inequalities hold on $P$, we also have $P\subseteq D$; hence $D=P$.
+
+The only possible omitted odd equality is $c=0$, $m=-1$, $|j|=1$; then $c(1-c)=0$, so the farthest subgroup below is already the whole quotient. Finally, strict convexity gives
+$$
+\|tx+(1-t)y\|^2<t\|x\|^2+(1-t)\|y\|^2
+$$
+for distinct $x,y$ and $0<t<1$, so every norm-maximizer of $P$ is a vertex.
 
 The upper oblique sides of $P$ are
 $$
@@ -184,7 +198,7 @@ $$
 $$
 At equality both reflection classes become shortest, so the endpoint is excluded.
 
-At $u=0$ or $u=\frac12$, one has $c=0$, and the generic interval would require $0\leq a<0$, so there are no endpoint solutions. Necessity is exhausted: below the generic lower boundary the join is too small, at the generic upper boundary the intersection is nontrivial, and at the special upper boundary $\overline N_a(u)$ is already nontrivial. Sufficiency follows from the two subgroup configurations: either the two distinct reflections generate the quotient and intersect trivially, or on the exceptional line $\overline N_a(u)$ is trivial while $\overline F_a(u)$ is the whole quotient.
+At $u=0$ or $u=\frac12$, $c=0$, so the generic interval is empty. The preceding cases prove necessity and sufficiency: off the exceptional line the two distinct reflections generate the quotient with trivial intersection, while on it $\overline N_a(u)$ is trivial and $\overline F_a(u)$ is the whole quotient.
 
 The prompt-defined $c$ satisfies $0\leq c\leq\frac12$, so $2c<1$ is equivalent to $u\ne\frac14$, while $2c=1$ is equivalent to $u=\frac14$.
 
