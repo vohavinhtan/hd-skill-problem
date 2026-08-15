@@ -2,61 +2,41 @@
 
 ## LaTeX (Normalized)
 
-Fix real parameters
+Let $p\geq13$ be a prime with
 $$
-\frac{7}{9}<\sigma<\frac{4}{5},
-\qquad
-\frac{7}{10}<r<\frac{3}{4}.
+p\equiv1\pmod 4,
 $$
-For
-$$
-\frac{1}{9}<\lambda<\frac{3}{20},
-$$
-write
-$$
-P(x)=a_4x^8+a_3x^6+a_2x^4+a_1x^2+a_0
-$$
-and define
+and let $\chi$ be the quadratic character of $\mathbb F_p$, extended by $\chi(0)=0$.
+
+For $\frac{1}{2}<\lambda<1$, assign a nonnegative real variable $w_{x,y}$ to each $(x,y)\in\mathbb F_p^2$. Let $V_p(\lambda)$ be the maximum of
 $$
 \begin{aligned}
-\Phi_{\sigma,\lambda}(P)
-={}&3a_0+(1+\sigma)a_1
-+(1+\sigma^2-2\lambda)a_2\\
-&+(1+\sigma^3-3\sigma\lambda)a_3
-+(1+\sigma^4-4\sigma^2\lambda+2\lambda^2)a_4.
+&\sum_{\substack{x,y\in\mathbb F_p\\y=x^2}}w_{x,y}
++\lambda\sum_{\substack{x,y\in\mathbb F_p\\\chi(y-x^2)=1}}w_{x,y}\\
+&\qquad
++\lambda^3\sum_{\substack{x,y\in\mathbb F_p\\\chi(y-x^2)=-1}}w_{x,y}
 \end{aligned}
 $$
-
-Let $P_{\sigma,\lambda}^*$ be the unique maximizer of $\Phi_{\sigma,\lambda}(P)$ over all even real polynomials $P$ of degree at most $8$ satisfying
+over all such families satisfying
 $$
-(2-x^2)P(x)\leq1
-\qquad(-1\leq x\leq1)
+\sum_{x\in\mathbb F_p}w_{x,mx+c}\leq1
+\qquad(m,c\in\mathbb F_p)
 $$
 and
 $$
-P(1)\leq\frac{4}{5}.
+\sum_{y\in\mathbb F_p}w_{c,y}\leq\frac{9}{10}
+\qquad(c\in\mathbb F_p).
 $$
 
-For every allowed pair $(\sigma,r)$ there is a unique
+Prove that $V_p$ has exactly one point $\Lambda_p\in(\frac{1}{2},1)$ at which it is not differentiable. Determine the primitive irreducible polynomial
 $$
-\Lambda_\sigma(r)\in\left(\frac{1}{9},\frac{3}{20}\right)
+F(p,z)\in\mathbb Z[p,z]
 $$
-such that $P_{\sigma,\lambda}^*$ also satisfies
+whose coefficient of $pz^3$ is positive and which satisfies
 $$
-\left(\frac{5}{4}-r(1-x^2)\right)P_{\sigma,\lambda}^*(x)\leq1
-\qquad(-1\leq x\leq1)
+F(p,\Lambda_p)=0
 $$
-if and only if $\lambda\geq\Lambda_\sigma(r)$.
-
-Determine the primitive irreducible polynomial
-$$
-F(\sigma,r,z)\in\mathbb Z[\sigma,r,z]
-$$
-whose coefficient of $rz^3$ is positive and which satisfies
-$$
-F\bigl(\sigma,r,\Lambda_\sigma(r)\bigr)=0
-$$
-for every allowed pair $(\sigma,r)$.
+for every prime $p\geq13$ with $p\equiv1\pmod4$.
 
 ---
 
@@ -73,4 +53,4 @@ for every allowed pair $(\sigma,r)$.
 
 ## Domain Explanation
 
-The relaxed problem is a finite-dimensional linear program with infinitely many pointwise constraints on an even degree-eight polynomial. The parameter to be identified is the robustness threshold at which its unique optimizer first satisfies an additional semi-infinite constraint. The decisive structure is therefore parametric linear optimization; polynomial interpolation and moment identities provide the certificate used to locate the threshold.
+This is a parametric linear program on point weights in a finite affine plane. The difficulty is to identify an affine symmetry that compresses the problem, reconstruct the incidence counts of the resulting point and line orbits using the quadratic character, and then certify the two optimal bases on opposite sides of the unique phase transition. The requested polynomial records that transition uniformly over an unbounded family of primes.
