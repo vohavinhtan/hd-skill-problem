@@ -45,65 +45,45 @@ Thus the facet signs are the cyclic ones, so the first loss of simpliciality occ
 
 Step 2: Certify that only two central five-windows can be first
 
-Put $z_r=x_r/t$, $r_0=t^2$, and $S=60t^4$. Since
+Put $z_r=x_r/t$ and $S=60t^4$. The retained scaled offsets near the center are
 $$
-x_{m+j}=-\sin((4j-3)t),
+\ldots,39,35,31,27,23,15,11,7,-1,-5,-9,-21,-25,\ldots ,
 $$
-the retained scaled offsets near the center are
+and
 $$
-\ldots,39,35,31,27,23,15,11,7,-1,-5,-9,-21,-25,\ldots .
+\frac{D_E(S)}{t^4}=\Psi_\alpha(z_E),\qquad \Psi_\alpha=h_4-60h_2-60\alpha h_3.
 $$
-For a consecutive window $E$,
-$$
-\frac{D_E(S)}{t^4}=\Psi_\alpha(z_E),
-\qquad
-\Psi_\alpha=h_4-60h_2-60\alpha h_3.
-$$
-
-First dispose of the tails. If a positive window has every coordinate at least $q$, then
+For a positive window with all coordinates at least $q$,
 $$
 h_4\ge qh_3,\qquad h_4\ge q^2h_2,
 $$
-by multiplying every monomial of $h_3$, respectively $h_2$, by one fixed coordinate. Hence for $q>22$,
+so for $q>22$,
 $$
-\Psi_\alpha
-\ge h_4\left(1-\frac{60}{q^2}-\frac{18}{q}\right)>0,
+\Psi_\alpha\ge h_4\left(1-\frac{60}{q^2}-\frac{18}{q}\right)>0.
 $$
-because at $q=22$ the bracket is $7/121$. Every positive window ending at offset at least $23$ satisfies $q\ge \sin(23t)/t>23-23^3/(6\cdot16000)>22$. On the negative tail write the coordinates as $-w_i$. If every $w_i\ge q>4.9$, then $h_3(w)\ge qh_2(w)$, so
+The last bracket equals $7/121$ at $q=22$, and $\sin(23t)/t>23-23^3/(6\cdot16000)>22$. Thus all positive windows ending at offset at least $23$ are excluded. If $z_i=-w_i$ with $w_i\ge q>4.9$, then $h_3(w)\ge qh_2(w)$ and
 $$
-h_2(-w)+\alpha h_3(-w)=h_2(w)-\alpha h_3(w)<0.
+h_2(z)+\alpha h_3(z)\le h_2(w)(1-\alpha q)<0.
 $$
-Thus $D_E(s)$ increases with $s$ and never vanishes. Every all-negative window beginning with absolute offset at least $5$ has $q\ge\sin(5t)/t>4.9$.
+Since $\sin(5t)/t>4.9$, every all-negative window beginning with absolute offset at least $5$ has $D_E(s)$ increasing for $s\ge0$.
 
-It remains to certify eight central windows. For a signed integer tuple $k=(k_1,\ldots,k_5)$ let
+For the eight remaining windows write $z_i=\sin(k_it)/t$, $M=\max|k_i|$, and $A=\sum|k_i|^3$. Since $t^2<1/16000$,
 $$
-z_i=\frac{\sin(k_it)}t,\qquad M=\max_i|k_i|,\qquad A=\sum_i|k_i|^3.
+|z_i-k_i|\le\frac{|k_i|^3t^2}{6}.
 $$
-Since $r_0<1/16000$,
+As $h_j$ has $N_j=\binom{j+4}{4}$ monomials and the total exponent of each fixed variable is $jN_j/5$, telescoping the monomials gives
 $$
-|z_i-k_i|\le\frac{|k_i|^3r_0}{6}.
+|h_j(z)-h_j(k)|<B_j(k):=\frac{j}{480000}\binom{j+4}{4}M^{j-1}A.
 $$
-There are $N_j=\binom{j+4}{4}$ monomials in $h_j$. In all these monomials the total exponent of a fixed variable is $jN_j/5$. Telescoping each monomial therefore gives the reproducible bound
+The exact integer values use
 $$
-|h_j(z)-h_j(k)|
-\le \frac{jN_j}{5}M^{j-1}\sum_i|z_i-k_i|
-< B_j(k),
+h_2=\frac{p_1^2+p_2}{2},\quad
+h_3=\frac{p_1^3+3p_1p_2+2p_3}{6},\quad
+h_4=\frac{p_1^4+6p_1^2p_2+3p_2^2+8p_1p_3+6p_4}{24},
 $$
-where
-$$
-B_j(k)=\frac{j}{480000}\binom{j+4}{4}M^{j-1}A.
-$$
-For exact integer evaluation, if $p_j=\sum_i k_i^j$, then
-$$
-h_2=\frac{p_1^2+p_2}{2},\qquad
-h_3=\frac{p_1^3+3p_1p_2+2p_3}{6},
-$$
-$$
-h_4=\frac{p_1^4+6p_1^2p_2+3p_2^2+8p_1p_3+6p_4}{24}.
-$$
-Thus every entry in the following table is obtained by integer arithmetic from the displayed tuple. Put $B_\Psi=B_4+60B_2+18B_3$.
+where $p_j=\sum_i k_i^j$. Set $B_\Psi=B_4+60B_2+18B_3$.
 
-| $k$ | endpoint $\beta$ | $h_3(k)$ | $B_3(k)$ | $\Psi_\beta(k)$ | $B_\Psi(k)$ |
+| $k$ | $\beta$ | $h_3(k)$ | $B_3$ | $\Psi_\beta(k)$ | $B_\Psi$ |
 |---|---:|---:|---:|---:|---:|
 | $(35,31,27,23,15)$ | $3/10$ | $650965$ | $<28912$ | $22884936$ | $<3232966$ |
 | $(31,27,23,15,11)$ | $3/10$ | $363517$ | $<13948$ | $9478392$ | $<1411750$ |
@@ -112,23 +92,19 @@ Thus every entry in the following table is obtained by integer arithmetic from t
 | $(15,11,7,-1,-5)$ | $29/100$ | $10605$ | $<255$ | $-36621$ | $<15065$ |
 | $(11,7,-1,-5,-9)$ | $29/100$ | $693$ | $<67$ | $-17721/5$ | $<3273$ |
 
-The $B_3$ column shows $h_3(z)>0$ in all six rows. Hence the first four rows remain positive for every $\alpha<3/10$, while the last two remain negative for every $\alpha>29/100$. Since $D_E(0)=h_4(E)>0$, precisely the last two windows have a zero in $(0,S)$.
+Thus $h_3(z)>0$ in these rows. The first four have $\Psi_\alpha(z)>0$ for $\alpha<3/10$; the last two have $\Psi_\alpha(z)<0$ for $\alpha>29/100$, hence their zero times lie in $(0,S)$.
 
-For the remaining two mixed/right windows set $L_\alpha=h_2+\alpha h_3$. Here $h_3(z)<0$, as certified by the same $B_3$ estimate, so $L_\alpha\le L_{29/100}$. With $B_L=B_2+(3/10)B_3$ one obtains
+For the last two windows put $L_\alpha=h_2+\alpha h_3$. The same bound gives $h_3(z)<0$ and, with $B_L=B_2+(3/10)B_3$,
 
-| $k$ | $h_3(k)$ | $B_3(k)$ | $L_{29/100}(k)$ | $B_L(k)$ |
+| $k$ | $h_3(k)$ | $B_3$ | $L_{29/100}(k)$ | $B_L$ |
 |---|---:|---:|---:|---:|
 | $(7,-1,-5,-9,-21)$ | $-15979$ | $<1009$ | $-391491/100$ | $<317$ |
 | $(-1,-5,-9,-21,-25)$ | $-82187$ | $<3520$ | $-2138723/100$ | $<1097$ |
 
-Thus $L_\alpha(z)<0$ in both rows, so their $D_E(s)$ increase and never vanish for $s>0$.
-
-Consequently, for every $29/100<\alpha<3/10$, the only consecutive windows whose first zero occurs before $60t^4$ are
+so $L_\alpha(z)<0$ and these windows never vanish for $s>0$. Therefore the only windows with a zero before $S$ are
 $$
-E_- =\{m-3,m-2,m-1,m+1,m+2\},
-$$
-$$
-E_+ =\{m-2,m-1,m+1,m+2,m+3\}.
+E_-=\{m-3,m-2,m-1,m+1,m+2\},\qquad
+E_+=\{m-2,m-1,m+1,m+2,m+3\}.
 $$
 
 Step 3: Force the simultaneous six-point event and compute the exact parameter
