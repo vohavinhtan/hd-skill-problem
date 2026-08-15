@@ -32,7 +32,7 @@ $$
 \{\varphi\in\operatorname{Aut}(G_{p,\nu}):\varphi(H)=H\}.
 $$
 
-Determine $|\operatorname{Aut}(G_{p,\nu};H)|$ as a function of $p$. Your answer must in particular show that this order is independent of the choice of the nonsquare $\nu$.
+Determine $|\operatorname{Aut}(G_{p,\nu};H)|$ as a function of $p$.
 
 ---
 
@@ -49,4 +49,4 @@ Determine $|\operatorname{Aut}(G_{p,\nu};H)|$ as a function of $p$. Your answer 
 
 ## Domain Explanation
 
-The problem asks for the order of a stabilizer inside the automorphism group of a finite class-two $p$-group. The commutator relations encode a hidden quadratic field structure on the central quotient, and the subgroup $H$ imposes an additional stabilizer condition that must be resolved after the compatible automorphisms of the commutator map are classified.
+This is an exact automorphism-counting problem for a finite class-two $p$-group with a marked subgroup. The commutator tensor hides a quadratic field structure that is not named in the statement. After recovering that structure, the marked subgroup forces a second stabilizer calculation before the central automorphisms can be counted.
