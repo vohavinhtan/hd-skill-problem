@@ -2,34 +2,35 @@
 
 ## LaTeX (Normalized)
 
-Let $m\geq 100$ be an integer, and set
+Let $m\geq 10000$ be an integer, and set
 $$
 n=4m+3,
 \qquad
-\delta=\frac{\pi}{n}.
+t=\frac{\pi}{2n}.
 $$
-For $1\leq r\leq 2m+1$, define
+For $1\le r\le 2m+1$, define
 $$
-x_r=\cos(2r\delta).
+x_r=\cos\frac{2\pi r}{n}.
 $$
-Delete the three indices
+Delete the four indices
 $$
-D_m=\{m-3,m-2,m+1\},
+D_m=\{m-1,m,m+2,m+5\},
 $$
 and write
 $$
 R_m=\{1,\ldots,2m+1\}\setminus D_m.
 $$
+
 For $(\lambda,\mu)\in\mathbb R^2$ and $r\in R_m$, put
 $$
 P_r(\lambda,\mu)
 =
-\bigl(
+\left(
 x_r,
 x_r^2,
 x_r^3,
-x_r^6+\lambda x_r^5+\mu x_r^4
-\bigr)
+x_r^6+\frac{\lambda}{t}x_r^5+\mu x_r^4
+\right)
 \in\mathbb R^4,
 $$
 and
@@ -52,27 +53,41 @@ s_E=\sum_{r\in E}x_r,
 \qquad
 q_E=\sum_{r\in E}x_r^2.
 $$
-Define
+Call a $5$-element subset of $R_m$ consecutive if its elements are consecutive in the increasing order on $R_m$.
+
+For a consecutive $5$-element set $E\subset R_m$, define
+$$
+d(E)
+=
+\inf\left\{
+\rho>0:
+\begin{array}{c}
+\text{there exist }|\lambda|\le\rho,\ |\mu|\le\rho\\
+\text{for which }\{P_r(\lambda,\mu):r\in E\}
+\text{ is affinely dependent}
+\end{array}
+\right\}.
+$$
+
+Prove that among consecutive $5$-element subsets of $R_m$ there is a unique minimizer $A_m$ of $d(E)$ and a unique second minimizer $B_m$. For each $E\in\{A_m,B_m\}$, prove there is a unique $\sigma(E)\in\{-1,1\}$ such that affine dependence occurs at
+$$
+(\lambda,\mu)=\bigl(\sigma(E)d(E),-d(E)\bigr).
+$$
+
+Finally define
 $$
 \rho_m
 =
 \sup\left\{
 \rho>0:
 \mathcal F(\lambda,\mu)=\mathcal F(0,0)
-\text{ whenever }|\lambda|<\rho\text{ and }|\mu|<\rho
+\text{ whenever }|\lambda|<\rho,\ |\mu|<\rho
 \right\}.
 $$
-Call a $5$-element subset of $R_m$ consecutive if its elements are consecutive in the increasing order on $R_m$.
-
-Prove that there is exactly one ordered pair $(E_m,\sigma_m)$, where $E_m\subset R_m$ is a consecutive $5$-element set and $\sigma_m\in\{-1,1\}$, such that the five points
+Prove that $\rho_m=d(A_m)$ and determine exactly
 $$
-\{P_r(\sigma_m\rho_m,-\rho_m):r\in E_m\}
+\bigl(A_m,\sigma(A_m),B_m,\sigma(B_m),\rho_m\bigr).
 $$
-are affinely dependent. Determine the ordered triple
-$$
-(E_m,\rho_m,\sigma_m)
-$$
-exactly.
 
 ---
 
@@ -89,4 +104,4 @@ exactly.
 
 ## Domain Explanation
 
-The problem asks for the complete critical certificate for the first loss of facet stability in a two-parameter family of four-dimensional convex hulls: the responsible five-vertex circuit, the exact robust radius, and the corner direction. The main difficulty is to reconstruct a global orientation margin, compress all possible five-point obstructions to retained consecutive windows, and then prove which asymmetric window is the unique first obstruction.
+The problem asks for the first two affine-dependence obstructions to robust facet stability in a scaled two-parameter family of four-dimensional convex hulls. The first and second obstruction margins are asymptotically extremely close, so locating their exact order requires a global compression argument together with quantitative control of the small-angle error rather than a nearest-to-zero heuristic.
