@@ -2,19 +2,29 @@
 
 ## LaTeX (Normalized)
 
-Let $p\ge 7$ be a prime. Define
+Let $a,b\in\mathbb Z$ satisfy
 $$
-S_p=\left\{x\in\mathbb F_p:\ x^2-x+1\text{ is a nonzero square in }\mathbb F_p\right\},
+a\equiv1\pmod4,\qquad b>0,\qquad b\equiv0\pmod4,
 $$
-and set
+and suppose that
 $$
-Q_p=\prod_{x\in S_p}(x^2-x+1)\in\mathbb F_p.
+p=a^2+b^2
 $$
+is prime. In $\mathbb F_p$, define
+$$
+T_p=\left\{x\in\mathbb F_p^\times:
+ x^2-2\text{ and }x^2+2\text{ are both nonzero squares in }\mathbb F_p\right\}.
+$$
+Set
+$$
+P_p=\prod_{x\in T_p}x\in\mathbb F_p,
+$$
+with the empty product interpreted as $1$.
 
-Determine the least nonnegative residue of $Q_p$ modulo $p$.
+Determine $P_p$ in $\mathbb F_p$.
 
-Your answer must be a closed formula in $p$. It must not contain any
-Legendre or Jacobi symbol, nor any sum or product whose number of terms
+Your answer may use only $p$ and $a$. It must not contain a Legendre or
+Jacobi symbol, a character sum, or any sum or product whose number of terms
 depends on $p$.
 
 ---
@@ -32,11 +42,9 @@ depends on $p$.
 
 ## Domain Explanation
 
-The problem asks for an exact product modulo an odd prime over those field
-elements for which a quadratic polynomial takes a nonzero quadratic-residue
-value. A successful derivation must convert that quadratic-residue condition
-into the rational points of a conic, evaluate a global finite-field product
-while handling the exceptional zero points separately, and then remove the
-remaining quadratic-character cases by reciprocity. The decisive structure is
-therefore finite-field congruence and quadratic reciprocity rather than routine
-polynomial factorization.
+The problem asks for an exact finite-field product over the intersection of
+two quadratic-residue conditions. The representation $p=a^2+b^2$ fixes the
+arithmetic sign information needed for a uniform answer, while the product
+itself is controlled by nontrivial structure in the simultaneous residue
+constraints rather than by either quadratic condition separately. The main
+content is therefore finite-field congruence and quadratic-residue arithmetic.
