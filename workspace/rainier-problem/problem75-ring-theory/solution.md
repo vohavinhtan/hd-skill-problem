@@ -168,7 +168,7 @@ before wrapping.
 
 No further relation creates a third generator. Same-row relations reduce by the proved syzygy description of $I$, adjacent-row relations by $I^2=I$, and if two row indices differ by at least two, the already constructed adjacent relation for the larger index reduces the separation because $a_{r+2}=a_r+14$ and $14\in H$. Induction on the separation reaches one of the two handled cases.
 
-Now impose $s^n=u$. If $n$ is even, the last row is odd, and its next-row outputs have offsets $9,14$; after wrapping these become offsets $10,15$, both in $K$, so no new translate appears. If $n$ is odd, the last row $r=n-1$ is even. Its even-to-odd computation has prospective next-row weights $a_r+5$ and $a_r+10$. Replacing $s^n$ by $u$ lowers the residue from $n$ to $0$ and raises the $u$-weight by $1$, so these become offsets $6$ and $11$ from $a_r$. The offset $6$ lies in $H$ and is already present, while $11=4+7$ contributes the new translate $7+H$. Any further wrapped term differs from one of these by an element of $H$, so it is already in $K$ or in $7+H$. Therefore the final even row is obtained by replacing $K$ with $L$:
+When $s^n=u$ is imposed, the same reduction is performed with every $s^n$ immediately replaced by $u$. If $n$ is even, no new last-row translate occurs. If $n$ is odd, the last row is even and the boundary reduction supplies exactly one additional translate $7+H$; hence
 $$
 Q_{n-1}=\begin{cases}
 (7n+1)+L,&\lambda^2\neq1,\\
