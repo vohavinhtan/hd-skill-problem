@@ -22,7 +22,7 @@ y=x^2,\qquad \chi(y-x^2)=1,\qquad \chi(y-x^2)=-1,
 $$
 respectively.
 
-There are $p$ points in the first class and $p(p-1)/2$ in each of the other two. Therefore the objective becomes
+There are $p$ points in the first class and $\frac{p(p-1)}{2}$ in each of the other two. Therefore the objective becomes
 $$
 p a+\frac{p(p-1)}{2}\left(\lambda b+\lambda^3c\right).
 $$
@@ -33,13 +33,13 @@ Consider a nonvertical line $y=mx+d$. Put
 $$
 \Delta=m^2+4d.
 $$
-After replacing $x$ by $u+m/2$,
+After replacing $x$ by $u+\frac{m}{2}$,
 $$
 y-x^2=\frac{\Delta}{4}-u^2.
 $$
 If $\Delta=0$, there is one point with $y=x^2$. Since $p\equiv1\pmod{4}$, one has $\chi(-1)=1$, so all other $p-1$ points satisfy $\chi(y-x^2)=1$.
 
-Now suppose $\Delta\neq0$ and write $A=\Delta/4$. Choose $i\in\mathbb F_p$ with $i^2=-1$. The number of pairs $(u,v)$ satisfying
+Now suppose $\Delta\neq0$ and write $A=\frac{\Delta}{4}$. Choose $i\in\mathbb F_p$ with $i^2=-1$. The number of pairs $(u,v)$ satisfying
 $$
 u^2+v^2=A
 $$
@@ -64,7 +64,7 @@ $$
 \chi(\Delta)=-1&0&\frac{p-1}{2}&\frac{p+1}{2}.
 \end{array}
 $$
-A vertical line contains one point of the first class and $(p-1)/2$ points of each other class.
+A vertical line contains one point of the first class and $\frac{p-1}{2}$ points of each other class.
 
 Consequently the original LP has the same optimal value as the three-variable LP
 $$
@@ -114,7 +114,7 @@ $$
 =
 \left(\frac{p+1}{3p-1},\frac{2}{3p-1},0\right).
 $$
-The first two primal constraints are equalities, while the third left side is $(p-1)/(3p-1)<1$ and the fourth is $2p/(3p-1)<9/10$. Thus this point is feasible.
+The first two primal constraints are equalities, while the third left side is $\frac{p-1}{3p-1}<1$ and the fourth is $\frac{2p}{3p-1}<\frac{9}{10}$. Thus this point is feasible.
 
 Set $y_E=y_V=0$ and
 $$
