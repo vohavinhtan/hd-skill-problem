@@ -22,14 +22,14 @@ $$
 \frac{z-u_0}{u_j-u_0}[u_0,z,u_1,\ldots,u_{j-1}]f+
 \frac{u_j-z}{u_j-u_0}[z,u_1,\ldots,u_j]f.
 $$
-The coefficients are positive and sum to $1$. Repeated insertion therefore writes every fourth divided difference as a convex combination of consecutive five-window differences. Hence positivity on consecutive windows implies positivity for every five-set.
+The positive coefficients sum to $1$; repeated insertion writes every fourth divided difference as a convex combination of consecutive ones. Hence positivity on consecutive windows implies positivity for every five-set.
 
 For a four-set $T$ and retained $y\notin T$,
 $$
 q_{\alpha,s}(y)-I_Tq_{\alpha,s}(y)
 =D_{T\cup\{y\}}(s)\prod_{x\in T}(y-x).
 $$
-While all $D_E>0$, these side-signs are exactly those at $s=0$; thus $T$ is supporting exactly when it was supporting at $0$. At $s=0$ no five vertices are coplanar, so it is simplicial. A nonsimplicial facet contains five coplanar vertices, hence some $D_E=0$. Therefore the first loss of simpliciality is exactly the first zero of a consecutive five-window.
+While all $D_E>0$, these side-signs are exactly those at $s=0$; thus $T$ is supporting exactly when it was supporting at $0$. At $s=0$ no five vertices are coplanar, so it is simplicial. A nonsimplicial facet contains five coplanar vertices, hence some $D_E=0$. Thus the first loss of simpliciality is the first zero of a consecutive five-window.
 
 Step 2: Certify the only two five-windows that can be first
 
@@ -103,21 +103,20 @@ $$
 $$
 For $k_3$,
 $$
-(h_2,h_3,h_4)=(143,693,17094),\quad
 \Psi_{29/100}=17094-60(143)-\frac{87}{5}(693)=-\frac{17721}{5},
 $$
 $$
 B_3=\frac{7\cdot11^2\cdot2529}{32000}<67,\qquad
 B_4+60B_2+18B_3<3273.
 $$
-Rows give
+Using the displayed $p$-vectors and formulas gives
 $$
-\begin{array}{c|rr|rr}
-i&h_3&B_3&T_i&B_i\\ \hline
-1&58905&1993&411456&159544\\
-2&10605&255&-36621&15065\\
-3&693&67&-17721/5&3273\\
-4&-15979&1009&-391491/100&317
+\begin{array}{c|rrr|r|rr}
+i&h_2&h_3&h_4&B_3&T_i&B_i\\ \hline
+1&1975&58905&1590246&1993&411456&159544\\
+2&575&10605&182406&255&-36621&15065\\
+3&143&693&17094&67&-17721/5&3273\\
+4&719&-15979&345030&1009&-391491/100&317
 \end{array}
 $$
 where $T_1=\Psi_{3/10}$, $T_2,T_3=\Psi_{29/100}$, $T_4=h_2+(29/100)h_3$, and
@@ -169,7 +168,11 @@ $$
 \frac{\sin(k_it)}t=k_i-\frac{k_i^3}{6}r+\rho_i,\qquad
 |\rho_i|\le\frac{|k_i|^5}{120}r^2,
 $$
-the first variation of $P$ is
+because
+$$
+\frac{k_i^3}{z-k_i}=\frac{z^3}{z-k_i}-(z^2+zk_i+k_i^2),
+$$
+and $\sum k_i=18$, $\sum k_i^2=502$, the first variation is
 $$
 \frac r6\left(z^3P'(z)-(6z^2+18z+502)P(z)\right)
 =\frac r6(4194z^5-638z^4-845580z^3+422564z^2+\cdots).
@@ -212,15 +215,22 @@ N=A^2C-AB^2-AD+BC,\quad
 \Delta=A^2D-2ABC+B^3-BD+C^2,
 $$
 and $Q_{29}=100N-29\Delta$, $Q_{30}=10N-3\Delta$. Then $\alpha=N/\Delta$.
-Let $N_0,\Delta_0$ denote these expressions with $\varepsilon_j=0$. Expansion gives
+Let
 $$
-\Delta_0=-2286438+90029142r+\frac{20070370642}{9}r^2+\frac{363416084639}{27}r^3,
+(A_0,B_0,C_0,D_0)=\left(18-699r,-89-\frac{319}{3}r,-2148+140930r,1663+\frac{211282}{3}r\right).
+$$
+Then, by the displayed definitions,
+$$
+\Delta_0=A_0^2D_0-2A_0B_0C_0+B_0^3-B_0D_0+C_0^2
+=-2286438+90029142r+\frac{20070370642}{9}r^2+\frac{363416084639}{27}r^3,
 $$
 $$
-Q_{29,0}=-1422498+6638160682r-\frac{4675787619818}{9}r^2+\frac{175400327938169}{27}r^3,
+Q_{29,0}=100(A_0^2C_0-A_0B_0^2-A_0D_0+B_0C_0)-29\Delta_0
+=-1422498+6638160682r-\frac{4675787619818}{9}r^2+\frac{175400327938169}{27}r^3,
 $$
 $$
-Q_{30,0}=86394+654813154r-52176199894r^2+\frac{5834563728451}{9}r^3.
+Q_{30,0}=10(A_0^2C_0-A_0B_0^2-A_0D_0+B_0C_0)-3\Delta_0
+=86394+654813154r-52176199894r^2+\frac{5834563728451}{9}r^3.
 $$
 Because $r<1/16000$,
 $$
@@ -229,20 +239,12 @@ $$
 $$
 Q_{29,0}<-1422498+414886+2<-1007000,\qquad Q_{30,0}>86394-204>86190.
 $$
-Moreover
-$$
-\nabla N=(2AC-B^2-D,-2AB+C,A^2+B,-A),
-$$
-$$
-\nabla\Delta=(2AD-2BC,-2AC+3B^2-D,-2AB+2C,A^2-B),
-$$
-and $\nabla Q_{29}=100\nabla N-29\nabla\Delta$, $\nabla Q_{30}=10\nabla N-3\nabla\Delta$.
-On the box above, their absolute coordinate bounds are
+Differentiating the displayed $N,\Delta,Q_{29},Q_{30}$ on the box above gives the coordinate bounds
 $$
 |\nabla\Delta|<(452000,107700,7720,451),
 $$
 $$
-|\nabla Q_{29}|<(22246400,3680300,268980,14979),\qquad
+|\nabla Q_{29}|<(22246400,3680300,268980,14979),\quad
 |\nabla Q_{30}|<(2269800,378800,27670,1543).
 $$
 Multiplication by the error vector $(1/30000,1/200,1/5,4)$ gives total changes
@@ -264,13 +266,13 @@ Both candidate five-sets are then dependent; Step 2 makes this their common firs
 
 Step 4: Prove uniqueness of the first nonsimplicial facet
 
-Steps 1--2 leave only $E_-,E_+$ as first-zero candidates. If their zero times differ, the earlier five-window is itself a supporting five-vertex facet: take its first four consecutive vertices, for which every other retained abscissa lies outside their interval, and use the interpolation-error formula from Step 1.
+By Steps 1--2 only $E_-,E_+$ can vanish first. If their zero times differ, the earlier window is a supporting five-vertex facet: its first four vertices span a hyperplane, all other retained abscissas lie outside their interval, and Step 1 gives one side-sign.
 
-Thus six vertices require simultaneous zeros. Step 3 determines the only possible $\alpha_m$ and constructs that event. At the common time only $E_-,E_+$ have zero consecutive divided difference. Knot insertion makes every five-set not contained in $C_m$ positive. Any facet with five vertices from $C_m$ is the hyperplane already found, hence contains all six; so it is unique and every other facet is tetrahedral.
+Thus six vertices require a tie, whose unique parameter is given by Step 3. At that time only $E_-,E_+$ have zero consecutive divided difference. Knot insertion makes every five-set outside $C_m$ positive; a dependent five-set inside $C_m$ spans the common hyperplane and brings in all six. Hence the six-vertex facet is unique and all others are tetrahedral.
 
 Step 5: Count the tetrahedral facets on the two sides
 
-Let $s_*=s_{\alpha_m}$ and order the critical abscissas as $y_1<\cdots<y_6$. With $F_*=q_{\alpha_m,s_*}-\ell$, we have $F_*>0$ outside $C_m$ and $F_*=0$ on $C_m$. Since the retained set is finite, outside-$C_m$ interpolation errors stay positive for all sufficiently small $|s-s_*|$. For $T\subset C_m$, $|T|=4$,
+Let $s_*=s_{\alpha_m}$, $y_1<\cdots<y_6$ be critical, and $F_*=q_{\alpha_m,s_*}-\ell$. Then $F_*>0$ outside $C_m$ and vanishes on $C_m$; finiteness preserves the outside sign for $s$ near $s_*$. For $T\subset C_m$, $|T|=4$,
 $$
 q_{\alpha_m,s}-I_Tq_{\alpha_m,s}
 =\left(1-\frac{s}{s_*}\right)(x^8-I_Tx^8)+\frac{s}{s_*}F_*.
@@ -279,11 +281,11 @@ At an omitted critical vertex $y$,
 $$
 y^8-I_Tx^8(y)=h_4(T\cup\{y\})\prod_{x\in T}(y-x),
 $$
-and $h_4>0$. If $T=C_m\setminus\{y_j,y_k\}$, $j<k$, the two product signs are $(-1)^{5-j}$ and $(-1)^{6-k}$. For $s<s_*$ they must both be positive, so the omitted pairs are
+with $h_4>0$. If $T=C_m\setminus\{y_j,y_k\}$, $j<k$, the two product signs are $(-1)^{5-j}$ and $(-1)^{6-k}$. For $s<s_*$ both must be positive, so
 $$
-(1,2),(1,4),(1,6),(3,4),(3,6),(5,6),
+(1,2),(1,4),(1,6),(3,4),(3,6),(5,6)
 $$
-giving $6$ tetrahedral facets. For $s>s_*$ both products must be negative, giving
+are the omitted pairs, giving $6$ tetrahedral facets. For $s>s_*$ both must be negative, leaving
 $$
 (2,3),(2,5),(4,5),
 $$
