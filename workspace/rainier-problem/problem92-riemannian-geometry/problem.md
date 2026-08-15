@@ -57,7 +57,7 @@ $$
 \overline N_a(u)\cap\overline F_a(u)=\{Z_a\}.
 $$
 
-Give the answer as one explicit region in the $(a,u)$-plane, and justify every equality and boundary case.
+Give the answer as one explicit region in the $(a,u)$-plane.
 
 ---
 
@@ -67,7 +67,7 @@ Give the answer as one explicit region in the $(a,u)$-plane, and justify every e
 |---|---|
 | **Domain** | Topology and Geometry |
 | **Sub-domain** | Riemannian geometry |
-| **Problem Type** | Parameter identification |
+| **Problem Type** | Symbolic derivation |
 | **Answer Type** | Interval or region description |
 
 ---
