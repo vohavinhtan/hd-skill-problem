@@ -2,91 +2,100 @@
 
 ## LaTeX (Normalized)
 
-Let $m\geq 10000$ be an integer, and set
+Let $m\geq 200$ be an integer, and set
 $$
 n=4m+3,
 \qquad
 t=\frac{\pi}{2n}.
 $$
-For $1\le r\le 2m+1$, define
+For $1\leq r\leq 2m+1$, define
 $$
 x_r=\cos\frac{2\pi r}{n}.
 $$
 Delete the four indices
 $$
-D_m=\{m-1,m,m+2,m+5\},
+D_m=\{m-1,m+1,m+2,m+5\},
 $$
 and write
 $$
 R_m=\{1,\ldots,2m+1\}\setminus D_m.
 $$
 
-For $(\lambda,\mu)\in\mathbb R^2$ and $r\in R_m$, put
+For every $5$-element set $E\subset R_m$ and every integer $k\geq0$, define
 $$
-P_r(\lambda,\mu)
+H_0(E)=1,
+$$
+and, for $k\geq1$,
+$$
+H_k(E)
+=
+\sum_{r_1\leq\cdots\leq r_k\atop r_1,\ldots,r_k\in E}
+ x_{r_1}\cdots x_{r_k}.
+$$
+For $k\in\{1,3\}$, set
+$$
+R_k(E)=\frac{H_k(E)}{H_4(E)}.
+$$
+
+For $\alpha\in(1,2)$, $(\lambda,\mu)\in\mathbb R^2$, and $r\in R_m$, put
+$$
+P_r^{(\alpha)}(\lambda,\mu)
 =
 \left(
 x_r,
 x_r^2,
 x_r^3,
-x_r^6+\frac{\lambda}{t}x_r^5+\mu x_r^4
+x_r^8+\frac{\lambda}{t^3}x_r^7+\frac{\alpha\mu}{t}x_r^5
 \right)
 \in\mathbb R^4,
 $$
 and
 $$
-K(\lambda,\mu)
+K_\alpha(\lambda,\mu)
 =
-\operatorname{conv}\{P_r(\lambda,\mu):r\in R_m\}.
+\operatorname{conv}\{P_r^{(\alpha)}(\lambda,\mu):r\in R_m\}.
 $$
 
-For a $4$-element set $F\subset R_m$, write $F\in\mathcal F(\lambda,\mu)$ if there is an affine hyperplane $H\subset\mathbb R^4$ such that $K(\lambda,\mu)$ lies in one of the two closed half-spaces bounded by $H$ and
+For a $4$-element set $F\subset R_m$, write $F\in\mathcal F_\alpha(\lambda,\mu)$ if there is an affine hyperplane $H\subset\mathbb R^4$ such that $K_\alpha(\lambda,\mu)$ lies in one of the two closed half-spaces bounded by $H$ and
 $$
-K(\lambda,\mu)\cap H
+K_\alpha(\lambda,\mu)\cap H
 =
-\operatorname{conv}\{P_r(\lambda,\mu):r\in F\}.
+\operatorname{conv}\{P_r^{(\alpha)}(\lambda,\mu):r\in F\}.
 $$
 
-For every $5$-element set $E\subset R_m$, define
+Call a $5$-element subset of $R_m$ consecutive if its elements are consecutive in the increasing order on $R_m$. For $\alpha\in(1,2)$ and a consecutive $5$-element set $E\subset R_m$, define
 $$
-s_E=\sum_{r\in E}x_r,
-\qquad
-q_E=\sum_{r\in E}x_r^2.
-$$
-Call a $5$-element subset of $R_m$ consecutive if its elements are consecutive in the increasing order on $R_m$.
-
-For a consecutive $5$-element set $E\subset R_m$, define
-$$
-d(E)
+d_\alpha(E)
 =
 \inf\left\{
 \rho>0:
 \begin{array}{c}
-\text{there exist }|\lambda|\le\rho,\ |\mu|\le\rho\\
-\text{for which }\{P_r(\lambda,\mu):r\in E\}
+\text{there exist }|\lambda|\leq\rho,\ |\mu|\leq\rho\\
+\text{for which }\{P_r^{(\alpha)}(\lambda,\mu):r\in E\}
 \text{ is affinely dependent}
 \end{array}
 \right\}.
 $$
 
-Prove that among consecutive $5$-element subsets of $R_m$ there is a unique minimizer $A_m$ of $d(E)$ and a unique second minimizer $B_m$. For each $E\in\{A_m,B_m\}$, prove there is a unique $\sigma(E)\in\{-1,1\}$ such that affine dependence occurs at
-$$
-(\lambda,\mu)=\bigl(\sigma(E)d(E),-d(E)\bigr).
-$$
+Prove that there is a unique number $\alpha_m\in(1,2)$ for which the minimum of $d_{\alpha_m}(E)$ over all consecutive $5$-element sets $E\subset R_m$ is attained by exactly two distinct sets. Denote those two sets by $A_m,B_m$, ordered so that $\min A_m<\min B_m$, and let $\rho_m$ be their common minimum.
 
-Finally define
+Prove also that $\rho_m$ is the largest real number $\rho>0$ such that
 $$
-\rho_m
+\mathcal F_{\alpha_m}(\lambda,\mu)
 =
-\sup\left\{
-\rho>0:
-\mathcal F(\lambda,\mu)=\mathcal F(0,0)
-\text{ whenever }|\lambda|<\rho,\ |\mu|<\rho
-\right\}.
+\mathcal F_{\alpha_m}(0,0)
 $$
-Prove that $\rho_m=d(A_m)$ and determine exactly
+whenever
 $$
-\bigl(A_m,\sigma(A_m),B_m,\sigma(B_m),\rho_m\bigr).
+|\lambda|<\rho,
+\qquad
+|\mu|<\rho.
+$$
+At the two boundary corners of the square $[-\rho_m,\rho_m]^2$ where $A_m$ and $B_m$ become affinely dependent, prove that moving radially outward changes the facet family in both cases.
+
+Determine exactly
+$$
+(A_m,B_m,\alpha_m).
 $$
 
 ---
@@ -104,4 +113,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for the first two affine-dependence obstructions to robust facet stability in a scaled two-parameter family of four-dimensional convex hulls. The first and second obstruction margins are asymptotically extremely close, so locating their exact order requires a global compression argument together with quantitative control of the small-angle error rather than a nearest-to-zero heuristic.
+The problem asks for the unique anisotropy at which two different affine-dependence obstructions become simultaneously critical for a robust parameter square. Its main difficulty is global: the solver must reconstruct the higher divided-difference orientation law, identify the lower envelope over retained five-windows, balance two distinct critical circuits exactly, and then prove that both boundary contacts correspond to genuine changes of supporting facets rather than irrelevant orientation degeneracies.
