@@ -6,7 +6,7 @@ Set
 $$
 q_{\alpha,s}(x)=x^8-\frac{s}{t^2}x^6-\frac{\alpha s}{t^3}x^7.
 $$
-For a finite set $E$ of five distinct abscissas, let $h_j(E)$ be the complete homogeneous symmetric polynomial of degree $j$. The affine determinant of the five lifted points, divided by the Vandermonde factor, is
+For a five-set $E$, let $h_j(E)$ be the complete homogeneous symmetric polynomial of degree $j$. Its affine determinant divided by the Vandermonde factor is
 $$
 D_E(s)=h_4(E)-\frac{s}{t^2}h_2(E)-\frac{\alpha s}{t^3}h_3(E).
 $$
@@ -49,12 +49,11 @@ $$
 $$
 For $\alpha\le3/10$ the last factor is positive for $z\ge10.9$ and $z\le-4.9$. Since
 $$
-\frac{\sin(11t)}t>10.9,\qquad
-\frac{\sin(5t)}t>4.9,
+\frac{\sin(kt)}t>k-\frac{k^3}{96000}\qquad(k>0),
 $$
-the divided-difference mean-value theorem excludes every five-window wholly beyond these thresholds from vanishing before $S$.
+in particular $\sin(11t)/t>10.9$ and $\sin(5t)/t>4.9$. The divided-difference mean-value theorem excludes every five-window wholly beyond these thresholds from vanishing before $S$.
 
-The retained scaled abscissas near the center are
+Writing each scaled abscissa as $\sin(kt)/t$, its retained integer labels near the center are
 $$
 \ldots,27,23,15,11,7,-1,-5,-9,-21,-25,\ldots .
 $$
@@ -277,19 +276,19 @@ $$
 $$
 The two identities in Step 3 then give $D_{E_-}=D_{E_+}=0$. By Step 2 their common zero occurs before every other consecutive window can vanish, so it is the first loss of simpliciality.
 
-The two five-sets share
+They share
 $$
 T=E_-\cap E_+=\{m-2,m-1,m+1,m+2\}.
 $$
-These four vertices are affinely independent by the Vandermonde determinant. Every retained abscissa outside
+These four vertices are affinely independent. Every retained abscissa outside
 $$
 C_m=E_-\cup E_+
 $$
-lies outside the interval spanned by the four abscissas in $T$. At the common zero, knot insertion makes every five-set not contained in $C_m$ strictly positive. Therefore the interpolation-error formula from Step 1 is positive at every retained vertex outside $C_m$ and zero at the two remaining vertices of $C_m$. The hyperplane through $T$ is supporting and contains exactly those six vertices. Any other facet with at least five vertices would give another zero five-set, which is impossible outside $C_m$; inside $C_m$ it spans the same hyperplane. Thus the six-vertex facet is unique and every other facet is tetrahedral.
+lies outside the interval spanned by the four abscissas in $T$. At the common zero, knot insertion makes every five-set not contained in $C_m$ strictly positive. Therefore the interpolation-error formula from Step 1 is positive at every retained vertex outside $C_m$ and zero at the two remaining vertices of $C_m$. The hyperplane through $T$ is supporting and contains exactly those six vertices. A second nonsimplicial facet would give another zero five-set; outside $C_m$ this is impossible, and inside $C_m$ it spans the same hyperplane. Thus the six-vertex facet is unique and every other facet is tetrahedral.
 
 Step 5: Count the local facets on the two sides
 
-Let $s_*=s_{\alpha_m}$ and order the six critical abscissas as $y_1<\cdots<y_6$. Let $F_*=q_{\alpha_m,s_*}-\ell$, where $\ell$ defines the critical supporting hyperplane. For $T\subset C_m$ with $|T|=4$,
+Let $s_*=s_{\alpha_m}$ and order the six critical abscissas as $y_1<\cdots<y_6$. Let $F_*=q_{\alpha_m,s_*}-\ell$. Any four critical abscissas give a Vandermonde matrix, so $I_Tq_{\alpha_m,s_*}=\ell$. For $T\subset C_m$ with $|T|=4$,
 $$
 q_{\alpha_m,s}-I_Tq_{\alpha_m,s}
 =
