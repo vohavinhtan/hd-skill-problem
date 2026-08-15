@@ -2,36 +2,61 @@
 
 ## LaTeX (Normalized)
 
-Fix
+Fix real parameters
 $$
--\frac{9}{10}<r<-\frac{3}{5}.
+\frac{7}{9}<\sigma<\frac{4}{5},
+\qquad
+\frac{7}{10}<r<\frac{3}{4}.
 $$
 For
 $$
-\frac{1}{7}<\lambda<\frac{2}{9},
+\frac{1}{9}<\lambda<\frac{3}{20},
 $$
-let $V_r(\lambda)$ be the maximum of
+write
 $$
-\int_{-1}^{1}\left(3-7\lambda+7(5\lambda-1)x^2\right)P(x)\,dx
+P(x)=a_4x^8+a_3x^6+a_2x^4+a_1x^2+a_0
 $$
-over all even real polynomials $P$ of degree at most $4$ satisfying
+and define
+$$
+\begin{aligned}
+\Phi_{\sigma,\lambda}(P)
+={}&3a_0+(1+\sigma)a_1
++(1+\sigma^2-2\lambda)a_2\\
+&+(1+\sigma^3-3\sigma\lambda)a_3
++(1+\sigma^4-4\sigma^2\lambda+2\lambda^2)a_4.
+\end{aligned}
+$$
+
+Let $P_{\sigma,\lambda}^*$ be the unique maximizer of $\Phi_{\sigma,\lambda}(P)$ over all even real polynomials $P$ of degree at most $8$ satisfying
 $$
 (2-x^2)P(x)\leq1
+\qquad(-1\leq x\leq1)
 $$
 and
 $$
-\bigl((1+r)+(1-r)x^2\bigr)P(x)\leq1
+P(1)\leq\frac{4}{5}.
 $$
-for every $x\in[-1,1]$.
 
-For each such $r$, the function $V_r$ is $C^1$ on $(\frac{1}{7},\frac{2}{9})$ and has a unique point $\Lambda(r)$ in this interval at which it is not twice differentiable. At this point the two one-sided second derivatives exist and are nonzero.
+For every allowed pair $(\sigma,r)$ there is a unique
+$$
+\Lambda_\sigma(r)\in\left(\frac{1}{9},\frac{3}{20}\right)
+$$
+such that $P_{\sigma,\lambda}^*$ also satisfies
+$$
+\left(\frac{5}{4}-r(1-x^2)\right)P_{\sigma,\lambda}^*(x)\leq1
+\qquad(-1\leq x\leq1)
+$$
+if and only if $\lambda\geq\Lambda_\sigma(r)$.
 
-Determine the rational function $R(z)\in\mathbb Q(z)$ such that
+Determine the primitive irreducible polynomial
 $$
-\frac{V_r''(\Lambda(r)+)}{V_r''(\Lambda(r)-)}
-=R(\Lambda(r))
+F(\sigma,r,z)\in\mathbb Z[\sigma,r,z]
 $$
-for every $r\in(-\frac{9}{10},-\frac{3}{5})$.
+whose coefficient of $rz^3$ is positive and which satisfies
+$$
+F\bigl(\sigma,r,\Lambda_\sigma(r)\bigr)=0
+$$
+for every allowed pair $(\sigma,r)$.
 
 ---
 
@@ -48,4 +73,4 @@ for every $r\in(-\frac{9}{10},-\frac{3}{5})$.
 
 ## Domain Explanation
 
-This problem is a parametric semi-infinite linear program over the three coefficients of an even quartic polynomial. The requested rational function is determined by a hidden change in the active constraint geometry and by the one-sided sensitivity of the optimal value across that change; locating the transition alone is not sufficient. The primary structure is therefore parameter identification inside a linear optimization problem, with polynomial contact geometry and implicit differentiation providing the closure certificate.
+The relaxed problem is a finite-dimensional linear program with infinitely many pointwise constraints on an even degree-eight polynomial. The parameter to be identified is the robustness threshold at which its unique optimizer first satisfies an additional semi-infinite constraint. The decisive structure is therefore parametric linear optimization; polynomial interpolation and moment identities provide the certificate used to locate the threshold.
