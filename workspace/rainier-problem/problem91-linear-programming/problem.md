@@ -2,7 +2,11 @@
 
 ## LaTeX (Normalized)
 
-For each real parameter $\lambda>-1$, let $V(\lambda)$ be the supremum of
+Fix
+$$
+-\frac{9}{10}<r<-\frac{3}{5}.
+$$
+For a real parameter $\lambda>-1$, consider the problem of maximizing
 $$
 \int_{-1}^{1}(1+\lambda x^2)P(x)\,dx
 $$
@@ -12,11 +16,24 @@ $$
 $$
 and
 $$
-(1+x^2)P(x)\leq1
+\bigl((1+r)+(1-r)x^2\bigr)P(x)\leq1
 $$
 for every $x\in[-1,1]$.
 
-Determine $V(\lambda)$ exactly for all $\lambda>-1$.
+For each such $r$, there is a unique value $\Lambda(r)\in(-1,\frac{1}{2})$ for which this maximization problem has an optimizer $P$ such that, with
+$$
+S(x)=1-\bigl((1+r)+(1-r)x^2\bigr)P(x),
+$$
+one has
+$$
+S(1)=S'(1)=0.
+$$
+
+Determine the primitive irreducible polynomial $F(r,z)\in\mathbb Z[r,z]$ whose coefficient of $rz^3$ is positive and which satisfies
+$$
+F(r,\Lambda(r))=0
+$$
+for every $r\in(-\frac{9}{10},-\frac{3}{5})$.
 
 ---
 
@@ -26,11 +43,11 @@ Determine $V(\lambda)$ exactly for all $\lambda>-1$.
 |---|---|
 | **Domain** | Optimization and Numerical Mathematics |
 | **Sub-domain** | Linear programming |
-| **Problem Type** | Optimization |
-| **Answer Type** | Function or mapping |
+| **Problem Type** | Parameter identification |
+| **Answer Type** | Polynomial or rational function |
 
 ---
 
 ## Domain Explanation
 
-This problem is a semi-infinite linear program whose decision variables are the three coefficients of an even quartic polynomial and whose pointwise bounds give infinitely many linear constraints. The parameter enters only through the linear objective, so the task is to identify the active constraints and determine the exact optimal-value function. Polynomial approximation and quadrature ideas support the derivation, but the primary mathematical structure is linear optimization over a fixed feasible coefficient set.
+This problem is a parametric semi-infinite linear program over the three coefficients of an even quartic polynomial, with infinitely many pointwise linear constraints. The task is to identify the exact algebraic phase boundary where an optimizer acquires a double endpoint contact and to eliminate the hidden contact point. Polynomial elimination supports the final step, but the primary structure is parameter identification inside a linear optimization problem.
