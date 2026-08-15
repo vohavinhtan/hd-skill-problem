@@ -10,7 +10,7 @@ If $A^mB^n$ is central, commuting with $A$ gives $n=2k$, and commuting with $B$ 
 $$
 Z_a=\langle B^2\rangle.
 $$
-Modulo $Z_a$, every coset has a unique representative $A^mB^\epsilon Z_a$ with $\epsilon\in\{0,1\}$. Therefore
+Modulo $Z_a$, every coset has a unique representative $A^mB^{\epsilon}Z_a$ with $\epsilon\in\{0,1\}$. Therefore
 $$
 \Gamma_a/Z_a=\langle \overline A,\overline B:\overline B^2=e,\ \overline B\overline A\overline B=\overline A^{-1}\rangle
 $$
@@ -37,7 +37,7 @@ The odd displacement is no larger than the central displacement $2a$ exactly whe
 $$
 c^2+a^2\leq4a^2
 \quad\Longleftrightarrow\quad
-a\geq\frac{c}{\sqrt3},
+a\geq\frac{c}{\sqrt{3}},
 $$
 and it is no larger than the horizontal displacement $1$ exactly when
 $$
@@ -45,27 +45,27 @@ c^2+a^2\leq1
 \quad\Longleftrightarrow\quad
 a\leq\sqrt{1-c^2}.
 $$
-Thus for $a<\frac{c}{\sqrt3}$ only the central elements $B^{\pm2}$ are shortest, so $\overline N_a(u)=\{Z_a\}$.
+Thus for $a<\frac{c}{\sqrt{3}}$ only the central elements $B^{\pm2}$ are shortest, so $\overline N_a(u)=\{Z_a\}$.
 
 Assume $u\ne\frac14$. For $u<\frac14$ the nearest odd labels are $B^{\pm1}$ modulo $Z_a$; for $u>\frac14$ they are $AB^{\pm1}$. Hence
 $$
 \overline N_a(u)=
 \begin{cases}
-\{Z_a\},&0<a<\frac{c}{\sqrt3},\\
-\langle\overline B\rangle,&\frac{c}{\sqrt3}\leq a<\sqrt{1-c^2},\ u<\frac14,\\
-\langle\overline{AB}\rangle,&\frac{c}{\sqrt3}\leq a<\sqrt{1-c^2},\ u>\frac14,\\
+\{Z_a\},&0<a<\frac{c}{\sqrt{3}},\\
+\langle\overline B\rangle,&\frac{c}{\sqrt{3}}\leq a<\sqrt{1-c^2},\ u<\frac14,\\
+\langle\overline{AB}\rangle,&\frac{c}{\sqrt{3}}\leq a<\sqrt{1-c^2},\ u>\frac14,\\
 \Gamma_a/Z_a,&a=\sqrt{1-c^2},\\
 \langle\overline A\rangle,&a>\sqrt{1-c^2}.
 \end{cases}
 $$
-At $a=\frac{c}{\sqrt3}$ the central elements also tie and do not change the quotient subgroup. At $a=\sqrt{1-c^2}$ the odd displacement and $A^{\pm1}$ both have length $1$, while $2a>1$ because $c\leq\frac12$; therefore the relevant reflection together with $\overline A$ generates the whole quotient. For larger $a$, $c^2+a^2>1$ and $2a>1$, so only $A^{\pm1}$ are shortest modulo the center.
+At $a=\frac{c}{\sqrt{3}}$ the central elements also tie and do not change the quotient subgroup. At $a=\sqrt{1-c^2}$ the odd displacement and $A^{\pm1}$ both have length $1$, while $2a>1$ because $c\leq\frac12$; therefore the relevant reflection together with $\overline A$ generates the whole quotient. For larger $a$, $c^2+a^2>1$ and $2a>1$, so only $A^{\pm1}$ are shortest modulo the center.
 
 If $u=\frac14$, then $c=\frac12$ and both odd reflection classes tie. Therefore
 $$
 \overline N_a\left(\frac14\right)=
 \begin{cases}
-\{Z_a\},&0<a<\frac{c}{\sqrt3},\\
-\Gamma_a/Z_a,&\frac{c}{\sqrt3}\leq a\leq\sqrt{1-c^2},\\
+\{Z_a\},&0<a<\frac{c}{\sqrt{3}},\\
+\Gamma_a/Z_a,&\frac{c}{\sqrt{3}}\leq a\leq\sqrt{1-c^2},\\
 \langle\overline A\rangle,&a>\sqrt{1-c^2}.
 \end{cases}
 $$
@@ -173,15 +173,15 @@ If $u=\frac14$, then $c=d$, both triples are farthest and both reflection classe
 
 Step 4: Combine the subgroup conditions away from the exceptional line
 
-Assume $u\ne\frac14$. If $a^2\geq c(1-c)$, Step 3 gives $\overline F_a(u)=\Gamma_a/Z_a$. Trivial intersection would require $\overline N_a(u)=\{Z_a\}$, hence $a<\frac{c}{\sqrt3}$ by Step 2. But for $0<c\leq\frac12$,
+Assume $u\ne\frac14$. If $a^2\geq c(1-c)$, Step 3 gives $\overline F_a(u)=\Gamma_a/Z_a$. Trivial intersection would require $\overline N_a(u)=\{Z_a\}$, hence $a<\frac{c}{\sqrt{3}}$ by Step 2. But for $0<c\leq\frac12$,
 $$
 c(1-c)>\frac{c^2}{3},
 $$
-so $a\geq\sqrt{c(1-c)}$ implies $a>\frac{c}{\sqrt3}$; for $c=0$ the latter inequality is impossible. Thus this regime contributes nothing.
+so $a\geq\sqrt{c(1-c)}$ implies $a>\frac{c}{\sqrt{3}}$; for $c=0$ the latter inequality is impossible. Thus this regime contributes nothing.
 
-If $a^2<c(1-c)$, then $a<\frac12<\sqrt{1-c^2}$. If $a<\frac{c}{\sqrt3}$, Step 2 gives $\overline N_a(u)=\{Z_a\}$ and the join is only $\overline F_a(u)$. If instead
+If $a^2<c(1-c)$, then $a<\frac12<\sqrt{1-c^2}$. If $a<\frac{c}{\sqrt{3}}$, Step 2 gives $\overline N_a(u)=\{Z_a\}$ and the join is only $\overline F_a(u)$. If instead
 $$
-\frac{c}{\sqrt3}\leq a<\sqrt{c(1-c)},
+\frac{c}{\sqrt{3}}\leq a<\sqrt{c(1-c)},
 $$
 then $\overline N_a(u)$ is the small-offset reflection and $\overline F_a(u)$ is the wide-offset reflection. By Step 1 they generate $\Gamma_a/Z_a$ and intersect in $\{Z_a\}$. The lower boundary is included because its extra shortest elements are central; the upper boundary is excluded because $\overline F_a(u)$ becomes the whole quotient there.
 
@@ -189,17 +189,17 @@ Step 5: Resolve the exceptional line and the endpoints
 
 At $u=\frac14$, one has $2c=1$ and Step 3 gives $\overline F_a(u)=\Gamma_a/Z_a$ for every $a>0$. Thus trivial intersection is equivalent to $\overline N_a(u)=\{Z_a\}$, which by Step 2 is exactly
 $$
-0<a<\frac{c}{\sqrt3}=\frac{1}{2\sqrt3}.
+0<a<\frac{c}{\sqrt{3}}=\frac{1}{2\sqrt{3}}.
 $$
 At equality both reflection classes become shortest, so the endpoint is excluded. At $u=0$ or $u=\frac12$, $c=0$, so the generic interval is empty. Since $0\leq c\leq\frac12$, $2c<1$ is equivalent to $u\ne\frac14$, and $2c=1$ to $u=\frac14$.
 
-Final Answer: $\boxed{\{(a,u):(2c<1\land\frac{c}{\sqrt3}\leq a<\sqrt{c(1-c)})\lor(2c=1\land0<a<\frac{c}{\sqrt3})\}}$
+Final Answer: $\boxed{\{(a,u):(2c<1\land\frac{c}{\sqrt{3}}\leq a<\sqrt{c(1-c)})\lor(2c=1\land0<a<\frac{c}{\sqrt{3}})\}}$
 
 ---
 
 ## Answer
 
-$\{(a,u):(2c<1\land\frac{c}{\sqrt3}\leq a<\sqrt{c(1-c)})\lor(2c=1\land0<a<\frac{c}{\sqrt3})\}$
+$\{(a,u):(2c<1\land\frac{c}{\sqrt{3}}\leq a<\sqrt{c(1-c)})\lor(2c=1\land0<a<\frac{c}{\sqrt{3}})\}$
 
 ---
 
