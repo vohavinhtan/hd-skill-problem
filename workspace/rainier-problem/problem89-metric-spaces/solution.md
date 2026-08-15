@@ -87,8 +87,8 @@ Substituting $X=uv^T$ into the given $q$ gives
 $$
 \begin{aligned}
 q(uv^T)
-={}&u_1v_1v_2+u_2v_1v_3+u_3(v_1v_2+v_2v_3)\\
-&+u_2u_3v_1+u_1u_2(v_2+v_3).
+&=u_1v_1v_2+u_2v_1v_3+u_3(v_1v_2+v_2v_3)\\
+&\quad+u_2u_3v_1+u_1u_2(v_2+v_3).
 \end{aligned}
 $$
 For fixed $u$, only the first line contributes to the quadratic polar in the variable $v$; for fixed $v$, only the second line contributes to the quadratic polar in the variable $u$. Hence
