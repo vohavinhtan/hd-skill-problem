@@ -2,31 +2,31 @@
 
 ## LaTeX (Normalized)
 
-For each real parameter $\theta$, let $W$ be a random variable taking values in $[0,2\pi)$ with density
+For each real parameter $\theta$, let $W$ take values in $[0,2\pi)$ with density
 $$
 p_\theta(w)
 =
-\frac{27}{10\pi\bigl(5-4\cos(w-\theta)\bigr)^2},
+\frac{3}{2\pi\bigl(5-4\cos(w-\theta)\bigr)},
 \qquad 0\le w<2\pi.
 $$
 The statistician observes $W$.
 
 For a real parameter $\lambda$, define
 $$
-\begin{aligned}
 \tau_\lambda(\theta)
-={}&101-\lambda
-+80\bigl(\cos\theta-\sin\theta\bigr)
-+11\cos(2\theta)-44\sin(2\theta)\\
-&-7\bigl(\cos(3\theta)+\sin(3\theta)\bigr).
-\end{aligned}
+=
+4-\lambda
+-4\cos\theta
++\cos(2\theta)
++3\log\!\left(\frac{17-8\cos\theta}{4}\right)
++\frac{5}{17-8\cos\theta}.
 $$
 
 Determine all $\lambda\in\mathbb R$ for which there exists a nonnegative Borel function
 $$
 T_\lambda=T_\lambda(W)
 $$
-satisfying, for every $\theta\in\mathbb R$,
+such that, for every $\theta\in\mathbb R$,
 $$
 \mathbb E_\theta[T_\lambda(W)]=\tau_\lambda(\theta)
 $$
@@ -46,7 +46,7 @@ $$
 $$
 Use the convention $0^{-q}=+\infty$, and decide the endpoint.
 
-Give a rigorous, self-contained derivation. In particular, any Fourier-series identity used to prove uniqueness or to recover the estimator must be justified for the stated integrability class, and every global nonnegativity claim for the recovered estimator must be proved exactly. Numerical experimentation, computer algebra, code, and external sources may not replace any part of the proof.
+Give a rigorous, self-contained derivation. Any Fourier-series or Poisson-kernel identity used to recover the estimator or prove uniqueness must be justified for the stated integrability class. Every global nonnegativity claim for the recovered estimator must be proved exactly. Numerical experimentation, computer algebra, code, and external sources may not replace any part of the proof.
 
 ---
 
@@ -63,4 +63,4 @@ Give a rigorous, self-contained derivation. In particular, any Fourier-series id
 
 ## Domain Explanation
 
-The problem is an exact unbiased-estimation question in a circular location family. The observation kernel has a nontrivial but explicitly recoverable harmonic multiplier sequence, so unbiasedness becomes a deconvolution problem rather than a finite moment-matching problem. After the estimator is forced, the sharp admissible parameter boundary is controlled by a hidden nonnegative trigonometric factorization, while the reciprocal-moment threshold is determined by the multiplicity of the critical estimator's isolated zero on the circle.
+The problem is an exact unbiased-estimation question in a circular location family. Unlike a finite trigonometric target, the logarithmic and rational terms have infinite harmonic support, so unbiasedness requires an exact infinite-spectrum deconvolution rather than matching finitely many Fourier coefficients. After the estimator is recovered, the sharp admissible boundary is encoded by a hidden one-variable positivity certificate with high-order cancellation at its unique zero; the reciprocal-moment threshold depends on that multiplicity.
