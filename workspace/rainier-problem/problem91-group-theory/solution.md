@@ -32,11 +32,11 @@ $$
 z_1\leftrightarrow(0,1),\qquad
 z_2\leftrightarrow(0,\theta),
 $$
-the four displayed commutators in the problem are exactly multiplication in $K$, including $[x_2,x_4]=z_1^{\nu}$. The model has $p^6$ elements. Conversely, the defining relations collect every word into a product
+the four displayed commutators in the problem are exactly multiplication in $K$, including $[x_2,x_4]=z_1^{\nu}$. These six images generate the model, so the assignments induce a surjective homomorphism from the presented group onto it. The model has $p^6$ elements. Conversely, the defining relations collect every word into a product
 $$
 x_1^{a_1}x_2^{a_2}x_3^{a_3}x_4^{a_4}z_1^{b_1}z_2^{b_2}
 $$
-with all exponents in $\mathbb F_p$, so the presented group has at most $p^6$ elements. Hence this model is $G_{p,\nu}$.
+with all exponents in $\mathbb F_p$, so the presented group has at most $p^6$ elements. The surjection is therefore an isomorphism, and this model is $G_{p,\nu}$.
 
 The radical of $B$ is zero: if $B((u,v),(u',v'))=0$ for all $(u',v')$, then choosing $(0,1)$ and $(1,0)$ gives $u=v=0$. Therefore
 $$
@@ -72,7 +72,7 @@ is any $\mathbb F_p$-linear map, then
 $$
 \varphi_{A,C,f}(v,c)=(Av,Cc+f(v))
 $$
-is an automorphism. Indeed, substituting the group law shows that the homomorphism condition is exactly the displayed compatibility of $A$ and $C$, together with additivity of $f$. Every automorphism has this form by subtracting its induced central map from the central coordinate of the image of $(v,0)$.
+is an automorphism. Substituting the group law shows that the homomorphism condition is exactly the displayed compatibility of $A$ and $C$, together with additivity of $f$. For an arbitrary automorphism, after fixing its induced maps $A$ and $C$, the central coordinate of the image of $(v,0)$ differs from zero by a map $f(v)$; the homomorphism law makes this map additive, hence $\mathbb F_p$-linear. Thus every automorphism has the displayed form.
 
 There are
 $$
@@ -96,7 +96,11 @@ Let
 $$
 e_1=(1,0),\qquad e_2=(0,1).
 $$
-The vectors $Ae_1,Ae_2$ lie on distinct $K$-lines, so choose $M\in\operatorname{GL}_2(K)$ such that
+Since
+$$
+B(Ae_1,Ae_2)=C(B(e_1,e_2))=C(1)\neq0,
+$$
+the vectors $Ae_1,Ae_2$ are $K$-linearly independent. Choose $M\in\operatorname{GL}_2(K)$ such that
 $$
 MAe_1=e_1,\qquad MAe_2=e_2.
 $$
@@ -106,7 +110,7 @@ T(a,0)=(r(a),0),\qquad T(0,a)=(0,s(a)),
 $$
 with $r(1)=s(1)=1$.
 
-The line $K(e_1+e_2)$ is fixed setwise, because it contains the fixed vector $e_1+e_2$. Thus
+The line $K(e_1+e_2)$ is fixed setwise, because its image is a $K$-line containing the fixed vector $e_1+e_2$. Thus
 $$
 (r(a),s(a))\in K(1,1)
 $$
