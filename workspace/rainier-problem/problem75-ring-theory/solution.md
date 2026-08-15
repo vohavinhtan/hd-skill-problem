@@ -66,7 +66,7 @@ $$
 and
 $$
 \begin{aligned}
-G={}&-u^{19}
+G&=-u^{19}
 +\left(2\lambda^2u^{18}-u^{19}+2(\lambda-1)u^{20}\right)s\\
 &+\left(\lambda^4u^{18}
 +2\lambda^2(\lambda-1)u^{20}
