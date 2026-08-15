@@ -1,257 +1,203 @@
 ## Steps
 
-Step 1: Decode the objective as three hidden point evaluations
+Step 1: Reduce the point-weight LP by an affine symmetry
 
-Put $t=x^2$ and write
+For $a\in\mathbb F_p^\times$ and $b\in\mathbb F_p$, define
 $$
-q(t)=a_4t^4+a_3t^3+a_2t^2+a_1t+a_0.
+T_{a,b}(x,y)=(ax+b,a^2y+2abx+b^2).
 $$
-Let $s<u$ be the roots of
+Then
 $$
-p(t)=t^2-\sigma t+\lambda.
+\bigl(a^2y+2abx+b^2\bigr)-(ax+b)^2=a^2(y-x^2),
 $$
-They are real and distinct because
-$$
-\sigma^2-4\lambda>
-\left(\frac{7}{9}\right)^2-\frac{3}{5}
-=\frac{2}{405}>0.
-$$
-Also $s,u>0$ and $s+u=\sigma<\frac{4}{5}$.
+so $T_{a,b}$ preserves whether $y-x^2$ is zero, a nonzero square, or a nonsquare. It also maps vertical lines to vertical lines and nonvertical affine lines to nonvertical affine lines. Hence averaging any feasible family over all $T_{a,b}$ preserves feasibility and the objective.
 
-Newton's identities give
+The action is transitive on each of the three classes. Indeed, if $d=y-x^2$ and $d'=y'-x'^2$ have the same quadratic-character class, choose $a$ with $a^2d=d'$ when $d\neq0$, and then choose $b=x'-ax$; the case $d=d'=0$ is immediate. Thus the optimal value is attained by a family taking constant values
 $$
-s^2+u^2=\sigma^2-2\lambda,
+a,\qquad b,\qquad c
 $$
+on the classes
 $$
-s^3+u^3=\sigma^3-3\sigma\lambda,
+y=x^2,\qquad \chi(y-x^2)=1,\qquad \chi(y-x^2)=-1,
 $$
-$$
-s^4+u^4=\sigma^4-4\sigma^2\lambda+2\lambda^2.
-$$
-Hence the objective is exactly
-$$
-\Phi_{\sigma,\lambda}(P)=q(s)+q(u)+q(1).
-$$
-For every polynomial feasible in the relaxed problem,
-$$
-q(s)\leq\frac{1}{2-s},\qquad
-q(u)\leq\frac{1}{2-u},\qquad
-q(1)\leq\frac{4}{5}.
-$$
-Therefore
-$$
-\Phi_{\sigma,\lambda}(P)
-\leq
-\frac{4-\sigma}{4-2\sigma+\lambda}+\frac{4}{5}.
-$$
-Equality forces contact at the two hidden roots and at the endpoint.
+respectively.
 
-Step 2: Construct the unique relaxed optimizer
+There are $p$ points in the first class and $p(p-1)/2$ in each of the other two. Therefore the objective becomes
+$$
+p a+\frac{p(p-1)}{2}\left(\lambda b+\lambda^3c\right).
+$$
 
-Keep
+Step 2: Derive the line-incidence constraints
+
+Consider a nonvertical line $y=mx+d$. Put
 $$
-p(t)=t^2-\sigma t+\lambda,
-\qquad
-A=p(1)=1-\sigma+\lambda,
-\qquad
-B=p(2)=4-2\sigma+\lambda.
+\Delta=m^2+4d.
 $$
+After replacing $x$ by $u+m/2$,
+$$
+y-x^2=\frac{\Delta}{4}-u^2.
+$$
+If $\Delta=0$, there is one point with $y=x^2$. Since $p\equiv1\pmod4$, one has $\chi(-1)=1$, so all other $p-1$ points satisfy $\chi(y-x^2)=1$.
+
+Now suppose $\Delta\neq0$ and write $A=\Delta/4$. Choose $i\in\mathbb F_p$ with $i^2=-1$. The number of pairs $(u,v)$ satisfying
+$$
+u^2+v^2=A
+$$
+is $p-1$: for every $s\in\mathbb F_p^\times$, the equations
+$$
+u+iv=s,\qquad u-iv=\frac{A}{s}
+$$
+determine a unique pair. On the other hand this number equals
+$$
+\sum_{u\in\mathbb F_p}\left(1+\chi(A-u^2)\right).
+$$
+Hence
+$$
+\sum_{u\in\mathbb F_p}\chi(A-u^2)=-1.
+$$
+Combining this with the number of zeros gives the three nonvertical line types
+$$
+\begin{array}{c|ccc}
+&y=x^2&\chi(y-x^2)=1&\chi(y-x^2)=-1\\ \hline
+\Delta=0&1&p-1&0\\
+\chi(\Delta)=1&2&\frac{p-3}{2}&\frac{p-1}{2}\\
+\chi(\Delta)=-1&0&\frac{p-1}{2}&\frac{p+1}{2}.
+\end{array}
+$$
+A vertical line contains one point of the first class and $(p-1)/2$ points of each other class.
+
+Consequently the original LP has the same optimal value as the three-variable LP
+$$
+\max\ p a+\frac{p(p-1)}{2}\left(\lambda b+\lambda^3c\right)
+$$
+subject to
+$$
+a+(p-1)b\leq1,
+$$
+$$
+2a+\frac{p-3}{2}b+\frac{p-1}{2}c\leq1,
+$$
+$$
+\frac{p-1}{2}b+\frac{p+1}{2}c\leq1,
+$$
+$$
+a+\frac{p-1}{2}(b+c)\leq\frac{9}{10},
+$$
+and $a,b,c\geq0$.
+
+Step 3: Certify the optimizer before the transition
+
 Define
 $$
-h(t)=\frac{1-p(t)^2/B^2}{2-t}.
+Q_p(\lambda)=(3p-1)\lambda^3+(p-1)\lambda-2(p-1).
 $$
-The numerator vanishes at $t=2$, so $h$ is a cubic polynomial. Moreover
+Consider
 $$
-\frac{1}{2-t}-h(t)
-=\frac{p(t)^2}{(2-t)B^2},
+(a_-,b_-,c_-)
+=
+\left(\frac{p+1}{3p-1},\frac{2}{3p-1},0\right).
 $$
-so $h$ is tangent to $1/(2-t)$ at both roots of $p$.
+The first two constraints are equalities, while the third left side is $(p-1)/(3p-1)<1$ and the fourth is $2p/(3p-1)<9/10$. Thus this point is feasible.
 
-Now set
+For the dual LP, use only the first two line constraints with multipliers
 $$
-q_{\sigma,\lambda}(t)
+y_T=\frac{p\left(2\lambda p-2\lambda-p+3\right)}{3p-1},
+$$
+$$
+y_S=\frac{p(2-\lambda)(p-1)}{3p-1}.
+$$
+They are positive for $1/2<\lambda<1$. Their coefficients on $a$ and $b$ equal the corresponding objective coefficients, while the dual slack in the $c$ coordinate is
+$$
+-\frac{p(p-1)}{2(3p-1)}Q_p(\lambda).
+$$
+Hence this dual point is feasible exactly when $Q_p(\lambda)\leq0$. Its objective equals the primal value because the first two primal constraints are tight. Therefore, whenever $Q_p(\lambda)\leq0$,
+$$
+V_p(\lambda)
 =
-h(t)+
-\left(\frac{1}{B^2}-\frac{1}{5A^2}\right)p(t)^2.
+\frac{p\left(p+1+(p-1)\lambda\right)}{3p-1}.
 $$
-This is a quartic polynomial, and
+
+Step 4: Certify the optimizer after the transition and locate the kink
+
+Now consider
 $$
-q_{\sigma,\lambda}(s)=\frac{1}{2-s},\qquad
-q_{\sigma,\lambda}(u)=\frac{1}{2-u},\qquad
-q_{\sigma,\lambda}(1)=\frac{4}{5}.
-$$
-Its first slack factors as
-$$
-1-(2-t)q_{\sigma,\lambda}(t)
+(a_+,b_+,c_+)
 =
-p(t)^2
 \left(
-\frac{2-t}{5A^2}-\frac{1-t}{B^2}
+\frac{p+9}{10p},
+\frac{9}{10p},
+\frac{7p-9}{10p(p-1)}
 \right).
 $$
-On the parameter box,
+The first, second, and fourth constraints are equalities, and the third left side is
 $$
-0<A<\frac{3}{8},\qquad B>\frac{5}{2},
+\frac{4p-5}{5(p-1)}<1.
 $$
-so $B^2>5A^2$. Thus the bracket is positive on $0\leq t\leq1$, and the quartic is feasible for the relaxed problem.
+Thus this point is feasible.
 
-It attains the upper bound from Step 1. If another relaxed maximizer existed, equality would hold at $s,u,1$; the two interior equalities also force tangency to $1/(2-t)$. These five value-and-derivative conditions determine a quartic uniquely. Therefore
+Use dual multipliers on the first, second, and fourth constraints given by
 $$
-P_{\sigma,\lambda}^*(x)=q_{\sigma,\lambda}(x^2).
+y_T=
+\frac{(1-\lambda)\left(\lambda^2p+\lambda^2+\lambda p+\lambda+2\right)}{2},
 $$
-
-Step 3: Determine exactly when the relaxed optimizer satisfies the full constraint
-
-Differentiate the construction from Step 2 at $t=1$. Since $p'(1)=2-\sigma$,
 $$
-q_{\sigma,\lambda}'(1)
+y_S=
+\frac{(1-\lambda)(p-1)(\lambda^2+\lambda+2)}{2},
+$$
+$$
+y_V=\frac{Q_p(\lambda)}{2}.
+$$
+The first two are positive on $(1/2,1)$, and $y_V\geq0$ exactly when $Q_p(\lambda)\geq0$. These multipliers give equality in all three dual coordinate constraints, so they certify
+$$
+V_p(\lambda)
 =
-1-\frac{A^2}{B^2}
--\frac{2(2-\sigma)}{5A}.
+\frac{2(p+9)+9(p-1)\lambda+(7p-9)\lambda^3}{20}
 $$
-Write
-$$
-g_r(t)=\frac{1}{\frac{5}{4}-r(1-t)}.
-$$
-Then $g_r(1)=\frac{4}{5}$ and $g_r'(1)=-\frac{16r}{25}$. Define
-$$
-\rho_\sigma(\lambda)
-=
-\frac{25}{16}
-\left(
--1+\frac{A^2}{B^2}
-+\frac{2(2-\sigma)}{5A}
-\right).
-$$
-Thus $q_{\sigma,\lambda}$ and $g_r$ have the same endpoint slope exactly when $r=\rho_\sigma(\lambda)$.
-
-It remains to prove that this slope test is the whole feasibility threshold. The two reciprocal bounds cross at
-$$
-c_r=\frac{r+\frac{3}{4}}{1+r}>\frac{4}{5}.
-$$
-We first prove that $q_{\sigma,\lambda}$ is strictly concave on $[\frac{4}{5},1]$. Since
-$$
-B-p(t)=(2-t)(2+t-\sigma),
-$$
-the cubic from Step 2 can also be written
-$$
-h(t)=\frac{(2+t-\sigma)(B+p(t))}{B^2}.
-$$
-Therefore
-$$
-q_{\sigma,\lambda}''(t)
-=
-\frac{H(t)+K(t)}{B^2}-\frac{K(t)}{5A^2},
-$$
-where
-$$
-H(t)=2(3t+2-2\sigma),
-\qquad
-K(t)=2(2t-\sigma)^2+4p(t).
-$$
-Both roots of $p$ are smaller than $\sigma<\frac{4}{5}$, so $p(t)>0$ on $[\frac{4}{5},1]$. Hence
-$$
-K(t)>\frac{32}{25},
-\qquad
-H(t)<\frac{62}{9}.
-$$
-Also $B>\frac{5}{2}$ and $A<\frac{3}{8}$ give
-$$
-\frac{B^2}{5A^2}>\frac{80}{9}
->
-1+\frac{62/9}{32/25}
->
-\frac{H(t)+K(t)}{K(t)}.
-$$
-Thus $q_{\sigma,\lambda}''(t)<0$ throughout $[\frac{4}{5},1]$.
-
-When $r=\rho_\sigma(\lambda)$, the function
-$$
-g_r(t)-q_{\sigma,\lambda}(t)
-$$
-has value and derivative zero at $t=1$. On $[c_r,1]$ its second derivative is positive because $g_r''>0$ and $q_{\sigma,\lambda}''<0$. Hence it is nonnegative there. On $[0,c_r]$ one has $q_{\sigma,\lambda}\leq1/(2-t)\leq g_r$. Therefore the full constraint holds.
-
-If $r>\rho_\sigma(\lambda)$, the same difference is still strictly convex on $[c_r,1]$, has value zero at $1$, and has derivative
-$$
--\frac{16}{25}\bigl(r-\rho_\sigma(\lambda)\bigr)<0
-$$
-there; it is therefore positive to the left of $1$. If $r<\rho_\sigma(\lambda)$, that derivative is positive, so the difference is negative immediately to the left of $1$. Consequently
-$$
-P_{\sigma,\lambda}^*\text{ satisfies the full constraint}
-\quad\Longleftrightarrow\quad
-r\geq\rho_\sigma(\lambda).
-$$
-
-Step 4: Prove that the threshold parameter exists uniquely
-
-Using $A=1-\sigma+\lambda$ and $B=4-2\sigma+\lambda$,
-$$
-\frac{\partial\rho_\sigma}{\partial\lambda}
-=
-\frac{25}{8}
-\left(
-\frac{A(3-\sigma)}{B^3}
--\frac{2-\sigma}{5A^2}
-\right)<0.
-$$
-Indeed, the first term in parentheses is less than $\frac{4}{75}$, while the second is greater than $\frac{128}{75}$.
+whenever $Q_p(\lambda)\geq0$.
 
 Also
 $$
-\frac{\partial\rho_\sigma}{\partial\sigma}
-=
-\frac{25}{16}
-\left(
-\frac{2A(\lambda-2)}{B^3}
-+\frac{2(1-\lambda)}{5A^2}
-\right)>0,
+Q_p'\left(\lambda\right)=3(3p-1)\lambda^2+(p-1)>0,
 $$
-because the magnitude of the negative term is less than $\frac{12}{125}$, whereas the positive term is greater than $\frac{544}{225}$.
+while
+$$
+8Q_p\left(\frac{1}{2}\right)=-9p+11<0,
+\qquad
+Q_p(1)=2p>0.
+$$
+Hence $Q_p$ has a unique zero $\Lambda_p\in(1/2,1)$.
 
-At the two relevant corners,
+The two displayed formulas for $V_p$ differ by
 $$
-\rho_{7/9}\left(\frac{1}{9}\right)
-=\frac{9595}{12696}>\frac{3}{4},
+-\frac{7p-9}{20(3p-1)}Q_p(\lambda).
 $$
-and
-$$
-\rho_{4/5}\left(\frac{3}{20}\right)
-=\frac{22205}{36414}<\frac{7}{10}.
-$$
-Thus for every allowed $(\sigma,r)$ there is exactly one
-$$
-z\in\left(\frac{1}{9},\frac{3}{20}\right)
-$$
-such that $r=\rho_\sigma(z)$. By Step 3, the full constraint fails for $\lambda<z$ and holds for $\lambda\geq z$. Therefore this $z$ is precisely $\Lambda_\sigma(r)$.
+Their derivatives therefore differ at $\Lambda_p$, because $Q_p'(\Lambda_p)>0$. Thus $V_p$ is differentiable on each side and has exactly one nondifferentiability point, namely $\Lambda_p$.
 
-Step 5: Eliminate the threshold and normalize the polynomial
+Step 5: Determine the primitive irreducible relation
 
-At $z=\Lambda_\sigma(r)$, put
+The unique transition point satisfies
 $$
-A_0=1-\sigma+z,\qquad B_0=4-2\sigma+z.
+(3p-1)\Lambda_p^3+(p-1)\Lambda_p-2(p-1)=0.
 $$
-The equation $r=\rho_\sigma(z)$ is equivalent to
+Therefore set
 $$
-(16r+25)A_0B_0^2-25A_0^3-10(2-\sigma)B_0^2=0.
+F(p,z)=(3p-1)z^3+(p-1)z-2(p-1).
 $$
-Hence the required polynomial is
-$$
-F(\sigma,r,z)
-=
-(16r+25)(1-\sigma+z)(4-2\sigma+z)^2
--25(1-\sigma+z)^3
--10(2-\sigma)(4-2\sigma+z)^2.
-$$
+Its coefficient of $pz^3$ is $3>0$.
 
-Its coefficient of $rz^3$ is $16>0$. As a polynomial in $r$ over $\mathbb Q[\sigma,z]$, its leading coefficient is $16A_0B_0^2$. The constant coefficient is not divisible by $A_0$, because substituting $z=\sigma-1$ gives $-10(2-\sigma)(3-\sigma)^2\neq0$, and it is not divisible by $B_0$, because substituting $z=2\sigma-4$ gives $-25(\sigma-3)^3\neq0$. Thus the two coefficients are coprime. The polynomial is linear in $r$, so Gauss's lemma gives irreducibility in $\mathbb Z[\sigma,r,z]$. Its integer content is $1$, since the expanded polynomial has coefficients $16$ and $-35$.
+Viewed as a polynomial in $p$ over $\mathbb Q[z]$,
+$$
+F(p,z)=p(3z^3+z-2)+(-z^3-z+2).
+$$
+The two coefficient polynomials are coprime: any common divisor would divide their difference $2z^3$, but $-z^3-z+2$ is not divisible by $z$. Thus $F$ is primitive in $\mathbb Q[z][p]$ and has degree $1$ in $p$, so it is irreducible over $\mathbb Q(z)$ and hence over $\mathbb Z[p,z]$ by Gauss's lemma. Its integer content is $1$.
 
-Final Answer: $\boxed{(16r+25)(1-\sigma+z)(4-2\sigma+z)^2-25(1-\sigma+z)^3-10(2-\sigma)(4-2\sigma+z)^2}$
+Final Answer: $\boxed{(3p-1)z^3+(p-1)z-2(p-1)}$
 
 ---
 
 ## Answer
 
-$(16r+25)(1-\sigma+z)(4-2\sigma+z)^2-25(1-\sigma+z)^3-10(2-\sigma)(4-2\sigma+z)^2$
+$(3p-1)z^3+(p-1)z-2(p-1)$
 
 ---
 
@@ -265,8 +211,8 @@ $(16r+25)(1-\sigma+z)(4-2\sigma+z)^2-25(1-\sigma+z)^3-10(2-\sigma)(4-2\sigma+z)^
 
 ## Solution Concepts
 
-- semi-infinite linear programming
-- newton sums
-- hermite interpolation
-- convexity certificate
+- affine symmetry reduction
+- quadratic character sums
+- finite incidence geometry
+- linear-programming dual certificates
 - polynomial irreducibility
