@@ -97,7 +97,11 @@ q_\lambda(0)=
 \frac{\lambda^4-4\lambda^3+10\lambda^2-12\lambda+4}
 {2(2-\lambda)^2(1-\lambda)^2}>0,
 $$
-so $q_\lambda>0$ on $[0,1]$.
+because its numerator is larger than
+$$
+4-12\left(\frac29\right)-4\left(\frac29\right)^3>0.
+$$
+Thus $q_\lambda>0$ on $[0,1]$.
 
 For fixed $\lambda$ define
 $$
@@ -132,7 +136,11 @@ Thus each allowed $r$ has a unique $z\in(1/7,2/9)$ with $r=\rho(z)$. The branch 
 
 Step 3: Derive the optimizer on the right of the phase point
 
-At $\lambda=z$, (3) and (5) have strict slack away from $z$ and $1$ and nondegenerate quadratic contact there. The branch replacing (2) therefore has, for $\lambda>z$ sufficiently close, an interior contact $s$ with $f$ and an interior contact $t$ with $g_r$.
+At $\lambda=z$, (3) and (5) have strict slack away from $z$ and $1$ and nondegenerate quadratic contact there. The left contact therefore persists near $z$. The right contact cannot stay at the endpoint for $\lambda>z$: a two-node moment representation on $\{s,1\}$ forces
+$$
+s=\frac{m_1-m_2}{m_0-m_1}=\lambda,
+$$
+and then the primal contact conditions give exactly $q_\lambda$, which is infeasible by Step 2. Thus the right contact must move to some $t<1$; being interior, it is tangential. We construct and certify this branch.
 
 Write
 $$
