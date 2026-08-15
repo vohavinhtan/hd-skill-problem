@@ -150,7 +150,7 @@ x_d=\frac{d^2-a^2}{2d},\quad
 R_c=\frac{a^2+c^2}{2c},\quad
 R_d=\frac{a^2+d^2}{2d}.
 $$
-The six vertices are
+Intersecting the oblique sides with $y=\pm a$ and their lower counterparts gives
 $$
 (-R_c,0),\ (x_c,a),\ (x_d,a),\ (R_d,0),\ (x_d,-a),\ (x_c,-a),
 $$
@@ -158,9 +158,9 @@ and $x_c^2+a^2=R_c^2$, $x_d^2+a^2=R_d^2$. Their two radii satisfy
 $$
 R_d-R_c=\frac{(d-c)(cd-a^2)}{2cd}.
 $$
-Also $R_c,R_d<\frac12$, so every one of these vertices has $|x|<\frac12$. Therefore the even-row exhaustion inequality can be an equality there only for $m=0$ and $|k|=1$, namely the central elements $B^{\pm2}$; no omitted noncentral even site can enlarge $\overline F_a(u)$. The farther odd rows were strictly redundant, and the omitted translates in $y=\pm a$ were strict when $c>0$.
+Since $a^2<cd$, $R_c<\frac{cd+c^2}{2c}=\frac12$ and similarly $R_d<\frac12$. Thus the even-row exhaustion can be an equality at these vertices only for the central $B^{\pm2}$; farther odd rows are strict, and omitted translates in $y=\pm a$ are strict for $c>0$.
 
-If $u\ne\frac14$, then $d>c$, so only the $d$-side vertices are farthest. Their noncentral active differences all lie in the wide-offset reflection class, giving
+If $u\ne\frac14$, then $d>c$, so only the $d$-side vertices are farthest. At $(R_d,0)$ the active sites are $0,(d,a),(d,-a)$; at $(x_d,\pm a)$ they are $0,(d,\pm a),(0,\pm2a)$. Modulo $Z_a$, every noncentral difference is therefore the wide-offset reflection class, giving
 $$
 \overline F_a(u)=
 \begin{cases}
