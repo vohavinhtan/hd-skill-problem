@@ -34,17 +34,14 @@ whose number of terms depends on $p$.
 | Field | Value |
 |---|---|
 | **Domain** | Number Theory |
-| **Sub-domain** | Modular arithmetic and congruences |
+| **Sub-domain** | Quadratic residues and reciprocity |
 | **Problem Type** | Symbolic derivation |
-| **Answer Type** | Equation or inequality |
+| **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-The problem asks for the exact size of a finite-field set cut out by two
-quadratic-residue conditions. The two representations of the prime encode
-different arithmetic information that becomes simultaneously relevant in a
-uniform evaluation. The main content is finite-field congruence, higher
-residuacity, and quadratic-form arithmetic rather than routine polynomial
-factorization or direct enumeration.
+This problem involves quadratic-residue conditions over a finite field and exact counting, which are part of Number Theory and Quadratic residues and reciprocity.
+The problem also involves representations of a prime by quadratic forms and character-sum structure, which are part of algebraic number theory.
+However, those ingredients serve to resolve the residue conditions rather than form a separate classification problem.
