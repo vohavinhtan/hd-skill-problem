@@ -205,7 +205,7 @@ $\{(a,u):(2c<1\land\frac{c}{\sqrt{3}}\leq a<\sqrt{c(1-c)})\lor(2c=1\land0<a<\fra
 
 ## Classification
 
-**Problem Type:** Parameter identification
+**Problem Type:** Symbolic derivation
 
 **Answer Type:** Interval or region description
 
