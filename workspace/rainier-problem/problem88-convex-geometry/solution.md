@@ -222,7 +222,7 @@ $$
 $$
 $$
 \left|\frac c{t^3}+2148\right|
-<2250\frac{123}{2000}+30\left(\frac{123}{2000}\right)^2+rac16\left(\frac{123}{2000}\right)^3<139.
+<2250\frac{123}{2000}+30\left(\frac{123}{2000}\right)^2+\frac{1}{6}\left(\frac{123}{2000}\right)^3<139.
 $$
 Thus $ac<0$, and hence $b^2-ac>0$. Solving gives
 $$
