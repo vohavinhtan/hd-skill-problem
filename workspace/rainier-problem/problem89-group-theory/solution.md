@@ -1,13 +1,19 @@
 ## Steps
 
 Step 1: Classify the linear rank-isometries of $V$
-Let $\operatorname{Tr}:E\to\mathbb F_2$ be the absolute trace. The trace pairing $(x,y)\mapsto\operatorname{Tr}(xy)$ is nondegenerate: the trace is a nonzero linear map, and for $x\ne0$ one may choose $z$ with $\operatorname{Tr}(z)=1$ and take $y=x^{-1}z$. Let $X^\dagger$ denote the adjoint for this pairing.
+Let $\operatorname{Tr}:E\to\mathbb F_2$ be the absolute trace. The polynomial
+$$
+T+T^2+\cdots+T^{2^{r-1}}
+$$
+is nonzero and has degree below $|E|$, so it cannot vanish on every element of $E$. Thus $\operatorname{Tr}$ is nonzero. The pairing $(x,y)\mapsto\operatorname{Tr}(xy)$ is then nondegenerate: for $x\ne0$, choose $z$ with $\operatorname{Tr}(z)=1$ and take $y=x^{-1}z$. Let $X^\dagger$ denote the adjoint for this pairing.
 
 Every rank-one endomorphism has the form
 $$
 R_{u,v}(x)=u\operatorname{Tr}(vx).
 $$
-For fixed nonzero $u$ or $v$, the spaces $\{R_{u,w}:w\in E\}$ and $\{R_{w,v}:w\in E\}$ are the two families of maximal subspaces whose nonzero elements all have rank $1$. Hence an invertible linear rank-preserver either preserves these two families or swaps them. Using intersections of coordinate members of the two families gives
+For fixed nonzero $u$ or $v$, the spaces $\{R_{u,w}:w\in E\}$ and $\{R_{w,v}:w\in E\}$ have dimension $r$ and every nonzero element has rank $1$. They are maximal with this property. Indeed, if a rank-one subspace contains $R_{u,v}$ and $R_{u',v'}$ with $u,u'$ independent, then $v,v'$ must be dependent; otherwise the sum has two independent image directions and two independent coordinate functionals, hence rank $2$. Thus $v'=v$. Any third element must also have second factor $v$, because an element with first factor $u$ but second factor different from $v$ would have rank-$2$ sum with $R_{u',v}$. The alternative case has all first factors equal.
+
+Hence an invertible linear rank-preserver either preserves these two families of maximal rank-one subspaces or swaps them. Using intersections of coordinate members of the two families gives
 $$
 L(X)=AXB
 \quad\text{or}\quad
@@ -114,11 +120,7 @@ C+\sigma(C)\in\{0,I\}
 \iff
 c^2+c\in\mathbb F_2.
 $$
-The map $c\mapsto c^2+c$ is $\mathbb F_2$-linear with kernel $\mathbb F_2$, so its image has size $2^{r-1}$. Its image lies in the trace-zero hyperplane because $\operatorname{Tr}(c^2+c)=0$; the two spaces have the same size, hence the image is exactly that hyperplane. Thus $c^2+c=0$ always has two solutions, while $c^2+c=1$ has two solutions exactly when
-$$
-\operatorname{Tr}(1)=r\pmod2
-$$
-is zero. Consequently the number of admissible $C$ is
+The map $c\mapsto c^2+c$ is $\mathbb F_2$-linear with kernel $\mathbb F_2$, so its image has size $2^{r-1}$. Its image lies in the trace-zero hyperplane because $\operatorname{Tr}(c^2+c)=0$; by Step 1 that hyperplane also has size $2^{r-1}$, so the two are equal. Thus $c^2+c=0$ always has two solutions. The equation $c^2+c=1$ has two solutions exactly when $\operatorname{Tr}(1)=0$, which occurs exactly when $r$ is even. Consequently the number of admissible $C$ is
 $$
 2^{\gcd(2,r)}.
 $$
