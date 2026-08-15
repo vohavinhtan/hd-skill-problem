@@ -4,7 +4,7 @@
 
 Let $p\geq13$ be a prime with
 $$
-p\equiv1\pmod 4,
+p\equiv1\pmod{4},
 $$
 and let $\chi$ be the quadratic character of $\mathbb F_p$, extended by $\chi(0)=0$.
 
@@ -36,7 +36,7 @@ whose coefficient of $pz^3$ is positive and which satisfies
 $$
 F(p,\Lambda_p)=0
 $$
-for every prime $p\geq13$ with $p\equiv1\pmod4$.
+for every prime $p\geq13$ with $p\equiv1\pmod{4}$.
 
 ---
 
