@@ -6,9 +6,13 @@ Fix
 $$
 -\frac{9}{10}<r<-\frac{3}{5}.
 $$
-For a real parameter $\lambda>-1$, consider the problem of maximizing
+For
 $$
-\int_{-1}^{1}(1+\lambda x^2)P(x)\,dx
+\frac{1}{7}<\lambda<\frac{2}{9},
+$$
+let $V_r(\lambda)$ be the maximum of
+$$
+\int_{-1}^{1}\left(3-7\lambda+7(5\lambda-1)x^2\right)P(x)\,dx
 $$
 over all even real polynomials $P$ of degree at most $4$ satisfying
 $$
@@ -20,18 +24,12 @@ $$
 $$
 for every $x\in[-1,1]$.
 
-For each such $r$, there is a unique value $\Lambda(r)\in(-1,\frac{1}{2})$ for which this maximization problem has an optimizer $P$ such that, with
-$$
-S(x)=1-\bigl((1+r)+(1-r)x^2\bigr)P(x),
-$$
-one has
-$$
-S(1)=S'(1)=0.
-$$
+For each such $r$, the function $V_r$ is $C^1$ on $(\frac{1}{7},\frac{2}{9})$ and has a unique point $\Lambda(r)$ in this interval at which it is not twice differentiable. At this point the two one-sided second derivatives exist and are nonzero.
 
-Determine the primitive irreducible polynomial $F(r,z)\in\mathbb Z[r,z]$ whose coefficient of $rz^3$ is positive and which satisfies
+Determine the reduced rational function $R(z)\in\mathbb Q(z)$ such that
 $$
-F(r,\Lambda(r))=0
+\frac{V_r''(\Lambda(r)+)}{V_r''(\Lambda(r)-)}
+=R(\Lambda(r))
 $$
 for every $r\in(-\frac{9}{10},-\frac{3}{5})$.
 
@@ -50,4 +48,4 @@ for every $r\in(-\frac{9}{10},-\frac{3}{5})$.
 
 ## Domain Explanation
 
-This problem is a parametric semi-infinite linear program over the three coefficients of an even quartic polynomial, with infinitely many pointwise linear constraints. The task is to identify the exact algebraic phase boundary where an optimizer acquires a double endpoint contact and to eliminate the hidden contact point. Polynomial elimination supports the final step, but the primary structure is parameter identification inside a linear optimization problem.
+This problem is a parametric semi-infinite linear program over the three coefficients of an even quartic polynomial. The requested rational function is determined by a hidden change in the active constraint geometry and by the one-sided sensitivity of the optimal value across that change; locating the transition alone is not sufficient. The primary structure is therefore parameter identification inside a linear optimization problem, with polynomial contact geometry and implicit differentiation providing the closure certificate.
