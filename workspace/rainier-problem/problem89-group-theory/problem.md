@@ -6,24 +6,22 @@ Let $r\geq3$, let $E=\mathbb F_{2^r}$, and let
 $$
 V=\operatorname{End}_{\mathbb F_2}(E).
 $$
-For $a\in E$, write $M_a(x)=ax$. Let $\operatorname{Tr}:E\to\mathbb F_2$ be the absolute trace, and for $X\in V$ let $X^\dagger$ denote the adjoint with respect to the pairing $(x,y)\mapsto\operatorname{Tr}(xy)$.
+For $a\in E$, write $M_a(x)=ax$, let $F(x)=x^2$, and let $I$ be the identity map of $E$.
 
 Let $G$ be the group of all affine $\mathbb F_2$-maps $g:V\to V$ satisfying
 $$
-\operatorname{rank}(g(X)-g(Y))
-=
-\operatorname{rank}(X-Y)
+\operatorname{rank}(g(X)-g(Y))=\operatorname{rank}(X-Y)
 \qquad(X,Y\in V).
 $$
-Fix a primitive element $\alpha\in E^\times$ and define
+Fix a primitive element $\alpha\in E^\times$ and set
 $$
-\rho(X)=M_\alpha X M_{\alpha^{-1}}.
+H=\left\langle
+X\mapsto M_\alpha X M_{\alpha^{-1}},\quad
+X\mapsto FXF^{-1},\quad
+X\mapsto X+I
+\right\rangle\leq G.
 $$
-Determine
-$$
-\left|N_G(\langle\rho\rangle)\right|
-$$
-as a closed formula in $r$.
+Determine $|N_G(H)|$ as a closed formula in $r$.
 
 ---
 
@@ -40,4 +38,4 @@ as a closed formula in $r$.
 
 ## Domain Explanation
 
-The problem asks for the normalizer of a cyclic subgroup inside an affine rank-isometry group. Its decisive structure is group-theoretic: rank-one preservers, a Singer cycle, Frobenius conjugacy, and a subgroup normalizer. The rank metric supplies the natural action but is not the primary object of study.
+The problem asks for the normalizer of a naturally generated affine subgroup of a finite rank-isometry group. The decisive structure is group-theoretic: rank-one preservers, semilinear conjugation, derived subgroups, affine translations, and subgroup normalizers.
