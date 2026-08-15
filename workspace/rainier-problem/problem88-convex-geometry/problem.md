@@ -60,22 +60,11 @@ $$
 $$
 for which $K_{\alpha_m}(s_{\alpha_m})$ has a facet with exactly six vertices. Prove that this six-vertex facet is unique and every other facet of $K_{\alpha_m}(s_{\alpha_m})$ has exactly four vertices. Let $C_m\subset R_m$ be the set of its six vertex indices.
 
-Write
-$$
-C_m=\{c_1<c_2<c_3<c_4<c_5<c_6\},
-$$
-and define $a,b,c,d,e,f$ by
-$$
-\prod_{r\in C_m}(z-x_r)
-=
-z^6-az^5+bz^4-cz^3+dz^2-ez+f.
-$$
-
 Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of $K_{\alpha_m}(s_{\alpha_m}-\varepsilon)$ whose vertices all lie in $C_m$ is $6$, whereas the corresponding number for $K_{\alpha_m}(s_{\alpha_m}+\varepsilon)$ is $3$.
 
 Determine exactly
 $$
-(C_m,\alpha_m).
+\left(C_m,\lim_{m\to\infty}\alpha_m\right).
 $$
 
 ---
@@ -93,4 +82,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for the unique parameter at which the first loss of simpliciality in a one-parameter family of four-dimensional convex hulls is a simultaneous six-vertex facet collision rather than an ordinary five-vertex event. The hard step is to reconstruct the hidden six-point interpolation constraint, prove that this collision is globally first, and then determine the local facet transition across it.
+The problem asks for the unique tuning at which the first loss of simpliciality in a one-parameter family of four-dimensional convex hulls is a simultaneous six-vertex facet collision. The central work is to identify the only possible first collision, prove its uniqueness, and control the local facet transition. The requested exact output records the six critical indices and the limiting tuning parameter.
