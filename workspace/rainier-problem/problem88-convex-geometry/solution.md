@@ -50,7 +50,7 @@ For $\alpha\le3/10$ this is positive for $z\ge10.9$ and $z\le-4.9$. Since
 $$
 \frac{\sin(11t)}t>10.9,\qquad \frac{\sin(5t)}t>4.9,
 $$
-the divided-difference mean-value theorem excludes every five-window wholly beyond these thresholds from vanishing before $S$.
+the divided-difference mean-value theorem gives $D_E(S)>0$ there; since $D_E$ is affine in $s$ and $D_E(0)>0$, such a window cannot vanish before $S$.
 
 Two boundary windows remain easy. For $k_0=(27,23,15,11,7)$ all coordinates are positive. With $M=\max z_i$, the recurrence
 $$
@@ -174,12 +174,12 @@ The remainders are also explicit. If $N_j=\binom{j+4}{4}$, $M=\max|k_i|$, $\eta=
 $$
 R=\frac{\sum|k_i|^5}{120\cdot16000^2},
 $$
-Taylor's theorem for the polynomial $h_j$ gives
+each variable has total exponent $jN_j/5$ over the monomials of $h_j$, and the total ordered second exponent is $j(j-1)N_j$. Taylor's theorem therefore gives
 $$
 |h_j-\widetilde h_j|\le\frac{jN_j}{5}M^{j-1}R+
 \frac{j(j-1)N_j}{2}(M+\eta)^{j-2}\eta^2.
 $$
-For $k_2$ this yields errors $<1/40,21/10,124$ for $h_2,h_3,h_4$; for $k_3$ they are $<1/250,1/4,11$. Hence, for $\alpha\le3/10$, the induced error in $F$ is less than
+For $k_2,k_3$, $(M,\sum|k_i|^5)=(15,940359),(11,240033)$, so the errors in $(h_2,h_3,h_4)$ are respectively $<(1/40,21/10,124)$ and $<(1/250,1/4,11)$. Thus the errors in $h_2+\alpha h_3$ are $<131/200$ and $<79/1000$, while the first-order values are $<3757$ and $<351$. Hence the induced error in $F$ is less than
 $$
 124(351)+182406\frac{79}{1000}+124\frac{79}{1000}
 +11(3757)+17094\frac{131}{200}+11\frac{131}{200}<111000.
@@ -216,7 +216,7 @@ The $z^5,z^4$ coefficients give
 $$
 bu-av=c,\qquad bv-cu=-d.
 $$
-To see that this system is nonsingular, scale the six roots by $t$. Their limiting tuple is $(15,11,7,-1,-5,-9)$, for which $e_1=18$ and $e_3=-2148$. Moreover their total displacement is less than $123/2000$, so
+To see that this system is nonsingular, scale the six roots by $t$. Their limiting tuple is $(15,11,7,-1,-5,-9)$, for which $e_1=18$ and $e_3=-2148$. Moreover their total displacement is less than $123/2000$; expanding $e_1,e_3$ under this perturbation gives
 $$
 \frac at>18-\frac{123}{2000}>0,
 $$
@@ -238,7 +238,7 @@ Step 4: Prove uniqueness of the first nonsimplicial facet
 
 By Steps 1--2 only $E_-,E_+$ can vanish first. If their zero times differ, the earlier five-window is supporting: its first four vertices span a hyperplane, every other retained abscissa lies outside their interval, and the interpolation-error formula in Step 1 has one sign.
 
-At $\alpha_m$ the two zero times tie. Every other consecutive divided difference is then positive, so knot insertion makes every five-set outside $C_m$ positive. The common hyperplane from Step 3 is supporting and contains exactly the six vertices of $C_m$; any dependent five-set inside $C_m$ spans that same hyperplane. Hence this six-vertex facet is unique and every other facet is tetrahedral.
+At $\alpha_m$ the two zero times tie. Every other consecutive divided difference is positive, so knot insertion makes every five-set outside $C_m$ positive. Take $T=E_-\cap E_+$. Every retained abscissa outside $C_m$ lies outside the interval spanned by $T$, so Step 1 gives positive interpolation error there, while the two remaining vertices of $C_m$ have zero error. Hence the common hyperplane supports exactly $C_m$. Any dependent five-set inside $C_m$ spans this hyperplane, so the six-vertex facet is unique and every other facet is tetrahedral.
 
 Step 5: Count the tetrahedral facets on the two sides
 
