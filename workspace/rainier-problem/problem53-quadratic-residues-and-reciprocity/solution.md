@@ -29,16 +29,22 @@ $$
 +\sum_x\chi(x)\chi(f(x))^2
 +\sum_x\chi(xf(x)).
 $$
-The four terms are respectively
+The first sum counts the $x$ for which $x\ne0$ and $f(x)\ne0$, hence equals $p-5$. For the second,
 $$
-p-5,\qquad S_1-\chi(-4)=S_1-1,\qquad -R,\qquad S_2.
+\sum_x\chi(x)^2\chi(f(x))
+=S_1-\chi(f(0))
+=S_1-\chi(-4)=S_1-1.
 $$
-Therefore
+For the third, $\sum_x\chi(x)=0$, so removing the four roots of $f$ gives
+$$
+\sum_x\chi(x)\chi(f(x))^2=-R.
+$$
+The fourth sum is $S_2$. Therefore
 $$
 |U_p|=\frac{p-6+S_1+S_2-R}{4}.
 $$
 
-Step 2: Establish the Jacobi-sum certificate used for both character sums
+Step 2: Establish the Jacobi-sum and norm certificates
 
 Because $p\equiv1\pmod8$, choose a character $\eta$ of order $8$ on $\mathbb F_p^\times$, extend it by $0$ at $0$, and put
 $$
@@ -52,27 +58,29 @@ If $A,B,AB$ are nontrivial, then
 $$
 |J(A,B)|^2=p.
 $$
-Indeed, after writing $x=uy$ in $J(A,B)\overline{J(A,B)}$, the inner sum is $p-2$ for $u=1$. For $u\ne1$, the map
+To verify this, in $J(A,B)\overline{J(A,B)}$ write $x=uy$ with $u\in\mathbb F_p^\times$ and $y\in\mathbb F_p^\times$. For $u=1$ the inner sum is $p-2$. For $u\ne1$, the map
 $$
-y\longmapsto \frac{1-uy}{1-y}
+y\longmapsto\frac{1-uy}{1-y}
 $$
-is a bijection from $\mathbb F_p^\times\setminus\{1\}$ to $\mathbb F_p\setminus\{1,u\}$, so that inner sum is $-1-B(u)$. Thus
+sends $\mathbb F_p^\times\setminus\{1\}$ bijectively onto $\mathbb F_p\setminus\{1,u\}$, so the inner sum is $-1-B(u)$. Hence
 $$
+\begin{aligned}
 |J(A,B)|^2
-=(p-2)-\sum_{u\ne0,1}A(u)-\sum_{u\ne0,1}(AB)(u)
-=p.
+&=(p-2)-\sum_{u\ne0,1}A(u)-\sum_{u\ne0,1}(AB)(u)\\
+&=(p-2)+1+1=p.
+\end{aligned}
 $$
 Also
 $$
 J(A,A^{-1})=-A(-1),
 $$
-because $t\mapsto t/(1-t)$ sends $\mathbb F_p\setminus\{1\}$ bijectively to $\mathbb F_p\setminus\{-1\}$.
+because $t\mapsto t/(1-t)$ sends $\mathbb F_p\setminus\{1\}$ bijectively onto $\mathbb F_p\setminus\{-1\}$.
 
-We shall also use uniqueness of norm representations. The rings $\mathbb Z[i]$ and $\mathbb Z[\sqrt{-2}]$ are Euclidean for
+We shall use uniqueness of the two norm representations. The rings $\mathbb Z[i]$ and $\mathbb Z[\sqrt{-2}]$ are Euclidean for
 $$
 N(r+si)=r^2+s^2,\qquad N(r+s\sqrt{-2})=r^2+2s^2.
 $$
-For the second ring, after division, rounding both rational coefficients gives a remainder with norm at most $1/4+2/4=3/4<1$; the Gaussian case is even smaller. Hence factorization is unique up to units and conjugation in both rings.
+Indeed, after dividing in the fraction field and rounding the two rational coefficients to nearest integers, the norm of the coefficient error is at most $1/2$ in the Gaussian case and at most $3/4$ in the second case. Thus both rings are unique factorization domains. Consequently, if an element in either ring has norm equal to the rational prime $p$, then its two integer coordinates agree with the corresponding representation of $p$ up to units and conjugation.
 
 Step 3: Evaluate the quartic sum $S_1$
 
@@ -89,15 +97,15 @@ S_1
 &=2\operatorname{Re}J(\psi,\chi)-1.
 \end{aligned}
 $$
-Put $J(\psi,\chi)=r+si$. Step 2 gives
+The sum $J(\psi,\chi)$ is an algebraic integer in $\mathbb Q(i)$, hence lies in $\mathbb Z[i]$; write it as $r+si$. Step 2 gives
 $$
 r^2+s^2=p.
 $$
-It remains to choose the correct sign of the odd coordinate. Multiplication by a fourth root of unity partitions $\mathbb F_p^\times$ into $(p-1)/4$ orbits, and $\chi(z^4-1)$ is constant on each orbit. The orbit with $z^4=1$ contributes $0$; each of the remaining
+It remains to choose the sign of the odd coordinate. Multiplication by a fourth root of unity partitions $\mathbb F_p^\times$ into $(p-1)/4$ orbits, and $\chi(z^4-1)$ is constant on each orbit. The orbit with $z^4=1$ contributes $0$, while each of the remaining
 $$
 \frac{p-5}{4}
 $$
-orbits contributes $4$ or $-4$. Since $(p-5)/4$ is odd,
+orbits contributes $4$ or $-4$. Since $(p-5)/4$ is odd and the omitted point $z=0$ contributes $\chi(-1)=1$,
 $$
 S_1\equiv1+4\equiv5\pmod8.
 $$
@@ -105,7 +113,7 @@ Therefore
 $$
 r=\frac{S_1+1}{2}\equiv3\pmod4.
 $$
-The representation $p=a^2+b^2$, with $a\equiv1\pmod4$ and $4\mid b$, and uniqueness in $\mathbb Z[i]$ from Step 2 imply $r=-a$. Hence
+The given representation $p=a^2+b^2$ has $a$ odd with $a\equiv1\pmod4$ and $b$ even. The uniqueness consequence in Step 2 therefore forces $r=-a$. Hence
 $$
 S_1=-1-2a.
 $$
@@ -125,19 +133,22 @@ Let
 $$
 L=J(\eta,\chi).
 $$
-For characters $A,B$ with $AB$ nontrivial, substituting $u=t/(t-1)$ gives
+For characters $A,B$ with $AB$ nontrivial, the substitution $u=t/(t-1)$ gives
 $$
 J(A,B)=A(-1)^{-1}J\left(A,(AB)^{-1}\right).
 $$
-Because $\eta(-1)=\eta^3(-1)\in\{1,-1\}$ and Jacobi sums are symmetric,
+Applying this once with $A=\eta$ and once with $A=\eta^3$, and using $\eta^3(-1)=\eta(-1)$ and symmetry of Jacobi sums, gives
 $$
-J(\eta^3,\chi)=J(\eta,\chi)=L.
+J(\eta^3,\chi)
+=\eta(-1)^{-1}J(\eta^3,\eta)
+=\eta(-1)^{-1}J(\eta,\eta^3)
+=J(\eta,\chi)=L.
 $$
-Thus $L$ is fixed by the automorphism $\zeta_8\mapsto\zeta_8^3$ of $\mathbb Q(\zeta_8)$. Its fixed field is $\mathbb Q(\sqrt{-2})$, so, since $L$ is an algebraic integer,
+For the Galois automorphism $\sigma_j$ defined by $\sigma_j(\zeta_8)=\zeta_8^j$, applying $\sigma_j$ termwise to a Jacobi sum raises each character value to the $j$th power. Thus $\sigma_3(L)=L$. The fixed field of $\sigma_3$ is $\mathbb Q(\sqrt{-2})$, whose ring of integers is $\mathbb Z[\sqrt{-2}]$. Hence
 $$
-L=r+s_0\sqrt{-2}\qquad(r,s_0\in\mathbb Z).
+L=r+s_0\sqrt{-2}\qquad(r,s_0\in\mathbb Z),
 $$
-Step 2 yields
+and Step 2 gives
 $$
 r^2+2s_0^2=p.
 $$
@@ -150,15 +161,20 @@ H
 &=J(\eta,\chi)+J(\eta^3,\chi)+J(\eta^5,\chi)+J(\eta^7,\chi).
 \end{aligned}
 $$
-The four terms are $L,L,\overline L,\overline L$, respectively, because $L$ is fixed by the exponent-$3$ automorphism and complex conjugation is the exponent-$7$ automorphism. Hence
+Complex conjugation is $\sigma_7$, while $\sigma_5=\sigma_7\sigma_3$. Therefore the four terms are $L,L,\overline L,\overline L$, and
 $$
 H=4r.
 $$
-We now determine the sign of $r$. Let $\mathcal R$ be the subgroup of nonzero fourth powers and put
+
+It remains to determine the sign of $r$. Let $\mathcal R$ be the subgroup of nonzero fourth powers and put
 $$
 m=\frac{p-1}{4},\qquad k=\frac{p-1}{8}.
 $$
-The function $\chi(z^5-z)$ is constant on each orbit $\{z,iz,-z,-iz\}$ because $\chi(i)=1$. The orbit with $z^4=1$ contributes $0$. The other $m-1=2k-1$ orbits correspond to $t\in\mathcal R\setminus\{1\}$ and contribute signs
+The function $\chi(z^5-z)$ is constant on each orbit $\{z,iz,-z,-iz\}$ because
+$$
+\chi(i)=i^{(p-1)/2}=1
+$$
+for $p\equiv1\pmod8$. The orbit with $z^4=1$ contributes $0$. The other $m-1=2k-1$ orbits correspond to $t\in\mathcal R\setminus\{1\}$ and contribute signs
 $$
 \sigma_t=\eta(t)\chi(t-1).
 $$
@@ -168,50 +184,54 @@ $$
 =\eta\left(\prod_{t\in\mathcal R}t\right)
  \chi\left(\prod_{t\ne1}(t-1)\right).
 $$
-Since $m$ is even, $\prod_{t\in\mathcal R}t=-1$. Also, differentiating $X^m-1$ at $1$ gives
+Since $m$ is even, the product of the roots of $X^m-1$ is $-1$. Also, differentiating $X^m-1$ at $1$ gives
 $$
 \prod_{t\ne1}(t-1)=-m\equiv\frac14\pmod p,
 $$
-whose quadratic character is $1$. Consequently
+whose quadratic character is $1$. Finally, if $g$ generates $\mathbb F_p^\times$, then $-1=g^{4k}$ and $\eta(g)$ is a primitive eighth root, so
 $$
-\prod_{t\ne1}\sigma_t=\eta(-1)=(-1)^k.
+\eta(-1)=(-1)^k.
 $$
-If $M$ of the signs are negative, then $M\equiv k\pmod2$, so
+Consequently
+$$
+\prod_{t\ne1}\sigma_t=(-1)^k.
+$$
+If $M$ of the $2k-1$ signs are negative, then $M\equiv k\pmod2$, and hence
 $$
 \sum_{t\ne1}\sigma_t=(2k-1)-2M\equiv3\pmod4.
 $$
-Hence
+Therefore
 $$
 H\equiv12\pmod{16},
 \qquad
 r=\frac H4\equiv3\pmod4.
 $$
-By uniqueness in $\mathbb Z[\sqrt{-2}]$ from Step 2 and the given representation
-$$
-p=c^2+2d^2,\qquad c\equiv3\pmod4,
-$$
-we obtain $r=c$. Therefore
+The given representation $p=c^2+2d^2$ has $c\equiv3\pmod4$. By the uniqueness consequence in Step 2, $r=c$. Thus
 $$
 H=4c,\qquad S_2=4\varepsilon c.
 $$
 
 Step 5: Evaluate the exceptional roots and combine all terms
 
-For every root of $x^4=4$, its quadratic character equals $\varepsilon$. Indeed the roots with square $2$ are $\pm s$, while those with square $-2$ are $\pm is$, and $\chi(-1)=\chi(i)=1$. Thus
+For every root of $x^4=4$, its quadratic character equals $\varepsilon$. Indeed the roots with square $2$ are $\pm s$, while those with square $-2$ are $\pm is$; here $\chi(-1)=1$ and, as in Step 4, $\chi(i)=1$. Thus
 $$
 R=4\varepsilon.
 $$
-The supplementary law for biquadratic reciprocity, in the normalization used in the problem, states precisely that if
+We now use Gauss's supplementary law for biquadratic reciprocity in the following precise form: if
 $$
 p=A^2+B^2,\qquad A\equiv1\pmod4,\qquad 4\mid B,
 $$
-then for any square root $u^2=2$ in $\mathbb F_p$,
+then
 $$
-\chi(u)=2^{(p-1)/4}=(-1)^{B/4}.
+2^{(p-1)/4}=(-1)^{B/4}\pmod p.
 $$
-Applying it with $A=a$ and $B=b$ gives
+The hypotheses hold with $A=a$ and $B=b$. Moreover, since $s^2=2$, Euler's criterion gives
 $$
-\varepsilon=(-1)^{b/4}.
+\varepsilon=\chi(s)
+=s^{(p-1)/2}
+=(s^2)^{(p-1)/4}
+=2^{(p-1)/4}
+=(-1)^{b/4}.
 $$
 Substituting the values from Steps 3 and 4 into the formula from Step 1,
 $$
