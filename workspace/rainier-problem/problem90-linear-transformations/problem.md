@@ -64,7 +64,7 @@ $$
 
 Determine $C_{p,n}(a)$ exactly for every odd prime $p$, every $n\ge2$, and every $a\in\mathbb F_p^\times$.
 
-Give a rigorous, self-contained derivation. Any structural description of the $N$-invariant subspaces, any reduction to matrices over a truncated polynomial ring, and any finite-field quadratic-form count used in the proof must be derived in the form needed here rather than cited as a black box. The argument must cover every allowed parameter value. Numerical experimentation, computer algebra, code, and external sources may not replace any part of the proof.
+Give a rigorous, self-contained derivation. Any structural theorem or finite-field counting identity used in the proof must be established in the precise form required here rather than cited as a black box. The argument must cover every allowed parameter value. Numerical experimentation, computer algebra, code, and external sources may not replace any part of the proof.
 
 ---
 
