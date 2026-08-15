@@ -19,7 +19,7 @@ is a finite, complete $\mathbb C[[x]]$-module. Suppose every integer at least $c
 $$
 b_\rho=t^{m_\rho}+\text{ higher terms}\in A_{n,\lambda}
 $$
-with $m_\rho\geq c$ minimal in that residue. If $k\geq c$ and $k=m_\rho+4nj$, subtracting a suitable multiple of $x^jb_\rho$ from $t^k$ raises the valuation. Repeating this process gives a $t$-adically convergent sum in the complete module $A_{n,\lambda}$, so $t^k\in A_{n,\lambda}$. The reverse implication is immediate. Therefore
+with $m_\rho\geq c$ minimal in that residue. If $k\geq c$ and $k=m_\rho+4nj$, subtracting a suitable multiple of $x^{j}b_\rho$ from $t^k$ raises the valuation. Repeating this process gives a $t$-adically convergent sum in the complete module $A_{n,\lambda}$, so $t^k\in A_{n,\lambda}$. The reverse implication is immediate. Therefore
 $$
 \kappa_{n,\lambda}
 =
@@ -50,7 +50,7 @@ Their largest gaps are $11,7,3$.
 Step 2: Determine the residue layers with a two-generator certificate
 Let
 $$
-B=\mathbb C[[u^4,u^6,u^9]],\qquad I=B+u^5B.
+B=\mathbb C[[u^4,u^6,u^9]],\qquad I=B+u^{5}B.
 $$
 The value sets of $B$ and the fractional $B$-ideal $I$ are $H$ and $K$. Since
 $$
@@ -113,7 +113,7 @@ Starting from $Q_1$, induction gives, for every positive nonfinal layer,
 $$
 Q_r(\lambda)
 =
-7r+7+\varepsilon+(-1)^r+K,
+7r+7+\varepsilon+(-1)^{r}+K,
 $$
 where $\varepsilon=0$ for $\lambda^2\neq1$ and $\varepsilon=1$ for $\lambda=-1$. When $n$ is odd, the last layer $r=n-1$ is even. The final coefficient check reaches $s^n$; after $s^n=u$, its nonzero wrapped term contributes exactly the additional translate $7+H$, so $K$ is replaced there by $L$. When $n$ is even, the last layer is odd and no wrapped translate occurs. The same reduction shows that any wrap landing in $Q_0$ has $q>11$, so the largest gap of $Q_0$ remains $11$.
 
@@ -142,7 +142,7 @@ $$
 $$
 For $\lambda\neq1$, away from the odd-$n$ boundary layer, Step 2 gives
 $$
-g_r=7r+14+\varepsilon+(-1)^r
+g_r=7r+14+\varepsilon+(-1)^{r}
 \qquad(r\geq1).
 $$
 Also $g_0=11$, so $m_1\geq1+20n>11n=m_0$. For later rows,
@@ -167,20 +167,20 @@ Both cases give
 $$
 \kappa_{n,\lambda}
 =
-7n^2+\left(6+\varepsilon+(-1)^n\right)n
+7n^2+\left(6+\varepsilon+(-1)^{n}\right)n
 \qquad(\lambda\neq1).
 $$
 Therefore
 $$
 \kappa_{n,-1}
 =
-7n^2+\left(7+(-1)^n\right)n,
+7n^2+\left(7+(-1)^{n}\right)n,
 $$
 while
 $$
 \kappa_{n,\lambda}
 =
-7n^2+\left(6+(-1)^n\right)n
+7n^2+\left(6+(-1)^{n}\right)n
 \qquad(\lambda^2\neq1).
 $$
 
@@ -202,7 +202,7 @@ For every $n\geq2$,
 $$
 \kappa_{n,1}-\kappa_{n,-1}
 =
-n\left(7n-9-(-1)^n\right)>0,
+n\left(7n-9-(-1)^{n}\right)>0,
 $$
 and
 $$
@@ -213,17 +213,17 @@ For the boundary value $n=2$, the three formulas give conductors $42,44,52$ for 
 
 The equation $\lambda^2=1$ has exactly the two solutions $1$ and $-1$ in $\mathbb C^\times$. Hence $\lambda=1$ gives the unique largest conductor and $\lambda=-1$ gives the unique second-largest conductor. Therefore
 $$
-\beta_n=7n^2+\left(7+(-1)^n\right)n,
+\beta_n=7n^2+\left(7+(-1)^{n}\right)n,
 \qquad
 E_n=\{-1\}.
 $$
-Final Answer: $\boxed{\left(7n^2+\left(7+(-1)^n\right)n,\{-1\}\right)}$
+Final Answer: $\boxed{\left(7n^2+\left(7+(-1)^{n}\right)n,\{-1\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(7n^2+\left(7+(-1)^n\right)n,\{-1\}\right)$
+$\left(7n^2+\left(7+(-1)^{n}\right)n,\{-1\}\right)$
 
 ---
 
