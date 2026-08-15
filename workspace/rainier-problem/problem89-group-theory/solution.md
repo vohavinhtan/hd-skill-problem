@@ -30,9 +30,17 @@ The left and right idealizers of $\mathcal C$ are both $\mathcal L$. For the lef
 $$
 PF=M_uF+M_vF^2\in\mathcal C,
 $$
-so $v=0$ because $I,F,F^2$ are linearly independent over $E$. Conversely every $M_u$ sends $\mathcal C$ into itself. The right idealizer is identical, using $FP$ instead.
+so $v=0$. Indeed, a relation among $I,F,F^2$ would give a polynomial of degree at most $4<2^r$ vanishing on all of $E$. Conversely every $M_u$ sends $\mathcal C$ into itself. The right idealizer is identical, using $FP$ instead.
 
-Therefore a map $X\mapsto AXB$ stabilizing $\mathcal C$ forces both $A$ and $B$ to normalize $\mathcal L$, and the same conclusion holds for $X\mapsto AX^\dagger B$ because adjoint interchanges the two equal idealizers. Choose a primitive $\alpha\in E^\times$. If $A$ normalizes $\mathcal L$, then
+If $\mathcal I_\ell,\mathcal I_r$ denote the two idealizers, then
+$$
+\mathcal I_\ell(A\mathcal CB)=A\mathcal I_\ell(\mathcal C)A^{-1},
+\qquad
+\mathcal I_r(A\mathcal CB)=B^{-1}\mathcal I_r(\mathcal C)B.
+$$
+Thus a map $X\mapsto AXB$ stabilizing $\mathcal C$ forces both $A$ and $B$ to normalize $\mathcal L$. The adjoint code $\mathcal C^\dagger$ has the same two idealizers $\mathcal L$, so the same conclusion holds for $X\mapsto AX^\dagger B$.
+
+Choose a primitive $\alpha\in E^\times$. If $A$ normalizes $\mathcal L$, then
 $$
 AM_\alpha A^{-1}=M_{\alpha^k}
 $$
