@@ -1,162 +1,189 @@
 ## Steps
 
-Step 1: Derive the two root-of-unity cancellation loci
-Write the six images as $x,y,z,u,v,w$, and put
+Step 1: Reduce the conductor to residue-class valuation gaps
+Put $u=t^n$ and $s=t$, so $s^n=u$, and write
 $$
-\mu=\lambda^n.
+x=u^4,\qquad y=u^6+u^7+u^7s,\qquad
+z=u^9+\left(\lambda^2u^9+(\lambda-1)u^{11}\right)s.
 $$
-Then
+Let
 $$
-x=t^8,\qquad y=t^{12},\qquad z=t^m,
+S_{n,\lambda}=\{v(f):0\neq f\in A_{n,\lambda}\}.
 $$
-while
+Because $x=t^{4n}$, the ring $A_{n,\lambda}$ is a complete finite $\mathbb C[[x]]$-module. If every integer at least $c$ occurs in $S_{n,\lambda}$, choose in each residue class modulo $4n$ an element whose first term has the least such valuation. Successive subtraction of its $\mathbb C[[x]]$-multiples removes the leading term of $t^k$ for every $k\geq c$ and converges $t$-adically inside $A_{n,\lambda}$. Therefore
 $$
-u-z=(\mu-1)t^{m+4}+(\mu\lambda-1)t^{m+6},
-$$
-$$
-v-z=(\mu^2-1)t^{m+4}+(\mu^2\lambda^2-1)t^{m+6}.
-$$
-Thus the two possible linear corrections are controlled by
-$$
-M(\lambda)=
-\begin{pmatrix}
-\mu-1&\mu\lambda-1\\
-\mu^2-1&\mu^2\lambda^2-1
-\end{pmatrix}.
-$$
-Using difference-of-squares factorizations,
-$$
-\begin{aligned}
-\det M(\lambda)
-&=(\mu-1)(\mu\lambda-1)\bigl((\mu\lambda+1)-(\mu+1)\bigr)\\
-&=\mu(\mu-1)(\lambda-1)(\mu\lambda-1)\\
-&=\lambda^n(\lambda^n-1)(\lambda-1)(\lambda^{n+1}-1).
-\end{aligned}
-$$
-Since $\lambda\neq0$, rank can drop only when $\lambda^n=1$ or $\lambda^{n+1}=1$. Their only common solution is $\lambda=1$: if both hold, division gives $\lambda=1$.
-
-Step 2: Find the nonlinear correction and identify the four rings
-The last generator is arranged so that its useful cancellation is not linear. Indeed,
-$$
-\lambda^nzu+(1-\lambda^n)z^2
-=t^{2m}+(\lambda^{2n}-\lambda^n)t^{2m+4}+(\lambda^{2n+1}-\lambda^n)t^{2m+6},
-$$
-so
-$$
-w-\lambda^nzu-(1-\lambda^n)z^2=(\lambda^n-1)t^{2m+5}.
+\kappa_{n,\lambda}
+=
+1+\max\left(\mathbb Z_{\geq0}\setminus S_{n,\lambda}\right).
 $$
 
-If $\lambda=1$, all corrections vanish and
+For $0\leq r<n$, set
 $$
-A_{n,1}=\mathbb C[[t^8,t^{12},t^m]].
+Q_r(\lambda)=\{q\geq0:qn+r\in S_{n,\lambda}\}.
 $$
-If $\lambda^{n+1}=1$ but $\lambda\neq1$, then $\lambda^n=\lambda^{-1}\neq1$ and $\mu\lambda-1=0$. Hence $u-z$ is a nonzero multiple of $t^{m+4}$, while the displayed nonlinear identity supplies $t^{2m+5}$:
+Also put
 $$
-A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{2m+5}]].
+H=\langle4,6,9\rangle,\qquad
+K=H\cup(5+H),\qquad
+L=K\cup(7+H).
 $$
-If $\lambda^n=1$ but $\lambda\neq1$, then $u-z=(\lambda-1)t^{m+6}$ and the nonlinear identity contributes nothing new, so
+Their gaps are
 $$
-A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+6}]].
+\mathbb Z_{\geq0}\setminus H=\{1,2,3,5,7,11\},
 $$
-For every remaining $\lambda$, the matrix in Step 1 is invertible, hence both $t^{m+4}$ and $t^{m+6}$ lie in the ring. The nonlinear identity also supplies $t^{2m+5}$, but here it is redundant because
 $$
-t^{2m+5}=t^{m+6}(t^8)^n.
+\mathbb Z_{\geq0}\setminus K=\{1,2,3,7\},
+\qquad
+\mathbb Z_{\geq0}\setminus L=\{1,2,3\}.
 $$
-Thus
-$$
-A_{n,\lambda}=\mathbb C[[t^8,t^{12},t^m,t^{m+4},t^{m+6}]].
-$$
-In each case the reverse inclusion follows from the displayed formulas for $u,v,w$, so these equalities are exact.
+Hence their largest gaps are $11,7,3$, respectively.
 
-Step 3: Compute the four conductor levels
-For a numerical semigroup $S$ containing $8$, let $w_r$ be its least element in residue $r$ modulo $8$. Then its conductor is
+Step 2: Determine all residue layers from one semigroup-ideal certificate
+Let
 $$
-\max_r w_r-7.
+B=\mathbb C[[u^4,u^6,u^9]],\qquad I=B+u^5B.
 $$
-We use
+The value sets of $B$ and $I$ are $H$ and $K$. The identity
 $$
-\langle8,12\rangle=\{0\}\cup\{4j:j\geq2\},
+H\cap(5+H)=(9+H)\cup(14+H)
 $$
-so the least positive residue-$4$ element is $12$. Also $m\equiv1\pmod8$ and $m\geq17$.
+shows that every cancellation between the two generators $1,u^5$ of $I$ is generated over $B$ by
+$$
+(u^9,-u^4),\qquad(-u^{14},u^9).
+$$
+This gives the complete primitive-overlap certificate for every translate of $I$.
 
-For
+Set
 $$
-S_0=\langle8,12,m\rangle,
+U=y^2-x^3-2xz-x^2y,\qquad G=z^2-x^3y.
 $$
-residues $1,2,3$ require $m,2m,3m$, and residues $5,6,7$ require one additional $12$. Hence the largest Apéry representative is $3m+12$ and
+Their terms through $s^2$ are
 $$
-c(S_0)=3m+5=24n+8.
-$$
-
-For
-$$
-S_{4,*}=\langle8,12,m,m+4,2m+5\rangle,
-$$
-residue $3$ is decisive. Without $2m+5$, the odd-generator residues $1,5$ require three odd generators, giving at least $3m$. If $2m+5$ is used, the remainder must have residue $4$, whose least positive value is $12$, giving $2m+17$. Thus the residue-$3$ minimum is $2m+17$ because $m\geq17$, while every other residue is represented by at most $2m+5$. Therefore
-$$
-c(S_{4,*})=2m+10=16n+12.
-$$
-
-For
-$$
-S_6=\langle8,12,m,m+6\rangle,
-$$
-residue $6$ needs at least two odd generators. The two cheapest possibilities, $(m+6)+(m+6)$ and $m+m+12$, both equal $2m+12$. The remaining residues have representatives
-$$
-0,\ m,\ 2m,\ m+18,\ 12,\ m+12,\ m+6,
-$$
-all smaller than $2m+12$ because $m>6$. Hence
-$$
-c(S_6)=2m+5=16n+7.
-$$
-
-Finally, for
-$$
-S_{46}=\langle8,12,m,m+4,m+6\rangle,
-$$
-residue $6$ again needs at least two odd generators, and the cheapest compatible pair is
-$$
-m+(m+4)=2m+4.
-$$
-Every other residue has a representative at most $\max\{2m,m+18\}<2m+4$. Hence
-$$
-c(S_{46})=2m-3=16n-1.
-$$
-
-Step 4: Identify the second-largest stratum
-Steps 2 and 3 give
-$$
-\kappa_{n,1}=24n+8,
-$$
-$$
-\kappa_{n,\lambda}=16n+12
-\qquad(\lambda^{n+1}=1,\ \lambda\neq1),
-$$
-$$
-\kappa_{n,\lambda}=16n+7
-\qquad(\lambda^n=1,\ \lambda\neq1),
+U=-u^{15}
++\left(2(1-\lambda^2)u^{13}+2u^{14}+(1-2\lambda)u^{15}\right)s
++u^{14}s^2
 $$
 and
 $$
-\kappa_{n,\lambda}=16n-1
+\begin{aligned}
+G={}&-u^{19}
++\left(2\lambda^2u^{18}-u^{19}+2(\lambda-1)u^{20}\right)s\\
+&+\left(\lambda^4u^{18}
++2\lambda^2(\lambda-1)u^{20}
++(\lambda-1)^2u^{22}\right)s^2.
+\end{aligned}
 $$
-for every remaining $\lambda$. Since $n\geq2$,
+If $\lambda^2\neq1$, the first positive layer is $13+K$. If $\lambda=-1$, the pair $U,G-xU$ gives $14+K$. If $\lambda=1$, the exact identity $G=xU$ leaves the principal layer $14+H$.
+
+For $\lambda\neq1$, identify each positive layer with $I$ by scaling its two least generators to coefficient $1$. The two displayed syzygies give the next layer, and the next cancellation is forced by the product of the first positive layer with the current one. For an odd index $r$, one full two-layer cycle has the following determinant. Writing $D=\lambda^2$, for $D\neq1$ it is
 $$
-24n+8>16n+12>16n+7>16n-1.
+\left(\frac{Dr}{r+1}\frac{D(r+2)}{r+1}\right)
+\left(
+\frac{r(r+3)}{2(r+1)(r+2)(D-1)}
+\frac{1}{2(D-1)}
+\right)
+=
+\frac{D^2r^2(r+3)}{4(r+1)^3(D-1)^2},
 $$
-Nontrivial $(n+1)$-st roots of unity exist because $n+1\geq3$. Therefore
+which is nonzero. For $\lambda=-1$, using $U,G-xU$ gives
 $$
-\beta_n=16n+12,
+\left(\frac{r}{r+1}\frac{r+2}{r+1}\right)
+\left(
+\frac{r+3}{2(r+1)}
+\frac{r}{2(r+2)}
+\right)
+=
+\frac{r^2(r+3)}{4(r+1)^3},
+$$
+also nonzero. The four factors in each product are the surviving coefficients attached to the two primitive syzygies in the two successive layers. Every other leading cancellation is an $H$-multiple of those syzygies by the intersection identity above. An invertible cycle therefore produces both generators of the next copy of $I$, while the same intersection identity excludes any additional primitive generator. The two successive $u$-degree shifts are $9$ and $5$, so a full cycle shifts the layer by $14$.
+
+It follows that, for $\lambda\neq1$,
+$$
+Q_r(\lambda)=7r+7+\varepsilon+(-1)^r+K
+\qquad(1\leq r<n),
+$$
+where $\varepsilon=1$ for $\lambda=-1$ and $\varepsilon=0$ otherwise. If $n$ is odd, the last row $r=n-1$ is even and the final primitive overlap reaches $s^n$; replacing $s^n$ by $u$ adds the translate $7+H$, so $K$ is replaced there by $L$. If $n$ is even, no extra translate occurs.
+
+For $\lambda=1$, the positive layer is principal. Every cancellation with fixed $s$-degree factors out the same power of its generator and reduces to a relation in $B$, so
+$$
+Q_r(1)=14r+H
+\qquad(0\leq r<n).
+$$
+
+Step 3: Compute the three conductor levels
+For a row $Q_r$, let $g_r$ be its largest missing $q$-value. The largest missing valuation in that row is
+$$
+m_r=r+ng_r.
+$$
+For $\lambda\neq1$, away from the odd-$n$ boundary row, Step 2 gives
+$$
+g_r=7r+14+\varepsilon+(-1)^r
+\qquad(r\geq1).
+$$
+The difference $m_{r+1}-m_r$ is alternately $1+9n$ and $1+5n$, so it is positive. When $n$ is odd, replacing $K$ by $L$ lowers the last $g_r$ by $4$, changing the final increment to $1+5n$, still positive. The last row always contains the largest gap.
+
+If $n$ is even, the last row is odd and
+$$
+g_{n-1}=7n+6+\varepsilon.
+$$
+If $n$ is odd, the boundary row uses $L$ and
+$$
+g_{n-1}=7n+4+\varepsilon.
+$$
+Both parities give
+$$
+\kappa_{n,\lambda}
+=
+7n^2+\left(6+\varepsilon+(-1)^n\right)n
+\qquad(\lambda\neq1).
+$$
+In particular,
+$$
+\kappa_{n,-1}
+=
+7n^2+\left(7+(-1)^n\right)n,
+$$
+while for $\lambda^2\neq1$,
+$$
+\kappa_{n,\lambda}
+=
+7n^2+\left(6+(-1)^n\right)n.
+$$
+
+For $\lambda=1$, Step 2 gives $g_r=14r+11$. Since $m_{r+1}-m_r=1+14n>0$, the last row again controls the conductor:
+$$
+\kappa_{n,1}
+=
+1+(n-1)+n\left(14(n-1)+11\right)
+=
+14n^2-2n.
+$$
+
+Step 4: Identify the second-largest value
+For every $n\geq2$,
+$$
+\kappa_{n,1}-\kappa_{n,-1}
+=
+n\left(7n-9-(-1)^n\right)>0,
+$$
+and
+$$
+\kappa_{n,-1}-\kappa_{n,\lambda}=n>0
+\qquad(\lambda^2\neq1).
+$$
+The equation $\lambda^2=1$ has exactly the two solutions $1$ and $-1$ in $\mathbb C^\times$. Therefore $\lambda=1$ gives the unique largest conductor, while $\lambda=-1$ gives the unique second-largest conductor. Hence
+$$
+\beta_n=7n^2+\left(7+(-1)^n\right)n,
 \qquad
-E_n=\{\lambda\in\mathbb C^\times:\lambda^{n+1}=1,\ \lambda\neq1\}.
+E_n=\{-1\}.
 $$
-Final Answer: $\boxed{\left(16n+12,\{\lambda\in\mathbb C^\times:\lambda^{n+1}=1,\lambda\neq1\}\right)}$
+Final Answer: $\boxed{\left(7n^2+\left(7+(-1)^n\right)n,\{-1\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(16n+12,\{\lambda\in\mathbb C^\times:\lambda^{n+1}=1,\lambda\neq1\}\right)$
+$\left(7n^2+\left(7+(-1)^n\right)n,\{-1\}\right)$
 
 ---
 
@@ -170,8 +197,8 @@ $\left(16n+12,\{\lambda\in\mathbb C^\times:\lambda^{n+1}=1,\lambda\neq1\}\right)
 
 ## Solution Concepts
 
-- rank drop of a cancellation matrix
-- roots of unity
-- multiplicative cancellation
-- numerical semigroup rings
+- value semigroup of a local ring
 - conductor exponent
+- semigroup ideals
+- syzygies of monomial curves
+- residue-class filtration
