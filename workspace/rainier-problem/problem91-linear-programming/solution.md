@@ -44,7 +44,7 @@ $$
 \leq
 \frac{4-\sigma}{4-2\sigma+\lambda}+\frac{4}{5}.
 $$
-Equality will force contact at the two hidden roots and at the endpoint.
+Equality forces contact at the two hidden roots and at the endpoint.
 
 Step 2: Construct the unique relaxed optimizer
 
@@ -129,57 +129,41 @@ It remains to prove that this slope test is the whole feasibility threshold. The
 $$
 c_r=\frac{r+\frac{3}{4}}{1+r}>\frac{4}{5}.
 $$
-We first show that $q_{\sigma,\lambda}$ is strictly concave on $[\frac{4}{5},1]$. Put $\delta=1-\sigma$, so
+We first prove that $q_{\sigma,\lambda}$ is strictly concave on $[\frac{4}{5},1]$. Since
 $$
-\frac{1}{5}<\delta<\frac{2}{9}.
+B-p(t)=(2-t)(2+t-\sigma),
 $$
-Direct differentiation of the displayed quartic gives
+the cubic from Step 2 can also be written
 $$
-q_{\sigma,\lambda}'''(t)=\frac{6E}{5A^2B^2},
+h(t)=\frac{(2+t-\sigma)(B+p(t))}{B^2}.
+$$
+Therefore
+$$
+q_{\sigma,\lambda}''(t)
+=
+\frac{H(t)+K(t)}{B^2}-\frac{K(t)}{5A^2},
 $$
 where
 $$
-\begin{aligned}
-E={}&2\delta^3+4\delta^2t+12\delta^2\lambda-13\delta^2
-+24\delta t\lambda-32\delta t\\
-&+8\delta\lambda^2-10\delta\lambda+8\delta
-+16t\lambda^2-16t\lambda-16t
--3\lambda^2+8\lambda+8.
-\end{aligned}
+H(t)=2(3t+2-2\sigma),
+\qquad
+K(t)=2(2t-\sigma)^2+4p(t).
 $$
-For $\frac{4}{5}\leq t\leq1$, the sum of all positive terms is at most
+Both roots of $p$ are smaller than $\sigma<\frac{4}{5}$, so $p(t)>0$ on $[\frac{4}{5},1]$. Hence
 $$
-\frac{45512}{3645}<13,
+K(t)>\frac{32}{25},
+\qquad
+H(t)<\frac{62}{9}.
 $$
-whereas the three terms $-32\delta t-16t\lambda-16t$ alone are at most
+Also $B>\frac{5}{2}$ and $A<\frac{3}{8}$ give
 $$
--\frac{4352}{225}<-19.
+\frac{B^2}{5A^2}>\frac{80}{9}
+>
+1+\frac{62/9}{32/25}
+>
+\frac{H(t)+K(t)}{K(t)}.
 $$
-Hence $q_{\sigma,\lambda}'''(t)<0$ there.
-
-At $t=\frac{4}{5}$,
-$$
-q_{\sigma,\lambda}''\left(\frac{4}{5}\right)
-=\frac{2M}{125A^2B^2},
-$$
-with
-$$
-\begin{aligned}
-M={}&25\delta^4+150\delta^3\lambda+120\delta^3
-+100\delta^2\lambda^2+870\delta^2\lambda-359\delta^2\\
-&+830\delta\lambda^2-74\delta\lambda-288\delta
-+200\lambda^3+104\lambda^2-204\lambda-4.
-\end{aligned}
-$$
-The positive terms are at most
-$$
-\frac{20136113}{1312200}<16,
-$$
-while the five negative terms contribute at most
-$$
--\frac{22561}{225}<-100.
-$$
-Thus $M<0$, so $q_{\sigma,\lambda}''<0$ on $[\frac{4}{5},1]$.
+Thus $q_{\sigma,\lambda}''(t)<0$ throughout $[\frac{4}{5},1]$.
 
 When $r=\rho_\sigma(\lambda)$, the function
 $$
@@ -191,7 +175,7 @@ If $r>\rho_\sigma(\lambda)$, the same difference is still strictly convex on $[c
 $$
 -\frac{16}{25}\bigl(r-\rho_\sigma(\lambda)\bigr)<0
 $$
-there; it remains nonnegative to the left of $1$. If $r<\rho_\sigma(\lambda)$, that derivative is positive, so the difference is negative immediately to the left of $1$. Consequently
+there; it is therefore positive to the left of $1$. If $r<\rho_\sigma(\lambda)$, that derivative is positive, so the difference is negative immediately to the left of $1$. Consequently
 $$
 P_{\sigma,\lambda}^*\text{ satisfies the full constraint}
 \quad\Longleftrightarrow\quad
@@ -259,7 +243,7 @@ F(\sigma,r,z)
 -10(2-\sigma)(4-2\sigma+z)^2.
 $$
 
-Its coefficient of $rz^3$ is $16>0$. As a polynomial in $r$ over $\mathbb Q[\sigma,z]$, its leading coefficient is $16A_0B_0^2$. The constant coefficient is not divisible by $A_0$, because modulo $A_0$ it equals $-10(2-\sigma)B_0^2$, and it is not divisible by $B_0$, because modulo $B_0$ it equals $-25A_0^3$. Thus the two coefficients are coprime. The polynomial is linear in $r$, so it is irreducible over $\mathbb Q(\sigma,z)$ and hence over $\mathbb Z[\sigma,r,z]$ by Gauss's lemma. Its integer content is $1$ because any common divisor would divide both $16$ and $25$.
+Its coefficient of $rz^3$ is $16>0$. As a polynomial in $r$ over $\mathbb Q[\sigma,z]$, its leading coefficient is $16A_0B_0^2$. The constant coefficient is not divisible by $A_0$, because substituting $z=\sigma-1$ gives $-10(2-\sigma)(3-\sigma)^2\neq0$, and it is not divisible by $B_0$, because substituting $z=2\sigma-4$ gives $-25(\sigma-3)^3\neq0$. Thus the two coefficients are coprime. The polynomial is linear in $r$, so Gauss's lemma gives irreducibility in $\mathbb Z[\sigma,r,z]$. Its integer content is $1$, since the expanded polynomial has coefficients $16$ and $-35$.
 
 Final Answer: $\boxed{(16r+25)(1-\sigma+z)(4-2\sigma+z)^2-25(1-\sigma+z)^3-10(2-\sigma)(4-2\sigma+z)^2}$
 
