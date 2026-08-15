@@ -49,4 +49,4 @@ Determine $|\operatorname{Aut}(G_{p,\nu};H)|$ as a function of $p$.
 
 ## Domain Explanation
 
-This is an exact automorphism-counting problem for a finite class-two $p$-group with a marked subgroup. The commutator tensor hides a quadratic field structure that is not named in the statement. After recovering that structure, the marked subgroup forces a second stabilizer calculation before the central automorphisms can be counted.
+This is an exact automorphism-counting problem for a finite class-two p-group with a marked subgroup. The commutator tensor hides a quadratic field structure that is not named in the statement. After recovering that structure, the marked subgroup forces a second stabilizer calculation before the central automorphisms can be counted.
