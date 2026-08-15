@@ -135,15 +135,7 @@ $$
 \qquad
 \theta(f)=f.
 $$
-Write an element of $K$ as in Step 3 with $v=-a$. Commutation with $\theta$ gives
-$$
-u=-b,
-\qquad
-w=c,
-\qquad
-s=-r.
-$$
-Thus the free parameters are exactly
+Write an element of $K$ as in Step 3 with $v=-a$. Commutation with $\theta$ gives $u=-b$, $w=c$, and $s=-r$. Thus the free parameters are exactly
 $$
 a,b,c,r,t,
 $$
