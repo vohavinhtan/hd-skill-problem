@@ -26,7 +26,7 @@ for every $x\in[-1,1]$.
 
 For each such $r$, the function $V_r$ is $C^1$ on $(\frac{1}{7},\frac{2}{9})$ and has a unique point $\Lambda(r)$ in this interval at which it is not twice differentiable. At this point the two one-sided second derivatives exist and are nonzero.
 
-Determine the reduced rational function $R(z)\in\mathbb Q(z)$ such that
+Determine the rational function $R(z)\in\mathbb Q(z)$ such that
 $$
 \frac{V_r''(\Lambda(r)+)}{V_r''(\Lambda(r)-)}
 =R(\Lambda(r))
