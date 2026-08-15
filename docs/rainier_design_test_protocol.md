@@ -6,15 +6,13 @@ Read this before designing or hardening any frontier problem. Goal: measure diff
 
 | File | Use |
 |---|---|
-| `skills/_shared/hard_gates.md` | Hard reject gates and the exact numeric limits (Answer Length, Answer Compaction, Solution Length, Black-Box Severity Scale) |
-| `skills/_shared/triviality_probe.md` | Probes P1–P8; P4, P5, P6 are the load-bearing ones here |
-| `skills/_shared/breaker_playbook.md` | Archive digest: saturated skeletons to reject on sight, hardening moves that verifiably worked or failed |
-| `workspace/frontier-problem/used_concept_map.md` | Per-problem technique tally used by the P4 saturation count |
-| `skills/_shared/frontier_authoring_guide.md` | Answer Type feasibility table, approved/discouraged compaction patterns |
+| `skills/_shared/triviality_probe.md` | Probes P1–P5, including the workspace-wide technique-skeleton reuse sub-check |
+| `skills/_shared/frontier_authoring_guide.md` | Authoring patterns, By-Hand Solution Gate, hand-auditable evaluation, scalar-depth defense |
+| `skills/rainier-submit/SKILL.md` | The submission-time gate list the finished package must satisfy |
 
-Never copy a limit into this file. Read it from `hard_gates.md` so the two cannot drift apart.
+Never restate a gate's wording here. Read it from the file that owns it so the two cannot drift apart.
 
-If `skills/_shared/hard_gates.md` is missing, unreadable, or does not state the active Answer Length limit, stop before candidate generation and report the broken gate source. Never infer the limit from memory, reuse an old portal value silently, or continue with an uncounted answer.
+The Answer Length and Solution Length limits are portal settings, not repository content. Take the active numbers from the user's current portal state and record what you counted against in the Phase 0 record. If no current limit is available, stop and ask before generating candidates. Never infer a limit from memory, reuse an old portal value silently, or continue with an uncounted answer.
 
 ## MANDATORY STOP GATE — literal Answer before candidate creation
 
@@ -26,7 +24,7 @@ Run these checks in this order:
 2. Expand every helper symbol, alias, named family, case label, local parameter, and shorthand that is not independently required by the mathematical setup. A symbol defined only to shorten the answer counts as its full expansion.
 3. For a parameterized, piecewise, classification, set, or mapping answer, write every branch and every exceptional case before counting. Never assume it can be compacted later.
 4. Count the literal characters with a script. Do not estimate by eye, count rendered glyphs, or postpone the count until `solution.md`.
-5. Check all three conditions at once: the answer is explicit, self-contained from the statement, and within the current Answer Length limit from `hard_gates.md`.
+5. Check all three conditions at once: the answer is explicit, self-contained from the statement, and within the Answer Length limit currently in force.
 
 If any condition fails, **REJECT or redesign the requested answer object immediately**. Do not spend a verification run or model test on that candidate.
 
@@ -50,7 +48,7 @@ Return to Phase 1 and redesign the requested object, or replace the candidate. T
 3. Design, verification, and testing never share context.
 4. A medium-model failure is a screening signal, not proof of submission quality.
 5. The counterexample attack lives inside verification, not as a separate phase.
-6. **Never pre-define the answer's symbols in the statement.** If the statement defines notation that nothing in the setup requires, that notation leaked from the answer. Compact by writing the answer piecewise, or by specifying an object through a uniqueness property — never by handing over its primitives. (`hard_gates.md` → Answer Compaction Gate, condition 4.)
+6. **Never pre-define the answer's symbols in the statement.** If the statement defines notation that nothing in the setup requires, that notation leaked from the answer. Compact by writing the answer piecewise, or by specifying an object through a uniqueness property — never by handing over its primitives.
 7. Constrain the **shape of the answer**, never the **vocabulary of the route**.
 8. **Answer-budget compatibility is a design constraint, not a formatting task.** Before a candidate exists, its literal final answer must already be simultaneously explicit, self-contained from the statement, and under the Answer Length limit. If these three conditions cannot coexist without adding answer-derived notation or the intended normal form to the statement, reject or redesign the mathematical problem. Never repair this conflict after testing by teaching the statement the answer's vocabulary.
 
@@ -75,7 +73,7 @@ Stop early only for a genuine blocker: Codex unavailable or unauthenticated, an 
 
 Deliverables at handoff:
 
-- `problem.md` written in the problem folder (per `skills/_shared/frontier_workspace.md`);
+- `problem.md` written in the problem folder (per `skills/_shared/rainier_workspace.md`);
 - `solution.md` left as its placeholder — untouched;
 - the handoff report of Phase 3b, presented to the user.
 
@@ -88,7 +86,7 @@ The external evaluation accepts a problem when **at least one of its two models 
 So the design target is **a GPT-5.5 failure rate around 40–50%**, not the highest failure rate obtainable.
 
 - Aiming at 25% leaves no margin: the real evaluation differs in sampling, prompt harness, and attempt count, and a candidate sitting exactly on the bar loses to noise.
-- Aiming at 90%+ is over-engineering, and it costs more than quota. The archive measures hardening backfires directly (generalizing `C_3 → C_{p^k}` deleted the sole discriminator; a tie-break swap took a problem from 4/8 stumped to 8/8 solved). Harder problems also crowd the Solution Length Gate, and richer answers crowd the Answer Length Gate — which then creates compaction pressure, and compaction that pre-defines the answer's primitives is a route leak (`hard_gates.md` → Answer Compaction Gate, condition 4). Difficulty bought past the target is paid for in gate violations.
+- Aiming at 90%+ is over-engineering, and it costs more than quota. The archive measures hardening backfires directly (generalizing `C_3 → C_{p^k}` deleted the sole discriminator; a tie-break swap took a problem from 4/8 stumped to 8/8 solved). Harder problems also crowd the Solution Length Gate, and richer answers crowd the Answer Length Gate — which then creates compaction pressure, and compaction that pre-defines the answer's primitives is a route leak (Core rule 6). Difficulty bought past the target is paid for in gate violations.
 
 A candidate already inside the target band is **finished**. Do not harden it further because a harder version seems achievable.
 
@@ -120,12 +118,12 @@ This is a research task only. Do not edit, create, or modify any files — retur
 
 The cheapest rejects in the pipeline. Run all seven before any model call.
 
-1. **P4 saturation.** Name the decisive step. Check it against the "Saturated skeletons — do NOT reuse" list in `skills/_shared/breaker_playbook.md`, then count it in the technique column of `used_concept_map.md`. Saturation ≥ 2 → REJECT, no test.
+1. **P4 saturation.** Name the decisive step and tag its technique skeleton (e.g. `transfer-matrix→rational-GF`, `residue-lattice→subgroup-index`, `moment-region→1D-optimization`). Scan the existing `workspace/rainier-problem/problemNN-*/` problems and solutions for that skeleton, as required by the P4 sub-check in `skills/_shared/triviality_probe.md`. Two or more prior uses → REJECT, no test. Also reject on sight any skeleton whose decisive step is only "recognize the standard machine and crank it".
 2. **P6 route concession — the most common crack in the whole archive.** The statement must not print the intended derivation's output: no pre-factored transport / Gram / cocycle matrix, no sufficient-statistic parameters, no signposted conjugating coordinate, no "for compactness" aggregate constant that equals a quantity the solver was supposed to derive.
 3. **Reverse-engineered target.** Solve the statement's own defining conditions symbolically for each unknown. If any falls out by inspection, the gateway is conceded. Watch in particular for printing a discrete derivative of the requested object — "here is ∂(unknown), find the unknown" is never a discovery, and it survives de-leaking the setup because it sits in the requested value.
 4. **Unmotivated notation.** For every symbol the statement defines, name what in the setup requires it. If nothing does, it leaked from the answer.
 5. **Answer Type gradeability — pin this before any test.** "Polynomial or rational function" and "Equation or inequality" have no unique normal form; archived graders marked algebraically identical answers both CORRECT and INCORRECT. Either fix the presentation (monic / lowest degree / expanded vs factored / fixed index set) or switch type, and require every auxiliary symbol to be defined inside the box. A difficulty measurement on an ungradeable answer is noise.
-6. **Hard gates.** Answer under its limit, Steps projected under theirs, not primarily bookkeeping, self-contained — per `hard_gates.md`.
+6. **Hard gates.** Answer under the active Answer Length limit, Steps projected under the active Solution Length limit, not primarily bookkeeping, self-contained, and fully by hand — per the By-Hand Solution Gate and the hand-auditable-evaluation rule in `skills/_shared/frontier_authoring_guide.md`, and the gate list in `skills/rainier-submit/SKILL.md`.
 7. **Literal Answer Compatibility Gate.** Write the exact proposed contents of `## Answer`, not a description, alias, or character estimate. Expand every helper symbol that is not independently required by the mathematical setup, then count characters exactly. Audit the statement against that expanded answer: if shortening it would require adding any answer-only symbol, parameter family, case split, canonical representative, quotient action, lift, optimizer, or correction term to the prompt, REJECT or redesign now. This gate is run before originality search, verification, or model testing; it may not be deferred to Phase 4.
 
 ## Phase 1 — Batch design
@@ -291,7 +289,7 @@ Then:
 1. Write `solution.md`.
 2. Make every load-bearing computation reproducible — no Level 2/3 black boxes.
 3. `Final Answer: $\boxed{...}$` must match the `## Answer` field exactly.
-4. Answer and Steps must satisfy the limits in `hard_gates.md`, verified by exact count rather than estimate.
+4. Answer and Steps must satisfy the active portal limits, verified by exact scripted count rather than estimate.
 5. Include `## Concepts (1-5)`, classification, verification, and black-box audit sections as the repository requires.
 6. Run LaTeX and formatting checks.
 
@@ -322,12 +320,12 @@ Effective hardening move:
 Reusable warning:
 ```
 
-Abstract patterns only — never full prompts, full solutions, or final answers; those leak into later design sessions and reduce originality. Durable, generalizable lessons are distilled into `skills/_shared/breaker_playbook.md` under its Zone-4 contract.
+Abstract patterns only — never full prompts, full solutions, or final answers; those leak into later design sessions and reduce originality. Keep the entries with the design notes for the session; if a lesson proves durable across several problems, fold it into this protocol or into `skills/_shared/triviality_probe.md` rather than leaving it in loose notes.
 
 ## Per-problem checklist
 
 ```text
-[ ] P4 saturation checked against used_concept_map.md and the saturated-skeleton list
+[ ] P4 skeleton tagged and scanned across workspace/rainier-problem/; fewer than two prior uses
 [ ] P6 route-concession check passed
 [ ] Reverse-engineered-target test passed
 [ ] Every symbol the statement defines is required by the setup
@@ -358,5 +356,5 @@ Abstract patterns only — never full prompts, full solutions, or final answers;
 [ ] solution.md written only after the difficulty gates and that confirmation
 [ ] Phase 4 did not retrofit problem.md with answer-derived notation
 [ ] Final Answer and ## Answer match exactly
-[ ] hard_gates.md limits verified by exact count
+[ ] Active portal limits verified by exact scripted count
 ```
