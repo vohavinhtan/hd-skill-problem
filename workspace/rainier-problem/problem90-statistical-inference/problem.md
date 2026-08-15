@@ -2,57 +2,74 @@
 
 ## LaTeX (Normalized)
 
-For each parameter pair $(\mu,\delta)\in\mathbb R^2$, let
+For each parameter vector
 $$
-X_+\sim N(\mu+\delta,1),
-\qquad
-X_-\sim N(\mu-\delta,4)
+\theta=(\theta_1,\theta_2,\theta_3)\in\mathbb R^3,
+$$
+let
+$$
+X_1\sim N(\theta_1,1),\qquad
+X_2\sim N(\theta_2,4),\qquad
+X_3\sim N(\theta_3,9)
 $$
 be independent. The statistician observes only the unordered multiset
 $$
-\mathcal X=\{\!\{X_+,X_-\}\!\};
+\mathcal X=\{\!\{X_1,X_2,X_3\}\!\};
 $$
-the labels $+$ and $-$ are not observed.
+the labels $1,2,3$ are not observed.
 
-For a fixed quintuple $(a,b,c,d,e)\in\mathbb R^5$, define
+For a fixed coefficient vector
 $$
-\tau_{a,b,c,d,e}(\mu,\delta)
+q=(a_1,a_2,a_3,c_1,c_2,c_3,d_{12},d_{13},d_{23})\in\mathbb R^9,
+$$
+define
+$$
+\tau_q(\theta)
 =
-\exp\!\left(a\mu+c\mu^2+e\delta^2\right)
-\cosh\!\left(b\delta+d\mu\delta\right).
-$$
-Equivalently,
-$$
-\tau_{a,b,c,d,e}
-=
-\frac12\exp\!\left(a\mu+b\delta+c\mu^2+d\mu\delta+e\delta^2\right)
-+
-\frac12\exp\!\left(a\mu-b\delta+c\mu^2-d\mu\delta+e\delta^2\right).
+\exp\!\Big(
+ a_1\theta_1+a_2\theta_2+a_3\theta_3
+ +c_1\theta_1^2+c_2\theta_2^2+c_3\theta_3^2
+ +d_{12}\theta_1\theta_2
+ +d_{13}\theta_1\theta_3
+ +d_{23}\theta_2\theta_3
+\Big).
 $$
 
-Identify all quintuples $(a,b,c,d,e)$ for which there exists exactly one nonnegative Borel estimator $T(\mathcal X)$, up to almost-sure equality under every parameter value, such that
+Identify all $q\in\mathbb R^9$ for which there exists exactly one nonnegative Borel estimator $T(\mathcal X)$, up to almost-sure equality under every $\theta\in\mathbb R^3$, such that
 $$
-\mathbb E_{\mu,\delta}[T(\mathcal X)]
-=
-\tau_{a,b,c,d,e}(\mu,\delta)
+\mathbb E_\theta[T(\mathcal X)]=\tau_q(\theta)
 $$
 and
 $$
-\mathbb E_{\mu,\delta}[T(\mathcal X)^2]<\infty
+\mathbb E_\theta[T(\mathcal X)^2]<\infty
 $$
-for every $(\mu,\delta)\in\mathbb R^2$.
+for every $\theta\in\mathbb R^3$.
 
-For every admissible quintuple, determine the unique estimator explicitly as a symmetric function of the two observed numerical values.
+For every admissible $q$, determine the unique estimator explicitly as a symmetric function of the three observed numerical values.
 
-A complete answer must satisfy all of the following.
+In addition, among the $L^2$-admissible coefficient vectors, determine exactly which ones satisfy the stronger condition
+$$
+\mathbb E_\theta[T(\mathcal X)^3]<\infty
+\qquad\text{for every }\theta\in\mathbb R^3.
+$$
 
-1. The admissible set must be given as a finite union of cases described directly by algebraic equalities and strict inequalities in $a,b,c,d,e$. A characterization only in terms of auxiliary matrices, eigenvalues, determinants left unevaluated, or an unspecified positive-definiteness condition is not sufficient.
+A complete answer must satisfy all of the following requirements.
 
-2. All degenerate and boundary cases must be resolved, including the cases in which the two exponential-quadratic branches coincide, have the same covariance but different means, or are exchanged by the symmetry $(x,y)\mapsto(y,x)$ rather than fixed individually.
+1. The $L^2$-admissible set must be given directly in the nine scalar coefficients
+$$
+a_1,a_2,a_3,c_1,c_2,c_3,d_{12},d_{13},d_{23}
+$$
+by explicit polynomial equalities and strict polynomial inequalities. A characterization only through an auxiliary covariance or precision matrix, its eigenvalues, principal minors left unevaluated, or an unspecified positive-definiteness condition is not sufficient.
 
-3. The second-moment condition must be proved for the full estimator, not merely for the two branches separately. In particular, if the square of the estimator produces a mixed cross-term between the two branches, its integrability must be checked explicitly and cannot be discarded by appealing only to the two diagonal terms.
+2. The $L^3$ subregion must likewise be given explicitly in the original nine scalar coefficients. It is not sufficient to say that the same matrix inequality holds with a different numerical factor.
 
-4. The derivation must be self-contained. If completeness of a Gaussian location family, uniqueness of a Laplace/Fourier transform, or identifiability of a finite Gaussian mixture is used, the needed statement must be proved in the present two-dimensional setting rather than cited as a black box.
+3. Every equality forced by invariance under the full permutation group $S_3$ must be derived. In particular, it is not enough to impose invariance under a single transposition and assert that the remaining permutations follow automatically.
+
+4. All boundary and degenerate cases must be resolved, including singular Gaussian tilts, semidefinite $L^2$ or $L^3$ boundary forms, and cases in which some but not all off-diagonal coefficients vanish.
+
+5. The derivation must be self-contained. If completeness of the three-dimensional Gaussian location family, injectivity of Gaussian convolution, uniqueness of a Fourier/Laplace transform, or any equivalent transform statement is used, the precise fact needed here must be proved in this setting rather than cited as a black box.
+
+6. The final estimator must be written as an explicit symmetric formula in the three observed values $x,y,z$. Introducing unnamed constants defined only implicitly by solving a matrix equation is not sufficient.
 
 ---
 
@@ -62,11 +79,11 @@ A complete answer must satisfy all of the following.
 |---|---|
 | **Domain** | Probability and Statistics |
 | **Sub-domain** | Statistical inference |
-| **Problem Type** | Parameter identification |
-| **Answer Type** | Finite semialgebraic case classification plus explicit estimator |
+| **Problem Type** | Exact parameter classification under unlabeled observation |
+| **Answer Type** | Semialgebraic classification, explicit estimator, and moment stratification |
 
 ---
 
 ## Domain Explanation
 
-The problem concerns unbiased estimation from a heteroscedastic Gaussian experiment after the labels of the two observations are erased. The target is now a two-branch exponential-quadratic mixture. Under Gaussian tilting, the two branches generally produce two different Gaussian components, so existence and uniqueness require more than the single-matrix calculation of the one-branch problem. One must control identifiability of the induced Gaussian mixture, determine whether the unordered-data symmetry fixes the components or exchanges them, and impose the sharp global $L^2$ condition including the cross-term between components. These are statistical-inference questions, and the requested output is an exact finite semialgebraic classification together with the unique estimator in each admissible case.
+The problem asks which exponential-quadratic functionals of a full three-dimensional Gaussian location family remain unbiasedly estimable after all three labels are erased. Because the three known variances are distinct, permutation-invariance of the estimator is not inherited by the labeled Gaussian likelihood and therefore imposes nonlinear algebraic constraints on the target coefficients. The exact answer requires combining Gaussian transform inversion, full $S_3$ symmetry, uniqueness, and sharp $L^2$ and $L^3$ integrability boundaries. The requested output is an explicit semialgebraic classification in the original nine coefficients together with the unique symmetric estimator.
