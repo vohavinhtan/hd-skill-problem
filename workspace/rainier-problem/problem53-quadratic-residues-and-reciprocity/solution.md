@@ -80,10 +80,18 @@ We shall use uniqueness of the two norm representations. The rings $\mathbb Z[i]
 $$
 N(r+si)=r^2+s^2,\qquad N(r+s\sqrt{-2})=r^2+2s^2.
 $$
-Indeed, after dividing in the fraction field and rounding the two rational coefficients to nearest integers, the norm of the coefficient error is at most $1/2$ in the Gaussian case and at most $3/4$ in the second case. Thus both rings are unique factorization domains. Consequently, if an element in either ring has norm equal to the rational prime $p$, then its integer coordinates agree with the corresponding representation of $p$ up to units and conjugation.
+Indeed, after dividing in the fraction field and rounding the two rational coefficients to nearest integers, the norm of the coefficient error is at most $1/2$ in the Gaussian case and at most $3/4$ in the second case. Thus both rings are unique factorization domains. If two elements in one of these rings have norm $p$, each is irreducible; from
+$$
+p=\alpha\overline\alpha=\beta\overline\beta
+$$
+and unique factorization, $\alpha$ is associated to either $\beta$ or $\overline\beta$. Hence their integer coordinates agree up to the units and conjugation of the ring.
 
 Step 3: Evaluate the quartic sum $S_1$
 
+Choose $u\in\mathbb F_p$ with $u^2=2$. Since $u^4=4$ and $\chi(4)=1$, the substitution $x=uz$ gives
+$$
+S_1=\sum_{z\in\mathbb F_p}\chi(z^4-1).
+$$
 For every $t\in\mathbb F_p$, the number of solutions of $z^4=t$ is
 $$
 1+\psi(t)+\chi(t)+\overline{\psi}(t).
@@ -97,7 +105,7 @@ S_1
 &=2\operatorname{Re}J(\psi,\chi)-1.
 \end{aligned}
 $$
-The sum $J(\psi,\chi)$ is an algebraic integer in $\mathbb Q(i)$, hence lies in $\mathbb Z[i]$; write
+The Jacobi sum is an algebraic integer in $\mathbb Q(i)$, whose ring of integers is $\mathbb Z[i]$. Write
 $$
 J(\psi,\chi)=r+vi,\qquad r,v\in\mathbb Z.
 $$
@@ -128,11 +136,11 @@ $$
 
 Step 4: Evaluate the quintic sum $S_2$ by an octic Jacobi sum
 
-Choose $u\in\mathbb F_p$ with $u^2=2$ and set
+Keep the square root $u$ from Step 3 and set
 $$
 \varepsilon=\chi(u).
 $$
-Since $u^4=4$, the substitution $x=uz$ gives
+The substitution $x=uz$ gives
 $$
 S_2=\varepsilon H,\qquad
 H=\sum_{z\in\mathbb F_p}\chi(z^5-z).
@@ -152,7 +160,7 @@ J(\eta^3,\chi)
 =\eta(-1)^{-1}J(\eta,\eta^3)
 =J(\eta,\chi)=L.
 $$
-Let $\zeta_8$ be a primitive eighth root of unity. For the Galois automorphism $\sigma_j$ defined by $\sigma_j(\zeta_8)=\zeta_8^j$, applying $\sigma_j$ termwise raises each character value to the $j$th power. Thus $\sigma_3(L)=L$. The fixed field of $\sigma_3$ is $\mathbb Q(\sqrt{-2})$, whose ring of integers is $\mathbb Z[\sqrt{-2}]$. Hence
+Let $\zeta_8$ be a primitive eighth root of unity. For the Galois automorphism $\sigma_j$ defined by $\sigma_j(\zeta_8)=\zeta_8^j$, applying $\sigma_j$ termwise raises each character value to the $j$th power. Thus $\sigma_3(L)=L$. Since $\sigma_3(i)=-i$ and $\sigma_3(\sqrt2)=-\sqrt2$, the element $\sqrt{-2}=i\sqrt2$ is fixed. The fixed field has degree two, so it is $\mathbb Q(\sqrt{-2})$; because $-2\equiv2\pmod4$, its ring of integers is $\mathbb Z[\sqrt{-2}]$. Hence
 $$
 L=r+s_0\sqrt{-2}\qquad(r,s_0\in\mathbb Z),
 $$
@@ -217,13 +225,15 @@ $$
 
 Step 5: Determine the quartic sign, evaluate the exceptional roots, and finish
 
-The same quartic Jacobi sum from Step 3 determines $\varepsilon$ without an external reciprocity formula. Keep
+The same quartic Jacobi sum from Step 3 determines $\varepsilon$. Keep
 $$
 J(\psi,\chi)=-a+vi,\qquad v=\pm b.
 $$
 Choose a generator $g$ of $\mathbb F_p^\times$ so that $\psi(g)=i$, put $\mathcal R=(\mathbb F_p^\times)^4$, and set
 $$
-\iota=g^m,\qquad m=\frac{p-1}{4}=2k.
+\iota=g^m,
+\qquad
+m=\frac{p-1}{4}=2k.
 $$
 Then $\iota^2=-1$, and the coset
 $$
