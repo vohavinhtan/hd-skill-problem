@@ -2,7 +2,7 @@
 
 Step 1: Reduce the point-weight LP by an affine symmetry
 
-For $a\in\mathbb F_p^\times$ and $b\in\mathbb F_p$, define
+For $a\in\mathbb F_p^{\times}$ and $b\in\mathbb F_p$, define
 $$
 T_{a,b}(x,y)=(ax+b,a^2y+2abx+b^2).
 $$
@@ -37,13 +37,13 @@ After replacing $x$ by $u+m/2$,
 $$
 y-x^2=\frac{\Delta}{4}-u^2.
 $$
-If $\Delta=0$, there is one point with $y=x^2$. Since $p\equiv1\pmod4$, one has $\chi(-1)=1$, so all other $p-1$ points satisfy $\chi(y-x^2)=1$.
+If $\Delta=0$, there is one point with $y=x^2$. Since $p\equiv1\pmod{4}$, one has $\chi(-1)=1$, so all other $p-1$ points satisfy $\chi(y-x^2)=1$.
 
 Now suppose $\Delta\neq0$ and write $A=\Delta/4$. Choose $i\in\mathbb F_p$ with $i^2=-1$. The number of pairs $(u,v)$ satisfying
 $$
 u^2+v^2=A
 $$
-is $p-1$: for every $s\in\mathbb F_p^\times$, the equations
+is $p-1$: for every $s\in\mathbb F_p^{\times}$, the equations
 $$
 u+iv=s,\qquad u-iv=\frac{A}{s}
 $$
@@ -91,22 +91,39 @@ Define
 $$
 Q_p(\lambda)=(3p-1)\lambda^3+(p-1)\lambda-2(p-1).
 $$
+The dual of the reduced LP minimizes
+$$
+y_T+y_S+y_E+\frac{9}{10}y_V
+$$
+over nonnegative multipliers subject to
+$$
+y_T+2y_S+y_V\geq p,
+$$
+$$
+(p-1)y_T+\frac{p-3}{2}y_S+\frac{p-1}{2}y_E+\frac{p-1}{2}y_V
+\geq\frac{p(p-1)}{2}\lambda,
+$$
+$$
+\frac{p-1}{2}y_S+\frac{p+1}{2}y_E+\frac{p-1}{2}y_V
+\geq\frac{p(p-1)}{2}\lambda^3.
+$$
+
 Consider
 $$
 (a_-,b_-,c_-)
 =
 \left(\frac{p+1}{3p-1},\frac{2}{3p-1},0\right).
 $$
-The first two constraints are equalities, while the third left side is $(p-1)/(3p-1)<1$ and the fourth is $2p/(3p-1)<9/10$. Thus this point is feasible.
+The first two primal constraints are equalities, while the third left side is $(p-1)/(3p-1)<1$ and the fourth is $2p/(3p-1)<9/10$. Thus this point is feasible.
 
-For the dual LP, use only the first two line constraints with multipliers
+Set $y_E=y_V=0$ and
 $$
 y_T=\frac{p\left(2\lambda p-2\lambda-p+3\right)}{3p-1},
 $$
 $$
 y_S=\frac{p(2-\lambda)(p-1)}{3p-1}.
 $$
-They are positive for $1/2<\lambda<1$. Their coefficients on $a$ and $b$ equal the corresponding objective coefficients, while the dual slack in the $c$ coordinate is
+They are positive for $\frac{1}{2}<\lambda<1$. The first two dual coordinate constraints are equalities, while the slack in the third is
 $$
 -\frac{p(p-1)}{2(3p-1)}Q_p(\lambda).
 $$
@@ -129,13 +146,13 @@ $$
 \frac{7p-9}{10p(p-1)}
 \right).
 $$
-The first, second, and fourth constraints are equalities, and the third left side is
+The first, second, and fourth primal constraints are equalities, and the third left side is
 $$
 \frac{4p-5}{5(p-1)}<1.
 $$
 Thus this point is feasible.
 
-Use dual multipliers on the first, second, and fourth constraints given by
+Set $y_E=0$ and
 $$
 y_T=
 \frac{(1-\lambda)\left(\lambda^2p+\lambda^2+\lambda p+\lambda+2\right)}{2},
@@ -147,7 +164,7 @@ $$
 $$
 y_V=\frac{Q_p(\lambda)}{2}.
 $$
-The first two are positive on $(1/2,1)$, and $y_V\geq0$ exactly when $Q_p(\lambda)\geq0$. These multipliers give equality in all three dual coordinate constraints, so they certify
+The first two are positive on $(\frac{1}{2},1)$, and $y_V\geq0$ exactly when $Q_p(\lambda)\geq0$. Substitution shows equality in all three dual coordinate constraints, so these multipliers certify
 $$
 V_p(\lambda)
 =
@@ -157,7 +174,7 @@ whenever $Q_p(\lambda)\geq0$.
 
 Also
 $$
-Q_p'\left(\lambda\right)=3(3p-1)\lambda^2+(p-1)>0,
+Q_p'(\lambda)=3(3p-1)\lambda^2+(p-1)>0,
 $$
 while
 $$
@@ -165,7 +182,7 @@ $$
 \qquad
 Q_p(1)=2p>0.
 $$
-Hence $Q_p$ has a unique zero $\Lambda_p\in(1/2,1)$.
+Hence $Q_p$ has a unique zero $\Lambda_p\in(\frac{1}{2},1)$.
 
 The two displayed formulas for $V_p$ differ by
 $$
