@@ -14,7 +14,10 @@ Indeed, if $P(x)=\prod_{y\in E}(x-y)=x^5-e_1x^4+\cdots-e_5$, then the coefficien
 $$
 c_j=e_1c_{j-1}-e_2c_{j-2}+e_3c_{j-3}-e_4c_{j-4}+e_5c_{j-5},
 $$
-with $c_0=1$, which is the recurrence for $h_j$.
+with $c_0=1$, which is the recurrence for $h_j$. Also $h_4(E)>0$: for independent mean-one exponential variables $X_i$,
+$$
+24h_4(y_1,\ldots,y_5)=\mathbb E\left(\sum_i y_iX_i\right)^4>0.
+$$
 
 For $u_0<\cdots<u_j$ and $u_0<z<u_j$,
 $$
@@ -22,7 +25,7 @@ $$
 \frac{z-u_0}{u_j-u_0}[u_0,z,u_1,\ldots,u_{j-1}]f+
 \frac{u_j-z}{u_j-u_0}[z,u_1,\ldots,u_j]f.
 $$
-The coefficients are positive and sum to $1$, so repeated knot insertion expresses every fourth divided difference as a convex combination of those on five consecutive retained abscissas.
+Repeated knot insertion therefore expresses every fourth divided difference as a convex combination of those on five consecutive retained abscissas.
 
 For four vertices $T$, let $I_Tq_{\alpha,s}$ be the cubic interpolant. Then
 $$
@@ -97,7 +100,7 @@ $$
 h_2(E)+\alpha h_3(E)
 <(1-\alpha(M-a))h_2(X)<0.
 $$
-Hence this window also never vanishes for $s>0$.
+So this window never vanishes for $s>0$.
 
 It remains to show that
 $$
@@ -130,7 +133,7 @@ $$
 <
 \frac{j}{480000}\binom{j+4}{4}M^{j-1}A.
 $$
-Here $h_j$ has $\binom{j+4}{4}$ monomials and total exponent $j\binom{j+4}{4}/5$ in each variable, while $|z_i-k_i|\le |k_i|^3/96000$. For $k_-$ this makes the error in $\Psi_\alpha$ less than $15065$, and for $k_+$ less than $3273$; in both cases the error in $h_3$ is smaller than its displayed value. Since
+Here $h_j$ has $\binom{j+4}{4}$ monomials and total exponent $j\binom{j+4}{4}/5$ in each variable, while $|z_i-k_i|\le |k_i|^3/96000$. For $k_-,k_+$ the pairs $(M,A)$ are $(15,5175)$ and $(11,2529)$, so the error in $\Psi_\alpha$ is less than $15065$ and $3273$, respectively; in both cases the error in $h_3$ is smaller than its displayed value. Since
 $$
 \Psi_{29/100}(k_-)=-36621,\qquad
 \Psi_{29/100}(k_+)=-\frac{17721}{5},
@@ -241,7 +244,12 @@ On the range
 $$
 17<H_1<19,\quad411<H_2<414,\quad6840<H_3<6900,\quad119000<H_4<121000,
 $$
-the displayed $\varepsilon$ changes these three quantities by less than $19000$, $2000$, and $600$, respectively. Hence
+use
+$$
+\nabla N=(-H_4,H_3,H_2,-H_1),\qquad
+\nabla D=(0,H_4,-2H_3,H_2).
+$$
+The displayed $\varepsilon$ then changes $100N-29D$, $10N-3D$, and $D$ by less than $19000$, $2000$, and $600$, respectively. Hence
 $$
 D>0,\qquad
 100N-29D>0,\qquad
