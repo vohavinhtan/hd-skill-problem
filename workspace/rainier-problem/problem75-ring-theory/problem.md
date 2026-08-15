@@ -4,38 +4,21 @@
 
 Fix an integer
 $$
-n\geq2,
-$$
-and put
-$$
-m=8n+1.
+n\geq2.
 $$
 For each $\lambda\in\mathbb C^\times$, define a continuous $\mathbb C$-algebra homomorphism
 $$
-\Psi_{n,\lambda}:\mathbb C[[X,Y,Z,U,V,W]]\longrightarrow\mathbb C[[t]]
+\Psi_{n,\lambda}:\mathbb C[[X,Y,Z]]\longrightarrow\mathbb C[[t]]
 $$
 by
 $$
-\Psi_{n,\lambda}(X)=t^8,
+\Psi_{n,\lambda}(X)=t^{4n},
 $$
 $$
-\Psi_{n,\lambda}(Y)=t^{12},
+\Psi_{n,\lambda}(Y)=t^{6n}+t^{7n}+t^{7n+1},
 $$
 $$
-\Psi_{n,\lambda}(Z)=t^m,
-$$
-$$
-\Psi_{n,\lambda}(U)
-=t^m+(\lambda^n-1)t^{m+4}+(\lambda^{n+1}-1)t^{m+6},
-$$
-$$
-\Psi_{n,\lambda}(V)
-=t^m+(\lambda^{2n}-1)t^{m+4}+(\lambda^{2n+2}-1)t^{m+6},
-$$
-and
-$$
-\Psi_{n,\lambda}(W)
-=t^{2m}+(\lambda^{2n}-\lambda^n)t^{2m+4}+(\lambda^n-1)t^{2m+5}+(\lambda^{2n+1}-\lambda^n)t^{2m+6}.
+\Psi_{n,\lambda}(Z)=t^{9n}+\lambda^2t^{9n+1}+(\lambda-1)t^{11n+1}.
 $$
 Let
 $$
