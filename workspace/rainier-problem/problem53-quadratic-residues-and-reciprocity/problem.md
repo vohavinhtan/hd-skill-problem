@@ -2,23 +2,20 @@
 
 ## LaTeX (Normalized)
 
-Let $r\geq 7$ and $m\geq 1$ be integers, and let $s_2(m)$ denote the
-number of $1$'s in the binary expansion of $m$. Define
+Let $p\ge 7$ be a prime. Define
 $$
-H_{r,m}=
-\binom{2^{r+1}(m+1)-2}{2^r(m+1)-1}
--\binom{2^r}{2^{r-1}}
- \binom{2^r(m+1)-2}{2^{r-1}(m+1)-1}.
+S_p=\left\{x\in\mathbb F_p:\ x^2-x+1\text{ is a nonzero square in }\mathbb F_p\right\},
 $$
-Set
+and set
 $$
-R_{r,m}=\frac{H_{r,m}}{2^{r+1+s_2(m)}}.
+Q_p=\prod_{x\in S_p}(x^2-x+1)\in\mathbb F_p.
 $$
 
-Determine the least nonnegative residue of $R_{r,m}$ modulo $32$.
+Determine the least nonnegative residue of $Q_p$ modulo $p$.
 
-Your answer must be a closed formula in $m$ and must not contain a sum or
-product whose number of terms depends on $m$ or $r$.
+Your answer must be a closed formula in $p$. It must not contain any
+Legendre or Jacobi symbol, nor any sum or product whose number of terms
+depends on $p$.
 
 ---
 
@@ -35,4 +32,11 @@ product whose number of terms depends on $m$ or $r$.
 
 ## Domain Explanation
 
-The problem asks for a uniform congruence modulo a power of $2$ involving normalized central binomial coefficients, so its primary classification is Number Theory / Modular arithmetic and congruences. Binary digit sums control the initial $2$-adic valuation, while the requested residue depends on a deeper comparison of odd factorial parts after repeated dyadic dilation. Although recurrence techniques are relevant, the decisive structure is $2$-adic rather than a general sequence calculation, so Number Theory is the best fit.
+The problem asks for an exact product modulo an odd prime over those field
+elements for which a quadratic polynomial takes a nonzero quadratic-residue
+value. A successful derivation must convert that quadratic-residue condition
+into the rational points of a conic, evaluate a global finite-field product
+while handling the exceptional zero points separately, and then remove the
+remaining quadratic-character cases by reciprocity. The decisive structure is
+therefore finite-field congruence and quadratic reciprocity rather than routine
+polynomial factorization.
