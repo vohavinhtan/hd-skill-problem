@@ -2,272 +2,320 @@
 
 Step 1: Reduce the first loss of simpliciality to consecutive five-point divided differences
 
-Since $0<2\pi r/n<\pi$, the retained abscissas are distinct. Set
+Set
 $$
 q_{\alpha,s}(x)=x^8-\frac{s}{t^2}x^6-\frac{\alpha s}{t^3}x^7.
 $$
-For a five-set $E$, its affine determinant divided by the Vandermonde factor is
+For a finite set $E$ of five distinct abscissas, let $h_j(E)$ be the complete homogeneous symmetric polynomial of degree $j$. The affine determinant of the five lifted points, divided by the Vandermonde factor, is
 $$
-D_E(s)=[E]q_{\alpha,s}
-=h_4(E)-\frac{s}{t^2}h_2(E)-\frac{\alpha s}{t^3}h_3(E).
+D_E(s)=h_4(E)-\frac{s}{t^2}h_2(E)-\frac{\alpha s}{t^3}h_3(E).
 $$
-Indeed, if $P(x)=\prod_{y\in E}(x-y)=x^5-e_1x^4+\cdots-e_5$, the coefficient of $x^4$ in the remainder of $x^{4+j}$ has initial value $1$ and recurrence
+Indeed, if $P(x)=\prod_{y\in E}(x-y)=x^5-e_1x^4+\cdots-e_5$, then the coefficient of $x^4$ in the remainder of $x^{4+j}$ modulo $P$ satisfies
 $$
 c_j=e_1c_{j-1}-e_2c_{j-2}+e_3c_{j-3}-e_4c_{j-4}+e_5c_{j-5},
 $$
-which is the defining recurrence for $h_j$. Also $h_4(E)>0$, since for independent mean-one exponentials $X_i$,
-$$
-24h_4(y_1,\ldots,y_5)=\mathbb E\left(\sum_i y_iX_i\right)^4>0.
-$$
+with $c_0=1$, which is the recurrence for $h_j$.
 
-If $u_0<\cdots<u_j$ and $u_0<z<u_j$, divided-difference recursion gives
+For $u_0<\cdots<u_j$ and $u_0<z<u_j$,
 $$
 [u_0,\ldots,u_j]f=
 \frac{z-u_0}{u_j-u_0}[u_0,z,u_1,\ldots,u_{j-1}]f+
 \frac{u_j-z}{u_j-u_0}[z,u_1,\ldots,u_j]f.
 $$
-The positive coefficients sum to $1$; repeated insertion writes every fourth divided difference as a convex combination of consecutive ones. Hence positivity on consecutive windows implies positivity for every five-set.
+The coefficients are positive and sum to $1$, so repeated knot insertion expresses every fourth divided difference as a convex combination of those on five consecutive retained abscissas.
 
-For a four-set $T$, the hyperplane through its four vertices is the graph of the cubic interpolant $I_Tq_{\alpha,s}$. For retained $y\notin T$,
+For four vertices $T$, let $I_Tq_{\alpha,s}$ be the cubic interpolant. Then
 $$
 q_{\alpha,s}(y)-I_Tq_{\alpha,s}(y)
 =D_{T\cup\{y\}}(s)\prod_{x\in T}(y-x).
 $$
-Thus it is supporting exactly when these errors have one weak sign. While all $D_E>0$, every side-sign is the same as at $s=0$, so no loss of simpliciality can occur. Conversely a nonsimplicial facet contains five coplanar vertices, hence has some $D_E=0$. Therefore no loss occurs before the first zero of a consecutive five-window.
+Hence a hyperplane through $T$ is supporting exactly when these interpolation errors have one weak sign. While all consecutive $D_E$ are positive, knot insertion makes every five-set difference positive, so the facet signs are unchanged from $s=0$. Conversely, when a consecutive five-window first has $D_E=0$, all five-set differences are nonnegative; taking the first four vertices of that window gives a supporting hyperplane containing the fifth. Thus the first loss of simpliciality is exactly the first zero among consecutive five-windows.
 
-Step 2: Certify the only two five-windows that can be first
+Step 2: Isolate the two possible first windows without a case table
 
 Since $n\ge203$ and $\pi^2<10$, $t^2<1/16000$. Put $z_r=x_r/t$ and $S=60t^4$. Then
 $$
-\frac{D_E(S)}{t^4}=\Psi_\alpha(z_E),\qquad
+\frac{D_E(S)}{t^4}=\Psi_\alpha(z_E),
+\qquad
 \Psi_\alpha=h_4-60h_2-60\alpha h_3,
 $$
 and
 $$
-\frac{q_{\alpha,S}^{(4)}(tz)}{120t^4}=z^2(14z^2-420\alpha z-180).
+\frac{q_{\alpha,S}^{(4)}(tz)}{120t^4}
+=z^2(14z^2-420\alpha z-180).
 $$
-For $\alpha\le3/10$ this is positive for $z\ge10.9$ and $z\le-4.9$. Since
+For $\alpha\le3/10$ the last factor is positive for $z\ge10.9$ and $z\le-4.9$. Since
 $$
-\frac{\sin(11t)}t>11-\frac{11^3}{96000}>10.9,\qquad \frac{\sin(5t)}t>5-\frac{5^3}{96000}>4.9,
+\frac{\sin(11t)}t>10.9,\qquad
+\frac{\sin(5t)}t>4.9,
 $$
-the divided-difference mean-value theorem gives $D_E(S)>0$ there; since $D_E$ is affine in $s$ and $D_E(0)>0$, such a window cannot vanish before $S$.
+the divided-difference mean-value theorem excludes every five-window wholly beyond these thresholds from vanishing before $S$.
 
-Two boundary windows remain easy. For $k_0=(27,23,15,11,7)$ all coordinates are positive. With $M=\max z_i$, the recurrence
+The retained scaled abscissas near the center are
 $$
-h_j(X\cup\{M\})=h_j(X)+Mh_{j-1}(X\cup\{M\})
+\ldots,27,23,15,11,7,-1,-5,-9,-21,-25,\ldots .
 $$
-gives $h_4\ge Mh_3\ge M^2h_2$. Since $M>22$,
+Only six central windows remain. For
+$$
+(27,23,15,11,7)
+$$
+all variables are positive. If $M$ is the largest one, then
+$$
+h_j(X)=h_j(X\setminus\{M\})+Mh_{j-1}(X),
+$$
+so $h_4\ge Mh_3\ge M^2h_2$. Here $M>22$, hence
 $$
 \Psi_\alpha\ge((M-18)M-60)h_2>0.
 $$
-For $k_5=(-1,-5,-9,-21,-25)$ write $z=-w$. Since $\max w_i>24$,
+For $(-1,-5,-9,-21,-25)$, writing the variables as $-w_i$ gives
 $$
-h_3(w)\ge Mh_2(w),\qquad h_2(z)+\alpha h_3(z)<0,
+h_2+\alpha h_3=h_2(w)-\alpha h_3(w)
+\le(1-\alpha M)h_2(w)<0
 $$
-so its $D_E(s)$ increases for $s\ge0$.
+because $M>24$; therefore its $D_E(s)$ increases with $s$.
 
-The four remaining tuples are
+For $(23,15,11,7,-1)$ write the variables as $X\cup\{-a\}$, where $a<1$ and $M=\max X>22$. The recurrence
 $$
-k_1=(23,15,11,7,-1),\ k_2=(15,11,7,-1,-5),\
-k_3=(11,7,-1,-5,-9),\ k_4=(7,-1,-5,-9,-21).
+h_j(X\cup\{-a\})=h_j(X)-a\,h_{j-1}(X\cup\{-a\})
 $$
-For $p_j=\sum_i k_i^j$, start with
+gives $0<h_2(E)<h_2(X)$, $0<h_3(E)<h_3(X)$, and
 $$
-p(k_1)=(55,925,17215,347509),
+h_4(E)\ge(M-a)h_3(X).
 $$
-and slide by replacing $(23,-5),(15,-9),(11,-21)$; thus
+Thus
 $$
-\begin{array}{c|rrrr}
-i&p_1&p_2&p_3&p_4\\ \hline
-1&55&925&17215&347509\\
-2&27&421&4923&68293\\
-3&3&277&819&24229\\
-4&-29&597&-9773&204069
-\end{array}
+\Psi_\alpha(E)>
+((M-a-18)M-60)h_2(X)>0.
 $$
-with $p_j^{\rm new}=p_j^{\rm old}-a^j+b^j$. Newton's formulas give
+For $(7,-1,-5,-9,-21)$ write the variables as $\{a\}\cup(-X)$, with $a<7$ and $M=\max X>20$. Then
 $$
-h_2=\frac{p_1^2+p_2}{2},\quad h_3=\frac{p_1^3+3p_1p_2+2p_3}{6},
+h_2(E)<h_2(X),\qquad
+h_3(E)<-(M-a)h_2(X),
 $$
+so
 $$
-h_4=\frac{p_1^4+6p_1^2p_2+3p_2^2+8p_1p_3+6p_4}{24}.
+h_2(E)+\alpha h_3(E)
+<(1-\alpha(M-a))h_2(X)<0.
 $$
-For example row $3$ gives
-$$
-h_2=\frac{9+277}{2}=143,\quad h_3=\frac{27+2493+1638}{6}=693,
-$$
-$$
-h_4=\frac{81+14958+230187+19656+145374}{24}=17094.
-$$
+Hence this window also never vanishes for $s>0$.
 
-For $z_i=\sin(k_it)/t$, put $M=\max|k_i|$ and $A=\sum|k_i|^3$. Since $|z_i-k_i|\le|k_i|^3/96000$, monomial telescoping gives
+It remains to show that
 $$
-|h_j(z)-h_j(k)|<B_j:=\frac{j}{480000}\binom{j+4}{4}M^{j-1}A.
+E_-=\{m-3,m-2,m-1,m+1,m+2\},
+\qquad
+E_+=\{m-2,m-1,m+1,m+2,m+3\}
 $$
-For $k_1,\ldots,k_4$, $(M,A)$ is
+do vanish before $S$. Their limiting scaled tuples are
 $$
-(23,17217),(15,5175),(11,2529),(21,10459).
+k_-=(15,11,7,-1,-5),\qquad
+k_+=(11,7,-1,-5,-9).
 $$
-Using the displayed formulas gives the finite audit table
+The two factorizations
 $$
-\begin{array}{c|rrr|r|rr}
-i&h_2&h_3&h_4&B_3&T_i&B_i\\ \hline
-1&1975&58905&1590246&1993&411456&159544\\
-2&575&10605&182406&255&-36621&15065\\
-3&143&693&17094&67&-17721/5&3273\\
-4&719&-15979&345030&1009&-391491/100&317
-\end{array}
-$$
-where $T_1=\Psi_{3/10}$, $T_2,T_3=\Psi_{29/100}$, $T_4=h_2+(29/100)h_3$; for $i\le3$,
-$$
-B_i=B_4+60B_2+18B_3,
-$$
-and for $i=4$, $B_i=B_2+(3/10)B_3$. For the weakest row $3$,
-$$
-\Psi_{29/100}=17094-60(143)-\frac{87}{5}(693)=-\frac{17721}{5},
+\prod_{k\in k_-}(z-k)=z^5-27z^4+154z^3+762z^2-5195z-5775,
 $$
 $$
-B_3=\frac{7\cdot11^2\cdot2529}{32000}<67,\qquad B_4+60B_2+18B_3<3273.
+\prod_{k\in k_+}(z-k)=z^5-3z^4-134z^3+138z^2+3733z+3465
 $$
-All other rows have larger margins. Since $|h_3(k)|>B_3$ in every row, $h_3(z)$ has the displayed sign, so the chosen endpoint of $\alpha$ is the worst case. Hence only rows $2,3$ vanish in $(0,S)$, and the only first candidates are
+give, from the recurrence in Step 1,
 $$
-E_-=\{m-3,m-2,m-1,m+1,m+2\},\qquad
-E_+=\{m-2,m-1,m+1,m+2,m+3\}.
+(h_2,h_3,h_4)(k_-)=(575,10605,182406),
 $$
+$$
+(h_2,h_3,h_4)(k_+)=(143,693,17094).
+$$
+If $z_i=\sin(k_it)/t$, $M=\max|k_i|$ and $A=\sum|k_i|^3$, then
+$$
+|h_j(z)-h_j(k)|
+<
+\frac{j}{480000}\binom{j+4}{4}M^{j-1}A.
+$$
+Here $h_j$ has $\binom{j+4}{4}$ monomials and total exponent $j\binom{j+4}{4}/5$ in each variable, while $|z_i-k_i|\le |k_i|^3/96000$. For $k_-$ this makes the error in $\Psi_\alpha$ less than $15065$, and for $k_+$ less than $3273$; in both cases the error in $h_3$ is smaller than its displayed value. Since
+$$
+\Psi_{29/100}(k_-)=-36621,\qquad
+\Psi_{29/100}(k_+)=-\frac{17721}{5},
+$$
+both actual values are negative for every $\alpha>29/100$. Hence $E_-$ and $E_+$ are the only windows whose zero lies in $(0,S)$.
 
-Step 3: Prove the unique tie and compute its exact parameter
+Step 3: Use the six-set identity to obtain the unique tuning parameter and its limit
 
-For $E_-$ and $E_+$ let $z_-,z_+$ denote their scaled abscissas. Step 2 gives $h_2,h_3>0$, so their unique zero times are
+Let $C=E_-\cup E_+$ and let $H_j=h_j(z_C)$ for the six scaled abscissas. Write $\sigma=s/t^4$. If $A=C\setminus\{u\}$ and $B=C\setminus\{v\}$, then the generating functions give
 $$
-s_\pm(\alpha)=t^4\frac{h_4(z_\pm)}{h_2(z_\pm)+\alpha h_3(z_\pm)}.
+h_j(B)-h_j(A)=(u-v)H_{j-1}.
 $$
-They are equal exactly when the affine function
+Therefore simultaneous zeros of the two window functions imply
 $$
-F(\alpha)=h_4(z_-)(h_2(z_+)+\alpha h_3(z_+))
--h_4(z_+)(h_2(z_-)+\alpha h_3(z_-))
+H_3-\sigma H_1-\alpha\sigma H_2=0.
 $$
-vanishes.
-
-Put $r=t^2$. For $z_i=\sin(k_it)/t$,
+Also $h_j(A)=H_j-uH_{j-1}$, so the endpoint terms cancel from $D_A=0$ and yield
 $$
-z_i=k_i-\frac{k_i^3}{6}r+\rho_i,\qquad |\rho_i|\le\frac{|k_i|^5}{120}r^2.
+H_4(H_1+\alpha H_2)=H_3(H_2+\alpha H_3).
 $$
-The power sums through degree $6$ are
+Thus any tie must have
 $$
-\begin{array}{c|rrrrrr}
-& p_1&p_2&p_3&p_4&p_5&p_6\\ \hline
-k_2&27&421&4923&68293&934107&13295461\\
-k_3&3&277&819&24229&115683&2436277
-\end{array}
-$$
-Since $p_j(z)=p_j(k)-(j/6)p_{j+2}(k)r$ to first order, substitution in the Newton formulas from Step 2 gives
-$$
-\begin{array}{c|ccc}
-&\widetilde h_2&\widetilde h_3&\widetilde h_4\\ \hline
--&575-\frac{100607}{3}r&10605-\frac{1869581}{2}r&182406-21665540r\\
-+&143-\frac{13343}{3}r&693-\frac{101829}{2}r&17094-1135940r
-\end{array}
-$$
-where tildes denote first-order expressions.
-
-If $N_j=\binom{j+4}{4}$, $M=\max|k_i|$, $\eta=M^3/96000$, and
-$$
-R=\frac{\sum|k_i|^5}{120\cdot16000^2},
-$$
-each variable has total exponent $jN_j/5$ over the monomials of $h_j$, and the total ordered second exponent is $j(j-1)N_j$. Taylor's theorem therefore gives
-$$
-|h_j-\widetilde h_j|\le\frac{jN_j}{5}M^{j-1}R+
-\frac{j(j-1)N_j}{2}(M+\eta)^{j-2}\eta^2.
-$$
-For $k_2,k_3$, $(M,\sum|k_i|^5)=(15,940359),(11,240033)$, so the errors in $(h_2,h_3,h_4)$ are respectively $<(1/40,21/10,124)$ and $<(1/250,1/4,11)$. Thus the errors in $h_2+\alpha h_3$ are $<131/200$ and $<79/1000$, while the first-order values are $<3757$ and $<351$. Hence the induced error in $F$ is less than
-$$
-124(351)+182406\frac{79}{1000}+124\frac{79}{1000}
-+11(3757)+17094\frac{131}{200}+11\frac{131}{200}<111000.
+\alpha=
+\frac{H_3H_2-H_4H_1}{H_4H_2-H_3^2}.
 $$
 
-Using the two first-order rows,
+This value lies in the required interval for every $m\ge50$. Put $r=t^2$. The six roots are
 $$
-\widetilde F\left(\frac{29}{100}\right)
-=\frac{8534988}{25}-1602888450r+\frac{351108087252}{5}r^2>241000,
+\frac{\sin(15t)}t,\frac{\sin(11t)}t,\frac{\sin(7t)}t,
+-\frac{\sin t}t,-\frac{\sin(5t)}t,-\frac{\sin(9t)}t.
+$$
+They occur in the three pairs $3\pm4,3\pm8,3\pm12$, so
+$$
+\sum_{j\ge0}H_ju^j
+=
+\prod_{d\in\{4,8,12\}}
+\left(
+1-2\frac{\sin(3t)}t\cos(dt)u+
+\left(\frac{\sin^2(3t)-\sin^2(dt)}{t^2}\right)u^2
+\right)^{-1}.
+$$
+Since
+$$
+H_1=2\frac{\sin(3t)}t(\cos4t+\cos8t+\cos12t),
+$$
+its first three terms are $18-699r+145843r^2/20$. Expanding the same product through $u^4$ gives
+$$
+(H_1,H_2,H_3,H_4)
+=
+(18,413,6888,120414)
+-r\left(699,\frac{75173}{3},659092,14896820\right)
 $$
 $$
-\widetilde F\left(\frac3{10}\right)
-=-\frac{1036728}{5}-1565642220r+70633859608r^2<-207000,
+\quad
++r^2\left(\frac{145843}{20},\frac{30727066}{45},
+\frac{425822153}{15},\frac{4385911614}{5}\right)
++\varepsilon.
 $$
-because $r<1/16000$. Thus
+For $k\in\{15,11,7,-1,-5,-9\}$,
 $$
-F\left(\frac{29}{100}\right)>0,\qquad F\left(\frac3{10}\right)<0.
+\frac{\sin(kt)}t=k-\frac{k^3}{6}r+\frac{k^5}{120}r^2+\theta_k,
+\qquad
+|\theta_k|\le\frac{|k|^7}{5040}r^3.
 $$
-Since $F$ is affine, it has a unique zero $\alpha_m$ in the required interval. At this value $s_-(\alpha_m)=s_+(\alpha_m)=s_*>0$.
+Using the monomial count $N_j=\binom{j+5}{5}$ in $h_j$ gives
+$$
+|\varepsilon_1|<\frac1{10^7},\quad
+|\varepsilon_2|<\frac1{25000},\quad
+|\varepsilon_3|<\frac1{100},\quad
+|\varepsilon_4|<1.
+$$
+Indeed, with
+$$
+\eta_1=\frac{15^3}{6\cdot16000},\quad
+\eta_2=\frac{15^5}{120\cdot16000^2},\quad
+\Theta=\frac{196031184}{5040\cdot16000^3}<10^{-8},
+$$
+the discarded part is bounded by
+$$
+\frac{jN_j}{6}16^{j-1}\Theta+
+\frac{j(j-1)N_j}{2}16^{j-2}(2\eta_1\eta_2+\eta_2^2)
++\sum_{q=3}^j\frac{j(j-1)\cdots(j-q+1)N_j}{q!}16^{j-q}(\eta_1+\eta_2)^q.
+$$
 
-The two dependent five-sets share four affinely independent vertices, so their hyperplanes coincide and contain
+Set
 $$
-C_m=E_-\cup E_+=\{m-3,m-2,m-1,m+1,m+2,m+3\}.
+N=H_3H_2-H_4H_1,\qquad D=H_4H_2-H_3^2,
 $$
-Write
+and let $\widetilde N,\widetilde D$ be obtained by omitting $\varepsilon$. Then
 $$
-W(z)=\prod_{r\in C_m}(z-x_r)=z^6-az^5+bz^4-cz^3+dz^2-ez+f.
+100\widetilde N-29\widetilde D
+=1422498-6638160682r
++r^2\left(\frac{4047824854412}{5}-\frac{1770788051450126}{9}r
++\frac{985446549599570089}{135}r^2\right)>1007000.
 $$
-Then
+The bracket is positive for $r<1/16000$. Similarly,
 $$
-q_{\alpha_m,s_*}(z)-\ell(z)=W(z)(z^2+uz+v).
+10\widetilde N-3\widetilde D
+=-86394-654813154r
++r^2\left(\frac{408632459859}{5}-\frac{181820682628666}{9}r
++\frac{101338153581077662}{135}r^2\right)<-86000,
 $$
-The $z^5,z^4$ coefficients give
+because the positive $r^2$ remainder is $<320$. Also
 $$
-bu-av=c,\qquad bv-cu=-d.
+\widetilde D>2286438-\frac{90029142}{16000}-31-1>2280000.
 $$
-To see that this system is nonsingular, scale the six roots by $t$. Their limiting tuple is $(15,11,7,-1,-5,-9)$, for which $e_1=18$ and $e_3=-2148$. Since $\sum|k_i|^3=5904$, their total displacement is less than $5904/96000=123/2000$; expanding $e_1,e_3$ gives
+On the range
 $$
-\frac at>18-\frac{123}{2000}>0,
+17<H_1<19,\quad411<H_2<414,\quad6840<H_3<6900,\quad119000<H_4<121000,
 $$
+the displayed $\varepsilon$ changes these three quantities by less than $19000$, $2000$, and $600$, respectively. Hence
 $$
-\left|\frac c{t^3}+2148\right|
-<2250\frac{123}{2000}+30\left(\frac{123}{2000}\right)^2+\frac{1}{6}\left(\frac{123}{2000}\right)^3<139.
+D>0,\qquad
+100N-29D>0,\qquad
+10N-3D<0,
 $$
-Thus $ac<0$, and hence $b^2-ac>0$. Solving gives
+which proves
 $$
-u=\frac{bc-ad}{b^2-ac},\qquad v=\frac{c^2-bd}{b^2-ac}.
+\frac{29}{100}<\alpha_m=\frac ND<\frac3{10}.
 $$
-Comparing $z^7,z^6$ then yields
+Taking $t\to0$ gives
 $$
-\alpha_m=t\frac{a-u}{au-b-v}
-=t\frac{a^2c-ab^2-ad+bc}{a^2d-2abc+b^3-bd+c^2}.
+\lim_{m\to\infty}\alpha_m
+=
+\frac{6888\cdot413-120414\cdot18}
+{120414\cdot413-6888^2}
+=
+\frac{1466}{4949}.
 $$
 
-Step 4: Prove uniqueness of the first nonsimplicial facet
+Step 4: Prove that the tied event is the unique six-vertex first facet
 
-By Steps 1--2 only $E_-,E_+$ can vanish first. If one vanishes earlier, the hyperplane through its first four vertices is supporting: every other retained abscissa lies outside their interval, so Step 1 gives one error sign.
+For the value from Step 3, set
+$$
+\sigma=\frac{H_3}{H_1+\alpha_mH_2}>0.
+$$
+The two identities in Step 3 then give $D_{E_-}=D_{E_+}=0$. By Step 2 their common zero occurs before every other consecutive window can vanish, so it is the first loss of simpliciality.
 
-At $\alpha_m$ the zero times tie. Every other consecutive divided difference is positive, hence knot insertion makes every five-set outside $C_m$ positive. Take $T=E_-\cap E_+$. Every retained abscissa outside $C_m$ lies outside the interval spanned by $T$, so Step 1 gives positive interpolation error there, while the two remaining vertices of $C_m$ have zero error. Hence the common hyperplane supports exactly $C_m$. Any dependent five-set inside $C_m$ spans this hyperplane, so the six-vertex facet is unique and every other facet is tetrahedral.
+The two five-sets share
+$$
+T=E_-\cap E_+=\{m-2,m-1,m+1,m+2\}.
+$$
+These four vertices are affinely independent by the Vandermonde determinant. Every retained abscissa outside
+$$
+C_m=E_-\cup E_+
+$$
+lies outside the interval spanned by the four abscissas in $T$. At the common zero, knot insertion makes every five-set not contained in $C_m$ strictly positive. Therefore the interpolation-error formula from Step 1 is positive at every retained vertex outside $C_m$ and zero at the two remaining vertices of $C_m$. The hyperplane through $T$ is supporting and contains exactly those six vertices. Any other facet with at least five vertices would give another zero five-set, which is impossible outside $C_m$; inside $C_m$ it spans the same hyperplane. Thus the six-vertex facet is unique and every other facet is tetrahedral.
 
-Step 5: Count the tetrahedral facets on the two sides
+Step 5: Count the local facets on the two sides
 
-Let $y_1<\cdots<y_6$ be critical and $F_*=q_{\alpha_m,s_*}-\ell$. Step 4 gives $F_*>0$ outside $C_m$; finiteness preserves this for $s$ near $s_*$. For $T\subset C_m$, $|T|=4$,
+Let $s_*=s_{\alpha_m}$ and order the six critical abscissas as $y_1<\cdots<y_6$. Let $F_*=q_{\alpha_m,s_*}-\ell$, where $\ell$ defines the critical supporting hyperplane. For $T\subset C_m$ with $|T|=4$,
 $$
 q_{\alpha_m,s}-I_Tq_{\alpha_m,s}
-=\left(1-\frac{s}{s_*}\right)(x^8-I_Tx^8)+\frac{s}{s_*}F_*.
+=
+\left(1-\frac{s}{s_*}\right)(x^8-I_Tx^8)
++\frac{s}{s_*}F_*.
 $$
-At an omitted critical vertex $y$,
+Outside $C_m$ the second term stays positive for $s$ sufficiently close to $s_*$. At an omitted critical vertex $y$,
 $$
-y^8-I_Tx^8(y)=h_4(T\cup\{y\})\prod_{x\in T}(y-x),
+y^8-I_Tx^8(y)
+=h_4(T\cup\{y\})\prod_{x\in T}(y-x),
 $$
-with $h_4>0$. If $T=C_m\setminus\{y_j,y_k\}$, $j<k$, the two product signs are $(-1)^{5-j}$ and $(-1)^{6-k}$. For $s<s_*$ both must be positive, so the omitted pairs are
+and $h_4>0$.
+
+If $T=C_m\setminus\{y_j,y_k\}$ with $j<k$, the two product signs are
+$$
+(-1)^{5-j},\qquad(-1)^{6-k}.
+$$
+For $s<s_*$ both must be positive, giving
 $$
 (1,2),(1,4),(1,6),(3,4),(3,6),(5,6),
 $$
-giving $6$ tetrahedral facets. For $s>s_*$ both must be negative, leaving
+so there are $6$ tetrahedral facets. For $s>s_*$ both must be negative, giving
 $$
 (2,3),(2,5),(4,5),
 $$
-hence $3$.
+so there are $3$.
 
-Final Answer: $\boxed{(\{m-3,m-2,m-1,m+1,m+2,m+3\},t\frac{a^2c-ab^2-ad+bc}{a^2d-2abc+b^3-bd+c^2})}$
+Final Answer: $\boxed{(\{m-3,m-2,m-1,m+1,m+2,m+3\},\frac{1466}{4949})}$
 
 ---
 
 ## Answer
 
-$(\{m-3,m-2,m-1,m+1,m+2,m+3\},t\frac{a^2c-ab^2-ad+bc}{a^2d-2abc+b^3-bd+c^2})$
+$(\{m-3,m-2,m-1,m+1,m+2,m+3\},\frac{1466}{4949})$
 
 ---
 
@@ -283,6 +331,6 @@ $(\{m-3,m-2,m-1,m+1,m+2,m+3\},t\frac{a^2c-ab^2-ad+bc}{a^2d-2abc+b^3-bd+c^2})$
 
 - divided differences
 - polynomial interpolation
+- complete homogeneous symmetric polynomials
+- trigonometric pairing
 - convex polytope facets
-- symmetric polynomials
-- perturbation bounds
