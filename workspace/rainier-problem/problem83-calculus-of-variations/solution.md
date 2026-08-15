@@ -53,9 +53,9 @@ b=\frac{1}{2}+m-z,\qquad c=\frac{1}{2}+m+z.
 $$
 Then $m=\frac{b+c-1}{2}$ and $z=\frac{c-b}{2}$. Since the limit defining $B$ exists, $m=O(\lambda)$.
 
-With $y=x-\frac{1}{2}$, write
+With $y=x-\frac{1}{2}$, define the centered polynomial
 $$
-f=\phi(y)+\lambda\chi(y),
+p_\lambda(y)=f\left(y+\frac{1}{2}\right)=\phi(y)+\lambda\chi(y),
 $$
 where
 $$
@@ -90,16 +90,16 @@ F_b-F_c
 +\frac{z^2p^{(7)}(m)}{840}
 \right).
 $$
-Applying these identities to $p=f$ yields
+Applying these identities to $p=p_\lambda$ yields
 $$
 F_b+F_c=-4z^4G,\qquad F_b-F_c=128z^5H,
 $$
 where
 $$
-G=-\frac{2}{3}f^{(4)}(m)-\frac{z^2}{15}f^{(6)}(m)-\frac{z^4}{420}f^{(8)}(m),
+G=-\frac{2}{3}p_\lambda^{(4)}(m)-\frac{z^2}{15}p_\lambda^{(6)}(m)-\frac{z^4}{420}p_\lambda^{(8)}(m),
 $$
 $$
-H=-\frac{1}{240}f^{(5)}(m)-\frac{z^2}{3360}f^{(7)}(m).
+H=-\frac{1}{240}p_\lambda^{(5)}(m)-\frac{z^2}{3360}p_\lambda^{(7)}(m).
 $$
 The derivatives entering these two combinations are
 $$
@@ -229,11 +229,12 @@ $$
 
 Step 4: Compute the jump-ratio correction
 
-Let $Q$ be the middle cubic. Since $Q''$ matches $f''$ at $b,c$, its constant third derivative is
+Let $Q$ be the middle cubic. Translation does not change derivatives, so the centered polynomial from Step 2 gives
 $$
-\kappa_\lambda=Q'''=\frac{f''(c)-f''(b)}{c-b}.
+\kappa_\lambda=Q'''=
+\frac{p_\lambda''(m+z)-p_\lambda''(m-z)}{2z}.
 $$
-For the centered polynomials from Step 2,
+For $p_\lambda=\phi+\lambda\chi$,
 $$
 \phi'''(y)=-48384y^5+18600y^3-\frac{2625}{2}y,
 $$
@@ -278,9 +279,9 @@ $$
 
 The jumps are
 $$
-\Delta_b=\kappa_\lambda-f'''(b),
+\Delta_b=\kappa_\lambda-p_\lambda'''(m-z),
 \qquad
-\Delta_c=f'''(c)-\kappa_\lambda.
+\Delta_c=p_\lambda'''(m+z)-\kappa_\lambda.
 $$
 Because $\phi'''$ is odd, both have leading term $J$. If their first-order coefficients are $\delta_b,\delta_c$, then $\phi''''$ is even and the $z_1$ terms cancel in the difference:
 $$
