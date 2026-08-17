@@ -83,7 +83,7 @@ For degree $3$, the bracket map
 $$
 V\otimes\Lambda^2V\to L_3,
 \qquad
-u\otimes(a\wedge b)\mapsto[u,[a,b]],
+x\otimes(a\wedge b)\mapsto[x,[a,b]],
 $$
 is onto. The only degree-$3$ relations in a free Lie algebra are the Jacobi relations, whose subspace is the image of
 $$
