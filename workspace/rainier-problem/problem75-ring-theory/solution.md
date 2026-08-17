@@ -25,7 +25,7 @@ $$
 \mathbb Z_{\geq0}\setminus L=\{1,2,3\}.
 $$
 
-Step 2: Replace the row-by-row calculation by a two-state module recurrence
+Step 2: Derive the residue layers from a periodic relation module
 Let
 $$
 B=\mathbb C[[u^4,u^6,u^9]],\qquad I=B+u^{5}B.
@@ -151,7 +151,7 @@ E_-(c)=\frac{1}{2}
 \begin{pmatrix}
 1+\dfrac{2c}{1-c}&0\\
 0&1-2c
-\end{pmatrix}
+\end{pmatrix}.
 $$
 The first-column leading coefficient is $1+c$ in the syzygy state and its next tail is $c$, while in the product state the first-column next tail equals its leading coefficient times $h(c)$. Thus normalization again sends $c$ to $h(c)$. Moreover
 $$
