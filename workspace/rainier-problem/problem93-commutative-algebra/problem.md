@@ -68,7 +68,7 @@ $$
 | Field | Value |
 |---|---|
 | **Domain** | Abstract Algebra |
-| **Sub-domain** | Commutative algebra |
+| **Sub-domain** | Computational algebra |
 | **Problem Type** | Symbolic derivation |
 | **Answer Type** | Polynomial or rational function |
 
@@ -76,4 +76,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for one graded dimension of a quotient of a saturated homogeneous lattice ideal over positive characteristic. The graph determines the lattice of monomial classes, while the three additional homogeneous relations interact with the non-semisimple $p$-power torsion of the quotient. The target degree is the first one at which a large untouched monomial block and a nilpotent residual block coexist, so determining its exact dimension is a commutative-algebra problem rather than a graph-counting exercise.
+The problem asks for an exact graded dimension of a quotient defined by saturated binomial relations over a finite field. Solving it requires converting the quotient to explicit finite group-algebra coordinates, determining the rank contribution of translated relations in a specified graded piece, and reducing the remaining calculation to a finite-dimensional nilpotent quotient in positive characteristic. These explicit quotient, rank, and finite-algebra computations make computational algebra the closest available sub-domain.
