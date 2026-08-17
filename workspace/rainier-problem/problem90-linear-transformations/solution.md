@@ -1,259 +1,176 @@
 ## Steps
 
-Put
-$$
-h=\frac{\ell-1}{2},
-$$
-and define
-$$
-s=\min\{r\ge1:p^r\equiv\pm1\pmod\ell\},
-\qquad
-m=\frac{h}{s}.
-$$
-We derive the enumerator in terms of $s$ and $m$.
+Step 1: Convert admissible subspaces into symmetric circulant operators
 
 Let
 $$
-E=\operatorname{span}\{e_i\},\qquad F=\operatorname{span}\{f_i\}.
-$$
-Since $L\cap F=0$ and $\dim L=\dim E=\ell$, every admissible $L$ is uniquely the graph
-$$
-L=L_A=\{x+Ax:x\in E\}
-$$
-of an $\mathbb F_p$-linear map $A:E\to F$.
-
-Identify $E$ and $F$ using the displayed bases, and let $P$ be the cyclic shift
-$$
-Pe_i=e_{i+1}.
-$$
-The condition $T(L_A)\subseteq L_A$ is equivalent to
-$$
-AP=PA.
-$$
-The vector $e_0$ is cyclic for $P$, so a map commuting with $P$ is uniquely determined by
-$$
-Ae_0=\sum_{j=0}^{\ell-1}a_je_j.
-$$
-Consequently
-$$
-A=a(P),
+E=\operatorname{span}\{e_i:i\in\mathbb Z/\ell\mathbb Z\},
 \qquad
-a(x)=\sum_{j=0}^{\ell-1}a_jx^j,
+F=\operatorname{span}\{f_i:i\in\mathbb Z/\ell\mathbb Z\}.
 $$
-with $a$ understood modulo $x^\ell-1$.
+Since $L\cap F=\{0\}$ and $\dim L=\dim E=\ell$, projection along $F$ identifies $L$ with the graph
+$$
+L_A=\{x+Ax:x\in E\}
+$$
+of a unique linear map $A:E\to F$.
+
+Let $P$ be the cyclic shift on $E$, $Pe_i=e_{i+1}$. The condition $T(L_A)\subseteq L_A$ is equivalent to $AP=PA$. Since $e_0$ is cyclic for $P$, the vector $Ae_0$ determines $A$, and every commuting map has the form
+$$
+A=a(P)
+$$
+for a unique class $a(x)\in\mathbb F_p[x]/(x^\ell-1)$.
 
 For graph subspaces,
 $$
-\omega(x+Ax,y+Ay)=x^TAy-y^TAx,
+\omega(x+Ax,y+Ay)=x^TAy-y^TAx.
 $$
-so isotropy is equivalent to
-$$
-A=A^T.
-$$
-Since
-$$
-P^T=P^{-1},
-$$
-this means
+Therefore isotropy is equivalent to $A=A^T$. Since $P^T=P^{-1}$, this condition is
 $$
 a(P)=a(P^{-1}).
 $$
 
-Let $U$ be the permutation of $E$ given by
+Let $Ue_i=e_{gi}$. Then
 $$
-Ue_i=e_{gi}.
+S(x,Ax)=(UAx,Ux).
 $$
-Then
+This vector lies in $L_A$ for every $x$ exactly when
 $$
-S(x,y)=(Uy,Ux).
+Ux=AUAx.
 $$
-For $(x,Ax)\in L_A$ to be carried back into the graph, one must have
+After multiplying by $U^{-1}$, this becomes
 $$
-Ux=AUAx
+(U^{-1}AU)A=I.
 $$
-for every $x$. Thus
+Define $\sigma$ on the circulant algebra by
 $$
-U^{-1}AU\,A=I.
+\sigma(a)(P)=U^{-1}a(P)U=a(P^{g^{-1}}).
 $$
-Define
-$$
-\sigma(a)(P)=U^{-1}a(P)U.
-$$
-Since
-$$
-UPU^{-1}=P^g,
-$$
-the automorphism $\sigma$ replaces $P$ by $P^{g^{-1}}$. Because $g^2=-1$ modulo $\ell$,
-$$
-\sigma^2(a)(P)=a(P^{-1}).
-$$
-Hence isotropy says
+Because $g^2\equiv-1\pmod\ell$, applying $\sigma$ twice sends $P$ to $P^{-1}$. The two structural conditions are therefore
 $$
 \sigma^2(a)=a,
-$$
-while $S$-invariance says
-$$
+\qquad
 \sigma(a)a=1.
 $$
-
-We now describe the algebra fixed by $\sigma^2$.
-
-Choose a primitive $\ell$-th root $\zeta$ in an algebraic closure of $\mathbb F_p$. Since $p\ne\ell$, the roots of $x^\ell-1$ are distinct. An element satisfying
+Finally, $D$ is the graph of the identity, so
 $$
-a(x)=a(x^{-1})
+d(L_A)=\dim_{\mathbb F_p}\ker(A-I).
 $$
-is determined by its value at $1$ and by its values on
+
+Step 2: Decompose the symmetric circulant algebra into Frobenius orbit factors
+
+Set
+$$
+s=\min\{r\geq1:p^r\equiv\pm1\pmod\ell\},
+\qquad
+h=\frac{\ell-1}{2},
+\qquad
+m=\frac{h}{s}.
+$$
+Choose a primitive $\ell$-th root $\zeta$ in an algebraic closure of $\mathbb F_p$. Since $p\neq\ell$, the polynomial $x^\ell-1$ has $\ell$ distinct roots. A class of degree below $\ell$ is determined by its values at these roots, because a nonzero polynomial of degree below $\ell$ cannot vanish at all $\ell$ roots.
+
+For a polynomial defined over $\mathbb F_p$,
+$$
+a(\zeta^{pr})=a(\zeta^r)^p.
+$$
+The symmetry $a(x)=a(x^{-1})$ identifies the indices $r$ and $-r$. Put
 $$
 G=(\mathbb Z/\ell\mathbb Z)^\times/\{\pm1\}.
 $$
-The group $G$ is cyclic of order $h$.
+Multiplication by $p$ on $G$ has orbit length $s$ by the definition of $s$. Its $h$ elements split into $m=h/s$ orbits.
 
-Frobenius sends the class of $r$ to the class of $pr$. Its orbit length on $G$ is precisely
+Fix one orbit and set $\alpha=a(\zeta^r)$. Successive values are
 $$
-s=\min\{r\ge1:p^r\equiv\pm1\pmod\ell\}.
+\alpha,\alpha^p,\ldots,\alpha^{p^{s-1}},
 $$
-Therefore $G$ consists of $m=h/s$ Frobenius orbits, each of length $s$.
-
-On one such orbit, choosing the value at one point freely in $\mathbb F_{p^s}$ determines all other values by successive $p$-th powers, and every element of $\mathbb F_{p^s}$ occurs. Thus the symmetric circulant algebra is
+and consistency after one orbit is exactly $\alpha^{p^s}=\alpha$. The roots of $X^{p^s}-X$ form $\mathbb F_{p^s}$, so every $\alpha\in\mathbb F_{p^s}$ gives one consistent orbit and different orbits are independent. The symmetric circulant algebra therefore has the factor description
 $$
 \mathbb F_p\times\prod_{j=1}^{m}\mathbb F_{p^s}.
 $$
 
-The action of $\sigma$ on $G$ is multiplication by the class of $g^{-1}$. Because
-$$
-g^2\equiv-1\pmod\ell,
-$$
-this class is the unique element of order $2$ in $G$.
+On $G$, $\sigma$ multiplies indices by the class of $g^{-1}$. This class has order $2$. It is the only nonidentity element of order $2$: if a class $[r]$ has order $2$, then $r^2\equiv-1\pmod\ell$, and the two roots of $X^2+1$ are $\pm g$, which define the same class.
 
-There are now two cases.
-
-### Case 1: $s$ is even
-
-The Frobenius subgroup in $G$ has order $s$, hence contains the unique element of order $2$. Therefore $\sigma$ preserves each of the $m$ field factors.
-
-On a factor
-$$
-K=\mathbb F_{p^s},
-$$
-the action of $\sigma$ is
-$$
-u\longmapsto u^{p^{s/2}}.
-$$
-Put
-$$
-q=p^{s/2}.
-$$
-The equation $\sigma(u)u=1$ becomes
-$$
-u^{q+1}=1.
-$$
-There are exactly $q+1$ solutions in $\mathbb F_{q^2}$: its multiplicative group has order
-$$
-q^2-1=(q-1)(q+1),
-$$
-and a finite subgroup of a field's multiplicative group is cyclic, so the equation $X^{q+1}=1$ has exactly $q+1$ roots.
-
-Exactly one of these solutions is $u=1$.
-
-Now
-$$
-D=\{x+x:x\in E\}
-$$
-is the graph of the identity, so
-$$
-L_A\cap D\cong\ker(A-I).
-$$
-On a field factor, multiplication by $u-1$ has kernel $0$ unless $u=1$, in which case the whole $s$-dimensional factor is the kernel. Hence one nontrivial factor contributes
-$$
-q+z^s.
-$$
-
-At the root $1$, $\sigma$ is trivial, so the equation is
-$$
-u^2=1.
-$$
-The two solutions are $u=-1$ and $u=1$, contributing respectively $1$ and $z$. Thus the constant factor contributes
+The root $1$ gives the $\mathbb F_p$ factor. There $\sigma$ is trivial, so $\sigma(a)a=1$ becomes $u^2=1$. Since $p$ is odd, $u=\pm1$. The value $u=1$ contributes one dimension to $\ker(A-I)$, while $u=-1$ contributes none. This factor contributes
 $$
 1+z.
 $$
 
-Therefore
+Step 3: Count the factors when the Frobenius orbit length is even
+
+Assume $s$ is even. The subgroup generated by $[p]$ has order $s$, so $[p]^{s/2}$ is its unique element of order $2$. By Step 2 this element equals $[g^{-1}]$. Therefore $\sigma$ preserves each field factor
 $$
-P_{p,\ell}(z)=(1+z)(p^{s/2}+z^s)^m.
+K=\mathbb F_{p^s}
+$$
+and acts there by
+$$
+u\longmapsto u^{p^{s/2}}.
+$$
+Put $q=p^{s/2}$, so $K=\mathbb F_{q^2}$. The equation $\sigma(u)u=1$ is
+$$
+u^{q+1}=1.
 $$
 
-### Case 2: $s$ is odd
+There are exactly $q+1$ such elements. Consider
+$$
+\phi:K^\times\to K^\times,\qquad \phi(x)=x^{q-1}.
+$$
+Its kernel is $\mathbb F_q^\times$, with $q-1$ elements, so its image has
+$$
+\frac{q^2-1}{q-1}=q+1
+$$
+elements. Every image element satisfies $y^{q+1}=1$. Since $X^{q+1}-1$ has degree $q+1$, these are all its roots.
 
-The Frobenius subgroup has odd order and therefore does not contain the order-two element induced by $g$. Hence $\sigma$ pairs the $m$ Frobenius orbits. In particular $m$ is even.
+Exactly one solution is $u=1$. For that solution, $A-I$ vanishes on the whole $s$-dimensional factor; every other solution gives an invertible multiplication operator $u-1$. One factor contributes
+$$
+p^{s/2}+z^s.
+$$
+There are $m$ such factors, so together with the root-$1$ factor,
+$$
+P_{p,\ell}(z)=(1+z)(p^{s/2}+z^s)^m
+$$
+when $s$ is even.
 
-Consider one paired pair of factors
-$$
-K\times K,
-\qquad
-K=\mathbb F_{p^s}.
-$$
-The action of $\sigma$ exchanges the factors through mutually inverse field isomorphisms. Thus the equation
-$$
-\sigma(u,v)(u,v)=(1,1)
-$$
-is solved by choosing an arbitrary
-$$
-u\in K^\times
-$$
-and then forcing the other coordinate to be the transported inverse of $u$.
+Step 4: Count the factors when the Frobenius orbit length is odd and combine the two branches
 
-Hence there are
-$$
-p^s-1
-$$
-solutions on the pair.
+Assume $s$ is odd. The subgroup generated by $[p]$ has odd order, so it does not contain the order-$2$ element $[g^{-1}]$. Multiplication by $[g^{-1}]$ pairs the $m$ Frobenius orbits without fixed points, so $m$ is even.
 
-Exactly one solution is $(1,1)$. For it, $A-I$ vanishes on both $s$-dimensional factors and contributes kernel dimension $2s$. Every other solution has neither coordinate equal to $1$, hence contributes no kernel there. Thus one paired block contributes
+For one paired block, write the two factors as $K\times K$ with $K=\mathbb F_{p^s}$. The map $\sigma$ exchanges them through inverse field isomorphisms. If the first coordinate is $u\in K^\times$, the equation $\sigma(a)a=1$ forces the second coordinate to be the transported inverse of $u$, and the second coordinate equation is then satisfied. There are $p^s-1$ choices.
+
+The choice $u=1$ is the only one for which both coordinates are $1$. It contributes kernel dimension $2s$. Every other choice contributes kernel dimension $0$. One paired block contributes
 $$
 p^s-2+z^{2s}.
 $$
-
-There are $m/2$ such pairs, while the root-$1$ component again contributes $1+z$. Therefore
+There are $m/2$ paired blocks, so
 $$
-P_{p,\ell}(z)=(1+z)(p^s-2+z^{2s})^{m/2}.
+P_{p,\ell}(z)=(1+z)(p^s-2+z^{2s})^{m/2}
 $$
+when $s$ is odd.
 
-These two cases exhaust all possibilities.
+The two parity branches have the equivalent case-free form
+$$
+P_{p,\ell}(z)=(1+z)(p^{s(1+(-1)^s)/4}+z^s)^{m(1+(-1)^s)/2}(p^s-2+z^{2s})^{m(1-(-1)^s)/4}.
+$$
+Final Answer: $\boxed{P_{p,\ell}(z)=(1+z)(p^{s(1+(-1)^s)/4}+z^s)^{m(1+(-1)^s)/2}(p^s-2+z^{2s})^{m(1-(-1)^s)/4}}$
+
+---
 
 ## Answer
 
-Let
-$$
-s=\min\{r\ge1:p^r\equiv\pm1\pmod\ell\},
-\qquad
-m=\frac{\ell-1}{2s}.
-$$
-Then
-$$
-\boxed{
-P_{p,\ell}(z)=
-\begin{cases}
-(1+z)(p^{s/2}+z^s)^m,&s\text{ even},\\[4pt]
-(1+z)(p^s-2+z^{2s})^{m/2},&s\text{ odd}.
-\end{cases}
-}
-$$
+$P_{p,\ell}(z)=(1+z)(p^{s(1+(-1)^s)/4}+z^s)^{m(1+(-1)^s)/2}(p^s-2+z^{2s})^{m(1-(-1)^s)/4}$
+
+---
 
 ## Classification
 
-| Field | Value |
-|---|---|
-| **Domain** | Linear Algebra |
-| **Sub-domain** | Linear transformations |
-| **Problem Type** | Symbolic derivation |
-| **Answer Type** | Polynomial or rational function |
+**Problem Type:** Symbolic derivation
+
+**Answer Type:** Polynomial or rational function
+
+---
 
 ## Solution Concepts
 
-- Graph representation of transverse Lagrangian subspaces.
-- Centralizer of a cyclic shift and circulant operators.
-- Adjoint involution $P\mapsto P^{-1}$.
-- Twisted norm equation induced by the second invariant operator.
-- Frobenius orbits on $(\mathbb Z/\ell\mathbb Z)^\times/\{\pm1\}$.
-- Split versus nonsplit action of the order-two element determined by $g$.
-- Factorwise kernel enumeration for $A-I$.
+- graph representation of subspaces
+- circulant operators
+- frobenius orbit decomposition
+- finite field norm equation
+- kernel enumeration
