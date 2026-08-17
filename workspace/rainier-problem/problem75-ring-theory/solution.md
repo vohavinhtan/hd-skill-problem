@@ -1,127 +1,134 @@
 ## Steps
 
-Step 1: Determine the three parameter strata from the generator span
+Step 1: Classify the parameter strata and expose the singular generator
 Put
 $$
-a=30n+15,\qquad b=30n+10,\qquad c=30n+29.
+a=5n+2,\qquad b=5n+3,\qquad x=t^5.
 $$
-The $Y$- and $Z$-images are obtained from $t^a,t^b$ by the coefficient matrix
+For $\lambda\neq1$, the $Y$- and $Z$-images have coefficient matrix
 $$
-M(\lambda)=
+(\lambda-1)
 \begin{pmatrix}
-\lambda^2-1&\lambda-1\\
-\lambda^2-1&\lambda(\lambda-1)
-\end{pmatrix}.
+1&\lambda\\
+\lambda&1
+\end{pmatrix}
 $$
-Its determinant is
+relative to $t^a,t^b$. Its determinant is
 $$
-\det M(\lambda)=(\lambda^2-1)(\lambda-1)^2.
+(\lambda-1)^2(1-\lambda^2).
 $$
-Hence if $\lambda\neq\pm1$, the two images span both $t^a$ and $t^b$ over $\mathbb C$, so
+If $\lambda\neq\pm1$, the two images span $t^a,t^b$. Since $W=t^{2a}$ is then redundant,
 $$
-A_{n,\lambda}=\mathbb C[[t^{30},t^a,t^b,t^c]].
+A_{n,\lambda}=\mathbb C[[t^5,t^a,t^b]]
+\qquad(\lambda\neq\pm1).
+$$
+If $\lambda=1$, both $Y$ and $Z$ vanish, so
+$$
+A_{n,1}=\mathbb C[[t^5,t^{2a}]].
+$$
+If $\lambda=-1$, the two images are proportional and yield
+$$
+F=t^a-t^b\in A_{n,-1}.
+$$
+The rank drop alone does not determine the value semigroup. Since
+$$
+a+b=10n+5=5(2n+1),
+$$
+we have
+$$
+F^2-t^{2a}+2x^{2n+1}=t^{2b}.
+$$
+Writing $G=t^{2b}$, the relations
+$$
+G=F^2-W+2x^{2n+1},\qquad
+W=F^2+2x^{2n+1}-G
+$$
+give
+$$
+A_{n,-1}=\mathbb C[[t^5,F,G]].
 $$
 
-If $\lambda=-1$, the first column of $M(-1)$ vanishes while the second does not, so the $Y,Z$-span is exactly $\mathbb Ct^b$. Therefore
+Step 2: Compute the three conductor exponents
+For a numerical semigroup $S$ containing $5$, let $m_r$ be its least element congruent to $r$ modulo $5$. Every integer in residue $r$ belongs to $S$ from $m_r$ onward, so its conductor is
 $$
-A_{n,-1}=\mathbb C[[t^{30},t^b,t^c]].
+\max_{0\leq r<5}m_r-4.
 $$
-If $\lambda=1$, both $Y$ and $Z$ vanish, giving
-$$
-A_{n,1}=\mathbb C[[t^{30},t^c]].
-$$
-Thus only these three value semigroups can occur.
 
-Step 2: Compute the three conductors from canonical residue representatives
-For $\lambda\neq\pm1$, let
+For $\lambda\neq\pm1$, Step 1 gives
 $$
-S=\langle30,a,b,c\rangle.
+S_{\mathrm{gen}}=\langle5,a,b\rangle.
 $$
-The identities
+Since $a\equiv2$ and $b\equiv3\pmod5$, the least representatives in residues $0,1,2,3,4$ are
 $$
-2a=30(2n+1),
+0,\qquad2b,\qquad a,\qquad b,\qquad2a.
 $$
+For residue $1$, the alternative using only $a$ starts at $3a$, and $2b<3a$. For residue $4$, the alternative using only $b$ starts at $3b$, and $2a<3b$. Any mixed expression with at least three copies of $a$ and $b$ is larger than these representatives. Since $2b$ is largest,
 $$
-3b=2a+30n,
-$$
-$$
-5c=a+b+30(3n+4)
-$$
-show that every element of $S$ has a representative
-$$
-30q+\varepsilon a+\eta b+\theta c
-$$
-with
-$$
-q\geq0,\qquad
-\varepsilon\in\{0,1\},\qquad
-\eta\in\{0,1,2\},\qquad
-\theta\in\{0,1,2,3,4\}.
-$$
-There are $30$ such sums. They have distinct residues modulo $30$: if two are congruent, then
-$$
-15(\varepsilon-\varepsilon')
-+10(\eta-\eta')
-+29(\theta-\theta')
-\equiv0\pmod{30}.
-$$
-Modulo $5$ forces $\theta=\theta'$, modulo $3$ then forces $\eta=\eta'$, and finally modulo $2$ forces $\varepsilon=\varepsilon'$. Since each reduction above subtracts a nonnegative multiple of $30$, these are the least elements of their residue classes. Their maximum is
-$$
-a+2b+4c,
-$$
-so
-$$
-\kappa_{n,\lambda}=a+2b+4c-29=210n+122
+\kappa_{n,\lambda}=2b-4=10n+2
 \qquad(\lambda\neq\pm1).
 $$
 
-For $\lambda=-1$, use
+For $\lambda=1$, Step 1 gives $\langle5,2a\rangle$, with $2a\equiv4\pmod5$. The five multiples
 $$
-3b=30(3n+1),
+0,\qquad2a,\qquad4a,\qquad6a,\qquad8a
 $$
+occupy all residues modulo $5$. Subtracting $5$ from any larger multiple stays in the same residue and lowers the value, so these are the least representatives. Their maximum is $8a$, giving
 $$
-10c=2b+30(8n+9).
-$$
-Hence the least residue representatives of $\langle30,b,c\rangle$ are
-$$
-\eta b+\theta c,
-\qquad
-0\leq\eta\leq2,\quad0\leq\theta\leq9.
-$$
-They are distinct modulo $30$, because
-$$
-10(\eta-\eta')-(\theta-\theta')\equiv0\pmod{30}
-$$
-first forces $\theta=\theta'$ modulo $10$ and then $\eta=\eta'$ modulo $3$. The largest representative is $2b+9c$, and therefore
-$$
-\kappa_{n,-1}=2b+9c-29=330n+252.
+\kappa_{n,1}=8a-4=40n+12.
 $$
 
-For $\lambda=1$, the semigroup is $\langle30,c\rangle$ with $c\equiv-1\pmod{30}$. Its least representatives modulo $30$ are
+For $\lambda=-1$, the monomials $t^5,t^a,t^{2b}$ lie in $A_{n,-1}$. Their semigroup
 $$
-0,c,2c,\ldots,29c,
+S_-=\langle5,a,2b\rangle
 $$
-so
+has representatives
 $$
-\kappa_{n,1}=29c-29=870n+812.
+0,\qquad2b,\qquad a,\qquad a+2b,\qquad2a
+$$
+in residues $0,1,2,3,4$. For residue $1$, the alternative using only $a$ starts at $3a$, and $2b<3a$. For residue $3$, using only $a$ starts at $4a$, while using only $2b$ starts at $3(2b)$; both exceed $a+2b$. The representatives in residues $2$ and $4$ are $a$ and $2a$, since every other nonzero combination uses at least two or three positive generators. The largest representative is $a+2b$, so the conductor of $S_-$ is
+$$
+a+2b-4=15n+4.
 $$
 
-Step 3: Compare the conductor levels
-For every $n\geq2$,
+It remains to exclude cancellations in $\mathbb C[[t^5,F,G]]$ that create a value below $15n+4$. Every monomial
 $$
-870n+812>330n+252>210n+122.
+x^qF^jG^k
 $$
-Thus $\lambda=1$ gives the unique largest conductor, while $\lambda=-1$ gives the unique second-largest distinct conductor. Consequently
+has leading valuation
 $$
-\beta_n=330n+252,\qquad E_n=\{-1\}.
+5q+aj+2bk.
 $$
-Final Answer: $\boxed{\left(330n+252,\{-1\}\right)}$
+If this is below $15n+4$, then $j\leq2$, $k\leq1$, and the only possible pairs $(j,k)$ are
+$$
+(0,0),\ (1,0),\ (2,0),\ (0,1),\ (1,1).
+$$
+Their leading residues modulo $5$ are
+$$
+0,\ 2,\ 4,\ 1,\ 3,
+$$
+which are distinct. For fixed $(j,k)$, changing $q$ changes the leading valuation by a nonzero multiple of $5$. Therefore among all monomials below $15n+4$, the least valuation in any nonzero convergent combination occurs in a unique monomial and cannot cancel. No value outside $S_-$ appears below its conductor.
+
+The monomial subring generated by $t^5,t^a,t^{2b}$ is contained in $A_{n,-1}$ and contains every $t^m$ for $m\geq15n+4$. Therefore
+$$
+\kappa_{n,-1}=15n+4.
+$$
+
+Step 3: Identify the second-largest conductor
+The three values from Step 2 satisfy, for every $n\geq2$,
+$$
+40n+12>15n+4>10n+2.
+$$
+The largest conductor occurs only at $\lambda=1$, while the second-largest distinct conductor occurs only at $\lambda=-1$. Therefore
+$$
+\beta_n=15n+4,\qquad E_n=\{-1\}.
+$$
+Final Answer: $\boxed{\left(15n+4,\{-1\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(330n+252,\{-1\}\right)$
+$\left(15n+4,\{-1\}\right)$
 
 ---
 
@@ -138,5 +145,5 @@ $\left(330n+252,\{-1\}\right)$
 - conductor exponent
 - value semigroups
 - rank drop of generators
+- nonlinear cancellation
 - residue-class representatives
-- numerical semigroup rings
