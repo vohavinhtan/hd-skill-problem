@@ -2,22 +2,32 @@
 
 ## LaTeX (Normalized)
 
-Let $k$ be a field and let $n\geq3$ be an integer. Define a connected graph $G_n$ with vertices
+Let $p$ be an odd prime and let $m\geq2$. Set
 $$
-a_0,\ldots,a_{n-1},
+n=p^m,
 \qquad
-b_0,\ldots,b_{n+1},
+\rho=(p-1)p^{m-1}.
+$$
+Let $G_n$ be the graph obtained from three disjoint cycles of length $n$ by identifying one vertex from each cycle to a single common vertex $o$. Label the remaining vertices
+$$
+a_1,\ldots,a_{n-1},
 \qquad
-p_1,\ldots,p_n
+b_1,\ldots,b_{n-1},
+\qquad
+c_1,\ldots,c_{n-1}
 $$
-as follows. The vertices $a_0,\ldots,a_{n-1}$ form a cycle in this cyclic order, the vertices $b_0,\ldots,b_{n+1}$ form a second cycle in this cyclic order, and the only remaining edges are
+so that the three cycles are
 $$
-a_0p_1,\ p_1p_2,\ \ldots,\ p_{n-1}p_n,\ p_nb_0.
+o,a_1,\ldots,a_{n-1},o,
+\qquad
+o,b_1,\ldots,b_{n-1},o,
+\qquad
+o,c_1,\ldots,c_{n-1},o.
 $$
 
 Let
 $$
-S_n=k[x_v:v\in V(G_n)]
+S_n=\mathbb F_p[x_v:v\in V(G_n)]
 $$
 with the standard grading $\deg x_v=1$. For each vertex $v$, write $d(v)$ for its degree in $G_n$ and define
 $$
@@ -25,10 +35,8 @@ f_v=x_v^{d(v)}-\prod_{w\sim v}x_w.
 $$
 Set
 $$
-Q_n=\prod_{v\in V(G_n)}x_v
-$$
-and
-$$
+Q_n=\prod_{v\in V(G_n)}x_v,
+\qquad
 I_n=(f_v:v\in V(G_n)):Q_n^\infty,
 $$
 where
@@ -37,25 +45,40 @@ J:Q_n^\infty
 =
 \{g\in S_n:Q_n^r g\in J\text{ for some }r\geq0\}.
 $$
-Finally, put
+For $q\in\{a,b,c\}$ and $1\leq j\leq n-1$, put
 $$
-Q_n'
+Q_{q,j}
 =
-x_{a_1}^2
-\prod_{v\in V(G_n)\setminus\{a_1,b_1\}}x_v
+x_{q_j}^2
+\prod_{v\in V(G_n)\setminus\{o,q_j\}}x_v.
 $$
-and
+Finally, define
 $$
 A_n
 =
-S_n/\bigl(I_n+(Q_n,Q_n')\bigr).
+S_n\Big/\Bigl(I_n+
+\bigl(
+Q_{a,1}+Q_{b,1}-2Q_n,
+\ Q_{b,1}+Q_{c,1}-2Q_n,
+\ Q_{a,\rho}+Q_{b,\rho}-2Q_n
+\bigr)\Bigr).
 $$
 
-Determine the Hilbert series
+Let $D=3n-2$, and let $d_*$ be the least integer such that
 $$
-H_n(t)=\sum_{d\geq0}\dim_k(A_n)_d\,t^d
+\dim_{\mathbb F_p}(A_n)_d
 $$
-for every integer $n\geq3$.
+is constant for all $d\geq d_*$. Determine the ordered quintuple
+$$
+\left(
+\dim_{\mathbb F_p}(A_n)_D,
+\dim_{\mathbb F_p}(A_n)_{D+1},
+\dim_{\mathbb F_p}(A_n)_{D+2},
+d_*,
+\dim_{\mathbb F_p}(A_n)_{d_*}
+\right)
+$$
+for every odd prime $p$ and every integer $m\geq2$.
 
 ---
 
@@ -66,10 +89,10 @@ for every integer $n\geq3$.
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Commutative algebra |
 | **Problem Type** | Symbolic derivation |
-| **Answer Type** | Polynomial or rational function |
+| **Answer Type** | Tuple or ordered list |
 
 ---
 
 ## Domain Explanation
 
-The problem asks for the Hilbert series of a standard graded quotient defined by a saturated family of homogeneous binomial relations together with two high-degree monomial relations. The central algebraic difficulty is to identify the graded monomial classes surviving the saturation and then determine how the two final monomials overlap inside those classes. The graph supplies the structure of the binomial lattice, but the requested invariant and the decisive computations are properties of the graded quotient ring, so commutative algebra is the primary sub-domain.
+The problem concerns graded dimensions of a quotient of a saturated homogeneous lattice ideal over positive characteristic. The graph determines the lattice of monomial classes, while the three additional homogeneous relations interact with the non-semisimple $p$-power torsion of the quotient. The decisive work is to determine the ranks of these relations in three adjacent graded pieces and the eventual stabilized quotient, so commutative algebra is the primary sub-domain.
