@@ -2,19 +2,16 @@
 
 ## LaTeX (Normalized)
 
-Let $p$ be an odd prime, let $n\ge2$, and let $a\in\mathbb F_p^\times$.
+Let $p$ be an odd prime, let $n\ge4$, let $3\le k<n$, and let $a\in\mathbb F_p$.
 Let $V$ be the $4n$-dimensional vector space over $\mathbb F_p$ with basis
 $$
 \{e_{r,j},f_{r,j}:r\in\{1,2\},\ 0\le j\le n-1\}.
 $$
-Define a nilpotent linear map $N:V\to V$ by
+Define $N:V\to V$ by
 $$
 Ne_{r,j}=e_{r,j+1},\qquad Nf_{r,j}=f_{r,j+1}\qquad(0\le j<n-1),
 $$
-and
-$$
-Ne_{r,n-1}=Nf_{r,n-1}=0.
-$$
+and $Ne_{r,n-1}=Nf_{r,n-1}=0$.
 
 Define an alternating bilinear form $\omega$ on $V$ by
 $$
@@ -30,41 +27,48 @@ $$
 
 Put
 $$
-E=\operatorname{span}\{e_{r,j}\},
+F=\operatorname{span}\{f_{r,j}:r\in\{1,2\},\ 0\le j<n\}.
+$$
+Define a second linear map $S:V\to V$ by
+$$
+S e_{1,j}=e_{2,j}+f_{1,j+2},
 \qquad
-F=\operatorname{span}\{f_{r,j}\},
+S e_{2,j}=-e_{1,j}+f_{2,j+2},
 $$
-where in both spans $r\in\{1,2\}$ and $0\le j\le n-1$.
-For a symmetric matrix $K=(k_{sr})\in M_2(\mathbb F_p)$, put
 $$
-D_K=\operatorname{span}\left\{
- e_{r,j}+\sum_{s=1}^2 k_{sr}f_{s,j}:
- r\in\{1,2\},\ 0\le j\le n-1
-\right\}.
-$$
-Let
-$$
-I=\begin{pmatrix}1&0\\0&1\end{pmatrix},
+S f_{1,j}=e_{1,j}-f_{2,j},
 \qquad
-J_a=\begin{pmatrix}a&1\\1&0\end{pmatrix}.
+S f_{2,j}=e_{2,j}+f_{1,j},
+$$
+where $f_{r,m}=0$ whenever $m\ge n$.
+
+Finally, let $D_a$ be the $2n$-dimensional subspace spanned by
+$$
+e_{1,j}+f_{1,j}+a f_{2,j},
+\qquad
+e_{2,j}+a f_{1,j}+a^2 f_{2,j}
+\qquad(0\le j<n).
 $$
 
-Let $C_{p,n}(a)$ be the number of subspaces $L\le V$ satisfying all of the following:
+Let $C_{p,n,k}(a)$ be the number of subspaces $L\le V$ satisfying
 $$
 \dim_{\mathbb F_p}L=2n,
 \qquad
 \omega|_{L\times L}=0,
 \qquad
 N(L)\subseteq L,
+\qquad
+S(L)\subseteq L,
 $$
-and
 $$
-L\cap E=L\cap F=L\cap D_I=L\cap D_{J_a}=\{0\}.
+L\cap F=\{0\},
+\qquad
+\dim_{\mathbb F_p}(L\cap D_a)=k.
 $$
 
-Determine $C_{p,n}(a)$ exactly for every odd prime $p$, every $n\ge2$, and every $a\in\mathbb F_p^\times$.
+Determine $C_{p,n,k}(a)$ exactly for every allowed $p,n,k,a$.
 
-Give a rigorous, self-contained derivation. Any structural theorem or finite-field counting identity used in the proof must be established in the precise form required here rather than cited as a black box. The argument must cover every allowed parameter value. Numerical experimentation, computer algebra, code, and external sources may not replace any part of the proof.
+Give a rigorous, self-contained derivation. Any structural result about invariant subspaces over the nilpotent chains, any reduction of the two invariance conditions, and any local counting argument used in the proof must be established in the precise form needed here rather than cited as a black box. Numerical experimentation, computer algebra, code, and external sources may not replace any part of the proof.
 
 ---
 
@@ -81,4 +85,4 @@ Give a rigorous, self-contained derivation. Any structural theorem or finite-fie
 
 ## Domain Explanation
 
-The problem asks for an exact count of half-dimensional isotropic subspaces that are invariant under a fixed nilpotent linear transformation and simultaneously transverse to four specified subspaces. The primary structure is the interaction between the nilpotent transformation and invariant subspaces; the alternating form and finite-field arithmetic provide the constraints needed for the exact enumeration.
+The problem asks for an exact count of half-dimensional isotropic subspaces that are simultaneously invariant under two explicit linear transformations and have a prescribed intersection dimension with a parameterized reference subspace. The main structure is the interaction between invariant-subspace geometry and the nilpotent chains; finite-field arithmetic enters only after those linear-algebra constraints have been resolved.
