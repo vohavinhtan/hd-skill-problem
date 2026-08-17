@@ -1,187 +1,153 @@
 ## Steps
 
-Step 1: Encode admissible words by cyclic run lengths
+Step 1: Encode admissible words and force the trace maximizer to be balanced
 
-Put
+Put $x=r^2$ and
 $$
 B_k=L_rR_r^k
-=\begin{pmatrix}1+kr^2&r\\kr&1\end{pmatrix}
-\qquad(k\geq1).
+=\begin{pmatrix}1+kx&r\\kr&1\end{pmatrix}.
 $$
-After a cyclic rotation, every $n$-admissible word of multiplicity $q$ is uniquely represented by
+After a cyclic rotation, every admissible word has trace
 $$
-B_{a_1}B_{a_2}\cdots B_{a_{2q}},
+\operatorname{tr}(B_{a_1}\cdots B_{a_{2q}}),
 \qquad
 a_i\geq1,
 \qquad
 \sum_{i=1}^{2q}a_i=(2n+1)q.
 $$
-For fixed $q$ only finitely many positive compositions occur, so the two largest distinct traces exist.
 
-Set $x=r^2$ and
+With
 $$
-S=\begin{pmatrix}r&0\\1&-1\end{pmatrix}.
+S=\begin{pmatrix}r&0\\1&-1\end{pmatrix}
 $$
-Since
+we have
 $$
 B_kS
-=
-S\begin{pmatrix}2+kx&-1\\1&0\end{pmatrix},
-$$
-the matrices $B_k$ are simultaneously conjugate to
-$$
+=S D_k,
+\qquad
 D_k=\begin{pmatrix}2+kx&-1\\1&0\end{pmatrix}.
 $$
-Hence the trace of a cyclic word equals
+It is enough to maximize
 $$
 \Phi(a_1,\ldots,a_{2q})
 =\operatorname{tr}(D_{a_1}\cdots D_{a_{2q}}).
 $$
 
-Step 2: Show that the largest two trace levels are balanced
-
 For a string $U=(u_1,\ldots,u_\ell)$ write
 $$
-D(U)=D_{u_1}\cdots D_{u_\ell}
-=\begin{pmatrix}p&-\mu\\ \nu&*\end{pmatrix}.
+D(U)=\begin{pmatrix}p&-\mu\\ \nu&*\end{pmatrix}.
 $$
-If $U$ is empty take $p=1$ and $\mu=\nu=0$. For nonempty $U$ define
-$$
-K(\varnothing)=1,\qquad K(u_1)=2+xu_1,
-$$
-and
+The continuant recurrence
 $$
 K(u_1,\ldots,u_j)
-=(2+xu_j)K(u_1,\ldots,u_{j-1})-K(u_1,\ldots,u_{j-2}).
+=(2+xu_j)K(u_1,\ldots,u_{j-1})-K(u_1,\ldots,u_{j-2})
 $$
-Multiplying the $D_{u_i}$ gives
+with $K(\varnothing)=1$ gives
 $$
-p=K(u_1,\ldots,u_\ell),\quad
-\mu=K(u_1,\ldots,u_{\ell-1}),\quad
+p=K(u_1,\ldots,u_\ell),
+\quad
+\mu=K(u_1,\ldots,u_{\ell-1}),
+\quad
 \nu=K(u_2,\ldots,u_\ell).
 $$
-Because $2+xu_j\geq3$, induction gives
+Since every coefficient $2+xu_j$ is at least $3$, induction yields
 $$
-K(u_1,\ldots,u_j)>2K(u_1,\ldots,u_{j-1}),
-$$
-and the same inequality for reversed strings yields
-$$
-0\leq\mu<\frac p2,\qquad 0\leq\nu<\frac p2.
+0\leq\mu<\frac p2,
+\qquad
+0\leq\nu<\frac p2.
 $$
 
-Choose two cyclic entries $a\geq b+2$, and let $U,V$ be the intervening strings, with
+Take cyclic entries $a\geq b+2$ with intervening strings $U,V$, and write their corresponding leading entries as $p,P$ and off-diagonal continuants as $\mu,\nu,\mu',\nu'$. Since
 $$
-D(U)=\begin{pmatrix}p&-\mu\\ \nu&*\end{pmatrix},
-\qquad
-D(V)=\begin{pmatrix}P&-\mu'\\ \nu'&*\end{pmatrix}.
+D_k=D_0+kx\begin{pmatrix}1&0\\0&0\end{pmatrix},
 $$
-Set
+direct expansion gives
 $$
-E=\begin{pmatrix}1&0\\0&0\end{pmatrix},
-\qquad
-D_k=D_0+kxE.
-$$
-Then
-$$
-\begin{aligned}
-&\Phi(a-1,U,b+1,V)-\Phi(a,U,b,V)\\
-&\quad=x\operatorname{tr}(D_aUEV)-x\operatorname{tr}(EUD_bV)-x^2\operatorname{tr}(EUEV).
-\end{aligned}
-$$
-The displayed forms of $D(U)$ and $D(V)$ give
-$$
-\begin{aligned}
-\operatorname{tr}(D_aUEV)&=a x pP-\nu P+2pP-\mu'p,\\
-\operatorname{tr}(EUD_bV)&=b x pP-\mu P+2pP-\nu'p,\\
-\operatorname{tr}(EUEV)&=pP.
-\end{aligned}
-$$
-Therefore
-$$
-\begin{aligned}
-&\Phi(a-1,U,b+1,V)-\Phi(a,U,b,V)\\
-&\qquad
+\Phi(a-1,U,b+1,V)-\Phi(a,U,b,V)
 =x\left[pPx(a-b-1)+P(\mu-\nu)+p(\nu'-\mu')\right].
-\end{aligned}
 $$
-The bounds on $\mu,\nu,\mu',\nu'$ make the bracket strictly larger than
+The bracket is strictly larger than
 $$
 pP\left(x(a-b-1)-1\right)\geq0.
 $$
-Thus transferring one unit from an entry at least two larger than another strictly raises the trace.
+Therefore transferring one unit from a gap at least two larger than another strictly increases the trace.
 
-Therefore every maximizer has exactly $q$ entries equal to $n$ and $q$ entries equal to $n+1$. An unbalanced composition cannot be second-maximal either. One smoothing raises its trace. If the smoothed word is not maximal, this already gives a larger nonmaximal trace. Suppose instead that one smoothing produces the maximal alternating word. Reversing that smoothing changes two target entries of types $(n,n)$, $(n+1,n+1)$, or $(n,n+1)$. In the first two cases, smooth the exceptional low entry with an ordinary high entry at a different position; the result is balanced but nonalternating. In the mixed case, smooth the entry $n+2$ with a different ordinary entry $n$; the result still contains $n-1$. Such a different position exists because $q\geq2$. Thus in every case there is a larger nonmaximal trace, so the first two trace levels are attained among balanced words.
+Repeated transfers leave only two consecutive gap sizes. Their average is $n+\frac12$, so every trace maximizer has exactly $q$ gaps equal to $n$ and $q$ equal to $n+1$.
 
-Step 3: Identify the maximum and reduce the second level to one defect pair
+Step 2: Identify the alternating maximum by repairing equal adjacencies
 
-Put
+Set
 $$
-A=B_n,\qquad C=B_{n+1},\qquad M=AC,
+A=B_n,
+\qquad
+C=B_{n+1},
+\qquad
+M=AC.
 $$
-so
+Then
 $$
-d=\operatorname{tr}M
-=n(n+1)r^4+(4n+2)r^2+2.
+\det M=1,
+\qquad
+\operatorname{tr}M=T.
 $$
 Define
 $$
-s_0=0,\qquad s_1=1,\qquad s_{j+1}=ds_j-s_{j-1}.
+s_0=0,
+\qquad
+s_1=1,
+\qquad
+s_{j+1}=Ts_j-s_{j-1}.
 $$
-Here $d\geq18$, so induction gives $s_j>0$ for every $j\geq1$. Since $\det M=1$, Cayley-Hamilton gives
+Cayley-Hamilton gives
 $$
 M^j=s_jM-s_{j-1}I.
 $$
+Since $T>2$, all $s_j$ with $j\geq1$ are positive.
 
-For a balanced cyclic word let $N_{XY}$ count transitions $X\to Y$. Equal numbers of $A$ and $C$, together with $N_{AC}=N_{CA}$, imply
+For a balanced cyclic word, let $N_{XY}$ count transitions $X\to Y$, where $X,Y\in\{A,C\}$. Equality of the numbers of $A$ and $C$ gives
 $$
 N_{AA}=N_{CC}.
 $$
-Call this common number $h$. If $h>0$, choose an $AA$ followed cyclically by the next $CC$. The intervening letters alternate, so the segment is
+If this common number is positive, choose an $AA$ followed cyclically by the next $CC$. The segment between them has the form
 $$
 A^2(CA)^iC^2
 $$
-for some $i\geq0$. Define
+for some $i\geq0$.
+
+Define
 $$
 K_i=M^{i+2}-A^2(CA)^iC^2.
 $$
 For $i=0$,
 $$
-K_0=ACAC-AACC=A(CA-AC)C.
+K_0=A(CA-AC)C
+=r^2\begin{pmatrix}r^2-1&r\\r&1\end{pmatrix}.
 $$
-From the explicit matrices $A$ and $C$,
+This matrix is nonzero and entrywise nonnegative.
+
+Both terms defining $K_i$ satisfy the recurrence with coefficient $T$. Also
 $$
-CA-AC
-=r^2\begin{pmatrix}-1&r\\0&1\end{pmatrix},
-\qquad
-(CA-AC)C
-=\begin{pmatrix}-r^2&0\\(n+1)r^3&r^2\end{pmatrix}.
+K_1-TK_0
+=-M+AC^{-1}C^2
+=0.
 $$
-Multiplication by $A$ now gives
-$$
-K_0
-=r^2\begin{pmatrix}r^2-1&r\\r&1\end{pmatrix},
-$$
-which is nonzero and entrywise nonnegative. Moreover $A(CA)^i=M^iA$. Both $M$ and $CA$ have determinant $1$ and trace $d$, so Cayley-Hamilton shows that $M^{i+2}$ and $A^2(CA)^iC^2$ satisfy the same recurrence in $i$ with coefficient $d$. Also
-$$
-K_1-dK_0
-=(M^3-dM^2)-A(MA-dA)C^2
-=-M+A C^{-1}C^2=0,
-$$
-because $M^2-dM=-I$ and $MA-dA=A(CA-dI)=-C^{-1}$. Hence
+It follows that
 $$
 K_i=s_{i+1}K_0.
 $$
-Replacing $A^2(CA)^iC^2$ by $(AC)^{i+2}$ raises the cyclic trace by
+
+Replacing $A^2(CA)^iC^2$ by $M^{i+2}$ changes the cyclic trace by
 $$
 \operatorname{tr}(K_iZ)>0,
 $$
-where $Z$ is the remaining product; all entries of $Z$ are positive, while $K_i$ is nonzero and nonnegative.
+where $Z$ is the remaining positive matrix product. Each replacement removes one $AA$ and one $CC$. Repetition ends at the alternating word $(AC)^q$. Therefore
+$$
+\alpha_{n,r,q}=\operatorname{tr}(M^q).
+$$
 
-Repeated replacement shows that the unique maximal cyclic class is $(AC)^q$. If $h\geq2$, one replacement leaves at least one defect pair, hence leaves a nonmaximal balanced word of larger trace. Therefore every second-maximizer has exactly one $AA$ and one $CC$.
+Step 3: Parametrize the two-defect layer and derive its exact trace deficit
 
-Step 4: Compute the second trace level and count its cyclic classes
-
-Every balanced cyclic word with exactly one $AA$ and one $CC$ is, up to cyclic rotation,
+A balanced word having exactly two equal adjacent gap pairs has one $AA$ and one $CC$. Up to cyclic rotation it is
 $$
 W_{i,j}=A^2(CA)^iC^2(AC)^j,
 \qquad
@@ -189,96 +155,132 @@ i,j\geq0,
 \qquad
 i+j=q-2.
 $$
-Since $\alpha_{n,r,q}=\operatorname{tr}(M^q)$, the defect identity gives
+Using Step 2,
 $$
 \alpha_{n,r,q}-\operatorname{tr}W_{i,j}
+=\operatorname{tr}(K_iM^j)
 =s_{i+1}\operatorname{tr}(K_0M^j).
 $$
-Put $h_j=\operatorname{tr}(K_0M^j)$. The identity $M^2=dM-I$ gives
+
+Put
 $$
-h_{j+1}=dh_j-h_{j-1}.
+h_j=\operatorname{tr}(K_0M^j).
 $$
-Also
+Cayley-Hamilton gives
+$$
+h_{j+1}=Th_j-h_{j-1}.
+$$
+From the displayed formula for $K_0$,
 $$
 h_0=\operatorname{tr}K_0=r^4.
 $$
-Since $M+M^{-1}=dI$ and cyclicity of trace gives
+Also
 $$
 \operatorname{tr}(K_0M^{-1})
 =\operatorname{tr}M-\operatorname{tr}(A^2C^2M^{-1})
-=\operatorname{tr}M-\operatorname{tr}(AC)=0,
+=0,
 $$
-we get $h_1=dr^4$. Therefore
+because $M^{-1}=C^{-1}A^{-1}$ and cyclicity of trace reduces the second term to $\operatorname{tr}(AC)$. Since
 $$
-h_j=r^4s_{j+1}
+M+M^{-1}=TI,
 $$
-and
+we obtain
+$$
+h_1=Tr^4.
+$$
+The recurrence and initial values now give
+$$
+h_j=r^4s_{j+1}.
+$$
+Hence every two-defect word satisfies
 $$
 \alpha_{n,r,q}-\operatorname{tr}W_{i,j}
 =r^4s_{i+1}s_{j+1}.
 $$
 
-For $j\geq1$ put
+Step 4: Determine which separation produces the smallest trace
+
+Let
 $$
-Q^j=
-\begin{pmatrix}d&-1\\1&0\end{pmatrix}^{j}
-=
-\begin{pmatrix}s_{j+1}&-s_j\\s_j&-s_{j-1}\end{pmatrix}.
+Q=\begin{pmatrix}T&-1\\1&0\end{pmatrix}.
 $$
-Since $\det Q=1$, the $(2,1)$ entry of $Q^{-a}Q^{b-1}=Q^{b-a-1}$ gives, for $1\leq a<b-1$,
+Induction gives
 $$
-s_{a+1}s_{b-1}-s_as_b=s_{b-a-1}>0.
+Q^k=
+\begin{pmatrix}
+s_{k+1}&-s_k\\
+s_k&-s_{k-1}
+\end{pmatrix}.
 $$
-Thus among positive indices with
+Since $\det Q=1$, comparison of the $(2,1)$ entry in $Q^{-a}Q^{b-1}=Q^{b-a-1}$ yields
 $$
-(i+1)+(j+1)=q,
+s_{a+1}s_{b-1}-s_as_b=s_{b-a-1}
 $$
-the product $s_{i+1}s_{j+1}$ is minimal exactly at $(i,j)=(0,q-2)$ or $(q-2,0)$. Hence
+whenever $1\leq a<b-1$. The right side is positive.
+
+For fixed $a+b=q$, this identity says that moving the two indices one step toward each other strictly increases $s_as_b$. Therefore the largest deficit in Step 3 occurs when $i+1$ and $j+1$ are as equal as possible. If
 $$
-\alpha_{n,r,q}-\beta_{n,r,q}=r^4s_{q-1}.
+m_q=\alpha_{n,r,q}-\gamma_{n,r,q},
+$$
+then
+$$
+m_{2k}=r^4s_k^2
+$$
+and
+$$
+m_{2k+1}=r^4s_ks_{k+1}.
 $$
 
-It remains to count cyclic classes. In a one-defect word the occurrences $AA$ and $CC$ are unique. Starting at the unique $AA$ and moving in the fixed cyclic direction, the integer $i$ in $W_{i,j}$ is therefore invariant under cyclic rotation. Hence the two minimizing words $W_{0,q-2}$ and $W_{q-2,0}$ are cyclically equivalent only when $q-2=0$. Consequently
+Step 5: Collapse the parity formulas to one recurrence
+
+Multiplying the matrices $Q^aQ^b=Q^{a+b}$ and comparing their $(2,1)$ entries gives the addition identity
 $$
-c_{n,r,2}=1,\qquad c_{n,r,q}=2\quad(q\geq3).
+s_{a+b}=s_as_{b+1}-s_{a-1}s_b.
+$$
+For even indices,
+$$
+m_{2k}-m_{2k-2}
+=r^4\left(s_k^2-s_{k-1}^2\right)
+=r^4s_{2k-1}.
+$$
+For odd indices,
+$$
+m_{2k+1}-m_{2k-1}
+=r^4\left(s_ks_{k+1}-s_{k-1}s_k\right)
+=r^4s_{2k}.
+$$
+Thus, with $m_0=m_1=0$,
+$$
+m_q-m_{q-2}=r^4s_{q-1}
+\qquad(q\geq2).
 $$
 
-Step 5: Sum the two generating functions
+Step 6: Sum the extremal deficits
 
-From
+The recurrence for $s_j$ gives
 $$
-s_{j+1}=ds_j-s_{j-1},\qquad s_0=0,\qquad s_1=1,
-$$
-we obtain
-$$
-\sum_{m=1}^{\infty}s_mt^{m-1}
-=\frac{1}{1-dt+t^2}.
+\sum_{j=1}^{\infty}s_jt^{j-1}
+=\frac{1}{1-Tt+t^2}.
 $$
 Therefore
 $$
-G_{n,r}(t)
-=r^4\sum_{q=2}^{\infty}s_{q-1}t^{q-2}
-=
-\frac{r^4}
-{1-\left(n(n+1)r^4+(4n+2)r^2+2\right)t+t^2}.
+\sum_{q=2}^{\infty}r^4s_{q-1}t^{q-2}
+=\frac{r^4}{1-Tt+t^2}.
 $$
-The class count from Step 4 gives
+Using the recurrence from Step 5 in the definition of $H_{n,r}(t)$,
 $$
-C_{n,r}(t)
-=1+2t+2t^2+\cdots
-=\frac{1+t}{1-t}.
+(1-t^2)H_{n,r}(t)
+=\frac{r^4}{1-Tt+t^2}.
 $$
-Both denominators have constant term $1$, and both fractions are reduced: $1-t$ does not divide $1+t$, while the first numerator is the nonzero constant $r^4$.
+Since $T>2$, the quadratic factor is nonzero at $t=1$ and $t=-1$, so the resulting fraction is reduced and its denominator has constant term $1$.
 
-For $q=2$, the formulas give gap $r^4$ and one second-extremal cyclic class; for $q=3$, they give gap $dr^4$ and two classes, agreeing with the direct one-defect description.
-
-Final Answer: $\boxed{\left(\frac{r^4}{1-\left(n(n+1)r^4+(4n+2)r^2+2\right)t+t^2},\frac{1+t}{1-t}\right)}$
+Final Answer: $\boxed{\frac{r^4}{(1-t^2)(1-Tt+t^2)}}$
 
 ---
 
 ## Answer
 
-$\left(\frac{r^4}{1-\left(n(n+1)r^4+(4n+2)r^2+2\right)t+t^2},\frac{1+t}{1-t}\right)$
+$\frac{r^4}{(1-t^2)(1-Tt+t^2)}$
 
 ---
 
@@ -286,7 +288,7 @@ $\left(\frac{r^4}{1-\left(n(n+1)r^4+(4n+2)r^2+2\right)t+t^2},\frac{1+t}{1-t}\rig
 
 **Problem Type:** Symbolic derivation
 
-**Answer Type:** Tuple or ordered list
+**Answer Type:** Polynomial or rational function
 
 ---
 
@@ -294,6 +296,6 @@ $\left(\frac{r^4}{1-\left(n(n+1)r^4+(4n+2)r^2+2\right)t+t^2},\frac{1+t}{1-t}\rig
 
 - cyclic matrix products
 - smoothing inequalities
-- defect repair identity
 - continuant recurrence
+- defect separation
 - rational generating functions
