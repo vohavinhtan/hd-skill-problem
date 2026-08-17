@@ -23,7 +23,7 @@ $$
 we have
 $$
 B_kS
-=S D_k,
+=SD_k,
 \qquad
 D_k=\begin{pmatrix}2+kx&-1\\1&0\end{pmatrix}.
 $$
@@ -45,9 +45,9 @@ $$
 with $K(\varnothing)=1$ gives
 $$
 p=K(u_1,\ldots,u_\ell),
-\quad
+\qquad
 \mu=K(u_1,\ldots,u_{\ell-1}),
-\quad
+\qquad
 \nu=K(u_2,\ldots,u_\ell).
 $$
 Since every coefficient $2+xu_j$ is at least $3$, induction yields
@@ -61,12 +61,12 @@ Take cyclic entries $a\geq b+2$ with intervening strings $U,V$, and write their 
 $$
 D_k=D_0+kx\begin{pmatrix}1&0\\0&0\end{pmatrix},
 $$
-direct expansion gives
+expanding the affected factors gives
 $$
 \Phi(a-1,U,b+1,V)-\Phi(a,U,b,V)
 =x\left[pPx(a-b-1)+P(\mu-\nu)+p(\nu'-\mu')\right].
 $$
-The bracket is strictly larger than
+The continuant bounds make the bracket strictly larger than
 $$
 pP\left(x(a-b-1)-1\right)\geq0.
 $$
@@ -102,13 +102,13 @@ Cayley-Hamilton gives
 $$
 M^j=s_jM-s_{j-1}I.
 $$
-Since $T>2$, all $s_j$ with $j\geq1$ are positive.
+Since $T>2$, induction on the recurrence gives $s_j>0$ for every $j\geq1$.
 
-For a balanced cyclic word, let $N_{XY}$ count transitions $X\to Y$, where $X,Y\in\{A,C\}$. Equality of the numbers of $A$ and $C$ gives
+For a balanced cyclic word, let $N_{XY}$ count transitions $X\to Y$, where $X,Y\in\{A,C\}$. Equality of the numbers of $A$ and $C$, together with $N_{AC}=N_{CA}$ on a cyclic word, gives
 $$
 N_{AA}=N_{CC}.
 $$
-If this common number is positive, choose an $AA$ followed cyclically by the next $CC$. The segment between them has the form
+If this common number is positive, choose an $AA$ followed cyclically by the next $CC$. The letters between them alternate, so the segment has the form
 $$
 A^2(CA)^iC^2
 $$
@@ -125,13 +125,13 @@ K_0=A(CA-AC)C
 $$
 This matrix is nonzero and entrywise nonnegative.
 
-Both terms defining $K_i$ satisfy the recurrence with coefficient $T$. Also
+Both terms defining $K_i$ satisfy the same second-order recurrence in $i$ with coefficient $T$. Also
 $$
 K_1-TK_0
 =-M+AC^{-1}C^2
 =0.
 $$
-It follows that
+Together with $K_0$, these initial values give
 $$
 K_i=s_{i+1}K_0.
 $$
@@ -140,7 +140,7 @@ Replacing $A^2(CA)^iC^2$ by $M^{i+2}$ changes the cyclic trace by
 $$
 \operatorname{tr}(K_iZ)>0,
 $$
-where $Z$ is the remaining positive matrix product. Each replacement removes one $AA$ and one $CC$. Repetition ends at the alternating word $(AC)^q$. Therefore
+where $Z$ is the remaining product. Every entry of $Z$ is positive, while $K_i$ is nonzero and entrywise nonnegative. Each replacement removes one $AA$ and one $CC$, so repetition ends at the alternating word $(AC)^q$. Therefore
 $$
 \alpha_{n,r,q}=\operatorname{tr}(M^q).
 $$
@@ -155,7 +155,7 @@ i,j\geq0,
 \qquad
 i+j=q-2.
 $$
-Using Step 2,
+Using the defect identity from Step 2,
 $$
 \alpha_{n,r,q}-\operatorname{tr}W_{i,j}
 =\operatorname{tr}(K_iM^j)
@@ -180,25 +180,25 @@ $$
 =\operatorname{tr}M-\operatorname{tr}(A^2C^2M^{-1})
 =0,
 $$
-because $M^{-1}=C^{-1}A^{-1}$ and cyclicity of trace reduces the second term to $\operatorname{tr}(AC)$. Since
+because $M^{-1}=C^{-1}A^{-1}$ and cyclicity of trace reduces the second term to $\operatorname{tr}(AC)$. Since $\det M=1$ and $\operatorname{tr}M=T$, Cayley-Hamilton also gives
 $$
-M+M^{-1}=TI,
+M+M^{-1}=TI.
 $$
-we obtain
+Taking the trace after multiplication by $K_0$ yields
 $$
 h_1=Tr^4.
 $$
-The recurrence and initial values now give
+The recurrence with $h_0=r^4$ and $h_1=Tr^4$ gives
 $$
 h_j=r^4s_{j+1}.
 $$
-Hence every two-defect word satisfies
+Every two-defect word therefore satisfies
 $$
 \alpha_{n,r,q}-\operatorname{tr}W_{i,j}
 =r^4s_{i+1}s_{j+1}.
 $$
 
-Step 4: Determine which separation produces the smallest trace
+Step 4: Determine which defect separation produces the smallest trace
 
 Let
 $$
@@ -212,13 +212,22 @@ s_{k+1}&-s_k\\
 s_k&-s_{k-1}
 \end{pmatrix}.
 $$
-Since $\det Q=1$, comparison of the $(2,1)$ entry in $Q^{-a}Q^{b-1}=Q^{b-a-1}$ yields
+Since $\det Q=1$, comparison of the $(2,1)$ entry in
+$$
+Q^{-a}Q^{b-1}=Q^{b-a-1}
+$$
+gives
 $$
 s_{a+1}s_{b-1}-s_as_b=s_{b-a-1}
 $$
 whenever $1\leq a<b-1$. The right side is positive.
 
-For fixed $a+b=q$, this identity says that moving the two indices one step toward each other strictly increases $s_as_b$. Therefore the largest deficit in Step 3 occurs when $i+1$ and $j+1$ are as equal as possible. If
+For fixed $a+b=q$, moving the two indices one step toward each other strictly increases $s_as_b$. Since
+$$
+\alpha_{n,r,q}-\operatorname{tr}W_{i,j}
+=r^4s_{i+1}s_{j+1},
+$$
+the smallest trace occurs when $i+1$ and $j+1$ are as equal as possible. If
 $$
 m_q=\alpha_{n,r,q}-\gamma_{n,r,q},
 $$
@@ -233,7 +242,7 @@ $$
 
 Step 5: Collapse the parity formulas to one recurrence
 
-Multiplying the matrices $Q^aQ^b=Q^{a+b}$ and comparing their $(2,1)$ entries gives the addition identity
+Multiplying the matrices $Q^aQ^b=Q^{a+b}$ and comparing their $(2,1)$ entries gives
 $$
 s_{a+b}=s_as_{b+1}-s_{a-1}s_b.
 $$
@@ -249,7 +258,7 @@ m_{2k+1}-m_{2k-1}
 =r^4\left(s_ks_{k+1}-s_{k-1}s_k\right)
 =r^4s_{2k}.
 $$
-Thus, with $m_0=m_1=0$,
+With $m_0=m_1=0$, both identities combine to
 $$
 m_q-m_{q-2}=r^4s_{q-1}
 \qquad(q\geq2).
@@ -257,7 +266,15 @@ $$
 
 Step 6: Sum the extremal deficits
 
-The recurrence for $s_j$ gives
+The recurrence
+$$
+s_{j+1}=Ts_j-s_{j-1},
+\qquad
+s_0=0,
+\qquad
+s_1=1
+$$
+gives
 $$
 \sum_{j=1}^{\infty}s_jt^{j-1}
 =\frac{1}{1-Tt+t^2}.
@@ -267,12 +284,22 @@ $$
 \sum_{q=2}^{\infty}r^4s_{q-1}t^{q-2}
 =\frac{r^4}{1-Tt+t^2}.
 $$
-Using the recurrence from Step 5 in the definition of $H_{n,r}(t)$,
+
+From Step 5,
 $$
-(1-t^2)H_{n,r}(t)
-=\frac{r^4}{1-Tt+t^2}.
+m_q=m_{q-2}+r^4s_{q-1}.
 $$
-Since $T>2$, the quadratic factor is nonzero at $t=1$ and $t=-1$, so the resulting fraction is reduced and its denominator has constant term $1$.
+Multiplying by $t^{q-2}$ and summing over $q\geq2$ gives
+$$
+H_{n,r}(t)
+=t^2H_{n,r}(t)+\frac{r^4}{1-Tt+t^2}.
+$$
+Therefore
+$$
+H_{n,r}(t)
+=\frac{r^4}{(1-t^2)(1-Tt+t^2)}.
+$$
+Because $T>2$, the quadratic factor is nonzero at $t=1$ and $t=-1$, so the fraction is reduced and its denominator has constant term $1$.
 
 Final Answer: $\boxed{\frac{r^4}{(1-t^2)(1-Tt+t^2)}}$
 
