@@ -15,12 +15,10 @@ $$
 $$
 \sigma(a_0,a_1,a_2,a_3,a_4)=(a_0,a_4,a_3,a_2,a_1).
 $$
-They extend uniquely to automorphisms of $L$. Put $D=\langle\rho,\sigma\rangle$ and
+They extend uniquely to automorphisms of $L$. Put
 $$
-\chi_p=\left(\frac{5}{p}\right),
+D=\langle\rho,\sigma\rangle.
 $$
-the Legendre symbol.
-
 Determine
 $$
 \left|C_{\operatorname{Aut}(L)}(D)\right|
