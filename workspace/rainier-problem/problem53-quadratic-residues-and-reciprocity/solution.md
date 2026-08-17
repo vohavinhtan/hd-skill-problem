@@ -105,7 +105,7 @@ S_1
 &=2\operatorname{Re}J(\psi,\chi)-1.
 \end{aligned}
 $$
-The Jacobi sum is an algebraic integer in $\mathbb Q(i)$, whose ring of integers is $\mathbb Z[i]$. Write
+Here no integrality theorem is being hidden: $\psi(t)\in\{0,1,-1,i,-i\}$ and $\chi(1-t)\in\{0,1,-1\}$ for every $t$, so each summand of $J(\psi,\chi)$ lies in $\mathbb Z[i]$. Therefore
 $$
 J(\psi,\chi)=r+vi,\qquad r,v\in\mathbb Z.
 $$
@@ -160,11 +160,46 @@ J(\eta^3,\chi)
 =\eta(-1)^{-1}J(\eta,\eta^3)
 =J(\eta,\chi)=L.
 $$
-Let $\zeta_8$ be a primitive eighth root of unity. For the Galois automorphism $\sigma_j$ defined by $\sigma_j(\zeta_8)=\zeta_8^j$, applying $\sigma_j$ termwise raises each character value to the $j$th power. Thus $\sigma_3(L)=L$. Since $\sigma_3(i)=-i$ and $\sigma_3(\sqrt2)=-\sqrt2$, the element $\sqrt{-2}=i\sqrt2$ is fixed. The fixed field has degree two, so it is $\mathbb Q(\sqrt{-2})$; because $-2\equiv2\pmod4$, its ring of integers is $\mathbb Z[\sqrt{-2}]$. Hence
+Let $\zeta_8$ be a primitive eighth root of unity and choose the values of $\eta$ in $\langle\zeta_8\rangle$. Then every summand $\eta(t)\chi(1-t)$ belongs to $\mathbb Z[\zeta_8]$, so
 $$
-L=r+s_0\sqrt{-2}\qquad(r,s_0\in\mathbb Z),
+L\in\mathbb Z[\zeta_8].
 $$
-and Step 2 gives
+Since $\zeta_8$ satisfies the monic polynomial $X^4+1$, it is an algebraic integer; hence every element of $\mathbb Z[\zeta_8]$, in particular $L$, is integral over $\mathbb Z$.
+
+For the Galois automorphism $\sigma_j$ defined by $\sigma_j(\zeta_8)=\zeta_8^j$, applying $\sigma_j$ termwise raises each character value to the $j$th power. Since $\chi^3=\chi$,
+$$
+\sigma_3(L)=J(\eta^3,\chi)=L.
+$$
+Now $\mathbb Q(\zeta_8)$ has degree $4$. Writing
+$$
+i=\zeta_8^2,\qquad \sqrt2=\zeta_8+\zeta_8^{-1},
+$$
+we have $\sigma_3(i)=-i$ and $\sigma_3(\sqrt2)=-\sqrt2$, so $\sqrt{-2}=i\sqrt2$ is fixed. The fixed field of the order-two automorphism $\sigma_3$ has degree $2$ over $\mathbb Q$; since $\mathbb Q(\sqrt{-2})$ is a degree-two fixed subfield, it is exactly that fixed field. Thus
+$$
+L\in\mathbb Q(\sqrt{-2}).
+$$
+
+It remains to identify the integral elements of this quadratic field. Let
+$$
+\alpha=r+s\sqrt{-2}\in\mathbb Q(\sqrt{-2}),\qquad r,s\in\mathbb Q,
+$$
+be integral over $\mathbb Z$. Its trace and norm are integers, so for some $m,n\in\mathbb Z$,
+$$
+2r=m,\qquad r^2+2s^2=n.
+$$
+Write $s=q/v$ in lowest terms with $v>0$. Then
+$$
+8s^2=4n-m^2\in\mathbb Z,
+$$
+so $v^2\mid8$, hence $v\in\{1,2\}$. If $v=2$, then $q$ is odd and
+$$
+n=\frac{m^2+2q^2}{4},
+$$
+whose numerator is congruent to $2$ or $3$ modulo $4$, a contradiction. Hence $s\in\mathbb Z$. Then $r^2=n-2s^2\in\mathbb Z$; since $r=m/2$, $m$ must be even, so $r\in\mathbb Z$. Conversely $\sqrt{-2}$ is integral because it satisfies $X^2+2=0$. Therefore the ring of integers of $\mathbb Q(\sqrt{-2})$ is exactly $\mathbb Z[\sqrt{-2}]$. Since $L$ is integral and lies in this field,
+$$
+L=r+s_0\sqrt{-2}\qquad(r,s_0\in\mathbb Z).
+$$
+Step 2 gives
 $$
 r^2+2s_0^2=p.
 $$
