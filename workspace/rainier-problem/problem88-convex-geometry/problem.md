@@ -2,54 +2,53 @@
 
 ## LaTeX (Normalized)
 
-Let
+Let $m\geq8$ be an integer and put
 $$
-X=\{-9,-3,-2,-1,1,2,3,9\}.
+X_m=\{-m,-m+1,\ldots,-1,1,\ldots,m-1,m\}.
 $$
 For
 $$
-0<\alpha<\frac{19}{20},
+\frac{1}{10}<\alpha<\frac{2}{5},
 \qquad
 s\geq0,
 $$
-and $\xi\in X$, define
+and $\xi\in X_m$, define
 $$
 P_\xi^{(\alpha)}(s)
 =
 \left(
 \xi,\xi^2,\xi^3,
-\xi^8-14\alpha s\xi^7-14s\xi^6+
-(-70\alpha^2+269\alpha-9)s\xi^5
+\xi^8+s\xi^5\left(-14\alpha\xi^2-14\xi-70\alpha^2+269\alpha-9\right)
 \right)
 \in\mathbb R^4,
 $$
 and set
 $$
-K_\alpha(s)
+K_\alpha^{(m)}(s)
 =
-\operatorname{conv}\{P_\xi^{(\alpha)}(s):\xi\in X\}.
+\operatorname{conv}\{P_\xi^{(\alpha)}(s):\xi\in X_m\}.
 $$
 
-A hyperplane $H\subset\mathbb R^4$ is supporting for a convex set $K$ if $K$ is contained in one of the two closed half-spaces bounded by $H$ and $K\cap H\neq\varnothing$. A facet of $K_\alpha(s)$ is a set $K_\alpha(s)\cap H$ of affine dimension $3$ for some supporting hyperplane $H$. Call $K_\alpha(s)$ simplicial if every facet has exactly four vertices.
+A hyperplane $H\subset\mathbb R^4$ is supporting for a convex set $K$ if $K$ is contained in one of the two closed half-spaces bounded by $H$ and $K\cap H\neq\varnothing$. A facet of $K_\alpha^{(m)}(s)$ is a set $K_\alpha^{(m)}(s)\cap H$ of affine dimension $3$ for some supporting hyperplane $H$. Call $K_\alpha^{(m)}(s)$ simplicial if every facet has exactly four vertices.
 
-For each $\alpha\in(0,19/20)$ define
+For each $\alpha\in(1/10,2/5)$ define
 $$
-s_\alpha
+s_\alpha^{(m)}
 =
-\inf\{s>0:K_\alpha(s)\text{ is not simplicial}\}.
+\inf\{s>0:K_\alpha^{(m)}(s)\text{ is not simplicial}\}.
 $$
 
-Prove that there is a unique
+Prove that for every $m\geq8$ there is a unique
 $$
-\alpha_*\in\left(0,\frac{19}{20}\right)
+\alpha_m\in\left(\frac{1}{10},\frac{2}{5}\right)
 $$
-for which $K_{\alpha_*}(s_{\alpha_*})$ has a facet with exactly six vertices. Prove that this six-vertex facet is unique and every other facet of $K_{\alpha_*}(s_{\alpha_*})$ has exactly four vertices. Let $C\subset X$ be the set of first coordinates of the six vertices of this facet.
+for which $K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)})$ has a facet with exactly six vertices. Prove that this six-vertex facet is unique and every other facet at that time has exactly four vertices. Let $C_m\subset X_m$ be the set of first coordinates of its six vertices.
 
-Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of $K_{\alpha_*}(s_{\alpha_*}-\varepsilon)$ whose vertices all have first coordinates in $C$ is $6$, whereas the corresponding number for $K_{\alpha_*}(s_{\alpha_*}+\varepsilon)$ is $3$.
+Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of $K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}-\varepsilon)$ whose first coordinates all lie in $C_m$ is $6$, whereas the corresponding number for $K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}+\varepsilon)$ is $3$.
 
 Determine exactly
 $$
-(C,\alpha_*).
+(C_m,\alpha_m).
 $$
 
 ---
@@ -67,4 +66,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks when a one-parameter lifting of eight points on the cubic moment curve first develops a unique six-vertex supporting facet. The difficult point is that the local six-point coplanarity equations have more than one admissible parameter value, and a separate first-wall comparison is needed to distinguish the genuine first facet from false coplanar candidates. The final local circuit change determines the two tetrahedral facet counts.
+The problem asks for the unique parameter at which the first wall in a large family of moment-curve liftings is a simultaneous two-circuit collapse. The local six-point coplanarity equations admit competing candidates, while a uniform analysis over arbitrarily many ordinary windows and a separate preemption argument are required to identify which candidate is genuinely first. The local circuit change then determines the two tetrahedral facet counts.
