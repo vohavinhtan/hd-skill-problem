@@ -6,19 +6,22 @@ Fix an integer
 $$
 n\geq2.
 $$
-For each $\lambda\in\mathbb C^\times$, define a continuous $\mathbb C$-algebra homomorphism
+For each $\lambda\in\mathbb C^{\times}$, define a continuous $\mathbb C$-algebra homomorphism
 $$
-\Psi_{n,\lambda}:\mathbb C[[X,Y,Z]]\longrightarrow\mathbb C[[t]]
+\Psi_{n,\lambda}:\mathbb C[[X,Y,Z,W]]\longrightarrow\mathbb C[[t]]
 $$
 by
 $$
-\Psi_{n,\lambda}(X)=t^{4n},
+\Psi_{n,\lambda}(X)=t^{12},
 $$
 $$
-\Psi_{n,\lambda}(Y)=t^{6n}+t^{7n}+t^{7n+1},
+\Psi_{n,\lambda}(Y)=(\lambda^4-1)t^{12n+6}+t^{12n+18},
 $$
 $$
-\Psi_{n,\lambda}(Z)=t^{9n}+\lambda^2t^{9n+1}+(\lambda-1)t^{11n+1}.
+\Psi_{n,\lambda}(Z)=(\lambda^6-1)t^{12n+9}+t^{12n+33},
+$$
+$$
+\Psi_{n,\lambda}(W)=(\lambda^9-1)t^{12n+11}+t^{12n+35}.
 $$
 Let
 $$
@@ -36,11 +39,11 @@ For fixed $n$, let
 $$
 \alpha_n>\beta_n
 $$
-be the largest and the second-largest distinct values of $\kappa_{n,\lambda}$ as $\lambda$ ranges over $\mathbb C^\times$, and put
+be the largest and the second-largest distinct values of $\kappa_{n,\lambda}$ as $\lambda$ ranges over $\mathbb C^{\times}$, and put
 $$
 E_n=
 \left\{
-\lambda\in\mathbb C^\times:\kappa_{n,\lambda}=\beta_n
+\lambda\in\mathbb C^{\times}:\kappa_{n,\lambda}=\beta_n
 \right\}.
 $$
 
@@ -65,4 +68,4 @@ in closed form as a function of $n$.
 
 ## Domain Explanation
 
-This problem involves complete local subrings, conductor ideals, and normalization inside a discrete valuation ring, which are part of Abstract Algebra and Ring theory. The problem also involves numerical semigroups and residue classes, which are part of Number Theory. However, those number theoretic objects serve only to encode valuations, while the central task is to determine a ring theoretic conductor across the parameter family.
+This problem involves complete local subrings, conductor ideals, and normalization inside a discrete valuation ring, which are part of Abstract Algebra and Ring theory. The value semigroups encode the conductor calculation, while the parameter controls which monomial generators appear.
