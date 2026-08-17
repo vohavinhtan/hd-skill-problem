@@ -15,13 +15,15 @@ $$
 \Psi_{n,\lambda}(X)=t^{30},
 $$
 $$
-\Psi_{n,\lambda}(Y)=(\lambda^4-1)t^{30n+15}+t^{30n+45},
+\Psi_{n,\lambda}(Y)
+=(\lambda^2-1)t^{30n+15}+(\lambda-1)t^{30n+10},
 $$
 $$
-\Psi_{n,\lambda}(Z)=(\lambda^6-1)t^{30n+10}+t^{30n+40},
+\Psi_{n,\lambda}(Z)
+=(\lambda^2-1)t^{30n+15}+\lambda(\lambda-1)t^{30n+10},
 $$
 $$
-\Psi_{n,\lambda}(W)=(\lambda^9-1)t^{30n+29}+t^{30n+59}.
+\Psi_{n,\lambda}(W)=t^{30n+29}.
 $$
 Let
 $$
@@ -68,4 +70,4 @@ in closed form as a function of $n$.
 
 ## Domain Explanation
 
-This problem involves complete local subrings, conductor ideals, and normalization inside a discrete valuation ring, which are part of Abstract Algebra and Ring theory. The value semigroups encode the conductor calculation, while the parameter controls which monomial generators appear.
+This problem concerns complete local subrings of a discrete valuation ring and their conductor ideals. The parameter changes the rank of a pair of generators, and the resulting value semigroups determine the conductor exponents.

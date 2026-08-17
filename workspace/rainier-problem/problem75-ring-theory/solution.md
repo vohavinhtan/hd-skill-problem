@@ -1,45 +1,55 @@
 ## Steps
 
-Step 1: Reduce each parameter value to a numerical semigroup ring
-Because $t^{30}\in A_{n,\lambda}$, the ring $\mathbb C[[t^{30}]]$ is contained in $A_{n,\lambda}$. Define
+Step 1: Determine the three parameter strata from the generator span
+Put
 $$
-\delta_k=
-\begin{cases}
-1,&\lambda^k=1,\\
-0,&\lambda^k\neq1.
-\end{cases}
+a=30n+15,\qquad b=30n+10,\qquad c=30n+29.
 $$
-A series in $\mathbb C[[t^{30}]]$ with nonzero constant term is a unit. Factoring the three nonmonomial generators therefore gives
+The $Y$- and $Z$-images are obtained from $t^a,t^b$ by the coefficient matrix
 $$
-A_{n,\lambda}
-=
-\mathbb C[[t^{30},t^a,t^b,t^c]],
+M(\lambda)=
+\begin{pmatrix}
+\lambda^2-1&\lambda-1\\
+\lambda^2-1&\lambda(\lambda-1)
+\end{pmatrix}.
 $$
-where
+Its determinant is
 $$
-a=30n+15+30\delta_4,\qquad
-b=30n+10+30\delta_6,\qquad
-c=30n+29+30\delta_9.
+\det M(\lambda)=(\lambda^2-1)(\lambda-1)^2.
 $$
-Thus $\kappa_{n,\lambda}$ is the conductor of
+Hence if $\lambda\neq\pm1$, the two images span both $t^a$ and $t^b$ over $\mathbb C$, so
+$$
+A_{n,\lambda}=\mathbb C[[t^{30},t^a,t^b,t^c]].
+$$
+
+If $\lambda=-1$, the first column of $M(-1)$ vanishes while the second does not, so the $Y,Z$-span is exactly $\mathbb Ct^b$. Therefore
+$$
+A_{n,-1}=\mathbb C[[t^{30},t^b,t^c]].
+$$
+If $\lambda=1$, both $Y$ and $Z$ vanish, giving
+$$
+A_{n,1}=\mathbb C[[t^{30},t^c]].
+$$
+Thus only these three value semigroups can occur.
+
+Step 2: Compute the three conductors from canonical residue representatives
+For $\lambda\neq\pm1$, let
 $$
 S=\langle30,a,b,c\rangle.
 $$
-
-Step 2: Find the conductor from a mixed-radix set of minimal representatives
-The exponent choices force the identities
+The identities
 $$
-2a=30(2n+1+2\delta_4),
+2a=30(2n+1),
 $$
 $$
-3b=2a+30(n+3\delta_6-2\delta_4),
+3b=2a+30n,
 $$
 $$
-5c=a+b+30(3n+4+5\delta_9-\delta_4-\delta_6).
+5c=a+b+30(3n+4)
 $$
-All coefficients on the right are nonnegative for $n\geq2$. Repeatedly applying these identities writes every element of $S$ as
+show that every element of $S$ has a representative
 $$
-30q+\varepsilon a+\eta b+\theta c,
+30q+\varepsilon a+\eta b+\theta c
 $$
 with
 $$
@@ -48,62 +58,70 @@ q\geq0,\qquad
 \eta\in\{0,1,2\},\qquad
 \theta\in\{0,1,2,3,4\}.
 $$
-There are exactly $30$ such reduced sums. They occupy distinct residue classes modulo $30$: if two are congruent, then
+There are $30$ such sums. They have distinct residues modulo $30$: if two are congruent, then
 $$
 15(\varepsilon-\varepsilon')
 +10(\eta-\eta')
 +29(\theta-\theta')
 \equiv0\pmod{30}.
 $$
-Modulo $5$ this forces $\theta=\theta'$, because $|\theta-\theta'|\leq4$. Modulo $3$ it then forces $\eta=\eta'$, because $|\eta-\eta'|\leq2$. The remaining congruence forces $\varepsilon=\varepsilon'$. Hence the reduced sums give one representative for every residue modulo $30$.
-
-Every reduction above replaces excess copies by a nonnegative multiple of $30$, so the reduced representative is the least element of $S$ in its residue class. The largest representative is
+Modulo $5$ forces $\theta=\theta'$, modulo $3$ then forces $\eta=\eta'$, and finally modulo $2$ forces $\varepsilon=\varepsilon'$. Since each reduction above subtracts a nonnegative multiple of $30$, these are the least elements of their residue classes. Their maximum is
 $$
-a+2b+4c.
+a+2b+4c,
 $$
-Therefore the largest gap is $a+2b+4c-30$, and
+so
 $$
-\kappa_{n,\lambda}
-=
-a+2b+4c-29
-=
-210n+122+30\delta_4+60\delta_6+120\delta_9.
+\kappa_{n,\lambda}=a+2b+4c-29=210n+122
+\qquad(\lambda\neq\pm1).
 $$
 
-Step 3: Optimize the root-of-unity score
-Set
+For $\lambda=-1$, use
 $$
-T(\lambda)=\delta_4+2\delta_6+4\delta_9.
+3b=30(3n+1),
 $$
-Then
 $$
-\kappa_{n,\lambda}=210n+122+30T(\lambda).
+10c=2b+30(8n+9).
 $$
-The score $7$ occurs only when $\lambda^4=\lambda^6=\lambda^9=1$, which forces $\lambda^{\gcd(4,6,9)}=\lambda=1$. Hence this is the unique largest conductor.
+Hence the least residue representatives of $\langle30,b,c\rangle$ are
+$$
+\eta b+\theta c,
+\qquad
+0\leq\eta\leq2,\quad0\leq\theta\leq9.
+$$
+They are distinct modulo $30$, because
+$$
+10(\eta-\eta')-(\theta-\theta')\equiv0\pmod{30}
+$$
+first forces $\theta=\theta'$ modulo $10$ and then $\eta=\eta'$ modulo $3$. The largest representative is $2b+9c$, and therefore
+$$
+\kappa_{n,-1}=2b+9c-29=330n+252.
+$$
 
-For $\lambda\neq1$, the largest possible score is $6$. It is attained exactly when
+For $\lambda=1$, the semigroup is $\langle30,c\rangle$ with $c\equiv-1\pmod{30}$. Its least representatives modulo $30$ are
 $$
-\delta_4=0,\qquad \delta_6=\delta_9=1.
+0,c,2c,\ldots,29c,
 $$
-The last two conditions are equivalent to $\lambda^3=1$. After excluding $\lambda=1$, this is
+so
 $$
-\lambda^2+\lambda+1=0,
+\kappa_{n,1}=29c-29=870n+812.
 $$
-and such roots have order $3$, so $\delta_4=0$ automatically. Consequently
+
+Step 3: Compare the conductor levels
+For every $n\geq2$,
 $$
-\beta_n=210n+122+180=210n+302,
+870n+812>330n+252>210n+122.
 $$
-and
+Thus $\lambda=1$ gives the unique largest conductor, while $\lambda=-1$ gives the unique second-largest distinct conductor. Consequently
 $$
-E_n=\{\lambda\in\mathbb C^{\times}:\lambda^2+\lambda+1=0\}.
+\beta_n=330n+252,\qquad E_n=\{-1\}.
 $$
-Final Answer: $\boxed{\left(210n+302,\{\lambda\in\mathbb C^{\times}:\lambda^2+\lambda+1=0\}\right)}$
+Final Answer: $\boxed{\left(330n+252,\{-1\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(210n+302,\{\lambda\in\mathbb C^{\times}:\lambda^2+\lambda+1=0\}\right)$
+$\left(330n+252,\{-1\}\right)$
 
 ---
 
@@ -117,8 +135,8 @@ $\left(210n+302,\{\lambda\in\mathbb C^{\times}:\lambda^2+\lambda+1=0\}\right)$
 
 ## Solution Concepts
 
-- numerical semigroup rings
 - conductor exponent
-- mixed-radix representatives
-- formal power series units
-- roots of unity
+- value semigroups
+- rank drop of generators
+- residue-class representatives
+- numerical semigroup rings
