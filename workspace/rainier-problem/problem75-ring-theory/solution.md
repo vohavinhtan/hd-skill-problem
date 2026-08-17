@@ -1,223 +1,108 @@
 ## Steps
 
-Step 1: Reduce the conductor to valuation rows
-Put $u=t^n$ and $s=t$, so $s^n=u$, and write
+Step 1: Reduce each parameter value to a numerical semigroup ring
+Because $t^{12}\in A_{n,\lambda}$, the ring $\mathbb C[[t^{12}]]$ is contained in $A_{n,\lambda}$. Define
 $$
-x=u^4,\qquad y=u^6+u^7+u^{7}s,\qquad
-z=u^9+\left(\lambda^2u^9+(\lambda-1)u^{11}\right)s.
+\delta_k=
+\begin{cases}
+1,&\lambda^k=1,\\
+0,&\lambda^k\neq1.
+\end{cases}
 $$
-Let $S_{n,\lambda}=\{v(f):0\neq f\in A_{n,\lambda}\}$. Since $x=t^{4n}$, $\mathbb C[[t]]$ is finite over $\mathbb C[[x]]$. Let $R=\mathbb C[[x]][y,z]$. It is a finite complete $\mathbb C[[x]]$-module, and polynomial truncations of a source series converge to its image, so $A_{n,\lambda}=R$. If every integer at least $c$ occurs as a valuation, choose in each residue modulo $4n$ an element $b_\rho=t^{m_\rho}+$ higher terms with minimal $m_\rho\geq c$. For $k=m_\rho+4nj$, successive subtraction of multiples of $x^{j}b_\rho$ raises the valuation and converges to $t^k$. Hence
+If $\lambda^4\neq1$, then
 $$
-\kappa_{n,\lambda}=1+\max\left(\mathbb Z_{\geq0}\setminus S_{n,\lambda}\right).
+(\lambda^4-1)+t^{12}
 $$
-For $0\leq r<n$ put
+is a unit of $\mathbb C[[t^{12}]]$, so the $Y$-image generates $t^{12n+6}$ over $\mathbb C[[t^{12}]]$; if $\lambda^4=1$, it equals $t^{12n+18}$. The same argument for $Z$ and $W$ gives
 $$
-Q_r(\lambda)=\{q\geq0:qn+r\in S_{n,\lambda}\}.
+A_{n,\lambda}
+=
+\mathbb C[[t^{12},t^a,t^b,t^c]],
 $$
-Set
+where
 $$
-H=\langle4,6,9\rangle,\qquad K=H\cup(5+H),\qquad L=K\cup(7+H).
+a=12n+6+12\delta_4,\qquad
+b=12n+9+24\delta_6,\qquad
+c=12n+11+24\delta_9.
 $$
-Their gaps are
+Thus $\kappa_{n,\lambda}$ is the conductor of the numerical semigroup
 $$
-\mathbb Z_{\geq0}\setminus H=\{1,2,3,5,7,11\},\qquad
-\mathbb Z_{\geq0}\setminus K=\{1,2,3,7\},\qquad
-\mathbb Z_{\geq0}\setminus L=\{1,2,3\}.
+S=\langle12,a,b,c\rangle.
 $$
 
-Step 2: Derive the residue layers from a periodic relation module
-Let
+Step 2: Find the conductor from a mixed-radix set of minimal representatives
+The three identities
 $$
-B=\mathbb C[[u^4,u^6,u^9]],\qquad I=B+u^{5}B.
+2a=12(2n+1+2\delta_4),
 $$
-Define $\pi:B^2\to I$ by $\pi(a,b)=a+u^{5}b$ and
 $$
-S=
-\begin{pmatrix}
-u^9&u^{14}\\
--u^4&-u^9
-\end{pmatrix}.
+2b=a+12(n+1+4\delta_6-\delta_4),
 $$
-If $a+u^{5}b=0$, then $a\in B\cap u^{5}B$. Since
 $$
-H\cap(5+H)=(9+H)\cup(14+H),
+3c=b+12(2n+2+6\delta_9-2\delta_6)
 $$
-we have $B\cap u^{5}B=u^{9}B+u^{14}B$, so $\ker\pi=\operatorname{im}S$. Also $S^2=0$, and $S(a,b)^T=0$ again implies $a=-u^{5}b$, hence $\ker S=\operatorname{im}S$. Thus the relation module of $I$ is again a copy of $I$.
+have nonnegative coefficients because $n\geq2$. Therefore every element of $S$ can be written as
+$$
+12q+\varepsilon a+\eta b+\theta c,
+\qquad
+q\geq0,\quad
+\varepsilon,\eta\in\{0,1\},\quad
+\theta\in\{0,1,2\}.
+$$
+These twelve reduced sums lie in distinct residue classes modulo $12$. Indeed, if two are congruent, then
+$$
+6(\varepsilon-\varepsilon')+
+9(\eta-\eta')+
+11(\theta-\theta')
+\equiv0\pmod{12}.
+$$
+Modulo $3$ this forces $\theta=\theta'$, since the difference lies between $-2$ and $2$. Modulo $2$ it then forces $\eta=\eta'$, and the remaining congruence forces $\varepsilon=\varepsilon'$. Hence each residue class modulo $12$ has exactly one reduced representative.
 
-Lift $S$ to
+The reduction identities only replace excess copies by nonnegative multiples of $12$. Thus the reduced representative in a residue class is its least element of $S$. The largest of the twelve representatives is
 $$
-\Sigma=
-\begin{pmatrix}
-z&x^{2}y\\
--x&-z
-\end{pmatrix}.
+a+b+2c.
 $$
-The exact identity
+In each residue class the last missing integer is the least representative minus $12$. Therefore
 $$
-\Sigma^2=(z^2-x^{3}y)\mathrm{Id}_{2}=G\mathrm{Id}_{2}
+\kappa_{n,\lambda}=a+b+2c-11
+=
+48n+26+12\delta_4+24\delta_6+48\delta_9.
 $$
-with
-$$
-G=z^2-x^{3}y
-$$
-is the structural reason only two states occur. If a reduced pair $P$ has initial coefficient module equal to a translate of $I$, the first new pair is obtained from $P\Sigma$. Applying the same lifted relation once more gives $P\Sigma^2=GP$, which is already a product of $P$ with the first positive row. The complementary products come from the other first-row generator, and
-$$
-I^2=B+u^{5}B+u^{10}B=I.
-$$
-Therefore those product relations return to the same two-generator module. No third relation type can appear; the process alternates between a lifted-syzygy state and a product-relation state. If the first weight of a syzygy-state pair is $a$, the two columns of $S$ meet at weights $a+9,a+14$, so the next row starts at $a+9$ provided the induced two-dimensional map has full rank. In the product state, the first-row products and the corresponding multiples of the syzygy-state output meet one row later at weights $a+14,a+19$; full rank there gives the second shift $+5$.
 
-It remains only to prove that neither state ever drops rank. Put $\mathfrak m=(u^4,u^6,u^9)B$. The quotient $I/\mathfrak m I$ has basis $1,u^{5}$. The relations among the base initials $u^4,u^6,u^9$ are generated by $Y^2-X^3$ and $Z^2-X^{3}Y$, because reducing the exponents of $Y,Z$ to $0$ or $1$ leaves weights $0,6,9,15$, distinct modulo $4$. Their lifts are
+Step 3: Optimize the parameter score
+Write
 $$
-U=y^2-x^3-2xz-x^{2}y,
+T(\lambda)=\delta_4+2\delta_6+4\delta_9.
 $$
+Then
 $$
-U=-u^{15}+\left((1-2\lambda)u^{15}+2u^{14}+2(1-\lambda^2)u^{13}\right)s+u^{14}s^2,
+\kappa_{n,\lambda}=48n+26+12T(\lambda).
+$$
+The maximum $T=7$ requires $\lambda^4=\lambda^6=\lambda^9=1$, hence $\lambda^{\gcd(4,6,9)}=\lambda=1$; so the largest conductor is attained only at $\lambda=1$.
+
+For $\lambda\neq1$, the largest possible binary score is $6$. It occurs exactly when
+$$
+\delta_4=0,\qquad \delta_6=\delta_9=1.
+$$
+The last two equalities are equivalent to $\lambda^3=1$, and excluding $\lambda=1$ gives
+$$
+\lambda^2+\lambda+1=0.
+$$
+Such roots have order $3$, so they do not satisfy $\lambda^4=1$; hence the score $6$ is attained. Therefore
+$$
+\beta_n=48n+26+72=48n+98,
 $$
 and
 $$
-\begin{aligned}
-G&=-u^{19}+\left(2(\lambda-1)u^{20}-u^{19}+2\lambda^2u^{18}\right)s\\
-&+\left((\lambda-1)^2u^{22}+2\lambda^2(\lambda-1)u^{20}+\lambda^4u^{18}\right)s^2.
-\end{aligned}
+E_n=\{\lambda\in\mathbb C^{\times}:\lambda^2+\lambda+1=0\}.
 $$
-Thus every first positive initial comes from these two lifts.
-
-Write $D=\lambda^2$. For $D\neq1$, normalize $F_1=U/(2(1-D))$ and $G_1=G/(2D)$. Their initials give $Q_1=13+K$. After all terms already generated by $B$ are removed, normalize the second generator so that its coefficient in the next residue is $Dc$; this single scalar is the only tail seen by the two-dimensional quotient. For the first row the displayed expansions give $c=\frac{1}{2}$. The quotient calculation now has only one scalar. In the lifted-syzygy state, the $Ds$ part of $z$ and the tail $Dc$ of the second generator occur with opposite signs in the first relation and equal signs in the second. Hence the two minimal coefficients are $D(1-c),D(1+c)$:
-$$
-P_D(c)=D
-\begin{pmatrix}
-1-c&0\\
-0&1+c
-\end{pmatrix}.
-$$
-For that second column the ordered pair
-$$
-(\text{leading coefficient},\text{next tail})=(D(1+c),D^2c),
-$$
-so after normalization the new ratio is
-$$
-h(c)=\frac{c}{1+c}.
-$$
-In the product-relation state let $c_-=c/(1-c)$ be the preceding ratio. If $(F,G)$ is the preceding pair and $(F',G')$ its syzygy-state output, the two complementary relations may be taken as $F_1F-xF'$ and $F_1G-xG'$. The identity $\Sigma^2=G\mathrm{Id}_{2}$ removes the $G$-product. On $I/\mathfrak m I$, the first relation therefore has correction $2(c_--c)$ and the second has none. Thus
-$$
-E_D(c)=-\frac{1}{2(D-1)}
-\begin{pmatrix}
-1-2(c_--c)&0\\
-0&1
-\end{pmatrix}
-=-\frac{1}{2(D-1)}
-\begin{pmatrix}
-1-\dfrac{2c^2}{1-c}&0\\
-0&1
-\end{pmatrix}.
-$$
-For the second column the quotient calculation gives
-$$
-(\text{leading coefficient},\text{next tail})
-=-\frac{1}{2(D-1)}(1,Dh(c)),
-$$
-so its normalization again sends $c$ to $h(c)$. Hence after $r-1$ state changes
-$$
-c_r=h^{r-1}\left(\frac{1}{2}\right)=\frac{1}{r+1}.
-$$
-The determinants are
-$$
-\det P_D(c)=D^2(1-c^2),
-$$
-$$
-\det E_D(c)=\frac{1}{4(D-1)^2}\left(1-\frac{2c^2}{1-c}\right).
-$$
-Here $0<c\leq\frac{1}{2}$, and in the product state $c\leq\frac{1}{3}$, so
-$$
-0\leq\frac{2c^2}{1-c}\leq\frac{1}{3};
-$$
-both determinants are therefore nonzero. Thus the two generators never collapse. The syzygy state shifts the first weight by $9$, the product state shifts it by $5$, and therefore
-$$
-Q_{2j+1}=14j+13+K,\qquad
-Q_{2j}=14j+8+K\quad(j\geq1)
-$$
-before wrapping.
-
-For $\lambda=-1$, take $F_1=U/2$ and $G_1=-(G-xU)/4$, so $Q_1=14+K$. Here define $c$ from the next-residue coefficient of the normalized first generator; the first row again has $c=\frac{1}{2}$. Here the two lifted-syzygy coefficients are $1+c,1-c$. In the product state the complementary relations are $F_1F-G'$ and $F_1G-xyF'$. After the $G$-product is removed their quotient coefficients are $\frac{1}{2}(1+2c_-)$ and $\frac{1}{2}(1-2c)$. Hence
-$$
-P_-(c)=
-\begin{pmatrix}
-1+c&0\\
-0&1-c
-\end{pmatrix},
-$$
-$$
-E_-(c)=\frac{1}{2}
-\begin{pmatrix}
-1+\dfrac{2c}{1-c}&0\\
-0&1-2c
-\end{pmatrix}.
-$$
-The first-column leading coefficient is $1+c$ in the syzygy state and its next tail is $c$, while in the product state the first-column next tail equals its leading coefficient times $h(c)$. Thus normalization again sends $c$ to $h(c)$. Moreover
-$$
-\det P_-(c)=1-c^2,\qquad
-\det E_-(c)=\frac{1}{4}\left(1+\frac{2c}{1-c}\right)(1-2c),
-$$
-which are nonzero because the product state has $c\leq\frac{1}{3}$. Hence
-$$
-Q_{2j+1}=14j+14+K,\qquad
-Q_{2j}=14j+9+K\quad(j\geq1).
-$$
-
-Now impose $s^n=u$. If $n$ is even, the last row is in the syzygy state; the next shift is $9$, and wrapping contributes one more $u$, giving relative offset $10\in K$, so no new low value appears. If $n$ is odd, the last row $r=n-1$ is in the product state; the next shift is $5$, so wrapping starts at relative offset $6\in K$. Every valuation before relative offset $7$ in the last row is already present: for $j<r$ the row starts differ by at least $9$, while $K$ contains every integer at least $8$. The two state matrices above have nonzero diagonal entries, so reduction through these present one-dimensional value spaces cannot annihilate the boundary coefficient. The first unavailable value is therefore relative offset $7$ in the last row. This adjoins $7+H$ and nothing further below the conductor. Thus, for odd $n$,
-$$
-Q_{n-1}(\lambda)=(7n+1)+L\quad(\lambda^2\neq1),\qquad
-Q_{n-1}(-1)=(7n+2)+L.
-$$
-
-Finally, if $\lambda=1$, then $G=xU$ and $U/2$ has initial $u^{14}s$. The first positive module is principal. Any same-row relation factors its common power of $u^{14}s$ and leaves a relation in $B$, so every pre-wrap row is $14r+H$. At the wrap,
-$$
-(u^{14}s)^n=u^{14n+1}\in B
-$$
-because $14n+1>11$, the largest gap of $H$. Hence no new initial is created and $Q_r(1)=14r+H$.
-
-Step 3: Compute the conductor levels
-For each row let
-$$
-g_r=\max(\mathbb Z_{\geq0}\setminus Q_r),\qquad m_r=r+ng_r.
-$$
-Then $\kappa_{n,\lambda}=1+\max_r m_r$. For $\lambda^2\neq1$, the positive nonfinal rows have
-$$
-g_r=7r+13\quad(r\text{ odd}),\qquad g_r=7r+15\quad(r\text{ even}),
-$$
-and for $\lambda=-1$ both values increase by $1$. The corresponding $m_r$ increase alternately by $1+9n$ and $1+5n$, so the last row is maximal. When $n$ is odd, replacing $K$ by $L$ lowers only the final quotient gap by $4$, leaving the last-row maximum intact. Therefore
-$$
-\kappa_{n,\lambda}=7n^2+\left(6+(-1)^{n}\right)n\qquad(\lambda^2\neq1),
-$$
-$$
-\kappa_{n,-1}=7n^2+\left(7+(-1)^{n}\right)n.
-$$
-For $\lambda=1$, $g_r=14r+11$, so
-$$
-\kappa_{n,1}=1+(n-1)+n\left(14(n-1)+11\right)=14n^2-2n.
-$$
-
-Step 4: Compare the strata and identify the second extremum
-For every $n\geq2$,
-$$
-\kappa_{n,1}-\kappa_{n,-1}
-=n\left(7n-9-(-1)^{n}\right)>0,
-$$
-while
-$$
-\kappa_{n,-1}-\kappa_{n,\lambda}=n>0\qquad(\lambda^2\neq1).
-$$
-When $n=2$, the first-row sets $13+K,14+K,14+H$ give conductors $42,44,52$, so the same formulas hold at the smallest value. Since $\lambda^2=1$ has only $1,-1$, the unique largest conductor occurs at $1$ and the unique second-largest at $-1$. Therefore
-$$
-\beta_n=7n^2+\left(7+(-1)^{n}\right)n,\qquad E_n=\{-1\}.
-$$
-Final Answer: $\boxed{\left(7n^2+\left(7+(-1)^{n}\right)n,\{-1\}\right)}$
+Final Answer: $\boxed{\left(48n+98,\{\lambda\in\mathbb C^{\times}:\lambda^2+\lambda+1=0\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(7n^2+\left(7+(-1)^{n}\right)n,\{-1\}\right)$
+$\left(48n+98,\{\lambda\in\mathbb C^{\times}:\lambda^2+\lambda+1=0\}\right)$
 
 ---
 
@@ -231,8 +116,8 @@ $\left(7n^2+\left(7+(-1)^{n}\right)n,\{-1\}\right)$
 
 ## Solution Concepts
 
-- value semigroup of a local ring
+- numerical semigroup rings
 - conductor exponent
-- fractional semigroup ideals
-- periodic relation module
-- residue-class filtration
+- residue-class representatives
+- formal power series units
+- roots of unity
