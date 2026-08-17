@@ -2,69 +2,54 @@
 
 ## LaTeX (Normalized)
 
-Let $m\geq 50$ be an integer, and set
+Let
 $$
-n=4m+3,
-\qquad
-t=\frac{\pi}{2n}.
+X=\{-9,-3,-2,-1,1,2,3,9\}.
 $$
-For $1\leq r\leq 2m+1$, define
-$$
-x_r=\cos\frac{2\pi r}{n}.
-$$
-Delete the four indices
-$$
-D_m=\{m-4,m,m+4,m+5\},
-$$
-and write
-$$
-R_m=\{1,\ldots,2m+1\}\setminus D_m.
-$$
-
 For
 $$
-\frac{29}{100}<\alpha<\frac{3}{10},
-\qquad s\geq0,
+0<\alpha<\frac{19}{20},
+\qquad
+s\geq0,
 $$
-and $r\in R_m$, put
+and $\xi\in X$, define
 $$
-P_r^{(\alpha)}(s)
+P_\xi^{(\alpha)}(s)
 =
 \left(
-x_r,
-x_r^2,
-x_r^3,
-x_r^8-\frac{s}{t^2}x_r^6-\frac{\alpha s}{t^3}x_r^7
+\xi,\xi^2,\xi^3,
+\xi^8-14\alpha s\xi^7-14s\xi^6+
+(-70\alpha^2+269\alpha-9)s\xi^5
 \right)
 \in\mathbb R^4,
 $$
-and
+and set
 $$
 K_\alpha(s)
 =
-\operatorname{conv}\{P_r^{(\alpha)}(s):r\in R_m\}.
+\operatorname{conv}\{P_\xi^{(\alpha)}(s):\xi\in X\}.
 $$
 
 A hyperplane $H\subset\mathbb R^4$ is supporting for a convex set $K$ if $K$ is contained in one of the two closed half-spaces bounded by $H$ and $K\cap H\neq\varnothing$. A facet of $K_\alpha(s)$ is a set $K_\alpha(s)\cap H$ of affine dimension $3$ for some supporting hyperplane $H$. Call $K_\alpha(s)$ simplicial if every facet has exactly four vertices.
 
-For each $\alpha\in(29/100,3/10)$ define
+For each $\alpha\in(0,19/20)$ define
 $$
 s_\alpha
 =
 \inf\{s>0:K_\alpha(s)\text{ is not simplicial}\}.
 $$
 
-Prove that there is a unique number
+Prove that there is a unique
 $$
-\alpha_m\in\left(\frac{29}{100},\frac{3}{10}\right)
+\alpha_*\in\left(0,\frac{19}{20}\right)
 $$
-for which $K_{\alpha_m}(s_{\alpha_m})$ has a facet with exactly six vertices. Prove that this six-vertex facet is unique and every other facet of $K_{\alpha_m}(s_{\alpha_m})$ has exactly four vertices. Let $C_m\subset R_m$ be the set of its six vertex indices.
+for which $K_{\alpha_*}(s_{\alpha_*})$ has a facet with exactly six vertices. Prove that this six-vertex facet is unique and every other facet of $K_{\alpha_*}(s_{\alpha_*})$ has exactly four vertices. Let $C\subset X$ be the set of first coordinates of the six vertices of this facet.
 
-Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of $K_{\alpha_m}(s_{\alpha_m}-\varepsilon)$ whose vertices all lie in $C_m$ is $6$, whereas the corresponding number for $K_{\alpha_m}(s_{\alpha_m}+\varepsilon)$ is $3$.
+Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of $K_{\alpha_*}(s_{\alpha_*}-\varepsilon)$ whose vertices all have first coordinates in $C$ is $6$, whereas the corresponding number for $K_{\alpha_*}(s_{\alpha_*}+\varepsilon)$ is $3$.
 
 Determine exactly
 $$
-\left(C_m,\lim_{m\to\infty}\alpha_m\right).
+(C,\alpha_*).
 $$
 
 ---
@@ -82,4 +67,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for the unique tuning at which the first loss of simpliciality in a one-parameter family of four-dimensional convex hulls is a simultaneous six-vertex facet collision. The central work is to identify the only possible first collision, prove its uniqueness, and control the local facet transition. The requested exact output records the six critical indices and the limiting tuning parameter.
+The problem asks when a one-parameter lifting of eight points on the cubic moment curve first develops a unique six-vertex supporting facet. The difficult point is that the local six-point coplanarity equations have more than one admissible parameter value, and a separate first-wall comparison is needed to distinguish the genuine first facet from false coplanar candidates. The final local circuit change determines the two tetrahedral facet counts.
