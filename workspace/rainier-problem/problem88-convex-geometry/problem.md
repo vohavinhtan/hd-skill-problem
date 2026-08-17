@@ -4,21 +4,19 @@
 
 Let $m\geq8$ be an integer and put
 $$
-X_m=\{-m,-m+1,\ldots,-1,1,\ldots,m-1,m\}.
+X_m=\{-m-2,-m-1,\ldots,m+1,m+2\}.
 $$
-For
-$$
-\frac{1}{10}<\alpha<\frac{2}{5},
-\qquad
-s\geq0,
-$$
-and $\xi\in X_m$, define
+For $\alpha>0$, $s\geq0$, and $\xi\in X_m$, define
 $$
 P_\xi^{(\alpha)}(s)
 =
 \left(
 \xi,\xi^2,\xi^3,
-\xi^8+s\xi^5\left(-14\alpha\xi^2-14\xi-70\alpha^2+269\alpha-9\right)
+\xi^4-s\left(
+\frac{\alpha}{5}\xi^5+
+\frac{2m+2}{15}\xi^6-
+\frac{1}{70}\xi^8
+\right)
 \right)
 \in\mathbb R^4,
 $$
@@ -31,20 +29,21 @@ $$
 
 A hyperplane $H\subset\mathbb R^4$ is supporting for a convex set $K$ if $K$ is contained in one of the two closed half-spaces bounded by $H$ and $K\cap H\neq\varnothing$. A facet of $K_\alpha^{(m)}(s)$ is a set $K_\alpha^{(m)}(s)\cap H$ of affine dimension $3$ for some supporting hyperplane $H$. Call $K_\alpha^{(m)}(s)$ simplicial if every facet has exactly four vertices.
 
-For each $\alpha\in(1/10,2/5)$ define
+For each $\alpha>0$ define
 $$
 s_\alpha^{(m)}
 =
 \inf\{s>0:K_\alpha^{(m)}(s)\text{ is not simplicial}\}.
 $$
 
-Prove that for every $m\geq8$ there is a unique
-$$
-\alpha_m\in\left(\frac{1}{10},\frac{2}{5}\right)
-$$
-for which $K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)})$ has a facet with exactly six vertices. Prove that this six-vertex facet is unique and every other facet at that time has exactly four vertices. Let $C_m\subset X_m$ be the set of first coordinates of its six vertices.
+Prove that the set of positive $\alpha$ for which
+$K_\alpha^{(m)}(s_\alpha^{(m)})$ has a facet with exactly six vertices has a least element. Denote it by $\alpha_m$.
 
-Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of $K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}-\varepsilon)$ whose first coordinates all lie in $C_m$ is $6$, whereas the corresponding number for $K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}+\varepsilon)$ is $3$.
+Prove that at $s=s_{\alpha_m}^{(m)}$ this six-vertex facet is unique and every other facet has exactly four vertices. Let $C_m\subset X_m$ be the set of first coordinates of its six vertices.
+
+Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of
+$K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}-\varepsilon)$ whose first coordinates all lie in $C_m$ is $6$, whereas the corresponding number for
+$K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}+\varepsilon)$ is $3$.
 
 Determine exactly
 $$
@@ -66,4 +65,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for the unique parameter at which the first wall in a large family of moment-curve liftings is a simultaneous two-circuit collapse. The local six-point coplanarity equations admit competing candidates, while a uniform analysis over arbitrarily many ordinary windows and a separate preemption argument are required to identify which candidate is genuinely first. The local circuit change then determines the two tetrahedral facet counts.
+The problem asks for the first parameter at which the lower envelope of many competing moment-curve circuit walls develops an adjacent double maximum. Finding the local coplanarity condition is not enough: one must first reconstruct the wall function for every consecutive five-window and then solve a discrete global optimization problem whose maximizing window depends on $m$. The resulting adjacent-wall collision produces the unique six-vertex facet and its local circuit flip.
