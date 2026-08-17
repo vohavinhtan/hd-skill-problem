@@ -66,10 +66,10 @@ so
 $$
 R^{\iota}\cong\mathbb F_p[s]/(s^2+s-1).
 $$
-Its discriminant is $5$. If $\chi_p=1$, this algebra is $\mathbb F_p\times\mathbb F_p$ and has $(p-1)^2$ units. If $\chi_p=-1$, it is $\mathbb F_{p^2}$ and has $p^2-1$ units. Both cases are
+Its discriminant is $5$. If $\left(\frac{5}{p}\right)=1$, this algebra is $\mathbb F_p\times\mathbb F_p$ and has $(p-1)^2$ units. If $\left(\frac{5}{p}\right)=-1$, it is $\mathbb F_{p^2}$ and has $p^2-1$ units. Both cases are
 $$
 \left|C_{\operatorname{GL}(V)}(D)\right|
-=(p-1)(p-\chi_p).
+=(p-1)\left(p-\left(\frac{5}{p}\right)\right).
 $$
 
 Step 3: Describe the second and third free Lie layers
@@ -149,7 +149,7 @@ Step 6: Combine the two independent factors
 By Step 2,
 $$
 \left|C_{\operatorname{GL}(V)}(D)\right|
-=(p-1)(p-\chi_p),
+=(p-1)\left(p-\left(\frac{5}{p}\right)\right),
 $$
 and by Step 5,
 $$
@@ -158,15 +158,15 @@ $$
 Therefore
 $$
 \left|C_{\operatorname{Aut}(L)}(D)\right|
-=p^{10}(p-1)(p-\chi_p).
+=p^{10}(p-1)\left(p-\left(\frac{5}{p}\right)\right).
 $$
-Final Answer: $\boxed{p^{10}(p-1)(p-\chi_p)}$
+Final Answer: $\boxed{p^{10}(p-1)\left(p-\left(\frac{5}{p}\right)\right)}$
 
 ---
 
 ## Answer
 
-$p^{10}(p-1)(p-\chi_p)$
+$p^{10}(p-1)\left(p-\left(\frac{5}{p}\right)\right)$
 
 ---
 
