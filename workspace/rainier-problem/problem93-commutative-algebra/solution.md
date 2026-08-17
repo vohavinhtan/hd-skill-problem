@@ -29,11 +29,11 @@ We now prove directly that distinct cosets of $L$ give linearly independent Laur
 $$
 H=\mathbb Z^{V(G_n)}/L
 $$
-and let $\mathbb F_p[H]$ denote the vector space with basis $E_h$ for $h\in H$ and multiplication $E_hE_{h'}=E_{h+h'}$. Define
+and let $\mathbb F_p[H]$ have basis $E_h$ for $h\in H$ with $E_hE_{h'}=E_{h+h'}$. Define
 $$
 \Psi:S[M_0^{-1}]\to\mathbb F_p[H],\qquad \Psi(x^a)=E_{[a]}.
 $$
-Every $x^\ell-1$ with $\ell\in L$ lies in $\ker\Psi$, so $I_L\subseteq\ker\Psi$. Conversely, let $F=\sum_a c_ax^a$ satisfy $\Psi(F)=0$. Group its terms by cosets $C$ of $L$. For each nonempty $C$, choose $a_C\in C$. The coefficient of $E_C$ in $\Psi(F)$ is $\sum_{a\in C}c_a$, hence this sum is $0$. Therefore
+Certainly $I_L\subseteq\ker\Psi$. If $F=\sum_a c_ax^a\in\ker\Psi$, group its terms by cosets $C$ of $L$ and choose $a_C\in C$. The coefficient of $E_C$ is $\sum_{a\in C}c_a=0$, so
 $$
 \sum_{a\in C}c_ax^a
 =\sum_{a\in C\setminus\{a_C\}}c_a(x^a-x^{a_C}).
@@ -42,36 +42,36 @@ Since $a-a_C\in L$,
 $$
 x^a-x^{a_C}=x^{a_C}(x^{a-a_C}-1)\in I_L.
 $$
-Thus $F\in I_L$, proving $\ker\Psi=I_L$. Hence the Laurent quotient has the basis $\{E_h:h\in H\}$, and the polynomial quotient
+Thus $\ker\Psi=I_L$. Hence the Laurent quotient has basis $\{E_h:h\in H\}$, and
 $$
 R_n:=S/(J:M_0^\infty)
 $$
-injects into it. In particular, two monomials of $S$ have the same image in $R_n$ exactly when their exponent difference lies in $L$, and distinct such classes are linearly independent.
+injects into it. Therefore two monomials of $S$ have the same image in $R_n$ exactly when their exponent difference lies in $L$, and distinct classes are linearly independent.
 
-It remains to compute $H$. Put $a_0=a_n=b_0=b_n=c_0=c_n=o$. On the $a$-cycle the Laplacian relation at $a_i$ gives
+It remains to compute $H$. Put $a_0=a_n=b_0=b_n=c_0=c_n=o$. On the $a$-cycle,
 $$
-2[a_i]-[a_{i-1}]-[a_{i+1}]=0.
+2[a_i]-[a_{i-1}]-[a_{i+1}]=0,
 $$
-Thus the successive differences are equal, so
+so successive differences are equal and
 $$
 [a_i-o]=i[a_1-o],\qquad n[a_1-o]=0.
 $$
-The same argument applies to the $b$- and $c$-cycles. Define
+The same holds on the $b$- and $c$-cycles. Define
 $$
 \pi(o)=(1,0,0,0),\quad
 \pi(a_i)=(1,i,0,0),\quad
 \pi(b_i)=(1,0,i,0),\quad
 \pi(c_i)=(1,0,0,i)
 $$
-in $\mathbb Z\oplus(\mathbb Z/n\mathbb Z)^3$. Every Laplacian row maps to $0$: this is immediate at a non-root vertex from the arithmetic progression of the labels, while at $o$ the two neighbors on each cycle contribute $1+(n-1)=0$ modulo $n$. Hence $\pi$ induces a map
+in $\mathbb Z\oplus(\mathbb Z/n\mathbb Z)^3$. Every Laplacian row maps to $0$; at $o$, the two neighbors on each cycle contribute $1+(n-1)=0$ modulo $n$. Hence $\pi$ induces
 $$
 \overline\pi:H\to\mathbb Z\oplus(\mathbb Z/n\mathbb Z)^3.
 $$
-Conversely send the four standard generators to $[o]$, $[a_1-o]$, $[b_1-o]$, and $[c_1-o]$. The relations just proved make this a well-defined surjective map back to $H$, and its composition with $\overline\pi$ is the identity on the four standard generators. Therefore
+Conversely send the four standard generators to $[o]$, $[a_1-o]$, $[b_1-o]$, and $[c_1-o]$. The displayed relations make this a well-defined surjection onto $H$, and composing with $\overline\pi$ gives the identity on the standard generators. Therefore
 $$
 H\cong\mathbb Z\oplus(\mathbb Z/n\mathbb Z)^3.
 $$
-Consequently the degree-$d$ part of $R_n$ has one basis vector for each degree-$d$ class that has an effective representative.
+Consequently the degree-$d$ part of $R_n$ has one basis vector for each degree-$d$ class with an effective representative.
 
 Step 2: Convert the target graded piece to a finite group-algebra quotient
 Let
@@ -129,39 +129,30 @@ f(x+j,y,z)+f(x,y+j,z)&=2f(x,y,z).
 \end{aligned}
 $$
 
-We determine exactly which coordinates can occur in these equations. A point $(X,Y,Z)$ occurs in some $r_1(t)$ precisely when it is $t$, $t+(1,0,0)$, or $t+(0,1,0)$ for some $t\in T$. These three possibilities respectively say
+Let $s=(X,Y,Z)$. It occurs in the $r_1$ family exactly when
 $$
-X=0\text{ or }Y=0\text{ or }Z=0,
+s\in T\quad\text{or}\quad s-(1,0,0)\in T\quad\text{or}\quad s-(0,1,0)\in T,
 $$
+which is equivalent to
 $$
-X=1\text{ or }Y=0\text{ or }Z=0,
+Z=0\quad\text{or}\quad X\in\{0,1\}\quad\text{or}\quad Y\in\{0,1\}.
 $$
+Similarly, checking the three possible preimages for each family gives
 $$
-X=0\text{ or }Y=1\text{ or }Z=0.
+\begin{aligned}
+s\in\operatorname{supp}(r_2)
+&\Longleftrightarrow X=0\text{ or }Y\in\{0,1\}\text{ or }Z\in\{0,1\},\\
+s\in\operatorname{supp}(r_3)
+&\Longleftrightarrow Z=0\text{ or }X\in\{0,j\}\text{ or }Y\in\{0,j\}.
+\end{aligned}
 $$
-Hence the support of the entire $r_1$ family is exactly
-$$
-\{Z=0\}\cup\{X\in\{0,1\}\}\cup\{Y\in\{0,1\}\}.
-$$
-Likewise the three terms of $r_2(t)$ give, with the same preimage check,
-$$
-\operatorname{supp}(r_2)=
-\{X=0\}\cup\{Y\in\{0,1\}\}\cup\{Z\in\{0,1\}\},
-$$
-and the three terms of $r_3(t)$ give
-$$
-\operatorname{supp}(r_3)=
-\{Z=0\}\cup\{X\in\{0,j\}\}\cup\{Y\in\{0,j\}\}.
-$$
-Each equality is two-sided: if a listed coordinate condition holds, subtracting the corresponding shift produces a point of $T$, so the coordinate really occurs; if none of the listed conditions holds, none of the three possible preimages lies in $T$, so it cannot occur.
-
-Taking the union of these three supports, a coordinate occurs in at least one dual equation exactly when
+These are equivalences, not only necessary conditions: in the reverse direction, subtract the shift naming the satisfied condition; the resulting preimage has a zero coordinate and hence lies in $T$. Thus the union of the three supports is exactly
 $$
 X\in\{0,1,j\},\qquad\text{or}\qquad
 Y\in\{0,1,j\},\qquad\text{or}\qquad
 Z\in\{0,1\}.
 $$
-Since $n\geq9$ and $p$ is odd, $0,1,j$ are distinct. Thus the completely untouched coordinates are exactly
+Since $n\geq9$ and $p$ is odd, $0,1,j$ are distinct. Therefore the untouched coordinates are exactly
 $$
 X\notin\{0,1,j\},\qquad
 Y\notin\{0,1,j\},\qquad
