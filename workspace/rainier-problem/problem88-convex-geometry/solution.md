@@ -1,292 +1,279 @@
 ## Steps
 
-Step 1: Reduce the first nonsimplicial time to consecutive five-window walls
+Step 1: Recover the hidden factorization of every consecutive wall
 
-Write
+For
 $$
-q_{\alpha,s}(x)
-=
-x^4-s\left(
-\frac{\alpha}{5}x^5+
-\frac{2m+2}{15}x^6-
-\frac{1}{70}x^8
-\right).
-$$
-A hyperplane containing four or more of the lifted points cannot be vertical: a vertical hyperplane would give a nonzero cubic polynomial vanishing at four distinct first coordinates. Hence every facet hyperplane is the graph of a cubic.
-
-For five distinct abscissas $E$, let $[E]f$ be the fourth divided difference. Five lifted points are coplanar exactly when
-$$
-[E]q_{\alpha,s}=0.
-$$
-For ordered knots, insertion gives
-$$
-[u_0,\ldots,u_j]f
-=
-\frac{z-u_0}{u_j-u_0}[u_0,z,u_1,\ldots,u_{j-1}]f+
-\frac{u_j-z}{u_j-u_0}[z,u_1,\ldots,u_j]f.
-$$
-The two coefficients are positive. Repeated insertion therefore expresses every fourth divided difference as a convex combination of those on five consecutive elements of $X_m$.
-
-At $s=0$ every fourth divided difference equals $[E]x^4=1$, so the oriented signs are those of the four-dimensional moment curve. As long as all consecutive fourth divided differences remain positive, every five-point determinant keeps that sign, hence the polytope remains simplicial with the same oriented matroid.
-
-The consecutive five-windows are
-$$
-J_j=\{j-2,j-1,j,j+1,j+2\},
-\qquad -m\leq j\leq m.
-$$
-Thus the first nonsimplicial event is the first zero among the quantities
-$$
-D_j(\alpha,s)=[J_j]q_{\alpha,s}.
-$$
-If a first facet contains six vertices, two adjacent consecutive windows must vanish: otherwise knot insertion would express a zero five-subset of that facet as a positive combination containing a strictly positive consecutive divided difference.
-
-Step 2: Convert the geometry into an explicit discrete envelope
-
-For $J_j$, expansion of
-$$
-\prod_{a=-2}^{2}(1-(j+a)u)^{-1}
-$$
-through degree $4$ gives
-$$
-h_1=5j,
+A(x)=\lambda+\frac12-(x^2-\lambda)^2-x,
 \qquad
-h_2=15j^2+5,
+B_\alpha(x)=\alpha x-x^2,
 $$
+one has
 $$
-h_4=70j^4+140j^2+21,
+A(x)=-x^4+2\lambda x^2-x+c.
 $$
-where $h_k=[J_j]x^{k+4}$. Therefore
+Expanding $A(x)B_\alpha(x)$ gives
 $$
-D_j(\alpha,s)=1-sB_j(\alpha),
+x^6-\alpha x^5-2\lambda x^4+(2\lambda\alpha+1)x^3
+-(\alpha+c)x^2+\alpha cx.
 $$
-with
+Hence the defining finite-difference equation factors as
 $$
-B_j(\alpha)
+\frac{\Delta^4H_{\alpha,s}^{(m)}(x)}{24}
 =
-\frac{\alpha}{5}h_1+
-\frac{2m+2}{15}h_2-
-\frac{1}{70}h_4.
-$$
-Substitution yields
-$$
-B_j(\alpha)
-=
--j^4+2mj^2+\alpha j+
-\frac{2m+2}{3}-\frac{3}{10}.
-$$
-It is useful to write this as
-$$
-B_j(\alpha)
-=
-M_m-(j^2-m)^2+\alpha j,
-$$
-where
-$$
-M_m
-=
-m^2+\frac{2m+2}{3}-\frac{3}{10}.
+(1-sA(x))(1-sB_\alpha(x)).
 $$
 
-Whenever the largest $B_j(\alpha)$ is positive, the first wall occurs at
+The polynomial $H_{\alpha,s}^{(m)}$ exists uniquely because $\Delta^4$ maps polynomials of degree at most $10$, modulo cubics, bijectively onto polynomials of degree at most $6$, and the four prescribed values remove the cubic ambiguity.
+
+For
+$$
+J_j=\{j,j+1,j+2,j+3,j+4\},
+\qquad
+-m\leq j\leq m+1,
+$$
+equal spacing gives
+$$
+[J_j]H_{\alpha,s}^{(m)}
+=
+\frac{\Delta^4H_{\alpha,s}^{(m)}(j)}{24}
+=
+(1-sA(j))(1-sB_\alpha(j)).
+$$
+Write this quantity as $D_j(\alpha,s)$.
+
+Repeated knot insertion expresses every fourth divided difference on five points of $X_m$ as a convex combination of consecutive ones. At $s=0$ all $D_j$ equal $1$, so the oriented matroid is that of the degree-$4$ moment curve and the polytope is simplicial. Therefore the first nonsimplicial time is the first positive zero among the $D_j$.
+
+Consequently
 $$
 s_\alpha^{(m)}
 =
-\frac{1}{\max_{-m\leq j\leq m}B_j(\alpha)}.
+\frac{1}{
+\max\left(
+\max_j A(j),
+\max_j B_\alpha(j)
+\right)
+},
 $$
-A six-vertex first facet can therefore occur only when this maximum is attained at two adjacent indices.
+whenever the displayed maximum is positive.
 
-Step 3: Find the first adjacent double maximum
+Step 2: Solve the fixed nonlocal obstruction
+
+For $k\geq0$ put
+$$
+F(k)=A(-k)
+=
+\lambda+\frac12-(k^2-\lambda)^2+k.
+$$
+Then
+$$
+F(k+1)-F(k)
+=
+1-(2k+1)(2k^2+2k+1-2\lambda).
+$$
+Since $\lambda=m(m+1)$, for $k<m$ one has
+$$
+k(k+1)<\lambda,
+$$
+so the odd integer
+$$
+2k^2+2k+1-2\lambda
+$$
+is negative and therefore $F(k+1)>F(k)$. At $k=m$ that odd integer equals $1$, hence
+$$
+F(m+1)-F(m)=-2m<0.
+$$
+It remains positive thereafter, so $F$ decreases for $k\geq m$.
+
+Also
+$$
+A(k)=A(-k)-2k<A(-k)
+\qquad(k>0).
+$$
+Thus $A$ has the unique global maximum on the allowed window indices at
+$$
+j=-m.
+$$
+Its value is
+$$
+A(-m)
+=
+m(m+1)+\frac12-m^2+m
+=
+2m+\frac12.
+$$
+Denote this fixed obstruction height by
+$$
+M_A=2m+\frac12.
+$$
+
+Step 3: Find when the moving envelope first produces an adjacent double maximum above the obstruction
+
+For fixed $\alpha>0$,
+$$
+B_\alpha(j)=\alpha j-j^2
+$$
+is a strictly concave quadratic in the integer variable $j$. Two adjacent integers $q,q+1$ tie exactly when
+$$
+\alpha q-q^2=\alpha(q+1)-(q+1)^2,
+$$
+which gives
+$$
+\alpha=2q+1.
+$$
+At that value the common maximum of $B_\alpha$ is
+$$
+q(q+1).
+$$
+For non-odd $\alpha$, the integer maximizer of $B_\alpha$ is unique.
+
+Let $p$ be the least nonnegative integer satisfying
+$$
+p(p+1)\geq2m+1.
+$$
+Equivalently,
+$$
+p=
+\left\lceil
+\frac{\sqrt{8m+5}-1}{2}
+\right\rceil.
+$$
+Then
+$$
+(p-1)p\leq2m
+$$
+while
+$$
+p(p+1)\geq2m+1>2m+\frac12=M_A.
+$$
+
+At every earlier adjacent tie $\alpha=2q+1$ with $q<p$,
+$$
+\max_jB_\alpha(j)=q(q+1)\leq2m<M_A.
+$$
+Thus the first wall is still the unique $A$-wall at $j=-m$, so no six-vertex first facet occurs.
+
+Between two adjacent-tie parameters, $B_\alpha$ has a unique maximizing index. Even if its maximum overtakes $M_A$, the first event then consists of a single five-window. At the isolated crossover with $M_A$, the $A$-maximizer is $-m$ and the $B$-maximizer is nonnegative, so the two critical windows are not adjacent and cannot form one six-vertex facet.
+
+At
+$$
+\alpha_m=2p+1,
+$$
+the unique global maxima among all $A(j)$ and $B_{\alpha_m}(j)$ are
+$$
+B_{\alpha_m}(p)
+=
+B_{\alpha_m}(p+1)
+=
+p(p+1),
+$$
+because this integer is strictly larger than $M_A$. Hence this is the least parameter at which the first wall is an adjacent double wall.
+
+Step 4: Prove that the first double wall is one unique six-vertex supporting facet
 
 Put
 $$
-r=\left\lfloor\sqrt m+\frac12\right\rfloor.
+s_*=\frac1{p(p+1)}.
 $$
-Since $m$ is an integer,
+At $(\alpha_m,s_*)$,
 $$
-r^2-r+1\leq m\leq r^2+r.
+D_p=D_{p+1}=0,
 $$
-Thus $r^2$ is the unique square closest to $m$. At $\alpha=0$,
-$$
-B_j(0)=M_m-(j^2-m)^2,
-$$
-so the only maxima are at $j=\pm r$. For every $\alpha>0$,
-$$
-B_{-j}(\alpha)=B_j(\alpha)-2\alpha j<B_j(\alpha)
-\qquad(j>0),
-$$
-so the positive maximizer wins immediately.
+and every other consecutive divided difference is strictly positive.
 
-For $j\geq0$ define the adjacent crossing value by
+The two critical windows are
 $$
-B_j(\alpha_j)=B_{j+1}(\alpha_j).
+J_p=\{p,p+1,p+2,p+3,p+4\},
 $$
-Direct subtraction gives
 $$
-\alpha_j
-=
-(2j+1)(2j^2+2j+1-2m).
+J_{p+1}=\{p+1,p+2,p+3,p+4,p+5\}.
 $$
-In particular
+Their shared four points determine a unique cubic hyperplane. Since both fourth divided differences vanish, that same hyperplane contains the two remaining endpoints. Therefore its six contact coordinates are
 $$
-\alpha_r>0
-$$
-because $m\leq r^2+r$.
-
-For $j\geq r$,
-$$
-\alpha_{j+1}-\alpha_j
-=
-2(6j^2+12j-2m+7).
-$$
-Since $m\leq r^2+r\leq j^2+j$,
-$$
-6j^2+12j-2m+7
-\geq
-4j^2+10j+7>0.
-$$
-Hence
-$$
-\alpha_r<\alpha_{r+1}<\alpha_{r+2}<\cdots.
+C_m=\{p,p+1,p+2,p+3,p+4,p+5\}.
 $$
 
-If $j<r$, then $B_r(0)>B_j(0)$ and the slope of $B_r-B_j$ as a function of $\alpha$ is $r-j>0$. Hence
+Take the shared four-set
 $$
-B_r(\alpha)>B_j(\alpha)
-\qquad(\alpha>0,\ j<r).
+T=\{p+1,p+2,p+3,p+4\}.
 $$
-If $0<\alpha<\alpha_r$, then for every $j\geq r$,
+For $y\in X_m\setminus C_m$, knot insertion gives
 $$
-B_j(\alpha)-B_{j+1}(\alpha)
-=
-\alpha_j-\alpha>0.
+[T\cup\{y\}]H_{\alpha_m,s_*}^{(m)}>0.
 $$
-Thus $B_r(\alpha)$ is the unique global maximum for
-$$
-0<\alpha<\alpha_r.
-$$
-At $\alpha=\alpha_r$,
-$$
-B_r=B_{r+1},
-$$
-and the preceding inequalities show that these are the only two global maxima.
-
-Therefore no smaller positive parameter can produce a six-vertex first facet, while $\alpha_r$ does. Consequently
-$$
-\alpha_m
-=
-(2r+1)(2r^2+2r+1-2m).
-$$
-
-Step 4: Prove that the double wall gives exactly one six-vertex facet
-
-Set
-$$
-\alpha_*=\alpha_m,
-\qquad
-B_*=B_r(\alpha_*)=B_{r+1}(\alpha_*),
-\qquad
-s_*=\frac1{B_*}.
-$$
-The number $B_*$ is positive. Indeed $r^2<2m$ for $m\geq8$, so
-$$
-m^2-(r^2-m)^2=r^2(2m-r^2)>0,
-$$
-and the remaining terms in $B_r(\alpha_*)$ are positive.
-
-At $s=s_*$,
-$$
-D_r=D_{r+1}=0,
-$$
-while every other consecutive $D_j$ is strictly positive. Their union is
-$$
-C_m=\{r-2,r-1,r,r+1,r+2,r+3\}.
-$$
-Let
-$$
-T=\{r-1,r,r+1,r+2\}.
-$$
-The cubic through the four lifted points indexed by $T$ also contains $r-2$ and $r+3$, because the two adjacent fourth divided differences vanish.
-
-For any $y\in X_m\setminus C_m$, knot insertion makes
-$$
-[T\cup\{y\}]q_{\alpha_*,s_*}>0.
-$$
-Moreover $y$ lies outside the interval $[r-1,r+2]$, so
+Such a $y$ lies outside the interval spanned by $T$, so
 $$
 \prod_{x\in T}(y-x)>0.
 $$
 The interpolation remainder
 $$
-q_{\alpha_*,s_*}(y)-I_Tq_{\alpha_*,s_*}(y)
+H_{\alpha_m,s_*}^{(m)}(y)
+-I_TH_{\alpha_m,s_*}^{(m)}(y)
 =
-[T\cup\{y\}]q_{\alpha_*,s_*}
+[T\cup\{y\}]H_{\alpha_m,s_*}^{(m)}
 \prod_{x\in T}(y-x)
 $$
-is therefore strictly positive. The common hyperplane is supporting and meets the polytope exactly at the six points whose first coordinates lie in $C_m$.
+is strictly positive. Hence the common hyperplane is supporting and contains exactly those six vertices.
 
-Any four of these points are affinely independent because their first three coordinates lie on the cubic moment curve. Hence the contact set is a facet. A second nonsimplicial facet would contain a zero five-set. Since only $D_r,D_{r+1}$ vanish, knot insertion forces every zero five-set to lie inside $C_m$, so it belongs to the same supporting hyperplane. Thus the six-vertex facet is unique and every other facet is tetrahedral.
+Any other nonsimplicial facet would contain a zero five-point divided difference. Since the only zero consecutive differences are $D_p,D_{p+1}$, knot insertion forces every zero five-set to lie inside $C_m$, hence in the same hyperplane. The six-vertex facet is unique and every other facet is tetrahedral.
 
 Step 5: Determine the local circuit flip
 
-Order the six elements of $C_m$ as
+Let
 $$
-y_1<y_2<y_3<y_4<y_5<y_6.
+y_1<y_2<y_3<y_4<y_5<y_6
 $$
-Let $\ell$ be the critical supporting cubic. For any four-set $T\subset C_m$, uniqueness of cubic interpolation gives
+be the elements of $C_m$, and let $\ell$ be the critical supporting cubic. Differentiate with respect to $s$. For $j=p,p+1$,
 $$
-I_Tq_{\alpha_*,s_*}=\ell.
+D_j(s)=(1-sA(j))(1-sp(p+1)),
 $$
-Since $q_{\alpha_*,s}$ depends linearly on $s$,
+so at $s=s_*$
 $$
-q_{\alpha_*,s}-I_Tq_{\alpha_*,s}
+D_j'(s_*)
 =
-\left(1-\frac{s}{s_*}\right)(x^4-I_Tx^4)
-+
-\frac{s}{s_*}(q_{\alpha_*,s_*}-\ell).
+-p(p+1)\left(1-\frac{A(j)}{p(p+1)}\right)<0.
 $$
-At either omitted critical vertex the second term vanishes, while
-$$
-y^4-I_Tx^4(y)
-=
-\prod_{x\in T}(y-x).
-$$
+Knot insertion then implies that the fourth divided difference of
+$\partial_sH_{\alpha_m,s}^{(m)}|_{s=s_*}$ is negative on every five-subset of $C_m$.
 
-If
+Let
 $$
 T=C_m\setminus\{y_j,y_k\},
-\qquad j<k,
+\qquad j<k.
 $$
-the two omitted product signs are
+For $s=s_*+\delta$, the residual at either omitted critical vertex has, to first order in $\delta$, the sign opposite to
+$$
+\delta\prod_{x\in T}(y-x).
+$$
+All residuals outside $C_m$ remain positive for sufficiently small $|\delta|$.
+
+For $\delta<0$, both omitted products must therefore be positive. Their signs are
 $$
 (-1)^{5-j},
 \qquad
-(-1)^{6-k}.
+(-1)^{6-k},
 $$
-For $s<s_*$ both must be positive, which occurs for
+so the admissible omitted pairs are
 $$
 (1,2),(1,4),(1,6),(3,4),(3,6),(5,6).
 $$
-Hence there are $6$ tetrahedral facets supported entirely on $C_m$.
+There are $6$ tetrahedral facets.
 
-For $s>s_*$ the factor $1-s/s_*$ reverses sign, so both products must be negative. This occurs for
+For $\delta>0$, both products must be negative, giving
 $$
-(2,3),(2,5),(4,5),
+(2,3),(2,5),(4,5).
 $$
-giving $3$ tetrahedral facets.
+There are $3$ tetrahedral facets.
 
-With
-$$
-r=\left\lfloor\sqrt m+\frac12\right\rfloor,
-$$
-the required pair follows.
+Substituting the explicit value of $p$ gives the requested pair.
 
-Final Answer: $\boxed{\left.\left(\{r-2,r-1,r,r+1,r+2,r+3\},(2r+1)(2r^2+2r+1-2m)\right)\right|_{r=\left\lfloor\sqrt m+\frac12\right\rfloor}}$
+Final Answer: $\boxed{\left(\left\{k+\left\lceil\frac{\sqrt{8m+5}-1}{2}\right\rceil:0\leq k\leq5\right\},\,2\left\lceil\frac{\sqrt{8m+5}-1}{2}\right\rceil+1\right)}$
 
 ---
 
 ## Answer
 
-$\left.\left(\{r-2,r-1,r,r+1,r+2,r+3\},(2r+1)(2r^2+2r+1-2m)\right)\right|_{r=\left\lfloor\sqrt m+\frac12\right\rfloor}$
+$\left(\left\{k+\left\lceil\frac{\sqrt{8m+5}-1}{2}\right\rceil:0\leq k\leq5\right\},\,2\left\lceil\frac{\sqrt{8m+5}-1}{2}\right\rceil+1\right)$
 
 ---
 
@@ -300,8 +287,8 @@ $\left.\left(\{r-2,r-1,r,r+1,r+2,r+3\},(2r+1)(2r^2+2r+1-2m)\right)\right|_{r=\le
 
 ## Solution Concepts
 
+- finite differences
 - divided differences
-- moment curve
 - discrete upper envelopes
-- nearest-square optimization
+- supporting hyperplanes
 - circuit flips
