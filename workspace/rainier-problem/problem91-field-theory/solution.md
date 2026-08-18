@@ -1,280 +1,279 @@
 ## Steps
 
-Step 1: Convert the roots into square roots of a Frobenius-stable subspace
+Step 1: Recover the affine trace condition
 
-Define
+Put
 $$
-H(Y)=Y^{p^3}+Y^{p^2}+Y^p+Y.
+K=\mathbb F_{p^3}
 $$
-Then
+and let
 $$
-X^2F_p(X)=H(X^2).
+y=x^3.
 $$
-Hence a nonzero $x$ is a root of $F_p$ exactly when
+The equation $F_p(x)=0$ becomes
 $$
-y=x^2\ne0
+y^{p^2}+y^p+y=3.
 $$
-satisfies
+If this equation holds, then raising it to the $p$th power and subtracting gives
 $$
-H(y)=0.
+y^{p^3}-y=0.
+$$
+Hence $y\in K$, and the equation is precisely
+$$
+\operatorname{Tr}_{K/\mathbb F_p}(y)=3.
 $$
 
-If $H(y)=0$, then
-$$
-H(y)^p-H(y)=y^{p^4}-y,
-$$
-so
-$$
-y^{p^4}=y.
-$$
-Thus every root of $H$ lies in
-$$
-K=\mathbb F_{p^4}.
-$$
-For $y\in K$,
-$$
-H(y)=\operatorname{Tr}_{K/\mathbb F_p}(y).
-$$
-Therefore the possible values of $y=x^2$ are exactly the nonzero elements of
-$$
-V=\ker\left(\operatorname{Tr}_{K/\mathbb F_p}\right).
-$$
 The trace map is onto because
 $$
-\operatorname{Tr}_{K/\mathbb F_p}(1)=4\ne0,
+\operatorname{Tr}_{K/\mathbb F_p}(1)=3\ne0.
 $$
-so
+Its fiber above $3$ therefore has $p^2$ elements. Exactly one of them lies in $\mathbb F_p$: for $y\in\mathbb F_p$ the trace is $3y$, so that element is
 $$
-|V|=p^3.
+y=1.
 $$
+Every other target has exact degree $3$ over $\mathbb F_p$.
 
-The polynomial $F_p$ is squarefree. Indeed,
+Also
 $$
-H'(Y)=1,
+F_p'(X)=3X^2.
 $$
-so
+Since $F_p(0)=-3\ne0$, the polynomial is separable. Each of the $p^2$ targets has three distinct cubic roots, accounting for all
 $$
-\frac{d}{dX}H(X^2)=2X.
+3p^2=\deg F_p
 $$
-At a nonzero root of $F_p$, differentiating $H(X^2)=X^2F_p(X)$ gives
-$$
-x^2F_p'(x)=2x\ne0.
-$$
+roots.
 
-Step 2: Isolate the degree-two elements of the trace kernel
+Step 2: Handle the case $p\equiv2\pmod3$
 
-A nonzero element of $V$ cannot lie in $\mathbb F_p$, since for $y\in\mathbb F_p$,
+Assume $e=0$. Since
 $$
-\operatorname{Tr}_{K/\mathbb F_p}(y)=4y.
+3\nmid p^3-1,
 $$
-Hence every nonzero element of $V$ has degree $2$ or $4$ over $\mathbb F_p$.
+the map
+$$
+K^\times\to K^\times,
+\qquad
+z\mapsto z^3
+$$
+is bijective.
 
-For $y\in\mathbb F_{p^2}$,
-$$
-\operatorname{Tr}_{K/\mathbb F_p}(y)=2(y+y^p).
-$$
-Thus the degree-two elements of $V$ are the nonzero solutions of
-$$
-y^p=-y.
-$$
-There are exactly
-$$
-p-1
-$$
-of them.
+For the rational target $y=1$, exactly one cubic root, namely $1$, lies in $K$. The other two are primitive cube roots of unity. Since $p\equiv2\pmod3$, they lie in $\mathbb F_{p^2}\setminus\mathbb F_p$. Thus this target contributes one root of degree $1$ and two roots of degree $2$.
 
-For such a $y$,
+Now let $y$ have degree $3$. Its unique cubic root $x_0$ in $K$ also has degree $3$, because
 $$
-y^{p-1}=-1,
+\mathbb F_p(y)\subseteq\mathbb F_p(x_0)\subseteq K.
 $$
-and therefore
-$$
-y^{(p^2-1)/2}
-=(-1)^{(p+1)/2}.
-$$
-Consequently these $p-1$ elements are squares in $\mathbb F_{p^2}$ exactly when
-$$
-p\equiv3\pmod4.
-$$
-Using the notation in the problem, this occurs exactly when $e_p=1$.
+The other roots are $x_0\zeta$ and $x_0\zeta^2$, where $\zeta$ has degree $2$. They lie in $\mathbb F_{p^6}$. Neither lies in $K$, since the cube map on $K^\times$ has only one preimage of $y$. Their degrees are therefore $6$.
 
-Every element of $\mathbb F_{p^2}^{\times}$ is a square in $K$, because
+There are $p^2-1$ degree-three targets, so
 $$
-y^{(p^4-1)/2}
-=\left(y^{p^2-1}\right)^{(p^2+1)/2}
-=1.
-$$
-
-Step 3: Count all square elements in the trace kernel
-
-Let
-$$
-Q(z)=\operatorname{Tr}_{K/\mathbb F_p}(z^2).
-$$
-The number of nonzero squares in $V$ is determined by the number of zeros of $Q$.
-
-Choose an $\mathbb F_p$-basis $\beta_1,\ldots,\beta_4$ of $K$, and let
-$$
-A=\left(\beta_j^{p^i}\right)_{0\leq i\leq3,\ 1\leq j\leq4}.
-$$
-The Gram matrix of the quadratic form $Q$ is
-$$
-G=\left(\operatorname{Tr}_{K/\mathbb F_p}(\beta_j\beta_k)\right)_{j,k}
-=A^TA.
-$$
-The trace pairing is nondegenerate: for $a\ne0$, taking $b=a^{-1}$ gives
-$$
-\operatorname{Tr}_{K/\mathbb F_p}(ab)=4\ne0.
-$$
-Hence $\det A\ne0$.
-
-Applying Frobenius to every entry of $A$ cyclically permutes its four rows. A $4$-cycle has sign $-1$, so
-$$
-(\det A)^p=-\det A.
-$$
-Since
-$$
-\det G=(\det A)^2\in\mathbb F_p,
-$$
-its quadratic character is
-$$
-(\det G)^{(p-1)/2}
-=(\det A)^{p-1}
-=-1.
-$$
-Thus $Q$ is a nondegenerate four-dimensional quadratic form with nonsquare determinant.
-
-Let $\chi$ be the quadratic character of $\mathbb F_p$, extended by $\chi(0)=0$, and choose a nontrivial additive character $\psi$. Put
-$$
-\tau=\sum_{u\in\mathbb F_p}\chi(u)\psi(u).
-$$
-A change of variables gives
-$$
-\tau^2
-=\sum_{t\ne0}\chi(t)\sum_{u\ne0}\psi(u(1+t))
-=\chi(-1)p.
-$$
-Hence
-$$
-\tau^4=p^2.
-$$
-
-Diagonalize $Q$ over $\mathbb F_p$ as
-$$
-Q(z)=a_1z_1^2+a_2z_2^2+a_3z_3^2+a_4z_4^2.
-$$
-The product $a_1a_2a_3a_4$ has the same square class as $\det G$, so
-$$
-\chi(a_1a_2a_3a_4)=-1.
-$$
-If $Z$ denotes the number of zeros of $Q$, additive-character orthogonality gives
-$$
-Z=\frac1p\sum_{s\in\mathbb F_p}\sum_{z\in\mathbb F_p^4}\psi(sQ(z)).
-$$
-The term $s=0$ contributes $p^4$. For $s\ne0$,
-$$
-\sum_{r\in\mathbb F_p}\psi(sa_ir^2)=\chi(sa_i)\tau,
-$$
-so the fourfold product equals
-$$
-\chi(a_1a_2a_3a_4)\tau^4=-p^2.
-$$
-Therefore
-$$
-Z=p^3-p^2+p.
-$$
-
-The zero vector contributes once, while each nonzero square $y\in V$ has exactly two square roots. Hence the number of nonzero squares in $V$ is
-$$
-\frac{Z-1}{2}
-=\frac{(p-1)(p^2+1)}2.
-$$
-
-Step 4: Determine the exact degrees of the roots of $F_p$
-
-Step 2 gave $p-1$ elements of $V$ of degree $2$. All of them are squares in $K$. Removing them from the square count in Step 3, the number of degree-four elements of $V$ that are squares in $K$ is
-$$
-\frac{(p-1)(p^2+1)}2-(p-1)
-=\frac{(p-1)(p^2-1)}2.
-$$
-Since the total number of degree-four elements of $V$ is
-$$
-p^3-p,
-$$
-the number that are nonsquares in $K$ is
-$$
-\frac{(p-1)(p+1)^2}{2}.
-$$
-
-If a degree-two $y$ is a square already in $\mathbb F_{p^2}$, its two square roots have exact degree $2$. By Step 2 this happens exactly when $e_p=1$. Hence
-$$
-E_2=2e_p(p-1),
-$$
-where $E_d$ denotes the number of roots of $F_p$ of exact degree $d$.
-
-When $e_p=0$, each of the $p-1$ degree-two values of $y$ has two square roots in $K\setminus\mathbb F_{p^2}$, contributing
-$$
-2(1-e_p)(p-1)
-$$
-roots of degree $4$.
-
-Each degree-four square $y$ has two square roots in $K$, both of exact degree $4$. Therefore
-$$
-E_4
-=(p-1)(p^2-1)+2(1-e_p)(p-1)
-=(p-1)(p^2+1-2e_p).
-$$
-
-Finally, if a degree-four $y$ is a nonsquare in $K$, a square root $x$ satisfies
-$$
-x^{p^4}=-x,
-$$
-so
-$$
-x^{p^8}=x.
-$$
-It cannot have degree dividing $4$, because then $y=x^2$ would be a square in $K$. Thus its exact degree is $8$. Hence
-$$
-E_8=(p-1)(p+1)^2.
-$$
-
-Step 5: Convert exact root degrees into irreducible-factor counts
-
-Since $F_p$ is squarefree, every irreducible factor of degree $d$ contributes exactly $d$ roots of exact degree $d$. From Step 4,
-$$
-b_2=e_p(p-1),
-$$
-$$
-b_4=\frac{(p-1)(p^2+1-2e_p)}4,
+b_1=1,
+\qquad
+b_2=1,
 $$
 and
 $$
-b_8=\frac{(p-1)(p+1)^2}{8}.
+b_3=b_6=\frac{p^2-1}{3}.
 $$
-The weighted count is
-$$
-2b_2+4b_4+8b_8
-=2p^3-2
-=\deg F_p,
-$$
-so no other degrees occur.
 
+Step 3: Count cubic targets when $p\equiv1\pmod3$
+
+Assume $e=1$. Choose a nontrivial cubic character
+$$
+\chi:\mathbb F_p^\times\to\{1,\rho,\rho^2\},
+\qquad
+\rho^2+\rho+1=0,
+$$
+and extend it by $\chi(0)=0$. Let
+$$
+\eta=\chi\circ N_{K/\mathbb F_p}.
+$$
+The norm is onto, so $\eta$ is a nontrivial cubic character of $K^\times$. Its kernel is the subgroup of cubes.
+
+Choose a nontrivial additive character $\psi$ of $\mathbb F_p$, and put
+$$
+g=\sum_{u\in\mathbb F_p}\chi(u)\psi(u),
+$$
+$$
+J=\sum_{u\in\mathbb F_p}\chi(u)\chi(1-u).
+$$
+Let
+$$
+\Psi(z)=\psi(\operatorname{Tr}_{K/\mathbb F_p}(z)).
+$$
+The degree-three Hasse-Davenport lifting identity gives
+$$
+\sum_{z\in K}\eta(z)\Psi(z)=g^3.
+$$
+
+We next reduce $g^3$ to $J$. Since $p\equiv1\pmod6$, $\chi(-1)=1$. Expanding $g\overline g$ and writing the first variable as a nonzero multiple of the second gives
+$$
+g\overline g=p.
+$$
+Likewise, grouping the terms of $g^2$ by $s=u+v$ gives
+$$
+g^2=J\overline g.
+$$
 Therefore
 $$
-\mathcal D_p(t)
-=
-\frac{(p-1)(p+1)^2}{8}t^8
-+\frac{(p-1)(p^2+1-2e_p)}4t^4
-+e_p(p-1)t^2.
+g^3=pJ.
 $$
 
-Final Answer: $\boxed{\frac{(p-1)(p+1)^2}{8}t^8+\frac{(p-1)(p^2+1-2e_p)}4t^4+e_p(p-1)t^2}$
+Let
+$$
+S=\sum_{\operatorname{Tr}(z)=3}\eta(z).
+$$
+Additive-character orthogonality gives
+$$
+S=\frac1p\sum_{r\in\mathbb F_p}\psi(-3r)
+\sum_{z\in K}\eta(z)\Psi(rz).
+$$
+The term $r=0$ vanishes. For $r\ne0$,
+$$
+\eta(r)=\chi(r^3)=1,
+$$
+so the inner sum is $g^3$. Since
+$$
+\sum_{r\ne0}\psi(-3r)=-1,
+$$
+we obtain
+$$
+S=-\frac{g^3}{p}=-J.
+$$
+
+Step 4: Identify the real part of the Jacobi sum
+
+From Step 3,
+$$
+J\overline J=p.
+$$
+Write
+$$
+J=a+b\rho
+$$
+with $a,b\in\mathbb Z$.
+
+Consider the order-three map
+$$
+u\mapsto\frac1{1-u}
+$$
+on $\mathbb F_p\setminus\{0,1\}$. Its summand in $J$,
+$$
+\chi(u)\chi(1-u),
+$$
+is unchanged along each orbit, because its ratio after applying the map is the cubic character of
+$$
+-\frac1{(1-u)^3},
+$$
+which equals $1$.
+
+There are two fixed points, the roots of
+$$
+u^2-u+1=0,
+$$
+and each contributes $1$ because $u(1-u)=1$. Every other orbit has three elements. Hence
+$$
+J\equiv2\equiv-1\pmod3
+$$
+in $\mathbb Z[\rho]$. Thus
+$$
+a\equiv-1\pmod3,
+\qquad
+b\equiv0\pmod3.
+$$
+
+Set
+$$
+A'=J+\overline J=2a-b.
+$$
+Using
+$$
+J\overline J=a^2-ab+b^2=p
+$$
+gives
+$$
+4p=(2a-b)^2+3b^2.
+$$
+Since $3\mid b$,
+$$
+4p=(A')^2+27\left(\frac b3\right)^2,
+$$
+and
+$$
+A'\equiv1\pmod3.
+$$
+By the definition of $A$ in the problem,
+$$
+A'=A.
+$$
+
+The number $C_0$ of cubes among all $p^2$ elements of trace $3$ is
+$$
+C_0=
+\frac13
+\sum_{\operatorname{Tr}(z)=3}
+\left(1+\eta(z)+\eta(z)^2\right).
+$$
+Using Step 3 and $J+\overline J=A$,
+$$
+C_0=\frac{p^2-A}{3}.
+$$
+The rational target $1$ is one of these cubes. Hence among the $p^2-1$ degree-three targets, exactly
+$$
+C=\frac{p^2-A-3}{3}
+$$
+are cubes in $K$.
+
+Step 5: Lift the cubic targets and assemble the answer
+
+Continue with $e=1$. The target $y=1$ has all three cube roots in $\mathbb F_p$, since the primitive cube roots of unity already lie there. It contributes three degree-one roots.
+
+Each of the $C$ cubic targets counted in Step 4 has three cube roots in $K$. Every such root has exact degree $3$, so
+$$
+E_3=3C=p^2-A-3.
+$$
+
+For each of the remaining
+$$
+p^2-1-C
+$$
+targets, $X^3-y$ has no root in $K$ and is therefore irreducible over $K$. Its roots lie in the cubic extension $\mathbb F_{p^9}$ of $K$. Since $y$ itself generates $K$ over $\mathbb F_p$, every such root has exact degree $9$. Hence
+$$
+E_9=3(p^2-1-C)=2p^2+A.
+$$
+Thus, when $e=1$,
+$$
+b_1=3,
+\qquad
+b_3=\frac{p^2-A-3}{3},
+\qquad
+b_9=\frac{2p^2+A}{9}.
+$$
+
+Combining this with Step 2 gives, for both residue classes of $p$,
+$$
+b_1=1+2e,
+$$
+$$
+b_2=1-e,
+$$
+$$
+b_3=\frac{p^2-1-e(A+2)}{3},
+$$
+$$
+b_6=\frac{(1-e)(p^2-1)}{3},
+\qquad
+b_9=\frac{e(2p^2+A)}{9}.
+$$
+Their degree-weighted sum is $3p^2$, so all irreducible factors are accounted for.
+
+Final Answer: $\boxed{\frac{e(2p^2+A)}{9}t^9+\frac{(1-e)(p^2-1)}{3}t^6+\frac{p^2-1-e(A+2)}{3}t^3+(1-e)t^2+(1+2e)t}$
 
 ---
 
 ## Answer
 
-$\frac{(p-1)(p+1)^2}{8}t^8+\frac{(p-1)(p^2+1-2e_p)}4t^4+e_p(p-1)t^2$
+$\frac{e(2p^2+A)}{9}t^9+\frac{(1-e)(p^2-1)}{3}t^6+\frac{p^2-1-e(A+2)}{3}t^3+(1-e)t^2+(1+2e)t$
 
 ---
 
@@ -289,7 +288,7 @@ $\frac{(p-1)(p+1)^2}{8}t^8+\frac{(p-1)(p^2+1-2e_p)}4t^4+e_p(p-1)t^2$
 ## Solution Concepts
 
 - finite-field trace
-- quadratic characters
-- trace quadratic forms
-- finite-field subextensions
+- cubic characters
+- Jacobi sums
+- cubic residue classes
 - Frobenius orbit counting

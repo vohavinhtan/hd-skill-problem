@@ -4,16 +4,25 @@
 
 Let $p\geq5$ be a prime, and define
 $$
-e_p=
+e=
 \begin{cases}
-1,&p\equiv3\pmod4,\\
-0,&p\equiv1\pmod4.
+1,&p\equiv1\pmod3,\\
+0,&p\equiv2\pmod3.
 \end{cases}
 $$
-
-Set
+If $e=1$, let $A$ be the unique integer satisfying
 $$
-F_p(X)=X^{2p^3-2}+X^{2p^2-2}+X^{2p-2}+1
+A\equiv1\pmod3
+$$
+for which
+$$
+4p=A^2+27B^2
+$$
+for some integer $B$. If $e=0$, set $A=0$.
+
+Define
+$$
+F_p(X)=X^{3p^2}+X^{3p}+X^3-3
 \in\mathbb F_p[X].
 $$
 
@@ -40,4 +49,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The factor degrees are controlled by the interaction between a Frobenius-stable additive subspace of a quartic finite field and the quadratic power map. The difficult count is not the size of that subspace, but the distribution of its nonzero elements between the two square classes and the way this distribution changes on the quadratic subfield.
+After a cubic substitution, the roots lie above an affine trace hyperplane in a cubic finite-field extension. When $p\equiv1\pmod3$, the distribution of that hyperplane among the three cubic residue classes is controlled by a cubic Jacobi sum whose real part is encoded by $A$. The residue-class count must then be combined with the field degrees of the cubic lifts.
