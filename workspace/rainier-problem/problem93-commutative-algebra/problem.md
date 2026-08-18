@@ -2,63 +2,35 @@
 
 ## LaTeX (Normalized)
 
-Let $p$ be an odd prime and let $n\geq9$ be a power of $p$. Let $G_n$ be the graph obtained from three disjoint cycles of length $n$ by identifying one vertex from each cycle to a single common vertex $o$. Label the remaining vertices
+Let $p$ be an odd prime and let $n\geq9$ be a power of $p$. Set
 $$
-a_1,\ldots,a_{n-1},
+\Gamma=(\mathbb Z/n\mathbb Z)^3,
 \qquad
-b_1,\ldots,b_{n-1},
-\qquad
-c_1,\ldots,c_{n-1}
+j=\frac{(p-1)n}{p},
 $$
-so that the three cycles are
+with all coordinates read modulo $n$, and put
 $$
-o,a_1,\ldots,a_{n-1},o,
-\qquad
-o,b_1,\ldots,b_{n-1},o,
-\qquad
-o,c_1,\ldots,c_{n-1},o.
+T=\{(x,y,z)\in\Gamma:x=0\text{ or }y=0\text{ or }z=0\}.
 $$
 
-In the standard graded polynomial ring
+Let $V_n$ be the vector space over $\mathbb F_p$ of all functions
 $$
-\mathbb F_p[x_v:v\in V(G_n)],
+f:\Gamma\to\mathbb F_p
 $$
-put
+such that, for every $(x,y,z)\in T$,
 $$
-M_0=\prod_{v\in V(G_n)}x_v,
-\qquad
-M_{q,j}
-=x_{q_j}^2
-\prod_{v\in V(G_n)\setminus\{o,q_j\}}x_v
+f(x+1,y,z)+f(x,y+1,z)=2f(x,y,z),
 $$
-for $q\in\{a,b,c\}$ and $1\leq j\leq n-1$. Define
 $$
-A_n=
-\frac{\mathbb F_p[x_v:v\in V(G_n)]}
-{\displaystyle
-\left(
- x_v^{d(v)}-\prod_{w\sim v}x_w:
- v\in V(G_n)
-\right):M_0^\infty
-+
-\left(
-\begin{array}{l}
-M_{a,1}+M_{b,1}-2M_0,\\
-M_{b,1}+M_{c,1}-2M_0,\\
-M_{a,(p-1)n/p}+M_{b,(p-1)n/p}-2M_0
-\end{array}
-\right)},
+f(x,y+1,z)+f(x,y,z+1)=2f(x,y,z),
 $$
-where $d(v)$ is the degree of $v$ in $G_n$ and, for an ideal $J$,
 $$
-J:M_0^\infty
-=
-\{g:M_0^r g\in J\text{ for some }r\geq0\}.
+f(x+j,y,z)+f(x,y+j,z)=2f(x,y,z).
 $$
 
 Determine, in closed form as a function of $p$ and $n$,
 $$
-\boxed{\dim_{\mathbb F_p}(A_n)_{3n}}.
+\boxed{\dim_{\mathbb F_p}V_n}.
 $$
 
 ---
@@ -76,4 +48,8 @@ $$
 
 ## Domain Explanation
 
-The problem asks for an exact graded dimension of a quotient defined by saturated binomial relations over a finite field. Solving it requires converting the quotient to explicit finite group-algebra coordinates, determining the rank contribution of translated relations in a specified graded piece, and reducing the remaining calculation to a finite-dimensional nilpotent quotient in positive characteristic. These explicit quotient, rank, and finite-algebra computations make computational algebra the closest available sub-domain.
+This problem involves cyclic translation equations over finite fields, exact nullity reduction, and positive-characteristic polynomial identities.
+These are part of Abstract Algebra and Computational algebra.
+The problem also involves finite-dimensional function spaces and kernels of linear systems.
+These are part of Linear Algebra and Systems of linear equations.
+However, the linear algebra only packages the sparse constraints, while the decisive work is the symbolic reduction of the parameterized finite-field system for all prime-power sizes.
