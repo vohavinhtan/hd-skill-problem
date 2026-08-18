@@ -12,18 +12,20 @@ I_p=\left(x^{p+2},y^{p+2},(x+y)^{p+1},(x+2y)^{p+1}\right).
 $$
 Write
 $$
-A_p=S/I_p,
-\qquad
-\mathfrak m=(x,y)A_p,
-$$
-and let
-$$
-\operatorname{Soc}(A_p)=\{a\in A_p:\mathfrak m a=0\}.
+A_p=S/I_p.
 $$
 
-Determine the graded socle polynomial
+Let $\ell\in A_p$ be the residue class of $x+y$, and let
 $$
-\Sigma_p(t)=\sum_{d\geq0}\dim_{\mathbb F_p}\!\left(\operatorname{Soc}(A_p)_d\right)t^d
+M_\ell:A_p\to A_p,
+\qquad
+a\mapsto \ell a.
+$$
+Since $\ell^{p+1}=0$, the map $M_\ell$ is nilpotent. For $r\geq1$, let $b_r$ be the number of Jordan blocks of size $r$ in the Jordan form of $M_\ell$ over $\mathbb F_p$.
+
+Determine the Jordan-block polynomial
+$$
+\mathcal J_p(t)=\sum_{r\geq1}b_rt^r
 $$
 for every prime $p\geq5$.
 
@@ -42,4 +44,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-This problem asks for the graded socle of an explicit Artinian quotient presented by polynomial generators in positive characteristic. The decisive work is to reduce those generators using characteristic-$p$ identities, derive homogeneous monomial normal forms, and compute annihilator dimensions degree by degree, so computational algebra is the closest available sub-domain.
+The problem asks for the Jordan structure of multiplication by a linear form in a finite quotient algebra presented by polynomial generators. The main computation is a coordinate change followed by exact reduction of the defining ideal to a module presentation over a one-variable polynomial ring. The cyclic summands of that presentation determine the requested polynomial.
