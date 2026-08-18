@@ -6,18 +6,25 @@ Fix an odd prime $p$ and an integer $n\geq1$. Put
 $$
 q=p^n,\qquad K=\mathbb{F}_q,
 $$
-and assume that the residue class of $q$ modulo $7$ has multiplicative order $6$.
+and assume
+$$
+q\equiv11\pmod{12}.
+$$
 
 Let
 $$
-R=K[x]/(x^7-1),
+R=K^6
 $$
-where $x$ also denotes the residue class of the indeterminate, and put
+with coordinatewise addition and multiplication. Define the $K$-subspace $W\subset R$ by
 $$
-W=\operatorname{span}_K\{1,x,x^3\}\subset R.
+W=\operatorname{span}_K\left\{
+(1,1,1,0,0,0),
+(-1,0,0,1,1,0),
+(0,-1,0,-1,0,1)
+\right\}.
 $$
 
-For $u=(u_1,u_2)$ and $v=(v_1,v_2)$ in $R^2$, define
+For $u=(u_1,u_2)$ and $v=(v_1,v_2)$ in $R^2$, put
 $$
 \det_R(u,v)=u_1v_2-u_2v_1.
 $$
@@ -34,18 +41,11 @@ $$
 Z=\{(0,a):a\in R\}.
 $$
 
-For every $\alpha\in\operatorname{Aut}(G)$ satisfying all three conditions
+For every $\alpha\in\operatorname{Aut}(G)$ such that the restriction
 $$
-\alpha(Z)=Z,
+\alpha|_Z:R\to R
 $$
-$$
-\alpha(\{0\}\times W)=\{0\}\times W,
-$$
-and the restriction $\alpha|_Z:R\to R$ is $K$-linear with
-$$
-\det_K(\alpha|_Z)=1,
-$$
-let $\bar\alpha$ denote the induced $\mathbb{F}_p$-linear automorphism of
+is $K$-linear, satisfies $\alpha(W)=W$, and has $K$-linear determinant $1$, let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
 $$
 G/Z\cong R^2.
 $$
@@ -63,4 +63,4 @@ Determine the number of distinct maps $\bar\alpha$ that occur.
 
 ## Domain Explanation
 
-The problem counts quotient actions of automorphisms of a finite nilpotent group of class two. The commutator pairing first reconstructs the coefficient ring, while the prescribed central subspace then forces a separate affine-support obstruction inside that ring.
+The problem counts quotient actions of automorphisms of a finite nilpotent group of class two. The commutator pairing reconstructs the product ring, while the prescribed central subspace hides a monomial symmetry group that must be recovered from its minimum-support vectors.
