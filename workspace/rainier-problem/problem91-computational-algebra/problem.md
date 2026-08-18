@@ -4,7 +4,7 @@
 
 Let $p\geq5$ be a prime. Define
 $$
-\varepsilon_p=
+e=
 \begin{cases}
 1,&p\equiv1\pmod3,\\
 0,&p\equiv2\pmod3,
@@ -12,7 +12,7 @@ $$
 $$
 and
 $$
-L_p=\frac{2p-1+2\varepsilon_p}{3}.
+L=\frac{2p-1+2e}{3}.
 $$
 
 Let
@@ -30,7 +30,7 @@ $$
 
 Let $q\in A_p$ be the residue class of
 $$
-xy(x+y),
+2x^3+9x^2y+15xy^2+9y^3,
 $$
 and let
 $$
@@ -61,4 +61,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The problem asks for the nilpotent Jordan structure of multiplication by a nonmonomial homogeneous element in a finite polynomial quotient. The computation requires reducing the defining ideal, finding exact homogeneous monomial bases, proving maximal rank for a family of truncated binomial matrices, and reconstructing the Jordan chains from the resulting graded rank data.
+The problem asks for the nilpotent Jordan structure of multiplication by a cubic element in a finite polynomial quotient. The computation requires finding coordinates that simplify the quotient, decomposing the resulting multiplication matrices into arithmetic residue classes, detecting an exceptional rank loss, and reconstructing the Jordan blocks from the full rank profile.
