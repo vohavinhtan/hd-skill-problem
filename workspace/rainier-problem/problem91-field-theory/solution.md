@@ -1,214 +1,287 @@
 ## Steps
 
-Step 1: Identify the Frobenius operator and the target set
+Step 1: Factor the Frobenius operator hidden in $L_p$
 
-Let $\sigma(\alpha)=\alpha^p$ and define
+Let
 $$
-C(Z)=\sum_{i=0}^6c_iZ^i
-=Z^6+Z^5+3Z^4+2Z^3+3Z^2+Z+1.
+\sigma(\alpha)=\alpha^p.
 $$
-Multiplication gives
+Then
 $$
-C(Z)=(Z^2+Z+1)(Z^2+1)^2.
+L_p=(\sigma^{p}-1)(\sigma^2-1),
 $$
-Hence
+because
 $$
-L_p=R(\sigma),
+(\sigma^{p}-1)(\sigma^2-1)
+=\sigma^{p+2}-\sigma^p-\sigma^2+1.
 $$
-where
+In characteristic $p$,
 $$
-R(Z)=(Z^p-1)C(Z)
-=(Z-1)^p(Z^2+Z+1)(Z^2+1)^2.
+Z^p-1=(Z-1)^p,
+$$
+so the operator polynomial is
+$$
+R(Z)=(Z-1)^{p+1}(Z+1).
+$$
+Thus
+$$
+L_p=R(\sigma).
 $$
 
-The roots of
+The associated linearized polynomial is separable because the coefficient of $X$ in $L_p(X)$ is $1$. Its kernel therefore has
 $$
-H_p(Y)=\frac{Y^{p^3}-Y}{Y^p-Y}
+p^{\deg R}=p^{p+2}
 $$
-are exactly
-$$
-\mathbb F_{p^3}\setminus\mathbb F_p.
-$$
-Indeed, both numerator and denominator are separable, and their root sets are $\mathbb F_{p^3}$ and $\mathbb F_p$. Since $3$ is prime, every root of $H_p$ has degree exactly $3$ over $\mathbb F_p$.
+elements.
 
-Thus $F_p(\alpha)=0$ exactly when
+A root $\alpha$ of $F_p$ satisfies
 $$
-R(\sigma)\alpha=\lambda
+L_p(\alpha)^{p+1}=1.
 $$
-for some $\lambda\in\mathbb F_{p^3}\setminus\mathbb F_p$.
+Hence the target
+$$
+\lambda=L_p(\alpha)
+$$
+lies in
+$$
+\mu_{p+1}=\{\lambda:\lambda^{p+1}=1\}.
+$$
+Every such $\lambda$ lies in $\mathbb F_{p^2}$ and satisfies
+$$
+\lambda^p=\lambda^{-1}.
+$$
+There are exactly $p+1$ targets.
 
-Step 2: Split the degree-three targets by trace
+Step 2: Split the norm-one targets into three Frobenius types
 
-For $\lambda\in\mathbb F_{p^3}$, write
+For $\lambda\in\mu_{p+1}$ define
 $$
-a=\frac{\lambda+\lambda^p+\lambda^{p^2}}3,
+a=\frac{\lambda+\lambda^p}{2},
 \qquad
-b=\lambda-a.
+b=\frac{\lambda-\lambda^p}{2}.
 $$
-Since $p\ne3$,
+Then
 $$
-a\in\mathbb F_p,
+\sigma(a)=a,
 \qquad
-b+b^p+b^{p^2}=0.
-$$
-If
-$$
-f_3(Z)=Z^2+Z+1,
-$$
-then
-$$
-f_3(\sigma)b=0.
-$$
-For $\lambda\notin\mathbb F_p$, we have $b\ne0$.
-
-The trace map from $\mathbb F_{p^3}$ to $\mathbb F_p$ has kernel of size $p^2$. Its intersection with $\mathbb F_p$ is $\{0\}$ because the trace of $c\in\mathbb F_p$ is $3c$. Therefore exactly
-$$
-p^2-1
-$$
-degree-three targets have trace zero.
-
-There are $p^3-p$ degree-three targets in total. The number with nonzero trace is
-$$
-p^3-p-(p^2-1)
-=(p-1)(p^2-1).
-$$
-
-A trace-zero target has Frobenius annihilator $f_3$. A nonzero-trace target has nonzero components in both the $(Z-1)$-part and the $f_3$-part, so its annihilator is
-$$
-(Z-1)f_3=Z^3-1.
-$$
-
-Step 3: Determine the periods in a trace-zero fiber
-
-Fix a trace-zero target $\lambda$. Every solution of
-$$
-R(\sigma)x=\lambda
-$$
-lies in the root space of
-$$
-f_3(Z)R(Z)
-=(Z-1)^pf_3(Z)^2(Z^2+1)^2.
-$$
-The three factors are pairwise coprime, so this root space decomposes into primary parts with annihilators
-$$
-(Z-1)^p,\qquad f_3^2,\qquad (Z^2+1)^2.
-$$
-
-On the $f_3^2$-part, multiplication by $R(\sigma)$ is a unit times $f_3(\sigma)$. A solution mapping to the nonzero vector $\lambda\in\ker f_3(\sigma)$ cannot lie in $\ker f_3(\sigma)$. Its $f_3$-primary annihilator is therefore exactly $f_3^2$.
-
-The smallest $n$ for which
-$$
-f_3(Z)^2\mid Z^n-1
-$$
-is $3p$: divisibility by $f_3$ requires $3\mid n$, while multiplicity at least $2$ requires $p\mid n$. Thus the forced $f_3$-component has exact period $3p$.
-
-The free $(Z-1)^p$-part has dimension $p$ and hence $p^p$ choices. Its periods divide $p$, so it does not change the period $3p$. The kernel of $f_3(\sigma)$ contributes $p^2$ choices and cannot remove the nonzero top $f_3^2$-layer.
-
-The remaining primary part has annihilator $(Z^2+1)^2$ and dimension $4$. If this component is zero, the full solution has period $3p$. If it is nonzero, its period is $4$ or $4p$, so the full period becomes $12p$.
-
-Therefore each trace-zero target contributes
-$$
-p^{p+2}
-$$
-roots of exact period $3p$ and
-$$
-p^{p+2}(p^4-1)
-$$
-roots of exact period $12p$.
-
-Step 4: Determine the periods in a nonzero-trace fiber
-
-Now let $\lambda=a+b$ with $a\ne0$ and $b\ne0$ as in Step 2. Every solution lies in the root space of
-$$
-(Z-1)f_3R
-=(Z-1)^{p+1}f_3^2(Z^2+1)^2.
-$$
-
-On the $(Z-1)^{p+1}$-part, the equation forces a vector outside the kernel of $(\sigma-1)^p$, because its image is the nonzero fixed vector $a$. Its annihilator is therefore exactly
-$$
-(Z-1)^{p+1}.
-$$
-The smallest $n$ for which this divides $Z^n-1$ is $p^2$: multiplicity $p+1$ at $Z=1$ requires $p^2\mid n$. Hence this component has exact period $p^2$.
-
-The $f_3$-component is forced exactly as in Step 3 and has period $3p$. Since the primary factors are coprime, these top layers cannot cancel after adding kernel elements. Their combined exact period is
-$$
-\operatorname{lcm}(p^2,3p)=3p^2.
-$$
-
-The free kernel choices in the first two primary parts number
-$$
-p^p\cdot p^2=p^{p+2}.
-$$
-A zero $(Z^2+1)^2$-component leaves period $3p^2$, while any nonzero such component changes it to $12p^2$. Thus each nonzero-trace target contributes
-$$
-p^{p+2}
-$$
-roots of exact period $3p^2$ and
-$$
-p^{p+2}(p^4-1)
-$$
-roots of exact period $12p^2$.
-
-Step 5: Count Frobenius orbits and assemble the polynomial
-
-Using the target counts from Step 2 and the fiber counts from Steps 3 and 4, the numbers of roots of the four exact periods are
-$$
-E_{3p}=p^{p+2}(p^2-1),
-$$
-$$
-E_{12p}=p^{p+2}(p^2-1)(p^4-1),
-$$
-$$
-E_{3p^2}=p^{p+2}(p-1)(p^2-1),
+\sigma(b)=-b,
 $$
 and
 $$
-E_{12p^2}=p^{p+2}(p-1)(p^2-1)(p^4-1).
+\lambda=a+b.
 $$
 
-Their sum is
+First, $b=0$ exactly when $\lambda=\lambda^p=\lambda^{-1}$, hence
 $$
-(p^3-p)p^{p+6},
+\lambda^2=1.
 $$
-which equals
+Thus there are exactly two fixed targets,
 $$
-\deg H_p\cdot\deg L_p=\deg F_p.
+\lambda=1,-1.
 $$
-The polynomial $H_p$ has simple roots and $L_p'(X)=-1$, so every root of $F_p$ is simple. The displayed counts therefore exhaust all roots.
+For both, $a\ne0$.
 
-Each irreducible factor over $\mathbb F_p$ is one Frobenius orbit. Dividing each exact-period count by its period gives
+Next, $a=0$ exactly when
 $$
-b_{3p}=\frac{p^{p+1}(p^2-1)}3,
+\lambda^p=-\lambda.
+$$
+Combining this with $\lambda^p=\lambda^{-1}$ gives
+$$
+\lambda^2=-1.
+$$
+If $p\equiv3\pmod4$, the two roots of $X^2+1$ lie in $\mathbb F_{p^2}\setminus\mathbb F_p$ and satisfy $\lambda^p=-\lambda$, so both belong to $\mu_{p+1}$. If $p\equiv1\pmod4$, the roots lie in $\mathbb F_p$ and have norm $\lambda^2=-1$, so neither belongs to $\mu_{p+1}$.
+
+Therefore there are
+$$
+2e_p
+$$
+targets with
+$$
+a=0,\qquad b\ne0.
+$$
+The remaining
+$$
+p-1-2e_p
+$$
+targets satisfy
+$$
+a\ne0,\qquad b\ne0.
+$$
+
+Step 3: Analyze the two primary lifting equations
+
+Put
+$$
+N=\sigma-1,
+\qquad
+M=\sigma+1.
+$$
+The factors $(Z-1)^{p+1}$ and $Z+1$ are coprime, so every fiber of $R(\sigma)$ splits into its $1$-primary and $(-1)$-primary parts.
+
+Suppose first that the fixed component $a$ is nonzero. On the $1$-primary part, $M$ is invertible, so the lifting equation is equivalent to
+$$
+N^{p+1}u=c
+$$
+for a nonzero fixed vector $c$. Any solution has
+$$
+N^{p+1}u\ne0,
+\qquad
+N^{p+2}u=0.
+$$
+Thus its annihilator contains $(Z-1)^{p+2}$ but not $(Z-1)^{p+1}$.
+
+If $n=p^rs$ with $p\nmid s$, then the multiplicity of $Z-1$ in $Z^n-1$ is $p^r$. Since
+$$
+p<p+2\leq p^2,
+$$
+the least $n$ for which $(Z-1)^{p+2}$ divides $Z^n-1$ is
+$$
+p^2.
+$$
+Hence every such $u$ has exact Frobenius period $p^2$. The solution set is a coset of $\ker N^{p+1}$ and therefore has
+$$
+p^{p+1}
+$$
+elements.
+
+If instead $a=0$, the $1$-primary component is any element of $\ker N^{p+1}$. Exactly
+$$
+p^p
+$$
+of these lie in $\ker N^p$ and have period dividing $p$. The remaining
+$$
+p^{p+1}-p^p=p^p(p-1)
+$$
+have annihilator $(Z-1)^{p+1}$ and exact period $p^2$.
+
+Now suppose $b\ne0$. On the $(-1)$-primary part, $N^{p+1}$ is invertible, so the equation reduces to
+$$
+Mv=c'
+$$
+for a nonzero vector in $\ker M$. Every solution satisfies
+$$
+Mv\ne0,
+\qquad
+M^2v=0.
+$$
+Thus its annihilator is $(Z+1)^2$. The least $n$ for which $(Z+1)^2$ divides $Z^n-1$ is $2p$: divisibility by $Z+1$ requires $2\mid n$, while multiplicity at least $2$ requires $p\mid n$. Hence every solution has exact period
+$$
+2p.
+$$
+There are $p$ such solutions.
+
+If $b=0$, the $(-1)$-primary component is free in $\ker M$. It has one zero element and
+$$
+p-1
+$$
+nonzero elements of exact period $2$.
+
+Step 4: Count roots of each exact Frobenius period
+
+Consider first the two targets with
+$$
+a\ne0,\qquad b=0.
+$$
+By Step 3, the fixed component has period $p^2$ and $p^{p+1}$ choices. If the free $(-1)$-component is zero, the full period is $p^2$; otherwise it is $2p^2$. Across both targets this gives
+$$
+E_{p^2}=2p^{p+1},
+$$
+and contributes
+$$
+2p^{p+1}(p-1)
+$$
+roots of period $2p^2$.
+
+Now take one of the $2e_p$ targets with
+$$
+a=0,\qquad b\ne0.
+$$
+The forced $(-1)$-component has period $2p$ and $p$ choices. If the $1$-primary component lies in $\ker N^p$, there are $p^p$ choices and the full period is $2p$. Hence these targets contribute
+$$
+E_{2p}=2e_pp^{p+1}.
+$$
+The remaining $p^p(p-1)$ choices in the $1$-primary part have period $p^2$, so they contribute
+$$
+2e_pp^{p+1}(p-1)
+$$
+roots of period $2p^2$.
+
+Finally, each of the
+$$
+p-1-2e_p
+$$
+targets with
+$$
+a\ne0,\qquad b\ne0
+$$
+has a forced $p^2$ component and a forced $2p$ component. Every lift therefore has exact period
+$$
+2p^2.
+$$
+Each fiber has $p^{p+2}$ elements, so this class contributes
+$$
+(p-1-2e_p)p^{p+2}
+$$
+roots of period $2p^2$.
+
+Combining the three contributions,
+$$
+E_{2p^2}
+=p^{p+1}\left(2(p-1)+2e_p(p-1)+p(p-1-2e_p)\right).
+$$
+The bracket simplifies to
+$$
+(p-1)(p+2)-2e_p.
+$$
+Therefore
+$$
+E_{2p^2}
+=p^{p+1}\left((p-1)(p+2)-2e_p\right).
+$$
+
+The total root count is
+$$
+E_{p^2}+E_{2p}+E_{2p^2}
+=(p+1)p^{p+2},
+$$
+which equals $\deg F_p$. Since $L_p$ is separable and every root of $Y^{p+1}-1$ is simple, all roots of $F_p$ are accounted for.
+
+Step 5: Convert Frobenius periods into irreducible-factor degrees
+
+Each monic irreducible factor over $\mathbb F_p$ is one Frobenius orbit, and its degree equals the orbit length. Hence
+$$
+b_d=\frac{E_d}{d}
+$$
+for every occurring period.
+
+Using Step 4,
+$$
+b_{p^2}=2p^{p-1},
 $$
 $$
-b_{12p}=\frac{p^{p+1}(p^2-1)(p^4-1)}{12},
-$$
-$$
-b_{3p^2}=\frac{p^p(p-1)(p^2-1)}3,
+b_{2p}=e_pp^p,
 $$
 and
 $$
-b_{12p^2}=\frac{p^p(p-1)(p^2-1)(p^4-1)}{12}.
+b_{2p^2}
+=\frac{p^{p-1}\left((p-1)(p+2)-2e_p\right)}{2}.
 $$
-Hence
+All other $b_d$ vanish. Therefore
 $$
-\mathcal D_p(t)=
-\frac{p^p(p^2-1)}{12}
-\left[
-(p-1)(p^4-1)t^{12p^2}
-+4(p-1)t^{3p^2}
-+p(p^4-1)t^{12p}
-+4pt^{3p}
-\right].
+\mathcal D_p(t)
+=
+\frac{p^{p-1}\left((p-1)(p+2)-2e_p\right)}{2}t^{2p^2}
++2p^{p-1}t^{p^2}
++e_pp^pt^{2p}.
 $$
 
-Final Answer: $\boxed{\frac{p^p(p^2-1)}{12}[(p-1)(p^4-1)t^{12p^2}+4(p-1)t^{3p^2}+p(p^4-1)t^{12p}+4pt^{3p}]}$
+Final Answer: $\boxed{\frac{p^{p-1}((p-1)(p+2)-2e_p)}{2}t^{2p^2}+2p^{p-1}t^{p^2}+e_pp^pt^{2p}}$
 
 ---
 
 ## Answer
 
-$\frac{p^p(p^2-1)}{12}[(p-1)(p^4-1)t^{12p^2}+4(p-1)t^{3p^2}+p(p^4-1)t^{12p}+4pt^{3p}]$
+$\frac{p^{p-1}((p-1)(p+2)-2e_p)}{2}t^{2p^2}+2p^{p-1}t^{p^2}+e_pp^pt^{2p}$
 
 ---
 
@@ -224,6 +297,6 @@ $\frac{p^p(p^2-1)}{12}[(p-1)(p^4-1)t^{12p^2}+4(p-1)t^{3p^2}+p(p^4-1)t^{12p}+4pt^
 
 - finite-field Frobenius
 - linearized polynomials
-- trace decomposition
+- norm-one subgroups
 - primary decomposition
 - Frobenius orbit counting

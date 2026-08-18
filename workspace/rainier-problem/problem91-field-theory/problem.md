@@ -2,21 +2,23 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime, and put
+Let $p\geq5$ be a prime, and define
 $$
-(c_0,c_1,\ldots,c_6)=(1,1,3,2,3,1,1)
+e_p=
+\begin{cases}
+1,&p\equiv3\pmod4,\\
+0,&p\equiv1\pmod4.
+\end{cases}
 $$
-in $\mathbb F_p$. Define
+
+Set
 $$
-L_p(X)=\sum_{i=0}^6c_i\left(X^{p^{p+i}}-X^{p^i}\right).
-$$
-Since $Y^p-Y$ divides $Y^{p^3}-Y$ in $\mathbb F_p[Y]$, set
-$$
-H_p(Y)=\frac{Y^{p^3}-Y}{Y^p-Y}
+L_p(X)=X^{p^{p+2}}-X^{p^p}-X^{p^2}+X
+\in\mathbb F_p[X],
 $$
 and
 $$
-F_p(X)=H_p(L_p(X)).
+F_p(X)=L_p(X)^{p+1}-1.
 $$
 
 For $d\geq1$, let $b_d$ be the number of monic irreducible factors of $F_p(X)$ over $\mathbb F_p$ having degree $d$.
@@ -42,4 +44,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The roots are affine Frobenius fibers above the elements of degree three over the base field. Those targets split according to their trace, and the two classes force different lifts through repeated Frobenius-primary factors. The resulting exact orbit lengths determine the degrees of the irreducible factors.
+The roots are affine fibers of a Frobenius-linear map above the norm-one subgroup of a quadratic extension. The target set has three different Frobenius behaviors, and the repeated eigenvalue at $1$ in the linearized map makes the periods of its lifts depend on which target component vanishes.
