@@ -2,27 +2,14 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime, and define
+Let $p\geq7$ be a prime. Let $\phi$ denote Euler's totient function. For every integer $m>2$ with $\gcd(m,15)=1$, define
 $$
-e=
-\begin{cases}
-1,&p\equiv1\pmod3,\\
-0,&p\equiv2\pmod3.
-\end{cases}
+\rho_m=\min\{d\geq1:5^d\equiv3^d\pmod m\text{ or }5^d\equiv-3^d\pmod m\}.
 $$
-If $e=1$, let $A$ be the unique integer satisfying
-$$
-A\equiv1\pmod3
-$$
-for which
-$$
-4p=A^2+27B^2
-$$
-for some integer $B$. If $e=0$, set $A=0$.
 
 Define
 $$
-F_p(X)=X^{3p^2}+X^{3p}+X^3-3
+F_p(X)=X^{3p}+3X^{2p}-X^5-5X^4-5X^3+5X^2+5X-3
 \in\mathbb F_p[X].
 $$
 
@@ -32,7 +19,7 @@ Determine
 $$
 \mathcal D_p(t)=\sum_{d\geq1}b_dt^d
 $$
-for every prime $p\geq5$.
+for every prime $p\geq7$.
 
 ---
 
@@ -49,4 +36,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-After a cubic substitution, the roots lie above an affine trace hyperplane in a cubic finite-field extension. When $p\equiv1\pmod3$, the distribution of that hyperplane among the three cubic residue classes is controlled by a cubic Jacobi sum whose real part is encoded by $A$. The residue-class count must then be combined with the field degrees of the cubic lifts.
+The sparse polynomial conceals a translated reciprocal parametrization. Its roots become inversion classes in two cyclic root-of-unity groups, while the factor degrees are determined by the Frobenius action on those classes. The orbit lengths reduce to signed multiplicative orders with moduli depending on $p$.

@@ -1,279 +1,225 @@
 ## Steps
 
-Step 1: Recover the affine trace condition
+Step 1: Recover the hidden reciprocal parametrization
 
 Put
 $$
-K=\mathbb F_{p^3}
+y=x+1.
 $$
-and let
+In characteristic $p$,
 $$
-y=x^3.
+(y^3-3y)^p=y^{3p}-3y^p=x^{3p}+3x^{2p}-2,
 $$
-The equation $F_p(x)=0$ becomes
+while expansion gives
 $$
-y^{p^2}+y^p+y=3.
-$$
-If this equation holds, then raising it to the $p$th power and subtracting gives
-$$
-y^{p^3}-y=0.
-$$
-Hence $y\in K$, and the equation is precisely
-$$
-\operatorname{Tr}_{K/\mathbb F_p}(y)=3.
-$$
-
-The trace map is onto because
-$$
-\operatorname{Tr}_{K/\mathbb F_p}(1)=3\ne0.
-$$
-Its fiber above $3$ therefore has $p^2$ elements. Exactly one of them lies in $\mathbb F_p$: for $y\in\mathbb F_p$ the trace is $3y$, so that element is
-$$
-y=1.
-$$
-Every other target has exact degree $3$ over $\mathbb F_p$.
-
-Also
-$$
-F_p'(X)=3X^2.
-$$
-Since $F_p(0)=-3\ne0$, the polynomial is separable. Each of the $p^2$ targets has three distinct cubic roots, accounting for all
-$$
-3p^2=\deg F_p
-$$
-roots.
-
-Step 2: Handle the case $p\equiv2\pmod3$
-
-Assume $e=0$. Since
-$$
-3\nmid p^3-1,
-$$
-the map
-$$
-K^\times\to K^\times,
-\qquad
-z\mapsto z^3
-$$
-is bijective.
-
-For the rational target $y=1$, exactly one cubic root, namely $1$, lies in $K$. The other two are primitive cube roots of unity. Since $p\equiv2\pmod3$, they lie in $\mathbb F_{p^2}\setminus\mathbb F_p$. Thus this target contributes one root of degree $1$ and two roots of degree $2$.
-
-Now let $y$ have degree $3$. Its unique cubic root $x_0$ in $K$ also has degree $3$, because
-$$
-\mathbb F_p(y)\subseteq\mathbb F_p(x_0)\subseteq K.
-$$
-The other roots are $x_0\zeta$ and $x_0\zeta^2$, where $\zeta$ has degree $2$. They lie in $\mathbb F_{p^6}$. Neither lies in $K$, since the cube map on $K^\times$ has only one preimage of $y$. Their degrees are therefore $6$.
-
-There are $p^2-1$ degree-three targets, so
-$$
-b_1=1,
-\qquad
-b_2=1,
-$$
-and
-$$
-b_3=b_6=\frac{p^2-1}{3}.
-$$
-
-Step 3: Count cubic targets when $p\equiv1\pmod3$
-
-Assume $e=1$. Choose a nontrivial cubic character
-$$
-\chi:\mathbb F_p^\times\to\{1,\rho,\rho^2\},
-\qquad
-\rho^2+\rho+1=0,
-$$
-and extend it by $\chi(0)=0$. Let
-$$
-\eta=\chi\circ N_{K/\mathbb F_p}.
-$$
-The norm is onto, so $\eta$ is a nontrivial cubic character of $K^\times$. Its kernel is the subgroup of cubes.
-
-Choose a nontrivial additive character $\psi$ of $\mathbb F_p$, and put
-$$
-g=\sum_{u\in\mathbb F_p}\chi(u)\psi(u),
-$$
-$$
-J=\sum_{u\in\mathbb F_p}\chi(u)\chi(1-u).
-$$
-Let
-$$
-\Psi(z)=\psi(\operatorname{Tr}_{K/\mathbb F_p}(z)).
-$$
-The degree-three Hasse-Davenport lifting identity gives
-$$
-\sum_{z\in K}\eta(z)\Psi(z)=g^3.
-$$
-
-We next reduce $g^3$ to $J$. Since $p\equiv1\pmod6$, $\chi(-1)=1$. Expanding $g\overline g$ and writing the first variable as a nonzero multiple of the second gives
-$$
-g\overline g=p.
-$$
-Likewise, grouping the terms of $g^2$ by $s=u+v$ gives
-$$
-g^2=J\overline g.
+y^5-5y^3+5y=x^5+5x^4+5x^3-5x^2-5x+1.
 $$
 Therefore
 $$
-g^3=pJ.
+F_p(x)=0
+$$
+is equivalent to
+$$
+(y^3-3y)^p=y^5-5y^3+5y.
 $$
 
-Let
+For any $y$ in an algebraic closure, choose a nonzero root $u$ of
 $$
-S=\sum_{\operatorname{Tr}(z)=3}\eta(z).
+U^2-yU+1=0.
 $$
-Additive-character orthogonality gives
+Then
 $$
-S=\frac1p\sum_{r\in\mathbb F_p}\psi(-3r)
-\sum_{z\in K}\eta(z)\Psi(rz).
+y=u+u^{-1}.
 $$
-The term $r=0$ vanishes. For $r\ne0$,
+Expanding powers of $u+u^{-1}$ gives
 $$
-\eta(r)=\chi(r^3)=1,
-$$
-so the inner sum is $g^3$. Since
-$$
-\sum_{r\ne0}\psi(-3r)=-1,
-$$
-we obtain
-$$
-S=-\frac{g^3}{p}=-J.
-$$
-
-Step 4: Identify the real part of the Jacobi sum
-
-From Step 3,
-$$
-J\overline J=p.
-$$
-Write
-$$
-J=a+b\rho
-$$
-with $a,b\in\mathbb Z$.
-
-Consider the order-three map
-$$
-u\mapsto\frac1{1-u}
-$$
-on $\mathbb F_p\setminus\{0,1\}$. Its summand in $J$,
-$$
-\chi(u)\chi(1-u),
-$$
-is unchanged along each orbit, because its ratio after applying the map is the cubic character of
-$$
--\frac1{(1-u)^3},
-$$
-which equals $1$.
-
-There are two fixed points, the roots of
-$$
-u^2-u+1=0,
-$$
-and each contributes $1$ because $u(1-u)=1$. Every other orbit has three elements. Hence
-$$
-J\equiv2\equiv-1\pmod3
-$$
-in $\mathbb Z[\rho]$. Thus
-$$
-a\equiv-1\pmod3,
-\qquad
-b\equiv0\pmod3.
-$$
-
-Set
-$$
-A'=J+\overline J=2a-b.
-$$
-Using
-$$
-J\overline J=a^2-ab+b^2=p
-$$
-gives
-$$
-4p=(2a-b)^2+3b^2.
-$$
-Since $3\mid b$,
-$$
-4p=(A')^2+27\left(\frac b3\right)^2,
+y^3-3y=u^3+u^{-3},
 $$
 and
 $$
-A'\equiv1\pmod3.
+y^5-5y^3+5y=u^5+u^{-5}.
 $$
-By the definition of $A$ in the problem,
+Hence a root satisfies
 $$
-A'=A.
-$$
-
-The number $C_0$ of cubes among all $p^2$ elements of trace $3$ is
-$$
-C_0=
-\frac13
-\sum_{\operatorname{Tr}(z)=3}
-\left(1+\eta(z)+\eta(z)^2\right).
-$$
-Using Step 3 and $J+\overline J=A$,
-$$
-C_0=\frac{p^2-A}{3}.
-$$
-The rational target $1$ is one of these cubes. Hence among the $p^2-1$ degree-three targets, exactly
-$$
-C=\frac{p^2-A-3}{3}
-$$
-are cubes in $K$.
-
-Step 5: Lift the cubic targets and assemble the answer
-
-Continue with $e=1$. The target $y=1$ has all three cube roots in $\mathbb F_p$, since the primitive cube roots of unity already lie there. It contributes three degree-one roots.
-
-Each of the $C$ cubic targets counted in Step 4 has three cube roots in $K$. Every such root has exact degree $3$, so
-$$
-E_3=3C=p^2-A-3.
+u^{3p}+u^{-3p}=u^5+u^{-5}.
 $$
 
-For each of the remaining
+Step 2: Describe the full root set by two cyclic groups
+
+For nonzero $a,b$,
 $$
-p^2-1-C
+a+a^{-1}=b+b^{-1}
 $$
-targets, $X^3-y$ has no root in $K$ and is therefore irreducible over $K$. Its roots lie in the cubic extension $\mathbb F_{p^9}$ of $K$. Since $y$ itself generates $K$ over $\mathbb F_p$, every such root has exact degree $9$. Hence
+is equivalent to
 $$
-E_9=3(p^2-1-C)=2p^2+A.
+(a-b)(ab-1)=0,
 $$
-Thus, when $e=1$,
+because multiplying the difference by $ab$ gives that product.
+
+Applying this with
 $$
-b_1=3,
+a=u^{3p},
 \qquad
-b_3=\frac{p^2-A-3}{3},
+b=u^5
+$$
+shows that every root corresponds to
+$$
+u^{3p-5}=1
+$$
+or
+$$
+u^{3p+5}=1.
+$$
+Conversely either relation gives the required equality, so no roots are lost.
+
+Set
+$$
+n_-=3p-5,
 \qquad
-b_9=\frac{2p^2+A}{9}.
+n_+=3p+5.
+$$
+Both numbers are even. Moreover
+$$
+\gcd(n_-,n_+)=\gcd(3p-5,10)=2,
+$$
+because $p\geq7$ is prime and $p\ne5$.
+
+Let
+$$
+\pi(u)=u+u^{-1}.
+$$
+On the group of $n$th roots of unity with even $n$, inversion fixes only $u=1,-1$. Therefore
+$$
+|\pi(\mu_n)|=\frac{n+2}{2}.
+$$
+If
+$$
+\pi(u)=\pi(v),
+$$
+then $u=v$ or $uv=1$. Hence the two images for $n_-$ and $n_+$ intersect exactly in the images of their common roots $u=\pm1$, namely $y=\pm2$.
+
+The number of distinct $y$ obtained is therefore
+$$
+\frac{n_-+2}{2}+\frac{n_++2}{2}-2=3p.
+$$
+Since $\deg F_p=3p$, these are all its roots and they are distinct.
+
+Step 3: Determine the exact Frobenius degree attached to each order
+
+Let $m>2$ divide either $n_-$ or $n_+$. Such an $m$ is coprime to $15$. Indeed,
+$$
+3\nmid3p\pm5,
+$$
+and if $5\mid3p\pm5$, then $5\mid p$, contrary to $p\geq7$.
+
+Take $u$ of exact order $m$, and let
+$$
+y=u+u^{-1}.
+$$
+For every $d\geq1$,
+$$
+y^{p^d}=u^{p^d}+u^{-p^d}.
+$$
+Thus
+$$
+y^{p^d}=y
+$$
+exactly when
+$$
+u^{p^d}=u
+$$
+or
+$$
+u^{p^d}=u^{-1},
+$$
+which is equivalent to
+$$
+p^d\equiv\pm1\pmod m.
 $$
 
-Combining this with Step 2 gives, for both residue classes of $p$,
+If $m\mid3p-5$, then
 $$
-b_1=1+2e,
+3p\equiv5\pmod m.
 $$
+If $m\mid3p+5$, then
 $$
-b_2=1-e,
+3p\equiv-5\pmod m.
 $$
+Since the sign is irrelevant in the condition $p^d\equiv\pm1$, both cases give
 $$
-b_3=\frac{p^2-1-e(A+2)}{3},
+p^d\equiv\pm1\pmod m
 $$
+exactly when
 $$
-b_6=\frac{(1-e)(p^2-1)}{3},
-\qquad
-b_9=\frac{e(2p^2+A)}{9}.
+5^d\equiv\pm3^d\pmod m.
 $$
-Their degree-weighted sum is $3p^2$, so all irreducible factors are accounted for.
+By the definition in the problem, the exact degree of $y$ over $\mathbb F_p$ is therefore
+$$
+\rho_m.
+$$
+Since $x=y-1$, the root $x$ has the same degree.
 
-Final Answer: $\boxed{\frac{e(2p^2+A)}{9}t^9+\frac{(1-e)(p^2-1)}{3}t^6+\frac{p^2-1-e(A+2)}{3}t^3+(1-e)t^2+(1+2e)t}$
+Step 4: Count the Frobenius orbits for each order
+
+For $m>2$, there are
+$$
+\phi(m)
+$$
+primitive $m$th roots of unity. None is fixed by inversion, so they produce
+$$
+\frac{\phi(m)}2
+$$
+distinct values of $y=u+u^{-1}$.
+
+By Step 3 each such value has exact Frobenius orbit length $\rho_m$. Hence order $m$ contributes
+$$
+\frac{\phi(m)}{2\rho_m}
+$$
+monic irreducible factors, each of degree $\rho_m$.
+
+No order $m>2$ occurs in both branches, because any common divisor of $n_-$ and $n_+$ divides $2$. The common orders $1$ and $2$ correspond to
+$$
+u=1,-1.
+$$
+They give
+$$
+y=2,-2
+$$
+and therefore the two rational roots
+$$
+x=1,-3.
+$$
+Thus these contribute exactly $2t$.
+
+Step 5: Assemble the factor-degree polynomial and verify closure
+
+For either even integer $n=n_-$ or $n=n_+$,
+$$
+\sum_{\substack{m\mid n\\m>2}}\phi(m)=n-2.
+$$
+Hence the total degree represented by the factors in Step 4 together with the two linear roots is
+$$
+2+\frac{n_--2}{2}+\frac{n_+-2}{2}=3p,
+$$
+matching $\deg F_p$. Therefore no further factors occur.
+
+Summing the contributions over the two possible signs gives
+$$
+\mathcal D_p(t)
+=
+2t+
+\sum_{\epsilon=\pm1}
+\sum_{\substack{m\mid3p+5\epsilon\\m>2}}
+\frac{\phi(m)t^{\rho_m}}{2\rho_m}.
+$$
+
+Final Answer: $\boxed{2t+\sum_{\epsilon=\pm1}\sum_{\substack{m\mid3p+5\epsilon\\m>2}}\frac{\phi(m)t^{\rho_m}}{2\rho_m}}$
 
 ---
 
 ## Answer
 
-$\frac{e(2p^2+A)}{9}t^9+\frac{(1-e)(p^2-1)}{3}t^6+\frac{p^2-1-e(A+2)}{3}t^3+(1-e)t^2+(1+2e)t$
+$2t+\sum_{\epsilon=\pm1}\sum_{\substack{m\mid3p+5\epsilon\\m>2}}\frac{\phi(m)t^{\rho_m}}{2\rho_m}$
 
 ---
 
@@ -287,8 +233,8 @@ $\frac{e(2p^2+A)}{9}t^9+\frac{(1-e)(p^2-1)}{3}t^6+\frac{p^2-1-e(A+2)}{3}t^3+(1-e
 
 ## Solution Concepts
 
-- finite-field trace
-- cubic characters
-- Jacobi sums
-- cubic residue classes
-- Frobenius orbit counting
+- finite-field Frobenius
+- reciprocal parametrization
+- roots of unity
+- multiplicative orders
+- orbit factorization
