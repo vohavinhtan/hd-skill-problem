@@ -16,15 +16,12 @@ $$
 $$
 $$
 \Psi_{n,\lambda}(Y)
-=(\lambda-1)t^{8n+4}
-+(\lambda-1)t^{8n+6}
-+(\lambda^2-\lambda)t^{8n+7},
+=t^{8n+4}+t^{8n+6}+(\lambda^2+\lambda+1)t^{8n+7},
 $$
 $$
 \Psi_{n,\lambda}(Z)
-=(\lambda-1)t^{8n+4}
-+(\lambda^4-\lambda^3-\lambda^2+3\lambda-2)t^{8n+6}
-+(\lambda^5-\lambda^4-\lambda^3+3\lambda^2-2\lambda)t^{8n+7},
+=t^{8n+4}+(\lambda^3-\lambda^2-\lambda-1)t^{8n+6}
++(\lambda^5-\lambda^3-3\lambda^2-2\lambda-1)t^{8n+7},
 $$
 $$
 \Psi_{n,\lambda}(W)=t^{72n+9}.
@@ -74,4 +71,4 @@ in closed form as a function of $n$.
 
 ## Domain Explanation
 
-This problem concerns conductor ideals of complete local subrings of a discrete valuation ring. The parameter controls a hidden rank drop among nonmonomial generators, and the exceptional stratum develops two successive new valuations through cancellation. Determining the conductor requires proving that these approximate-root cancellations close rather than merely guessing a numerical semigroup from the initial orders.
+This problem concerns conductor ideals of complete local subrings of a discrete valuation ring. The parameter controls a hidden rank drop, and different components of that rank-drop locus lead to different cancellation structures. The conductor is determined by reconstructing those structures and comparing the resulting value-semigroup closures.
