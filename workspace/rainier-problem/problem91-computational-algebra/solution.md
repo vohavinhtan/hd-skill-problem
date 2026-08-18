@@ -1,8 +1,8 @@
 ## Steps
 
-Step 1: Find coordinates that turn the defining ideal into a monomial ideal
+Step 1: Convert the quotient to a truncated complete intersection
 
-Set
+Put
 $$
 u=x+y,
 \qquad
@@ -11,288 +11,328 @@ $$
 Then
 $$
 x=2u-v,
-\qquad
-y=v-u.
 $$
-The cubic in the problem satisfies
-$$
-2x^3+9x^2y+15xy^2+9y^3=u^3+v^3.
-$$
-The other two generators become
-$$
-(x+y)^{p+1}=u^{p+1},
-\qquad
-(x+2y)^{p+1}=v^{p+1}.
-$$
-
-Modulo $u^{p+1}$ and $v^{p+1}$,
-$$
-(2u-v)^{p+2}
-=(2u^p-v^p)(2u-v)^2
-\equiv2u^pv^2-4u^2v^p,
-$$
-and
-$$
-(v-u)^{p+2}
-=(v^p-u^p)(v-u)^2
-\equiv u^2v^p-u^pv^2.
-$$
-Put
-$$
-A=u^pv^2,
-\qquad
-B=u^2v^p.
-$$
-The two remaining relations are
-$$
-2A-4B=0,
-\qquad
-B-A=0.
-$$
-Since $p\geq5$, these imply $A=B=0$. Conversely, $A=B=0$ makes both expanded generators vanish. Therefore
+so
 $$
 A_p\cong
-\frac{\mathbb F_p[u,v]}
-{\left(u^{p+1},v^{p+1},u^pv^2,u^2v^p\right)}.
-$$
-In these coordinates, $N_q$ is multiplication by
-$$
-u^3+v^3.
+\frac{\mathbb F_p[u,v]}{(u^{p+2},v^{p+2})}.
 $$
 
-Step 2: Determine the homogeneous monomial bases
-
-For degree $d$, let $E_d$ be the set of exponents $i$ for which
+Set
 $$
-u^iv^{d-i}
+w=-\frac12v.
 $$
-survives in the quotient from Step 1. The four monomial generators give
+Since $2$ is invertible in $\mathbb F_p$,
 $$
-E_d=\{0,1,\ldots,d\}
-\qquad(0\leq d\leq p),
-$$
-$$
-E_{p+1}=\{1,2,\ldots,p\},
+A_p\cong
+\frac{\mathbb F_p[u,w]}{(u^{p+2},w^{p+2})},
 $$
 and
 $$
-E_d=\{d-p+1,d-p+2,\ldots,p-1\}
-\qquad(p+2\leq d\leq2p-2).
+x=2(u+w).
 $$
-There are no surviving monomials in larger degrees.
-
-Thus, with
+Multiplying a nilpotent operator by the nonzero scalar $2$ does not change its Jordan-block sizes. It is therefore enough to determine the Jordan form of multiplication by
 $$
-h_d=\dim_{\mathbb F_p}(A_p)_d,
+t=u+w
 $$
-we have
+on
 $$
-h_d=d+1
-\qquad(0\leq d\leq p),
-$$
-$$
-h_{p+1}=p,
-$$
-$$
-h_d=2p-1-d
-\qquad(p+2\leq d\leq2p-2).
-$$
-Summing these dimensions gives
-$$
-\dim_{\mathbb F_p}A_p=p^2+4.
+B_p=\frac{\mathbb F_p[u,w]}{(u^{p+2},w^{p+2})}.
 $$
 
-Step 3: Determine the rank of every homogeneous power of the multiplication map
-
-For $k\geq1$,
+Write
 $$
-q^k=(u^3+v^3)^k
-=\sum_{a=0}^k\binom{k}{a}u^{3a}v^{3(k-a)}.
+n=p+2.
 $$
-Hence multiplication by $q^k$ preserves the residue of the $u$-exponent modulo $3$.
-
-For $c\in\{0,1,2\}$ define
+Introduce $z=u$, so $w=t-z$. Then
 $$
-n_c(d)=|\{i\in E_d:i\equiv c\pmod3\}|.
+B_p\cong
+\frac{\mathbb F_p[t,z]}{(z^n,(t-z)^n)}.
 $$
-On the residue-$c$ part of
+We now regard this as a finite torsion module over
 $$
-q^k:(A_p)_d\to(A_p)_{d+3k},
-$$
-write the source exponents as $c+3r$ and the target exponents as $c+3s$. The matrix entries are
-$$
-\binom{k}{s-r}.
+R=\mathbb F_p[t].
 $$
 
-Every such block has maximal possible rank. To verify this, a contiguous square minor has the form
-$$
-D_r(k,a)=
-\det\left[\binom{k}{a+i-j}\right]_{0\leq i,j<r}.
-$$
-Its determinant is
-$$
-D_r(k,a)=
-\prod_{j=0}^{r-1}
-\frac{(k+j)!\,j!}{(a+j)!\,(k-a+j)!}.
-$$
-This identity follows from the determinant recurrence
-$$
-D_rD_{r-2}
-=D_{r-1}^2-D_{r-1}(k,a-1)D_{r-1}(k,a+1),
-$$
-because substitution of the displayed product reduces the recurrence to
-$$
-(a+r-1)(k-a+r-1)
-=a(k-a)+(r-1)(k+r-1).
-$$
-The boundary cases $a=0,k$ are triangular with diagonal entries $1$.
+Step 2: Obtain the sparse presentation matrix over $\mathbb F_p[t]$
 
-For a minor used here, the degree restrictions imply
+The ring
 $$
-3(k+r-1)\leq2p-2,
+R[z]/(z^n)
 $$
-so $k+r-1<p$. Every factorial in the product is therefore nonzero in $\mathbb F_p$. Thus the residue-$c$ block has rank
+is free over $R$ with basis
 $$
-\min(n_c(d),n_c(d+3k)).
+1,z,\ldots,z^{n-1}.
 $$
-Consequently
+The quotient by $(t-z)^n$ is therefore presented by the matrix of multiplication by $(t-z)^n$ in this basis.
+
+Since $n=p+2$, characteristic $p$ gives
 $$
-\operatorname{rank}\left(q^k:(A_p)_d\to(A_p)_{d+3k}\right)
+(t-z)^{p+2}
+=(t^p-z^p)(t-z)^2.
+$$
+Modulo $z^{p+2}$ this is
+$$
+t^{p+2}-2t^{p+1}z+t^pz^2-t^2z^p+2tz^{p+1}.
+$$
+
+Let $C(t)=(c_{ij})_{0\leq i,j\leq p+1}$ be the presentation matrix, with column $j$ corresponding to the relation $(t-z)^{p+2}z^j$. If $r=i-j$, then the only nonzero entries occur for
+$$
+r\in\{0,1,2,p,p+1\},
+$$
+and they are
+$$
+c_{ij}=a_rt^{p+2-r},
+$$
+where
+$$
+a_0=1,\qquad
+a_1=-2,\qquad
+a_2=1,\qquad
+a_p=-1,\qquad
+a_{p+1}=2.
+$$
+
+Every invariant factor of $C(t)$ is a power of $t$. Let $\delta_k$ be the exponent of $t$ in the greatest common divisor of all $k\times k$ minors, with $\delta_0=0$. If the Smith exponents are
+$$
+\alpha_1\leq\alpha_2\leq\cdots\leq\alpha_{p+2},
+$$
+then
+$$
+\delta_k=\alpha_1+\cdots+\alpha_k.
+$$
+
+Step 3: Determine the small determinantal divisors by a displacement bound
+
+Take a nonzero term in a $k\times k$ minor, using distinct rows $i_1,\ldots,i_k$ and columns $j_1,\ldots,j_k$. Its $t$-exponent is
+$$
+\sum_{\nu=1}^k\left(p+2-i_\nu+j_\nu\right)
 =
-\sum_{c=0}^2\min(n_c(d),n_c(d+3k)).
+k(p+2)-\sum_{\nu=1}^ki_\nu+\sum_{\nu=1}^kj_\nu.
 $$
+This exponent is independent of the permutation chosen inside the determinant. Thus minimizing the valuation is equivalent to maximizing the total displacement
+$$
+\sum_{\nu=1}^k(i_\nu-j_\nu)
+$$
+among nonsingular coefficient submatrices.
 
-Step 4: Locate the unique failure of global maximal rank
-
-For any integer interval $[A,B]$,
+There is only one edge of displacement $p+1$, namely column $0$ to row $p+1$. The two edges of displacement $p$ are
 $$
-|\{i\in[A,B]:i\equiv c\pmod3\}|
-=
-\left\lfloor\frac{B-c}{3}\right\rfloor
--
-\left\lfloor\frac{A-1-c}{3}\right\rfloor.
-$$
-Substituting the three intervals $E_d$ from Step 2 into this formula shows
-$$
-\sum_{c=0}^2\min(n_c(d),n_c(d+3k))
-=
-\min(h_d,h_{d+3k})
-$$
-except when
-$$
-p\equiv2\pmod3,
+0\to p,
 \qquad
-k=1,
+1\to p+1.
+$$
+A matching containing two long edges must use the latter pair, so their total displacement is at most $2p$. Every remaining edge has displacement at most $2$. Therefore
+$$
+\Delta_1\leq p+1,
+$$
+and, for $k\geq2$,
+$$
+\Delta_k\leq2p+2k-4.
+$$
+
+For $k=1$, the entry in row $p+1$, column $0$ is $2t$, so
+$$
+\delta_1=1.
+$$
+
+For
+$$
+2\leq k\leq p-2,
+$$
+take columns
+$$
+0,1,\ldots,k-1
+$$
+and rows
+$$
+4,5,\ldots,k+1,p,p+1.
+$$
+The rows $p,p+1$ against columns $0,1$ give
+$$
+\begin{pmatrix}
+-1&0\\
+2&-1
+\end{pmatrix},
+$$
+while rows $4,\ldots,k+1$ against columns $2,\ldots,k-1$ form a triangular matrix with diagonal entries $1$. All cross entries between these two blocks vanish. The coefficient determinant is therefore $1$, and the displacement is
+$$
+2p+2k-4.
+$$
+Hence
+$$
+\delta_k
+=k(p+2)-(2p+2k-4)
+=(k-2)p+4
+$$
+for
+$$
+2\leq k\leq p-2.
+$$
+
+Step 4: Determine the four remaining determinantal divisors
+
+For any $k$, distinct row and column indices give the universal displacement bound
+$$
+\Delta_k\leq k(p+2-k),
+$$
+obtained by taking the $k$ largest row indices and the $k$ smallest column indices. Thus
+$$
+\delta_k\geq k^2.
+$$
+
+For
+$$
+k=p-1,p,p+1,p+2,
+$$
+take columns $0,\ldots,k-1$ and rows $p+2-k,\ldots,p+1$. These choices attain displacement $k(p+2-k)$. It remains to prove that their coefficient matrices are nonsingular.
+
+For $k=p-1$, suppose the selected coefficient matrix kills
+$$
+(c_0,\ldots,c_{p-2})^T.
+$$
+The interior rows give
+$$
+c_r-2c_{r-1}+c_{r-2}=0
+\qquad(3\leq r\leq p-2),
+$$
+while the last three rows give
+$$
+-2c_{p-2}+c_{p-3}=0,
+$$
+$$
+c_{p-2}-c_0=0,
+$$
+$$
+2c_0-c_1=0.
+$$
+Let $d=c_2-c_1$. The recurrence gives
+$$
+c_r=c_1+(r-1)d
+\qquad(1\leq r\leq p-2).
+$$
+The first and third boundary equations yield
+$$
+c_1=2d,
 \qquad
-d=p-2.
+c_1=2c_0,
 $$
+so $d=c_0$. The middle boundary equation becomes
+$$
+-2c_0=0.
+$$
+Thus all $c_r$ vanish.
 
-The exceptional count can be seen directly. Write $p=3m+2$. Then
+For $k=p$, the interior equations imply
 $$
-E_{p-2}=\{0,\ldots,3m\},
+c_r=c_0+r(c_1-c_0).
 $$
-whose residue counts are
+The last two rows reduce successively to
 $$
-(m+1,m,m),
-$$
-while
-$$
-E_{p+1}=\{1,\ldots,3m+2\},
-$$
-whose residue counts are
-$$
-(m,m+1,m+1).
-$$
-Their componentwise minima sum to
-$$
-3m=p-2,
-$$
-whereas
-$$
-\min(h_{p-2},h_{p+1})=p-1.
-$$
-The rank therefore drops by exactly $1$.
-
-If $p=3m+1$, the corresponding source interval is
-$$
-E_{p-2}=\{0,\ldots,3m-1\},
-$$
-with residue counts $(m,m,m)$, so no loss occurs. For $k\geq2$, or whenever $d+3k\neq p+1$, substitution in the interval-count formula gives componentwise enough target or source entries in every residue class, so the rank is the global minimum.
-
-Thus every homogeneous power has maximal rank except for this single rank-one defect when $e=0$.
-
-Step 5: Reconstruct the Jordan blocks from the rank profile
-
-Ignore the exceptional defect for a moment. Since multiplication raises degree by $3$, group the Hilbert function from Step 2 by degrees modulo $3$. Each of the three sampled sequences is unimodal. Maximal rank means that the Jordan chains are the horizontal level intervals of these three sequences.
-
-If $p=3m+1$, then $e=1$ and $L=2m+1$. Counting horizontal levels gives
-$$
-b_1=7,
+-2c_0=0,
 \qquad
-b_2=5,
+-2c_1=0.
+$$
+Hence this matrix is nonsingular.
+
+For $k=p+1$, the first row gives $c_1=2c_0$, and the interior recurrence gives
+$$
+c_r=(r+1)c_0
+\qquad(0\leq r\leq p-1).
+$$
+The row indexed by $p$ gives
+$$
+c_p=2c_0,
+$$
+and the final row gives
+$$
+-4c_0=0.
+$$
+Since $p\geq5$, all coefficients vanish.
+
+For $k=p+2$, the full coefficient matrix is triangular with diagonal entries $1$.
+
+Thus the selected minors are nonzero, so
+$$
+\delta_k=k^2
+\qquad(p-1\leq k\leq p+2).
+$$
+
+Step 5: Read the Smith exponents and Jordan blocks
+
+From Steps 3 and 4,
+$$
+\delta_1=1,
 $$
 $$
-b_{2j+1}=5
-\qquad(1\leq j\leq m-1),
-$$
-$$
-b_{2j}=4
-\qquad(2\leq j\leq m),
+\delta_k=(k-2)p+4
+\qquad(2\leq k\leq p-2),
 $$
 and
 $$
-b_L=1.
+\delta_k=k^2
+\qquad(p-1\leq k\leq p+2).
 $$
-
-If $p=3m+2$, then $e=0$ and again $L=2m+1$. Before the exceptional correction, the same level count gives
+Therefore
 $$
-b_1=7,
+\alpha_k=\delta_k-\delta_{k-1}
+$$
+gives
+$$
+\alpha_1=1,
 \qquad
-b_2=5,
+\alpha_2=3,
 $$
-the intermediate odd multiplicities $5$, the intermediate even multiplicities $4$, and
 $$
-b_L=4.
+\alpha_k=p
+\qquad(3\leq k\leq p-2),
+$$
+followed by
+$$
+\alpha_{p-1}=2p-3,
+$$
+$$
+\alpha_p=2p-1,
+$$
+$$
+\alpha_{p+1}=2p+1,
+$$
+$$
+\alpha_{p+2}=2p+3.
 $$
 
-Let
+The Smith decomposition is therefore
 $$
-R_k=\operatorname{rank}(N_q^k).
+B_p\cong
+\frac{R}{(t)}
+\oplus
+\frac{R}{(t^3)}
+\oplus
+\left(\frac{R}{(t^p)}\right)^{p-4}
+\oplus
+\frac{R}{(t^{2p-3})}
+\oplus
+\frac{R}{(t^{2p-1})}
+\oplus
+\frac{R}{(t^{2p+1})}
+\oplus
+\frac{R}{(t^{2p+3})}.
 $$
-For a nilpotent operator,
-$$
-b_r=R_{r-1}-2R_r+R_{r+1}.
-$$
-Step 4 changes only $R_1$, decreasing it by $1$ when $e=0$. Therefore only $b_1$ and $b_2$ change:
-$$
-b_1=9,
-\qquad
-b_2=4
-$$
-when $e=0$.
-
-Since $L$ is odd,
-$$
-\frac{1-t^{L-3}}{1-t^2}
-=1+t^2+\cdots+t^{L-5},
-$$
-with value $0$ when $L=3$. Combining all multiplicities gives
+On $R/(t^m)$, multiplication by $t$ is one nilpotent Jordan block of size $m$. Step 1 showed that multiplication by $x$ has the same block sizes. Hence
 $$
 \mathcal J_p(t)
-=(4-3e)t^L
-+(4t^4+5t^3)\frac{1-t^{L-3}}{1-t^2}
-+(4+e)t^2
-+(9-2e)t.
+=
+t^{2p+3}+t^{2p+1}+t^{2p-1}+t^{2p-3}
++(p-4)t^p+t^3+t.
 $$
-The weighted sum of the block sizes is $p^2+4$, agreeing with Step 2.
 
-Final Answer: $\boxed{(4-3e)t^L+(4t^4+5t^3)\frac{1-t^{L-3}}{1-t^2}+(4+e)t^2+(9-2e)t}$
+Final Answer: $\boxed{t^{2p+3}+t^{2p+1}+t^{2p-1}+t^{2p-3}+(p-4)t^p+t^3+t}$
 
 ---
 
 ## Answer
 
-$(4-3e)t^L+(4t^4+5t^3)\frac{1-t^{L-3}}{1-t^2}+(4+e)t^2+(9-2e)t$
+$t^{2p+3}+t^{2p+1}+t^{2p-1}+t^{2p-3}+(p-4)t^p+t^3+t$
 
 ---
 
@@ -307,7 +347,7 @@ $(4-3e)t^L+(4t^4+5t^3)\frac{1-t^{L-3}}{1-t^2}+(4+e)t^2+(9-2e)t$
 ## Solution Concepts
 
 - polynomial coordinate changes
-- monomial quotient bases
-- residue-class decomposition
-- binomial determinant minors
-- nilpotent Jordan reconstruction
+- module presentation matrices
+- determinantal divisors
+- Smith normal form
+- nilpotent Jordan blocks

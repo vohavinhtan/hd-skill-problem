@@ -2,43 +2,14 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime. Define
+Let $p\geq5$ be a prime, and set
 $$
-e=
-\begin{cases}
-1,&p\equiv1\pmod3,\\
-0,&p\equiv2\pmod3,
-\end{cases}
-$$
-and
-$$
-L=\frac{2p-1+2e}{3}.
+A_p=
+\frac{\mathbb F_p[x,y]}
+{\left((x+y)^{p+2},(x+2y)^{p+2}\right)}.
 $$
 
-Let
-$$
-S=\mathbb F_p[x,y]
-$$
-with the standard grading, and set
-$$
-I_p=\left(x^{p+2},y^{p+2},(x+y)^{p+1},(x+2y)^{p+1}\right).
-$$
-Write
-$$
-A_p=S/I_p.
-$$
-
-Let $q\in A_p$ be the residue class of
-$$
-2x^3+9x^2y+15xy^2+9y^3,
-$$
-and let
-$$
-N_q:A_p\to A_p,
-\qquad
-a\mapsto qa.
-$$
-Since $q$ has positive degree and $A_p$ is finite-dimensional, $N_q$ is nilpotent. For $r\geq1$, let $b_r$ be the number of Jordan blocks of size $r$ in the Jordan form of $N_q$ over $\mathbb F_p$.
+Let $N_p:A_p\to A_p$ be multiplication by the residue class of $x$. For $r\geq1$, let $b_r$ be the number of Jordan blocks of size $r$ in the Jordan form of the nilpotent map $N_p$ over $\mathbb F_p$.
 
 Determine the Jordan-block polynomial
 $$
@@ -61,4 +32,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The problem asks for the nilpotent Jordan structure of multiplication by a cubic element in a finite polynomial quotient. The computation requires finding coordinates that simplify the quotient, decomposing the resulting multiplication matrices into arithmetic residue classes, detecting an exceptional rank loss, and reconstructing the Jordan blocks from the full rank profile.
+This problem asks for the Jordan structure of multiplication by a linear element in a finite polynomial quotient. After a hidden linear change of coordinates, the quotient becomes a truncated complete intersection, but the characteristic lies inside the truncation length and changes the expected Jordan decomposition. Determining the answer requires an exact polynomial-module presentation and its determinantal divisors.
