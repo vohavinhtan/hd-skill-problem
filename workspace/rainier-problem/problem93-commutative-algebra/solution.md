@@ -21,11 +21,15 @@ I_L=(x^\ell-1:\ell\in L).
 $$
 Also
 $$
-J:M_0^\infty=J S[M_0^{-1}]\cap S,
+J:M_0^\infty=J S[M_0^{-1}]\cap S=I_L\cap S,
 $$
-because $g/1$ belongs to the localized ideal exactly when $M_0^r g\in J$ for some $r\geq0$.
+because $g/1$ belongs to the localized ideal exactly when $M_0^r g\in J$ for some $r\geq0$. Hence the natural map
+$$
+\iota:S/(J:M_0^\infty)\longrightarrow S[M_0^{-1}]/I_L
+$$
+has kernel $(I_L\cap S)/(J:M_0^\infty)=0$ and is injective.
 
-We now prove directly that distinct cosets of $L$ give linearly independent Laurent monomial classes. Let
+We now prove directly that the Laurent quotient has one basis vector for each coset of $L$. Let
 $$
 H=\mathbb Z^{V(G_n)}/L
 $$
@@ -33,7 +37,7 @@ and let $\mathbb F_p[H]$ have basis $E_h$ for $h\in H$ with $E_hE_{h'}=E_{h+h'}$
 $$
 \Psi:S[M_0^{-1}]\to\mathbb F_p[H],\qquad \Psi(x^a)=E_{[a]}.
 $$
-Certainly $I_L\subseteq\ker\Psi$. If $F=\sum_a c_ax^a\in\ker\Psi$, group its terms by cosets $C$ of $L$ and choose $a_C\in C$. The coefficient of $E_C$ is $\sum_{a\in C}c_a=0$, so
+Certainly $I_L\subseteq\ker\Psi$. If $F=\sum_a c_ax^a\in\ker\Psi$, group its finitely many terms by cosets $C$ of $L$ and choose $a_C\in C$. The coefficient of $E_C$ is $\sum_{a\in C}c_a=0$, so
 $$
 \sum_{a\in C}c_ax^a
 =\sum_{a\in C\setminus\{a_C\}}c_a(x^a-x^{a_C}).
@@ -42,11 +46,13 @@ Since $a-a_C\in L$,
 $$
 x^a-x^{a_C}=x^{a_C}(x^{a-a_C}-1)\in I_L.
 $$
-Thus $\ker\Psi=I_L$. Hence the Laurent quotient has basis $\{E_h:h\in H\}$, and
+Thus $\ker\Psi=I_L$, so $S[M_0^{-1}]/I_L\cong\mathbb F_p[H]$ with basis $\{E_h:h\in H\}$.
+
+Put $R_n=S/(J:M_0^\infty)$. If monomials $x^a,x^b\in S$ satisfy $a-b\in L$, then
 $$
-R_n:=S/(J:M_0^\infty)
+x^a-x^b=x^b(x^{a-b}-1)\in I_L\cap S=J:M_0^\infty,
 $$
-injects into it. Therefore two monomials of $S$ have the same image in $R_n$ exactly when their exponent difference lies in $L$, and distinct classes are linearly independent.
+so they are equal in $R_n$. Conversely, if they are equal in $R_n$, injectivity of $\iota$ gives $E_{[a]}=E_{[b]}$, hence $a-b\in L$. Any linear relation in $R_n$ among monomials from distinct cosets would inject to a relation among distinct basis vectors $E_h$, so these classes are linearly independent.
 
 It remains to compute $H$. Put $a_0=a_n=b_0=b_n=c_0=c_n=o$. On the $a$-cycle,
 $$
@@ -129,24 +135,43 @@ f(x+j,y,z)+f(x,y+j,z)&=2f(x,y,z).
 \end{aligned}
 $$
 
-Let $s=(X,Y,Z)$. It occurs in the $r_1$ family exactly when
-$$
-s\in T\quad\text{or}\quad s-(1,0,0)\in T\quad\text{or}\quad s-(0,1,0)\in T,
-$$
-which is equivalent to
-$$
-Z=0\quad\text{or}\quad X\in\{0,1\}\quad\text{or}\quad Y\in\{0,1\}.
-$$
-Similarly, checking the three possible preimages for each family gives
+Let $s=(X,Y,Z)$. For the $r_1$ family, the three possible preimages are
 $$
 \begin{aligned}
-s\in\operatorname{supp}(r_2)
-&\Longleftrightarrow X=0\text{ or }Y\in\{0,1\}\text{ or }Z\in\{0,1\},\\
-s\in\operatorname{supp}(r_3)
-&\Longleftrightarrow Z=0\text{ or }X\in\{0,j\}\text{ or }Y\in\{0,j\}.
+s=t\in T&\Longleftrightarrow X=0\text{ or }Y=0\text{ or }Z=0,\\
+s=t+(1,0,0),\ t\in T&\Longleftrightarrow X=1\text{ or }Y=0\text{ or }Z=0,\\
+s=t+(0,1,0),\ t\in T&\Longleftrightarrow X=0\text{ or }Y=1\text{ or }Z=0.
 \end{aligned}
 $$
-These are equivalences, not only necessary conditions: in the reverse direction, subtract the shift naming the satisfied condition; the resulting preimage has a zero coordinate and hence lies in $T$. Thus the union of the three supports is exactly
+Thus
+$$
+s\in\operatorname{supp}(r_1)\Longleftrightarrow Z=0\text{ or }X\in\{0,1\}\text{ or }Y\in\{0,1\}.
+$$
+For the $r_2$ family,
+$$
+\begin{aligned}
+s=t\in T&\Longleftrightarrow X=0\text{ or }Y=0\text{ or }Z=0,\\
+s=t+(0,1,0),\ t\in T&\Longleftrightarrow X=0\text{ or }Y=1\text{ or }Z=0,\\
+s=t+(0,0,1),\ t\in T&\Longleftrightarrow X=0\text{ or }Y=0\text{ or }Z=1,
+\end{aligned}
+$$
+so
+$$
+s\in\operatorname{supp}(r_2)\Longleftrightarrow X=0\text{ or }Y\in\{0,1\}\text{ or }Z\in\{0,1\}.
+$$
+For the $r_3$ family,
+$$
+\begin{aligned}
+s=t\in T&\Longleftrightarrow X=0\text{ or }Y=0\text{ or }Z=0,\\
+s=t+(j,0,0),\ t\in T&\Longleftrightarrow X=j\text{ or }Y=0\text{ or }Z=0,\\
+s=t+(0,j,0),\ t\in T&\Longleftrightarrow X=0\text{ or }Y=j\text{ or }Z=0,
+\end{aligned}
+$$
+so
+$$
+s\in\operatorname{supp}(r_3)\Longleftrightarrow Z=0\text{ or }X\in\{0,j\}\text{ or }Y\in\{0,j\}.
+$$
+Each line identifies the unique preimage $t$ and tests $t\in T$, so the implications are two-sided. Taking the union of the three supports, a coordinate occurs in at least one dual equation exactly when
 $$
 X\in\{0,1,j\},\qquad\text{or}\qquad
 Y\in\{0,1,j\},\qquad\text{or}\qquad
