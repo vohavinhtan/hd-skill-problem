@@ -8,40 +8,44 @@ n=2^r.
 $$
 Work in the simply typed linear lambda calculus with exchange, no constants, atomic types
 $$
-p_i,\qquad i\in\mathbb Z/n\mathbb Z,
+p,\qquad q_i\quad(i\in\mathbb Z/n\mathbb Z),
 $$
-linear implication $\multimap$, and tensor $\otimes$. There is no weakening or contraction: in every well-typed term each bound variable is used exactly once. Applications and tensor introductions split their contexts disjointly.
+linear implication $\multimap$, and tensor $\otimes$. There is no weakening or contraction: every bound variable is used exactly once, and applications and tensor introductions split their contexts disjointly.
 
 Consider the type
 $$
 \Theta_n=
-(p_0\multimap p_1)\multimap\cdots\multimap
-(p_{n-1}\multimap p_0)\multimap
-p_0\multimap\cdots\multimap p_{n-1}\multimap
-(p_0\otimes\cdots\otimes p_{n-1}),
+(p\multimap p)^n
+\multimap
+(p\multimap q_0)\multimap\cdots\multimap(p\multimap q_{n-1})
+\multimap
+p^n
+\multimap
+(q_0\otimes\cdots\otimes q_{n-1}),
 $$
-with the displayed order fixed.
-
-Let $\mathcal N_n$ be the set of closed beta-eta-long normal inhabitants of $\Theta_n$, identified up to alpha-conversion. Thus every $M\in\mathcal N_n$ is written in the form
+where the notation means that the first $n$ displayed arguments are individually bound variables
 $$
-\lambda f_0\cdots\lambda f_{n-1}
-\lambda x_0\cdots\lambda x_{n-1}.
-\langle M_0,\ldots,M_{n-1}\rangle,
+f_i:p\multimap p,
 $$
-where
+the next $n$ are
 $$
-f_i:p_i\multimap p_{i+1},
+h_i:p\multimap q_i,
+$$
+and the next $n$ are
+$$
+x_i:p,
 \qquad
-x_i:p_i,
-\qquad
-M_i:p_i.
+i\in\mathbb Z/n\mathbb Z,
 $$
+all in increasing index order.
 
-The cyclic group of order $n$ acts on $\mathcal N_n$ by simultaneously adding $1$ modulo $n$ to every subscript and then writing the binders and tensor components again in the displayed order.
+Let $\mathcal N_n$ be the closed beta-eta-long normal inhabitants of $\Theta_n$, identified up to alpha-conversion.
 
-For $M\in\mathcal N_n$, each $x_i$ occurs in exactly one tensor component. Hence there is a permutation of $\mathbb Z/n\mathbb Z$ sending $i$ to the index of the component containing $x_i$.
+The cyclic group of order $n$ acts on $\mathcal N_n$ by adding $1$ modulo $n$ simultaneously to the subscripts of all $f_i,h_i,x_i,q_i$, and then restoring the binders and tensor components to the displayed index order.
 
-Determine the number of cyclic orbits of size exactly $n$ consisting of terms for which this permutation is odd.
+For $M\in\mathcal N_n$, every $x_i$ occurs in exactly one tensor component. Let $\pi_M$ be the permutation of $\mathbb Z/n\mathbb Z$ sending $i$ to the index of that component.
+
+Determine the number of cyclic orbits of size exactly $n$ consisting of terms for which $\pi_M$ is odd.
 
 ## Domain Classification
 
@@ -54,4 +58,4 @@ Determine the number of cyclic orbits of size exactly $n$ consisting of terms fo
 
 ## Domain Explanation
 
-The problem concerns beta-eta-long normal inhabitants in a resource-sensitive type system. Linearity and the atomic typing constraints first force a hidden normal-form decomposition, after which the cyclic action and the parity of the induced variable permutation determine which inhabitants contribute to full orbits.
+The problem concerns long normal forms in a resource-sensitive typed calculus. Linearity first forces a hidden decomposition into a variable permutation and ordered resource chains; the cyclic action then couples those two structures, so full-orbit counting requires a second symmetry analysis.
