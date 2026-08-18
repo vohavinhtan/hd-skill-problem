@@ -1,4 +1,6 @@
-# Problem 96
+# Normalized Math Problem
+
+## LaTeX (Normalized)
 
 Let $p$ be an odd prime, let $n\geq2$, and put
 $$
@@ -37,8 +39,19 @@ $$
 
 Determine $A_n(p)$ exactly as a function of $p$ and $n$.
 
+---
+
 ## Domain Classification
 
-| Domain | Sub-domain | Problem Type | Answer Type |
-|---|---|---|---|
-| Abstract Algebra | Group theory | Exact computation | Exact scalar |
+| Field | Value |
+|---|---|
+| **Domain** | Abstract Algebra |
+| **Sub-domain** | Group theory |
+| **Problem Type** | Exact computation |
+| **Answer Type** | Exact scalar |
+
+---
+
+## Domain Explanation
+
+The problem asks for the number of automorphisms of a two-step nilpotent group that fix its center pointwise and preserve a distinguished subgroup. Its primary structure is group-theoretic because the automorphisms are controlled by the commutator pairing together with subgroup invariance. Symplectic forms and truncated polynomial rings provide tools for analyzing those automorphisms without changing the primary classification.
