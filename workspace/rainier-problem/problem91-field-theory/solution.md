@@ -1,294 +1,264 @@
 ## Steps
 
-Step 1: Recover the reciprocal parametrization of the roots
-
-For every nonzero $z$, induction on the recurrence gives
-$$
-P_r(z+z^{-1})=z^r+z^{-r}.
-$$
-Indeed the identity holds for $r=0,1$, and multiplying the $r$th identity by $z+z^{-1}$ and subtracting the $(r-1)$st gives the $(r+1)$st.
-
-Let $x$ be a root of $F_p$. Choose $z\ne0$ satisfying
-$$
-z+z^{-1}=x.
-$$
-Then
-$$
-z^n+z^{-n}=2t^3.
-$$
-Writing
-$$
-u=z^n
-$$
-gives
-$$
-u^2-2t^3u+1=0.
-$$
-Set
-$$
-s=u-t^3.
-$$
-Then
-$$
-s^2=t^6-1,
-\qquad
-u=t^3+s.
-$$
-
-Conversely, if
-$$
-s^2=t^6-1,
-\qquad
-z^n=t^3+s,
-$$
-then
-$$
-z^{-n}=t^3-s
-$$
-because
-$$
-(t^3+s)(t^3-s)=1.
-$$
-Hence
-$$
-P_n(z+z^{-1})=z^n+z^{-n}=2t^3.
-$$
-
-Thus the roots arise from the two equations
-$$
-s^2=t^6-1,
-\qquad
-z^n=t^3+s.
-$$
-
-Step 2: Compute the genus of the field containing the reciprocal parameters
-
-Put
-$$
-K=\mathbb F_p(t),
-\qquad
-E=K(s),
-\qquad
-M=E(z),
-$$
-where
-$$
-s^2=t^6-1,
-\qquad
-z^n=t^3+s.
-$$
-
-The polynomial $t^6-1$ has six distinct roots because $p\geq7$. The quadratic map from the smooth projective curve of $E$ to the $t$-line is ramified at exactly these six finite places and not at infinity. Riemann-Hurwitz gives
-$$
-2g(E)-2=2(-2)+6=2,
-$$
-so
-$$
-g(E)=2.
-$$
+Step 1: Factor the hidden Frobenius operator
 
 Let
 $$
-f=t^3+s.
+K=\mathbb F_p(t)
 $$
-There are two places of $E$ above infinity, denoted $P_+$ and $P_-$ according as $s/t^3$ tends to $1$ or $-1$. At $P_+$, the function $f$ has a pole of order $3$. Since
+and let $\sigma$ denote Frobenius,
 $$
-f(t^3-s)=1,
+\sigma(x)=x^p.
 $$
-it has a zero of order $3$ at $P_-$ and no other zeros or poles. Therefore
+Dividing $F_p$ by the nonzero element $q^p$ shows that its roots are the kernel of
 $$
-\operatorname{div}(f)=3P_--3P_+.
+\sigma^2-(q+q^{-p})\sigma+1.
 $$
-
-The class of $f$ in $E^\times/E^{\times n}$ has order exactly $n$. To see this, suppose
+In the skew action on elements of an extension field,
 $$
-f^d=h^n
+(\sigma-q)(\sigma-q^{-1})x
+=x^{p^2}-(q+q^{-p})x^p+x.
 $$
-with $0<d<n$. Comparing valuations at $P_+$ gives
+Thus
 $$
-n\mid3d.
+F_p(x)=0
 $$
-If $3\nmid n$, this forces $n\mid d$, impossible. If $3\mid n$, the only possibilities below $n$ are
+is equivalent to
 $$
-d=\frac n3
-\qquad\text{or}\qquad
-d=\frac{2n}{3}.
-$$
-They would make either $P_--P_+$ or $2(P_--P_+)$ principal. Since $3(P_--P_+)$ is principal, either possibility would make $P_--P_+$ principal. A function with divisor $P_--P_+$ would define a degree-one map from the genus-two curve of $E$ to the projective line, which is impossible.
-
-Since $n\mid p-1$, all $n$th roots of unity lie in $\mathbb F_p$. Hence
-$$
-[M:E]=n.
+(\sigma-q)(\sigma-q^{-1})x=0.
 $$
 
-Step 3: Determine the ramification and genus of $M$
-
-Put
+Choose $u$ satisfying
 $$
-g=\gcd(n,3).
+u^{p-1}=q.
 $$
-The extension $M/E$ is tame because $p\nmid n$. At a place where $f$ has valuation $m$, the ramification index in
+Then
 $$
-z^n=f
+u^p=qu,
+\qquad
+(u^{-1})^p=q^{-1}u^{-1}.
 $$
-is
+The polynomial $U^{p-1}-q$ is irreducible over $K$: if its degree were smaller, $q$ would be an $\ell$th power in $K$ for some prime $\ell\mid p-1$, contradicting
 $$
-\frac{n}{\gcd(n,m)}.
-$$
-Indeed the valuation equation
-$$
-n\,v_Q(z)=e_Qm
-$$
-shows that $n/\gcd(n,m)$ divides $e_Q$, while adjoining an $n$th root after removing the common divisor realizes that index.
-
-Thus only $P_+$ and $P_-$ ramify, both with index
-$$
-\frac ng.
-$$
-Over either place there are $g$ geometric points, so its total different contribution is
-$$
-g\left(\frac ng-1\right)=n-g.
-$$
-Riemann-Hurwitz for $M/E$ therefore gives
-$$
-2g(M)-2=n(2g(E)-2)+2(n-g).
-$$
-Using $g(E)=2$ from Step 2,
-$$
-2g(M)-2=2n+2n-2g=4n-2g.
+v_{t=0}(q)=1.
 $$
 Hence
 $$
-g(M)=2n-g+1.
+E=K(u)
+$$
+has degree $p-1$ over $K$.
+
+Step 2: Reconstruct the full splitting field
+
+Choose $z$ satisfying
+$$
+z^p-z=u^{p+1}.
+$$
+For $c,d\in\mathbb F_p$, set
+$$
+x_{c,d}=u^{-1}(cz+d).
+$$
+Using Step 1,
+$$
+(\sigma-q^{-1})x_{c,d}
+=q^{-1}u^{-1}c(z^p-z)
+=cu.
+$$
+Since
+$$
+(\sigma-q)(cu)=cu^p-qcu=0,
+$$
+every $x_{c,d}$ is a root of $F_p$.
+
+These $p^2$ roots are distinct. Indeed,
+$$
+x_{c,d}=x_{c',d'}
+$$
+would give
+$$
+(c-c')z=d'-d.
+$$
+If $c\ne c'$, then $z\in\mathbb F_p$, contradicting
+$$
+z^p-z=u^{p+1}\ne0;
+$$
+if $c=c'$, then $d=d'$.
+
+The normalized polynomial has degree $p^2$, so these are all its roots. Therefore its splitting field is contained in
+$$
+E(z)=\mathbb F_p(t,u,z).
+$$
+Conversely, the splitting field contains
+$$
+x_{0,1}=u^{-1},
+$$
+so it contains $u$, and it also contains
+$$
+x_{1,0}=u^{-1}z,
+$$
+so it contains $z$. Hence
+$$
+L_p=E(z).
 $$
 
-Step 4: Identify the actual splitting field inside $M$
+Step 3: Compute the genus and the divisor of $u$ in $E$
 
-Choose $\zeta\in\mathbb F_p$ of order $n$. The $n$ elements
+Put
 $$
-x_k=\zeta^kz+\zeta^{-k}z^{-1},
-\qquad
-0\leq k<n,
+n=p-1.
 $$
-satisfy
+The Kummer equation
 $$
-P_n(x_k)=z^n+z^{-n}=2t^3.
+u^n=t(t-1)
 $$
-They are distinct. If $x_i=x_j$, then
-$$
-\zeta^iz=\zeta^jz
-$$
-or
-$$
-\zeta^{i+j}z^2=1.
-$$
-The first gives $i=j$, while the second would make $z^{2n}$ constant, contrary to
-$$
-z^{2n}=(t^3+s)^2.
-$$
-Since $P_n$ has degree $n$, these are all roots of $F_p$.
+defines a degree-$n$ cover of the rational $t$-line.
 
-Define an automorphism of $M$ by
+The divisor of $t(t-1)$ on $K$ has valuations
 $$
-\tau(t)=t,\qquad \tau(s)=-s,\qquad \tau(z)=z^{-1}.
+1,\qquad1,\qquad-2
 $$
-It is well defined because
+at $t=0$, $t=1$, and infinity. Since $p$ is odd,
 $$
-(z^{-1})^n=t^3-s.
+\gcd(n,2)=2.
 $$
-Moreover
+Thus the two finite places are totally ramified, while infinity has ramification index $n/2$ and splits into two places. The tame different contributions are
 $$
-\tau(x_k)=x_k
+n-1,\qquad n-1,\qquad n-2.
 $$
-for every $k$. Hence the splitting field $L_p$ is contained in $M^{\langle\tau\rangle}$.
-
-Conversely,
+Riemann-Hurwitz gives
 $$
-x_0=z+z^{-1}\in L_p,
-$$
-so $z$ satisfies
-$$
-Z^2-x_0Z+1=0
-$$
-over $L_p$. Also
-$$
-s=z^n-t^3.
+2g(E)-2=-2n+(n-1)+(n-1)+(n-2)=n-4.
 $$
 Therefore
 $$
-M=L_p(z)
+g(E)=\frac{p-3}{2}.
+$$
+
+Let $P_0,P_1$ be the places above $t=0,1$, and let $P_\infty^+,P_\infty^-$ be the two places above infinity. From
+$$
+u^n=t(t-1)
+$$
+and the ramification indices just found,
+$$
+v_{P_0}(u)=v_{P_1}(u)=1,
 $$
 and
 $$
-[M:L_p]\leq2.
+v_{P_\infty^+}(u)=v_{P_\infty^-}(u)=-1.
 $$
-The automorphism $\tau$ is nontrivial and fixes $L_p$, so
+Hence
 $$
-[M:L_p]=2,
+\operatorname{div}(u)=P_0+P_1-P_\infty^+-P_\infty^-.
+$$
+
+Step 4: Determine the Artin-Schreier different
+
+By Step 2,
+$$
+L_p=E(z),
 \qquad
-L_p=M^{\langle\tau\rangle}.
+z^p-z=u^{p+1}.
 $$
+The right side has poles only at
+$$
+P_\infty^+,\qquad P_\infty^-,
+$$
+and at either one the pole order is
+$$
+p+1.
+$$
+Since $p\nmid p+1$, the Artin-Schreier equation cannot be reduced to an element without a pole there. In particular,
+$$
+[L_p:E]=p,
+$$
+and each of these two places is totally ramified.
 
-Step 5: Count the fixed points of the involution and compute the genus
+Fix one of them and put
+$$
+\pi=u^{-1}.
+$$
+Then $\pi$ is a local uniformizer in $E$, and locally
+$$
+z^p-z=\pi^{-(p+1)}.
+$$
+Normalize the extended valuation so that
+$$
+v(\pi)=p.
+$$
+The equation then forces
+$$
+v(z)=-(p+1).
+$$
+Since
+$$
+p^2-(p-1)(p+1)=1,
+$$
+the element
+$$
+\theta=\pi^p z^{p-1}
+$$
+is a uniformizer of the completed field.
 
-A geometric point of $M$ fixed by $\tau$ must lie above a point of $E$ fixed by
+Every nontrivial local Galois automorphism has the form
 $$
-s\mapsto-s.
-$$
-The two places at infinity are exchanged, while the finite fixed points are exactly
-$$
-s=0,
+\tau_c(z)=z+c,
 \qquad
-t^6=1.
-$$
-There are six of them.
-
-At such a point,
-$$
-z^n=t^3\in\{1,-1\},
-$$
-and $M/E$ is unramified there. A point above it is fixed by $\tau$ exactly when
-$$
-z=z^{-1},
-$$
-so $z=\pm1$.
-
-If $n$ is odd, each of the three points with $t^3=1$ has the fixed lift $z=1$, and each of the three with $t^3=-1$ has the fixed lift $z=-1$. If $n$ is even, each point with $t^3=1$ has the two fixed lifts $z=\pm1$, while the points with $t^3=-1$ have none. In either case $\tau$ has exactly
-$$
-6
-$$
-fixed geometric points.
-
-Since $p$ is odd, the quadratic extension $M/L_p$ is tame, and these six fixed points are exactly its ramified points. Riemann-Hurwitz gives
-$$
-2g(M)-2=2(2g(L_p)-2)+6.
-$$
-Using Step 3,
-$$
-4n-2g=4g(L_p)+2.
+c\in\mathbb F_p^\times.
 $$
 Therefore
 $$
-g(L_p)=\frac{2n-g-1}{2}.
+\tau_c(\theta)-\theta
+=\pi^p\left((z+c)^{p-1}-z^{p-1}\right).
 $$
-Finally,
+The highest power surviving in the difference is $z^{p-2}$, with coefficient
 $$
-n=\frac{p-1}{2},
-\qquad
-g=\gcd\left(\frac{p-1}{2},3\right),
+(p-1)c=-c\ne0.
 $$
-so
+All lower powers have larger valuation, so
 $$
-g(L_p)=\frac{p-2-\gcd((p-1)/2,3)}{2}.
+v(\tau_c(\theta)-\theta)
+=p^2-(p-2)(p+1)=p+2.
+$$
+Summing over the $p-1$ nontrivial automorphisms, the local different exponent is
+$$
+(p-1)(p+2).
+$$
+There are two such ramified places, so
+$$
+\deg\operatorname{Diff}(L_p/E)=2(p-1)(p+2).
 $$
 
-Final Answer: $\boxed{\frac{p-2-\gcd((p-1)/2,3)}{2}}$
+Step 5: Apply Riemann-Hurwitz to the Artin-Schreier extension
+
+Using Step 3,
+$$
+2g(E)-2=p-5.
+$$
+Using Step 4 and $[L_p:E]=p$, Riemann-Hurwitz gives
+$$
+2g(L_p)-2
+=p(p-5)+2(p-1)(p+2).
+$$
+The right side simplifies to
+$$
+3p^2-3p-4.
+$$
+Therefore
+$$
+2g(L_p)=3p^2-3p-2,
+$$
+and
+$$
+g(L_p)=\frac{3p^2-3p-2}{2}.
+$$
+
+Final Answer: $\boxed{\frac{3p^2-3p-2}{2}}$
 
 ---
 
 ## Answer
 
-$\frac{p-2-\gcd((p-1)/2,3)}{2}$
+$\frac{3p^2-3p-2}{2}$
 
 ---
 
@@ -302,8 +272,8 @@ $\frac{p-2-\gcd((p-1)/2,3)}{2}$
 
 ## Solution Concepts
 
-- finite function fields
-- reciprocal parametrization
+- semilinear Frobenius operators
 - Kummer extensions
-- ramification of involutions
+- Artin-Schreier extensions
+- local different exponents
 - Riemann-Hurwitz
