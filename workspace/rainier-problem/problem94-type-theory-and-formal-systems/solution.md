@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Recover the hidden binary forest
+Step 1: Reconstruct the normal inhabitants as labeled plane forests
 
 Every inhabitant has the form
 $$
@@ -10,44 +10,35 @@ $$
 \lambda y_0\cdots\lambda y_{n-1}.
 \langle M_0,\ldots,M_{n-1}\rangle.
 $$
-
 Since $M_i$ has atomic type $q_i$, its head must be the unique variable
 $$
 h_i:p\multimap q_i.
 $$
-Hence
+So
 $$
 M_i=h_iN_i
 $$
-for some normal term $N_i:p$.
+for a normal term $N_i:p$.
 
-An atomic normal term of type $p$ is either one of the variables $x_j,y_j$, or has the form
+A beta-normal term of atomic type $p$ is either one of the variables $x_j,y_j$, or has the form
 $$
 b_jUV
 $$
-with $U,V:p$. Thus each $N_i$ is a plane full binary tree whose leaves are labeled by $x_j,y_j$ and whose internal vertices are labeled by $b_j$.
+with $U,V:p$. Recursing through this description shows that each $N_i$ is a plane full binary tree: its leaves are labeled by variables $x_j,y_j$, and its internal vertices are labeled by variables $b_j$. The two arguments of each $b_j$ determine the left and right children.
 
-Linearity says that across the ordered $n$-tuple
+Linearity forces every $b_j,x_j,y_j$ to occur exactly once across the ordered tuple
 $$
-(N_0,\ldots,N_{n-1})
+(N_0,\ldots,N_{n-1}).
 $$
-every one of the $n$ labels $b_j$ and all $2n$ labels $x_j,y_j$ occur exactly once.
+Conversely, any ordered plane full binary forest with $n$ roots, $n$ internal vertices labeled bijectively by the $b_j$, and $2n$ leaves labeled bijectively by the $x_j,y_j$ determines a unique long normal inhabitant. This gives a bijection between $\mathcal N_n$ and these labeled forests.
 
-Therefore $\mathcal N_n$ is precisely the set of ordered plane full binary forests with
+Step 2: Count all labeled forests
 
-$$
-n\text{ roots},\qquad n\text{ internal vertices},\qquad2n\text{ leaves},
-$$
-
-together with bijective labelings of the internal vertices by the $b_j$ and of the leaves by the $x_j,y_j$.
-
-Step 2: Count the underlying forest shapes
-
-Let $C(z)$ be the generating series for plane full binary trees, where $z$ records internal vertices. A tree is either a leaf or an internal vertex with two ordered subtrees, so
+Let $C(z)$ be the generating series for plane full binary trees, where $z$ marks internal vertices. A tree is either a leaf or an internal vertex with two ordered subtrees, so
 $$
 C(z)=1+zC(z)^2.
 $$
-Put
+Set
 $$
 D(z)=C(z)-1.
 $$
@@ -56,140 +47,113 @@ $$
 D=z(1+D)^2.
 $$
 
-An ordered forest of $n$ trees is counted by $C(z)^n=(1+D)^n$. Formal coefficient extraction from
+An ordered forest with $n$ roots is counted by $C(z)^n=(1+D)^n$. For the equation $D=z(1+D)^2$, the Lagrange coefficient identity applied to $F(u)=(1+u)^n$ gives
 $$
-D=z(1+D)^2
-$$
-gives
-$$
-[z^n](1+D)^n
+[z^n]F(D)
 =
-\frac{n}{n}[u^{n-1}](1+u)^{n-1}(1+u)^{2n}.
+\frac1n[u^{n-1}]F'(u)(1+u)^{2n}.
 $$
-Hence the number of forest shapes is
+Since
 $$
+F'(u)=n(1+u)^{n-1},
+$$
+we get
+$$
+[z^n]C(z)^n
+=
+[u^{n-1}](1+u)^{3n-1}
+=
 \binom{3n-1}{n-1}
 =
 \frac13\binom{3n}{n}.
 $$
 
-After labeling the $n$ internal vertices and $2n$ leaves, the total number of inhabitants is therefore
+After choosing the shape, the $n$ internal vertices can be labeled in $n!$ ways and the $2n$ leaves in $(2n)!$ ways. This yields
 $$
+|\mathcal N_n|
+=
 \frac13\binom{3n}{n}n!(2n)!
 =
 \frac{(3n)!}{3}.
 $$
 
-Step 3: Reduce every short cyclic orbit to one involution
+Step 3: Reduce all non-full orbits to the half-turn
 
-Let $c$ denote the generator of the cyclic relabeling action. Since
+Let $c$ be the generator of the cyclic relabeling action. Because
 $$
 n=2^r,
 $$
-every nontrivial subgroup of $\langle c\rangle$ contains its unique element of order $2$,
+every nontrivial subgroup of the cyclic group $\langle c\rangle$ contains its unique element of order $2$,
 $$
 h=c^{n/2}.
 $$
-
-Thus an inhabitant has orbit smaller than $n$ if and only if it is fixed by $h$.
+An inhabitant has orbit smaller than $n$ exactly when its stabilizer is nontrivial, which is equivalent to being fixed by $h$.
 
 Put
 $$
 m=\frac n2.
 $$
-The half-turn pairs the tensor components as
+The half-turn pairs tensor components by
 $$
-i\longleftrightarrow i+m.
+i\longleftrightarrow i+m,
 $$
-It also pairs the internal labels
+pairs internal labels by
 $$
-b_i\longleftrightarrow b_{i+m}
+b_i\longleftrightarrow b_{i+m},
 $$
-and separately pairs the leaf labels
+and pairs leaf labels separately by
 $$
 x_i\longleftrightarrow x_{i+m},
 \qquad
 y_i\longleftrightarrow y_{i+m}.
 $$
 
-Step 4: Reconstruct a half-turn-fixed inhabitant from one half
+Step 4: Count the inhabitants fixed by the half-turn
 
-If an inhabitant is fixed by $h$, then the tree in component $i+m$ is obtained from the tree in component $i$ by applying the half-turn to every label. In particular, paired components have the same unlabeled shape.
+If an inhabitant is fixed by $h$, the tree in component $i+m$ is obtained from the tree in component $i$ by applying $h$ to every label. The first $m$ components determine the second $m$ components.
 
-The first $m$ components therefore form an ordered full binary forest. Since the complete forest has $n=2m$ internal vertices, the first half has exactly $m$ internal vertices. An ordered forest with $m$ roots and $m$ internal vertices has
-$$
-2m=n
-$$
-leaves.
-
-By Step 2 with $m$ in place of $n$, the number of possible first-half shapes is
+The first half contains exactly one member of each of the $m$ internal-label pairs, so it has $m$ internal vertices. A full binary forest with $m$ roots and $m$ internal vertices has $2m$ leaves. By the calculation in Step 2 with $m$ in place of $n$, the number of first-half forest shapes is
 $$
 \frac13\binom{3m}{m}.
 $$
 
-There are $m$ pairs of internal labels. Exactly one member of each pair occurs in the first half, giving
-$$
-2^m
-$$
-choices, followed by
-$$
-m!
-$$
-ways to place the chosen labels on the internal vertices.
+For the internal labels, choose one member from each pair in $2^m$ ways, then assign the chosen labels to the $m$ internal vertices in $m!$ ways.
 
-There are $m$ pairs among the $x$-labels and $m$ pairs among the $y$-labels, hence $2m=n$ leaf-label pairs altogether. Choosing one member from each pair gives
-$$
-2^{2m}
-$$
-choices, followed by
-$$
-(2m)!
-$$
-bijections onto the first-half leaves.
+The $x$-labels give $m$ pairs and the $y$-labels give another $m$ pairs. Choose one member from each of these $2m$ pairs in $2^{2m}$ ways, then assign the chosen labels to the $2m$ leaves in $(2m)!$ ways. Once these choices are made, the second half is forced.
 
-The second half is then forced.
-
-Step 5: Count all short-orbit inhabitants
-
-The number fixed by the half-turn is
+The number of half-turn-fixed inhabitants is
 $$
-\frac13\binom{3m}{m}
-2^{3m}m!(2m)!.
-$$
-Since
-$$
-\binom{3m}{m}m!(2m)!=(3m)!,
-$$
-this becomes
-$$
+\frac13\binom{3m}{m}2^{3m}m!(2m)!
+=
 \frac{2^{3m}(3m)!}{3}.
 $$
-
-Substituting $m=n/2$, the number of inhabitants lying in non-full cyclic orbits is
+Since $m=n/2$, this is
 $$
 \frac{2^{3n/2}(3n/2)!}{3}.
 $$
 
-No inclusion-exclusion over smaller periods is needed: for a cyclic group of order $2^r$, the union of all nontrivial stabilizers is exactly the fixed set of the half-turn.
+Step 5: Count the full cyclic orbits
 
-Step 6: Remove the short orbits
-
-The number of inhabitants with full orbit size $n$ is
+Step 3 shows that the inhabitants in non-full orbits are exactly those counted in Step 4. The number with orbit size $n$ is therefore
 $$
 \frac{(3n)!}{3}
 -
 \frac{2^{3n/2}(3n/2)!}{3}.
 $$
-Every such orbit contains exactly $n$ inhabitants. Therefore the number of full cyclic orbits is
+Every full orbit contains exactly $n$ inhabitants, so the required number of orbits is
 $$
 \frac{(3n)!-2^{3n/2}(3n/2)!}{3n}.
 $$
 
 Final Answer: $\boxed{\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}}$
 
+---
+
 ## Answer
 
 $\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}$
+
+---
 
 ## Classification
 
@@ -199,6 +163,8 @@ $\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}$
 | **Sub-domain** | Type theory and formal systems |
 | **Problem Type** | Exact computation |
 | **Answer Type** | Exact scalar |
+
+---
 
 ## Solution Concepts
 
