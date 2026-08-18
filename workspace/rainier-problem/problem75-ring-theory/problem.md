@@ -12,20 +12,22 @@ $$
 $$
 by
 $$
-\Psi_{n,\lambda}(X)=t^7,
+\Psi_{n,\lambda}(X)=t^8,
 $$
 $$
 \Psi_{n,\lambda}(Y)
-=(\lambda-1)t^{14n+2}
-+\lambda(\lambda-1)t^{14n+5},
+=(\lambda-1)t^{8n+4}
++(\lambda-1)t^{8n+6}
++(\lambda^2-\lambda)t^{8n+7},
 $$
 $$
 \Psi_{n,\lambda}(Z)
-=(\lambda-1)t^{14n+2}
-+(\lambda-1)(\lambda^3-1)t^{14n+5},
+=(\lambda-1)t^{8n+4}
++(\lambda^4-\lambda^3-\lambda^2+3\lambda-2)t^{8n+6}
++(\lambda^5-\lambda^4-\lambda^3+3\lambda^2-2\lambda)t^{8n+7},
 $$
 $$
-\Psi_{n,\lambda}(W)=t^{28n+4}.
+\Psi_{n,\lambda}(W)=t^{72n+9}.
 $$
 Let
 $$
@@ -72,4 +74,4 @@ in closed form as a function of $n$.
 
 ## Domain Explanation
 
-This problem concerns conductor ideals of complete local subrings of a discrete valuation ring. The parameter changes the valuation structure of the image ring, while numerical semigroups encode the conductor once the relevant monomials have been recovered.
+This problem concerns conductor ideals of complete local subrings of a discrete valuation ring. The parameter controls a hidden rank drop among nonmonomial generators, and the exceptional stratum develops two successive new valuations through cancellation. Determining the conductor requires proving that these approximate-root cancellations close rather than merely guessing a numerical semigroup from the initial orders.
