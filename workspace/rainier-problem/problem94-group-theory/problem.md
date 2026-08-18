@@ -4,26 +4,29 @@
 
 Fix an odd prime $p$ and an integer $n\geq2$. Put
 $$
-q=p^n,\qquad K=\mathbb{F}_q,\qquad R=K[t]/(t^3).
+q=p^n,\qquad K=\mathbb{F}_q,\qquad R_3=K[t]/(t^3),\qquad R_2=K[t]/(t^2).
 $$
-For
-$$
-r=r_0+r_1t+r_2t^2\in R,
-$$
-write $[r]_j=r_j$.
+For $r\in R_m$, write $[r]_j$ for the coefficient of $t^j$.
 
-For $u=(x_1,x_2)$ and $v=(y_1,y_2)$ in $R^2$, put
+Let
 $$
-\det_R(u,v)=x_1y_2-x_2y_1
+V=R_3^2\oplus R_2^2.
 $$
-and
+For $u=(x,z)$ and $v=(y,w)$ in $V$, define
 $$
-\beta(u,v)=\left([\det_R(u,v)]_1,[\det_R(u,v)]_2\right)\in K^2.
+B_1(u,v)=[\det_{R_3}(x,y)]_1+[\det_{R_2}(z,w)]_0,
+$$
+$$
+B_2(u,v)=[\det_{R_3}(x,y)]_2+[\det_{R_2}(z,w)]_1,
+$$
+and put
+$$
+\beta(u,v)=(B_1(u,v),B_2(u,v))\in K^2.
 $$
 
 On
 $$
-G=R^2\times K^2
+G=V\times K^2
 $$
 define
 $$
@@ -34,12 +37,14 @@ $$
 Z=\{(0,a):a\in K^2\}.
 $$
 
-View $Z\cong K^2$ with its natural $K$-vector-space structure. For every $\alpha\in\operatorname{Aut}(G)$ whose restriction to $Z$ is $K$-linear, let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
+For every $\alpha\in\operatorname{Aut}(G)$ that fixes $Z$ pointwise, let $\bar\alpha$ denote the induced $\mathbb{F}_p$-linear automorphism of
 $$
-G/Z\cong R^2.
+G/Z\cong V.
 $$
 
 Determine the number of distinct maps $\bar\alpha$ that occur.
+
+---
 
 ## Domain Classification
 
@@ -50,6 +55,8 @@ Determine the number of distinct maps $\bar\alpha$ that occur.
 | **Problem Type** | Exact computation |
 | **Answer Type** | Exact scalar |
 
+---
+
 ## Domain Explanation
 
-The problem asks for quotient actions of automorphisms of a finite nilpotent group of class two. Its commutator map determines a pencil of alternating forms whose normalizer recovers truncated polynomial substitutions and a determinant restriction, so Group theory is the primary sub-domain.
+The problem counts quotient actions of automorphisms of a finite nilpotent group of class two. The commutator pairing reconstructs a nilpotent module operator with two different Jordan-chain lengths, and the required count is the size of its isometry centralizer.
