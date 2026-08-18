@@ -1,287 +1,203 @@
 ## Steps
 
-Step 1: Factor the Frobenius operator hidden in $L_p$
+Step 1: Recover the fractional Frobenius action on the roots
 
 Let
 $$
 \sigma(\alpha)=\alpha^p.
 $$
-Then
+If $\alpha$ is a root of $F_p$, then $\alpha\ne-1$ and
 $$
-L_p=(\sigma^{p}-1)(\sigma^2-1),
+\alpha^{p^2}=-\frac1{\alpha+1}.
 $$
-because
+Define
 $$
-(\sigma^{p}-1)(\sigma^2-1)
-=\sigma^{p+2}-\sigma^p-\sigma^2+1.
+M(z)=-\frac1{z+1}.
 $$
-In characteristic $p$,
+Thus every root satisfies
 $$
-Z^p-1=(Z-1)^p,
-$$
-so the operator polynomial is
-$$
-R(Z)=(Z-1)^{p+1}(Z+1).
-$$
-Thus
-$$
-L_p=R(\sigma).
+\sigma^2(\alpha)=M(\alpha).
 $$
 
-The associated linearized polynomial is separable because the coefficient of $X$ in $L_p(X)$ is $1$. Its kernel therefore has
+The successive iterates are
 $$
-p^{\deg R}=p^{p+2}
-$$
-elements.
-
-A root $\alpha$ of $F_p$ satisfies
-$$
-L_p(\alpha)^{p+1}=1.
-$$
-Hence the target
-$$
-\lambda=L_p(\alpha)
-$$
-lies in
-$$
-\mu_{p+1}=\{\lambda:\lambda^{p+1}=1\}.
-$$
-Every such $\lambda$ lies in $\mathbb F_{p^2}$ and satisfies
-$$
-\lambda^p=\lambda^{-1}.
-$$
-There are exactly $p+1$ targets.
-
-Step 2: Split the norm-one targets into three Frobenius types
-
-For $\lambda\in\mu_{p+1}$ define
-$$
-a=\frac{\lambda+\lambda^p}{2},
-\qquad
-b=\frac{\lambda-\lambda^p}{2}.
-$$
-Then
-$$
-\sigma(a)=a,
-\qquad
-\sigma(b)=-b,
+M^2(z)=-\frac{z+1}{z},
 $$
 and
 $$
-\lambda=a+b.
+M^3(z)=z.
 $$
+Since $M$ has coefficients in $\mathbb F_p$, it commutes with Frobenius. Therefore
+$$
+\sigma^6(\alpha)=M^3(\alpha)=\alpha.
+$$
+Every root lies in $\mathbb F_{p^6}$.
 
-First, $b=0$ exactly when $\lambda=\lambda^p=\lambda^{-1}$, hence
+Also
 $$
-\lambda^2=1.
+F_p'(X)=X^{p^2}.
 $$
-Thus there are exactly two fixed targets,
+The polynomial $F_p$ has no zero root, so every root is simple. Hence $F_p$ has exactly
 $$
-\lambda=1,-1.
+p^2+1
 $$
-For both, $a\ne0$.
+distinct roots, all in $\mathbb F_{p^6}$.
 
-Next, $a=0$ exactly when
-$$
-\lambda^p=-\lambda.
-$$
-Combining this with $\lambda^p=\lambda^{-1}$ gives
-$$
-\lambda^2=-1.
-$$
-If $p\equiv3\pmod4$, the two roots of $X^2+1$ lie in $\mathbb F_{p^2}\setminus\mathbb F_p$ and satisfy $\lambda^p=-\lambda$, so both belong to $\mu_{p+1}$. If $p\equiv1\pmod4$, the roots lie in $\mathbb F_p$ and have norm $\lambda^2=-1$, so neither belongs to $\mu_{p+1}$.
+Step 2: Count the roots in the degree-one and degree-two subfields
 
-Therefore there are
+Let
 $$
-2e_p
+N_d=\#\{\alpha\in\mathbb F_{p^d}:F_p(\alpha)=0\}.
 $$
-targets with
-$$
-a=0,\qquad b\ne0.
-$$
-The remaining
-$$
-p-1-2e_p
-$$
-targets satisfy
-$$
-a\ne0,\qquad b\ne0.
-$$
+Since all roots lie in $\mathbb F_{p^6}$, only divisors of $6$ need to be considered.
 
-Step 3: Analyze the two primary lifting equations
-
-Put
+If $\alpha\in\mathbb F_p$, then $\sigma^2(\alpha)=\alpha$, so Step 1 gives
 $$
-N=\sigma-1,
-\qquad
-M=\sigma+1.
+M(\alpha)=\alpha.
 $$
-The factors $(Z-1)^{p+1}$ and $Z+1$ are coprime, so every fiber of $R(\sigma)$ splits into its $1$-primary and $(-1)$-primary parts.
-
-Suppose first that the fixed component $a$ is nonzero. On the $1$-primary part, $M$ is invertible, so the lifting equation is equivalent to
+The fixed-point equation is
 $$
-N^{p+1}u=c
+-\frac1{\alpha+1}=\alpha,
 $$
-for a nonzero fixed vector $c$. Any solution has
+or
 $$
-N^{p+1}u\ne0,
-\qquad
-N^{p+2}u=0.
+\alpha^2+\alpha+1=0.
 $$
-Thus its annihilator contains $(Z-1)^{p+2}$ but not $(Z-1)^{p+1}$.
-
-If $n=p^rs$ with $p\nmid s$, then the multiplicity of $Z-1$ in $Z^n-1$ is $p^r$. Since
+Its roots are the two primitive cube roots of unity. They lie in $\mathbb F_p$ exactly when
 $$
-p<p+2\leq p^2,
-$$
-the least $n$ for which $(Z-1)^{p+2}$ divides $Z^n-1$ is
-$$
-p^2.
-$$
-Hence every such $u$ has exact Frobenius period $p^2$. The solution set is a coset of $\ker N^{p+1}$ and therefore has
-$$
-p^{p+1}
-$$
-elements.
-
-If instead $a=0$, the $1$-primary component is any element of $\ker N^{p+1}$. Exactly
-$$
-p^p
-$$
-of these lie in $\ker N^p$ and have period dividing $p$. The remaining
-$$
-p^{p+1}-p^p=p^p(p-1)
-$$
-have annihilator $(Z-1)^{p+1}$ and exact period $p^2$.
-
-Now suppose $b\ne0$. On the $(-1)$-primary part, $N^{p+1}$ is invertible, so the equation reduces to
-$$
-Mv=c'
-$$
-for a nonzero vector in $\ker M$. Every solution satisfies
-$$
-Mv\ne0,
-\qquad
-M^2v=0.
-$$
-Thus its annihilator is $(Z+1)^2$. The least $n$ for which $(Z+1)^2$ divides $Z^n-1$ is $2p$: divisibility by $Z+1$ requires $2\mid n$, while multiplicity at least $2$ requires $p\mid n$. Hence every solution has exact period
-$$
-2p.
-$$
-There are $p$ such solutions.
-
-If $b=0$, the $(-1)$-primary component is free in $\ker M$. It has one zero element and
-$$
-p-1
-$$
-nonzero elements of exact period $2$.
-
-Step 4: Count roots of each exact Frobenius period
-
-Consider first the two targets with
-$$
-a\ne0,\qquad b=0.
-$$
-By Step 3, the fixed component has period $p^2$ and $p^{p+1}$ choices. If the free $(-1)$-component is zero, the full period is $p^2$; otherwise it is $2p^2$. Across both targets this gives
-$$
-E_{p^2}=2p^{p+1},
-$$
-and contributes
-$$
-2p^{p+1}(p-1)
-$$
-roots of period $2p^2$.
-
-Now take one of the $2e_p$ targets with
-$$
-a=0,\qquad b\ne0.
-$$
-The forced $(-1)$-component has period $2p$ and $p$ choices. If the $1$-primary component lies in $\ker N^p$, there are $p^p$ choices and the full period is $2p$. Hence these targets contribute
-$$
-E_{2p}=2e_pp^{p+1}.
-$$
-The remaining $p^p(p-1)$ choices in the $1$-primary part have period $p^2$, so they contribute
-$$
-2e_pp^{p+1}(p-1)
-$$
-roots of period $2p^2$.
-
-Finally, each of the
-$$
-p-1-2e_p
-$$
-targets with
-$$
-a\ne0,\qquad b\ne0
-$$
-has a forced $p^2$ component and a forced $2p$ component. Every lift therefore has exact period
-$$
-2p^2.
-$$
-Each fiber has $p^{p+2}$ elements, so this class contributes
-$$
-(p-1-2e_p)p^{p+2}
-$$
-roots of period $2p^2$.
-
-Combining the three contributions,
-$$
-E_{2p^2}
-=p^{p+1}\left(2(p-1)+2e_p(p-1)+p(p-1-2e_p)\right).
-$$
-The bracket simplifies to
-$$
-(p-1)(p+2)-2e_p.
+p\equiv1\pmod3.
 $$
 Therefore
 $$
-E_{2p^2}
-=p^{p+1}\left((p-1)(p+2)-2e_p\right).
+N_1=2e_p.
 $$
 
-The total root count is
+If $\alpha\in\mathbb F_{p^2}$, again $\sigma^2(\alpha)=\alpha$, so the same fixed-point equation is necessary and sufficient. Since
 $$
-E_{p^2}+E_{2p}+E_{2p^2}
-=(p+1)p^{p+2},
+p^2\equiv1\pmod3,
 $$
-which equals $\deg F_p$. Since $L_p$ is separable and every root of $Y^{p+1}-1$ is simple, all roots of $F_p$ are accounted for.
+both primitive cube roots lie in $\mathbb F_{p^2}$. Hence
+$$
+N_2=2.
+$$
 
-Step 5: Convert Frobenius periods into irreducible-factor degrees
+Step 3: Count the roots in the cubic subfield
 
-Each monic irreducible factor over $\mathbb F_p$ is one Frobenius orbit, and its degree equals the orbit length. Hence
+Now let $\alpha\in\mathbb F_{p^3}$. Since $\sigma^3(\alpha)=\alpha$, the relation
 $$
-b_d=\frac{E_d}{d}
+\sigma^2(\alpha)=M(\alpha)
 $$
-for every occurring period.
+implies
+$$
+\sigma(\alpha)=M^2(\alpha).
+$$
+Indeed, applying $\sigma$ to $\sigma^3(\alpha)=\alpha$ gives $\sigma^{-1}=\sigma^2$ on this field, so $\sigma=M^{-1}=M^2$ on a root.
 
-Using Step 4,
+Using the formula for $M^2$ from Step 1,
 $$
-b_{p^2}=2p^{p-1},
+\alpha^p=-\frac{\alpha+1}{\alpha}.
 $$
+Thus the cubic-field roots are exactly the roots of
 $$
-b_{2p}=e_pp^p,
+G_p(X)=X^{p+1}+X+1.
+$$
+
+This polynomial has degree $p+1$. Its derivative is
+$$
+G_p'(X)=X^p+1.
+$$
+A common root of $G_p$ and $G_p'$ would satisfy $X^p=-1$, which gives
+$$
+G_p(X)=-X+X+1=1,
+$$
+a contradiction. Hence $G_p$ has $p+1$ distinct roots.
+
+Conversely, if $G_p(\alpha)=0$, then
+$$
+\sigma(\alpha)=M^2(\alpha).
+$$
+Iterating three times gives
+$$
+\sigma^3(\alpha)=M^6(\alpha)=\alpha.
+$$
+Thus every root of $G_p$ lies in $\mathbb F_{p^3}$ and also satisfies $\sigma^2=M$. Therefore
+$$
+N_3=p+1.
+$$
+
+Step 4: Recover the exact Frobenius orbit lengths
+
+Let $E_d$ be the number of roots of exact degree $d$ over $\mathbb F_p$. Since all roots lie in $\mathbb F_{p^6}$,
+$$
+N_d=\sum_{r\mid d}E_r
+$$
+for $d\mid6$.
+
+From Steps 2 and 3,
+$$
+E_1=N_1=2e_p,
 $$
 and
 $$
-b_{2p^2}
-=\frac{p^{p-1}\left((p-1)(p+2)-2e_p\right)}{2}.
+E_2=N_2-E_1=2-2e_p.
+$$
+Also
+$$
+E_3=N_3-E_1=p+1-2e_p.
+$$
+
+By Step 1,
+$$
+N_6=p^2+1.
+$$
+Therefore
+$$
+E_6=N_6-E_1-E_2-E_3.
+$$
+Substitution gives
+$$
+E_6=p^2-p-2+2e_p.
+$$
+
+These four values sum to $p^2+1$, so every root has been assigned an exact degree.
+
+Step 5: Convert exact root degrees into irreducible-factor counts
+
+Each monic irreducible factor of degree $d$ contributes exactly $d$ roots of exact degree $d$. Hence
+$$
+b_d=\frac{E_d}{d}.
+$$
+Using Step 4,
+$$
+b_1=2e_p,
+$$
+$$
+b_2=1-e_p,
+$$
+$$
+b_3=\frac{p+1-2e_p}{3},
+$$
+and
+$$
+b_6=\frac{p^2-p-2+2e_p}{6}.
 $$
 All other $b_d$ vanish. Therefore
 $$
 \mathcal D_p(t)
 =
-\frac{p^{p-1}\left((p-1)(p+2)-2e_p\right)}{2}t^{2p^2}
-+2p^{p-1}t^{p^2}
-+e_pp^pt^{2p}.
+\frac{p^2-p-2+2e_p}{6}t^6
++\frac{p+1-2e_p}{3}t^3
++(1-e_p)t^2
++2e_pt.
 $$
 
-Final Answer: $\boxed{\frac{p^{p-1}((p-1)(p+2)-2e_p)}{2}t^{2p^2}+2p^{p-1}t^{p^2}+e_pp^pt^{2p}}$
+Final Answer: $\boxed{\frac{p^2-p-2+2e_p}{6}t^6+\frac{p+1-2e_p}{3}t^3+(1-e_p)t^2+2e_pt}$
 
 ---
 
 ## Answer
 
-$\frac{p^{p-1}((p-1)(p+2)-2e_p)}{2}t^{2p^2}+2p^{p-1}t^{p^2}+e_pp^pt^{2p}$
+$\frac{p^2-p-2+2e_p}{6}t^6+\frac{p+1-2e_p}{3}t^3+(1-e_p)t^2+2e_pt$
 
 ---
 
@@ -296,7 +212,7 @@ $\frac{p^{p-1}((p-1)(p+2)-2e_p)}{2}t^{2p^2}+2p^{p-1}t^{p^2}+e_pp^pt^{2p}$
 ## Solution Concepts
 
 - finite-field Frobenius
-- linearized polynomials
-- norm-one subgroups
-- primary decomposition
+- fractional linear transformations
+- semilinear dynamics
+- finite-field subextensions
 - Frobenius orbit counting
