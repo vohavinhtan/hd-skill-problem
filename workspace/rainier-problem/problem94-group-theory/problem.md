@@ -2,55 +2,50 @@
 
 ## LaTeX (Normalized)
 
-Fix an odd prime $p$ and an integer $n\geq1$ such that
+Fix an odd prime $p$ and an integer $n\geq1$. Put
 $$
-q=p^n\equiv1\pmod 5.
+q=p^n,\qquad K=\mathbb{F}_q,
 $$
-Put $K=\mathbb{F}_q$ and $L=\mathbb{F}_{q^5}$. Choose a primitive fifth root of unity $\zeta\in K$ and an element $\xi\in L^\times$ satisfying
-$$
-\xi^q=\zeta\xi.
-$$
-Set
-$$
-\theta=\frac{\xi-1}{\xi+1},
-\qquad
-R=L[t]/(t^2).
-$$
+and assume that the residue class of $q$ modulo $7$ has multiplicative order $6$.
 
-For $r\in R$, let $[r]_1\in L$ denote its coefficient of $t$. Write
-$$
-\operatorname{Tr}=\operatorname{Tr}_{L/K}.
-$$
-For $u=(x_1,x_2)$ and $v=(y_1,y_2)$ in $R^2$, put
-$$
-r(u,v)=x_1y_2-x_2y_1
-$$
-and define
-$$
-B_0(u,v)=\operatorname{Tr}([r(u,v)]_1),
-$$
-$$
-B_1(u,v)=\operatorname{Tr}([(\theta+t)r(u,v)]_1).
-$$
 Let
 $$
-\beta(u,v)=(B_1(u,v),B_0(u,v))\in K^2.
+R=K[x]/(x^7-1),
+$$
+where $x$ also denotes the residue class of the indeterminate, and put
+$$
+W=\operatorname{span}_K\{1,x,x^3\}\subset R.
 $$
 
+For $u=(u_1,u_2)$ and $v=(v_1,v_2)$ in $R^2$, define
+$$
+\det_R(u,v)=u_1v_2-u_2v_1.
+$$
 On
 $$
-G=R^2\times K^2
+G=R^2\times R
 $$
 define
 $$
-(u,a)(v,b)=\left(u+v,\ a+b+\frac12\beta(u,v)\right).
+(u,a)(v,b)=\left(u+v,\ a+b+\frac12\det_R(u,v)\right).
 $$
 Its center is
 $$
-Z=\{(0,a):a\in K^2\}.
+Z=\{(0,a):a\in R\}.
 $$
 
-For every $\alpha\in\operatorname{Aut}(G)$ whose restriction to $Z\cong K^2$ is $K$-linear with determinant $1$, let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
+For every $\alpha\in\operatorname{Aut}(G)$ satisfying all three conditions
+$$
+\alpha(Z)=Z,
+$$
+$$
+\alpha(\{0\}\times W)=\{0\}\times W,
+$$
+and the restriction $\alpha|_Z:R\to R$ is $K$-linear with
+$$
+\det_K(\alpha|_Z)=1,
+$$
+let $\bar\alpha$ denote the induced $\mathbb{F}_p$-linear automorphism of
 $$
 G/Z\cong R^2.
 $$
@@ -68,4 +63,4 @@ Determine the number of distinct maps $\bar\alpha$ that occur.
 
 ## Domain Explanation
 
-The problem counts quotient actions of automorphisms of a finite class-two group. Its commutator pencil hides a degree-five field orbit together with a square-zero thickening, so the quotient action must recover both a projective Frobenius symmetry and an isometry group over a local ring.
+The problem counts quotient actions of automorphisms of a finite nilpotent group of class two. The commutator pairing first reconstructs the coefficient ring, while the prescribed central subspace then forces a separate affine-support obstruction inside that ring.
