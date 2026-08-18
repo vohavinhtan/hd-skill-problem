@@ -2,68 +2,36 @@
 
 ## LaTeX (Normalized)
 
-Let $m\geq8$ be an integer, put
+Let $m\ge8$, set
 $$
-\lambda=m(m+1),
-\qquad
-c=\lambda+\frac12-\lambda^2,
+\lambda=m(m+1),\qquad c=\lambda+\frac12-\lambda^2,
 $$
-and let
+and
 $$
 X_m=\{-m,-m+1,\ldots,m+5\}.
 $$
-
-For a polynomial $f$, write
+For a polynomial $f$, write $\Delta f(x)=f(x+1)-f(x)$. For $\alpha>0$ and $s\ge0$, let $H_{\alpha,s}^{(m)}$ be the unique real polynomial of degree at most $10$ satisfying
 $$
-\Delta f(x)=f(x+1)-f(x).
-$$
-For $\alpha>0$ and $s\geq0$, let $H_{\alpha,s}^{(m)}(x)$ be the unique real polynomial of degree at most $10$ satisfying
-$$
-H_{\alpha,s}^{(m)}(0)
-=
-H_{\alpha,s}^{(m)}(1)
-=
-H_{\alpha,s}^{(m)}(2)
-=
-H_{\alpha,s}^{(m)}(3)
-=
-0
+H_{\alpha,s}^{(m)}(0)=H_{\alpha,s}^{(m)}(1)=H_{\alpha,s}^{(m)}(2)=H_{\alpha,s}^{(m)}(3)=0
 $$
 and
 $$
 \frac{\Delta^4H_{\alpha,s}^{(m)}(x)}{24}
 =
-1-s\left(
--x^4+(2\lambda-1)x^2+(\alpha-1)x+c
-\right)
-$$
-$$
-\qquad
-+s^2\left(
-x^6-\alpha x^5-2\lambda x^4+(2\lambda\alpha+1)x^3
--(\alpha+c)x^2+\alpha cx
-\right).
+1-s\!\left(-x^4+(2\lambda-1)x^2+(\alpha-1)x+c\right)
++s^2\!\left(x^6-\alpha x^5-2\lambda x^4+(2\lambda\alpha+1)x^3-(\alpha+c)x^2+\alpha cx\right).
 $$
 
-For $\xi\in X_m$, define
+For $\xi\in X_m$, put
 $$
-P_\xi^{(\alpha)}(s)
-=
-\left(
-\xi,\xi^2,\xi^3,H_{\alpha,s}^{(m)}(\xi)
-\right)
-\in\mathbb R^4,
-$$
-and set
-$$
-K_\alpha^{(m)}(s)
-=
+P_\xi^{(\alpha)}(s)=
+\left(\xi,\xi^2,\xi^3,H_{\alpha,s}^{(m)}(\xi)\right),
+\qquad
+K_\alpha^{(m)}(s)=
 \operatorname{conv}\{P_\xi^{(\alpha)}(s):\xi\in X_m\}.
 $$
 
-A hyperplane $H\subset\mathbb R^4$ is supporting for a convex set $K$ if $K$ is contained in one of the two closed half-spaces bounded by $H$ and $K\cap H\neq\varnothing$. A facet of $K_\alpha^{(m)}(s)$ is a set $K_\alpha^{(m)}(s)\cap H$ of affine dimension $3$ for some supporting hyperplane $H$. Call $K_\alpha^{(m)}(s)$ simplicial if every facet has exactly four vertices.
-
-For each $\alpha>0$, define
+Call $K_\alpha^{(m)}(s)$ simplicial if every facet has exactly four vertices, and define
 $$
 s_\alpha^{(m)}
 =
@@ -71,13 +39,11 @@ s_\alpha^{(m)}
 $$
 
 Prove that the set of $\alpha>0$ for which
-$K_\alpha^{(m)}(s_\alpha^{(m)})$ has a facet with exactly six vertices is nonempty and has a least element. Denote that least element by $\alpha_m$.
+$K_\alpha^{(m)}(s_\alpha^{(m)})$ has a six-vertex facet is nonempty and has a least element $\alpha_m$. Prove that at $s=s_{\alpha_m}^{(m)}$ this facet is unique and every other facet is tetrahedral. Let $C_m\subset X_m$ be its set of first coordinates.
 
-Prove that at $s=s_{\alpha_m}^{(m)}$ the six-vertex facet is unique and every other facet has exactly four vertices. Let $C_m\subset X_m$ be the set of first coordinates of its six vertices.
-
-Finally, prove that for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets of
-$K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}-\varepsilon)$ whose first coordinates all lie in $C_m$ is $6$, whereas the corresponding number for
-$K_{\alpha_m}^{(m)}(s_{\alpha_m}^{(m)}+\varepsilon)$ is $3$.
+Prove also that, for every sufficiently small $\varepsilon>0$, the number of tetrahedral facets using only vertices from $C_m$ is $6$ at
+$s_{\alpha_m}^{(m)}-\varepsilon$ and $3$ at
+$s_{\alpha_m}^{(m)}+\varepsilon$.
 
 Determine exactly
 $$
