@@ -2,22 +2,25 @@
 
 ## LaTeX (Normalized)
 
-Fix an odd prime $p$ and an integer $n\geq2$. Put
+Fix an odd prime $p$ and an integer $n\geq1$ such that
 $$
-q=p^n,\qquad K=\mathbb{F}_q,\qquad R_3=K[t]/(t^3),\qquad R_2=K[t]/(t^2).
+q=p^n\equiv3\pmod 4.
 $$
-For $r\in R_m$, write $[r]_j$ for the coefficient of $t^j$.
+Put
+$$
+K=\mathbb{F}_q,\qquad R=K[t]/(t^3),\qquad S=\{-1,0,1\}.
+$$
 
 Let
 $$
-V=R_3^2\oplus R_2^2.
+V=\bigoplus_{s\in S}R^2.
 $$
-For $u=(x,z)$ and $v=(y,w)$ in $V$, define
+Write $u=(u_s)_{s\in S}$ and $v=(v_s)_{s\in S}$. For $r\in R$, let $[r]_j$ denote the coefficient of $t^j$. Define
 $$
-B_1(u,v)=[\det_{R_3}(x,y)]_1+[\det_{R_2}(z,w)]_0,
+B_2(u,v)=\sum_{s\in S}[\det_R(u_s,v_s)]_2,
 $$
 $$
-B_2(u,v)=[\det_{R_3}(x,y)]_2+[\det_{R_2}(z,w)]_1,
+B_1(u,v)=\sum_{s\in S}\left(s[\det_R(u_s,v_s)]_2+[\det_R(u_s,v_s)]_1\right),
 $$
 and put
 $$
@@ -37,14 +40,12 @@ $$
 Z=\{(0,a):a\in K^2\}.
 $$
 
-For every $\alpha\in\operatorname{Aut}(G)$ that fixes $Z$ pointwise, let $\bar\alpha$ denote the induced $\mathbb{F}_p$-linear automorphism of
+For every $\alpha\in\operatorname{Aut}(G)$ whose restriction to $Z\cong K^2$ is $K$-linear with determinant $1$, let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
 $$
 G/Z\cong V.
 $$
 
 Determine the number of distinct maps $\bar\alpha$ that occur.
-
----
 
 ## Domain Classification
 
@@ -55,8 +56,6 @@ Determine the number of distinct maps $\bar\alpha$ that occur.
 | **Problem Type** | Exact computation |
 | **Answer Type** | Exact scalar |
 
----
-
 ## Domain Explanation
 
-The problem counts quotient actions of automorphisms of a finite nilpotent group of class two. The commutator pairing reconstructs a nilpotent module operator with two different Jordan-chain lengths, and the required count is the size of its isometry centralizer.
+The problem counts quotient actions of automorphisms of a finite nilpotent group of class two. The commutator pencil reconstructs an operator with three primary components, and the determinant-one action on the center imposes an additional projective square-class obstruction.
