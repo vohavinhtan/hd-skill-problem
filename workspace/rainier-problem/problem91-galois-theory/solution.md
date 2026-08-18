@@ -6,7 +6,7 @@ Let $V$ be the set of roots of $F_p(X)$ in an algebraic closure of $\mathbb F_p$
 $$
 F_p'(X)=1,
 $$
-so all roots are distinct. As $\deg F_p=p^8$, the set $V$ has $p^8$ elements and therefore
+so all roots are distinct. Since $\deg F_p=p^8$, the polynomial has exactly $p^8$ roots in its splitting field, and
 $$
 \dim_{\mathbb F_p}V=8.
 $$
@@ -26,134 +26,126 @@ $$
 P(\sigma)\alpha=F_p(\alpha)=0.
 $$
 
-The minimal polynomial of $\sigma$ on $V$ has degree $8$. Indeed, if a nonzero polynomial
+The minimal polynomial of $\sigma$ on $V$ has degree $8$. If a nonzero polynomial
 $$
 Q(Z)=q_0+q_1Z+\cdots+q_rZ^r
 $$
-with $r<8$ annihilated $V$, then every element of $V$ would be a root of the nonzero linearized polynomial
+with $r<8$ annihilated $V$, then every element of $V$ would be a root of
 $$
 q_0X+q_1X^p+\cdots+q_rX^{p^r},
 $$
-whose degree is at most $p^7$. It cannot have the $p^8$ distinct roots in $V$.
+a nonzero polynomial of degree at most $p^7$. Such a polynomial cannot have the $p^8$ distinct elements of $V$ as roots. Therefore the minimal polynomial is $P$.
 
-Thus the minimal polynomial is $P$. Since its degree equals $\dim V$, the $\mathbb F_p[Z]$-module defined by $Z\cdot v=\sigma(v)$ is cyclic:
+In the invariant-factor decomposition of $V$ as an $\mathbb F_p[Z]$-module, the largest invariant factor is the minimal polynomial. Its degree is already $8=\dim V$, so there is only one invariant factor. Hence
 $$
 V\cong\mathbb F_p[Z]/(P(Z)).
 $$
 
-Step 2: Split the Frobenius module into two primary pieces
+Step 2: Split the Frobenius module into its two primary parts
 
-The polynomial from Step 1 factors as
+The identity
+$$
+(Z^2+Z+1)^2(Z^2+1)^2
+=Z^8+2Z^7+5Z^6+6Z^5+8Z^4+6Z^3+5Z^2+2Z+1
+=P(Z)
+$$
+gives
 $$
 P(Z)=(Z^2+Z+1)^2(Z^2+1)^2.
 $$
-The two quadratic factors are coprime for $p\geq5$. Hence
+The two quadratic factors are coprime for $p\geq5$, so
 $$
 V=V_3\oplus V_4,
 $$
 where
 $$
-V_3\cong
-\frac{\mathbb F_p[Z]}{((Z^2+Z+1)^2)}
+V_3\cong\frac{\mathbb F_p[Z]}{((Z^2+Z+1)^2)},
+\qquad
+V_4\cong\frac{\mathbb F_p[Z]}{((Z^2+1)^2)}.
 $$
-and
-$$
-V_4\cong
-\frac{\mathbb F_p[Z]}{((Z^2+1)^2)}.
-$$
-Both summands have dimension $4$ and therefore contain $p^4$ vectors.
+Each summand has dimension $4$.
 
-Inside $V_3$, the kernel
+For
 $$
-K_3=\ker(\sigma^2+\sigma+1)
+K_3=\ker(\sigma^2+\sigma+1)\subset V_3,
 $$
-has dimension $2$, hence $p^2$ elements. Every nonzero vector in $K_3$ has exact Frobenius period $3$: it is killed by $Z^2+Z+1$, which divides $Z^3-1$ but is coprime to $Z-1$.
+the cyclic description gives $\dim K_3=2$. Every nonzero vector in $K_3$ has exact period $3$, because
+$$
+Z^3-1=(Z-1)(Z^2+Z+1)
+$$
+and $Z-1$ is coprime to $Z^2+Z+1$.
 
-If $v\in V_3\setminus K_3$, its annihilator contains a repeated irreducible factor of $Z^2+Z+1$. For $Z^d-1$ to contain such a repeated factor, one must have $p\mid d$; for it to contain a factor of $Z^2+Z+1$, one must also have $3\mid d$. Hence $3p\mid d$. Since
+Now take $v\in V_3\setminus K_3$. Its annihilator contains a squared factor from $Z^2+Z+1$, so any polynomial $Z^d-1$ annihilating $v$ must have $3\mid d$ and must contain that factor with multiplicity at least $2$. In characteristic $p$, the polynomial $Z^d-1$ is squarefree when $p\nmid d$, while repeated factors occur when $p\mid d$. Therefore $3p\mid d$. On the other hand,
 $$
 Z^{3p}-1=(Z^3-1)^p
 $$
-is divisible by $(Z^2+Z+1)^2$, every such vector has exact period $3p$.
+is divisible by $(Z^2+Z+1)^2$, so $v$ has exact period $3p$. The period counts in $V_3$ are
+$$
+1,\qquad p^2-1,\qquad p^4-p^2
+$$
+for periods $1,3,3p$, respectively.
 
-Therefore the period counts in $V_3$ are
+The same argument with $Z^2+1$, using
 $$
-1\text{ vector of period }1,
+Z^4-1=(Z^2-1)(Z^2+1),
 $$
+gives period counts
 $$
-p^2-1\text{ vectors of period }3,
+1,\qquad p^2-1,\qquad p^4-p^2
 $$
-$$
-p^4-p^2\text{ vectors of period }3p.
-$$
+in $V_4$ for periods $1,4,4p$, respectively.
 
-The same argument for
-$$
-K_4=\ker(\sigma^2+1)\subset V_4
-$$
-gives
-$$
-1\text{ vector of period }1,
-$$
-$$
-p^2-1\text{ vectors of period }4,
-$$
-$$
-p^4-p^2\text{ vectors of period }4p.
-$$
+Step 3: Count exact periods in the direct sum
 
-Step 3: Determine the exact periods in the direct sum
-
-Write
+Set
 $$
 A=p^2-1,
 \qquad
 B=p^4-p^2=p^2A.
 $$
-For $v=v_3+v_4\in V_3\oplus V_4$, the Frobenius period is the least common multiple of the periods of its two components.
-
-Using the three possibilities in each summand from Step 2 gives the following exact counts:
+By Step 2, the period of $v_3+v_4\in V_3\oplus V_4$ is the least common multiple of the periods of its two components. The exact counts are
 $$
 1
 $$
-vector has period $1$,
+for period $1$,
 $$
 A
 $$
-vectors have period $3$,
+for period $3$,
 $$
 A
 $$
-vectors have period $4$,
+for period $4$,
 $$
 A^2
 $$
-vectors have period $12$,
+for period $12$,
 $$
 B
 $$
-vectors have period $3p$,
+for period $3p$, and
 $$
 B
 $$
-vectors have period $4p$.
+for period $4p$.
 
-The remaining mixed vectors have period $12p$. Their number is
+All remaining mixed pairs have period $12p$. Their number is
 $$
-BA+AB+B^2
+AB+AB+B^2
 =2AB+B^2
 =p^2(p^2+2)A^2.
 $$
-These six nonzero classes together with $0$ account for
+The total number of vectors is
 $$
 1+2A+A^2+2B+2AB+B^2
 =(1+A+B)^2
-=p^8
+=p^8,
 $$
-vectors, so no other periods occur.
+so no other periods occur.
 
-Step 4: Convert Frobenius periods into irreducible-factor degrees
+Step 4: Convert exact periods into irreducible-factor degrees
 
-Because $F_p(X)$ is separable, the roots of each monic irreducible factor over $\mathbb F_p$ form one Frobenius orbit, and the degree of that factor is the orbit length. Thus the number of degree-$d$ factors is the number of roots of exact period $d$ divided by $d$.
+The polynomial $F_p$ is separable by Step 1. The roots of each monic irreducible factor over $\mathbb F_p$ form one Frobenius orbit, and the orbit length equals the factor degree. Therefore the number of degree-$d$ factors is the number of roots of exact Frobenius period $d$ divided by $d$.
 
 Using Step 3,
 $$
@@ -180,7 +172,11 @@ All other $b_d$ vanish.
 
 Step 5: Assemble the factor-degree polynomial
 
-Collecting the coefficients from Step 4 and factoring out $(p^2-1)/12$ gives
+Substituting the multiplicities from Step 4 into
+$$
+\mathcal D_p(t)=\sum_{d\geq1}b_dt^d
+$$
+and collecting terms gives
 $$
 \mathcal D_p(t)=
 \frac{p^2-1}{12}
