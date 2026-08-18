@@ -1,213 +1,250 @@
 ## Steps
 
-Step 1: Convert the equation into a Frobenius operator identity
+Step 1: Identify the linearized map and the two target fibers
 
-Let $\sigma(\alpha)=\alpha^p$ on an algebraic closure of $\mathbb F_p$, and set
+Let $\sigma(\alpha)=\alpha^p$ and define
 $$
-S(Z)=\sum_{i=0}^8c_iZ^i.
+C(Z)=\sum_{i=0}^8c_iZ^i.
 $$
-For a root $\alpha$ of $F_p$,
+The inner expression in $F_p$ is the linearized map
 $$
-\sum_{i=0}^8c_i\left(\sigma^{p+i}-\sigma^i\right)\alpha=1.
+L(\alpha)=(\sigma^p-1)C(\sigma)\alpha.
 $$
-Hence
+Direct multiplication gives
 $$
-R(\sigma)\alpha=1,
-\qquad
-R(Z)=(Z^p-1)S(Z).
+C(Z)=(Z^2+Z+1)^2(Z^2+1)^2.
 $$
-
-The coefficient polynomial factors as
+Since
 $$
-S(Z)=Z^8+2Z^7+5Z^6+6Z^5+8Z^4+6Z^3+5Z^2+2Z+1,
+Z^p-1=(Z-1)^p
 $$
-and direct multiplication gives
-$$
-S(Z)=(Z^2+Z+1)^2(Z^2+1)^2.
-$$
-Since the characteristic is $p$,
-$$
-Z^p-1=(Z-1)^p.
-$$
-Therefore
+in characteristic $p$, put
 $$
 R(Z)=(Z-1)^p(Z^2+Z+1)^2(Z^2+1)^2.
 $$
+Then
+$$
+L(\alpha)=R(\sigma)\alpha.
+$$
 
-Also $F_p'(X)=-1$, so $F_p$ is separable. Its degree is $p^{p+8}$, hence it has exactly $p^{p+8}$ distinct roots.
+A root $\alpha$ of $F_p$ satisfies
+$$
+L(\alpha)^2+L(\alpha)+1=0.
+$$
+Let $\lambda,\lambda^{-1}$ be the two roots of
+$$
+Y^2+Y+1=0.
+$$
+They are the two nontrivial cube roots of unity. If $p\equiv1\pmod3$, they lie in $\mathbb F_p$ and have Frobenius period $1$. If $p\equiv2\pmod3$, then
+$$
+\lambda^p=\lambda^{-1}\ne\lambda,
+$$
+so both have period $2$. Thus their common Frobenius period is exactly $s_p$.
 
-Step 2: Embed the affine root set in a cyclic Frobenius module
+The derivative of $L$ is $-1$. At a root of $F_p$,
+$$
+F_p'(\alpha)=-(2L(\alpha)+1).
+$$
+The equality $2L(\alpha)+1=0$ together with $L(\alpha)^2+L(\alpha)+1=0$ would give $3=0$, impossible for $p\geq5$. Hence $F_p$ is separable.
 
-Set
+Step 2: Decompose one affine fiber into Frobenius-primary parts
+
+Fix one target $\lambda$. Since $\sigma^{s_p}\lambda=\lambda$, every solution of
 $$
-Q(Z)=(Z-1)R(Z)
-=(Z-1)^{p+1}(Z^2+Z+1)^2(Z^2+1)^2.
+R(\sigma)\alpha=\lambda
 $$
-Let
+belongs to
 $$
-W=\{w:Q(\sigma)w=0\}.
+W=\ker\left((\sigma^{s_p}-1)R(\sigma)\right).
 $$
-The linearized polynomial corresponding to $Q$ is monic of degree $p^{p+9}$ and has derivative $Q(0)=1$. Thus
+
+Write
 $$
-|W|=p^{p+9},
+f_3(Z)=Z^2+Z+1,
 \qquad
-\dim_{\mathbb F_p}W=p+9.
+f_4(Z)=Z^2+1.
+$$
+For $s_p=1$,
+$$
+(Z^{s_p}-1)R(Z)=(Z-1)^{p+1}f_3(Z)^2f_4(Z)^2.
+$$
+For $s_p=2$,
+$$
+(Z^{s_p}-1)R(Z)=(Z-1)^{p+1}(Z+1)f_3(Z)^2f_4(Z)^2.
+$$
+All displayed factors are pairwise coprime for $p\geq5$. Bezout identities for these polynomial factors therefore decompose $W$ as
+$$
+W=U_1\oplus U_3\oplus U_4
+$$
+when $s_p=1$, and as
+$$
+W=U_1\oplus U_{-1}\oplus U_3\oplus U_4
+$$
+when $s_p=2$, where the annihilators are respectively
+$$
+(Z-1)^{p+1},\qquad Z+1,\qquad f_3^2,\qquad f_4^2.
 $$
 
-The minimal polynomial of $\sigma$ on $W$ is exactly $Q$. Indeed, if a nonzero polynomial of degree less than $p+9$ annihilated $W$, its associated linearized polynomial would have degree at most $p^{p+8}$ but would vanish on all $p^{p+9}$ elements of $W$, which is impossible.
-
-Since the minimal polynomial has degree $\dim W$, the $\mathbb F_p[Z]$-module $W$ is cyclic:
+A polynomial $H(Z)$ of degree $r$ with nonzero constant term gives a separable linearized polynomial $H(\sigma)X$ of degree $p^r$. Hence its kernel has dimension $r$. Therefore
 $$
-W\cong\mathbb F_p[Z]/(Q(Z)).
-$$
-
-If $\alpha$ is a root of $F_p$, then $R(\sigma)\alpha=1$, so
-$$
-Q(\sigma)\alpha=(\sigma-1)1=0.
-$$
-Conversely, an element $w\in W$ is a root of $F_p$ exactly when
-$$
-R(\sigma)w=1.
-$$
-Thus the roots form one Frobenius-stable affine fiber inside $W$.
-
-Step 3: Resolve the affine condition on the unipotent primary part
-
-The three factors of $Q$ are pairwise coprime for $p\geq5$. By Step 2,
-$$
-W=U_1\oplus U_3\oplus U_4,
-$$
-where
-$$
-U_1\cong\frac{\mathbb F_p[Z]}{((Z-1)^{p+1})},
-$$
-$$
-U_3\cong\frac{\mathbb F_p[Z]}{((Z^2+Z+1)^2)},
+\dim U_1=p+1,
 \qquad
-U_4\cong\frac{\mathbb F_p[Z]}{((Z^2+1)^2)}.
+\dim U_3=\dim U_4=4,
 $$
+and $\dim U_{-1}=1$ when that component occurs.
 
-The operator $R(\sigma)$ vanishes on $U_3$ and $U_4$, so the affine equation concerns only the $U_1$-component. On $U_1$, the operator $S(\sigma)$ is invertible because $S(1)\ne0$ for $p\geq5$.
+The operator $R(\sigma)$ vanishes on $U_3$ and $U_4$. Thus those two components are free, while the equation $R(\sigma)\alpha=\lambda$ determines an affine condition only on $U_1$ and, when $s_p=2$, on $U_{-1}$.
 
-Put
+Step 3: Determine the exact period of every point in the constrained part
+
+On $U_1$, put
 $$
 N=\sigma-1.
 $$
-After the period-preserving change of variable $u\mapsto S(\sigma)u$, the affine condition becomes
+The factor $C(\sigma)$ is invertible there because
+$$
+C(1)=36\ne0
+$$
+in every characteristic $p\geq5$. The operator $N$ has nilpotency index $p+1$: otherwise $N^p$ would annihilate the $(p+1)$-dimensional space $U_1$, contradicting that the nonzero linearized polynomial corresponding to $(Z-1)^p$ has only $p^p$ roots. Thus $N$ is one nilpotent chain of length $p+1$, and
+$$
+\operatorname{im}N^p=\ker N.
+$$
+
+The fixed space $\ker N$ is one-dimensional. The $U_1$-component of $\lambda$ is a nonzero fixed vector. After applying the Frobenius-equivariant automorphism $C(\sigma)$ and multiplying by a nonzero scalar in $\mathbb F_p$, its equation becomes
 $$
 N^pu=1.
 $$
+This equation has $p^p$ solutions because $\dim\ker N^p=p$.
 
-The module $U_1$ is a single $N$-chain of length $p+1$. Its fixed space $\ker N$ is one-dimensional and contains the nonzero vector $1$, while $\operatorname{im}N^p=\ker N$. Hence the displayed equation is solvable, and its solution set
+For every such solution,
 $$
-C=\{u\in U_1:N^pu=1\}
+\sigma^pu=(1+N)^pu=u+N^pu=u+1,
 $$
-is a coset of $\ker N^p$. Since
+where the middle equality uses characteristic $p$. Hence
 $$
-\dim\ker N^p=p,
+\sigma^{p^2}u=u,
+\qquad
+\sigma^pu\ne u.
 $$
-we have
-$$
-|C|=p^p.
-$$
+Since the only divisors of $p^2$ are $1,p,p^2$, the exact period of $u$ is $p^2$.
 
-For every $u\in C$, the characteristic-$p$ binomial identity gives
+If $s_p=2$, write
 $$
-\sigma^pu=(1+N)^pu=u+N^pu=u+1\ne u.
+\lambda=a+b,
+\qquad
+a=\frac{\lambda+\lambda^p}{2},
+\qquad
+b=\frac{\lambda-\lambda^p}{2}.
 $$
-On the other hand,
+Since $\lambda+\lambda^p=-1$,
 $$
-\sigma^{p^2}u=(1+N)^{p^2}u=u+N^{p^2}u=u,
+a=-\frac12\ne0,
 $$
-because $N^{p+1}=0$. Therefore every element of $C$ has exact Frobenius period
+and $b\ne0$. The vector $a$ is fixed and $b$ is negated by Frobenius. On the one-dimensional space $U_{-1}$,
 $$
-p^2.
+R(\sigma)=R(-1)=-8,
 $$
+so there is exactly one $U_{-1}$-component mapping to $b$, and it has period $2$.
 
-Step 4: Combine the remaining primary periods with the affine period
-
-The space $U_3$ has $p^4$ elements. Any nonzero element has annihilator $Z^2+Z+1$ or $(Z^2+Z+1)^2$. Since
-$$
-Z^3-1=(Z-1)(Z^2+Z+1)
-$$
-and
-$$
-Z^{3p}-1=(Z^3-1)^p,
-$$
-every nonzero element of $U_3$ has period $3$ or $3p$. Thus there are
-$$
-p^4-1
-$$
-nonzero choices, and after combining with the period $p^2$ from Step 3 every such choice contributes period $3p^2$.
-
-Similarly, every nonzero element of $U_4$ has period $4$ or $4p$, because
-$$
-Z^4-1=(Z^2-1)(Z^2+1)
-$$
-and
-$$
-Z^{4p}-1=(Z^4-1)^p.
-$$
-There are again $p^4-1$ nonzero choices.
-
-Consequently the exact root counts are
+Consequently, for either value of $s_p$, the constrained part has exactly
 $$
 p^p
 $$
-for period $p^2$,
+solutions over each target $\lambda$, and every such solution has exact period
 $$
-p^p(p^4-1)
+s_pp^2.
 $$
-for period $3p^2$,
-$$
-p^p(p^4-1)
-$$
-for period $4p^2$, and
-$$
-p^p(p^4-1)^2
-$$
-for period $12p^2$.
 
-Their sum is
-$$
-p^p\left(1+2(p^4-1)+(p^4-1)^2\right)=p^{p+8},
-$$
-which matches the total number of roots from Step 1.
+Step 4: Add the two free primary components
 
-Step 5: Convert Frobenius orbits into irreducible factors
-
-Because $F_p$ is separable, each monic irreducible factor over $\mathbb F_p$ corresponds to one Frobenius orbit, and its degree equals the orbit length. Dividing the counts from Step 4 by their periods gives
+Every nonzero element of $U_3$ has Frobenius period $3$ or $3p$. Indeed, its annihilator divides $f_3^2$, while
 $$
-b_{p^2}=p^{p-2},
-$$
-$$
-b_{3p^2}=\frac{p^{p-2}(p^4-1)}{3},
-\qquad
-b_{4p^2}=\frac{p^{p-2}(p^4-1)}{4},
+f_3\mid Z^3-1
 $$
 and
 $$
-b_{12p^2}=\frac{p^{p-2}(p^4-1)^2}{12}.
+f_3^2\mid Z^{3p}-1=(Z^3-1)^p;
 $$
-All other $b_d$ vanish. Hence
+coprimality with $Z-1$ excludes period $1$.
+
+Similarly, every nonzero element of $U_4$ has period $4$ or $4p$, because
 $$
-\mathcal D_p(t)=
-\frac{p^{p-2}}{12}
-\left(
-(p^4-1)^2t^{12p^2}
-+3(p^4-1)t^{4p^2}
-+4(p^4-1)t^{3p^2}
-+12t^{p^2}
-\right).
+f_4\mid Z^4-1,
+\qquad
+f_4^2\mid Z^{4p}-1,
+$$
+and a root of $f_4$ has multiplicative order $4$.
+
+The base period $s_pp^2$ already contains $p^2$. Therefore adding a nonzero $U_3$-component changes the exact period to
+$$
+3s_pp^2,
+$$
+while adding a nonzero $U_4$-component changes it to
+$$
+4p^2.
+$$
+If both components are nonzero, the exact period is
+$$
+12p^2.
 $$
 
-Final Answer: $\boxed{\frac{p^{p-2}}{12}((p^4-1)^2t^{12p^2}+3(p^4-1)t^{4p^2}+4(p^4-1)t^{3p^2}+12t^{p^2})}$
+Each of $U_3,U_4$ has $p^4$ elements. There are two possible targets $\lambda$. Hence the numbers of roots of the four exact periods are
+$$
+2p^p,
+$$
+$$
+2p^p(p^4-1),
+$$
+$$
+2p^p(p^4-1),
+$$
+and
+$$
+2p^p(p^4-1)^2,
+$$
+for periods $s_pp^2,3s_pp^2,4p^2,12p^2$, respectively.
+
+Their sum is
+$$
+2p^p\left(1+2(p^4-1)+(p^4-1)^2\right)=2p^{p+8},
+$$
+which equals $\deg F_p$. Together with separability from Step 1, this accounts for every root.
+
+Step 5: Convert exact Frobenius periods into factor degrees
+
+A monic irreducible factor over $\mathbb F_p$ consists of one Frobenius orbit, and its degree is the orbit length. Dividing the four root counts from Step 4 by their exact periods gives
+$$
+b_{s_pp^2}=\frac{2p^{p-2}}{s_p},
+$$
+$$
+b_{3s_pp^2}=\frac{2p^{p-2}(p^4-1)}{3s_p},
+$$
+$$
+b_{4p^2}=\frac{p^{p-2}(p^4-1)}2,
+$$
+and
+$$
+b_{12p^2}=\frac{p^{p-2}(p^4-1)^2}{6}.
+$$
+All other $b_d$ vanish. Factoring the four terms yields
+$$
+\mathcal D_p(t)=
+\frac{p^{p-2}}{6s_p}
+\left[
+12t^{s_pp^2}
++4(p^4-1)t^{3s_pp^2}
++3s_p(p^4-1)t^{4p^2}
++s_p(p^4-1)^2t^{12p^2}
+\right].
+$$
+
+Final Answer: $\boxed{\frac{p^{p-2}}{6s_p}[12t^{s_pp^2}+4(p^4-1)t^{3s_pp^2}+3s_p(p^4-1)t^{4p^2}+s_p(p^4-1)^2t^{12p^2}]}$
 
 ---
 
 ## Answer
 
-$\frac{p^{p-2}}{12}((p^4-1)^2t^{12p^2}+3(p^4-1)t^{4p^2}+4(p^4-1)t^{3p^2}+12t^{p^2})$
+$\frac{p^{p-2}}{6s_p}[12t^{s_pp^2}+4(p^4-1)t^{3s_pp^2}+3s_p(p^4-1)t^{4p^2}+s_p(p^4-1)^2t^{12p^2}]$
 
 ---
 
@@ -224,5 +261,5 @@ $\frac{p^{p-2}}{12}((p^4-1)^2t^{12p^2}+3(p^4-1)t^{4p^2}+4(p^4-1)t^{3p^2}+12t^{p^
 - finite-field Frobenius
 - linearized polynomials
 - primary decomposition
-- unipotent operators
-- Frobenius orbit counting
+- affine Frobenius fibers
+- orbit factorization
