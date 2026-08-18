@@ -1,46 +1,33 @@
 ## Steps
 
-Step 1: Replace the family by a binary linear space
+Step 1: Pass from the family to an invariant doubly-even subspace
 
-Identify a subset of $\Omega$ with its incidence vector in
+Identify subsets of $\Omega$ with incidence vectors in
 $$
-V=\mathbb{F}_2^{3m}.
+V=\mathbb F_2^{3m},
 $$
-Let
-$$
-\langle x,y\rangle=\sum_{\omega\in\Omega}x_\omega y_\omega
-$$
-be the usual bilinear form, and let $P$ be the permutation matrix induced by $\tau$.
+write $\langle x,y\rangle$ for the standard dot product, and let $P$ be induced by $\tau$.
 
-The hypotheses become
+For an even-weight vector put
 $$
-\langle x,y\rangle=0,
-\qquad
-\langle x,Py\rangle=0
+Q(x)=\frac{\operatorname{wt}(x)}2\pmod2.
 $$
-for all incidence vectors $x,y$ belonging to $\mathcal F$.
+If $x,y$ both have even weight, then
+$$
+Q(x+y)=Q(x)+Q(y)+\langle x,y\rangle.
+$$
 
-Let $W$ be their $\mathbb F_2$-linear span. Bilinearity shows that the same two identities hold for every $x,y\in W$. Hence
+Let $W$ be the binary span of the incidence vectors of members of $\mathcal F$. The hypotheses give, on the generators,
 $$
-|\mathcal F|\leq|W|=2^{\dim_{\mathbb F_2}W}.
+Q(x)=0,\qquad
+\langle x,y\rangle=0,\qquad
+\langle x,Py\rangle=0.
 $$
-Conversely, the supports of all vectors in any linear space satisfying these identities form an allowed family. Thus it suffices to maximize $\dim W$.
-
-Step 2: Force an invariant self-orthogonal enlargement
-
-Because $P$ preserves the dot product and $P^3=I$,
-$$
-\langle x,P^2y\rangle=\langle Px,y\rangle.
-$$
-The given second identity with $x$ and $y$ interchanged gives
-$$
-\langle y,Px\rangle=0,
-$$
-so
+Interchanging $x,y$ in the last identity gives
 $$
 \langle x,P^2y\rangle=0.
 $$
-Therefore
+Consequently all vectors of $W$ have $Q=0$, and
 $$
 \langle W,P^jW\rangle=0
 $$
@@ -50,64 +37,58 @@ Put
 $$
 S=W+PW+P^2W.
 $$
-For $x,y\in W$ and $i,j\in\{0,1,2\}$,
+Then $S$ is $P$-invariant and self-orthogonal. Since $P$ preserves weight and its three summands are mutually orthogonal, the quadratic identity also gives
 $$
-\langle P^ix,P^jy\rangle=\langle x,P^{j-i}y\rangle=0.
+Q(s)=0
 $$
-Hence $S$ is self-orthogonal. It is also $P$-invariant and contains $W$.
+for every $s\in S$.
 
-Conversely, every $P$-invariant self-orthogonal subspace satisfies the original two identities. Thus the largest possible $\dim W$ equals the largest dimension of a $P$-invariant self-orthogonal subspace of $V$.
+Thus
+$$
+|\mathcal F|\leq2^{\dim W}\leq2^{\dim S}.
+$$
+Conversely, the supports of all vectors in any $P$-invariant self-orthogonal subspace on which $Q$ vanishes form an admissible family. Hence we must maximize the dimension of such an $S$.
 
-Step 3: Split the order-three action into two orthogonal parts
+Step 2: Split off the fixed and sum-zero parts
 
-On each three-coordinate block define
+Define
 $$
 \Pi=I+P+P^2.
 $$
-Over $\mathbb F_2$,
+Since $P^3=I$ and the characteristic is $2$,
 $$
 \Pi^2=\Pi.
 $$
-Its image consists of vectors constant on each triple:
+Therefore
 $$
-T=\{(a_i,a_i,a_i)_{i=1}^m:a_i\in\mathbb F_2\}.
+V=T\oplus E,
 $$
-Its kernel is
+where
 $$
-E=\{(a_i,b_i,c_i)_{i=1}^m:a_i+b_i+c_i=0\}.
+T=\operatorname{im}\Pi
+=
+\{(a_i,a_i,a_i)_{i=1}^m:a_i\in\mathbb F_2\}
 $$
-Thus
+and
 $$
-V=T\oplus E.
+E=\ker\Pi
+=
+\{(a_i,b_i,c_i)_{i=1}^m:a_i+b_i+c_i=0\}.
 $$
-Moreover $T$ and $E$ are orthogonal, since
-$$
-(a,a,a)\cdot(r,s,r+s)=a(r+s+r+s)=0.
-$$
+These spaces are orthogonal.
 
-If $S$ is $P$-invariant, then the polynomial operators $\Pi$ and $I+\Pi$ preserve $S$. Hence
+Since $S$ is $P$-invariant, both $\Pi$ and $I+\Pi$ preserve $S$, so
 $$
 S=(S\cap T)\oplus(S\cap E).
 $$
-The two summands must themselves be self-orthogonal.
 
-On $T$, the dot product becomes
+Identify $T$ with $\mathbb F_2^m$. Its dot product becomes the ordinary dot product because $3\equiv1\pmod2$. If a vector of $T$ corresponds to a binary vector of weight $k$, self-orthogonality forces $k$ even, while its weight in $\Omega$ is $3k$. Hence
 $$
-(a_i)_i\cdot(b_i)_i=\sum_i a_ib_i,
+Q=\frac{k}{2}\pmod2.
 $$
-because three is odd. Therefore
-$$
-\dim(S\cap T)\leq\frac{m-1}{2},
-$$
-since a self-orthogonal subspace lies in its orthogonal complement.
+Thus $S\cap T$ is exactly a doubly-even self-orthogonal binary subspace of $\mathbb F_2^m$.
 
-Equality is attained by
-$$
-\operatorname{span}_{\mathbb F_2}
-\{e_1+e_2,e_3+e_4,\ldots,e_{m-2}+e_{m-1}\}.
-$$
-
-Step 4: Convert the second summand into a Hermitian space
+Step 3: Bound the sum-zero component by a Hermitian form
 
 Let
 $$
@@ -115,112 +96,165 @@ $$
 \qquad
 \omega^2+\omega+1=0.
 $$
-On $E$ we have
+On $E$, the relation
 $$
-I+P+P^2=0.
+I+P+P^2=0
 $$
-Therefore declaring
+allows us to define scalar multiplication by
 $$
-\omega x=Px
+\omega x=Px.
 $$
-makes $E$ into an $m$-dimensional vector space over $\mathbb F_4$.
+Hence $E$ is an $m$-dimensional vector space over $\mathbb F_4$.
 
-For $x,y\in E$, define
+Define
 $$
 H(x,y)=\langle x,Py\rangle+\omega\langle x,y\rangle.
 $$
-Using $I+P+P^2=0$ gives
+Using $I+P+P^2=0$, one checks
 $$
 H(Px,y)=\omega H(x,y),
+\qquad
+H(x,Py)=\omega^2H(x,y),
 $$
-$$
-H(x,Py)=\omega^2H(x,y).
-$$
-Thus $H$ is Hermitian over $\mathbb F_4$.
+so $H$ is Hermitian. It is nondegenerate because vanishing of both binary coefficients against every $y$ forces $x=0$.
 
-It is nondegenerate. Indeed, if $H(x,y)=0$ for every $y$, then both coefficients in the basis $\{1,\omega\}$ vanish, so
+Since $S\cap E$ is $P$-invariant, it is $\mathbb F_4$-linear. Its binary self-orthogonality is equivalent to
 $$
-\langle x,y\rangle=0
+H(x,y)=0
 $$
-for every $y\in E$. The ordinary dot product is nondegenerate on each two-dimensional sum-zero block, hence $x=0$.
-
-If $U\subseteq E$ is $P$-invariant, it is $\mathbb F_4$-linear. For $x,y\in U$, self-orthogonality gives
+for all $x,y\in S\cap E$. Therefore
 $$
-\langle x,y\rangle=0.
+\dim_{\mathbb F_4}(S\cap E)\leq\frac{m-1}{2},
 $$
-Since $Py\in U$, it also gives
-$$
-\langle x,Py\rangle=0.
-$$
-Hence
-$$
-H(x,y)=0.
-$$
-Conversely $H(x,y)=0$ forces both binary coefficients to vanish.
-
-Thus $P$-invariant self-orthogonal binary subspaces of $E$ are exactly the totally isotropic $\mathbb F_4$-subspaces for $H$.
-
-Step 5: Determine the largest possible dimension
-
-If $U$ is totally isotropic for the nondegenerate Hermitian form $H$, then
-$$
-U\subseteq U^\perp.
-$$
-Hence
-$$
-2\dim_{\mathbb F_4}U\leq m,
-$$
-so, because $m$ is odd,
-$$
-\dim_{\mathbb F_4}U\leq\frac{m-1}{2}.
-$$
-Therefore
+and hence
 $$
 \dim_{\mathbb F_2}(S\cap E)\leq m-1.
 $$
 
-This bound is attained directly. In the standard orthogonal decomposition of $E$ into its $m$ three-coordinate blocks, choose in each consecutive pair of blocks the same nonzero vector of one block. Such a vector has Hermitian norm $1$, so the vector supported equally on two blocks has norm
+The divisibility-by-four condition adds nothing further on this component. Each nonzero three-bit sum-zero block has weight $2$. If $x$ corresponds to $(z_1,\ldots,z_m)\in\mathbb F_4^m$, then
 $$
-1+1=0.
+H(x,x)=\sum_i z_i^3
 $$
-Using disjoint pairs gives an $\mathbb F_4$-isotropic space of dimension $(m-1)/2$.
+is the parity of the number of nonzero coordinates. Thus $H(x,x)=0$ implies that $\operatorname{wt}(x)$ is divisible by $4$.
 
-Combining the two orthogonal components,
+Step 4: Find the extra quadratic obstruction on the fixed component
+
+Put
 $$
-\dim_{\mathbb F_2}S\leq
-\frac{m-1}{2}+2\frac{m-1}{2}
+U=S\cap T
+$$
+and
+$$
+r=\frac{m-1}{2}.
+$$
+Let
+$$
+H_0=\{x\in\mathbb F_2^m:\operatorname{wt}(x)\text{ is even}\}.
+$$
+Because $m$ is odd, the ordinary dot product is nondegenerate on $H_0$: its orthogonal complement in $\mathbb F_2^m$ is the line spanned by the all-ones vector, which is not contained in $H_0$.
+
+Thus $H_0$ is a $2r$-dimensional symplectic space, and
+$$
+Q_0(x)=\frac{\operatorname{wt}(x)}2\pmod2
+$$
+has polar form the dot product. Since $U$ is self-orthogonal and $Q_0$ vanishes on it,
+$$
+\dim U\leq r.
+$$
+
+We now rule out equality. The number $Z$ of vectors in $H_0$ with $Q_0=0$ is
+$$
+Z=\sum_{j\equiv0\pmod4}\binom mj.
+$$
+Also
+$$
+\sum_{\substack{j=0\\j\text{ even}}}^m
+(-1)^{j/2}\binom mj
 =
-\frac{3(m-1)}{2}.
+\operatorname{Re}(1+i)^m.
+$$
+Since $m\equiv3\pmod8$,
+$$
+\operatorname{Re}(1+i)^m=-2^r.
+$$
+As $|H_0|=2^{2r}$, it follows that
+$$
+Z=2^{2r-1}-2^{r-1}.
 $$
 
-Step 6: Exhibit equality and recover the extremal family
+Suppose $\dim U=r$. Then $U=U^\perp$. On the coset $U$ every vector has $Q_0=0$. On any other coset $x+U$, the map
+$$
+u\longmapsto\langle x,u\rangle
+$$
+is a nonzero linear functional, so exactly half of the $2^r$ vectors in that coset have $Q_0=0$. This would give
+$$
+Z=2^r+(2^r-1)2^{r-1}
+=
+2^{2r-1}+2^{r-1},
+$$
+contradicting the preceding count.
 
-Pair the first $m-1$ three-coordinate blocks as
+Therefore
 $$
-(1,2),(3,4),\ldots,(m-2,m-1).
-$$
-For each pair take the three binary vectors whose restrictions to those two blocks are respectively
-$$
-(111,111),\qquad(110,110),\qquad(011,011),
-$$
-and which vanish elsewhere.
-
-For one pair these three vectors are linearly independent, are permuted into their span by $P$, and have all mutual dot products equal to zero. Different pairs have disjoint supports. Their total span is therefore $P$-invariant and self-orthogonal, with dimension
-$$
-3\frac{m-1}{2}.
+\dim(S\cap T)\leq r-1=\frac{m-3}{2}.
 $$
 
-Taking the supports of all its vectors gives an allowed family of size
-$$
-2^{3(m-1)/2}.
-$$
-The upper bound from Step 5 shows that no larger family exists.
+Step 5: Construct both components at their upper bounds
 
-Final Answer: $\boxed{2^{3(m-1)/2}}$
+Write
+$$
+m=8k+3.
+$$
+For the fixed component, divide the first $8k$ coordinates into blocks of eight. On each block take the span of
+$$
+11111111,\qquad
+00001111,\qquad
+00110011,\qquad
+01010101.
+$$
+These four vectors are independent, have weights divisible by $4$, and are pairwise orthogonal. Their span is therefore a four-dimensional doubly-even self-orthogonal space.
+
+Taking the direct sum over the $k$ blocks and putting zero on the remaining three coordinates gives
+$$
+\dim(S\cap T)=4k=\frac{m-3}{2}.
+$$
+
+For the $E$ component, pair the first $m-1$ coordinates of $\mathbb F_4^m$ and take
+$$
+\operatorname{span}_{\mathbb F_4}
+\{e_1+e_2,e_3+e_4,\ldots,e_{m-2}+e_{m-1}\}.
+$$
+Its generators have Hermitian norm
+$$
+1+1=0
+$$
+and disjoint supports, so it is totally isotropic of dimension $(m-1)/2$ over $\mathbb F_4$. Hence its binary dimension is
+$$
+m-1.
+$$
+
+The two components are orthogonal, so their direct sum is $P$-invariant, self-orthogonal, and every vector has weight divisible by $4$.
+
+Step 6: Combine the bounds and recover the family size
+
+The preceding bounds give
+$$
+\dim S\leq
+\frac{m-3}{2}+m-1
+=
+\frac{3m-5}{2}.
+$$
+Step 5 attains equality. Taking the supports of all vectors in that extremal subspace gives an admissible family of size
+$$
+2^{(3m-5)/2}.
+$$
+No larger family can exist by Step 1.
+
+Final Answer: $\boxed{2^{(3m-5)/2}}$
 
 ## Answer
 
-$2^{3(m-1)/2}$
+$2^{(3m-5)/2}$
 
 ## Classification
 
@@ -234,7 +268,7 @@ $2^{3(m-1)/2}$
 ## Solution Concepts
 
 - binary incidence vectors
-- self-orthogonal subspaces
+- quadratic refinements
 - invariant subspace decomposition
-- finite field extension
-- hermitian forms
+- hermitian forms over finite fields
+- doubly-even codes

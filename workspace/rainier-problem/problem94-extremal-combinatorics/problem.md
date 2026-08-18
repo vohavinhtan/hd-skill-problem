@@ -2,24 +2,21 @@
 
 ## LaTeX (Normalized)
 
-Let $m\geq1$ be odd and put
+Let $m\geq3$ satisfy
 $$
-\Omega=\{1,\ldots,m\}\times\mathbb{Z}/3\mathbb{Z}.
+m\equiv3\pmod8,
+$$
+and put
+$$
+\Omega=\{1,\ldots,m\}\times\mathbb Z/3\mathbb Z.
 $$
 Define
 $$
 \tau(i,j)=(i,j+1),
 $$
-where the second coordinate is taken modulo $3$. For $B\subseteq\Omega$, write
-$$
-\tau(B)=\{\tau(x):x\in B\}.
-$$
+where the second coordinate is taken modulo $3$.
 
-Let $\mathcal F$ be a family of subsets of $\Omega$ such that for every
-$$
-A,B\in\mathcal F
-$$
-both integers
+Let $\mathcal F$ be a family of subsets of $\Omega$ such that every $A\in\mathcal F$ has cardinality divisible by $4$, and for every $A,B\in\mathcal F$ both
 $$
 |A\cap B|
 \qquad\text{and}\qquad
@@ -40,4 +37,4 @@ Determine the maximum possible value of $|\mathcal F|$.
 
 ## Domain Explanation
 
-The problem asks for the largest set family satisfying two coupled parity-intersection constraints. Their interaction forces an invariant self-orthogonal binary space, whose decomposition under the order-three coordinate permutation determines the extremal size.
+The problem asks for the largest set family satisfying coupled parity and divisibility constraints. Linearization produces an invariant self-orthogonal binary space, but the divisibility-by-four condition survives as a quadratic obstruction on one invariant component and changes the extremal dimension.
