@@ -1,203 +1,213 @@
 ## Steps
 
-Step 1: Turn the root set into a Frobenius module
+Step 1: Convert the equation into a Frobenius operator identity
 
-Let $V$ be the set of roots of $F_p(X)$ in an algebraic closure of $\mathbb F_p$. Since $F_p$ is a linearized polynomial, $V$ is an $\mathbb F_p$-vector space. Also
+Let $\sigma(\alpha)=\alpha^p$ on an algebraic closure of $\mathbb F_p$, and set
 $$
-F_p'(X)=1,
+S(Z)=\sum_{i=0}^8c_iZ^i.
 $$
-so all roots are distinct. Since $\deg F_p=p^8$, the polynomial has exactly $p^8$ roots in its splitting field, and
+For a root $\alpha$ of $F_p$,
 $$
-\dim_{\mathbb F_p}V=8.
+\sum_{i=0}^8c_i\left(\sigma^{p+i}-\sigma^i\right)\alpha=1.
 $$
-
-Let
+Hence
 $$
-\sigma:V\to V,
+R(\sigma)\alpha=1,
 \qquad
-\alpha\mapsto\alpha^p.
-$$
-The coefficients of $F_p$ lie in $\mathbb F_p$, so $V$ is stable under $\sigma$. Define
-$$
-P(Z)=Z^8+2Z^7+5Z^6+6Z^5+8Z^4+6Z^3+5Z^2+2Z+1.
-$$
-For every $\alpha\in V$,
-$$
-P(\sigma)\alpha=F_p(\alpha)=0.
+R(Z)=(Z^p-1)S(Z).
 $$
 
-The minimal polynomial of $\sigma$ on $V$ has degree $8$. If a nonzero polynomial
+The coefficient polynomial factors as
 $$
-Q(Z)=q_0+q_1Z+\cdots+q_rZ^r
+S(Z)=Z^8+2Z^7+5Z^6+6Z^5+8Z^4+6Z^3+5Z^2+2Z+1,
 $$
-with $r<8$ annihilated $V$, then every element of $V$ would be a root of
+and direct multiplication gives
 $$
-q_0X+q_1X^p+\cdots+q_rX^{p^r},
+S(Z)=(Z^2+Z+1)^2(Z^2+1)^2.
 $$
-a nonzero polynomial of degree at most $p^7$. Such a polynomial cannot have the $p^8$ distinct elements of $V$ as roots. Therefore the minimal polynomial is $P$.
+Since the characteristic is $p$,
+$$
+Z^p-1=(Z-1)^p.
+$$
+Therefore
+$$
+R(Z)=(Z-1)^p(Z^2+Z+1)^2(Z^2+1)^2.
+$$
 
-In the invariant-factor decomposition of $V$ as an $\mathbb F_p[Z]$-module, the largest invariant factor is the minimal polynomial. Its degree is already $8=\dim V$, so there is only one invariant factor. Hence
-$$
-V\cong\mathbb F_p[Z]/(P(Z)).
-$$
+Also $F_p'(X)=-1$, so $F_p$ is separable. Its degree is $p^{p+8}$, hence it has exactly $p^{p+8}$ distinct roots.
 
-Step 2: Split the Frobenius module into its two primary parts
-
-The identity
-$$
-(Z^2+Z+1)^2(Z^2+1)^2
-=Z^8+2Z^7+5Z^6+6Z^5+8Z^4+6Z^3+5Z^2+2Z+1
-=P(Z)
-$$
-gives
-$$
-P(Z)=(Z^2+Z+1)^2(Z^2+1)^2.
-$$
-The two quadratic factors are coprime for $p\geq5$, so
-$$
-V=V_3\oplus V_4,
-$$
-where
-$$
-V_3\cong\frac{\mathbb F_p[Z]}{((Z^2+Z+1)^2)},
-\qquad
-V_4\cong\frac{\mathbb F_p[Z]}{((Z^2+1)^2)}.
-$$
-Each summand has dimension $4$.
-
-For
-$$
-K_3=\ker(\sigma^2+\sigma+1)\subset V_3,
-$$
-the cyclic description gives $\dim K_3=2$. Every nonzero vector in $K_3$ has exact period $3$, because
-$$
-Z^3-1=(Z-1)(Z^2+Z+1)
-$$
-and $Z-1$ is coprime to $Z^2+Z+1$.
-
-Now take $v\in V_3\setminus K_3$. Its annihilator contains a squared factor from $Z^2+Z+1$, so any polynomial $Z^d-1$ annihilating $v$ must have $3\mid d$ and must contain that factor with multiplicity at least $2$. In characteristic $p$, the polynomial $Z^d-1$ is squarefree when $p\nmid d$, while repeated factors occur when $p\mid d$. Therefore $3p\mid d$. On the other hand,
-$$
-Z^{3p}-1=(Z^3-1)^p
-$$
-is divisible by $(Z^2+Z+1)^2$, so $v$ has exact period $3p$. The period counts in $V_3$ are
-$$
-1,\qquad p^2-1,\qquad p^4-p^2
-$$
-for periods $1,3,3p$, respectively.
-
-The same argument with $Z^2+1$, using
-$$
-Z^4-1=(Z^2-1)(Z^2+1),
-$$
-gives period counts
-$$
-1,\qquad p^2-1,\qquad p^4-p^2
-$$
-in $V_4$ for periods $1,4,4p$, respectively.
-
-Step 3: Count exact periods in the direct sum
+Step 2: Embed the affine root set in a cyclic Frobenius module
 
 Set
 $$
-A=p^2-1,
+Q(Z)=(Z-1)R(Z)
+=(Z-1)^{p+1}(Z^2+Z+1)^2(Z^2+1)^2.
+$$
+Let
+$$
+W=\{w:Q(\sigma)w=0\}.
+$$
+The linearized polynomial corresponding to $Q$ is monic of degree $p^{p+9}$ and has derivative $Q(0)=1$. Thus
+$$
+|W|=p^{p+9},
 \qquad
-B=p^4-p^2=p^2A.
+\dim_{\mathbb F_p}W=p+9.
 $$
-By Step 2, the period of $v_3+v_4\in V_3\oplus V_4$ is the least common multiple of the periods of its two components. The exact counts are
-$$
-1
-$$
-for period $1$,
-$$
-A
-$$
-for period $3$,
-$$
-A
-$$
-for period $4$,
-$$
-A^2
-$$
-for period $12$,
-$$
-B
-$$
-for period $3p$, and
-$$
-B
-$$
-for period $4p$.
 
-All remaining mixed pairs have period $12p$. Their number is
-$$
-AB+AB+B^2
-=2AB+B^2
-=p^2(p^2+2)A^2.
-$$
-The total number of vectors is
-$$
-1+2A+A^2+2B+2AB+B^2
-=(1+A+B)^2
-=p^8,
-$$
-so no other periods occur.
+The minimal polynomial of $\sigma$ on $W$ is exactly $Q$. Indeed, if a nonzero polynomial of degree less than $p+9$ annihilated $W$, its associated linearized polynomial would have degree at most $p^{p+8}$ but would vanish on all $p^{p+9}$ elements of $W$, which is impossible.
 
-Step 4: Convert exact periods into irreducible-factor degrees
+Since the minimal polynomial has degree $\dim W$, the $\mathbb F_p[Z]$-module $W$ is cyclic:
+$$
+W\cong\mathbb F_p[Z]/(Q(Z)).
+$$
 
-The polynomial $F_p$ is separable by Step 1. The roots of each monic irreducible factor over $\mathbb F_p$ form one Frobenius orbit, and the orbit length equals the factor degree. Therefore the number of degree-$d$ factors is the number of roots of exact Frobenius period $d$ divided by $d$.
+If $\alpha$ is a root of $F_p$, then $R(\sigma)\alpha=1$, so
+$$
+Q(\sigma)\alpha=(\sigma-1)1=0.
+$$
+Conversely, an element $w\in W$ is a root of $F_p$ exactly when
+$$
+R(\sigma)w=1.
+$$
+Thus the roots form one Frobenius-stable affine fiber inside $W$.
 
-Using Step 3,
+Step 3: Resolve the affine condition on the unipotent primary part
+
+The three factors of $Q$ are pairwise coprime for $p\geq5$. By Step 2,
 $$
-b_1=1,
+W=U_1\oplus U_3\oplus U_4,
+$$
+where
+$$
+U_1\cong\frac{\mathbb F_p[Z]}{((Z-1)^{p+1})},
 $$
 $$
-b_3=\frac{p^2-1}{3},
+U_3\cong\frac{\mathbb F_p[Z]}{((Z^2+Z+1)^2)},
 \qquad
-b_4=\frac{p^2-1}{4},
+U_4\cong\frac{\mathbb F_p[Z]}{((Z^2+1)^2)}.
 $$
+
+The operator $R(\sigma)$ vanishes on $U_3$ and $U_4$, so the affine equation concerns only the $U_1$-component. On $U_1$, the operator $S(\sigma)$ is invertible because $S(1)\ne0$ for $p\geq5$.
+
+Put
 $$
-b_{12}=\frac{(p^2-1)^2}{12},
+N=\sigma-1.
 $$
+After the period-preserving change of variable $u\mapsto S(\sigma)u$, the affine condition becomes
 $$
-b_{3p}=\frac{p(p^2-1)}{3},
-\qquad
-b_{4p}=\frac{p(p^2-1)}{4},
+N^pu=1.
+$$
+
+The module $U_1$ is a single $N$-chain of length $p+1$. Its fixed space $\ker N$ is one-dimensional and contains the nonzero vector $1$, while $\operatorname{im}N^p=\ker N$. Hence the displayed equation is solvable, and its solution set
+$$
+C=\{u\in U_1:N^pu=1\}
+$$
+is a coset of $\ker N^p$. Since
+$$
+\dim\ker N^p=p,
+$$
+we have
+$$
+|C|=p^p.
+$$
+
+For every $u\in C$, the characteristic-$p$ binomial identity gives
+$$
+\sigma^pu=(1+N)^pu=u+N^pu=u+1\ne u.
+$$
+On the other hand,
+$$
+\sigma^{p^2}u=(1+N)^{p^2}u=u+N^{p^2}u=u,
+$$
+because $N^{p+1}=0$. Therefore every element of $C$ has exact Frobenius period
+$$
+p^2.
+$$
+
+Step 4: Combine the remaining primary periods with the affine period
+
+The space $U_3$ has $p^4$ elements. Any nonzero element has annihilator $Z^2+Z+1$ or $(Z^2+Z+1)^2$. Since
+$$
+Z^3-1=(Z-1)(Z^2+Z+1)
 $$
 and
 $$
-b_{12p}=\frac{p(p^2+2)(p^2-1)^2}{12}.
+Z^{3p}-1=(Z^3-1)^p,
 $$
-All other $b_d$ vanish.
+every nonzero element of $U_3$ has period $3$ or $3p$. Thus there are
+$$
+p^4-1
+$$
+nonzero choices, and after combining with the period $p^2$ from Step 3 every such choice contributes period $3p^2$.
 
-Step 5: Assemble the factor-degree polynomial
+Similarly, every nonzero element of $U_4$ has period $4$ or $4p$, because
+$$
+Z^4-1=(Z^2-1)(Z^2+1)
+$$
+and
+$$
+Z^{4p}-1=(Z^4-1)^p.
+$$
+There are again $p^4-1$ nonzero choices.
 
-Substituting the multiplicities from Step 4 into
+Consequently the exact root counts are
 $$
-\mathcal D_p(t)=\sum_{d\geq1}b_dt^d
+p^p
 $$
-and collecting terms gives
+for period $p^2$,
+$$
+p^p(p^4-1)
+$$
+for period $3p^2$,
+$$
+p^p(p^4-1)
+$$
+for period $4p^2$, and
+$$
+p^p(p^4-1)^2
+$$
+for period $12p^2$.
+
+Their sum is
+$$
+p^p\left(1+2(p^4-1)+(p^4-1)^2\right)=p^{p+8},
+$$
+which matches the total number of roots from Step 1.
+
+Step 5: Convert Frobenius orbits into irreducible factors
+
+Because $F_p$ is separable, each monic irreducible factor over $\mathbb F_p$ corresponds to one Frobenius orbit, and its degree equals the orbit length. Dividing the counts from Step 4 by their periods gives
+$$
+b_{p^2}=p^{p-2},
+$$
+$$
+b_{3p^2}=\frac{p^{p-2}(p^4-1)}{3},
+\qquad
+b_{4p^2}=\frac{p^{p-2}(p^4-1)}{4},
+$$
+and
+$$
+b_{12p^2}=\frac{p^{p-2}(p^4-1)^2}{12}.
+$$
+All other $b_d$ vanish. Hence
 $$
 \mathcal D_p(t)=
-\frac{p^2-1}{12}
+\frac{p^{p-2}}{12}
 \left(
-p(p^2+2)(p^2-1)t^{12p}
-+3pt^{4p}
-+4pt^{3p}
-+(p^2-1)t^{12}
-+3t^4
-+4t^3
-\right)
-+t.
+(p^4-1)^2t^{12p^2}
++3(p^4-1)t^{4p^2}
++4(p^4-1)t^{3p^2}
++12t^{p^2}
+\right).
 $$
 
-Final Answer: $\boxed{\frac{p^2-1}{12}(p(p^2+2)(p^2-1)t^{12p}+3pt^{4p}+4pt^{3p}+(p^2-1)t^{12}+3t^4+4t^3)+t}$
+Final Answer: $\boxed{\frac{p^{p-2}}{12}((p^4-1)^2t^{12p^2}+3(p^4-1)t^{4p^2}+4(p^4-1)t^{3p^2}+12t^{p^2})}$
 
 ---
 
 ## Answer
 
-$\frac{p^2-1}{12}(p(p^2+2)(p^2-1)t^{12p}+3pt^{4p}+4pt^{3p}+(p^2-1)t^{12}+3t^4+4t^3)+t$
+$\frac{p^{p-2}}{12}((p^4-1)^2t^{12p^2}+3(p^4-1)t^{4p^2}+4(p^4-1)t^{3p^2}+12t^{p^2})$
 
 ---
 
@@ -211,8 +221,8 @@ $\frac{p^2-1}{12}(p(p^2+2)(p^2-1)t^{12p}+3pt^{4p}+4pt^{3p}+(p^2-1)t^{12}+3t^4+4t
 
 ## Solution Concepts
 
+- finite-field Frobenius
 - linearized polynomials
-- Frobenius modules
 - primary decomposition
-- exact orbit periods
-- finite-field factorization
+- unipotent operators
+- Frobenius orbit counting

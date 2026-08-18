@@ -2,15 +2,19 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime, and define
+Let $p\geq5$ be a prime. Put
 $$
-F_p(X)=X^{p^8}+2X^{p^7}+5X^{p^6}+6X^{p^5}+8X^{p^4}+6X^{p^3}+5X^{p^2}+2X^p+X
+(c_0,c_1,\ldots,c_8)=(1,2,5,6,8,6,5,2,1)
+$$
+in $\mathbb F_p$, and define
+$$
+F_p(X)=\sum_{i=0}^8 c_i\left(X^{p^{p+i}}-X^{p^i}\right)-1
 \in\mathbb F_p[X].
 $$
 
 For $d\geq1$, let $b_d$ be the number of monic irreducible factors of $F_p(X)$ over $\mathbb F_p$ having degree $d$.
 
-Determine the factor-degree polynomial
+Determine
 $$
 \mathcal D_p(t)=\sum_{d\geq1}b_dt^d
 $$
@@ -31,4 +35,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The problem concerns the factorization of a linearized polynomial over a finite field and the extension degrees of its roots. Frobenius acts on the root space, and irreducible-factor degrees are determined by the finite fields in which those roots first appear. The repeated factors in the Frobenius annihilator force extension degrees with an additional characteristic-$p$ contribution, making finite-field structure the primary subject.
+The factor degrees are determined by the finite-field Frobenius orbits of the roots. The nonhomogeneous linearized equation produces an affine Frobenius fiber rather than a vector space, and its characteristic-$p$ unipotent part must first be resolved before the remaining finite-field orbit periods can be combined.
