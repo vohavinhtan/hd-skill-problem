@@ -2,27 +2,21 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime, and define
+Let $p\geq5$ be a prime, and put
 $$
-s_p=
-\begin{cases}
-1,&p\equiv1\pmod3,\\
-2,&p\equiv2\pmod3.
-\end{cases}
+(c_0,c_1,\ldots,c_6)=(1,1,3,2,3,1,1)
 $$
-Put
+in $\mathbb F_p$. Define
 $$
-(c_0,c_1,\ldots,c_8)=(1,2,5,6,8,6,5,2,1)
+L_p(X)=\sum_{i=0}^6c_i\left(X^{p^{p+i}}-X^{p^i}\right).
 $$
-in $\mathbb F_p$, and define
+Since $Y^p-Y$ divides $Y^{p^3}-Y$ in $\mathbb F_p[Y]$, set
 $$
-F_p(X)=
-\left(
-\sum_{i=0}^8c_i\left(X^{p^{p+i}}-X^{p^i}\right)
-\right)^2
-+
-\sum_{i=0}^8c_i\left(X^{p^{p+i}}-X^{p^i}\right)
-+1.
+H_p(Y)=\frac{Y^{p^3}-Y}{Y^p-Y}
+$$
+and
+$$
+F_p(X)=H_p(L_p(X)).
 $$
 
 For $d\geq1$, let $b_d$ be the number of monic irreducible factors of $F_p(X)$ over $\mathbb F_p$ having degree $d$.
@@ -48,4 +42,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The requested factor degrees are determined by Frobenius orbits in two affine fibers of a linearized map. The fibers behave differently according to the field of definition of the two roots of an auxiliary quadratic, while repeated primary factors of the Frobenius operator introduce a characteristic-$p$ period. The final orbit distribution requires combining these two structures.
+The roots are affine Frobenius fibers above the elements of degree three over the base field. Those targets split according to their trace, and the two classes force different lifts through repeated Frobenius-primary factors. The resulting exact orbit lengths determine the degrees of the irreducible factors.
