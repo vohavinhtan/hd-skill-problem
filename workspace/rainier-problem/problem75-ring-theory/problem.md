@@ -63,7 +63,7 @@ in closed form as a function of $n$.
 | Field | Value |
 |---|---|
 | **Domain** | Abstract Algebra |
-| **Sub-domain** | Computational algebra |
+| **Sub-domain** | Ring theory |
 | **Problem Type** | Optimization |
 | **Answer Type** | Tuple or ordered list |
 
@@ -71,4 +71,4 @@ in closed form as a function of $n$.
 
 ## Domain Explanation
 
-This problem concerns explicit computation of conductor exponents for parametrized complete subalgebras of a formal power series ring. The calculation requires recovering hidden valuations through algebraic reduction and approximate-root cancellations, then constructing finite residue-class normal forms. The parameter strata are compared through these computed conductor values.
+This problem concerns conductor ideals of complete local subrings of a discrete valuation ring. The parameter controls a hidden rank drop, and different components of that rank-drop locus lead to different cancellation structures. The conductor is determined by reconstructing those structures and comparing the resulting value-semigroup closures.
