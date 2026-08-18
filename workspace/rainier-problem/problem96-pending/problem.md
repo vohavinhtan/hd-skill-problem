@@ -10,25 +10,21 @@ v=(a,b,c,d),\qquad w=(a',b',c',d')\in V,
 $$
 define
 $$
-\omega_+(v,w)=ab'-a'b,\qquad \omega_-(v,w)=cd'-c'd
+\beta(v,w)=\left(
+ad'+bc'-cb'-da',\,
+t(ac'-ca')+t^2(bd'-db')
+\right)\in Z.
 $$
-and
-$$
-\beta(v,w)=\left(\omega_+(v,w)+\omega_-(v,w),\,
-t\bigl(\omega_+(v,w)-\omega_-(v,w)\bigr)\right)\in Z.
-$$
-
 Give $G=V\times Z$ the multiplication
 $$
-(v,z)(w,u)=\left(v+w,\ z+u+\frac12\beta(v,w)\right).
+(v,z)(w,u)=\left(v+w,\ z+u+\frac12\beta(v,w)\right),
 $$
-Here $\frac12$ denotes the inverse of $2$ in $\mathbb F_p$.
+where $\frac12$ is the inverse of $2$ in $\mathbb F_p$.
 
 Let $A_n(p)$ be the number of automorphisms $\alpha$ of $G$ satisfying
 $$
 \alpha(0,z)=(0,z)\qquad\text{for every }z\in Z.
 $$
-
 Determine $A_n(p)$ exactly as a function of $p$ and $n$.
 
 ## Domain Classification
