@@ -1,277 +1,177 @@
 ## Steps
 
-Step 1: Linearize the three basic operations
+Step 1: Recover the hidden additive structure
 
-Set
+Put $\alpha=(0,1)\in E$. Then
 $$
-S=\mathbb F_p[x]/(x^{2n})
+\alpha\diamond\alpha=(t,0),
 $$
-and identify $R$ with the even subring of $S$ by $t=x^2$. Identify $E$ with $S$ through
+so the map
 $$
-(a,b)\longmapsto a+bx.
+a+b\alpha\longmapsto(a,b)
 $$
-Under this identification, $q\diamond s$ is ordinary multiplication in $S$, $q^\sharp$ is the involution
+identifies $(E,\diamond)$ with
 $$
-\bar q=q(x)\longmapsto q(-x),
+S=\mathbb F_p[\alpha]/(\alpha^{2n}),
 $$
-and $H$ is multiplication by
-$$
-h=\frac12+x.
-$$
-Indeed,
-$$
-\left(\frac12+x\right)(a+bx)=\left(\frac12a+tb\right)+\left(a+\frac12b\right)x.
-$$
+where $\alpha^2=t$.
 
-Define a bijection
-$$
-\Phi:S^2\to S^2,\qquad
-\Phi(q,r)=\left(q,r+\frac12q^2\right).
-$$
-Its inverse is $(q,r)\mapsto(q,r-\frac12q^2)$.
-
-For $X=(q,r)$, $Y=(q',r')$, and $Z=(q'',r'')$, the identity
-$$
-(q-q')(q'-q'')+\frac12(q-q'+q'')^2
-=
-\frac12(q^2-q'^2+q''^2)
-$$
-gives
-$$
-\Phi(m(X,Y,Z))=\Phi(X)-\Phi(Y)+\Phi(Z).
-$$
-Also
-$$
-\frac12h(1-h)=\frac18-\frac t2,
-$$
-so
-$$
-\Phi(u(q,r))=h\Phi(q,r).
-$$
-Finally, $\overline{q^2}=\bar q^{\,2}$ gives
-$$
-\Phi(\sigma(q,r))=(\bar q,\bar r).
-$$
-Therefore $\mathbf A_n(p)$ is isomorphic to the algebra on $S^2$ with operations
-$$
-M(X,Y,Z)=X-Y+Z,\qquad U(X)=hX,\qquad \Sigma(X)=\bar X,
-$$
-where the bar is applied coordinatewise.
-
-Step 2: Describe congruences by invariant submodules
-
-Let $\theta$ be a congruence of the linearized algebra and let
-$$
-N=\{X\in S^2:X\mathrel{\theta}0\}.
-$$
-Compatibility with $M$ shows that $N$ is an additive subgroup. For example, if $A,B\in N$, then
-$$
-M(A,0,B)=A+B\in N,\qquad M(0,A,0)=-A\in N.
-$$
-Also,
-$$
-X\mathrel{\theta}Y
-\quad\Longleftrightarrow\quad
-X-Y\in N.
-$$
-The forward implication follows from
-$$
-M(X,Y,0)=X-Y\mathrel{\theta}0,
-$$
-and the reverse implication follows by applying $M(\,\cdot\,,0,Y)$ to $X-Y\mathrel{\theta}0$.
-
-Compatibility with $U$ gives $hN\subseteq N$. Since $h$ is a unit and the algebra is finite, $hN=N$. The additive group is an $\mathbb F_p$-vector space, so it is stable under $\frac12$, and
-$$
-x=h-\frac12
-$$
-shows that $xN\subseteq N$. Therefore $N$ is an $S$-submodule of $S^2$. Compatibility with $\Sigma$ gives $\bar N=N$.
-
-Conversely, every $S$-submodule $N$ with $\bar N=N$ defines a congruence by
-$$
-X\mathrel{\theta_N}Y
-\quad\Longleftrightarrow\quad
-X-Y\in N.
-$$
-Therefore $C_n(p)$ equals the number of bar-stable $S$-submodules of $S^2$.
-
-Step 3: Convert bar-stable submodules into interlaced submodules over $R$
-
-Every vector of $S^2$ has a unique form
-$$
-e+xo,\qquad e,o\in R^2.
-$$
-If $N$ is bar-stable, then for $e+xo\in N$,
-$$
-e=\frac{(e+xo)+\overline{(e+xo)}}2\in N,
-$$
-and
-$$
-xo=\frac{(e+xo)-\overline{(e+xo)}}2\in N.
-$$
 Define
 $$
-E_0=N\cap R^2,
-\qquad
-O_0=\{o\in R^2:xo\in N\}.
+\Phi(q,r)=\left(q,r+\frac12(q\diamond q)\right).
 $$
-Then
+On $E\times E$ introduce
 $$
-N=E_0\oplus xO_0.
+(q,r)*(s,v)=(q+s,r+v-q\diamond s).
 $$
-Because $N$ is stable under multiplication by $x$,
+A direct expansion gives
 $$
-xE_0\subseteq xO_0,
+\Phi((q,r)*(s,v))=\Phi(q,r)+\Phi(s,v),
 $$
-so $E_0\subseteq O_0$, while
+so $\Phi$ identifies $(E\times E,*)$ with the additive group of $S^2$. The inverse in $*$ is
 $$
-x(xO_0)=tO_0\subseteq E_0.
+(q,r)^{-1}=(-q,-r-q\diamond q),
 $$
-Therefore
+and substitution into $x*y^{-1}*z$ gives exactly the stated operation $m$. Therefore, after applying $\Phi$,
 $$
-tO_0\subseteq E_0\subseteq O_0.
+m(x,y,z)=x-y+z.
 $$
 
-Conversely, if $E_0,O_0\leq R^2$ satisfy these inclusions, then $E_0\oplus xO_0$ is stable under $x$, under $R$, and under the bar involution. Therefore congruences are in bijection with pairs
+For this affine ternary operation, a congruence is determined by the class $N$ of $0$. If $x,y\in N$, then $m(x,0,y)=x+y\in N$ and $m(0,x,0)=-x\in N$, so $N$ is an additive subgroup. Also
 $$
-(E_0,O_0)
-\quad\text{such that}\quad
-tO_0\subseteq E_0\subseteq O_0.
+x\equiv y\pmod N\quad\Longleftrightarrow\quad x-y\in N.
 $$
+Since the additive group is an $\mathbb F_p$-vector space, $N$ is an $\mathbb F_p$-subspace.
 
-Step 4: Count the possible middle submodules for a fixed $O_0$
+Step 2: Convert the unary operations into multiplication in one ring
 
-For fixed $O_0$, the quotient $O_0/tO_0$ is an $\mathbb F_p$-vector space. Taking inverse images under
+In $S$, the map $H$ is multiplication by
 $$
-O_0\to O_0/tO_0
+h=\frac12+\alpha.
 $$
-gives a bijection between the allowed $E_0$ and the $\mathbb F_p$-subspaces of $O_0/tO_0$.
-
-Since $O_0\leq R^2$, the dimension
+Write $\Phi(q,r)=(q,z)$, so $z=r+\frac12q^2$, with products now taken in $S$. For the first unary operation,
 $$
-d(O_0)=\dim_{\mathbb F_p}(O_0/tO_0)
-$$
-is $0$, $1$, or $2$. A vector space of these dimensions has respectively
-$$
-1,\qquad 2,\qquad p+3
-$$
-subspaces. The last count is $1+(p+1)+1$, corresponding to dimensions $0,1,2$.
-
-Step 5: Count submodules of each generator rank in $R^2$
-
-Every $R$-submodule of $R^2$ can be carried by an element of $\operatorname{GL}_2(R)$ to
-$$
-D_{a,b}=t^{n-a}Re_1\oplus t^{n-b}Re_2,
-\qquad
-0\leq b\leq a\leq n,
-$$
-with $t^nR=0$. To obtain this form, choose a vector in the submodule with minimal coordinate valuation, send its unit direction to $e_1$, eliminate first coordinates from the remaining generators, and repeat in the second coordinate. The two resulting cyclic lengths are $a$ and $b$, so the types are disjoint.
-
-If $a=b$, then
-$$
-D_{a,a}=t^{n-a}R^2
-$$
-is the only submodule of that type. If $a>b$, put $d=a-b$. A matrix
-$$
-g=\begin{pmatrix}\alpha&\beta\\ \gamma&\delta\end{pmatrix}
-\in\operatorname{GL}_2(R)
-$$
-stabilizes $D_{a,b}$ exactly when $\gamma\in t^dR$. Because $d\geq1$, invertibility then requires $\alpha$ and $\delta$ to be units modulo $t$, while $\beta$ is arbitrary. Therefore
-$$
-|\operatorname{Stab}(D_{a,b})|
+\Phi(u(q,r))
 =
-(p-1)^2p^{4n-d-2}.
-$$
-Reduction modulo $t$ gives
-$$
-|\operatorname{GL}_2(R)|
-=
-p^{4(n-1)}|\operatorname{GL}_2(\mathbb F_p)|
-=
-p^{4n-3}(p-1)^2(p+1).
-$$
-Orbit-stabilizer gives
-$$
-\#\{O_0\text{ of type }(a,b)\}
-=
-(p+1)p^{a-b-1}
-$$
-when $a>b$.
-
-The submodules with $d(O_0)=1$ are exactly the types $(a,0)$ with $1\leq a\leq n$. Their number is
-$$
-K_n
-=
-(p+1)\sum_{a=1}^{n}p^{a-1}
-=
-\frac{(p+1)(p^n-1)}{p-1}.
-$$
-The total number of submodules is
-$$
-T_n
-=
-n+1+(p+1)\sum_{d=1}^{n}(n+1-d)p^{d-1}.
-$$
-For
-$$
-S_n=\sum_{d=1}^{n}(n+1-d)p^{d-1},
-$$
-subtracting the shifted sum twice gives
-$$
-(p-1)^2S_n=p^{n+1}-(n+1)p+n.
-$$
-Therefore
-$$
-T_n
-=
-n+1+
-\frac{(p+1)\left(p^{n+1}-(n+1)p+n\right)}{(p-1)^2}.
-$$
-There is one submodule with $d(O_0)=0$, namely $0$, and there are $T_n-1-K_n$ with $d(O_0)=2$.
-
-Step 6: Sum the congruences
-
-Using the weights from Step 4 and the counts from Step 5,
-$$
-C_n(p)
-=
-1+2K_n+(p+3)(T_n-1-K_n).
-$$
-Equivalently,
-$$
-C_n(p)=(p+3)T_n-(p+2)-(p+1)K_n.
-$$
-Substituting the formulas for $T_n$ and $K_n$ and collecting the numerator gives
-$$
-C_n(p)
-=
-\frac{
-(3p^2+4p+1)p^n
--2n(p^2+2p-3)
--2p^2-6p
-}{(p-1)^2}.
+\left(hq,hr+\left(\frac18-\frac t2\right)q^2+\frac12h^2q^2\right).
 $$
 Since
 $$
-3p^2+4p+1=(p+1)(3p+1)
-$$
-and
-$$
-p^2+2p-3=(p-1)(p+3),
+\frac18-\frac t2-\frac h2+\frac{h^2}{2}=0,
 $$
 this becomes
 $$
-C_n(p)
-=
-\frac{(p+1)(3p+1)p^n-2(p+3)(n(p-1)+p)}{(p-1)^2}.
+(q,z)\longmapsto(hq,hz).
+$$
+An additive subgroup stable under this map is stable under multiplication by $\alpha=h-\frac12$, and the converse is immediate. Such a subgroup is therefore an $S$-submodule.
+
+For the second unary operation, the definition gives
+$$
+\Phi(\sigma(q,r))=(tz,q).
+$$
+Let
+$$
+T=S[\beta]/(\beta^2-\alpha^2).
+$$
+Identify $S^2$ with the regular $S$-module $T$ by
+$$
+(q,z)\longmapsto q+z\beta.
+$$
+Multiplication by $\beta$ sends $(q,z)$ to $(\alpha^2z,q)=(tz,q)$. Therefore an $\mathbb F_p$-subspace is compatible with both unary operations exactly when it is an ideal of $T$. Hence
+$$
+C_n(p)=|\operatorname{Id}(T)|.
 $$
 
-Final Answer: $\boxed{\frac{(p+1)(3p+1)p^{n}-2(p+3)(n(p-1)+p)}{(p-1)^2}}$
+Step 3: Expose the two branches of the hidden ring
+
+Put
+$$
+d=2n,\qquad x=\beta-\alpha,\qquad y=\beta+\alpha.
+$$
+Because $p$ is odd, this change of generators is invertible. The relation $\beta^2=\alpha^2$ gives
+$$
+xy=0.
+$$
+Also $\alpha=(y-x)/2$, and $xy=0$ removes every mixed term from $(y-x)^d$. Since $d$ is even, $\alpha^d=0$ is equivalent to
+$$
+x^d+y^d=0.
+$$
+Therefore
+$$
+T\cong\mathbb F_p[x,y]/(xy,x^d+y^d).
+$$
+
+Set
+$$
+s=x^d=-y^d.
+$$
+Then $xs=ys=0$. Every nonzero proper ideal contains $s$. Indeed, a proper ideal contains no element with nonzero constant term. If $f$ has lowest nonzero $x$-term $cx^a$, multiplying by $x^{d-a}$ kills all $y$-terms and all higher $x$-terms, leaving $cs$. If no $x$-term occurs, the same argument uses the lowest $y$-term. Therefore
+$$
+|\operatorname{Id}(T)|=1+|\operatorname{Id}(B)|,
+$$
+where
+$$
+B=T/(s)\cong\mathbb F_p[x,y]/(xy,x^d,y^d).
+$$
+The extra $1$ is the zero ideal of $T$.
+
+Step 4: Classify the proper ideals of the two-branch quotient
+
+Let
+$$
+X_a=\operatorname{span}_{\mathbb F_p}\{x^a,\ldots,x^{d-1}\},
+\qquad
+Y_b=\operatorname{span}_{\mathbb F_p}\{y^b,\ldots,y^{d-1}\},
+$$
+for $1\leq a,b\leq d$, with $X_d=Y_d=0$. Every proper ideal $J$ of $B$ lies in $(x,y)=X_1\oplus Y_1$.
+
+The projections of $J$ to the two branches are some $X_a,Y_b$, while
+$$
+J\cap X_1=X_c,\qquad J\cap Y_1=Y_e
+$$
+for $c\geq a$ and $e\geq b$. The subspace $J$ induces an isomorphism
+$$
+X_a/X_c\cong Y_b/Y_e.
+$$
+Multiplication by $x$ kills the right branch, so it must annihilate $X_a/X_c$. Hence either $c=a$ or $c=a+1$. Multiplication by $y$ gives either $e=b$ or $e=b+1$. The two quotient dimensions are equal.
+
+If both quotients have dimension $0$, then
+$$
+J=X_a\oplus Y_b.
+$$
+There are $d^2$ such ideals, including $0$.
+
+If both have dimension $1$, then $a,b\leq d-1$, and $J$ is the graph of an isomorphism between the one-dimensional spaces
+$$
+X_a/X_{a+1}\quad\text{and}\quad Y_b/Y_{b+1}.
+$$
+There are $p-1$ such isomorphisms for each pair $(a,b)$, giving
+$$
+(p-1)(d-1)^2
+$$
+ideals. These two cases exhaust the proper ideals of $B$. Including $B$ itself,
+$$
+|\operatorname{Id}(B)|=d^2+(p-1)(d-1)^2+1.
+$$
+
+Step 5: Count the congruences
+
+From Step 3 and Step 4,
+$$
+C_n(p)=d^2+(p-1)(d-1)^2+2.
+$$
+Since $d=2n$,
+$$
+C_n(p)=4n^2+(p-1)(2n-1)^2+2.
+$$
+
+Final Answer: $\boxed{4n^{2}+(p-1)(2n-1)^{2}+2}$
 
 ---
 
 ## Answer
 
-$\frac{(p+1)(3p+1)p^{n}-2(p+3)(n(p-1)+p)}{(p-1)^2}$
+$4n^{2}+(p-1)(2n-1)^{2}+2$
 
 ---
 
@@ -289,8 +189,8 @@ $\frac{(p+1)(3p+1)p^{n}-2(p+3)(n(p-1)+p)}{(p-1)^2}$
 
 ## Solution Concepts
 
-- Mal'cev algebras
 - congruence lattices
-- truncated polynomial rings
+- affine Mal'cev operations
 - invariant submodules
-- orbit-stabilizer counting
+- truncated polynomial rings
+- ideal classification
