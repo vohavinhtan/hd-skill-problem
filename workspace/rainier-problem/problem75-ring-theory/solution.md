@@ -1,134 +1,136 @@
 ## Steps
 
-Step 1: Classify the parameter strata and expose the singular generator
+Step 1: Classify the three parameter strata
 Put
 $$
-a=5n+2,\qquad b=5n+3,\qquad x=t^5.
+A=30n+10,\qquad B=30n+15,\qquad C=30n+29.
 $$
-For $\lambda\neq1$, the $Y$- and $Z$-images have coefficient matrix
+Relative to $t^B,t^A$, the $Y$- and $Z$-images have coefficient matrix
 $$
-(\lambda-1)
+M(\lambda)=
 \begin{pmatrix}
-1&\lambda\\
-\lambda&1
-\end{pmatrix}
+\lambda^2-1&\lambda-1\\
+\lambda^2-1&\lambda(\lambda-1)
+\end{pmatrix}.
 $$
-relative to $t^a,t^b$. Its determinant is
+Its determinant is
 $$
-(\lambda-1)^2(1-\lambda^2).
+\det M(\lambda)=(\lambda^2-1)(\lambda-1)^2.
 $$
-If $\lambda\neq\pm1$, the two images span $t^a,t^b$. Since $W=t^{2a}$ is then redundant,
+If $\lambda\neq\pm1$, the matrix is invertible, so $t^A,t^B\in A_{n,\lambda}$. Since $W=t^C$ and $X=t^{30}$,
 $$
-A_{n,\lambda}=\mathbb C[[t^5,t^a,t^b]]
+A_{n,\lambda}=\mathbb C[[t^{30},t^A,t^B,t^C]]
 \qquad(\lambda\neq\pm1).
+$$
+If $\lambda=-1$, the $t^B$ coefficient vanishes while the $t^A$ coefficient does not, giving
+$$
+A_{n,-1}=\mathbb C[[t^{30},t^A,t^C]].
 $$
 If $\lambda=1$, both $Y$ and $Z$ vanish, so
 $$
-A_{n,1}=\mathbb C[[t^5,t^{2a}]].
+A_{n,1}=\mathbb C[[t^{30},t^C]].
 $$
-If $\lambda=-1$, the two images are proportional and yield
-$$
-F=t^a-t^b\in A_{n,-1}.
-$$
-The rank drop alone does not determine the value semigroup. Since
-$$
-a+b=10n+5=5(2n+1),
-$$
-we have
-$$
-F^2-t^{2a}+2x^{2n+1}=t^{2b}.
-$$
-Writing $G=t^{2b}$, the relations
-$$
-G=F^2-W+2x^{2n+1},\qquad
-W=F^2+2x^{2n+1}-G
-$$
-give
-$$
-A_{n,-1}=\mathbb C[[t^5,F,G]].
-$$
+Thus the conductor problem reduces to these three numerical semigroups.
 
 Step 2: Compute the three conductor exponents
-For a numerical semigroup $S$ containing $5$, let $m_r$ be its least element congruent to $r$ modulo $5$. Every integer in residue $r$ belongs to $S$ from $m_r$ onward, so its conductor is
+For a numerical semigroup $S$ containing $30$, let $m_r$ be its least element congruent to $r$ modulo $30$. Its conductor is
 $$
-\max_{0\leq r<5}m_r-4.
+\max_{0\leq r<30}m_r-29.
 $$
+Indeed, every integer in residue $r$ from $m_r$ onward is obtained by adding multiples of $30$, while $m_r-30$ is missing when $m_r>0$.
 
-For $\lambda\neq\pm1$, Step 1 gives
+For $\lambda\neq\pm1$, set
 $$
-S_{\mathrm{gen}}=\langle5,a,b\rangle.
+S_{\mathrm{gen}}=\langle30,A,B,C\rangle.
 $$
-Since $a\equiv2$ and $b\equiv3\pmod5$, the least representatives in residues $0,1,2,3,4$ are
+The identities
 $$
-0,\qquad2b,\qquad a,\qquad b,\qquad2a.
+3A=30(3n+1),
 $$
-For residue $1$, the alternative using only $a$ starts at $3a$, and $2b<3a$. For residue $4$, the alternative using only $b$ starts at $3b$, and $2a<3b$. Any mixed expression with at least three copies of $a$ and $b$ is larger than these representatives. Since $2b$ is largest,
 $$
-\kappa_{n,\lambda}=2b-4=10n+2
+2B=30(2n+1),
+$$
+$$
+5C=A+B+30(3n+4)
+$$
+show that every element of $S_{\mathrm{gen}}$ reduces to
+$$
+30q+iA+jB+kC,
+\qquad
+q\geq0,\quad
+0\leq i\leq2,\quad
+0\leq j\leq1,\quad
+0\leq k\leq4.
+$$
+These $30$ reduced sums have distinct residues modulo $30$. If two are congruent, then
+$$
+10(i-i')+15(j-j')-(k-k')\equiv0\pmod{30}.
+$$
+Modulo $5$ gives $k=k'$, since $|k-k'|\leq4$. Modulo $3$ then gives $i=i'$, since $|i-i'|\leq2$. The remaining congruence forces $j=j'$. Each reduction subtracts a nonnegative multiple of $30$, so these are exactly the least representatives of the $30$ residue classes. Their maximum is
+$$
+2A+B+4C=210n+151,
+$$
+and therefore
+$$
+\kappa_{n,\lambda}=210n+122
 \qquad(\lambda\neq\pm1).
 $$
 
-For $\lambda=1$, Step 1 gives $\langle5,2a\rangle$, with $2a\equiv4\pmod5$. The five multiples
+For $\lambda=-1$, set
 $$
-0,\qquad2a,\qquad4a,\qquad6a,\qquad8a
+S_-=\langle30,A,C\rangle.
 $$
-occupy all residues modulo $5$. Subtracting $5$ from any larger multiple stays in the same residue and lowers the value, so these are the least representatives. Their maximum is $8a$, giving
+Now
 $$
-\kappa_{n,1}=8a-4=40n+12.
+3A=30(3n+1),
+$$
+$$
+10C=2A+30(8n+9).
+$$
+Hence every element reduces to
+$$
+30q+iA+kC,
+\qquad
+q\geq0,\quad0\leq i\leq2,\quad0\leq k\leq9.
+$$
+If two such sums are congruent modulo $30$, then
+$$
+10(i-i')-(k-k')\equiv0\pmod{30}.
+$$
+Modulo $10$ gives $k=k'$, because $|k-k'|\leq9$, and then $i=i'$ follows modulo $3$. These are the $30$ least representatives. Their maximum is
+$$
+2A+9C=330n+281,
+$$
+so
+$$
+\kappa_{n,-1}=330n+252.
 $$
 
-For $\lambda=-1$, the monomials $t^5,t^a,t^{2b}$ lie in $A_{n,-1}$. Their semigroup
+For $\lambda=1$, the semigroup is $\langle30,C\rangle$. Since $C\equiv-1\pmod{30}$, the least representatives are
 $$
-S_-=\langle5,a,2b\rangle
+0,C,2C,\ldots,29C.
 $$
-has representatives
+Their maximum is $29C$, giving
 $$
-0,\qquad2b,\qquad a,\qquad a+2b,\qquad2a
-$$
-in residues $0,1,2,3,4$. For residue $1$, the alternative using only $a$ starts at $3a$, and $2b<3a$. For residue $3$, using only $a$ starts at $4a$, while using only $2b$ starts at $3(2b)$; both exceed $a+2b$. The representatives in residues $2$ and $4$ are $a$ and $2a$, since every other nonzero combination uses at least two or three positive generators. The largest representative is $a+2b$, so the conductor of $S_-$ is
-$$
-a+2b-4=15n+4.
-$$
-
-It remains to exclude cancellations in $\mathbb C[[t^5,F,G]]$ that create a value below $15n+4$. Every monomial
-$$
-x^qF^jG^k
-$$
-has leading valuation
-$$
-5q+aj+2bk.
-$$
-If this is below $15n+4$, then $j\leq2$, $k\leq1$, and the only possible pairs $(j,k)$ are
-$$
-(0,0),\ (1,0),\ (2,0),\ (0,1),\ (1,1).
-$$
-Their leading residues modulo $5$ are
-$$
-0,\ 2,\ 4,\ 1,\ 3,
-$$
-which are distinct. For fixed $(j,k)$, changing $q$ changes the leading valuation by a nonzero multiple of $5$. Therefore among all monomials below $15n+4$, the least valuation in any nonzero convergent combination occurs in a unique monomial and cannot cancel. No value outside $S_-$ appears below its conductor.
-
-The monomial subring generated by $t^5,t^a,t^{2b}$ is contained in $A_{n,-1}$ and contains every $t^m$ for $m\geq15n+4$. Therefore
-$$
-\kappa_{n,-1}=15n+4.
+\kappa_{n,1}=29C-29=870n+812.
 $$
 
 Step 3: Identify the second-largest conductor
-The three values from Step 2 satisfy, for every $n\geq2$,
+For every $n\geq2$,
 $$
-40n+12>15n+4>10n+2.
+870n+812>330n+252>210n+122.
 $$
-The largest conductor occurs only at $\lambda=1$, while the second-largest distinct conductor occurs only at $\lambda=-1$. Therefore
+The unique largest conductor occurs at $\lambda=1$, and the unique second-largest distinct conductor occurs at $\lambda=-1$. Hence
 $$
-\beta_n=15n+4,\qquad E_n=\{-1\}.
+\beta_n=330n+252,\qquad E_n=\{-1\}.
 $$
-Final Answer: $\boxed{\left(15n+4,\{-1\}\right)}$
+Final Answer: $\boxed{\left(330n+252,\{-1\}\right)}$
 
 ---
 
 ## Answer
 
-$\left(15n+4,\{-1\}\right)$
+$\left(330n+252,\{-1\}\right)$
 
 ---
 
@@ -143,7 +145,7 @@ $\left(15n+4,\{-1\}\right)$
 ## Solution Concepts
 
 - conductor exponent
-- value semigroups
+- numerical semigroup rings
 - rank drop of generators
-- nonlinear cancellation
 - residue-class representatives
+- Apéry sets
