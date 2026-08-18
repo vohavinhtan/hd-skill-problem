@@ -2,18 +2,24 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime satisfying
+Let $p\geq7$ be a prime and put
 $$
-p\equiv1\pmod3,
+n=\frac{p-1}{2}.
 $$
-and let $t$ be transcendental over $\mathbb F_p$. Define
+Define polynomials $P_r(X)\in\mathbb F_p[X]$ by
 $$
-F_p(X)=
-tX^{3p}-3tX^{2p+1}+3tX^{p+2}-3tX^p-tX^3+3tX-t^2-1
-\in\mathbb F_p(t)[X].
+P_0(X)=2,\qquad P_1(X)=X,
 $$
+and
+$$
+P_{r+1}(X)=XP_r(X)-P_{r-1}(X)
+$$
+for $r\geq1$.
 
-Let $L_p$ be the splitting field of $F_p(X)$ over $\mathbb F_p(t)$.
+Let $t$ be transcendental over $\mathbb F_p$, and let $L_p$ be the splitting field over $\mathbb F_p(t)$ of
+$$
+F_p(X)=P_n(X)-2t^3.
+$$
 
 Determine the genus of the function field $L_p$.
 
@@ -32,4 +38,4 @@ Determine the genus of the function field $L_p$.
 
 ## Domain Explanation
 
-The polynomial hides a cubic auxiliary extension followed by two independent Artin-Schreier directions. These directions are independent globally but become dependent at each of the two ramified places, so determining the genus requires reconstructing both the global splitting field and its local ramification.
+The recurrence conceals a reciprocal parametrization of the roots. Reconstructing it produces a Kummer extension of a genus-two quadratic function field, but that Kummer field is larger than the requested splitting field. The genus is obtained only after identifying the splitting field as an involution-fixed subfield and determining the ramification of that quotient.
