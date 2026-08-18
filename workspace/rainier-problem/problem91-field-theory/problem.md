@@ -6,16 +6,14 @@ Let $p\geq5$ be a prime, and define
 $$
 e_p=
 \begin{cases}
-1,&p\equiv1\pmod3,\\
-0,&p\equiv2\pmod3,
+1,&p\equiv3\pmod4,\\
+0,&p\equiv1\pmod4.
 \end{cases}
-\qquad
-h_p=p+1-2e_p.
 $$
 
 Set
 $$
-F_p(X)=X^{(p+1)^2}+X^{p+1}+1
+F_p(X)=X^{2p^3-2}+X^{2p^2-2}+X^{2p-2}+1
 \in\mathbb F_p[X].
 $$
 
@@ -42,4 +40,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The substitution hidden in the exponents first produces a semilinear Frobenius equation whose roots have degrees one or three. Each such root then has to be lifted through a multiplicative power map, and the lift degrees depend on whether the intermediate root is rational or genuinely cubic. The requested factor degrees come from combining these two dependent orbit structures.
+The factor degrees are controlled by the interaction between a Frobenius-stable additive subspace of a quartic finite field and the quadratic power map. The difficult count is not the size of that subspace, but the distribution of its nonzero elements between the two square classes and the way this distribution changes on the quadratic subfield.
