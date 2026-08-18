@@ -6,46 +6,38 @@ Fix an integer $r\geq2$ and put
 $$
 n=2^r.
 $$
+
 Work in the simply typed linear lambda calculus with exchange, no constants, atomic types
 $$
 p,\qquad q_i\quad(i\in\mathbb Z/n\mathbb Z),
 $$
-linear implication $\multimap$, and tensor $\otimes$. There is no weakening or contraction: every bound variable is used exactly once, and applications and tensor introductions split their contexts disjointly.
+linear implication $\multimap$, and tensor $\otimes$. There is no weakening or contraction: every bound variable is used exactly once, while applications and tensor introductions split their contexts disjointly.
 
-Consider the type
+Consider the type whose curried arguments, in order, are
 $$
-\Theta_n=
-(p\multimap p)^n
-\multimap
-(p\multimap q_0)\multimap\cdots\multimap(p\multimap q_{n-1})
-\multimap
-p^n
-\multimap
-(q_0\otimes\cdots\otimes q_{n-1}),
-$$
-where the notation means that the first $n$ displayed arguments are individually bound variables
-$$
-f_i:p\multimap p,
-$$
-the next $n$ are
-$$
+b_i:p\multimap p\multimap p,
+\qquad
 h_i:p\multimap q_i,
-$$
-and the next $n$ are
-$$
+\qquad
 x_i:p,
 \qquad
-i\in\mathbb Z/n\mathbb Z,
+y_i:p
 $$
-all in increasing index order.
+for $i=0,\ldots,n-1$, followed by the result type
+$$
+q_0\otimes q_1\otimes\cdots\otimes q_{n-1}.
+$$
+Denote this type by $\Theta_n$.
 
-Let $\mathcal N_n$ be the closed beta-eta-long normal inhabitants of $\Theta_n$, identified up to alpha-conversion.
+Let $\mathcal N_n$ be the set of closed beta-eta-long normal inhabitants of $\Theta_n$, identified up to alpha-conversion.
 
-The cyclic group of order $n$ acts on $\mathcal N_n$ by adding $1$ modulo $n$ simultaneously to the subscripts of all $f_i,h_i,x_i,q_i$, and then restoring the binders and tensor components to the displayed index order.
+The cyclic group of order $n$ acts on $\mathcal N_n$ by simultaneously adding $1$ modulo $n$ to every subscript of
+$$
+b_i,\ h_i,\ x_i,\ y_i,\ q_i,
+$$
+and then restoring the binders and tensor components to the displayed index order.
 
-For $M\in\mathcal N_n$, every $x_i$ occurs in exactly one tensor component. Let $\pi_M$ be the permutation of $\mathbb Z/n\mathbb Z$ sending $i$ to the index of that component.
-
-Determine the number of cyclic orbits of size exactly $n$ consisting of terms for which $\pi_M$ is odd.
+Determine the number of cyclic orbits of size exactly $n$ in $\mathcal N_n$.
 
 ## Domain Classification
 
@@ -58,4 +50,4 @@ Determine the number of cyclic orbits of size exactly $n$ consisting of terms fo
 
 ## Domain Explanation
 
-The problem concerns long normal forms in a resource-sensitive typed calculus. Linearity first forces a hidden decomposition into a variable permutation and ordered resource chains; the cyclic action then couples those two structures, so full-orbit counting requires a second symmetry analysis.
+The problem counts long normal inhabitants in a resource-sensitive typed calculus. Linearity forces every inhabitant to encode a labeled ordered binary forest, and the cyclic symmetry then imposes a second structural constraint on the forest and its resource labels.

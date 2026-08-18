@@ -1,180 +1,195 @@
 ## Steps
 
-Step 1: Reconstruct every long normal inhabitant
+Step 1: Recover the hidden binary forest
 
-Write a term in $\mathcal N_n$ as
+Every inhabitant has the form
 $$
-\lambda f_0\cdots\lambda f_{n-1}
+\lambda b_0\cdots\lambda b_{n-1}
 \lambda h_0\cdots\lambda h_{n-1}
-\lambda x_0\cdots\lambda x_{n-1}.
+\lambda x_0\cdots\lambda x_{n-1}
+\lambda y_0\cdots\lambda y_{n-1}.
 \langle M_0,\ldots,M_{n-1}\rangle.
 $$
-Since $M_i$ has atomic type $q_i$, its head must be $h_i$, the only variable whose result type is $q_i$. Thus
+
+Since $M_i$ has atomic type $q_i$, its head must be the unique variable
+$$
+h_i:p\multimap q_i.
+$$
+Hence
 $$
 M_i=h_iN_i
 $$
-with $N_i:p$.
+for some normal term $N_i:p$.
 
-Every beta-normal term of atomic type $p$ is obtained from some $x_j$ by applying a finite ordered chain of the variables $f_k:p\multimap p$. Because all variables are linear, the $n$ terms $N_i$ contain every $x_j$ exactly once and, between them, every $f_k$ exactly once.
-
-Hence an inhabitant is equivalent to two independent pieces of data:
-
-1. a permutation $\sigma\in S_n$, where $N_i$ ends in $x_{\sigma(i)}$;
-
-2. an ordered list $L_i$ of distinct labels from $\{0,\ldots,n-1\}$ for each component $i$, such that the $n$ lists partition all $n$ labels, with the entries of $L_i$ giving the order in which the corresponding $f$'s are applied.
-
-Conversely these data uniquely construct the long normal term.
-
-For fixed list lengths
+An atomic normal term of type $p$ is either one of the variables $x_j,y_j$, or has the form
 $$
-\ell_0+\cdots+\ell_{n-1}=n,
-\qquad
-\ell_i\geq0,
+b_jUV
 $$
-there are $n!$ ways to order the $f$-labels across the concatenated lists. The number of weak compositions is
+with $U,V:p$. Thus each $N_i$ is a plane full binary tree whose leaves are labeled by $x_j,y_j$ and whose internal vertices are labeled by $b_j$.
+
+Linearity says that across the ordered $n$-tuple
 $$
-\binom{2n-1}{n-1}.
+(N_0,\ldots,N_{n-1})
 $$
-Therefore the number of possible list systems is
+every one of the $n$ labels $b_j$ and all $2n$ labels $x_j,y_j$ occur exactly once.
+
+Therefore $\mathcal N_n$ is precisely the set of ordered plane full binary forests with
+
 $$
-n!\binom{2n-1}{n-1}.
+n\text{ roots},\qquad n\text{ internal vertices},\qquad2n\text{ leaves},
 $$
 
-Step 2: Translate the parity condition
+together with bijective labelings of the internal vertices by the $b_j$ and of the leaves by the $x_j,y_j$.
 
-The permutation in the problem sends each variable label to the component containing it. Since component $i$ contains $x_{\sigma(i)}$, we have
+Step 2: Count the underlying forest shapes
+
+Let $C(z)$ be the generating series for plane full binary trees, where $z$ records internal vertices. A tree is either a leaf or an internal vertex with two ordered subtrees, so
 $$
-\pi_M=\sigma^{-1}.
+C(z)=1+zC(z)^2.
 $$
-Thus
+Put
 $$
-\operatorname{sgn}(\pi_M)=\operatorname{sgn}(\sigma).
+D(z)=C(z)-1.
+$$
+Then
+$$
+D=z(1+D)^2.
 $$
 
-Exactly half of the $n!$ permutations are odd because $n\geq2$. Hence the total number of terms with odd $\pi_M$ is
+An ordered forest of $n$ trees is counted by $C(z)^n=(1+D)^n$. Formal coefficient extraction from
 $$
-\frac{(n!)^2}{2}\binom{2n-1}{n-1}.
+D=z(1+D)^2
+$$
+gives
+$$
+[z^n](1+D)^n
+=
+\frac{n}{n}[u^{n-1}](1+u)^{n-1}(1+u)^{2n}.
+$$
+Hence the number of forest shapes is
+$$
+\binom{3n-1}{n-1}
+=
+\frac13\binom{3n}{n}.
 $$
 
-Step 3: Describe the cyclic action on the hidden data
+After labeling the $n$ internal vertices and $2n$ leaves, the total number of inhabitants is therefore
+$$
+\frac13\binom{3n}{n}n!(2n)!
+=
+\frac{(3n)!}{3}.
+$$
 
-Let
-$$
-c(i)=i+1\pmod n.
-$$
-After cyclic relabeling, the component formerly indexed by $i$ becomes component $c(i)$. Therefore
-$$
-\sigma\longmapsto c\sigma c^{-1},
-$$
-and the list system transforms by
-$$
-L_{c(i)}'=c(L_i),
-$$
-where $c$ is applied to every function label in the list.
+Step 3: Reduce every short cyclic orbit to one involution
 
-In particular permutation parity is constant along every cyclic orbit.
-
-Because $n$ is a power of $2$, a term has orbit smaller than $n$ exactly when it is fixed by the half-turn
+Let $c$ denote the generator of the cyclic relabeling action. Since
+$$
+n=2^r,
+$$
+every nontrivial subgroup of $\langle c\rangle$ contains its unique element of order $2$,
 $$
 h=c^{n/2}.
 $$
-Indeed, a nontrivial stabilizer is a nontrivial subgroup of the cyclic $2$-group $\langle c\rangle$, hence contains its unique element of order $2$, namely $h$. The converse is immediate.
 
-Thus it remains to count the odd terms fixed by $h$.
-
-Step 4: Count the odd permutations fixed by the half-turn
+Thus an inhabitant has orbit smaller than $n$ if and only if it is fixed by $h$.
 
 Put
 $$
 m=\frac n2.
 $$
-The permutation $h$ is the product of the $m$ disjoint transpositions
+The half-turn pairs the tensor components as
 $$
-(0\ m)(1\ m+1)\cdots(m-1\ 2m-1).
+i\longleftrightarrow i+m.
 $$
-
-The condition
+It also pairs the internal labels
 $$
-h\sigma h^{-1}=\sigma
+b_i\longleftrightarrow b_{i+m}
 $$
-means that $\sigma$ permutes these $m$ pairs and may independently swap the two entries inside each pair. Hence there are
+and separately pairs the leaf labels
 $$
-2^m m!
-$$
-commuting permutations.
-
-A permutation of the $m$ pairs lifts to two identical permutations of the two entries and therefore has even sign. The sign of $\sigma$ is consequently determined only by the number of internal pair swaps.
-
-For every permutation of the pairs, exactly half of the $2^m$ swap patterns have odd parity. Thus the number of odd $\sigma$ fixed by $h$ is
-$$
-2^{m-1}m!.
-$$
-
-Step 5: Count the list systems fixed by the half-turn
-
-For an $h$-fixed list system,
-$$
-L_{i+m}=h(L_i),
+x_i\longleftrightarrow x_{i+m},
 \qquad
-0\leq i<m.
-$$
-Hence
-$$
-\ell_{i+m}=\ell_i.
-$$
-Since the total length of all lists is $2m$,
-$$
-\ell_0+\cdots+\ell_{m-1}=m.
-$$
-There are therefore
-$$
-\binom{2m-1}{m-1}
-$$
-possible first-half length vectors.
-
-The function labels themselves form the $m$ pairs
-$$
-\{j,j+m\}.
-$$
-Exactly one member of each pair must occur among
-$$
-L_0,\ldots,L_{m-1}.
-$$
-If both occurred there, their partners would both reappear in the second half; if neither occurred, that pair would never be used.
-
-There are $2^m$ ways to choose one representative from every pair. Once chosen, the $m$ labels can be ordered across the prescribed first-half lists in $m!$ ways. The remaining lists are then forced.
-
-Thus the number of half-turn-fixed list systems is
-$$
-2^m m!\binom{2m-1}{m-1}.
+y_i\longleftrightarrow y_{i+m}.
 $$
 
-Step 6: Remove the short orbits and divide by the full orbit size
+Step 4: Reconstruct a half-turn-fixed inhabitant from one half
 
-The number of odd terms fixed by the half-turn is the product of the independent counts from Steps 4 and 5:
+If an inhabitant is fixed by $h$, then the tree in component $i+m$ is obtained from the tree in component $i$ by applying the half-turn to every label. In particular, paired components have the same unlabeled shape.
+
+The first $m$ components therefore form an ordered full binary forest. Since the complete forest has $n=2m$ internal vertices, the first half has exactly $m$ internal vertices. An ordered forest with $m$ roots and $m$ internal vertices has
 $$
-2^{2m-1}(m!)^2\binom{2m-1}{m-1}.
+2m=n
 $$
-Since $2m=n$, this is
+leaves.
+
+By Step 2 with $m$ in place of $n$, the number of possible first-half shapes is
 $$
-2^{n-1}\left(\left(\frac n2\right)!\right)^2
-\binom{n-1}{n/2-1}.
+\frac13\binom{3m}{m}.
 $$
 
-Therefore the number of odd terms having full cyclic orbit is
+There are $m$ pairs of internal labels. Exactly one member of each pair occurs in the first half, giving
 $$
-\frac{(n!)^2}{2}\binom{2n-1}{n-1}
+2^m
+$$
+choices, followed by
+$$
+m!
+$$
+ways to place the chosen labels on the internal vertices.
+
+There are $m$ pairs among the $x$-labels and $m$ pairs among the $y$-labels, hence $2m=n$ leaf-label pairs altogether. Choosing one member from each pair gives
+$$
+2^{2m}
+$$
+choices, followed by
+$$
+(2m)!
+$$
+bijections onto the first-half leaves.
+
+The second half is then forced.
+
+Step 5: Count all short-orbit inhabitants
+
+The number fixed by the half-turn is
+$$
+\frac13\binom{3m}{m}
+2^{3m}m!(2m)!.
+$$
+Since
+$$
+\binom{3m}{m}m!(2m)!=(3m)!,
+$$
+this becomes
+$$
+\frac{2^{3m}(3m)!}{3}.
+$$
+
+Substituting $m=n/2$, the number of inhabitants lying in non-full cyclic orbits is
+$$
+\frac{2^{3n/2}(3n/2)!}{3}.
+$$
+
+No inclusion-exclusion over smaller periods is needed: for a cyclic group of order $2^r$, the union of all nontrivial stabilizers is exactly the fixed set of the half-turn.
+
+Step 6: Remove the short orbits
+
+The number of inhabitants with full orbit size $n$ is
+$$
+\frac{(3n)!}{3}
 -
-2^{n-1}\left(\left(\frac n2\right)!\right)^2
-\binom{n-1}{n/2-1}.
+\frac{2^{3n/2}(3n/2)!}{3}.
 $$
-Every such orbit has exactly $n$ members. Dividing by $n$ gives the required number.
+Every such orbit contains exactly $n$ inhabitants. Therefore the number of full cyclic orbits is
+$$
+\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}.
+$$
 
-Final Answer: $\boxed{\frac{(n!)^2\binom{2n-1}{n-1}-2^n((n/2)!)^2\binom{n-1}{n/2-1}}{2n}}$
+Final Answer: $\boxed{\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}}$
 
 ## Answer
 
-$\frac{(n!)^2\binom{2n-1}{n-1}-2^n((n/2)!)^2\binom{n-1}{n/2-1}}{2n}$
+$\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}$
 
 ## Classification
 
@@ -190,5 +205,5 @@ $\frac{(n!)^2\binom{2n-1}{n-1}-2^n((n/2)!)^2\binom{n-1}{n/2-1}}{2n}$
 - linear lambda calculus
 - beta eta normal forms
 - resource sensitive typing
-- centralizers of permutations
+- plane binary forests
 - cyclic group actions
