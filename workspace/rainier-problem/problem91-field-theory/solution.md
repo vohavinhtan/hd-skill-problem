@@ -1,203 +1,246 @@
 ## Steps
 
-Step 1: Recover the fractional Frobenius action on the roots
+Step 1: Reduce the equation to an intermediate Frobenius problem
+
+Put
+$$
+Y=X^{p+1}.
+$$
+Then
+$$
+F_p(X)=G_p(Y),
+\qquad
+G_p(Y)=Y^{p+1}+Y+1.
+$$
+We first determine the degrees of the roots of $G_p$.
 
 Let
 $$
-\sigma(\alpha)=\alpha^p.
+M(z)=-\frac{z+1}{z}.
 $$
-If $\alpha$ is a root of $F_p$, then $\alpha\ne-1$ and
+If $y$ is a root of $G_p$, then $y\ne0$ and
 $$
-\alpha^{p^2}=-\frac1{\alpha+1}.
+y^p=M(y).
 $$
-Define
+The iterates are
 $$
-M(z)=-\frac1{z+1}.
-$$
-Thus every root satisfies
-$$
-\sigma^2(\alpha)=M(\alpha).
-$$
-
-The successive iterates are
-$$
-M^2(z)=-\frac{z+1}{z},
-$$
-and
-$$
+M^2(z)=-\frac1{z+1},
+\qquad
 M^3(z)=z.
 $$
-Since $M$ has coefficients in $\mathbb F_p$, it commutes with Frobenius. Therefore
+Since $M$ has coefficients in $\mathbb F_p$, Frobenius commutes with $M$. Hence
 $$
-\sigma^6(\alpha)=M^3(\alpha)=\alpha.
+y^{p^3}=M^3(y)=y.
 $$
-Every root lies in $\mathbb F_{p^6}$.
+Every root of $G_p$ lies in $\mathbb F_{p^3}$.
 
 Also
 $$
-F_p'(X)=X^{p^2}.
+G_p'(Y)=Y^p+1.
 $$
-The polynomial $F_p$ has no zero root, so every root is simple. Hence $F_p$ has exactly
+If $G_p(y)=G_p'(y)=0$, then $y^p=-1$, and substitution into
 $$
-p^2+1
+y^{p+1}+y+1=0
 $$
-distinct roots, all in $\mathbb F_{p^6}$.
+gives $1=0$. Thus $G_p$ is separable and has exactly $p+1$ distinct roots.
 
-Step 2: Count the roots in the degree-one and degree-two subfields
+Step 2: Separate the rational and cubic intermediate roots
 
-Let
+A root $y$ lies in $\mathbb F_p$ exactly when
 $$
-N_d=\#\{\alpha\in\mathbb F_{p^d}:F_p(\alpha)=0\}.
+y^p=y.
 $$
-Since all roots lie in $\mathbb F_{p^6}$, only divisors of $6$ need to be considered.
-
-If $\alpha\in\mathbb F_p$, then $\sigma^2(\alpha)=\alpha$, so Step 1 gives
+Together with the equation from Step 1, this gives
 $$
-M(\alpha)=\alpha.
-$$
-The fixed-point equation is
-$$
--\frac1{\alpha+1}=\alpha,
+y=-\frac{y+1}{y},
 $$
 or
 $$
-\alpha^2+\alpha+1=0.
+y^2+y+1=0.
 $$
-Its roots are the two primitive cube roots of unity. They lie in $\mathbb F_p$ exactly when
+These are the two primitive cube roots of unity. They lie in $\mathbb F_p$ exactly when
 $$
 p\equiv1\pmod3.
 $$
+Therefore $G_p$ has exactly
+$$
+2e_p
+$$
+roots of degree $1$.
+
+All its roots lie in $\mathbb F_{p^3}$, and $3$ is prime. Hence every remaining root has exact degree $3$. Their number is
+$$
+p+1-2e_p=h_p.
+$$
+
+Step 3: Lift a rational intermediate root
+
+Assume $e_p=1$ and let $y\in\mathbb F_p$ be one of the two roots from Step 2. We must solve
+$$
+x^{p+1}=y.
+$$
+
+The norm map
+$$
+\mathbb F_{p^2}^{\times}\to\mathbb F_p^{\times},
+\qquad
+x\mapsto x^{p+1},
+$$
+is surjective and has kernel of order $p+1$. Thus all $p+1$ solutions lie in $\mathbb F_{p^2}$.
+
+Since $p\equiv1\pmod3$ and $p$ is odd,
+$$
+p\equiv1\pmod6.
+$$
+A primitive cube root in $\mathbb F_p^{\times}$ is therefore a square: if $g$ generates $\mathbb F_p^{\times}$, it equals
+$$
+g^{(p-1)/3}
+$$
+or its square, and $(p-1)/3$ is even. Hence
+$$
+x^2=y
+$$
+has two roots in $\mathbb F_p$.
+
+For each rational $y$, exactly two lifts have degree $1$, while the remaining
+$$
+p-1
+$$
+lifts have exact degree $2$. Since there are $2e_p$ such intermediate roots, they contribute
+$$
+E_1=4e_p,
+\qquad
+E_2=2e_p(p-1)
+$$
+roots of exact degrees $1$ and $2$.
+
+Step 4: Lift a cubic intermediate root
+
+Now let $y$ have exact degree $3$. From Step 1,
+$$
+y^p=-\frac{y+1}{y}.
+$$
+Applying Frobenius once more gives
+$$
+y^{p^2}=-\frac1{y+1}.
+$$
 Therefore
 $$
-N_1=2e_p.
+y^{1+p+p^2}=1.
 $$
+So $y$ lies in the norm-one subgroup
+$$
+H=\{z\in\mathbb F_{p^3}^{\times}:z^{p^2+p+1}=1\},
+$$
+whose order is $p^2+p+1$.
 
-If $\alpha\in\mathbb F_{p^2}$, again $\sigma^2(\alpha)=\alpha$, so the same fixed-point equation is necessary and sufficient. Since
+Since
 $$
-p^2\equiv1\pmod3,
+\gcd(p+1,p^2+p+1)=1,
 $$
-both primitive cube roots lie in $\mathbb F_{p^2}$. Hence
+there is an integer $r$ with
 $$
-N_2=2.
+r(p+1)\equiv1\pmod{p^2+p+1}.
 $$
+Then
+$$
+x=y^r
+$$
+satisfies $x^{p+1}=y$. The kernel of $x\mapsto x^{p+1}$ on $\mathbb F_{p^3}^{\times}$ has size
+$$
+\gcd(p+1,p^3-1)=2.
+$$
+Hence exactly two of the $p+1$ lifts of $y$ lie in $\mathbb F_{p^3}$, and both have exact degree $3$.
 
-Step 3: Count the roots in the cubic subfield
-
-Now let $\alpha\in\mathbb F_{p^3}$. Since $\sigma^3(\alpha)=\alpha$, the relation
+It remains to locate the other lifts. For any solution of
 $$
-\sigma^2(\alpha)=M(\alpha)
+x^{p+1}=y,
 $$
-implies
+we have
 $$
-\sigma(\alpha)=M^2(\alpha).
+x^p=\frac{y}{x}.
 $$
-Indeed, applying $\sigma$ to $\sigma^3(\alpha)=\alpha$ gives $\sigma^{-1}=\sigma^2$ on this field, so $\sigma=M^{-1}=M^2$ on a root.
-
-Using the formula for $M^2$ from Step 1,
+Successive Frobenius applications give
 $$
-\alpha^p=-\frac{\alpha+1}{\alpha}.
-$$
-Thus the cubic-field roots are exactly the roots of
-$$
-G_p(X)=X^{p+1}+X+1.
-$$
-
-This polynomial has degree $p+1$. Its derivative is
-$$
-G_p'(X)=X^p+1.
-$$
-A common root of $G_p$ and $G_p'$ would satisfy $X^p=-1$, which gives
-$$
-G_p(X)=-X+X+1=1,
-$$
-a contradiction. Hence $G_p$ has $p+1$ distinct roots.
-
-Conversely, if $G_p(\alpha)=0$, then
-$$
-\sigma(\alpha)=M^2(\alpha).
-$$
-Iterating three times gives
-$$
-\sigma^3(\alpha)=M^6(\alpha)=\alpha.
-$$
-Thus every root of $G_p$ lies in $\mathbb F_{p^3}$ and also satisfies $\sigma^2=M$. Therefore
-$$
-N_3=p+1.
-$$
-
-Step 4: Recover the exact Frobenius orbit lengths
-
-Let $E_d$ be the number of roots of exact degree $d$ over $\mathbb F_p$. Since all roots lie in $\mathbb F_{p^6}$,
-$$
-N_d=\sum_{r\mid d}E_r
-$$
-for $d\mid6$.
-
-From Steps 2 and 3,
-$$
-E_1=N_1=2e_p,
+x^{p^2}=\frac{y^px}{y},
 $$
 and
 $$
-E_2=N_2-E_1=2-2e_p.
+x^{p^3}=\frac{y^{p^2}y}{y^px}.
 $$
-Also
+The coefficient
 $$
-E_3=N_3-E_1=p+1-2e_p.
+c=\frac{y^{p^2}y}{y^p}
 $$
+lies in $\mathbb F_{p^3}$, so
+$$
+x^{p^6}=\frac{c}{x^{p^3}}=x.
+$$
+Thus every lift lies in $\mathbb F_{p^6}$.
 
-By Step 1,
+A lift of degree $1$ or $2$ would make
 $$
-N_6=p^2+1.
+y=x^{p+1}\in\mathbb F_{p^2}.
 $$
-Therefore
+Since also $y\in\mathbb F_{p^3}$, this would imply
 $$
-E_6=N_6-E_1-E_2-E_3.
+y\in\mathbb F_{p^2}\cap\mathbb F_{p^3}=\mathbb F_p,
 $$
-Substitution gives
-$$
-E_6=p^2-p-2+2e_p.
-$$
+contrary to the degree of $y$. Therefore the remaining $p-1$ lifts have exact degree $6$.
 
-These four values sum to $p^2+1$, so every root has been assigned an exact degree.
+There are $h_p$ cubic intermediate roots, so they contribute
+$$
+E_3=2h_p,
+\qquad
+E_6=(p-1)h_p.
+$$
 
 Step 5: Convert exact root degrees into irreducible-factor counts
 
-Each monic irreducible factor of degree $d$ contributes exactly $d$ roots of exact degree $d$. Hence
+The polynomial $F_p$ is separable. Indeed, with $Y=X^{p+1}$,
 $$
-b_d=\frac{E_d}{d}.
+F_p'(X)=X^p(Y^p+1),
 $$
-Using Step 4,
+and Step 1 showed that $Y^p+1$ cannot vanish at a root of $G_p$. Also $X=0$ is not a root.
+
+Thus each irreducible factor of degree $d$ contributes exactly $d$ roots of exact degree $d$. From Steps 3 and 4,
 $$
-b_1=2e_p,
+b_1=4e_p,
 $$
 $$
-b_2=1-e_p,
+b_2=e_p(p-1),
 $$
 $$
-b_3=\frac{p+1-2e_p}{3},
+b_3=\frac{2h_p}{3},
 $$
 and
 $$
-b_6=\frac{p^2-p-2+2e_p}{6}.
+b_6=\frac{(p-1)h_p}{6}.
 $$
-All other $b_d$ vanish. Therefore
+The weighted root count is
+$$
+4e_p+2e_p(p-1)+2h_p+(p-1)h_p
+=(p+1)^2,
+$$
+which equals $\deg F_p$. Hence no other degrees occur.
+
+Therefore
 $$
 \mathcal D_p(t)
 =
-\frac{p^2-p-2+2e_p}{6}t^6
-+\frac{p+1-2e_p}{3}t^3
-+(1-e_p)t^2
-+2e_pt.
+\frac{(p-1)h_p}{6}t^6
++\frac{2h_p}{3}t^3
++e_p(p-1)t^2
++4e_pt.
 $$
 
-Final Answer: $\boxed{\frac{p^2-p-2+2e_p}{6}t^6+\frac{p+1-2e_p}{3}t^3+(1-e_p)t^2+2e_pt}$
+Final Answer: $\boxed{\frac{(p-1)h_p}{6}t^6+\frac{2h_p}{3}t^3+e_p(p-1)t^2+4e_pt}$
 
 ---
 
 ## Answer
 
-$\frac{p^2-p-2+2e_p}{6}t^6+\frac{p+1-2e_p}{3}t^3+(1-e_p)t^2+2e_pt$
+$\frac{(p-1)h_p}{6}t^6+\frac{2h_p}{3}t^3+e_p(p-1)t^2+4e_pt$
 
 ---
 
@@ -212,7 +255,7 @@ $\frac{p^2-p-2+2e_p}{6}t^6+\frac{p+1-2e_p}{3}t^3+(1-e_p)t^2+2e_pt$
 ## Solution Concepts
 
 - finite-field Frobenius
-- fractional linear transformations
 - semilinear dynamics
-- finite-field subextensions
+- finite-field norm maps
+- power-map fibers
 - Frobenius orbit counting

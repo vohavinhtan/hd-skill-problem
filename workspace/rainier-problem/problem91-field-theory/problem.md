@@ -7,13 +7,15 @@ $$
 e_p=
 \begin{cases}
 1,&p\equiv1\pmod3,\\
-0,&p\equiv2\pmod3.
+0,&p\equiv2\pmod3,
 \end{cases}
+\qquad
+h_p=p+1-2e_p.
 $$
 
 Set
 $$
-F_p(X)=X^{p^2+1}+X^{p^2}+1
+F_p(X)=X^{(p+1)^2}+X^{p+1}+1
 \in\mathbb F_p[X].
 $$
 
@@ -40,4 +42,4 @@ for every prime $p\geq5$.
 
 ## Domain Explanation
 
-The equation hides a semilinear fractional transformation rather than a linearized polynomial. Frobenius squared acts on every root by a projective transformation of order three. The factor degrees are obtained only after reconstructing this action, determining its fixed and twisted fixed points over the proper subfields, and converting those counts into exact Frobenius orbit lengths.
+The substitution hidden in the exponents first produces a semilinear Frobenius equation whose roots have degrees one or three. Each such root then has to be lifted through a multiplicative power map, and the lift degrees depend on whether the intermediate root is rational or genuinely cubic. The requested factor degrees come from combining these two dependent orbit structures.
