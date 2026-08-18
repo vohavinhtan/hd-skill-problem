@@ -2,39 +2,36 @@
 
 ## LaTeX (Normalized)
 
-Fix an odd prime $p$. Let $K=\mathbb{F}_{p^{p}}$, and choose $\theta\in K$ such that
+Fix an odd prime $p$ and an integer $n\geq2$. Let
 $$
-\theta^p=\theta+1.
+K=\mathbb{F}_{p^n},\qquad J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
 $$
-Write $\operatorname{Tr}=\operatorname{Tr}_{K/\mathbb{F}_p}$. For
-$u=(x,y)$ and $v=(x',y')$ in $K^2$, put
-$$
-\det_K(u,v)=xy'-yx'.
-$$
+and let $\operatorname{Sym}_2(K)$ be the additive group of symmetric $2\times2$ matrices over $K$.
 
+For $X,Y\in M_2(K)$ define
+$$
+\beta(X,Y)=X^T JY-Y^T JX\in\operatorname{Sym}_2(K).
+$$
 On
 $$
-G=K^2\times\mathbb{F}_p\times\mathbb{F}_p
+G=M_2(K)\times\operatorname{Sym}_2(K)
 $$
-define multiplication by
+define
 $$
-(u,a,b)(v,c,d)=\left(u+v,\ a+c+\frac{1}{2}\operatorname{Tr}(\det_K(u,v)),\ b+d+\frac{1}{2}\operatorname{Tr}(\theta\det_K(u,v))\right).
+(X,S)(Y,T)=\left(X+Y,\ S+T+\frac12\beta(X,Y)\right).
 $$
 Its center is
 $$
-Z=\{(0,a,b):a,b\in\mathbb{F}_p\}.
-$$
-Let
-$$
-Z_1=\{(0,0,b):b\in\mathbb{F}_p\}.
+Z=\{(0,S):S\in\operatorname{Sym}_2(K)\}.
 $$
 
-For every $\alpha\in\operatorname{Aut}(G)$ such that $\alpha(Z_1)=Z_1$ and the induced automorphism of $Z/Z_1$ is the identity, let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
+For $\alpha\in\operatorname{Aut}(G)$, let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
 $$
-G/Z\cong K^2.
+G/Z\cong M_2(K).
 $$
+For a matrix $X\in M_2(K)$ and $i\geq0$, write $X^{(p^i)}$ for the matrix obtained by raising every entry of $X$ to its $p^i$-th power.
 
-Determine the complete set of all such $\bar\alpha$, written explicitly as maps on $K^2$.
+Determine the complete set of all maps $\bar\alpha$.
 
 ---
 
@@ -51,4 +48,4 @@ Determine the complete set of all such $\bar\alpha$, written explicitly as maps 
 
 ## Domain Explanation
 
-The primary task is to classify automorphisms of a finite class-two group through the structure of its commutator map and central flag. Finite-field trace and semilinear algebra are tools for recovering the induced group action, so Group theory is the primary sub-domain.
+The problem asks for all quotient actions arising from automorphisms of a finite nilpotent group of class two. Its main structure is encoded by the group commutator map, while finite-field and matrix arguments are used to classify the allowable group actions.
