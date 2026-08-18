@@ -1,58 +1,62 @@
 ## Steps
 
-Step 1: Recover a nondegenerate form and a hidden operator
+Step 1: Recover a nondegenerate form and the hidden multiplication operator
 
-On each summand $R^2$, write
+Write
 $$
-x=x_0+tx_1+t^2x_2,\qquad y=y_0+ty_1+t^2y_2,
+N=\theta+t\in R.
 $$
-with $x_i,y_i\in K^2$. If
+Then
 $$
-\omega(a,b)=a_1b_2-a_2b_1,
+B_1(u,v)=B_0(Nu,v).
+$$
+
+The form $B_0$ is nondegenerate as a $K$-bilinear alternating form. Indeed, if
+$$
+u=(x_1,x_2)\neq0,
+$$
+choose $v$ so that $r(u,v)$ is any prescribed element of $R$. If
+$$
+r=x+yt,
 $$
 then
 $$
-[\det_R(x,y)]_2=\omega(x_0,y_2)+\omega(x_1,y_1)+\omega(x_2,y_0).
+B_0(u,v)=\operatorname{Tr}(y),
 $$
-This alternating form is nondegenerate. Hence $B_2$, its orthogonal direct sum over the three summands, is nondegenerate.
+and the trace pairing on $L/K$ is nondegenerate.
 
-Define a $K$-linear operator $N$ on $V$ by letting it act on the summand indexed by $s$ as multiplication by $s+t$. The definitions give
+Let $T=\bar\alpha$, and write
 $$
-B_1(u,v)=B_2(Nu,v).
+C=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\operatorname{SL}_2(K)
 $$
-
-Let $T=\bar\alpha$ and write the restriction of $\alpha$ to $Z$ as
+for the action of $\alpha$ on $Z$. Preservation of commutators gives
 $$
-C=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\operatorname{SL}_2(K).
-$$
-Preservation of commutators gives
-$$
-B_1(Tu,Tv)=aB_1(u,v)+bB_2(u,v),
+B_1(Tu,Tv)=aB_1(u,v)+bB_0(u,v),
 $$
 $$
-B_2(Tu,Tv)=cB_1(u,v)+dB_2(u,v).
+B_0(Tu,Tv)=cB_1(u,v)+dB_0(u,v).
 $$
 
-Because $C$ is $K$-linear,
+Because $C$ is $K$-linear, for $\lambda\in K$,
 $$
-\beta(T(\lambda u),Tv)=\lambda\beta(Tu,Tv)
+\beta(T(\lambda u),Tv)=\lambda\beta(Tu,Tv)=\beta(\lambda Tu,Tv).
 $$
-for every $\lambda\in K$. Nondegeneracy of $B_2$ and surjectivity of $T$ imply
+Surjectivity of $T$ and nondegeneracy of $B_0$ imply
 $$
 T(\lambda u)=\lambda T(u).
 $$
-Thus $T$ is $K$-linear.
+Thus every permitted $T$ is $K$-linear.
 
-Step 2: Turn the center action into a Möbius action on the hidden operator
+Step 2: Convert the center action into a fractional transformation of $N$
 
-Let $T^\dagger$ denote the adjoint of $T$ with respect to $B_2$. The identities from Step 1 become
+Let $T^\dagger$ denote the adjoint of $T$ with respect to $B_0$. The two identities from Step 1 become
 $$
 T^\dagger T=cN+dI,
 $$
 $$
 T^\dagger NT=aN+bI.
 $$
-The first operator is invertible because $T^\dagger T$ is invertible. Therefore
+The first operator is invertible. Hence
 $$
 T^{-1}NT=(cN+dI)^{-1}(aN+bI).
 $$
@@ -66,209 +70,246 @@ $$
 T^{-1}NT=f(N).
 $$
 
-The operator $N$ has three eigenvalues
+Let $m$ be the minimal polynomial of $\theta$ over $K$. The five elements
 $$
--1,\quad0,\quad1,
+\theta,\theta^q,\theta^{q^2},\theta^{q^3},\theta^{q^4}
 $$
-and for each eigenvalue its primary component consists of two Jordan blocks of size $3$. Since $f(N)$ is similar to $N$, the Möbius map $f$ must permute
+are distinct because
 $$
-S=\{-1,0,1\}.
+\xi^{q^j}=\zeta^j\xi.
 $$
-Conversely, if $f$ permutes $S$, then $cs+d\neq0$ for every $s\in S$ and
-$$
-f'(s)=\frac{1}{(cs+d)^2}\neq0.
-$$
-Thus $f(s+t)-f(s)$ has nonzero linear coefficient, so it defines an automorphism of $K[t]/(t^3)$. The Jordan structure is therefore preserved on every primary component.
+Thus $\deg m=5$.
 
-Step 3: Show that every determinant-one lift of an admissible Möbius map occurs
+Since $N=\theta+t$ and $t^2=0$,
+$$
+m(N)=m'(\theta)t\neq0,
+$$
+while
+$$
+m(N)^2=0.
+$$
+Therefore the minimal polynomial of $N$ is $m^2$.
 
-Fix $C\in\operatorname{SL}_2(K)$ whose projective map $f$ permutes $S$. For $s\in S$, put
-$$
-r=f(s)
-$$
-and write
-$$
-f(s+t)=r+\lambda_st+\mu_st^2
-$$
-in $R$, where $\lambda_s\neq0$.
+Similarity of $N$ and $f(N)$ forces $f$ to permute the five roots of $m$.
 
-Let $\sigma_s$ be the inverse of the $K$-algebra automorphism
-$$
-t\longmapsto\lambda_st+\mu_st^2.
-$$
-Write
-$$
-\sigma_s(t)=\alpha_st+\gamma_st^2,
-\qquad
-\alpha_s\neq0.
-$$
+Step 3: Determine the projective transformations that can occur
 
-For $z=z_0+z_1t+z_2t^2$,
+Let
 $$
-\sigma_s(z)=z_0+\alpha_sz_1t+(\gamma_sz_1+\alpha_s^2z_2)t^2.
+h(z)=\frac{z-1}{z+1}.
 $$
-Choose
+Since $\theta=h(\xi)$ and $\xi^q=\zeta\xi$, Frobenius acts on the conjugates of $\theta$ through
 $$
-\delta_s=\delta_{0,s}+\delta_{1,s}t
+g=h\circ(z\mapsto\zeta z)\circ h^{-1}.
 $$
-by
+Explicitly,
 $$
-\delta_{0,s}\alpha_s^2=cs+d,
-$$
-$$
-\delta_{0,s}\gamma_s+\delta_{1,s}\alpha_s=c.
-$$
-These equations have a unique solution with $\delta_{0,s}\neq0$. Hence
-$$
-[\delta_s\sigma_s(z)]_2=(cs+d)z_2+cz_1.
+g(z)=\frac{(\zeta+1)z+\zeta-1}{(\zeta-1)z+\zeta+1}.
 $$
 
-Define from the $s$-summand to the $r$-summand
+Let
 $$
-T_s(x)=
-\begin{pmatrix}
-\delta_s&0\\
-0&1
-\end{pmatrix}
-\sigma_s(x),
+\Omega=\{\theta,\theta^q,\theta^{q^2},\theta^{q^3},\theta^{q^4}\}.
 $$
-with $\sigma_s$ applied coordinatewise. Then
-$$
-B_2(T_sx,T_sy)=(cs+d)[\det_R(x,y)]_2+c[\det_R(x,y)]_1.
-$$
-Summing over $s$ gives
-$$
-B_2(Tu,Tv)=cB_1(u,v)+dB_2(u,v).
-$$
-The relation
-$$
-NT=T f(N)
-$$
-then gives
-$$
-B_1(Tu,Tv)=aB_1(u,v)+bB_2(u,v).
-$$
-Thus every determinant-one matrix $C$ whose projective action permutes $S$ has at least one compatible quotient map $T$.
+Any $f\in\operatorname{PGL}_2(K)$ preserving $\Omega$ commutes on $\Omega$ with Frobenius, because $f$ is defined over $K$. Frobenius acts on $\Omega$ as a $5$-cycle. The centralizer of a $5$-cycle in $S_5$ consists precisely of its five powers.
 
-Step 4: Count the possible actions on the center
+A projective transformation fixing three points is the identity, so the action on $\Omega$ is faithful. Hence
+$$
+f\in\{1,g,g^2,g^3,g^4\}.
+$$
 
-The projective transformations permuting three distinct points form a group isomorphic to $S_3$. We must determine which of its six elements have representatives in $\operatorname{SL}_2(K)$.
+A matrix representing $g$ is
+$$
+G=\begin{pmatrix}\zeta+1&\zeta-1\\\zeta-1&\zeta+1\end{pmatrix},
+$$
+with
+$$
+\det G=4\zeta.
+$$
+The element $\zeta$ is a square in $K$, since
+$$
+(\zeta^3)^2=\zeta.
+$$
+Thus every $g^i$ has square determinant class. Each of the five projective transformations therefore has exactly two representatives in $\operatorname{SL}_2(K)$.
 
-The square class of the determinant of a projective transformation is well defined, since multiplying a representing matrix by a scalar changes its determinant by a square. It is also invariant under projective conjugation.
+There are exactly
+$$
+10
+$$
+possible matrices $C$.
 
-Conjugate the triple $S$ to
+Step 4: Show that every one of the ten center actions is attained
+
+Fix one of these matrices
 $$
-\{\infty,0,1\}.
+C=\begin{pmatrix}a&b\\c&d\end{pmatrix}
 $$
-Its permutation group is generated by
-$$
-r(z)=\frac{1}{1-z},
-\qquad
-s(z)=1-z,
-$$
-represented respectively by
-$$
-R=\begin{pmatrix}0&1\\-1&1\end{pmatrix},
-\qquad
-P=\begin{pmatrix}-1&1\\0&1\end{pmatrix}.
-$$
-Here
-$$
-\det R=1,\qquad \det P=-1.
-$$
-Therefore the identity and the two $3$-cycles have square determinant class, while each transposition has determinant class $-1$.
+and its projective map $f=g^i$.
 
 Since
 $$
-q\equiv3\pmod4,
+f(\theta)=\theta^{q^i}
 $$
-the element $-1$ is not a square in $K$. Exactly three of the six projective transformations can therefore be represented by determinant-one matrices.
-
-Each square-determinant projective class has exactly two representatives in $\operatorname{SL}_2(K)$, differing by sign. Hence exactly
+and $f'(\theta)\neq0$, there is a $K$-algebra automorphism $\rho$ of $R$ satisfying
 $$
-6
+\rho^{-1}(N)=f(N).
 $$
-matrices $C\in\operatorname{SL}_2(K)$ occur.
+Indeed, define $\rho^{-1}$ on $L$ by
+$$
+x\mapsto x^{q^i}
+$$
+and define
+$$
+\rho^{-1}(t)=f'(\theta)t.
+$$
 
-Step 5: Count the fiber over one center action
+Write
+$$
+\rho(x+yt)=\sigma(x)+\kappa\sigma(y)t,
+$$
+where $\sigma$ is a power of Frobenius and $\kappa\in L^\times$.
 
-For a fixed admissible $C$, any two compatible quotient maps differ by a map inducing the identity on the center. Thus every nonempty fiber has the same size as the simultaneous pointwise stabilizer of $B_1$ and $B_2$.
+We seek a unit $\delta=u+vt\in R^\times$ such that
+$$
+B_0(\delta\rho(r),1)=\operatorname{Tr}([(cN+d)r]_1)
+$$
+for every $r=x+yt$. Equivalently,
+$$
+\operatorname{Tr}(u\kappa\sigma(y)+v\sigma(x))
+=
+\operatorname{Tr}((c\theta+d)y+cx).
+$$
+Trace invariance under $\sigma$ makes this equivalent to
+$$
+\sigma^{-1}(u\kappa)=c\theta+d,
+\qquad
+\sigma^{-1}(v)=c.
+$$
+These equations have a unique solution. Moreover $u\neq0$ because $c\theta+d\neq0$, so $\delta$ is a unit.
 
-For this stabilizer,
+Let
+$$
+M=\begin{pmatrix}\delta&0\\0&1\end{pmatrix}
+$$
+and define
+$$
+T(u)=M\rho(u)
+$$
+coordinatewise. Then
+$$
+B_0(Tu,Tv)=cB_1(u,v)+dB_0(u,v).
+$$
+Since $T^{-1}NT=f(N)$,
+$$
+B_1(Tu,Tv)=aB_1(u,v)+bB_0(u,v).
+$$
+Thus every one of the ten matrices $C$ has a nonempty fiber.
+
+Step 5: Identify the fiber over one center action
+
+Any two quotient maps inducing the same $C$ differ by a map preserving both $B_0$ and $B_1$. Hence all ten fibers have the same size.
+
+Consider the fiber over $C=I$. Then Step 2 gives
 $$
 T^{-1}NT=N.
 $$
-Hence $T$ commutes with $N$. Since $N$ has the three distinct eigenvalues $-1,0,1$, $T$ preserves each corresponding summand $R^2$.
+Thus $T$ commutes with multiplication by $N$.
 
-On one summand, commuting with multiplication by $s+t$ is equivalent to $R$-linearity. Thus
+On the $K$-space $R$, the operator $N$ has minimal polynomial $m^2$ of degree
 $$
-T(x)=Mx
+10=\dim_K R.
 $$
-with $M\in\operatorname{GL}_2(R)$. If
+Hence $N$ is cyclic and
 $$
-\delta=\det_R(M),
+K[N]=R
 $$
-then preservation of $B_2$ says
-$$
-[\delta z]_2=[z]_2
-$$
-for every $z\in R$.
+as multiplication operators. Therefore every $K$-linear endomorphism of $R^2$ commuting with $N$ is $R$-linear.
 
-Taking successively $z=t^2,t,1$ gives
+So
 $$
-[\delta]_0=1,\qquad [\delta]_1=0,\qquad [\delta]_2=0.
+T(u)=Mu
 $$
-Therefore
+for some $M\in\operatorname{GL}_2(R)$. Put
+$$
+\delta=\det_R(M).
+$$
+Preservation of $B_0$ says
+$$
+\operatorname{Tr}([\delta r]_1)=\operatorname{Tr}([r]_1)
+$$
+for every $r\in R$.
+
+Write
+$$
+\delta=x+yt.
+$$
+Taking $r=zt$ and then $r=z$, with arbitrary $z\in L$, gives
+$$
+\operatorname{Tr}((x-1)z)=0,
+\qquad
+\operatorname{Tr}(yz)=0.
+$$
+Nondegeneracy of the trace pairing yields
+$$
+x=1,\qquad y=0.
+$$
+Hence
 $$
 \det_R(M)=1.
 $$
-The pointwise stabilizer is consequently
-$$
-\operatorname{SL}_2(R)^3.
-$$
+The fiber is therefore $\operatorname{SL}_2(R)$.
 
-Step 6: Evaluate the stabilizer size and the final count
+Step 6: Count the fiber and the ten disjoint center actions
 
+Put
+$$
+Q=|L|=q^5.
+$$
 Reduction modulo $t$ gives
 $$
-\operatorname{SL}_2(R)\longrightarrow\operatorname{SL}_2(K).
+\operatorname{SL}_2(R)\longrightarrow\operatorname{SL}_2(L).
 $$
-An element of the kernel has the form
+Its kernel consists of
 $$
-I+tA+t^2B.
+I+tA
 $$
-For $2\times2$ matrices,
+with
 $$
-\det(I+tA+t^2B)=1+t\operatorname{tr}(A)+t^2(\operatorname{tr}(B)+\det A).
+\det(I+tA)=1+t\operatorname{tr}(A),
 $$
-Thus
+so
 $$
-\operatorname{tr}(A)=0,\qquad \operatorname{tr}(B)=-\det A.
+\operatorname{tr}(A)=0.
 $$
-There are $q^3$ choices for $A$ and, for each $A$, $q^3$ choices for $B$. Hence the kernel has size $q^6$.
+There are $Q^3$ such matrices.
 
 Since
 $$
-|\operatorname{SL}_2(K)|=q(q^2-1),
+|\operatorname{SL}_2(L)|=Q(Q^2-1),
 $$
 we obtain
 $$
-|\operatorname{SL}_2(R)|=q^7(q^2-1).
-$$
-Each of the six admissible center actions has a fiber of size
-$$
-|\operatorname{SL}_2(R)|^3=q^{21}(q^2-1)^3.
-$$
-Therefore the requested number is
-$$
-6q^{21}(q^2-1)^3.
+|\operatorname{SL}_2(R)|=Q^4(Q^2-1)=q^{20}(q^{10}-1).
 $$
 
-Final Answer: $\boxed{6q^{21}(q^2-1)^3}$
+Finally, the image of $\beta$ spans $K^2$: the two trace functionals
+$$
+y\mapsto\operatorname{Tr}(y),
+\qquad
+y\mapsto\operatorname{Tr}(\theta y)
+$$
+are linearly independent. Hence the center matrix $C$ is uniquely determined by $T$, so the ten fibers are disjoint.
+
+Therefore the required number of distinct quotient maps is
+$$
+10q^{20}(q^{10}-1).
+$$
+
+Final Answer: $\boxed{10q^{20}(q^{10}-1)}$
 
 ## Answer
 
-$6q^{21}(q^2-1)^3$
+$10q^{20}(q^{10}-1)$
 
 ## Classification
 
@@ -283,6 +324,6 @@ $6q^{21}(q^2-1)^3$
 
 - automorphisms of class two groups
 - alternating form pencils
-- primary decomposition
+- finite field Frobenius orbits
 - projective linear transformations
-- truncated polynomial modules
+- local ring isometry groups
