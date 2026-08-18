@@ -2,36 +2,58 @@
 
 ## LaTeX (Normalized)
 
-Fix an odd prime $p$ and an integer $n\geq2$. Let
+Fix an odd prime $p$. Let
 $$
-K=\mathbb{F}_{p^n},\qquad J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+K=\mathbb{F}_{p^2}
 $$
-and let $\operatorname{Sym}_2(K)$ be the additive group of symmetric $2\times2$ matrices over $K$.
+and choose $\theta\in K^\times$ with
+$$
+\theta^p=-\theta.
+$$
+For $a\in K$, write $\bar a=a^p$. Let
+$$
+R=K[t]/(t^2)
+$$
+and let
+$$
+H=\operatorname{span}_{\mathbb{F}_p}\{1,\theta+t\}\subset R.
+$$
 
-For $X,Y\in M_2(K)$ define
+For $u=(x_1,x_2)$ and $v=(y_1,y_2)$ in $R^2$, put
 $$
-\beta(X,Y)=X^T JY-Y^T JX\in\operatorname{Sym}_2(K).
+\det_R(u,v)=x_1y_2-x_2y_1.
 $$
 On
 $$
-G=M_2(K)\times\operatorname{Sym}_2(K)
+G=R^2\times R
 $$
 define
 $$
-(X,S)(Y,T)=\left(X+Y,\ S+T+\frac12\beta(X,Y)\right).
+(u,a)(v,b)=\left(u+v,\ a+b+\frac12\det_R(u,v)\right).
 $$
 Its center is
 $$
-Z=\{(0,S):S\in\operatorname{Sym}_2(K)\}.
+Z=\{(0,a):a\in R\}.
 $$
 
-For $\alpha\in\operatorname{Aut}(G)$, let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
+Put
 $$
-G/Z\cong M_2(K).
+S=\mathrm{SL}_2(R).
 $$
-For a matrix $X\in M_2(K)$ and $i\geq0$, write $X^{(p^i)}$ for the matrix obtained by raising every entry of $X$ to its $p^i$-th power.
+For every $\alpha\in\operatorname{Aut}(G)$ satisfying
+$$
+\alpha(0,1)=(0,1)
+$$
+and
+$$
+\alpha(\{0\}\times H)=\{0\}\times H,
+$$
+let $\bar\alpha$ be the induced $\mathbb{F}_p$-linear automorphism of
+$$
+G/Z\cong R^2.
+$$
 
-Determine the complete set of all maps $\bar\alpha$.
+Determine the complete set of all such $\bar\alpha$.
 
 ---
 
@@ -48,4 +70,4 @@ Determine the complete set of all maps $\bar\alpha$.
 
 ## Domain Explanation
 
-The problem asks for all quotient actions arising from automorphisms of a finite nilpotent group of class two. Its main structure is encoded by the group commutator map, while finite-field and matrix arguments are used to classify the allowable group actions.
+The problem classifies quotient actions of automorphisms of a finite nilpotent group of class two. The main difficulty is recovering the local coefficient ring from the commutator map and then using the prescribed central subspace to determine which semilinear actions survive.

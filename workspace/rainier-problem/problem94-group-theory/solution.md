@@ -1,217 +1,237 @@
 ## Steps
 
-Step 1: Reduce group automorphisms to transformations of the commutator map
+Step 1: Reduce the problem to an autotopism of the determinant pairing
 
-For column vectors $u,v,x,y\in K^2$, direct substitution gives
+For $u,v\in R^2$, direct calculation gives
 $$
-\beta(ux^T,vy^T)=\det(u,v)(xy^T+yx^T).
+[(u,0),(v,0)]=(0,\det_R(u,v)).
 $$
-Taking $u=e_1$, $v=e_2$ and suitable $x,y$ shows that the image of $\beta$ contains
+The determinant pairing is onto because
 $$
-2E_{11},\qquad 2E_{22},\qquad E_{12}+E_{21},
+\det_R(e_1,re_2)=r
 $$
-so $\beta$ is onto $\operatorname{Sym}_2(K)$.
+for every $r\in R$.
 
-The commutator in $G$ is
+It is also nondegenerate in the required sense. If $u=(x,y)$ satisfies
 $$
-[(X,0),(Y,0)]=(0,\beta(X,Y)).
+\det_R(u,v)=0
 $$
-Therefore an automorphism $\alpha$ induces invertible $\mathbb{F}_p$-linear maps
-$$
-T:M_2(K)\to M_2(K),\qquad C:\operatorname{Sym}_2(K)\to\operatorname{Sym}_2(K)
-$$
-satisfying
-$$
-\beta(TX,TY)=C\beta(X,Y)
-$$
-for all $X,Y$.
-
-Conversely, any invertible pair $(T,C)$ satisfying this identity gives an automorphism
-$$
-(X,S)\longmapsto(TX,CS).
-$$
-It remains to classify the possible $T$.
-
-Step 2: Recover the hidden copy of the field from the commutator map
-
-Consider the endomorphisms $R$ of $M_2(K)$ for which some endomorphism $D$ of $\operatorname{Sym}_2(K)$ satisfies
-$$
-\beta(RX,Y)=\beta(X,RY)=D\beta(X,Y)
-$$
-for all $X,Y$. Multiplication by any $s\in K$ gives such a pair:
-$$
-R_s(X)=sX,\qquad D_s(S)=sS.
-$$
-We show these are the only possibilities.
-
-For nonzero $u\in K^2$, put
-$$
-P_u=\{ux^T:x\in K^2\}.
-$$
-The rank-one identity from Step 1 gives $\beta(P_u,P_u)=0$. More is true:
-$$
-\{X:\beta(X,P_u)=0\}=P_u.
-$$
-Indeed, for $Y=uy^T$ and $r=X^TJu$,
-$$
-\beta(X,Y)=ry^T+yr^T.
-$$
-If this vanishes for every $y$, then $r=0$ because $p$ is odd. Each column of $X$ is then symplectically orthogonal to $u$, hence is a multiple of $u$.
-
-If $R$ has companion $D$, then $\beta(RX,Y)=0$ for $X,Y\in P_u$, so the displayed self-orthogonality gives
-$$
-R(P_u)\subseteq P_u
-$$
-for every $u$.
-
-Write
-$$
-R(e_1x^T)=e_1\phi_1(x)^T,\qquad R(e_2x^T)=e_2\phi_2(x)^T.
-$$
-Since $R(P_{e_1+e_2})\subseteq P_{e_1+e_2}$, one gets $\phi_1=\phi_2=\phi$. Using $P_{e_1+te_2}$ for arbitrary $t\in K$ gives
-$$
-\phi(tx)=t\phi(x),
-$$
-so $\phi$ is $K$-linear.
-
-Apply $\beta(RX,Y)=\beta(X,RY)$ to
-$$
-X=e_1x^T,\qquad Y=e_2y^T.
-$$
-Then
-$$
-\phi(x)y^T+y\phi(x)^T=x\phi(y)^T+\phi(y)x^T.
-$$
-Set $y=e_1$ and write $\phi(e_1)=(c,d)^T$. For $x=(a,b)^T$, comparison of the matrix entries first gives $d=0$ and then
-$$
-\phi(x)=c x.
-$$
-Thus
-$$
-R(X)=cX.
-$$
-Since $\beta$ is onto, its companion is also multiplication by $c$. The endomorphism structure recoverable from $\beta$ is therefore exactly the scalar field $K$.
-
-Step 3: Force every induced map to be semilinear over the recovered field
-
-Let $(T,C)$ arise from an automorphism. Conjugation by $(T,C)$ preserves the endomorphisms characterized in Step 2. Consequently there is a field automorphism $\sigma$ of $K$ such that
-$$
-T(sX)=\sigma(s)T(X)
-$$
-for every $s\in K$ and $X\in M_2(K)$.
-
-Because $T$ is $\mathbb{F}_p$-linear, $\sigma$ fixes $\mathbb{F}_p$. Every automorphism of $K=\mathbb{F}_{p^n}$ is therefore
-$$
-\sigma(s)=s^{p^i}
-$$
-for a unique $i$ with $0\leq i<n$.
+for every $v$, then taking $v=e_2$ gives $x=0$, while taking $v=e_1$ gives $y=0$. Hence the center is exactly the stated subgroup $Z$.
 
 Let
 $$
-F_i(X)=X^{(p^i)}.
+T=\bar\alpha:R^2\to R^2
 $$
-Then
+and let
 $$
-T_0=F_i^{-1}\circ T
+C:R\to R
 $$
-is $K$-linear. Since both $F_i$ and $C$ are invertible and Frobenius commutes with the formula defining $\beta$,
+be the restriction of $\alpha$ to $Z$. Preservation of commutators gives
 $$
-\beta(T_0X,T_0Y)=0
+\det_R(Tu,Tv)=C(\det_R(u,v))
 $$
-if and only if
+for all $u,v\in R^2$.
+
+Conversely, any invertible $\mathbb{F}_p$-linear pair $(T,C)$ satisfying this identity lifts to
 $$
-\beta(X,Y)=0.
+(u,a)\longmapsto(Tu,Ca),
+$$
+so classifying the possible quotient maps $T$ is enough.
+
+Step 2: Recover the entire ring $R$ from the commutator map
+
+Suppose $A\in\operatorname{End}_{\mathbb{F}_p}(R^2)$ and $D\in\operatorname{End}_{\mathbb{F}_p}(R)$ satisfy
+$$
+\det_R(Au,v)=\det_R(u,Av)=D(\det_R(u,v))
+$$
+for all $u,v$.
+
+Write $s=D(1)$. Let
+$$
+A(re_1)=(x,y).
+$$
+Using $v=e_1$ gives
+$$
+-y=D(0)=0,
+$$
+and using $v=e_2$ gives
+$$
+x=D(r).
+$$
+Taking $r=1$ in the corresponding calculation for $e_2$ gives
+$$
+A(e_2)=se_2.
+$$
+The second determinant identity then yields
+$$
+D(r)=\det_R(re_1,Ae_2)=rs.
+$$
+Therefore
+$$
+A(re_1)=rse_1.
+$$
+The same argument with $e_1$ and $e_2$ exchanged gives
+$$
+A(re_2)=rse_2.
+$$
+By additivity,
+$$
+A(u)=su,\qquad D(r)=sr.
+$$
+Thus the endomorphism pairs characterized solely by the determinant pairing are exactly simultaneous scalar multiplications by elements of $R$.
+
+Step 3: Force every quotient action to be semilinear over a ring automorphism
+
+For $r\in R$, let $M_r$ denote multiplication by $r$ on $R^2$. Conjugating the scalar pair from Step 2 by $(T,C)$ again gives a pair of the same kind. Hence there is a bijection
+$$
+\sigma:R\to R
+$$
+such that
+$$
+TM_rT^{-1}=M_{\sigma(r)}.
+$$
+Conjugation preserves sums, products, and the identity, so
+$$
+\sigma(r+s)=\sigma(r)+\sigma(s),\qquad
+\sigma(rs)=\sigma(r)\sigma(s),\qquad
+\sigma(1)=1.
+$$
+Since $T$ is $\mathbb{F}_p$-linear, it commutes with multiplication by each element of $\mathbb{F}_p$, so $\sigma$ fixes $\mathbb{F}_p$. Thus
+$$
+\sigma\in\operatorname{Aut}_{\mathbb{F}_p}(R).
+$$
+The conjugation relation gives
+$$
+T(ru)=\sigma(r)T(u).
 $$
 
-Step 4: Reconstruct the tensor factors from the zero pairs
+Applying $\sigma^{-1}$ coordinatewise to $T$ produces an $R$-linear automorphism of $R^2$. After renaming its matrix, there is therefore some
+$$
+M\in\mathrm{GL}_2(R)
+$$
+such that
+$$
+T(u)=M\sigma(u).
+$$
+Consequently
+$$
+\det_R(Tu,Tv)=\det(M)\sigma(\det_R(u,v)).
+$$
+Since the determinant pairing is onto,
+$$
+C(r)=\det(M)\sigma(r)
+$$
+for every $r\in R$.
 
-We first identify the two-dimensional $K$-subspaces on which $\beta$ vanishes identically.
-
-Suppose $X,Y$ are linearly independent and $\beta(X,Y)=0$. If $X$ were invertible, then $X^T JY$ would be skew-symmetric, so
+The condition $\alpha(0,1)=(0,1)$ gives
 $$
-X^T JY=tJ
+1=C(1)=\det(M),
 $$
-for some $t\in K$. Since
+so
 $$
-X^T JX=(\det X)J,
+M\in S
 $$
-this would give
+and
 $$
-Y=\frac{t}{\det X}X,
-$$
-contrary to independence. Thus $X$ has rank one, say $X=ux^T$.
-
-Writing $q=Y^TJu$, the equation $\beta(X,Y)=0$ becomes
-$$
-xq^T+qx^T=0.
-$$
-Since $p$ is odd and $x\neq0$, this forces $q=0$. Every column of $Y$ is then a multiple of $u$, so $Y=uy^T$. Therefore the two-dimensional $K$-subspaces with zero internal commutator are exactly the spaces $P_u$ from Step 2.
-
-The $K$-linear map $T_0$ must permute these spaces. Write
-$$
-T_0(P_{e_1})=P_a,\qquad T_0(P_{e_2})=P_b.
-$$
-The vectors $a,b$ are independent because $P_{e_1}\oplus P_{e_2}=M_2(K)$. Choose $A_0\in\operatorname{GL}_2(K)$ with
-$$
-A_0e_1=a,\qquad A_0e_2=b,
-$$
-and put $S=A_0^{-1}T_0$. Then $S$ fixes $P_{e_1}$ and $P_{e_2}$ setwise, so there are $B_1,B_2\in\operatorname{GL}_2(K)$ such that
-$$
-S(e_1x^T)=e_1x^TB_1,\qquad S(e_2x^T)=e_2x^TB_2.
+C=\sigma.
 $$
 
-The plane $P_{e_1+e_2}$ is also carried to one $P_u$. Hence, for every $x$, the two rows of
-$$
-S((e_1+e_2)x^T)
-$$
-must have one fixed nonzero ratio. It follows that
-$$
-B_2=cB_1
-$$
-for some $c\in K^\times$. Absorbing $\operatorname{diag}(1,c)$ into the left factor gives
-$$
-T_0(X)=AXB
-$$
-with $A,B\in\operatorname{GL}_2(K)$.
+Step 4: Determine which automorphisms of $R$ preserve the central plane $H$
 
-Combining this with Step 3,
+Every element of $R$ is uniquely $a+bt$ with $a,b\in K$. The copy of $K$ inside $R$ can be recovered without choosing coordinates:
 $$
-T(X)=AX^{(p^i)}B.
+K=\{r\in R:r^{p^2}=r\}.
+$$
+Indeed,
+$$
+(a+bt)^{p^2}=a
+$$
+because $t^2=0$, so equality with $a+bt$ forces $b=0$.
+
+Hence every $\mathbb{F}_p$-automorphism $\sigma$ of $R$ preserves $K$. Its restriction to $K=\mathbb{F}_{p^2}$ is either
+$$
+a\longmapsto a
+$$
+or
+$$
+a\longmapsto\bar a.
+$$
+The nilpotent elements of $R$ are exactly $Kt$, so
+$$
+\sigma(t)=ct
+$$
+for some $c\in K^\times$.
+
+First suppose $\sigma$ is the identity on $K$. Since $\sigma(H)=H$,
+$$
+\theta+ct\in\operatorname{span}_{\mathbb{F}_p}\{1,\theta+t\}.
+$$
+Writing the right side as $r+s(\theta+t)$ and comparing the $\theta$ and $t$ coefficients gives
+$$
+s=1,\qquad c=1.
+$$
+Thus $\sigma$ is the identity on $R$.
+
+Now suppose $\sigma(a)=\bar a$ on $K$. Since $\bar\theta=-\theta$,
+$$
+\sigma(\theta+t)=-\theta+ct.
+$$
+Membership in $H$ forces
+$$
+-\theta+ct=r+s(\theta+t)
+$$
+with $r,s\in\mathbb{F}_p$. Comparing coefficients gives
+$$
+s=-1,\qquad c=-1.
+$$
+Hence the only second possibility is
+$$
+\sigma(a+bt)=\bar a-\bar b\,t.
 $$
 
-Step 5: Verify that every map in the family lifts to an automorphism
+Step 5: Verify both surviving families and finish the classification
 
-Take $A,B\in\operatorname{GL}_2(K)$ and $0\leq i<n$, and set
-$$
-T(X)=AX^{(p^i)}B.
-$$
-The identity
-$$
-A^TJA=(\det A)J
-$$
-gives
-$$
-\beta(TX,TY)=(\det A)B^T\beta(X,Y)^{(p^i)}B.
-$$
-Thus the map
-$$
-C(S)=(\det A)B^TS^{(p^i)}B
-$$
-is an invertible $\mathbb{F}_p$-linear transformation of $\operatorname{Sym}_2(K)$ satisfying
-$$
-\beta(TX,TY)=C\beta(X,Y).
-$$
-Step 1 then gives the automorphism
-$$
-\alpha(X,S)=\left(AX^{(p^i)}B,\ (\det A)B^TS^{(p^i)}B\right).
-$$
-Every candidate therefore occurs, while Steps 2 through 4 show that no other induced map can occur.
+Take $M\in S$.
 
-Final Answer: $\boxed{\{X\mapsto AX^{(p^i)}B:A,B\in\operatorname{GL}_2(K),0\leq i<n\}}$
+For the identity automorphism of $R$, define
+$$
+T(u)=Mu,\qquad C(r)=r.
+$$
+Since $\det(M)=1$,
+$$
+\det_R(Tu,Tv)=\det_R(u,v),
+$$
+so the associated map on $G$ is an automorphism fixing $(0,1)$ and preserving $\{0\}\times H$.
+
+For the second ring automorphism, let
+$$
+\sigma(a+bt)=\bar a-\bar b\,t.
+$$
+It satisfies
+$$
+\sigma(\theta+t)=-(\theta+t),
+$$
+so $\sigma(H)=H$. Define
+$$
+T(u)=M\sigma(u),\qquad C=\sigma.
+$$
+Again $\det(M)=1$, and therefore
+$$
+\det_R(Tu,Tv)=\sigma(\det_R(u,v)).
+$$
+This gives an automorphism of $G$ satisfying both central conditions.
+
+Steps 2 through 4 show that no third form is possible. Writing $u=(a_j+b_jt)_{j=1}^2$ gives the complete set below.
+
+Final Answer: $\boxed{\{u\mapsto Mu:M\in S\}\cup\{(a_j+b_jt)_j\mapsto M(\bar a_j-\bar b_jt)_j:M\in S\}}$
+
+---
 
 ## Answer
 
-$\{X\mapsto AX^{(p^i)}B:A,B\in\operatorname{GL}_2(K),0\leq i<n\}$
+$\{u\mapsto Mu:M\in S\}\cup\{(a_j+b_jt)_j\mapsto M(\bar a_j-\bar b_jt)_j:M\in S\}$
+
+---
 
 ## Classification
 
@@ -222,10 +242,12 @@ $\{X\mapsto AX^{(p^i)}B:A,B\in\operatorname{GL}_2(K),0\leq i<n\}$
 | **Problem Type** | Exhaustive enumeration |
 | **Answer Type** | Set or multiset of objects |
 
+---
+
 ## Solution Concepts
 
 - automorphisms of class two groups
-- commutator bilinear maps
 - centroid of a bilinear map
-- finite field semilinearity
-- rank one matrix geometry
+- semilinear transformations over local rings
+- finite field conjugation
+- nilpotent radical of a local ring
