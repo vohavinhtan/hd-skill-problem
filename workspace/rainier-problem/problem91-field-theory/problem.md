@@ -2,24 +2,20 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime. Let $\phi$ denote Euler's totient function. For every integer $m>2$ with $\gcd(m,15)=1$, define
+Let $p\geq7$ be a prime satisfying
 $$
-\rho_m=\min\{d\geq1:5^d\equiv3^d\pmod m\text{ or }5^d\equiv-3^d\pmod m\}.
+p\equiv1\pmod3,
+$$
+and let $t$ be transcendental over $\mathbb F_p$. Define
+$$
+F_p(X)=
+tX^{3p}-3tX^{2p+1}+3tX^{p+2}-3tX^p-tX^3+3tX-t^2-1
+\in\mathbb F_p(t)[X].
 $$
 
-Define
-$$
-F_p(X)=X^{3p}+3X^{2p}-X^5-5X^4-5X^3+5X^2+5X-3
-\in\mathbb F_p[X].
-$$
+Let $L_p$ be the splitting field of $F_p(X)$ over $\mathbb F_p(t)$.
 
-For $d\geq1$, let $b_d$ be the number of monic irreducible factors of $F_p(X)$ over $\mathbb F_p$ having degree $d$.
-
-Determine
-$$
-\mathcal D_p(t)=\sum_{d\geq1}b_dt^d
-$$
-for every prime $p\geq7$.
+Determine the genus of the function field $L_p$.
 
 ---
 
@@ -30,10 +26,10 @@ for every prime $p\geq7$.
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Field theory |
 | **Problem Type** | Exact computation |
-| **Answer Type** | Polynomial or rational function |
+| **Answer Type** | Exact scalar |
 
 ---
 
 ## Domain Explanation
 
-The sparse polynomial conceals a translated reciprocal parametrization. Its roots become inversion classes in two cyclic root-of-unity groups, while the factor degrees are determined by the Frobenius action on those classes. The orbit lengths reduce to signed multiplicative orders with moduli depending on $p$.
+The polynomial hides a cubic auxiliary extension followed by two independent Artin-Schreier directions. These directions are independent globally but become dependent at each of the two ramified places, so determining the genus requires reconstructing both the global splitting field and its local ramification.

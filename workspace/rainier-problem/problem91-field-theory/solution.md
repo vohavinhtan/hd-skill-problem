@@ -1,225 +1,234 @@
 ## Steps
 
-Step 1: Recover the hidden reciprocal parametrization
+Step 1: Recover the cubic auxiliary field
 
 Put
 $$
-y=x+1.
+Y=X^p-X.
 $$
-In characteristic $p$,
+Expanding $Y^3-3Y$ in characteristic $p$ gives
 $$
-(y^3-3y)^p=y^{3p}-3y^p=x^{3p}+3x^{2p}-2,
+F_p(X)=t(Y^3-3Y)-(t^2+1).
 $$
-while expansion gives
+Hence every root satisfies
 $$
-y^5-5y^3+5y=x^5+5x^4+5x^3-5x^2-5x+1.
-$$
-Therefore
-$$
-F_p(x)=0
-$$
-is equivalent to
-$$
-(y^3-3y)^p=y^5-5y^3+5y.
+Y^3-3Y=t+t^{-1}.
 $$
 
-For any $y$ in an algebraic closure, choose a nonzero root $u$ of
+Choose $u$ with
 $$
-U^2-yU+1=0.
+u^3=t.
 $$
-Then
+Because the $t$-adic valuation of $t$ is $1$, the polynomial $U^3-t$ is irreducible over $\mathbb F_p(t)$. Since $p\equiv1\pmod3$, choose a primitive cube root $\zeta\in\mathbb F_p$ and set
 $$
-y=u+u^{-1}.
+K=\mathbb F_p(u).
 $$
-Expanding powers of $u+u^{-1}$ gives
-$$
-y^3-3y=u^3+u^{-3},
-$$
-and
-$$
-y^5-5y^3+5y=u^5+u^{-5}.
-$$
-Hence a root satisfies
-$$
-u^{3p}+u^{-3p}=u^5+u^{-5}.
-$$
+Then $K/\mathbb F_p(t)$ is cyclic of degree $3$.
 
-Step 2: Describe the full root set by two cyclic groups
-
-For nonzero $a,b$,
+For
 $$
-a+a^{-1}=b+b^{-1}
-$$
-is equivalent to
-$$
-(a-b)(ab-1)=0,
-$$
-because multiplying the difference by $ab$ gives that product.
-
-Applying this with
-$$
-a=u^{3p},
+a_i=\zeta^iu+\zeta^{-i}u^{-1},
 \qquad
-b=u^5
+i=0,1,2,
 $$
-shows that every root corresponds to
+we have
 $$
-u^{3p-5}=1
-$$
-or
-$$
-u^{3p+5}=1.
-$$
-Conversely either relation gives the required equality, so no roots are lost.
-
-Set
-$$
-n_-=3p-5,
-\qquad
-n_+=3p+5.
-$$
-Both numbers are even. Moreover
-$$
-\gcd(n_-,n_+)=\gcd(3p-5,10)=2,
-$$
-because $p\geq7$ is prime and $p\ne5$.
-
-Let
-$$
-\pi(u)=u+u^{-1}.
-$$
-On the group of $n$th roots of unity with even $n$, inversion fixes only $u=1,-1$. Therefore
-$$
-|\pi(\mu_n)|=\frac{n+2}{2}.
-$$
-If
-$$
-\pi(u)=\pi(v),
-$$
-then $u=v$ or $uv=1$. Hence the two images for $n_-$ and $n_+$ intersect exactly in the images of their common roots $u=\pm1$, namely $y=\pm2$.
-
-The number of distinct $y$ obtained is therefore
-$$
-\frac{n_-+2}{2}+\frac{n_++2}{2}-2=3p.
-$$
-Since $\deg F_p=3p$, these are all its roots and they are distinct.
-
-Step 3: Determine the exact Frobenius degree attached to each order
-
-Let $m>2$ divide either $n_-$ or $n_+$. Such an $m$ is coprime to $15$. Indeed,
-$$
-3\nmid3p\pm5,
-$$
-and if $5\mid3p\pm5$, then $5\mid p$, contrary to $p\geq7$.
-
-Take $u$ of exact order $m$, and let
-$$
-y=u+u^{-1}.
-$$
-For every $d\geq1$,
-$$
-y^{p^d}=u^{p^d}+u^{-p^d}.
+a_i^3-3a_i=u^3+u^{-3}=t+t^{-1}.
 $$
 Thus
 $$
-y^{p^d}=y
-$$
-exactly when
-$$
-u^{p^d}=u
-$$
-or
-$$
-u^{p^d}=u^{-1},
-$$
-which is equivalent to
-$$
-p^d\equiv\pm1\pmod m.
+Y^3-3Y-(t+t^{-1})
+=(Y-a_0)(Y-a_1)(Y-a_2).
 $$
 
-If $m\mid3p-5$, then
+The three $a_i$ are distinct. Also $a_0\notin\mathbb F_p(t)$: otherwise $u$ would satisfy
 $$
-3p\equiv5\pmod m.
+U^2-a_0U+1=0
 $$
-If $m\mid3p+5$, then
-$$
-3p\equiv-5\pmod m.
-$$
-Since the sign is irrelevant in the condition $p^d\equiv\pm1$, both cases give
-$$
-p^d\equiv\pm1\pmod m
-$$
-exactly when
-$$
-5^d\equiv\pm3^d\pmod m.
-$$
-By the definition in the problem, the exact degree of $y$ over $\mathbb F_p$ is therefore
-$$
-\rho_m.
-$$
-Since $x=y-1$, the root $x$ has the same degree.
+over $\mathbb F_p(t)$, contradicting $[\mathbb F_p(u):\mathbb F_p(t)]=3$. Hence $K=\mathbb F_p(t)(a_0)$, so $K$ is the splitting field of this cubic.
 
-Step 4: Count the Frobenius orbits for each order
-
-For $m>2$, there are
+If $L_p$ is the splitting field of $F_p$, then for each root $x$ the element $x^p-x$ is one of the $a_i$, and every $a_i$ occurs because each equation
 $$
-\phi(m)
+X^p-X=a_i
 $$
-primitive $m$th roots of unity. None is fixed by inversion, so they produce
+has $p$ roots in the algebraic closure. Therefore
 $$
-\frac{\phi(m)}2
-$$
-distinct values of $y=u+u^{-1}$.
-
-By Step 3 each such value has exact Frobenius orbit length $\rho_m$. Hence order $m$ contributes
-$$
-\frac{\phi(m)}{2\rho_m}
-$$
-monic irreducible factors, each of degree $\rho_m$.
-
-No order $m>2$ occurs in both branches, because any common divisor of $n_-$ and $n_+$ divides $2$. The common orders $1$ and $2$ correspond to
-$$
-u=1,-1.
-$$
-They give
-$$
-y=2,-2
-$$
-and therefore the two rational roots
-$$
-x=1,-3.
-$$
-Thus these contribute exactly $2t$.
-
-Step 5: Assemble the factor-degree polynomial and verify closure
-
-For either even integer $n=n_-$ or $n=n_+$,
-$$
-\sum_{\substack{m\mid n\\m>2}}\phi(m)=n-2.
-$$
-Hence the total degree represented by the factors in Step 4 together with the two linear roots is
-$$
-2+\frac{n_--2}{2}+\frac{n_+-2}{2}=3p,
-$$
-matching $\deg F_p$. Therefore no further factors occur.
-
-Summing the contributions over the two possible signs gives
-$$
-\mathcal D_p(t)
-=
-2t+
-\sum_{\epsilon=\pm1}
-\sum_{\substack{m\mid3p+5\epsilon\\m>2}}
-\frac{\phi(m)t^{\rho_m}}{2\rho_m}.
+K\subseteq L_p.
 $$
 
-Final Answer: $\boxed{2t+\sum_{\epsilon=\pm1}\sum_{\substack{m\mid3p+5\epsilon\\m>2}}\frac{\phi(m)t^{\rho_m}}{2\rho_m}}$
+Step 2: Determine the Artin-Schreier part of the splitting field
+
+Over $K$,
+$$
+F_p(X)=t\prod_{i=0}^2\left(X^p-X-a_i\right).
+$$
+Choose $x_i$ satisfying
+$$
+x_i^p-x_i=a_i.
+$$
+Since
+$$
+a_0+a_1+a_2=0,
+$$
+we may choose the third root so that
+$$
+x_2=-x_0-x_1.
+$$
+Thus
+$$
+L_p=K(x_0,x_1).
+$$
+
+We claim that the classes of $a_0,a_1$ are linearly independent in
+$$
+K/\{z^p-z:z\in K\}.
+$$
+Suppose
+$$
+c_0a_0+c_1a_1=z^p-z
+$$
+for $c_0,c_1\in\mathbb F_p$. The left side is
+$$
+(c_0+c_1\zeta)u+(c_0+c_1\zeta^{-1})u^{-1}.
+$$
+If $(c_0,c_1)\ne(0,0)$, the two displayed coefficients cannot both vanish because $\zeta\ne\zeta^{-1}$. Hence the left side has a pole of order $1$ at $u=0$ or at $u=\infty$.
+
+If $z$ has a pole of order $m>0$, then $z^p-z$ has pole order $pm$, which is divisible by $p$. If $z$ has no pole, then $z\in\mathbb F_p$ and $z^p-z=0$. Neither possibility gives a simple pole. Therefore
+$$
+c_0=c_1=0.
+$$
+
+The two Artin-Schreier classes are independent, so
+$$
+[L_p:K]=p^2.
+$$
+
+Step 3: Analyze the place $u=0$
+
+Let $P_0$ be the place $u=0$ of the rational function field $K=\mathbb F_p(u)$. Near $P_0$,
+$$
+a_0=u+u^{-1},
+$$
+and
+$$
+a_1=\zeta u+\zeta^{-1}u^{-1}.
+$$
+Their combination
+$$
+a_1-\zeta^{-1}a_0=(\zeta-\zeta^{-1})u
+$$
+lies in the maximal ideal at $P_0$.
+
+In the complete local field $\mathbb F_p((u))$, the map
+$$
+z\mapsto z^p-z
+$$
+is bijective on the maximal ideal: for any $c$ of positive valuation, the convergent series
+$$
+z=-c-c^p-c^{p^2}-\cdots
+$$
+satisfies $z^p-z=c$. Therefore the second Artin-Schreier direction becomes locally trivial after subtracting a multiple of the first.
+
+The remaining ramified direction is locally equivalent to
+$$
+w^p-w=u^{-1}.
+$$
+Consequently $P_0$ has $p$ primes above it in $L_p$, each with ramification index $p$ and residue degree $1$.
+
+For one such completion, normalize the valuation by
+$$
+v(u)=p.
+$$
+The equation gives
+$$
+v(w)=-1,
+$$
+so $\pi=w^{-1}$ is a uniformizer. For a nontrivial Artin-Schreier automorphism
+$$
+\tau_c(w)=w+c,
+\qquad
+c\in\mathbb F_p^\times,
+$$
+we have
+$$
+\tau_c(\pi)-\pi
+=-\frac{c}{w(w+c)}.
+$$
+Since both $w$ and $w+c$ have valuation $-1$,
+$$
+v(\tau_c(\pi)-\pi)=2.
+$$
+The different exponent is therefore
+$$
+\sum_{c\in\mathbb F_p^\times}v(\tau_c(\pi)-\pi)
+=2(p-1).
+$$
+Thus the total different contribution above $P_0$ is
+$$
+2p(p-1).
+$$
+
+Step 4: Analyze infinity and exclude further ramification
+
+Let $P_\infty$ be the place at infinity and put
+$$
+v=u^{-1}.
+$$
+Then
+$$
+a_0=v^{-1}+v,
+$$
+$$
+a_1=\zeta v^{-1}+\zeta^{-1}v.
+$$
+Now
+$$
+a_1-\zeta a_0=(\zeta^{-1}-\zeta)v
+$$
+has positive valuation. The same local argument as in Step 3 shows that only one Artin-Schreier direction ramifies at infinity.
+
+Hence $P_\infty$ also has $p$ primes above it, each with ramification index $p$, residue degree $1$, and different exponent
+$$
+2(p-1).
+$$
+Its total different contribution is again
+$$
+2p(p-1).
+$$
+
+At every other place of $K$, both $a_0$ and $a_1$ are integral. The defining Artin-Schreier polynomials have derivative $-1$, a unit, so these places are unramified.
+
+The residue degree $1$ primes above $P_0$ show that the full constant field of $L_p$ remains $\mathbb F_p$. Therefore ordinary Riemann-Hurwitz applies to the degree-$p^2$ extension $L_p/K$.
+
+Step 5: Compute the genus
+
+The field $K=\mathbb F_p(u)$ has genus $0$. By Steps 3 and 4, the degree of the different of $L_p/K$ is
+$$
+2p(p-1)+2p(p-1)=4p(p-1).
+$$
+Riemann-Hurwitz gives
+$$
+2g(L_p)-2
+=p^2(2\cdot0-2)+4p(p-1).
+$$
+Therefore
+$$
+2g(L_p)-2
+=-2p^2+4p^2-4p
+=2p^2-4p.
+$$
+Adding $2$ and dividing by $2$ yields
+$$
+g(L_p)=p^2-2p+1=(p-1)^2.
+$$
+
+Final Answer: $\boxed{(p-1)^2}$
 
 ---
 
 ## Answer
 
-$2t+\sum_{\epsilon=\pm1}\sum_{\substack{m\mid3p+5\epsilon\\m>2}}\frac{\phi(m)t^{\rho_m}}{2\rho_m}$
+$(p-1)^2$
 
 ---
 
@@ -227,14 +236,14 @@ $2t+\sum_{\epsilon=\pm1}\sum_{\substack{m\mid3p+5\epsilon\\m>2}}\frac{\phi(m)t^{
 
 **Problem Type:** Exact computation
 
-**Answer Type:** Polynomial or rational function
+**Answer Type:** Exact scalar
 
 ---
 
 ## Solution Concepts
 
-- finite-field Frobenius
-- reciprocal parametrization
-- roots of unity
-- multiplicative orders
-- orbit factorization
+- Artin-Schreier extensions
+- cyclic cubic extensions
+- local ramification
+- different exponents
+- Riemann-Hurwitz
