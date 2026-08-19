@@ -2,11 +2,23 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime and let $x$ be an indeterminate. Put $u=1+x$. For every integer $m\geq1$, define the polynomial
+Let $p\geq2$ be an integer, let $x$ be an indeterminate, and put
 $$
-F_m=\frac{u^{p^m}-(1+x^p)^{p^{m-1}}}{p^m}\in\mathbb{Z}[x].
+u=1+x,\qquad R=(\mathbb{Z}/p^3\mathbb{Z})[x].
 $$
-Let $G=F_1$. For an arbitrary integer $n\geq3$, determine the coefficientwise congruence class of $F_n$ in $(\mathbb{Z}/p^3\mathbb{Z})[x]$, expressed only in terms of $p,n,u,G$. In the final congruence, $2^{-1}$ and $6^{-1}$ denote the inverses of $2$ and $6$ modulo $p^3$.
+For $m\geq0$, define
+$$
+a_m=\sum_{j=0}^{m+1}u^{j(m+1)!}.
+$$
+Set
+$$
+F_0=x+px^3.
+$$
+Recursively define $F_{m+1}\in R$ by
+$$
+F_{m+1}=a_mF_m+pa_m(a_m^2-1)F_m^3+p^2a_m(a_m^2-1)(a_m^2-2)F_m^5.
+$$
+For an arbitrary integer $n\geq1$, determine $F_n$ in $R$, expressed only in terms of $p,n,u$.
 
 ---
 
@@ -17,12 +29,12 @@ Let $G=F_1$. For an arbitrary integer $n\geq3$, determine the coefficientwise co
 | **Domain** | Number Theory |
 | **Sub-domain** | Modular arithmetic and congruences |
 | **Problem Type** | Symbolic derivation |
-| **Answer Type** | Equation or inequality |
+| **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-This problem involves coefficientwise polynomial congruences modulo prime powers and divisibility by powers of a prime, which are part of Number Theory and Modular arithmetic and congruences.
-The problem also involves binomial expansions and recursive polynomial identities, which are part of Algebra, Functions, and Trigonometry and its Polynomial and rational functions sub-domain.
-However, those polynomial manipulations only expose and propagate the prime-power divisibility; the requested object is a congruence class modulo $p^3$, so they are secondary.
+This problem involves arithmetic in $(\mathbb{Z}/p^3\mathbb{Z})[x]$ and cancellations that depend on reduction modulo $p^3$, which are part of Number Theory and Modular arithmetic and congruences.
+The problem also involves a nonlinear recurrence and a telescoping product of polynomial factors, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
+However, the recurrence becomes tractable only after a modulus-dependent coordinate change, and the requested object is an element of the residue-class polynomial ring, so the modular structure is primary.

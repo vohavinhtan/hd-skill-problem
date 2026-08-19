@@ -1,112 +1,113 @@
 ## Steps
 
-Step 1: Establish the normalized polynomial recursion
+Step 1: Build a coordinate that reverses the nonlinear endpoint map
 
-Put $V=1+x^p$. The base difference is
+Work in $R=(\mathbb{Z}/p^3\mathbb{Z})[x]$. Define
 $$
-u^p-V=\sum_{k=1}^{p-1}\binom{p}{k}x^k\in p\mathbb{Z}[x],
+\phi(T)=T+pT^3,\qquad \psi(T)=T-pT^3+3p^2T^5.
 $$
-so $F_1\in\mathbb{Z}[x]$. For $m\geq2$, set $A=u^{p^{m-1}}$ and $B=V^{p^{m-2}}$. Then
+Because
 $$
-A-B=p^{m-1}F_{m-1}.
+\psi(T)^3\equiv T^3-3pT^5\pmod{p^2},\qquad \psi(T)^5\equiv T^5\pmod p,
 $$
-In particular, $A\equiv B\pmod p$. The factorization
+we get
 $$
-A^p-B^p=(A-B)\sum_{r=0}^{p-1}A^{p-1-r}B^r
+\phi(\psi(T))\equiv T\pmod{p^3}.
 $$
-has a second factor congruent to $pB^{p-1}\equiv0\pmod p$. Induction gives $p^m\mid A^p-B^p$ coefficientwise, so every $F_m$ lies in $\mathbb{Z}[x]$.
+Likewise,
+$$
+\phi(T)^3\equiv T^3+3pT^5\pmod{p^2},\qquad \phi(T)^5\equiv T^5\pmod p,
+$$
+so
+$$
+\psi(\phi(T))\equiv T\pmod{p^3}.
+$$
+Set $Y_m=\psi(F_m)$. Since $F_0=x+px^3=\phi(x)$, this gives $Y_0=x$.
 
-Step 2: Locate the terms that can survive modulo $p^3$
+Step 2: Convert the recurrence to a multiplicative term plus one fifth-degree defect
 
-Write $\delta=p^{m-1}F_{m-1}$, so $A=B+\delta$. The binomial expansion gives
+Fix $m$ and write $a=a_m$, $F=F_m$. The recurrence is
 $$
-F_m=F_{m-1}B^{p-1}+\sum_{j=2}^{p}\binom{p}{j}p^{j(m-1)-m}F_{m-1}^jB^{p-j}.
+F_{m+1}=aF+pa(a^2-1)F^3+p^2a(a^2-1)(a^2-2)F^5.
 $$
-For $2\leq j\leq p-1$, $v_p\!\left(\binom{p}{j}\right)=1$, so the $j$th coefficient outside $F_{m-1}^jB^{p-j}$ has valuation
+Modulo the precisions needed in $\psi(F_{m+1})$,
 $$
-1+j(m-1)-m=(j-1)(m-1).
+F_{m+1}^3\equiv a^3F^3+3pa^3(a^2-1)F^5\pmod{p^2},
 $$
-For $j=p$, its valuation is
+and
 $$
-p(m-1)-m=(p-1)m-p\geq p-2\geq3.
+F_{m+1}^5\equiv a^5F^5\pmod p.
 $$
-Modulo $p^3$, the case $m=2$ keeps only $j=1,2,3$, the case $m=3$ keeps only $j=1,2$, and every $m\geq4$ keeps only $j=1$.
-
-Step 3: Compute the exceptional level $F_2$
-
-Since $G=F_1$ and $V=u^p-pG$, Step 2 gives
+Substitution into $\psi(F_{m+1})=F_{m+1}-pF_{m+1}^3+3p^2F_{m+1}^5$ gives
 $$
-F_2\equiv GV^{p-1}+\frac{p(p-1)}{2}G^2V^{p-2}+\frac{p^2(p-1)(p-2)}{6}G^3V^{p-3}\pmod{p^3}.
+Y_{m+1}\equiv aF-paF^3+p^2(a^5+2a)F^5\pmod{p^3}.
 $$
-The binomial theorem gives, at the precisions allowed by the three prefactors,
+Since $Y_m=F-pF^3+3p^2F^5$ and $Y_m^5\equiv F^5\pmod p$, the same expression is
 $$
-GV^{p-1}\equiv Gu^{p^2-p}-p(p-1)G^2u^{p^2-2p}+\frac{p^2(p-1)(p-2)}{2}G^3u^{p^2-3p}\pmod{p^3},
-$$
-$$
-\frac{p(p-1)}{2}G^2V^{p-2}\equiv\frac{p(p-1)}{2}G^2u^{p^2-2p}-\frac{p^2(p-1)(p-2)}{2}G^3u^{p^2-3p}\pmod{p^3},
-$$
-$$
-\frac{p^2(p-1)(p-2)}{6}G^3V^{p-3}\equiv\frac{p^2(p-1)(p-2)}{6}G^3u^{p^2-3p}\pmod{p^3}.
-$$
-The first two cubic contributions cancel after addition, leaving
-$$
-F_2\equiv Gu^{p^2-p}-\frac{p(p-1)}{2}G^2u^{p^2-2p}+\frac{p^2(p-1)(p-2)}{6}G^3u^{p^2-3p}\pmod{p^3}.
+Y_{m+1}\equiv a_mY_m+p^2a_m(a_m^4-1)Y_m^5\pmod{p^3}.
 $$
 
-Step 4: Compute the second exceptional level $F_3$
+Step 3: Normalize the multiplicative part and telescope the defect
 
-For $m=3$, Step 2 yields
+Put
 $$
-F_3\equiv F_2B^{p-1}+\frac{p^2(p-1)}{2}F_2^2B^{p-2}\pmod{p^3},
+A_0=1,\qquad A_m=\prod_{r=0}^{m-1}a_r\quad(m\geq1).
 $$
-where now $B=V^p$. From the definition of $F_2$,
+Inductively $Y_m$ has the factor $A_m$, so write $Y_m=A_mZ_m$. The recurrence from Step 2 becomes
 $$
-B=u^{p^2}-p^2F_2.
+Z_{m+1}\equiv Z_m+p^2(A_{m+1}^4-A_m^4)Z_m^5\pmod{p^3}.
 $$
-The binomial theorem gives
+Every increment is divisible by $p^2$, while $Z_0=x$. Therefore $Z_m^5\equiv x^5\pmod p$, and summing the displayed recurrence gives
 $$
-B^{p-1}\equiv u^{p^2(p-1)}-p^2(p-1)F_2u^{p^2(p-2)}\pmod{p^3}.
+Z_n\equiv x+p^2x^5(A_n^4-1)\pmod{p^3}.
 $$
-The second term already contains $p^2$, so there it is enough to use
+Multiplying by $A_n$ yields
 $$
-B^{p-2}\equiv u^{p^2(p-2)}\pmod p.
-$$
-Combining the two contributions gives
-$$
-F_3\equiv F_2u^{p^3-p^2}-\frac{p^2(p-1)}{2}F_2^2u^{p^3-2p^2}\pmod{p^3}.
-$$
-Step 3 gives $F_2\equiv Gu^{p^2-p}\pmod p$. Substituting the full Step 3 congruence into the first term and this reduction into the second gives
-$$
-F_3\equiv Gu^{p^3-p}-\frac{p(p^2-1)}{2}G^2u^{p^3-2p}+\frac{p^2(p-1)(p-2)}{6}G^3u^{p^3-3p}\pmod{p^3}.
+Y_n\equiv A_nx+p^2A_n(A_n^4-1)x^5\pmod{p^3}.
 $$
 
-Step 5: Prove stabilization from level $4$ onward
+Step 4: Collapse the product of the prescribed polynomial factors
 
-For $m\geq4$, Step 2 leaves only the first binomial term:
+For
 $$
-F_m\equiv F_{m-1}B^{p-1}\pmod{p^3},
+Q_m=u^{(m+1)!}-1,
 $$
-with $B=V^{p^{m-2}}$. The defining relation gives
+the definition of $a_m$ gives
 $$
-B=u^{p^{m-1}}-p^{m-1}F_{m-1}\equiv u^{p^{m-1}}\pmod{p^3}.
+Q_ma_m=(u^{(m+1)!}-1)\sum_{j=0}^{m+1}u^{j(m+1)!}=u^{(m+2)!}-1=Q_{m+1}.
+$$
+Since $Q_0=u-1=x$, iteration gives
+$$
+A_nx=Q_n=u^{(n+1)!}-1.
+$$
+Write $r=u^{(n+1)!}-1$. Then
+$$
+A_n(A_n^4-1)x^5=(A_nx)^5-(A_nx)x^4=r(r^4-x^4).
+$$
+Step 3 now becomes
+$$
+Y_n\equiv r+p^2r(r^4-x^4)\pmod{p^3}.
+$$
+
+Step 5: Return to the original coordinate
+
+Step 1 gives $F_n=\phi(Y_n)=Y_n+pY_n^3$ in $R$. Since Step 4 gives $Y_n\equiv r\pmod{p^2}$,
+$$
+pY_n^3\equiv pr^3\pmod{p^3}.
 $$
 Therefore
 $$
-F_m\equiv F_{m-1}u^{p^m-p^{m-1}}\pmod{p^3}.
+F_n\equiv r+pr^3+p^2r(r^4-x^4)\pmod{p^3}.
 $$
-For $n\geq4$, iteration from $m=4$ to $m=n$ gives
-$$
-F_n\equiv F_3u^{(p^4-p^3)+\cdots+(p^n-p^{n-1})}=F_3u^{p^n-p^3}\pmod{p^3}.
-$$
-For $n=3$, the same formula holds with the multiplier $u^0=1$. Substituting Step 4 and writing the unit denominators by their inverses modulo $p^3$ gives the requested congruence.
+Substituting $r=u^{(n+1)!}-1$ and $x=u-1$ gives the required polynomial in $R$.
 
-Final Answer: $\boxed{F_n\equiv u^{p^n-p}G-2^{-1}p(p^2-1)u^{p^n-2p}G^2+6^{-1}p^2(p-1)(p-2)u^{p^n-3p}G^3\pmod{p^3}}$
+Final Answer: $\boxed{u^{(n+1)!}-1+p(u^{(n+1)!}-1)^3+p^2(u^{(n+1)!}-1)((u^{(n+1)!}-1)^4-(u-1)^4)}$
 
 ---
 
 ## Answer
 
-$F_n\equiv u^{p^n-p}G-2^{-1}p(p^2-1)u^{p^n-2p}G^2+6^{-1}p^2(p-1)(p-2)u^{p^n-3p}G^3\pmod{p^3}$
+$u^{(n+1)!}-1+p(u^{(n+1)!}-1)^3+p^2(u^{(n+1)!}-1)((u^{(n+1)!}-1)^4-(u-1)^4)$
 
 ---
 
@@ -118,13 +119,14 @@ $F_n\equiv u^{p^n-p}G-2^{-1}p(p^2-1)u^{p^n-2p}G^2+6^{-1}p^2(p-1)(p-2)u^{p^n-3p}G
 
 **Problem Type:** Symbolic derivation
 
-**Answer Type:** Equation or inequality
+**Answer Type:** Exact symbolic expression
 
 ---
 
 ## Solution Concepts
 
-- prime-power congruences
-- binomial valuation tracking
-- Frobenius congruence
-- recursive polynomial lifting
+- modular polynomial arithmetic
+- nonlinear coordinate conjugation
+- congruence truncation
+- telescoping products
+- recurrence normalization
