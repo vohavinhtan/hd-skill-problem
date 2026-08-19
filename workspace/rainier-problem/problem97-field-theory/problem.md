@@ -10,18 +10,16 @@ and choose $z\in\mathbb F_p$ such that
 $$
 z^2+z+1=0.
 $$
-Let $t$ be transcendental over $\mathbb F_p$, and put $K=\mathbb F_p(t)$.
-
-Define
+Let $s$ be transcendental over $\mathbb F_p$, put $K=\mathbb F_p(s)$, and define
 $$
-N(X)=(X-1)^{p^2}-2z(X-1)^p(X+1)^{p^2-p}+z^2(X-1)(X+1)^{p^2-1},
+P(X)=X^{p^2}-2zX^p+z^2X.
 $$
-and let $L$ be the splitting field over $K$ of
+Let $L$ be the splitting field over $K$ of
 $$
-F(X)=N(X)^2-t(X+1)^{2p^2}.
+F(X)=P(X)^2-sP(X)+1.
 $$
 
-Determine $\operatorname{Gal}(L/K)$ up to isomorphism. Give the answer as a presentation with generators $r,a,b$, where exponents involving $z$ are read modulo $p$.
+Determine the exact degree $[L:K]$.
 
 ---
 
@@ -32,14 +30,14 @@ Determine $\operatorname{Gal}(L/K)$ up to isomorphism. Give the answer as a pres
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Field theory |
 | **Problem Type** | Exact computation |
-| **Answer Type** | Other |
+| **Answer Type** | Exact scalar |
 
 ---
 
 ## Domain Explanation
 
-This problem involves splitting fields, towers of extensions, constant-field extensions, and Galois automorphisms,
+This problem involves splitting fields, constant-field extensions, ramification, and intersections of Galois extensions,
 which are part of Abstract Algebra and Field theory.
 The problem also involves finite-field Frobenius actions and congruences,
 which are part of Number Theory and modular arithmetic and congruences.
-However, those ingredients determine the action on a translation kernel, while the main task is to reconstruct the hidden field tower and its full Galois group.
+However, the congruence controls the constant translation kernel, while the main difficulty is determining the degree of the full splitting field by proving that two coupled additive extensions are independent.

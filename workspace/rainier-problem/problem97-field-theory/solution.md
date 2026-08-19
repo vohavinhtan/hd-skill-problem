@@ -1,52 +1,55 @@
 ## Steps
 
-Step 1: Reveal the hidden rational coordinate
+Step 1: Split the outer quadratic without splitting the additive fibers
 
-For $X\neq-1$, set
+Since
 $$
-Y=\frac{X-1}{X+1}.
+z^2+z+1=0,
+$$
+we have $z^3=1$ and $z\neq1$. Also $p\neq3$.
+
+Let $t$ satisfy
+$$
+t^2-st+1=0.
 $$
 Then
 $$
-(X+1)^{p^2}Y^{p^2}=(X-1)^{p^2},
+s=t+t^{-1}.
 $$
+The element $s^2-4$ is not a square in $\mathbb F_p(s)$: it has simple zeros at $s=2$ and $s=-2$. Therefore
 $$
-(X+1)^{p^2}Y^p=(X-1)^p(X+1)^{p^2-p},
+[\mathbb F_p(t):K]=2.
+$$
+Moreover $\mathbb F_p(t)$ is a rational function field, because $s=t+t^{-1}$.
+
+Over $\mathbb F_p(t)$,
+$$
+F(X)=\left(P(X)-t\right)\left(P(X)-t^{-1}\right).
+$$
+The splitting field must therefore contain the splitting fields of both additive equations
+$$
+P(X)=t
 $$
 and
 $$
-(X+1)^{p^2}Y=(X-1)(X+1)^{p^2-1}.
-$$
-Hence
-$$
-N(X)=(X+1)^{p^2}\left(Y^{p^2}-2zY^p+z^2Y\right).
-$$
-Since $N(-1)=(-2)^{p^2}\neq0$, the point $X=-1$ is not a root of $F$. Thus the roots of $F$ correspond bijectively under
-$$
-X=\frac{1+Y}{1-Y}
-$$
-to the roots of
-$$
-\left(Y^{p^2}-2zY^p+z^2Y\right)^2=t.
+P(X)=t^{-1}.
 $$
 
-Put
-$$
-P(Y)=Y^{p^2}-2zY^p+z^2Y.
-$$
-Because $z\in\mathbb F_p$,
+Step 2: Determine the translation kernel and the constants it forces
+
+The polynomial $P$ satisfies
 $$
 P=(\tau-z)^2,
 $$
-where $\tau(c)=c^p$.
-
-Step 2: Determine the translation kernel and its constant field
-
-Let
+where $\tau(c)=c^p$. Its derivative is
 $$
-V=\ker P.
+P'(X)=z^2\neq0,
 $$
-Since $P'(Y)=z^2\neq0$, the kernel has $p^2$ elements and is two-dimensional over $\mathbb F_p$.
+so its kernel
+$$
+V=\ker P
+$$
+has $p^2$ distinct elements and is two-dimensional over $\mathbb F_p$.
 
 Choose $\beta\neq0$ with
 $$
@@ -56,11 +59,10 @@ and choose $\gamma$ with
 $$
 \gamma^p-z\gamma=\beta.
 $$
-Then
+Then $\beta,\gamma\in V$ and are linearly independent, so
 $$
 V=\mathbb F_p\beta\oplus\mathbb F_p\gamma.
 $$
-Indeed, $\beta,\gamma\in V$ and they are linearly independent because $(\tau-z)\beta=0$ while $(\tau-z)\gamma=\beta\neq0$.
 
 Frobenius acts by
 $$
@@ -70,172 +72,120 @@ Induction gives
 $$
 \gamma^{p^n}=z^n\gamma+nz^{n-1}\beta.
 $$
-Therefore $\gamma^{p^n}=\gamma$ precisely when $3\mid n$ and $p\mid n$. Since $p\neq3$, the least such $n$ is $3p$.
-
-Thus the smallest finite field containing $V$ is
+Therefore $\gamma^{p^n}=\gamma$ exactly when $3\mid n$ and $p\mid n$. The least positive such $n$ is $3p$. Hence the smallest finite field containing $V$ is
 $$
 C=\mathbb F_{p^{3p}}.
 $$
+In particular,
+$$
+[C:\mathbb F_p]=3p.
+$$
 
-Step 3: Build the nonconstant part of the splitting field
+Step 3: Compute the degree of each additive fiber
 
-Choose $\delta$ satisfying
+Work over
 $$
-\delta^2=t,
+E=C(t).
 $$
-and choose $\alpha$ satisfying
+Choose $\alpha$ with
 $$
-P(\alpha)=\delta.
+P(\alpha)=t.
 $$
-Then
-$$
-P(-\alpha)=-\delta.
-$$
-Since every fiber of the additive polynomial $P$ is a coset of $V$, the solutions of
-$$
-P(Y)^2=t
-$$
-are exactly
-$$
-\alpha+V
-$$
-and
-$$
--\alpha+V.
-$$
-Hence the splitting field is
-$$
-L=C(\alpha),
-$$
-because $\delta=P(\alpha)$ already lies in $C(\alpha)$.
-
-We now compute the degree of $K(\alpha)/K$. Put
+Put
 $$
 u=\alpha^p-z\alpha.
 $$
 Then
 $$
-u^p-zu=\delta,\qquad \delta^2=t.
-$$
-First,
-$$
-[K(\delta):K]=2
-$$
-because $t$ has odd valuation $-1$ at infinity and hence is not a square in $K$.
-
-Over $K(\delta)=\mathbb F_p(\delta)$, the element $\delta$ has a simple pole at infinity. If $w$ extends that valuation to $K(\delta,u)$ with ramification index $e$, then $w(u)<0$ and
-$$
-w(u^p-zu)=pw(u)=-e.
-$$
-Thus $p\mid e$. Since $u$ satisfies a degree-$p$ polynomial,
-$$
-[K(\delta,u):K(\delta)]=p.
+u^p-zu=t,\qquad \alpha^p-z\alpha=u.
 $$
 
-Also $\delta=u^p-zu$, so $K(\delta,u)=\mathbb F_p(u)$. The element $u$ has a simple pole in this rational function field. Applying the same valuation argument to
+At the pole $t=\infty$, the first equation gives a degree-$p$ totally ramified extension. Indeed, if $w$ extends the pole valuation and $e$ is its ramification index, then $w(u)<0$ and
+$$
+pw(u)=-e.
+$$
+So $p\mid e$, while $u$ has degree at most $p$. The degree and ramification index are therefore both $p$.
+
+Since $t=u^p-zu$, the field $C(t,u)$ equals $C(u)$. The element $u$ has a simple pole in this rational function field. Applying the same valuation argument to
 $$
 \alpha^p-z\alpha=u
 $$
-gives
+gives another totally ramified degree-$p$ extension. Consequently
 $$
-[K(\alpha):K(\delta,u)]=p.
+[E(\alpha):E]=p^2.
 $$
+
+Choose $\eta$ with
+$$
+P(\eta)=t^{-1}.
+$$
+The same argument at the place $t=0$, where $t^{-1}$ has a simple pole, gives
+$$
+[E(\eta):E]=p^2.
+$$
+
+Because $C$ contains $V$, both extensions are Galois over $E$, with translation group isomorphic to $V$.
+
+Step 4: Prove that the two degree-$p^2$ extensions are linearly disjoint
+
+The extension $E(\alpha)/E$ is totally ramified at $t=\infty$. At every finite place where $t$ has no pole, both equations
+$$
+u^p-zu=t,\qquad \alpha^p-z\alpha=u
+$$
+have derivative $-z$, a unit. Their defining integral polynomials therefore have unit discriminant locally, so $E(\alpha)/E$ is unramified at $t=0$.
+
+Similarly, $E(\eta)/E$ is totally ramified at $t=0$ and unramified at $t=\infty$.
+
+Let
+$$
+M=E(\alpha)\cap E(\eta).
+$$
+If $M\neq E$, then $M/E$, as a nontrivial subextension of the totally ramified Galois extension $E(\alpha)/E$, is ramified at $t=\infty$. But $M$ is also a subextension of $E(\eta)/E$, which is unramified at $t=\infty$. This is impossible.
+
 Therefore
 $$
-[K(\alpha):K]=2p^2.
-$$
-
-Step 4: Separate the constant extension
-
-Since
-$$
-t=P(\alpha)^2,
-$$
-we have
-$$
-K(\alpha)=\mathbb F_p(\alpha),
-$$
-a rational function field with constant field exactly $\mathbb F_p$. Hence
-$$
-K(\alpha)\cap C=\mathbb F_p.
-$$
-Using Step 2 and Step 3,
-$$
-[L:K]=[K(\alpha):K][C:\mathbb F_p]=2p^2\cdot3p=6p^3.
-$$
-
-Step 5: Construct the translation subgroup
-
-Define automorphisms $a,b$ fixing $C$ and satisfying
-$$
-a(\alpha)=\alpha+\beta,\qquad b(\alpha)=\alpha+\gamma.
-$$
-Because $\beta,\gamma\in V$, both preserve $P(\alpha)$ and hence fix $t$. Therefore
-$$
-a^p=b^p=1,\qquad [a,b]=1.
-$$
-They generate a subgroup isomorphic to $C_p^2$.
-
-Step 6: Combine the two outer actions into one generator
-
-Let $\varphi$ fix $\alpha$ and act on $C$ by Frobenius:
-$$
-\varphi(c)=c^p.
-$$
-Then $\varphi$ has order $3p$.
-
-Let $\iota$ fix $C$ and send
-$$
-\iota(\alpha)=-\alpha.
-$$
-Since $P(-\alpha)^2=P(\alpha)^2=t$, this is a $K$-automorphism of order $2$.
-
-The automorphisms $\varphi$ and $\iota$ commute. Since $\gcd(2,3p)=1$, the element
-$$
-r=\iota\varphi
-$$
-has order $6p$.
-
-Conjugation by $\varphi$ sends translation by $c\in V$ to translation by $c^p$, while conjugation by $\iota$ sends translation by $c$ to translation by $-c$. Therefore conjugation by $r$ sends translation by $c$ to translation by $-c^p$.
-
-Using
-$$
-\beta^p=z\beta,\qquad \gamma^p=\beta+z\gamma,
-$$
-we obtain
-$$
-rar^{-1}=a^{-z},
+E(\alpha)\cap E(\eta)=E,
 $$
 and
 $$
-rbr^{-1}=a^{-1}b^{-z}.
+[E(\alpha,\eta):E]=p^4.
 $$
 
-Step 7: Close the presentation
+Step 5: Assemble the full splitting field degree
 
-The relations obtained so far reduce every word to
+Every root of $P(X)-t$ is
 $$
-a^ib^jr^k,
+\alpha+v,\qquad v\in V,
 $$
-where
+and every root of $P(X)-t^{-1}$ is
 $$
-0\leq i,j<p,\qquad 0\leq k<6p.
+\eta+v,\qquad v\in V.
 $$
-These $6p^3$ automorphisms are distinct. Their restrictions to the cyclic group generated by $r$ distinguish $k$, and after $k$ is fixed, the image of $\alpha$ distinguishes the translation $i\beta+j\gamma$.
+Since $V\subset C$, the splitting field is
+$$
+L=C(t,\alpha,\eta).
+$$
 
-Thus the generated subgroup has order $6p^3$. Step 4 gives
+The constant extension and the quadratic rational-function extension are disjoint:
 $$
-[L:K]=6p^3,
+C\cap\mathbb F_p(t)=\mathbb F_p.
 $$
-so this subgroup is all of $\operatorname{Gal}(L/K)$.
+Therefore
+$$
+[C(t):K]=[C:\mathbb F_p][\mathbb F_p(t):K]=3p\cdot2=6p.
+$$
+Using Step 4,
+$$
+[L:K]=[L:C(t)][C(t):K]=p^4\cdot6p=6p^5.
+$$
 
-Final Answer: $\boxed{\langle r,a,b\mid r^{6p}=a^p=b^p=[a,b]=1,\ rar^{-1}=a^{-z},\ rbr^{-1}=a^{-1}b^{-z}\rangle}$
+Final Answer: $\boxed{6p^5}$
 
 ---
 
 ## Answer
 
-$\langle r,a,b\mid r^{6p}=a^p=b^p=[a,b]=1,\ rar^{-1}=a^{-z},\ rbr^{-1}=a^{-1}b^{-z}\rangle$
+$6p^5$
 
 ---
 
@@ -247,7 +197,7 @@ $\langle r,a,b\mid r^{6p}=a^p=b^p=[a,b]=1,\ rar^{-1}=a^{-z},\ rbr^{-1}=a^{-1}b^{
 
 **Problem Type:** Exact computation
 
-**Answer Type:** Other
+**Answer Type:** Exact scalar
 
 ---
 
@@ -255,6 +205,6 @@ $\langle r,a,b\mid r^{6p}=a^p=b^p=[a,b]=1,\ rar^{-1}=a^{-z},\ rbr^{-1}=a^{-1}b^{
 
 - splitting fields
 - additive polynomials
-- ramification of rational function fields
+- ramification of function fields
 - finite-field Frobenius
-- semidirect products
+- linear disjointness
