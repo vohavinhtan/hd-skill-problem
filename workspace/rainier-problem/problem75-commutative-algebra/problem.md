@@ -59,7 +59,7 @@ in closed form as a function of $n$.
 | Field | Value |
 |---|---|
 | **Domain** | Abstract Algebra |
-| **Sub-domain** | Ring theory |
+| **Sub-domain** | Commutative algebra |
 | **Problem Type** | Exact computation |
 | **Answer Type** | Tuple or ordered list |
 
@@ -67,8 +67,8 @@ in closed form as a function of $n$.
 
 ## Domain Explanation
 
-This problem involves conductor ideals, complete local subrings, and value semigroups,
-which are part of Abstract Algebra and Ring theory.
+This problem involves complete local subrings of formal power series rings, conductor ideals and exponents, and valuation-semigroup structure,
+which are part of Abstract Algebra and Commutative algebra.
 The problem also involves explicit algebraic reductions and residue-class computations,
 which are part of Abstract Algebra and Computational algebra.
-However, those computations only certify the conductor behavior of the rings, so Ring theory is the core classification.
+However, those computations only determine the conductor behavior of the local subrings, while the complete local ring and valuation-semigroup structure is the main subject.
