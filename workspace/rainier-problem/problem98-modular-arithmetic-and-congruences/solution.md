@@ -1,126 +1,255 @@
 ## Steps
 
-Step 1: Encode both recurrence rules by powers of one quadratic unit
+Step 1: Recover the hidden Fibonacci indices
 
-Let $f(x)=x^2-6x+1$. Modulo $31$, the number $18$ is a root because $f(18)=217=7\cdot31$, while $f'(18)=30$ is not divisible by $31$. If $r$ is a root modulo $31^m$, then
+Let
 $$
-f(r+c31^m)\equiv f(r)+c31^m f'(r)\pmod{31^{m+1}}.
+\alpha=-10+3\sqrt{11},\qquad \alpha^{-1}=-10-3\sqrt{11},
 $$
-Since $f'(r)\equiv30\pmod{31}$, exactly one residue $c$ modulo $31$ lifts $r$ to a root modulo $31^{m+1}$. The compatible roots define a $31$-adic unit $\alpha$ satisfying
+so $\alpha\alpha^{-1}=1$ and $\alpha+\alpha^{-1}=-20$. For $m\geq0$, set
 $$
-\alpha^2-6\alpha+1=0,\qquad \alpha\equiv18\pmod{31}.
+B_m=\alpha^m+\alpha^{-m}.
 $$
-The quadratic relation gives $\alpha+\alpha^{-1}=6$. For any unit $u$,
+Then
 $$
-(u+u^{-1})^2-2=u^2+u^{-2},
+B_1=-20,\qquad B_2=(-20)^2-2=398,\qquad B_3=(-20)^3-3(-20)=-7940.
+$$
+For integers $u\geq v\geq0$,
+$$
+B_uB_v=B_{u+v}+B_{u-v}.
+$$
+
+Let $F_0=0$, $F_1=1$, and $F_{j+2}=F_{j+1}+F_j$. We claim
+$$
+a_k=B_{F_{k+2}}.
+$$
+This holds for $k=0,1,2$ because $F_2=1$, $F_3=2$, and $F_4=3$. If it holds through index $k+2$, then
+$$
+a_{k+2}a_{k+1}
+=
+B_{F_{k+4}}B_{F_{k+3}}
+=
+B_{F_{k+5}}+B_{F_{k+2}},
+$$
+since $F_{k+4}-F_{k+3}=F_{k+2}$. Subtracting $a_k=B_{F_{k+2}}$ gives $a_{k+3}=B_{F_{k+5}}$. Therefore
+$$
+a_k=B_{F_{k+2}}
+$$
+for every $k\geq0$.
+
+Step 2: Determine the order of the outer quadratic unit
+
+Choose the $19$-adic square root of $11$ that is congruent to $7$ modulo $19$. Then
+$$
+\alpha\equiv-10+3\cdot7\equiv11\pmod{19}.
+$$
+Since $11^3\equiv1\pmod{19}$ and $11\not\equiv1\pmod{19}$, the order of $\alpha$ modulo $19$ is $3$.
+
+The equation $\alpha^2+20\alpha+1=0$ gives
+$$
+\alpha^2+\alpha+1=-19\alpha,
+$$
+and therefore
+$$
+\alpha^3-1=-19\alpha(\alpha-1).
+$$
+Both $\alpha$ and $\alpha-1$ are $19$-adic units, so
+$$
+v_{19}(\alpha^3-1)=1.
+$$
+
+If $u$ is a $19$-adic unit, the binomial expansion shows
+$$
+v_{19}\left((1+19u)^{19^r}-1\right)=r+1.
+$$
+Indeed, after each raising to the nineteenth power, the first nonconstant term gains exactly one factor of $19$, while every later binomial term has at least one additional factor. Raising afterward to an exponent not divisible by $19$ does not change that valuation. Consequently,
+$$
+v_{19}(\alpha^{3t}-1)=1+v_{19}(t).
+$$
+The multiplicative order of $\alpha$ modulo $19^n$ is therefore
+$$
+M_n=3\cdot19^{n-1}.
+$$
+
+Step 3: Convert a return of the original recurrence into a Fibonacci congruence
+
+For $y=\alpha^m$,
+$$
+y(B_m-B_1)
+=
+y^2-(\alpha+\alpha^{-1})y+1
+=
+(y-\alpha)(y-\alpha^{-1}).
+$$
+The two roots differ by
+$$
+\alpha-\alpha^{-1}=6\sqrt{11},
+$$
+which is a $19$-adic unit. Therefore the two factors on the right cannot both be divisible by $19$. Their product is divisible by $19^n$ exactly when one factor is divisible by $19^n$. Hence
+$$
+B_m\equiv B_1\pmod{19^n}
+$$
+is equivalent to
+$$
+\alpha^m\equiv\alpha\pmod{19^n}
+\quad\text{or}\quad
+\alpha^m\equiv\alpha^{-1}\pmod{19^n}.
+$$
+Using the order $M_n$ from Step 2,
+$$
+B_m\equiv-20\pmod{19^n}
+$$
+if and only if
+$$
+m\equiv\pm1\pmod{M_n}.
+$$
+Step 1 now gives
+$$
+a_k\equiv-20\pmod{19^n}
+$$
+if and only if
+$$
+F_{k+2}\equiv\pm1\pmod{3\cdot19^{n-1}}.
+$$
+
+Step 4: Determine the order governing Fibonacci numbers modulo powers of 19
+
+Choose the $19$-adic square root of $5$ congruent to $9$ modulo $19$, and put
+$$
+\gamma=\frac{1+\sqrt5}{2}.
+$$
+Then $\gamma\equiv5\pmod{19}$ and $\gamma^2=\gamma+1$. Since
+$$
+5^3\equiv11\pmod{19},\qquad 5^9\equiv1\pmod{19},
+$$
+the order of $\gamma$ modulo $19$ is $9$.
+
+The identity
+$$
+\gamma^m=F_m\gamma+F_{m-1}
+$$
+gives
+$$
+\gamma^9-1=34\gamma+20.
+$$
+Let $\delta=1-\gamma$, the conjugate of $\gamma$. Since $\gamma+\delta=1$ and $\gamma\delta=-1$,
+$$
+(34\gamma+20)(34\delta+20)
+=
+-34^2+34\cdot20+20^2
+=
+-76
+=
+-4\cdot19.
+$$
+Modulo $19$, $\delta\equiv15$, so
+$$
+34\delta+20\equiv17\pmod{19}.
+$$
+The conjugate factor is a unit, and therefore
+$$
+v_{19}(\gamma^9-1)=1.
+$$
+The same lifting argument as in Step 2 shows that the order of $\gamma$ modulo $19^s$ is
+$$
+L_s=9\cdot19^{s-1}\qquad(s\geq1).
+$$
+
+Step 5: Classify all occurrences of $1$ and $-1$ in the Fibonacci sequence modulo $19^s$
+
+Since $\gamma^{-1}=\gamma-1$, the other root of $x^2-x-1$ is $-\gamma^{-1}$. Therefore
+$$
+F_m=\frac{\gamma^m-(-\gamma^{-1})^m}{\gamma+\gamma^{-1}}.
+$$
+Write $y=\gamma^m$ and $d=\gamma+\gamma^{-1}=\sqrt5$.
+
+If $m$ is odd, then
+$$
+yd(F_m-1)=(y-\gamma)(y-\gamma^{-1}),
 $$
 and
 $$
-(u+u^{-1})^4-4(u+u^{-1})^2+2=u^4+u^{-4}.
+yd(F_m+1)=(y+\gamma)(y+\gamma^{-1}).
 $$
-The two recurrence rules therefore multiply the exponent of $\alpha$ by $2$ and then by $4$. Induction gives
+The roots in either factorization differ by the unit $\gamma-\gamma^{-1}=1$. The first factorization gives
 $$
-a_{2r}=\alpha^{2^{3r}}+\alpha^{-2^{3r}},\qquad
-a_{2r+1}=\alpha^{2^{3r+1}}+\alpha^{-2^{3r+1}}.
+F_m\equiv1\pmod{19^s}
+$$
+exactly when
+$$
+m\equiv1\pmod{L_s}
+\quad\text{or}\quad
+m\equiv-1\pmod{L_s}.
+$$
+The second would require a power of $\gamma$ to equal $-1$. This is impossible because $L_s$ is odd while $-1$ has order $2$. Thus no odd $m$ satisfies $F_m\equiv-1\pmod{19^s}$.
+
+If $m$ is even, then
+$$
+yd(F_m-1)=(y-\gamma^2)(y+\gamma^{-2}),
+$$
+and
+$$
+yd(F_m+1)=(y-\gamma^{-2})(y+\gamma^2).
+$$
+Here the two roots differ by the unit
+$$
+\gamma^2+\gamma^{-2}=3.
+$$
+Again the branches containing a minus sign are impossible because $-1$ is not a power of $\gamma$. Therefore
+$$
+F_m\equiv1\pmod{19^s}
+$$
+exactly when
+$$
+m\equiv2\pmod{L_s},
+$$
+while
+$$
+F_m\equiv-1\pmod{19^s}
+$$
+exactly when
+$$
+m\equiv-2\pmod{L_s}.
 $$
 
-Step 2: Determine the exceptional lifting behavior of $\alpha$
+Step 6: Impose the modulus 3 condition and find the first admissible index
 
-Modulo $31$,
-$$
-18^2\equiv14,\qquad 18^3\equiv4,\qquad 18^5\equiv25.
-$$
-Also $25^2\equiv5$ and $25^3\equiv1\pmod{31}$, so $18^{15}\equiv1\pmod{31}$. Since $18\neq1$, $18^3\not\equiv1$, and $18^5\not\equiv1\pmod{31}$, the order of $\alpha$ modulo $31$ is $15$.
+For $n=1$, Step 3 only requires $F_{k+2}\equiv\pm1\pmod3$. Since $F_3=2\equiv-1\pmod3$, the first positive index is $k=1$. Thus $T_1=1$.
 
-Set $\beta=\alpha^5$ and $S_j=\alpha^j+\alpha^{-j}$. Since $S_0=2$, $S_1=6$, and $S_{j+1}=6S_j-S_{j-1}$,
+Now let $n\geq2$ and put
 $$
-S_2=34,\quad S_3=198,\quad S_4=1154,\quad S_5=6726=7\cdot31^2-1.
+L=9\cdot19^{n-2}.
 $$
-This gives
+Modulo $3$, the Fibonacci residues over one period are
 $$
-\beta^2+\beta+1=\beta(\beta+\beta^{-1}+1)=7\cdot31^2\beta.
+0,1,1,-1,0,-1,-1,1,
 $$
-Therefore
-$$
-\alpha^{15}-1=\beta^3-1=7\cdot31^2\beta(\beta-1).
-$$
-Modulo $31$, $\beta\equiv25\neq1$. Both $\beta$ and $\beta-1$ are units, so $\alpha^{15}-1$ is divisible by $31^2$ but not by $31^3$.
+and $(F_8,F_9)\equiv(0,1)\pmod3$, so the period repeats after $8$ indices.
 
-Step 3: Find the order of $\alpha$ modulo every power of $31$
-
-Write $\alpha^{15}=1+31^2u$ with $u$ a $31$-adic unit. Suppose
+For odd $m$, Step 5 requires $m\equiv\pm1\pmod L$ and the sign modulo $19^{n-1}$ is $+1$. Since $L$ is odd, the first odd representatives after the excluded value $m=1$ are
 $$
-(1+31^2u)^{31^r}=1+31^{r+2}u_r
+2L-1,\qquad2L+1.
 $$
-with $u_r$ a unit. Raising to the $31$st power gives
+Also
 $$
-(1+31^{r+2}u_r)^{31}=1+31^{r+3}u_r+\sum_{j=2}^{31}\binom{31}{j}31^{j(r+2)}u_r^j.
+L=9\cdot19^{n-2}\equiv3^{n-2}\pmod8.
 $$
-For $2\leq j\leq30$, the binomial coefficient $\binom{31}{j}$ is divisible by $31$, and the $j=31$ term contains the factor $31^{31(r+2)}$. Every term in the sum is therefore divisible by $31^{r+4}$. The coefficient at $31^{r+3}$ remains a unit. Induction shows that $\alpha^{15\cdot31^r}-1$ is divisible by $31^{r+2}$ but not by $31^{r+3}$.
-
-Any exponent that kills $\alpha$ modulo $31^n$ must be divisible by $15$, because reduction modulo $31$ has order $15$. If $M_n$ is the order of $\alpha$ modulo $31^n$, then
+If $n$ is even, then $L\equiv1\pmod8$, so $2L-1\equiv1\pmod8$ gives Fibonacci residue $1$ modulo $3$, while $2L+1\equiv3\pmod8$ gives $-1$. If $n$ is odd, then $L\equiv3\pmod8$, so $2L+1\equiv7\pmod8$ gives residue $1$, while $2L-1\equiv5\pmod8$ gives $-1$. The first admissible odd value is therefore
 $$
-M_1=M_2=15,\qquad M_n=15\cdot31^{n-2}\quad(n\geq3).
+m=2L-(-1)^n.
 $$
 
-Step 4: Turn a return of $a_k$ into a congruence for its hidden exponent
+For even $m$ with sign $+1$, Step 5 gives $m\equiv2\pmod L$. The value $m=2$ corresponds to $k=0$, and the next even representative is $2L+2$, which is larger than the odd candidate. For sign $-1$, the first even representative of $m\equiv-2\pmod L$ is $2L-2$. It is congruent to $0$ or $4$ modulo $8$, so its Fibonacci residue modulo $3$ is $0$, not $-1$. The next such representative is already larger than the odd candidate.
 
-Let $e_k=2^{3r}$ when $k=2r$ and $e_k=2^{3r+1}$ when $k=2r+1$. Step 1 gives
-$$
-a_k=\alpha^{e_k}+\alpha^{-e_k}.
-$$
-Put $y=\alpha^{e_k}$. The return condition $a_k\equiv6\pmod{31^n}$ gives
-$$
-y\left(y+y^{-1}-\alpha-\alpha^{-1}\right)=(y-\alpha)(y-\alpha^{-1})\equiv0\pmod{31^n}.
-$$
-The two factors differ by $\alpha^{-1}-\alpha\equiv19-18=1\pmod{31}$, so they cannot both be divisible by $31$. One factor is a unit, and the other must be divisible by $31^n$. Therefore
-$$
-e_k\equiv1\pmod{M_n}\quad\text{or}\quad e_k\equiv-1\pmod{M_n}.
-$$
+Therefore the least admissible $m=k+2$ is $2L-(-1)^n$. Subtracting $2$ and inserting $L=9\cdot19^{n-2}$ gives the return time.
 
-Step 5: Reduce the return condition to divisibility of the exponent index
-
-Because $15$ divides every $M_n$, the negative branch in Step 4 is impossible: powers of $2$ modulo $15$ cycle through $2,4,8,1$ and never equal $-1$. A return occurs exactly when
-$$
-2^{3r}\equiv1\pmod{M_n}
-$$
-for $k=2r$, or
-$$
-2^{3r+1}\equiv1\pmod{M_n}
-$$
-for $k=2r+1$.
-
-Let $D_n$ be the order of $2$ modulo $M_n$. For $n=1,2$, Step 3 gives $M_n=15$, so $D_n=4$. For $n\geq3$, write $s=n-2$. Since $2^5=1+31$, if
-$$
-(1+31)^{31^r}=1+31^{r+1}v_r
-$$
-with $v_r$ a unit, then the binomial expansion after one more $31$st power has leading term $31^{r+2}v_r$ and all remaining terms divisible by $31^{r+3}$. Induction gives
-$$
-\operatorname{ord}_{31^s}(2)=5\cdot31^{s-1}.
-$$
-The factors $15$ and $31^s$ are coprime, so
-$$
-D_n=\operatorname{lcm}\left(4,5\cdot31^{s-1}\right)=20\cdot31^{n-3}\qquad(n\geq3).
-$$
-The return condition is now $D_n\mid3r$ at an even index and $D_n\mid3r+1$ at an odd index.
-
-Step 6: Minimize over the even and odd indices
-
-For $n=1,2$, $D_n=4$. The least solution of $4\mid3r+1$ is $r=1$, giving $k=3$, while the least positive even-index solution has $r=4$ and $k=8$. Therefore $T_1=T_2=3$.
-
-For $n\geq3$, $D_n=20\cdot31^{n-3}$ is congruent to $2$ modulo $3$. Since $3$ is coprime to $D_n$, the least even-index return has $r=D_n$ and $k=2D_n$. For an odd-index return, $3r+1=mD_n$. The least positive $m$ with $mD_n\equiv1\pmod3$ is $m=2$, so
-$$
-r=\frac{2D_n-1}{3},\qquad k=2r+1=\frac{4D_n+1}{3}.
-$$
-This odd-index value is smaller than $2D_n$. Substituting the value of $D_n$ gives the least positive return time.
-
-Final Answer: $\boxed{T_1=T_2=3,\quad T_n=\frac{80\cdot31^{n-3}+1}{3}\quad(n\geq3)}$
+Final Answer: $\boxed{T_1=1,\quad T_n=18\cdot19^{n-2}-2-(-1)^n\quad(n\geq2)}$
 
 ---
 
 ## Answer
 
-$T_1=T_2=3,\quad T_n=\frac{80\cdot31^{n-3}+1}{3}\quad(n\geq3)$
+$T_1=1,\quad T_n=18\cdot19^{n-2}-2-(-1)^n\quad(n\geq2)$
 
 ---
 
@@ -140,6 +269,6 @@ $T_1=T_2=3,\quad T_n=\frac{80\cdot31^{n-3}+1}{3}\quad(n\geq3)$
 
 - modular arithmetic
 - multiplicative orders
+- quadratic units
+- Fibonacci identities
 - prime-power lifting
-- quadratic algebraic units
-- trace-power recurrences

@@ -2,14 +2,17 @@
 
 ## LaTeX (Normalized)
 
-Let $(a_k)_{k\geq0}$ be the integer sequence defined by $a_0=6$ and, for every integer $r\geq0$,
+Let $(a_k)_{k\geq0}$ be the integer sequence defined by
 $$
-a_{2r+1}=a_{2r}^2-2,\qquad
-a_{2r+2}=a_{2r+1}^4-4a_{2r+1}^2+2.
+a_0=-20,\qquad a_1=398,\qquad a_2=-7940,
+$$
+and, for every integer $k\geq0$,
+$$
+a_{k+3}=a_{k+2}a_{k+1}-a_k.
 $$
 For each integer $n\geq1$, let $T_n$ be the least positive integer $k$ such that
 $$
-a_k\equiv6\pmod{31^n}.
+a_k\equiv-20\pmod{19^n}.
 $$
 Determine $T_n$ exactly for every $n\geq1$.
 
@@ -28,4 +31,4 @@ Determine $T_n$ exactly for every $n\geq1$.
 
 ## Domain Explanation
 
-This problem involves prime-power congruences, modular periodicity, and multiplicative orders, which are part of Number Theory and Modular arithmetic and congruences. The problem also involves a quadratic algebraic unit and lifting a root through powers of a prime, which are part of Abstract Algebra and Field theory. However, those algebraic objects are auxiliary tools for converting the modular recurrence into an exponent congruence, while the requested sequence is defined entirely by congruences modulo powers of 31.
+This problem involves prime-power congruences, multiplicative orders, and exact return times, which are part of Number Theory and Modular arithmetic and congruences. The problem also involves quadratic units and a hidden Fibonacci-index recurrence, which are part of Abstract Algebra and Field theory. However, those algebraic structures are tools for resolving the congruence conditions, while the requested sequence is defined by returns modulo powers of 19.
