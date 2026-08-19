@@ -2,23 +2,19 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq2$ be an integer, let $x$ be an indeterminate, and put
+Let $p\geq5$ be a prime, let $x$ be an indeterminate, and put
 $$
 u=1+x,\qquad R=(\mathbb{Z}/p^3\mathbb{Z})[x].
 $$
-For $m\geq0$, define
+Let $2^{-1}$ denote the inverse of $2$ modulo $p^3$. Set
 $$
-a_m=\sum_{j=0}^{m+1}u^{j(m+1)!}.
+F_0=x+px^3+3\cdot2^{-1}p^2x^5.
 $$
-Set
+For every $m\geq0$, define $F_{m+1}\in R$ by
 $$
-F_0=x+px^3.
+F_{m+1}=u^{2m+1}F_m+(-1)^mpu^{2m+1}(u^{4m+2}-1)F_m^3+3\cdot2^{-1}p^2u^{2m+1}(u^{4m+2}-1)^2F_m^5.
 $$
-Recursively define $F_{m+1}\in R$ by
-$$
-F_{m+1}=a_mF_m+pa_m(a_m^2-1)F_m^3+p^2a_m(a_m^2-1)(a_m^2-2)F_m^5.
-$$
-For an arbitrary integer $n\geq1$, determine $F_n$ in $R$, expressed only in terms of $p,n,u$.
+For an arbitrary integer $n\geq1$, determine $F_n$ in $R$, expressed only in terms of $p,n,u$. Fractional binomial powers of elements of $1+pR$ are interpreted by their finite binomial expansion in $R$.
 
 ---
 
@@ -35,6 +31,6 @@ For an arbitrary integer $n\geq1$, determine $F_n$ in $R$, expressed only in ter
 
 ## Domain Explanation
 
-This problem involves arithmetic in $(\mathbb{Z}/p^3\mathbb{Z})[x]$ and cancellations that depend on reduction modulo $p^3$, which are part of Number Theory and Modular arithmetic and congruences.
-The problem also involves a nonlinear recurrence and a telescoping product of polynomial factors, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
-However, the recurrence becomes tractable only after a modulus-dependent coordinate change, and the requested object is an element of the residue-class polynomial ring, so the modular structure is primary.
+This problem involves nonlinear polynomial identities modulo $p^3$ and cancellations whose form depends on the residue-class ring, which are part of Number Theory and Modular arithmetic and congruences.
+The problem also involves iteration, polynomial composition, and normalization of a recurrence, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
+However, the recurrence can be compressed only by keeping the first two prime-power correction layers and their interaction, so the modular structure is the primary mathematical content.
