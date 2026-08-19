@@ -1,293 +1,187 @@
 ## Steps
 
-Step 1: Encode admissible words and derive the continuant normal form
+Step 1: Encode the words by cyclic run lengths and establish strict smoothing.
 
-Put $x=r^2$ and
+After a cyclic rotation, every admissible word has the form
 $$
-B_k=L_rR_r^k=\begin{pmatrix}1+kx&r\\kr&1\end{pmatrix}.
+L_rR_r^{a_1}L_rR_r^{a_2}\cdots L_rR_r^{a_{2q}},
 $$
-After a cyclic rotation, every admissible word has trace
+where $a_i\geq1$ and $\sum_i a_i=(2n+1)q$. Put
 $$
-\operatorname{tr}(B_{a_1}\cdots B_{a_{2q}}),
-\qquad
-a_i\geq1,
-\qquad
-\sum_{i=1}^{2q}a_i=(2n+1)q.
+B_a=L_rR_r^a=\begin{pmatrix}1+ar^2&r\\ar&1\end{pmatrix}.
 $$
+Its trace is therefore $\operatorname{tr}(B_{a_1}\cdots B_{a_{2q}})$. With
+$$
+J=\begin{pmatrix}0&1\\1&-r\end{pmatrix},
+$$
+one has $B_a^TJ=JB_a$. Since $J$ is invertible, a reversed product is similar to the transpose of the original product, so reversing the cyclic gap sequence does not change its trace.
 
-Write
+If $b-a\geq2$, after reversal if necessary, multiplication gives
 $$
-B_k=B_0+kN,
-\qquad
-N=\begin{pmatrix}x&0\\r&0\end{pmatrix}.
+B_{a+1}B_{b-1}-B_aB_b=
+\begin{pmatrix}(b-a-1)r^4-r^2&r^3\\(b-a-1)r^3&r^2\end{pmatrix}.
 $$
-We seek a basis in which the $k$-dependent part is $xE_{11}$, so the affine family has companion form. The matrix $N$ has eigenvector
-$$
-u=\begin{pmatrix}r\\1\end{pmatrix}
-$$
-with eigenvalue $x$, while $\ker N$ is spanned by $v=(0,c)^T$. Also
-$$
-B_0u=\begin{pmatrix}2r\\1\end{pmatrix}=2u-\frac1c\,v.
-$$
-Normalize the second basis vector so that the coefficient of $v$ is $1$. This forces $c=-1$, hence
-$$
-v=\begin{pmatrix}0\\-1\end{pmatrix},
-\qquad
-B_0u=2u+v,
-\qquad
-B_0v=-u.
-$$
-Thus, with
-$$
-S=\begin{pmatrix}r&0\\1&-1\end{pmatrix},
-$$
-we obtain
-$$
-B_kS=SD_k,
-\qquad
-D_k=\begin{pmatrix}2+kx&-1\\1&0\end{pmatrix},
-$$
-so it is enough to maximize
-$$
-\Phi(a_1,\ldots,a_{2q})=\operatorname{tr}(D_{a_1}\cdots D_{a_{2q}}).
-$$
+For $b-a\geq3$ this is entrywise nonnegative and nonzero. The surrounding product has positive entries, so replacing $(a,b)$ by $(a+1,b-1)$ strictly increases the trace.
 
-For a nonempty string $U=(u_1,\ldots,u_\ell)$ put $c_j=2+xu_j$ and define its continuant by
+The difference-two case, including plateaux, has a uniform form. Set
 $$
-K(U)=\det\begin{pmatrix}
-c_1&1&&0\\
-1&c_2&\ddots&\\
-&\ddots&\ddots&1\\
-0&&1&c_\ell
-\end{pmatrix},
-\qquad
-K(\varnothing)=1.
+K=\begin{pmatrix}r^4-r^2&r^3\\r^3&r^2\end{pmatrix}.
 $$
-Expansion at either end gives
+For $C=B_{a+1}$, let $s_0=1$, $s_1=\operatorname{tr}C$, and $s_{j+1}=(\operatorname{tr}C)s_j-s_{j-1}$. The identities for $j=0,1$ follow by multiplication, and Cayley--Hamilton then gives
 $$
-K(u_1,\ldots,u_j)=c_jK(u_1,\ldots,u_{j-1})-K(u_1,\ldots,u_{j-2})
+C^{j+2}-B_aC^jB_{a+2}=s_jK\qquad(j\geq0).
 $$
-and
+Since $\operatorname{tr}C>2$, the recurrence gives $s_j>0$. Hence a consecutive block
 $$
-K(u_1,\ldots,u_j)=c_1K(u_2,\ldots,u_j)-K(u_3,\ldots,u_j).
+a,\underbrace{a+1,\ldots,a+1}_{j\text{ terms}},a+2
 $$
-Multiplying the $D_{u_j}$ gives
-$$
-D(U)=\begin{pmatrix}p&-\mu\\ \nu&*\end{pmatrix},
-\qquad
-p=K(U),
-\qquad
-\mu=K(u_1,\ldots,u_{\ell-1}),
-\qquad
-\nu=K(u_2,\ldots,u_\ell).
-$$
-For $U=\varnothing$, set $D(U)=I$, $p=1$, and $\mu=\nu=0$.
+can be replaced by $j+2$ copies of $a+1$, again with a strict trace increase.
 
-We now prove the bounds used in smoothing. For any nonempty string $W=(w_1,\ldots,w_m)$, let $K_j=K(w_1,\ldots,w_j)$, with $K_0=1$. Since every $2+xw_j\geq3$, the case $j=1$ gives $K_1\geq3>2K_0$. If $K_{j-1}>2K_{j-2}>0$, then
-$$
-K_j=(2+xw_j)K_{j-1}-K_{j-2}
->3K_{j-1}-\frac12K_{j-1}
->2K_{j-1}>0.
-$$
-Hence $K(W)>2K(w_1,\ldots,w_{m-1})$. Applying the same argument to the recurrence from the first end gives
-$$
-K(W)>2K(w_2,\ldots,w_m).
-$$
-Therefore, for every nonempty $U$,
-$$
-0<\mu<\frac p2,
-\qquad
-0<\nu<\frac p2,
-$$
-while the empty-string convention gives the corresponding weak inequalities with $\mu=\nu=0$.
+If the gaps are not all within one of each other, either an adjacent jump has size at least $2$, or, after choosing the last occurrence of some value $a$ before the first later occurrence of $a+2$, one finds exactly such a plateau; decreasing plateaux are handled by reversal. Each move decreases $\sum_i a_i^2$, so the process terminates. The terminal gaps differ by at most $1$. Their average is $n+\frac12$, so they are exactly $q$ copies of $n$ and $q$ copies of $n+1$.
 
-Take cyclic entries $a\geq b+2$ with intervening strings $U,V$, allowing either string to be empty. Write their corresponding data as $p,\mu,\nu$ and $P,\mu',\nu'$. Since
-$$
-D_k=D_0+kx\begin{pmatrix}1&0\\0&0\end{pmatrix},
-$$
-multiplication gives
-$$
-\Phi(a-1,U,b+1,V)-\Phi(a,U,b,V)
-=x\left[pPx(a-b-1)+P(\mu-\nu)+p(\nu'-\mu')\right].
-$$
-The bounds imply
-$$
-P(\mu-\nu)>-\frac{pP}{2},
-\qquad
-p(\nu'-\mu')>-\frac{pP}{2},
-$$
-so the bracket is strictly larger than
-$$
-pP\left(x(a-b-1)-1\right)\geq0.
-$$
-Thus transferring one unit from a gap at least two larger than another strictly increases the trace. Repeated transfers leave only two consecutive gap sizes. Their average is $n+\frac12$, so every trace maximizer has exactly $q$ gaps equal to $n$ and $q$ equal to $n+1$.
-
-Step 2: Identify the alternating maximum by repairing equal adjacencies
+Step 2: Derive the defect-removal identity for balanced gap sequences.
 
 Set
 $$
-A=B_n,
-\qquad
-C=B_{n+1},
-\qquad
-M=AC.
+P=B_n,\qquad Q=B_{n+1},\qquad X=PQ,
 $$
-Then $\det M=1$ and $\operatorname{tr}M=T$. Define
+and abbreviate
 $$
-s_0=0,
-\qquad
-s_1=1,
-\qquad
-s_{j+1}=Ts_j-s_{j-1}.
+T=\operatorname{tr}X=n(n+1)r^4+(4n+2)r^2+2.
 $$
-Cayley-Hamilton gives
+Here $\det X=1$ and $T>2$. Define $u_0=1$, $u_1=T$, and
 $$
-M^j=s_jM-s_{j-1}I.
+u_{m+1}=Tu_m-u_{m-1}\qquad(m\geq1).
 $$
-Since $T>2$, the recurrence gives $s_j>0$ for $j\geq1$.
+Cayley--Hamilton gives $X^{m+1}=u_mX-u_{m-1}I$ for $m\geq1$.
 
-For a balanced cyclic word, let $N_{XY}$ count transitions $X\to Y$, where $X,Y\in\{A,C\}$. Equality of the numbers of $A$ and $C$, together with $N_{AC}=N_{CA}$ on a cycle, gives $N_{AA}=N_{CC}$. If this common number is positive, choose an $AA$ followed cyclically by the next $CC$. The letters between them alternate, so the segment is
+The displayed matrices give
 $$
-A^2(CA)^iC^2
+X^2-P^2Q^2=K.
 $$
-for some $i\geq0$.
-
-Define
+For $F_k=X^{k+2}-P^2QX^kQ$, multiplication gives $F_0=K$ and $F_1=TK$. Both terms defining $F_k$ satisfy the recurrence for powers of $X$, hence
 $$
-K_i=M^{i+2}-A^2(CA)^iC^2.
+X^{k+2}-P^2QX^kQ=u_kK\qquad(k\geq0).
 $$
-For $i=0$,
+Also $\operatorname{tr}K=r^4$ and $\operatorname{tr}(KX)=r^4T$, so the same recurrence yields
 $$
-K_0=A(CA-AC)C=r^2\begin{pmatrix}r^2-1&r\\r&1\end{pmatrix}.
-$$
-This matrix is nonzero and entrywise nonnegative. Both terms defining $K_i$ satisfy the recurrence with coefficient $T$, because $M$ and $CA$ have determinant $1$ and trace $T$. Moreover,
-$$
-K_1-TK_0=(M^3-TM^2)+A^2(TI-CA)C^2
-=-M+A^2(CA)^{-1}C^2
-=-M+AC=0.
-$$
-Thus
-$$
-K_i=s_{i+1}K_0.
+\operatorname{tr}(KX^m)=r^4u_m\qquad(m\geq0).
 $$
 
-Replacing $A^2(CA)^iC^2$ by $M^{i+2}$ changes the cyclic trace by $\operatorname{tr}(K_iZ)$, where $Z$ is the remaining product. If $Z\neq I$, every entry of $Z$ is positive, so $\operatorname{tr}(K_iZ)>0$. If $Z=I$, then
+In a cyclic word with $q$ letters $P$ and $q$ letters $Q$, one has $\#(PQ)=\#(QP)$. Since
 $$
-\operatorname{tr}(K_i)=s_{i+1}\operatorname{tr}(K_0)=s_{i+1}r^4>0.
+q=\#(PP)+\#(PQ)=\#(QQ)+\#(QP),
 $$
-Each replacement removes one $AA$ and one $CC$, so repetition ends at $(AC)^q$. Therefore
-$$
-\alpha_{n,r,q}=\operatorname{tr}(M^q).
-$$
+the numbers of $PP$ and $QQ$ occurrences are equal; call the common number $d$.
 
-Step 3: Parametrize the two-defect layer and derive its trace deficit
+If $d>0$, take the last $PP$ before the next $QQ$. Between them the letters alternate, so, up to reversal, there is a subword $P^2QX^kQ$. Replacing it by $X^{k+2}$ preserves the numbers of $P,Q$, decreases $d$ by $1$, and strictly increases the trace because $u_kK$ is entrywise nonnegative and nonzero. Thus the alternating word $X^q$ gives the largest balanced trace.
 
-A balanced word with exactly two equal adjacent gap pairs has one $AA$ and one $CC$. Up to cyclic rotation it is
-$$
-W_{i,j}=A^2(CA)^iC^2(AC)^j,
-\qquad
-i,j\geq0,
-\qquad
-i+j=q-2.
-$$
-By Step 2,
-$$
-\alpha_{n,r,q}-\operatorname{tr}W_{i,j}
-=\operatorname{tr}(K_iM^j)
-=s_{i+1}\operatorname{tr}(K_0M^j).
-$$
-Put $h_j=\operatorname{tr}(K_0M^j)$. Cayley-Hamilton gives
-$$
-h_{j+1}=Th_j-h_{j-1}.
-$$
-Also $h_0=\operatorname{tr}K_0=r^4$. Since $K_0=M^2-A^2C^2$,
-$$
-\operatorname{tr}(K_0M^{-1})
-=\operatorname{tr}M-\operatorname{tr}(A^2C^2M^{-1})
-=\operatorname{tr}M-\operatorname{tr}(AC)
-=0.
-$$
-Because $M+M^{-1}=TI$, multiplying by $K_0$ and taking traces gives $h_1=Tr^4$. The recurrence then gives
-$$
-h_j=r^4s_{j+1}.
-$$
-Hence
-$$
-\alpha_{n,r,q}-\operatorname{tr}W_{i,j}=r^4s_{i+1}s_{j+1}.
-$$
+Step 3: Rank the one-defect trace levels and compute the first two spacings.
 
-Step 4: Determine the defect separation that minimizes the trace
+When $d=1$, every trace value is represented, up to rotation and reversal, by
+$$
+W_{q,k}=P^2QX^kQX^{q-k-2},\qquad 0\leq k\leq q-2.
+$$
+Using Step 2,
+$$
+\operatorname{tr}(X^q)-\operatorname{tr}(W_{q,k})=r^4u_ku_{q-k-2}.
+$$
+The recurrence also gives, for $b\geq a\geq0$,
+$$
+u_au_b-u_{a-1}u_{b+1}=u_{b-a},
+$$
+where $u_{-1}=0$: substituting $u_{b+1}=Tu_b-u_{b-1}$ reduces the left side to the same expression with $(a,b)$ replaced by $(a-1,b-1)$, ending at $u_{b-a}$. Consequently
+$$
+u_ku_{m-k}-u_{k-1}u_{m-k+1}=u_{m-2k}>0
+$$
+for $1\leq k\leq m/2$. Hence $u_ku_{m-k}$ strictly increases from the ends toward the middle.
 
-Let
+Taking $m=q-2$, the smallest one-defect loss occurs at $k=0,q-2$, and the next smallest at $k=1,q-3$. Thus the three candidate distinct trace levels have spacings
 $$
-Q=\begin{pmatrix}T&-1\\1&0\end{pmatrix}.
-$$
-Induction gives
-$$
-Q^k=\begin{pmatrix}s_{k+1}&-s_k\\s_k&-s_{k-1}\end{pmatrix}.
-$$
-Since $\det Q=1$, comparison of the $(2,1)$ entry in $Q^{-a}Q^{b-1}=Q^{b-a-1}$ gives
-$$
-s_{a+1}s_{b-1}-s_as_b=s_{b-a-1}>0
-$$
-for $1\leq a<b-1$. Thus, at fixed $a+b$, moving the two indices one step toward each other strictly increases $s_as_b$. By Step 3, the smallest trace occurs when $i+1$ and $j+1$ are as equal as possible. Writing
-$$
-m_q=\alpha_{n,r,q}-\gamma_{n,r,q},
-$$
-we get
-$$
-m_{2k}=r^4s_k^2,
-\qquad
-m_{2k+1}=r^4s_ks_{k+1}.
-$$
-
-Step 5: Collapse the parity formulas to one recurrence
-
-From the $(2,1)$ entry of $Q^aQ^b=Q^{a+b}$,
-$$
-s_{a+b}=s_as_{b+1}-s_{a-1}s_b.
-$$
-Therefore
-$$
-m_{2k}-m_{2k-2}
-=r^4(s_k^2-s_{k-1}^2)
-=r^4s_{2k-1}
+M_{q,1}-M_{q,2}=r^4u_{q-2},
 $$
 and
 $$
-m_{2k+1}-m_{2k-1}
-=r^4(s_ks_{k+1}-s_{k-1}s_k)
-=r^4s_{2k}.
-$$
-With $m_0=m_1=0$,
-$$
-m_q-m_{q-2}=r^4s_{q-1}
-\qquad(q\geq2).
+M_{q,2}-M_{q,3}=r^4(Tu_{q-3}-u_{q-2})=r^4u_{q-4}.
 $$
 
-Step 6: Sum the extremal deficits
+Step 4: Certify that no other balanced or unbalanced word reaches the third level.
 
-The recurrence for $s_j$ gives
+Consider first a balanced word with $d\geq2$. Repeated defect removal raises its trace until a one-defect word $W_{q,k}$ is reached. If $k\neq0,q-2$, the original trace is strictly below the third candidate. By reversal, the remaining case is the terminal word
 $$
-\sum_{j=1}^{\infty}s_jt^{j-1}=\frac{1}{1-Tt+t^2}.
+W_{q,0}=P^2Q^2X^{q-2}.
 $$
-Using Step 5,
+In the last removal, an alternating segment $X^{j+2}$ replaced a defect block. Since $X^{j+2}$ contains at least two complete $PQ$ pairs, it must lie in the long alternating tail $X^{q-2}$, so $0\leq j\leq q-4$.
+
+If $C$ is the remaining product, then after replacing the four unused defect blocks by $I$ it contains $X^{q-j-4}$; since $P,Q\geq I$ entrywise,
 $$
-H_{n,r}(t)=t^2H_{n,r}(t)+\frac{r^4}{1-Tt+t^2}.
+u_j\operatorname{tr}(KC)>r^4u_ju_{q-j-4}\geq r^4u_{q-4}.
+$$
+The first inequality is strict because the unused $P,Q$ have positive off-diagonal entries and so does $K$; the second is the product monotonicity from Step 3. Thus the preimage lies strictly below $W_{q,1}$.
+
+Now start from an unbalanced gap sequence and follow Step 1 until a balanced terminal word is reached. If its terminal trace is at most the third candidate, the original is smaller. Up to reversal, suppose first that the terminal word is $W_{q,0}$. The last smoothing changes one adjacent pair. The possible terminal pair types satisfy
+$$
+P^2-B_{n-1}Q=K,\qquad Q^2-PB_{n+2}=K,
+$$
+or
+$$
+X-B_{n-1}B_{n+2}=
+\begin{pmatrix}2r^4-r^2&r^3\\2r^3&r^2\end{pmatrix}\geq K.
+$$
+After deleting that pair from $W_{q,0}$, the remaining product still contains at least $q-4$ complete $PQ$ pairs from the fixed alternating tail. Six further positive blocks remain, so the last trace increase is strictly larger than
+$$
+\operatorname{tr}(KX^{q-4})=r^4u_{q-4}=M_{q,2}-M_{q,3}.
+$$
+Hence this unbalanced predecessor is below the third level.
+
+If smoothing instead terminates at the alternating maximum $X^q$, a plateau move cannot be the final move, and the last pair move must replace, up to reversal, $(n-1,n+2)$ by $(n,n+1)$. Put
+$$
+E=X-B_{n-1}B_{n+2}.
+$$
+Then $\operatorname{tr}E=2r^4$ and $\operatorname{tr}(EX)=r^4(2T+1)$. Cayley--Hamilton gives
+$$
+\operatorname{tr}(EX^{q-1})=r^4(2u_{q-1}+u_{q-2}).
+$$
+Since $Tu_{q-3}=u_{q-2}+u_{q-4}$,
+$$
+2u_{q-1}+u_{q-2}-Tu_{q-3}=2u_{q-1}-u_{q-4}>0.
+$$
+The last smoothing gain therefore exceeds $r^4Tu_{q-3}=M_{q,1}-M_{q,3}$. This predecessor is also below the third level. The two formulas in Step 3 are consequently the actual spacings between the three largest distinct traces over all admissible words.
+
+Step 5: Sum the product of the two consecutive trace spacings.
+
+Put $m=q-4$ and $v_m=u_mu_{m+2}$. Step 3 shows that the coefficient of $t^m$ in the requested series is $r^8v_m$. The recurrence for $u_m$ gives
+$$
+u_{m+1}^2-u_mu_{m+2}=1.
+$$
+Indeed, substituting the recurrence into the expressions at $m$ and $m+1$ shows that their difference is unchanged, and at $m=0$ it equals $1$. Hence $v_m=u_{m+1}^2-1$.
+
+Squaring $u_{m+2}+u_m=Tu_{m+1}$ and using the same identity gives, for $m\geq1$,
+$$
+v_{m+1}-(T^2-2)v_m+v_{m-1}=T^2-2.
+$$
+Also
+$$
+v_0=T^2-1,\qquad v_1=T^2(T^2-2).
+$$
+For $V(t)=\sum_{m\geq0}v_mt^m$, summing the recurrence gives
+$$
+(1-(T^2-2)t+t^2)V(t)=T^2-1+\frac{(T^2-2)t}{1-t}
+=\frac{T^2-1-t}{1-t}.
 $$
 Therefore
 $$
-H_{n,r}(t)=\frac{r^4}{(1-t^2)(1-Tt+t^2)}.
+V(t)=\frac{T^2-1-t}{(1-t)(1-(T^2-2)t+t^2)}.
 $$
-Because $T>2$, the quadratic factor is nonzero at $t=\pm1$, so the fraction is reduced and its denominator has constant term $1$.
+The numerator is nonzero at $t=1$, and at its root $t=T^2-1$ the quadratic factor equals $T^2\neq0$, so the fraction is reduced. Substituting the value of $T$ and multiplying by $r^8$ yields the required series.
 
-Final Answer: $\boxed{\frac{r^4}{(1-t^2)(1-Tt+t^2)}}$
+Final Answer: $\boxed{\frac{r^8((n(n+1)r^4+(4n+2)r^2+2)^2-1-t)}{(1-t)(1-((n(n+1)r^4+(4n+2)r^2+2)^2-2)t+t^2)}}$
 
 ---
 
 ## Answer
 
-$\frac{r^4}{(1-t^2)(1-Tt+t^2)}$
+$\frac{r^8((n(n+1)r^4+(4n+2)r^2+2)^2-1-t)}{(1-t)(1-((n(n+1)r^4+(4n+2)r^2+2)^2-2)t+t^2)}$
 
 ---
 
@@ -301,8 +195,8 @@ $\frac{r^4}{(1-t^2)(1-Tt+t^2)}$
 
 ## Solution Concepts
 
-- cyclic word enumeration
-- change of basis
-- continuant recurrence
-- extremal smoothing
-- rational generating functions
+- cyclic run-length encoding
+- local smoothing by positive matrix differences
+- defect annihilation in balanced binary words
+- Cayley-Hamilton trace recurrence
+- generating functions for bilinear recurrence sequences
