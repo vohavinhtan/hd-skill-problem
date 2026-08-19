@@ -1,14 +1,14 @@
 ## Steps
 
-Step 1: Identify the splitting field of the sextic
+Step 1: Identify the ordered roots of the sextic
 
 Let $\zeta$ be a primitive thirteenth root of unity and put
 $$
-\theta=\zeta+\zeta^{-1}.
+\vartheta=\zeta+\zeta^{-1}.
 $$
 For $s_j=\zeta^j+\zeta^{-j}$,
 $$
-s_0=2,\qquad s_1=\theta,\qquad s_{j+1}=\theta s_j-s_{j-1}.
+s_0=2,\qquad s_1=\vartheta,\qquad s_{j+1}=\vartheta s_j-s_{j-1}.
 $$
 Pairing the twelve nontrivial thirteenth roots gives
 $$
@@ -16,69 +16,71 @@ $$
 $$
 Substitution from the recurrence yields
 $$
-\theta^6+\theta^5-5\theta^4-4\theta^3+6\theta^2+3\theta-1=0.
+f(\vartheta)=0.
 $$
-The field $\mathbb{Q}(\zeta)$ has degree $12$, while $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb{Q}(\theta)$. Hence $[\mathbb{Q}(\theta):\mathbb{Q}]\geq6$. The displayed polynomial has degree $6$, so it is the minimal polynomial of $\theta$. Its roots are the six real cyclotomic conjugates, and
+The field $\mathbb Q(\zeta)$ has degree $12$, while $\zeta$ satisfies $X^2-\vartheta X+1=0$ over $\mathbb Q(\vartheta)$. Hence $[\mathbb Q(\vartheta):\mathbb Q]\geq6$. Since $f$ has degree $6$, it is the minimal polynomial of $\vartheta$, and
 $$
-K=\mathbb{Q}(\theta)
+K=\mathbb Q(\vartheta)
 $$
-is the maximal real subfield of $\mathbb{Q}(\zeta)$, cyclic Galois of degree $6$.
+is the maximal real subfield of $\mathbb Q(\zeta)$.
 
 Let $\sigma$ be induced by $\zeta\mapsto\zeta^2$ and write
 $$
-\theta_i=\sigma^i(\theta)\qquad(0\leq i<6).
+\vartheta_i=\sigma^i(\vartheta)\qquad(0\leq i<6).
 $$
-Permuting the roots only permutes the columns of $V$.
+Using representatives modulo sign in $(\mathbb Z/13\mathbb Z)^\times$,
+$$
+\vartheta_0,\ldots,\vartheta_5
+=
+2\cos\frac{2\pi}{13},
+2\cos\frac{4\pi}{13},
+2\cos\frac{8\pi}{13},
+2\cos\frac{10\pi}{13},
+2\cos\frac{6\pi}{13},
+2\cos\frac{12\pi}{13}.
+$$
+Since cosine decreases on $[0,\pi]$, the increasing order in the statement is
+$$
+(\theta_1,\ldots,\theta_6)=(\vartheta_5,\vartheta_3,\vartheta_2,\vartheta_4,\vartheta_1,\vartheta_0).
+$$
 
-Step 2: Determine the primes above $233$
+Step 2: Recover the valuation pattern
 
 Put
 $$
-u_i=\theta_i+3.
+u_i=\vartheta_i+3.
 $$
-Since the minimal polynomial of $\theta$ is $f$,
+Since $f(-3)=233$,
 $$
-\prod_{i=0}^5u_i=f(-3)=233.
+\prod_{i=0}^5u_i=233.
 $$
-The prime $233$ is unramified in the real cyclotomic field of conductor $13$. Its Frobenius class is the class of
-$$
-233\equiv-1\pmod{13}
-$$
-in $(\mathbb{Z}/13\mathbb{Z})^\times/\{\pm1\}$, so the Frobenius is trivial and $233$ splits completely in $K$.
-
-Each $u_i$ is an algebraic integer of norm $233$. Therefore
+The prime $233$ is unramified in the real cyclotomic field of conductor $13$. Its Frobenius class is the class of $233\equiv-1\pmod{13}$ in $(\mathbb Z/13\mathbb Z)^\times/\{\pm1\}$, so $233$ splits completely in $K$. Each $u_i$ has norm $233$, and
 $$
 P_i=(u_i)\qquad(0\leq i<6)
 $$
-are the six distinct prime ideals of $\mathcal O_K$ above $233$.
+are the six primes of $K$ above $233$.
 
-Step 3: Recover the valuation matrix and its Gram matrix
-
-The needed conjugates are
+The conjugates needed below are
 $$
-\sigma(\theta)=\theta^2-2,\qquad
-\sigma^2(\theta)=\theta^4-4\theta^2+2,\qquad
-\sigma^4(\theta)=\theta^3-3\theta.
+\sigma(\vartheta)=\vartheta^2-2,\qquad
+\sigma^2(\vartheta)=\vartheta^4-4\vartheta^2+2,\qquad
+\sigma^4(\vartheta)=\vartheta^3-3\vartheta.
 $$
-The polynomial identity
+The identity
 $$
 (T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)=f(T)(T+1)(T^2-2T+2)
 $$
 gives
 $$
-C(\theta)=u_1u_2u_4.
+C(\vartheta)=u_1u_2u_4.
 $$
-Applying $\sigma^i$ yields
+Applying $\sigma^i$ gives
 $$
-c_i=C(\theta_i)=u_{i+1}u_{i+2}u_{i+4},
+C(\vartheta_i)=u_{i+1}u_{i+2}u_{i+4},
 $$
-with indices modulo $6$. Hence
+with indices modulo $6$. In cyclic order the valuation matrix is therefore
 $$
-(c_i)=P_{i+1}P_{i+2}P_{i+4}.
-$$
-Ordering rows by $P_0,\ldots,P_5$ and columns by $c_0,\ldots,c_5$ gives
-$$
-V=
+V_0=
 \begin{pmatrix}
 0&0&1&0&1&1\\
 1&0&0&1&0&1\\
@@ -86,13 +88,11 @@ V=
 0&1&1&0&0&1\\
 1&0&1&1&0&0\\
 0&1&0&1&1&0
-\end{pmatrix}.
+\end{pmatrix},
 $$
-A different ordering replaces $V$ by $RVS$ for permutation matrices $R,S$, so $V^{T}V$ is replaced by $S^{T}V^{T}VS$ and has the same Smith data.
-
-Direct multiplication gives
+so
 $$
-G=V^{T}V=
+G_0=V_0^TV_0=
 \begin{pmatrix}
 3&1&1&2&1&1\\
 1&3&1&1&2&1\\
@@ -102,92 +102,128 @@ G=V^{T}V=
 1&1&2&1&1&3
 \end{pmatrix}.
 $$
-
-Step 4: Compute the determinantal divisors of $A_n$
-
-Put $m=2^{n}$ and $A=G+mI_6$. Let $J$ be the all-ones matrix and let $S$ interchange the coordinate pairs $(1,4)$, $(2,5)$, $(3,6)$. Then
+The ordered pair $(\theta_1,\theta_3)$ corresponds to $(\vartheta_5,\vartheta_2)$. A cyclic relabeling sends this pair to $(\vartheta_0,\vartheta_3)$ and preserves the displayed form of $G_0$. Hence $A_n$ is permutation-equivalent over $\mathbb Z$ to
 $$
-G=J+2I_6+S.
-$$
-On the $(-1)$-eigenspace of $S$, which has dimension $3$, $J$ vanishes and $A$ has eigenvalue $m+1$. On the $S$-fixed subspace orthogonal to $(1,1,1,1,1,1)$, which has dimension $2$, the eigenvalue is $m+3$. On the all-ones line it is $m+9$. Therefore
-$$
-\Delta_6=|\det A|=(m+1)^3(m+3)^2(m+9).
+B(q)=
+\begin{pmatrix}
+G_0+qI_6&b\\
+b^T&0
+\end{pmatrix},
+\qquad q=2^n,\qquad b=e_1+e_4.
 $$
 
-The inverse is obtained from the same three subspaces:
+Step 3: Compute the determinant of the bordered matrix
+
+Let $J$ be the all-ones matrix and let $S$ interchange $(1,4)$, $(2,5)$, and $(3,6)$. Then
 $$
-A^{-1}
-=
-\frac{m+2}{(m+1)(m+3)}I_6
--
-\frac{1}{(m+1)(m+3)}S
--
-\frac{1}{(m+3)(m+9)}J.
+G_0=J+2I_6+S.
 $$
-Multiplying by $\Delta_6$ shows that every $5\times5$ minor is divisible by
+For
 $$
-Q=(m+1)^2(m+3).
+H=G_0+qI_6,
 $$
-The three types of entries of $\operatorname{adj}(A)/Q$ are
+the $(-1)$-eigenspace of $S$ has dimension $3$ and eigenvalue $q+1$ for $H$. The $S$-fixed subspace orthogonal to the all-ones vector has dimension $2$ and eigenvalue $q+3$. The all-ones line has eigenvalue $q+9$. Therefore
 $$
-m^2+10m+17,\qquad -(m+1),\qquad -2(m+5).
-$$
-Since $m$ is even,
-$$
-\gcd(m+1,2(m+5))=1,
-$$
-so
-$$
-\Delta_5=(m+1)^2(m+3).
+\det H=(q+1)^3(q+3)^2(q+9).
 $$
 
-At $m=-1$, rows $1,2,3$ of $A$ equal rows $4,5,6$, so every $4\times4$ minor polynomial vanishes at $m=-1$ and is divisible by $m+1$. The minors on rows $1,2,3,4$ with columns $1,2,5,6$ and $1,4,5,6$ are respectively
+The vector $b=e_1+e_4$ is $S$-fixed. Its squared projection onto the all-ones line is $2/3$, and the remaining squared norm in the fixed subspace is $4/3$. Hence
 $$
-(m+1)^2
+b^TH^{-1}b=rac{4}{3(q+3)}+\frac{2}{3(q+9)}=rac{2(q+7)}{(q+3)(q+9)}.
 $$
-and
+The bordered determinant formula now gives
 $$
-(m+1)(3m+11).
+\Delta_7=|\det B(q)|=2(q+1)^3(q+3)(q+7).
 $$
-Because $\gcd(m+1,3m+11)=\gcd(m+1,8)=1$, we get
+
+Step 4: Determine the lower determinantal divisors
+
+Put
 $$
-\Delta_4=m+1.
+t=q+1,\qquad g=\gcd(3,t).
 $$
-The minors on rows $1,2,3$ with columns $4,5,6$ and $1,4,5$ are respectively $4$ and $m+1$. Since $m+1$ is odd, $\Delta_3=1$. The minor on rows $1,2$ and columns $3,4$ equals $1$, and $A$ has entries equal to $1$, so
+A $3\times3$ minor on rows $1,2,3$ and columns $1,6,7$ equals $1$, so
 $$
 \Delta_1=\Delta_2=\Delta_3=1.
 $$
 
-Step 5: Read the Smith normal form
+At $q=-1$, row reduction over $\mathbb Q$ gives rank $4$, with reduced nonzero rows
+$$
+(1,0,0,1,0,0,0),\quad
+(0,1,0,0,1,0,0),\quad
+(0,0,1,0,0,1,0),\quad
+(0,0,0,0,0,0,1).
+$$
+Modulo $3$, the same matrix has rank $3$, with reduced nonzero rows
+$$
+(1,0,0,1,0,0,0),\quad
+(0,1,0,0,1,0,2),\quad
+(0,0,1,0,0,1,2).
+$$
+Every submatrix of $B(q)$ has the form $M(-1)+tD$. Since $\operatorname{rank}B(-1)=4$, every $5\times5$ minor is divisible by $t$, and every $6\times6$ minor is divisible by $t^2$. If $g=3$, then $t\equiv0\pmod3$ and the rank-$3$ reduction shows that every $4\times4$ minor is divisible by $3$. In the multilinear expansion of a $5\times5$ minor, the coefficient of $t$ is a sum of $4\times4$ minors of $B(-1)$, so after division by $t$ it is still divisible by $3$. The coefficient of $t^2$ in a $6\times6$ minor has the same property. Therefore
+$$
+g\mid\Delta_4,\qquad gt\mid\Delta_5,\qquad gt^2\mid\Delta_6.
+$$
 
-If $d_1,\ldots,d_6$ are the Smith entries, then
+For the reverse divisibilities, the $4\times4$ minors on rows and columns
 $$
-d_k=\frac{\Delta_k}{\Delta_{k-1}},
-\qquad \Delta_0=1.
+(1,2,6,7;1,3,5,7),\qquad (1,2,3,5;1,5,6,7)
 $$
-Using the determinantal divisors from Step 4,
+are $3$ and $t$. Hence
 $$
-d_1=d_2=d_3=1,
+\Delta_4=g.
+$$
+The $5\times5$ minors on
+$$
+(1,2,4,6,7;1,3,4,5,7),\qquad (1,2,3,5,7;3,4,5,6,7)
+$$
+are $6t$ and $t^2$. Since $t$ is odd,
+$$
+\Delta_5=t\gcd(6,t)=gt.
+$$
+Three $6\times6$ minors are
+$$
+2t^3,\qquad -4t^2(q+4),\qquad -t^2(q+3)(q+7),
+$$
+using respectively row-column sets
+$$
+(1,2,3,4,5,7;1,3,4,5,6,7),
 $$
 $$
-d_4=m+1,
-$$
-$$
-d_5=(m+1)(m+3),
+(1,2,3,4,5,7;1,2,4,5,6,7),
 $$
 and
 $$
-d_6=(m+1)(m+3)(m+9).
+(1,2,3,5,6,7;1,2,3,5,6,7).
 $$
-Substituting $m=2^{n}$ gives the requested canonical form.
+The last quotient is odd. Any odd common divisor of $2t$ and $4(q+4)$ divides both $t$ and $q+4$, hence divides $3$. If $3\mid t$, then $3\mid q+7$. Therefore
+$$
+\gcd\bigl(2t,4(q+4),(q+3)(q+7)\bigr)=g,
+$$
+so
+$$
+\Delta_6=gt^2.
+$$
 
-Final Answer: $\boxed{\operatorname{diag}(1,1,1,2^{n}+1,(2^{n}+1)(2^{n}+3),(2^{n}+1)(2^{n}+3)(2^{n}+9))}$
+Step 5: Read the Smith normal form
+
+Let $d_1,\ldots,d_7$ be the Smith entries. Using $d_k=\Delta_k/\Delta_{k-1}$,
+$$
+d_1=d_2=d_3=1,\qquad d_4=g,\qquad d_5=d_6=t,
+$$
+and
+$$
+d_7=\frac{2t(q+3)(q+7)}{g}.
+$$
+Since $g\mid t$, these entries satisfy the required divisibility chain. Substituting $q=2^n$ and $g=\gcd(3,2^n+1)$ gives the canonical form.
+
+Final Answer: $\boxed{\operatorname{diag}(1,1,1,\gcd(3,2^n+1),2^n+1,2^n+1,\frac{2(2^n+1)(2^n+3)(2^n+7)}{\gcd(3,2^n+1)})}$
 
 ---
 
 ## Answer
 
-$\operatorname{diag}(1,1,1,2^{n}+1,(2^{n}+1)(2^{n}+3),(2^{n}+1)(2^{n}+3)(2^{n}+9))$
+$\operatorname{diag}(1,1,1,\gcd(3,2^n+1),2^n+1,2^n+1,\frac{2(2^n+1)(2^n+3)(2^n+7)}{\gcd(3,2^n+1)})$
 
 ---
 
@@ -207,6 +243,6 @@ $\operatorname{diag}(1,1,1,2^{n}+1,(2^{n}+1)(2^{n}+3),(2^{n}+1)(2^{n}+3)(2^{n}+9
 
 - real cyclotomic fields
 - prime ideal valuations
-- Gram matrices
+- bordered matrices
 - determinantal divisors
 - smith normal form
