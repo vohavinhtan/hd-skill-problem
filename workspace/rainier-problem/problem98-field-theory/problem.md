@@ -2,13 +2,9 @@
 
 ## LaTeX (Normalized)
 
-Define polynomials $P_r(x)\in\mathbb{Z}[x]$ by
-$$
-P_0(x)=x,\qquad P_{r+1}(x)=P_r(x)^2-2\quad(r\geq0).
-$$
 For each integer $n\geq1$, let $L_n$ be the splitting field over $\mathbb{Q}$ of
 $$
-P_n(x)-3.
+g_n(x)=x^{6\cdot2^n}-305x^{5\cdot2^n}+32827x^{4\cdot2^n}-1685522x^{3\cdot2^n}+44571269x^{2\cdot2^n}-581869502x^{2^n}+2947295521.
 $$
 Determine $[L_n:\mathbb{Q}]$ exactly for every $n\geq1$.
 
@@ -27,4 +23,4 @@ Determine $[L_n:\mathbb{Q}]$ exactly for every $n\geq1$.
 
 ## Domain Explanation
 
-This problem involves splitting fields, cyclotomic extensions, radical extensions, and field degrees, which are part of Abstract Algebra and Field theory. The problem also involves polynomial iteration and reciprocal substitutions, which are part of Algebra, Functions, and Trigonometry and Polynomial and rational functions. However, those polynomial identities expose the roots, while the requested quantity is controlled by the resulting field-extension structure.
+This problem involves splitting fields, cyclotomic subfields, Kummer extensions, and field degrees, which are part of Abstract Algebra and Field theory. The problem also involves prime-ideal valuations and congruence kernels over powers of $2$, which are part of Number Theory and Modular arithmetic and congruences. However, those arithmetic tools determine relations among radical classes, while the requested quantity is the degree of a splitting field.
