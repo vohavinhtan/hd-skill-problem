@@ -2,28 +2,23 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime satisfying
+Let $p\geq7$ be a prime, let
 $$
-p\equiv1\pmod3,
-$$
-and put
-$$
-n=\frac{p-1}{2}.
-$$
-
-Let $t$ be transcendental over $\mathbb F_p$, and set
-$$
-K_p=\mathbb F_p(t)(u),
+K=\mathbb F_p((t)),
 \qquad
-u^3=t^{n-1}-1.
+m=\frac{p-1}{2},
+$$
+and define
+$$
+F_p(X)=X^p-t^2X-\left(t^{-p}-t+t^2\right)
+\in K[X].
 $$
 
-Let $L_p$ be the splitting field over $K_p$ of
+Let $L_p$ be the splitting field of $F_p(X)$ over $K$. If
 $$
-F_p(X)=X^n-nX+(n-1)t.
+\mathfrak D_{L_p/K}=\mathfrak P_{L_p}^{d_p}
 $$
-
-Determine the genus of the function field $L_p$.
+is the different of $L_p/K$, determine the exponent $d_p$.
 
 ---
 
@@ -40,4 +35,4 @@ Determine the genus of the function field $L_p$.
 
 ## Domain Explanation
 
-The polynomial first produces a symmetric Galois closure over the rational function field. The prescribed cubic base change is globally disjoint from that closure but ramifies over the same finite branch divisor and also at infinity. Determining the genus requires combining the global intersection argument with the change of tame inertia after base extension.
+The differences of the roots first force a tame subextension that is not visible from the constant term. After passing to that field and rescaling a root, the remaining equation is additive, but its apparent large pole cancels after a non-obvious change of variable. The exact different exponent depends on detecting this cancellation before applying the tower formula for differents.
