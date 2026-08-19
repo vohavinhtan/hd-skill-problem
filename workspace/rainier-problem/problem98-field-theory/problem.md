@@ -2,11 +2,11 @@
 
 ## LaTeX (Normalized)
 
-Let $L$ be the splitting field over $\mathbb{Q}$ of
+For each integer $n\geq1$, let $L_n$ be the splitting field over $\mathbb{Q}$ of
 $$
-g(x)=x^{10}-x^8-4x^6+3x^4+3x^2-1.
+g_n(x)=x^{3\cdot2^n}-31x^{2^{n+1}}+290x^{2^n}-841.
 $$
-Determine $[L:\mathbb{Q}]$.
+Determine $[L_n:\mathbb{Q}]$ exactly for every $n\geq1$.
 
 ---
 
@@ -16,11 +16,11 @@ Determine $[L:\mathbb{Q}]$.
 |---|---|
 | **Domain** | Abstract Algebra |
 | **Sub-domain** | Field theory |
-| **Problem Type** | Exact computation |
-| **Answer Type** | Exact scalar |
+| **Problem Type** | Symbolic derivation |
+| **Answer Type** | Exact symbolic expression |
 
 ---
 
 ## Domain Explanation
 
-This problem involves splitting fields, cyclotomic subfields, and multiquadratic extensions, which are part of Abstract Algebra and Field theory. The problem also involves sign vectors and linear dependence over $\mathbb{F}_2$, which are part of Linear Algebra and Vectors and vector spaces. However, that linear algebra only detects squareclass relations, while the requested degree is controlled by the field-extension structure.
+This problem involves splitting fields, cyclotomic extensions, Kummer extensions, and field degrees, which are part of Abstract Algebra and Field theory. The problem also involves prime-ideal valuations and a finite congruence kernel, which are part of Number Theory and Modular arithmetic and congruences. However, those arithmetic tools determine independence of radical classes inside the extensions, while the requested quantity is the degree of a splitting field.
