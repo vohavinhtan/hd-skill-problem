@@ -1,199 +1,226 @@
 ## Steps
 
-Step 1: Recover the natural invariant generators
+Step 1: Find the automorphisms hidden by the two generators
 
-Set
+For each $c\in\mathbb F_p$, define
 $$
-s=xy,\qquad t=x^6+y^6.
+\sigma_c(x)=x,\qquad \sigma_c(y)=y+c.
 $$
-The stated generators satisfy
+Since $c^{p^2}=c$, every $\sigma_c$ preserves
 $$
-u=s+t,\qquad v=\frac{s+1}{t+1}.
+y^{p^2}-y=x^m-x^{-m}.
 $$
-From
+The maps $\sigma_c$ form a group
 $$
-v(t+1)=s+1
+P\cong(\mathbb F_p,+)
 $$
-and $t=u-s$, we obtain
+of order $p$.
+
+Also define
 $$
-v(u-s+1)=s+1.
+\tau(x)=x^{-1},\qquad \tau(y)=-y.
 $$
-Therefore
+The right side changes sign under $x\mapsto x^{-1}$, while
 $$
-s=\frac{v(u+1)-1}{v+1}
+(-y)^{p^2}-(-y)=-(y^{p^2}-y),
 $$
-and
+so $\tau$ is an automorphism of order $2$. Moreover
 $$
-t=\frac{u-v+1}{v+1}.
+\tau\sigma_c\tau=\sigma_{-c}.
 $$
 Hence
 $$
-K_p=\mathbb F_p(s,t).
+H=\langle P,\tau\rangle
 $$
+has order $2p$.
 
-Step 2: Identify the hidden fixed field
-
-Because $p\equiv1\pmod{12}$, choose a primitive sixth root $\zeta\in\mathbb F_p$. On the projective Fermat curve
+Now
 $$
-C:\quad X^n+Y^n+Z^n=0
+\sigma_c(y^p-y)=(y+c)^p-(y+c)=y^p-y,
 $$
-define
+so every $\sigma_c$ fixes $u$ and $v$. Under $\tau$,
 $$
-r[X:Y:Z]=[\zeta X:\zeta^{-1}Y:Z]
+x+x^{-1}\mapsto x+x^{-1},
+$$
+$$
+y^p-y\mapsto-(y^p-y),
 $$
 and
 $$
-\tau[X:Y:Z]=[Y:X:Z].
+x-x^{-1}\mapsto-(x-x^{-1}),
 $$
-They satisfy
-$$
-r^6=\tau^2=1,\qquad \tau r\tau=r^{-1},
-$$
-so
-$$
-H=\langle r,\tau\rangle
-$$
-is dihedral of order $12$.
-
-On the affine chart $Z=1$, both $s=xy$ and $t=x^6+y^6$ are fixed by $r$ and $\tau$. Thus
+so $\tau$ also fixes $u$ and $v$. Therefore
 $$
 K_p\subseteq L^H.
 $$
 
-Conversely, put
+Step 2: Prove that the stated generators give the full fixed field
+
+From
 $$
-A=x^6,\qquad B=y^6.
+u=x+x^{-1}
+$$
+the element $x$ satisfies
+$$
+T^2-uT+1=0.
+$$
+Thus
+$$
+[\mathbb F_{p^2}(x,u,v):K_p]\leq2.
+$$
+
+Put
+$$
+z=y^p-y.
 $$
 Since
 $$
-A+B=t,\qquad AB=s^6,
+v=z(x-x^{-1}),
 $$
-the elements $A,B$ are roots of
+once $x$ is known we recover
 $$
-T^2-tT+s^6.
+z=\frac{v}{x-x^{-1}}.
 $$
-Thus there are at most two possibilities for $A$. After $A$ is chosen, $x$ has at most six possibilities from $x^6=A$, and then
+The element $y$ then satisfies
 $$
-y=\frac{s}{x}
+T^p-T-z=0,
 $$
-is forced. Hence
+so it has degree at most $p$ over $\mathbb F_{p^2}(x,z)$. Hence
 $$
-[L:K_p]\leq12.
+[L:K_p]\leq2p.
 $$
-The subgroup $H$ already supplies $12$ distinct $K_p$-automorphisms of $L$, so
+
+The group $H$ already consists of $2p$ distinct $K_p$-automorphisms of $L$. Therefore
 $$
-[L:K_p]\geq12.
+[L:K_p]\geq2p.
 $$
-Therefore
+Consequently
 $$
-[L:K_p]=12
+[L:K_p]=2p
 $$
 and
 $$
 K_p=L^H.
 $$
 
-Step 3: Compute the genus of the covering curve
+Step 3: Pass first to the wild translation quotient
 
-The smooth plane Fermat curve $C$ has degree $n$, so
+The subgroup $P$ is normal in $H$. Its fixed field is
 $$
-g(C)=\frac{(n-1)(n-2)}{2}.
+M=L^P=\mathbb F_{p^2}(x,z),
+\qquad z=y^p-y.
+$$
+Indeed, $P$ fixes $x,z$, while $y$ has degree at most $p$ over $\mathbb F_{p^2}(x,z)$ and $P$ supplies $p$ automorphisms.
+
+Taking the $p$-th power of $z=y^p-y$ gives
+$$
+z^p=y^{p^2}-y^p.
 $$
 Therefore
 $$
-2g(C)-2=n(n-3).
+z^p+z=y^{p^2}-y=x^m-x^{-m}.
 $$
-Since $p\nmid12$, the quotient map
-$$
-C\longrightarrow C/H
-$$
-is tame.
+Thus $M/\mathbb F_{p^2}(x)$ is an additive degree-$p$ extension.
 
-Step 4: Count the fixed points of the nontrivial rotations
-
-For $1\leq j\leq5$, the automorphism $r^j$ has projective eigenvalues
+The rational function
 $$
-\zeta^j,\qquad \zeta^{-j},\qquad1.
+x^m-x^{-m}
 $$
-For $j=1,2,4,5$ these are three distinct eigenvalues, so a fixed projective point must be one of the coordinate points. None of the coordinate points lies on $C$. Hence these four rotations have no fixed points.
-
-For $j=3$,
+has exactly two poles, at $x=0$ and $x=\infty$, each of order $m$. Since
 $$
-r^3[X:Y:Z]=[-X:-Y:Z].
+p\nmid m,
 $$
-Its fixed locus consists of the line $Z=0$ together with the point $[0:0:1]$. The isolated point is not on $C$. On $Z=0$, the curve equation is
+each pole is totally ramified in the degree-$p$ extension and has different exponent
 $$
-X^n+Y^n=0.
-$$
-Since $p\nmid n$, this has exactly $n$ distinct projective solutions over the algebraic closure. Thus
-$$
-\#\operatorname{Fix}(r^3)=n.
+(p-1)(m+1).
 $$
 
-The total rotational contribution to the different is therefore
+Riemann-Hurwitz for $M/\mathbb F_{p^2}(x)$ gives
 $$
-n.
+2g(M)-2=-2p+2(p-1)(m+1).
 $$
-
-Step 5: Count the fixed points of the reflections and apply Riemann-Hurwitz
-
-The six remaining nonidentity elements are
+Hence
 $$
-r^j\tau,\qquad 0\leq j\leq5.
-$$
-Each is an involution. A fixed point of $r^j\tau$ lies either on its $+1$ eigenspace
-$$
-X=\zeta^jY
-$$
-or on its $-1$ eigenline
-$$
-[\zeta^j:-1:0].
-$$
-Because $6\mid n$ and $n$ is even, the isolated point would give
-$$
-(\zeta^j)^n+(-1)^n=2\neq0,
-$$
-so it is not on $C$.
-
-On the fixed line $X=\zeta^jY$, the Fermat equation becomes
-$$
-2Y^n+Z^n=0.
-$$
-This has exactly $n$ distinct projective solutions. Hence every reflection fixes exactly $n$ points.
-
-The six reflections contribute
-$$
-6n.
-$$
-Together with Step 4,
-$$
-\deg\operatorname{Diff}(L/K_p)=7n.
-$$
-Tame Riemann-Hurwitz gives
-$$
-n(n-3)=12(2g(K_p)-2)+7n.
-$$
-Thus
-$$
-12(2g(K_p)-2)=n(n-10)
+2g(M)-2=2m(p-1)-2
 $$
 and
 $$
-g(K_p)=1+\frac{n(n-10)}{24}.
-$$
-Since $n=p-1$,
-$$
-g(K_p)=\frac{p^2-12p+35}{24}
-=\frac{(p-5)(p-7)}{24}.
+g(M)=m(p-1).
 $$
 
-Final Answer: $\boxed{\frac{(p-5)(p-7)}{24}}$
+Step 4: Determine the ramification of the remaining involution
+
+The involution $\tau$ descends to $M$ as
+$$
+\tau(x)=x^{-1},\qquad \tau(z)=-z.
+$$
+Since
+$$
+H/P\cong C_2,
+$$
+we have
+$$
+K_p=M^{\langle\tau\rangle}.
+$$
+
+A fixed point of $\tau$ away from the poles must satisfy
+$$
+x=x^{-1}
+$$
+and
+$$
+z=-z.
+$$
+Because $p$ is odd, this gives
+$$
+x\in\{1,-1\},
+\qquad
+z=0.
+$$
+For both $x=1$ and $x=-1$,
+$$
+x^m-x^{-m}=0,
+$$
+so $(1,0)$ and $(-1,0)$ are points of $M$.
+
+The points above $x=0$ and $x=\infty$ are exchanged by $\tau$, so neither is fixed. Thus $\tau$ has exactly two fixed points.
+
+Step 5: Apply tame Riemann-Hurwitz to the final quotient
+
+The extension $M/K_p$ has degree $2$, which is prime to $p$. Therefore it is tame, and the two fixed points of $\tau$ each contribute $1$ to the different.
+
+Riemann-Hurwitz gives
+$$
+2g(M)-2=2(2g(K_p)-2)+2.
+$$
+Using
+$$
+g(M)=m(p-1),
+$$
+we obtain
+$$
+2m(p-1)-2=4g(K_p)-2.
+$$
+Hence
+$$
+g(K_p)=\frac{m(p-1)}{2}.
+$$
+Since
+$$
+m=\frac{p+1}{2},
+$$
+we get
+$$
+g(K_p)=\frac{p^2-1}{4}.
+$$
+
+Final Answer: $\boxed{\frac{p^2-1}{4}}$
 
 ---
 
 ## Answer
 
-$\frac{(p-5)(p-7)}{24}$
+$\frac{p^2-1}{4}$
 
 ---
 
@@ -208,7 +235,7 @@ $\frac{(p-5)(p-7)}{24}$
 ## Solution Concepts
 
 - algebraic function fields
-- invariant subfields
-- dihedral group actions
-- tame ramification
+- fixed fields
+- Artin-Schreier extensions
+- wild ramification
 - Riemann-Hurwitz formula

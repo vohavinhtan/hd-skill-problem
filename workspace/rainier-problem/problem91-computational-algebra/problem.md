@@ -2,19 +2,24 @@
 
 ## LaTeX (Normalized)
 
-Let $p\equiv1\pmod{12}$ be a prime and put $n=p-1$. Let
+Let $p\geq5$ be a prime and put
 $$
-L=\mathbb F_p(x,y),\qquad x^n+y^n+1=0.
+m=\frac{p+1}{2}.
+$$
+Over $\mathbb F_{p^2}$ let
+$$
+L=\mathbb F_{p^2}(x,y),\qquad
+y^{p^2}-y=x^m-x^{-m}.
 $$
 Inside $L$, define
 $$
-u=xy+x^6+y^6,
+u=x+x^{-1},
 \qquad
-v=\frac{xy+1}{x^6+y^6+1},
+v=(y^p-y)(x-x^{-1}),
 $$
 and let
 $$
-K_p=\mathbb F_p(u,v).
+K_p=\mathbb F_{p^2}(u,v).
 $$
 
 Determine the genus of $K_p$ as an exact expression in $p$.
@@ -34,14 +39,14 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 ## Domain Explanation
 
-This problem involves algebraic function fields, finite automorphism groups, invariant subfields, and extension degrees,
+This problem involves algebraic function fields, fixed fields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves quotient curves, ramification, and genus,
+The problem also involves wild and tame ramification on algebraic curves,
 which are part of Topology and Geometry and Differential geometry.
-However, the main difficulty is reconstructing the hidden fixed field from the stated rational generators and then calculating its algebraic ramification data, rather than studying differential-geometric structures independently.
+However, the main task is to reconstruct the hidden intermediate field and its automorphism tower algebraically before computing the genus.
 
 Specifically:
 
-- The stated generators must first be inverted to recover the natural dihedral invariants.
-- A degree comparison is needed to prove that these invariants give the full fixed field rather than merely a subfield of it.
-- The quotient genus depends on separate fixed-point calculations for rotations and reflections, including an exceptional central rotation.
+- The first generator hides an involution on the rational coordinate, while the second simultaneously hides an additive translation invariant.
+- Recovering the fixed field requires a degree comparison rather than a direct polynomial relation between the stated generators.
+- The genus calculation passes through a wild Artin-Schreier quotient and then a separate tame involution quotient.
