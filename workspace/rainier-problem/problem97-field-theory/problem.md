@@ -10,22 +10,25 @@ and choose $z\in\mathbb F_p$ such that
 $$
 z^2+z+1=0.
 $$
-Let $s$ be transcendental over $\mathbb F_p$, put $K=\mathbb F_p(s)$, and define
+Let $s$ be transcendental over $\mathbb F_p$, put $K=\mathbb F_p(s)$, and set
+$$
+m=\frac{p-1}{3}.
+$$
+Define
 $$
 P(X)=X^{p^3}-3zX^{p^2}+3z^2X^p-X.
 $$
-Set
+
+Choose $t$ in an algebraic closure of $K$ with $t^3=s$, and define
 $$
-A=s^{(p^3-1)/3}-3zs^{(p^2-1)/3}+3z^2s^{(p-1)/3},
+R(T)=\frac1s+
+\frac{(1-zs^m)T+z-1}{(s^mT-1)(T-1)}.
 $$
+Let
 $$
-B=s^{-(p^3-1)/3}-3zs^{-(p^2-1)/3}+3z^2s^{-(p-1)/3},
+Q(Y)=\prod_{i=0}^{2}\left(Y-R(z^it)\right)\in K[Y],
 $$
-and
-$$
-Q(Y)=Y^3-3ABY-A^3s-B^3s^{-1}.
-$$
-Let $L$ be the splitting field over $K$ of
+and let $L$ be the splitting field over $K$ of
 $$
 F(X)=Q(P(X)).
 $$
@@ -47,8 +50,8 @@ Determine the exact degree $[L:K]$.
 
 ## Domain Explanation
 
-This problem involves splitting fields, additive polynomials, constant-field extensions, and ramification,
+This problem involves splitting fields, additive polynomial extensions, constant-field extensions, and ramification,
 which are part of Abstract Algebra and Field theory.
-The problem also involves finite-field Frobenius actions and cyclic cubic extensions,
+The problem also involves finite-field Frobenius actions and a cyclic cubic function-field extension,
 which are part of Number Theory and algebraic function theory.
-However, those ingredients control hidden corrections among the additive fibers, while the main task is to reconstruct the splitting field and determine its exact degree.
+However, those ingredients control a partial overlap among three additive fibers, while the main task is to reconstruct the field tower and determine the exact splitting-field degree.
