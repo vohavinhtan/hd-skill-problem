@@ -21,8 +21,7 @@ $$
 
 Choose $t$ in an algebraic closure of $K$ with $t^3=s$, and define
 $$
-R(T)=\frac1s+
-\frac{(1-zs^m)T+z-1}{(s^mT-1)(T-1)}.
+R(T)=\frac1s+\frac{T}{s-1}+\frac{s^{2m}-z}{3}T^2.
 $$
 Let
 $$
@@ -54,4 +53,4 @@ This problem involves splitting fields, additive polynomial extensions, constant
 which are part of Abstract Algebra and Field theory.
 The problem also involves finite-field Frobenius actions and a cyclic cubic function-field extension,
 which are part of Number Theory and algebraic function theory.
-However, those ingredients control a partial overlap among three additive fibers, while the main task is to reconstruct the field tower and determine the exact splitting-field degree.
+However, those ingredients create a filtered dependence among the additive fibers, while the main task is to reconstruct the resulting field tower and determine its exact degree.
