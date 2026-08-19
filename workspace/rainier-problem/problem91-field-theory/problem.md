@@ -1,50 +1,22 @@
-```markdown id="1j9jry"
 # Normalized Math Problem
 
 ## LaTeX (Normalized)
 
 Let $p\geq5$ be a prime and put
 $$
-n=p^2+p+1.
-$$
-Let $t$ be transcendental over $\mathbb F_p$, and set
-$$
-K=\mathbb F_p(t).
+K=\mathbb Q_p.
 $$
 
-Choose an element
+Let $L_p$ be the splitting field over $K$ of
 $$
-\zeta\in\mathbb F_{p^3}^\times
-$$
-of order $n$, and put
-$$
-\zeta_i=\zeta^{p^i}
-$$
-for $i\in\mathbb Z/3\mathbb Z$.
-
-Define
-$$
-F_p(X)=
-\prod_{i=0}^{2}
-\left(
-(t-\zeta_{i-1})X^n-(t-\zeta_i)^2
-\right).
-$$
-The three factors are cyclically permuted by
-$$
-\operatorname{Gal}(\mathbb F_{p^3}/\mathbb F_p),
-$$
-so
-$$
-F_p(X)\in K[X].
+F_p(X)=(X^p-p)(X^p-(1+p)).
 $$
 
-Let $L_p$ be the splitting field of $F_p(X)$ over $K$.
-
-Determine
+If
 $$
-[L_p:K].
+\mathfrak D_{L_p/K}=\mathfrak P_{L_p}^{d_p}
 $$
+is the different of $L_p/K$, determine the exponent $d_p$.
 
 ---
 
@@ -61,4 +33,4 @@ $$
 
 ## Domain Explanation
 
-The splitting field first forces a nontrivial constant-field extension through ratios of roots. Over that constant field the problem becomes a three-generator Kummer extension, but the three radical classes are not always independent. Their relation lattice has determinant $7$, producing an exceptional degree drop exactly when $7$ divides $p^2+p+1$.
+The splitting field first forces the cyclotomic extension containing the $p$th roots of unity. Over that field the two radicals give independent wild degree-$p$ directions, but their ramification is highly asymmetric: one has lower break $p$, while the other has lower break $1$. Determining the different requires classifying every degree-$p$ quotient of the resulting elementary abelian extension before applying the tower law.
