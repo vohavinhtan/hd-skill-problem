@@ -2,17 +2,26 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq2$ be an integer, let $u,T$ be indeterminates, and work in
+Let $p\geq5$ be a prime, let $u,T$ be indeterminates, and work in
 $$
 R=(\mathbb{Z}/p^4\mathbb{Z})[u,T].
 $$
-Set $F_0=T$. For every $m\geq0$, define $F_{m+1}\in R$ by
+Fix an integer $n\geq1$. For $0\leq m\leq n$, put
 $$
-F_{m+1}=F_m+(-1)^mp\left(F_m^2+u^{m^2}F_m^4\right)
-+p^2\left(F_m^3+3u^{m^2}F_m^5\right)
-+6(-1)^mp^3u^{m^2}F_m^6.
+a_m=(-1)^m\binom{n}{m}.
 $$
-For an arbitrary integer $n\geq1$, determine the coefficient of $T^6$ in $F_{2n}$ as an element of $(\mathbb{Z}/p^4\mathbb{Z})[u]$.
+Set $F_0=T$, and recursively define
+$$
+F_{m+1}
+=
+F_m
++pa_mF_m^2
++p^2(a_m^2+u^{m^2})F_m^3
++p^3(a_m^3+2a_mu^{m^2})F_m^4
+$$
+for $0\leq m\leq n$.
+
+Determine the coefficient of $T^4$ in $F_{n+1}$ as an element of $(\mathbb{Z}/p^4\mathbb{Z})[u]$.
 
 ---
 
@@ -29,8 +38,6 @@ For an arbitrary integer $n\geq1$, determine the coefficient of $T^6$ in $F_{2n}
 
 ## Domain Explanation
 
-This problem involves coefficient arithmetic modulo $p^4$, cancellation between successive residue-class polynomial iterations, and tracking which prime-power layers can affect a fixed coefficient,
-which are part of Number Theory and Modular arithmetic and congruences.
-The problem also involves nonlinear polynomial recurrence and formal coefficient extraction,
-which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
-However, the nonlinear terms are organized by their powers of $p$, and the requested coefficient is forced by cancellations between those modular layers rather than by ordinary recurrence solving.
+This problem involves polynomial arithmetic modulo $p^4$, prime-power filtration, and cancellations between residue-class coefficients, which are part of Number Theory and Modular arithmetic and congruences.
+The problem also involves nonlinear recurrence and formal coefficient extraction, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
+However, the requested coefficient is controlled by a noncommutative correction that survives only at the $p^3$ layer, so modular arithmetic is the primary mathematical structure.
