@@ -1,348 +1,335 @@
 ## Steps
 
-Step 1: Separate the tame cyclotomic layer
+Step 1: Recover the cubic constant field from the splitting field
 
-Choose
+Put
 $$
-\alpha^p=p,
-\qquad
-\beta^p=1+p,
+C=\mathbb F_{p^3}(t).
 $$
-and let $\zeta$ be a primitive $p$th root of unity.
+Let $\tau$ generate
+$$
+\operatorname{Gal}(C/K),
+$$
+so
+$$
+\tau(\lambda_i)=\lambda_{i+1}.
+$$
+Then
+$$
+\tau(a_i)=a_{i+1},
+$$
+and therefore the product defining $F_p$ is fixed by $\tau$. Hence
+$$
+F_p(X)\in K[X].
+$$
 
-The roots of the first factor are
+Let $\alpha_i$ be any root of
 $$
-\zeta^i\alpha,
+X^p-X-a_i.
+$$
+Since $L_p$ contains every root of $F_p$,
+$$
+a_i=\alpha_i^p-\alpha_i\in L_p.
+$$
+
+The element $a_0$ is not fixed by $\tau$. Indeed, at the place
+$$
+P_0:\quad t=\lambda_0,
+$$
+the polar part of $a_0$ is
+$$
+2x_0^{-2}+4x_0^{-1},
+$$
+whereas the polar part of $a_1$ is
+$$
+-x_0^{-2}.
+$$
+Since $p\geq5$,
+$$
+a_0\ne a_1.
+$$
+Thus
+$$
+a_0\notin K.
+$$
+
+Because $C/K$ has prime degree $3$,
+$$
+K(a_0)=C.
+$$
+Consequently
+$$
+C\subseteq L_p.
+$$
+
+Step 2: Translate the splitting field into Artin-Schreier classes
+
+Over $C$, adjoining one root of
+$$
+X^p-X-a_i
+$$
+splits that polynomial, since all its roots differ by elements of $\mathbb F_p$.
+
+Thus
+$$
+L_p=C(y_0,y_1,y_2),
 \qquad
-0\leq i<p.
+y_i^p-y_i=a_i.
 $$
-Hence their ratios show that the splitting field contains $\zeta$. Conversely, after adjoining $\zeta,\alpha,\beta$, both factors split. Therefore
+
+Let
 $$
-L_p=M(\alpha,\beta),
+\wp(C)=\{z^p-z:z\in C\}.
+$$
+Artin-Schreier theory gives
+$$
+[L_p:C]
+=
+p^r,
+$$
+where $r$ is the dimension over $\mathbb F_p$ of the span of
+$$
+[a_0],[a_1],[a_2]
+$$
+in
+$$
+C/\wp(C).
+$$
+
+Suppose
+$$
+e_0a_0+e_1a_1+e_2a_2\in\wp(C),
 \qquad
-M=\mathbb Q_p(\zeta).
+e_i\in\mathbb F_p.
+$$
+
+At $P_j:t=\lambda_j$, the coefficient of $x_j^{-2}$ is
+$$
+2e_j-e_{j+1},
+$$
+and the coefficient of $x_j^{-1}$ is
+$$
+4e_j-e_{j+2}.
+$$
+
+If $h\in C$ has a pole of order $m>0$, then
+$$
+h^p-h
+$$
+has pole order $pm$. Since $1,2<p$, an element of $\wp(C)$ cannot have a reduced pole of order $1$ or $2$. Therefore
+$$
+2e_j-e_{j+1}=0,
+$$
+and
+$$
+4e_j-e_{j+2}=0
+$$
+for every $j$.
+
+The first equations give
+$$
+e_1=2e_0,
+\qquad
+e_2=4e_0.
+$$
+Cycling once more yields
+$$
+e_0=2e_2=8e_0,
+$$
+so
+$$
+7e_0=0.
+$$
+
+If $p\ne7$, this forces
+$$
+e_0=e_1=e_2=0.
+$$
+Hence
+$$
+r=3.
+$$
+
+If $p=7$, then
+$$
+a_0+2a_1+4a_2=0.
+$$
+Indeed, at every $P_j$ both its order-$2$ and order-$1$ coefficients vanish, and the expression has no other terms. The relation space is therefore one-dimensional, so
+$$
+r=2.
 $$
 
 Put
 $$
-\lambda=\zeta-1.
+d=\gcd(p,7).
 $$
-The polynomial
+Then both cases are summarized by
 $$
-\Phi_p(1+T)
+[L_p:C]
 =
-\frac{(1+T)^p-1}{T}
-$$
-is Eisenstein over $\mathbb Q_p$. Hence
-$$
-[M:K]=p-1,
-$$
-the extension $M/K$ is totally ramified, and $\lambda$ is a uniformizer of $M$. Normalize
-$$
-v_M(\lambda)=1.
-$$
-Then
-$$
-v_M(p)=p-1.
+N=\frac{p^3}{d}.
 $$
 
-Since $p\nmid p-1$, the extension is tame, so
-$$
-d(M/K)=p-2.
-$$
+Step 3: Determine the local ramified Artin-Schreier space
 
-Step 2: Show that the two wild directions are independent
-
-Because $\mu_p\subset M$, adjoining a $p$th root of an element depends only on its class in
+Fix
 $$
-M^\times/M^{\times p}.
+P_j:\quad x_j=0.
 $$
-
-We claim that the classes of
+Modulo functions regular at $P_j$, the three classes have polar parts
 $$
-p
-\qquad\text{and}\qquad
-1+p
+a_j\equiv2x_j^{-2}+4x_j^{-1},
 $$
-are independent.
-
-First, $1+p$ is not a $p$th power in $M$. If
 $$
-\beta^p=1+p
+a_{j+1}\equiv-x_j^{-2},
 $$
 and
 $$
-z=\beta-1,
-$$
-then
-$$
-(1+z)^p=1+p,
-$$
-so
-$$
-z^p+\binom p{p-1}z^{p-1}+\cdots+\binom p1z-p=0.
-$$
-For $1\leq j<p$,
-$$
-v_M\left(\binom pj\right)=p-1.
-$$
-Thus the Newton polygon has the single segment joining
-$$
-(0,p-1)
-\qquad\text{to}\qquad
-(p,0).
-$$
-Its slope is
-$$
--\frac{p-1}{p}.
-$$
-If the polynomial had a factor of degree $d<p$, the valuation of its constant term would be
-$$
-\frac{d(p-1)}p,
-$$
-which cannot be integral. Hence the polynomial is irreducible and
-$$
-[M(\beta):M]=p.
+a_{j+2}\equiv-x_j^{-1}.
 $$
 
-Now suppose
+Thus their local polar classes span
 $$
-p^a(1+p)^b\in M^{\times p},
+\mathbb F_p x_j^{-2}
+\oplus
+\mathbb F_p x_j^{-1}.
+$$
+The local ramified Artin-Schreier space therefore has dimension $2$, for every $p\geq5$, including $p=7$.
+
+Hence the inertia group above each $P_j$ has order
+$$
+p^2.
+$$
+There are no other ramified places, because every $a_i$ is regular away from
+$$
+P_0,P_1,P_2.
+$$
+
+Step 4: Compute the local different exponent
+
+Consider a nonzero local Artin-Schreier character represented in reduced form by
+$$
+A x_j^{-2}+B x_j^{-1},
 \qquad
-0\leq a,b<p.
-$$
-Taking valuations gives
-$$
-p\mid a(p-1).
-$$
-Therefore
-$$
-a=0.
-$$
-If $b\ne0$, choose integers $c,d$ with
-$$
-bc=1+pd.
-$$
-Then $(1+p)^b\in M^{\times p}$ would imply
-$$
-1+p
-=
-\frac{\left((1+p)^b\right)^c}{\left((1+p)^d\right)^p}
-\in M^{\times p},
-$$
-contradicting the preceding paragraph. Hence
-$$
-a=b=0.
+A,B\in\mathbb F_p.
 $$
 
-Therefore
+If
 $$
-[L_p:M]=p^2,
+A=0,
 \qquad
-\operatorname{Gal}(L_p/M)\cong C_p^2.
+B\ne0,
 $$
-
-Step 3: Compute the break of every quotient involving the class of $p$
-
-Let
-$$
-1\leq a<p,
-\qquad
-0\leq b<p,
-$$
-and consider
-$$
-N=M(\theta),
-\qquad
-\theta^p=p^a(1+p)^b.
-$$
-The right side has valuation
-$$
-a(p-1),
-$$
-which is prime to $p$. Thus $N/M$ is totally ramified of degree $p$.
-
-Normalize $v_N$ integrally. Then
-$$
-v_N(\lambda)=p,
-\qquad
-v_N(\theta)=a(p-1).
-$$
-Choose integers $r,s$ such that
-$$
-pr+a(p-1)s=1.
-$$
-Modulo $p$, this identity shows
-$$
-s\not\equiv0\pmod p.
-$$
-Hence
-$$
-\varpi=\lambda^r\theta^s
-$$
-has valuation $1$ and is a uniformizer of $N$.
-
-Every nontrivial automorphism of $N/M$ has the form
-$$
-\sigma_c(\theta)=\zeta^c\theta,
-\qquad
-c\in\mathbb F_p^\times.
-$$
-Therefore
-$$
-\sigma_c(\varpi)-\varpi
-=
-(\zeta^{cs}-1)\varpi.
-$$
-Since $cs\not\equiv0\pmod p$,
-$$
-v_N(\zeta^{cs}-1)=v_N(\lambda)=p.
-$$
-Thus
-$$
-v_N(\sigma_c(\varpi)-\varpi)=p+1.
-$$
-
-So every such cyclic quotient has lower ramification break
-$$
-p
-$$
-and conductor exponent
-$$
-p+1.
-$$
-
-Step 4: Compute the exceptional break coming from $1+p$
-
-Now take
-$$
-N_0=M(\beta),
-\qquad
-\beta^p=1+p,
-$$
-and put
-$$
-z=\beta-1.
-$$
-The Newton polygon in Step 2 gives
-$$
-v_{N_0}(z)=p-1,
-$$
-while
-$$
-v_{N_0}(\lambda)=p.
-$$
-Therefore
-$$
-\varpi_0=\frac{\lambda}{z}
-$$
-is a uniformizer.
-
-For
-$$
-\sigma_c(\beta)=\zeta^c\beta,
-\qquad
-c\ne0,
-$$
-we have
-$$
-\sigma_c(z)-z
-=
-(\zeta^c-1)\beta.
-$$
-Since $\beta$ is a unit,
-$$
-v_{N_0}(\sigma_c(z)-z)=p.
-$$
-Also
-$$
-v_{N_0}(\sigma_c(z))=v_{N_0}(z)=p-1.
-$$
-Hence
-$$
-v_{N_0}\left(\sigma_c(\varpi_0)-\varpi_0\right)
-=
-p+p-2(p-1)
-=
-2.
-$$
-
-Thus this unique projective degree-$p$ direction has lower break
-$$
-1
-$$
-and conductor exponent
+the pole order is $1$, so the conductor exponent is
 $$
 2.
 $$
-
-Step 5: Sum the conductors and descend to $\mathbb Q_p$
-
-The character group of
-$$
-G=\operatorname{Gal}(L_p/M)\cong C_p^2
-$$
-has $p^2-1$ nontrivial characters.
-
-The single projective character direction corresponding to the class of $1+p$ contains
+There are
 $$
 p-1
 $$
-nontrivial characters, all of conductor $2$.
+such nonzero characters.
 
-Every other projective direction contains a nonzero coefficient of the class of $p$. By Step 3 its conductor is $p+1$. Hence there are
+If
+$$
+A\ne0,
+$$
+the reduced pole order is $2$, so the conductor exponent is
+$$
+3.
+$$
+There are
 $$
 p^2-p
 $$
-characters of conductor $p+1$.
+such characters.
 
-For a finite abelian local extension, the regular representation is the direct sum of its characters, so the conductor-discriminant formula gives
+For the totally ramified elementary abelian local extension determined by these two classes, the conductor-discriminant formula therefore gives different exponent
 $$
-d(L_p/M)
+D
 =
-\sum_{\chi\ne1}f(\chi).
-$$
-Therefore
-$$
-d(L_p/M)
-=
-2(p-1)+(p^2-p)(p+1).
-$$
-Expanding,
-$$
-d(L_p/M)=p^3+p-2.
-$$
-
-Finally, the tower formula for differents gives
-$$
-d(L_p/K)
-=
-d(L_p/M)
-+
-e(L_p/M)d(M/K).
-$$
-Using
-$$
-e(L_p/M)=p^2
-$$
-and Step 1,
-$$
-d_p
-=
-p^3+p-2+p^2(p-2).
+2(p-1)+3(p^2-p).
 $$
 Thus
 $$
-d_p=2p^3-2p^2+p-2.
+D=3p^2-p-2.
 $$
 
-Final Answer: $\boxed{2p^3-2p^2+p-2}$
+Step 5: Apply Riemann-Hurwitz
+
+The field
+$$
+C=\mathbb F_{p^3}(t)
+$$
+has genus $0$.
+
+The extension
+$$
+L_p/C
+$$
+is Galois of degree
+$$
+N=\frac{p^3}{d},
+\qquad
+d=\gcd(p,7).
+$$
+At each of the three ramified base places the inertia index is
+$$
+p^2.
+$$
+
+For one such place, the total contribution to the degree of the different is
+$$
+\frac{N}{p^2}D.
+$$
+Indeed, if the residue degree is $f$, there are
+$$
+\frac{N}{p^2f}
+$$
+places above it, each of residue degree $f$ and different exponent $D$, so the factor $f$ cancels.
+
+Riemann-Hurwitz gives
+$$
+2g(L_p)-2
+=
+-2N
++
+3\frac{N}{p^2}(3p^2-p-2).
+$$
+Therefore
+$$
+2g(L_p)-2
+=
+N\left(
+7-\frac3p-\frac6{p^2}
+\right).
+$$
+Using
+$$
+N=\frac{p^3}{d},
+$$
+we obtain
+$$
+2g(L_p)-2
+=
+\frac{p(7p^2-3p-6)}{d}.
+$$
+Hence
+$$
+g(L_p)
+=
+1+
+\frac{p(7p^2-3p-6)}
+{2\gcd(p,7)}.
+$$
+
+Final Answer: $\boxed{1+\frac{p(7p^2-3p-6)}{2\gcd(p,7)}}$
 
 ---
 
 ## Answer
 
-$2p^3-2p^2+p-2$
+$1+\frac{p(7p^2-3p-6)}{2\gcd(p,7)}$
 
 ---
 
@@ -356,8 +343,8 @@ $2p^3-2p^2+p-2$
 
 ## Solution Concepts
 
-- p-adic local fields
-- cyclotomic extensions
-- wild ramification
-- ramification breaks
-- conductor-discriminant formula
+- Artin-Schreier extensions
+- constant field descent
+- local conductor filtrations
+- different exponents
+- Riemann-Hurwitz
