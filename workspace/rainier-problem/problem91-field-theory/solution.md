@@ -1,254 +1,265 @@
 ## Steps
 
-Step 1: Recover the tame field from differences of roots
-
-The derivative of $F_p$ is
-$$
-F_p'(X)=-t^2\ne0,
-$$
-so $F_p$ is separable.
-
-If $\alpha$ and $\alpha'$ are two roots, their difference $d=\alpha-\alpha'$ satisfies
-$$
-d^p-t^2d=0.
-$$
-Thus either $d=0$ or
-$$
-d^{p-1}=t^2.
-$$
-
-Choose $\beta$ satisfying
-$$
-\beta^m=t.
-$$
-Since $2m=p-1$,
-$$
-\beta^{p-1}=t^2.
-$$
-Hence every nonzero difference of two roots is
-$$
-c\beta,
-\qquad
-c\in\mathbb F_p^\times.
-$$
-
-The polynomial
-$$
-Y^m-t
-$$
-is Eisenstein over $K$, so
-$$
-E=K(\beta)
-$$
-has degree $m$. Since $m\mid p-1$, all $m$th roots of unity lie in $\mathbb F_p$, and therefore
-$$
-E/K
-$$
-is cyclic and totally tamely ramified.
-
-Any splitting field of $F_p$ contains a nonzero difference of two roots, hence contains $E$.
-
-Step 2: Rescale one root over the tame field
-
-Choose a root $\alpha$ and write
-$$
-\alpha=\beta z.
-$$
-Because
-$$
-\beta^p=\beta^{p-1}\beta=t^2\beta,
-$$
-the equation $F_p(\alpha)=0$ becomes
-$$
-\beta^p(z^p-z)=t^{-p}-t+t^2.
-$$
-Therefore
-$$
-z^p-z
-=
-\frac{t^{-p}-t+t^2}{\beta^p}.
-$$
-
-Using
-$$
-t=\beta^m,
-\qquad
-p=2m+1,
-$$
-the three terms are
-$$
-\frac{t^{-p}}{\beta^p}
-=\beta^{-p(m+1)},
-$$
-$$
--\frac{t}{\beta^p}
-=-\beta^{-(m+1)},
-$$
-and
-$$
-\frac{t^2}{\beta^p}
-=\beta^{-1}.
-$$
+Step 1: Recover the two Artin-Schreier generators
 
 Put
 $$
-w=\beta^{-(m+1)}.
+a=t^{-p}+t^{-2},
+\qquad
+b=2t^{-p}+t^{-2},
+$$
+and
+$$
+Y=X^p-X-a.
 $$
 Then
 $$
-w^p=\beta^{-p(m+1)},
+F_p(X)=Y^p-b^{p-1}Y.
 $$
-so
+Since $b\ne0$,
 $$
-z^p-z=w^p-w+\beta^{-1}.
+Y^p-b^{p-1}Y=0
 $$
+is equivalent to
+$$
+\left(\frac{Y}{b}\right)^p=\frac{Y}{b}.
+$$
+Hence every root satisfies
+$$
+X^p-X=a+cb
+$$
+for some $c\in\mathbb F_p$.
 
-Step 3: Detect the cancellation in the additive equation
-
-Set
+Choose $u,v$ with
 $$
-y=z-w.
-$$
-Since the characteristic is $p$,
-$$
-y^p-y
-=(z^p-z)-(w^p-w)
-=\beta^{-1}.
-$$
-
-Thus
-$$
-L_p=E(y),
+u^p-u=a,
 \qquad
-y^p-y=\beta^{-1}.
+v^p-v=b.
 $$
-Indeed, $E(y)$ contains
+Then all roots of $F_p$ are
 $$
-\alpha=\beta(y+w),
-$$
-and all the roots are
-$$
-\alpha+c\beta,
+u+cv+d,
 \qquad
-c\in\mathbb F_p,
+c,d\in\mathbb F_p.
 $$
-so $E(y)$ contains the full root set. Conversely Step 1 shows that the splitting field contains $E$, and then one root recovers $y$.
-
-The equation
+They are distinct because
 $$
-y^p-y=\beta^{-1}
+F_p'(X)=b^{p-1}\ne0.
 $$
-is irreducible over $E$. If $\beta^{-1}=a^p-a$ for some $a\in E$, then a pole of $a$ of order $r>0$ would give a pole of $a^p-a$ of order $pr$, while $\beta^{-1}$ has pole order $1$. Hence
+Conversely the splitting field contains a root with $c=0$ and the difference between roots belonging to $c=1$ and $c=0$, so it contains both $u$ and $v$. Therefore
 $$
-[L_p:E]=p.
+L_p=K(u,v).
 $$
 
-Step 4: Compute the different of the wild degree-$p$ step
-
-Normalize the valuation of $E$ by
-$$
-v_E(\beta)=1.
-$$
-Since $L_p/E$ is totally ramified of degree $p$,
-$$
-v_{L_p}(\beta)=p.
-$$
-The equation
-$$
-y^p-y=\beta^{-1}
-$$
-then gives
-$$
-v_{L_p}(y)=-1.
-$$
-Hence
-$$
-\pi=y^{-1}
-$$
-is a uniformizer of $L_p$.
-
-The nontrivial automorphisms of $L_p/E$ are
-$$
-\tau_c(y)=y+c,
-\qquad
-c\in\mathbb F_p^\times.
-$$
-For such $c$,
-$$
-\tau_c(\pi)-\pi
-=
--\frac{c}{y(y+c)}.
-$$
-Both $y$ and $y+c$ have valuation $-1$, so
-$$
-v_{L_p}(\tau_c(\pi)-\pi)=2.
-$$
-Therefore the different exponent of $L_p/E$ is
-$$
-d(L_p/E)
-=
-\sum_{c\in\mathbb F_p^\times}
-v_{L_p}(\tau_c(\pi)-\pi)
-=
-2(p-1).
-$$
-
-Step 5: Combine the tame and wild differents
+Step 2: Remove the misleading pole order $p$
 
 Since
 $$
-E=K(\beta),
+(t^{-1})^p-t^{-1}=t^{-p}-t^{-1},
+$$
+set
+$$
+u_0=u-t^{-1},
 \qquad
-\beta^m=t,
+v_0=v-2t^{-1}.
 $$
-the Eisenstein polynomial of $\beta$ is
+Their equations become
 $$
-Y^m-t.
+u_0^p-u_0=t^{-2}+t^{-1},
 $$
-Its derivative at $\beta$ is
+and
 $$
-m\beta^{m-1}.
-$$
-Because $m$ is a unit in $E$,
-$$
-d(E/K)=m-1.
+v_0^p-v_0=t^{-2}+2t^{-1}.
 $$
 
+Now put
+$$
+y=v_0-u_0,
+\qquad
+z=u_0.
+$$
+Then
+$$
+L_p=K(y,z),
+$$
+with
+$$
+y^p-y=t^{-1},
+$$
+and
+$$
+z^p-z=t^{-2}+t^{-1}.
+$$
+
+The first equation has reduced pole order $1$. In particular it defines a totally ramified extension
+$$
+K_1=K(y)
+$$
+of degree $p$.
+
+Step 3: Record the local Artin-Schreier different calculation
+
+Let $E$ be a local field of characteristic $p$ with uniformizer $\pi_0$, and suppose
+$$
+w^p-w=f
+$$
+where $f$ has pole order $r>0$ with $p\nmid r$.
+
+The equation cannot split over $E$, because if $h$ has a pole then $h^p-h$ has pole order divisible by $p$, while an integral $h$ gives no pole. Hence the extension has degree $p$ and is totally ramified.
+
+Normalize the extended valuation by
+$$
+v(\pi_0)=p.
+$$
+Then
+$$
+v(w)=-r.
+$$
+Choose integers $A,B$ with
+$$
+pA-rB=1,
+\qquad
+1\leq B<p.
+$$
+The element
+$$
+\varpi=\pi_0^Aw^B
+$$
+is a uniformizer. For a nontrivial automorphism
+$$
+\tau_c(w)=w+c,
+\qquad
+c\in\mathbb F_p^\times,
+$$
+the highest power of $w$ in
+$$
+(w+c)^B-w^B
+$$
+is $Bc\,w^{B-1}$, whose coefficient is nonzero. Hence
+$$
+v(\tau_c(\varpi)-\varpi)
+=pA-(B-1)r
+=r+1.
+$$
+Summing over the $p-1$ nontrivial automorphisms gives
+$$
+d=(p-1)(r+1).
+$$
+
+Applying this to
+$$
+y^p-y=t^{-1}
+$$
+gives
+$$
+d(K_1/K)=2(p-1).
+$$
+Also, with the valuation of $K_1$ normalized integrally,
+$$
+v_{K_1}(t)=p,
+\qquad
+v_{K_1}(y)=-1.
+$$
+
+Step 4: Reduce the second Artin-Schreier equation over $K_1$
+
+From Step 2,
+$$
+z^p-z=t^{-2}+t^{-1}.
+$$
+Using
+$$
+t^{-1}=y^p-y,
+$$
+the right side becomes
+$$
+(y^p-y)^2+(y^p-y).
+$$
+Expanding,
+$$
+t^{-2}+t^{-1}
+=
+y^{2p}-2y^{p+1}+y^2+y^p-y.
+$$
+
+Now
+$$
+(y^2+y)^p-(y^2+y)
+=
+y^{2p}+y^p-y^2-y.
+$$
+Set
+$$
+z_1=z-y^2-y.
+$$
+Subtracting the two Artin-Schreier coboundaries gives
+$$
+z_1^p-z_1
+=
+-2y^{p+1}+2y^2.
+$$
+
+By Step 3,
+$$
+v_{K_1}(y)=-1.
+$$
+Therefore the right side has pole order exactly
+$$
+p+1.
+$$
+Since
+$$
+p\nmid p+1,
+$$
+this is already reduced. The extension
+$$
+L_p=K_1(z_1)
+$$
+has degree $p$, and Step 3 gives
+$$
+d(L_p/K_1)
+=
+(p-1)(p+2).
+$$
+
+Step 5: Combine the two wild differents
+
+The tower
+$$
+K\subset K_1\subset L_p
+$$
+has
+$$
+e(L_p/K_1)=p.
+$$
 For a tower of finite separable local extensions,
 $$
 d(L_p/K)
 =
-d(L_p/E)+e(L_p/E)d(E/K).
+d(L_p/K_1)
++
+e(L_p/K_1)d(K_1/K).
 $$
-Using Step 4 and
-$$
-e(L_p/E)=p,
-\qquad
-m=\frac{p-1}{2},
-$$
-we obtain
+Using Steps 3 and 4,
 $$
 d_p
 =
-2(p-1)
-+p\left(\frac{p-1}{2}-1\right).
+(p-1)(p+2)
++
+2p(p-1).
 $$
-Hence
+Factoring gives
 $$
-d_p
-=
-2p-2+\frac{p(p-3)}2
-=
-\frac{p^2+p-4}{2}.
+d_p=(p-1)(3p+2).
 $$
 
-Final Answer: $\boxed{\frac{p^2+p-4}{2}}$
+Final Answer: $\boxed{(p-1)(3p+2)}$
 
 ---
 
 ## Answer
 
-$\frac{p^2+p-4}{2}$
+$(p-1)(3p+2)$
 
 ---
 
@@ -262,8 +273,8 @@ $\frac{p^2+p-4}{2}$
 
 ## Solution Concepts
 
-- local field extensions
-- tame Kummer extensions
-- additive polynomials
+- Artin-Schreier extensions
+- local field valuations
+- ramification breaks
 - different exponents
-- ramification towers
+- tower law for differents

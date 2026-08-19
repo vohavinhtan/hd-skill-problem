@@ -2,23 +2,24 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime, let
+Let $p\geq5$ be a prime and let
 $$
-K=\mathbb F_p((t)),
-\qquad
-m=\frac{p-1}{2},
+K=\mathbb F_p((t)).
 $$
-and define
+Let $L_p$ be the splitting field over $K$ of
 $$
-F_p(X)=X^p-t^2X-\left(t^{-p}-t+t^2\right)
-\in K[X].
+F_p(X)=
+\left(X^p-X-t^{-p}-t^{-2}\right)^p
+-
+\left(2t^{-p}+t^{-2}\right)^{p-1}
+\left(X^p-X-t^{-p}-t^{-2}\right).
 $$
 
-Let $L_p$ be the splitting field of $F_p(X)$ over $K$. If
+If
 $$
 \mathfrak D_{L_p/K}=\mathfrak P_{L_p}^{d_p}
 $$
-is the different of $L_p/K$, determine the exponent $d_p$.
+is the different of $L_p/K$, determine $d_p$.
 
 ---
 
@@ -35,4 +36,4 @@ is the different of $L_p/K$, determine the exponent $d_p$.
 
 ## Domain Explanation
 
-The differences of the roots first force a tame subextension that is not visible from the constant term. After passing to that field and rescaling a root, the remaining equation is additive, but its apparent large pole cancels after a non-obvious change of variable. The exact different exponent depends on detecting this cancellation before applying the tower formula for differents.
+The polynomial hides two dependent Artin-Schreier directions. Their apparent leading poles disappear after passage to Artin-Schreier classes, and one direction acquires a new pole order only after adjoining the first. The different exponent is determined by this second reduction and the tower law for differents.
