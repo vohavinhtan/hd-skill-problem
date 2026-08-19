@@ -12,13 +12,18 @@ z^2+z+1=0.
 $$
 Let $s$ be transcendental over $\mathbb F_p$, put $K=\mathbb F_p(s)$, and define
 $$
-P(X)=X^{p^2}-2zX^p+z^2X.
+P(X)=X^{p^3}-3zX^{p^2}+3z^2X^p-X.
 $$
 Set
 $$
-Q(Y)=Y^3+\left(sz-s-3z\right)Y^2+
-\left(-s^2z+4sz+2s-3z-3\right)Y
--s^2-2sz+2s+3z-4.
+A=s^{(p^3-1)/3}-3zs^{(p^2-1)/3}+3z^2s^{(p-1)/3},
+$$
+$$
+B=s^{-(p^3-1)/3}-3zs^{-(p^2-1)/3}+3z^2s^{-(p-1)/3},
+$$
+and
+$$
+Q(Y)=Y^3-3ABY-A^3s-B^3s^{-1}.
 $$
 Let $L$ be the splitting field over $K$ of
 $$
@@ -42,8 +47,8 @@ Determine the exact degree $[L:K]$.
 
 ## Domain Explanation
 
-This problem involves splitting fields, cyclic function-field extensions, constant-field extensions, and ramification,
+This problem involves splitting fields, additive polynomials, constant-field extensions, and ramification,
 which are part of Abstract Algebra and Field theory.
-The problem also involves finite-field Frobenius actions and rational transformations,
-which are part of Number Theory and modular arithmetic and congruences.
-However, those ingredients control a hidden dependence among additive fibers, while the main task is to reconstruct the field tower and determine the degree of its splitting field.
+The problem also involves finite-field Frobenius actions and cyclic cubic extensions,
+which are part of Number Theory and algebraic function theory.
+However, those ingredients control hidden corrections among the additive fibers, while the main task is to reconstruct the splitting field and determine its exact degree.

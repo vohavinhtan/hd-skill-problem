@@ -1,92 +1,58 @@
 ## Steps
 
-Step 1: Reconstruct the hidden cubic orbit
+Step 1: Recover the cyclic cubic hidden in $Q$
 
-Consider
+Let $t$ satisfy
 $$
-H(T)=T^3-sT^2+(s-3)T+1.
+t^3=s.
 $$
-If $t$ is a root, then
-$$
-s=\frac{t^3-3t+1}{t(t-1)}.
-$$
-The rational function on the right has degree $3$, so
-$$
-[\mathbb F_p(t):K]=3.
-$$
-
-Define
-$$
-\sigma(t)=\frac{1}{1-t}.
-$$
-Then
-$$
-\sigma^2(t)=\frac{t-1}{t},\qquad \sigma^3(t)=t.
-$$
-Substitution into the displayed formula for $s$ shows that $s$ is fixed by $\sigma$. Hence the three roots of $H$ are
-$$
-t,\qquad \frac{1}{1-t},\qquad \frac{t-1}{t},
-$$
-and
+Since $z\in\mathbb F_p$ has order $3$, the field
 $$
 E=\mathbb F_p(t)
 $$
-is a cyclic degree-$3$ splitting field over $K$.
+is a cyclic extension of $K$ of degree $3$, with
+$$
+\sigma(t)=zt.
+$$
 
-Now put
+Because $p\equiv1\pmod3$,
 $$
-b_0=t+\frac{z}{t},
+t^{p^j}=t\,s^{(p^j-1)/3}
 $$
+for $j=1,2,3$. Therefore
 $$
-b_1=\frac{1}{1-t}+z(1-t),
+P(t)+t=tA.
 $$
-and
+Similarly,
 $$
-b_2=\frac{t-1}{t}+\frac{zt}{t-1}.
+P(t^{-1})+t^{-1}=t^{-1}B.
 $$
-Multiplying
+
+Put
 $$
-(Y-b_0)(Y-b_1)(Y-b_2)
+a=tA,\qquad b=t^{-1}B.
 $$
-and replacing $t^3$ by
+The identity
 $$
-st^2-(s-3)t-1
+\prod_{i=0}^{2}\left(Y-z^ia-z^{2i}b\right)
+=Y^3-3abY-a^3-b^3
 $$
 gives
 $$
-(Y-b_0)(Y-b_1)(Y-b_2)=Q(Y).
+Q(Y)=\prod_{i=0}^{2}(Y-b_i),
 $$
-Thus $Q$ splits in $E$.
-
-The element $b_0$ is not fixed by $\sigma$: $b_0$ has a pole at $t=0$, while $\sigma(b_0)=b_1$ has a pole at $t=1$. Since $E/K$ has prime degree $3$,
+where
 $$
-K(b_0)=E.
-$$
-Therefore $Q$ is irreducible and $E$ is its splitting field.
-
-Step 2: Find the hidden relation among the three fibers
-
-The three roots of $Q$ are not independent as additive right-hand sides. Using $z^2+z+1=0$ and $z^3=1$,
-$$
-zb_0+b_1+z^2b_2
-=
-z\left(t+\frac{z}{t}\right)
-+\left(\frac{1}{1-t}+z(1-t)\right)
-+z^2\left(\frac{t-1}{t}+\frac{zt}{t-1}\right)
-=0.
-$$
-Hence
-$$
-b_2=-z^2b_0-zb_1.
+b_i=z^itA+z^{2i}t^{-1}B.
 $$
 
-This relation is not visible from the symmetric coefficients of $Q$, and it will remove one apparently necessary additive extension.
+The three $b_i$ form one $\sigma$-orbit. They are distinct because $tA$ lies in the $Kt$ component of the basis $1,t,t^2$ of $E/K$, while $t^{-1}B=s^{-1}Bt^2$ lies in the $Kt^2$ component. Hence $Q$ is irreducible and $E$ is its splitting field over $K$.
 
-Step 3: Determine the kernel of the additive polynomial
+Step 2: Determine the constants required by the kernel of $P$
 
-Since $z\in\mathbb F_p$,
+Since $z^3=1$,
 $$
-P=(\tau-z)^2,
+P=(\tau-z)^3,
 $$
 where $\tau(c)=c^p$.
 
@@ -94,156 +60,212 @@ Let
 $$
 V=\ker P.
 $$
-Because
+The derivative of $P$ is $-1$, so $P$ is separable of degree $p^3$. Hence
 $$
-P'(X)=z^2\neq0,
+\dim_{\mathbb F_p}V=3.
 $$
-the kernel contains exactly $p^2$ elements.
 
-Choose $\beta\neq0$ satisfying
+The kernels of $(\tau-z)$, $(\tau-z)^2$, and $(\tau-z)^3$ have dimensions $1,2,3$. Choose $\beta_0,\beta_1,\beta_2$ so that
 $$
-\beta^p=z\beta,
+(\tau-z)\beta_0=0,
 $$
-and choose $\gamma$ satisfying
 $$
-\gamma^p-z\gamma=\beta.
-$$
-Then
-$$
-V=\mathbb F_p\beta\oplus\mathbb F_p\gamma.
-$$
-Frobenius acts by
-$$
-\beta^p=z\beta,\qquad \gamma^p=z\gamma+\beta.
-$$
-Induction gives
-$$
-\gamma^{p^n}=z^n\gamma+nz^{n-1}\beta.
-$$
-Thus $\gamma^{p^n}=\gamma$ exactly when $3\mid n$ and $p\mid n$. Since $p\neq3$, the least positive such $n$ is $3p$.
-
-Therefore the smallest constant field containing $V$ is
-$$
-C=\mathbb F_{p^{3p}},
+(\tau-z)\beta_1=\beta_0,
 $$
 and
+$$
+(\tau-z)\beta_2=\beta_1.
+$$
+Then $\beta_0,\beta_1,\beta_2$ form a basis of $V$.
+
+On this basis Frobenius has matrix
+$$
+J=zI+N,
+$$
+where
+$$
+N^3=0,\qquad N^2\neq0.
+$$
+For every positive integer $n$,
+$$
+J^n=z^nI+nz^{n-1}N+\binom{n}{2}z^{n-2}N^2.
+$$
+If $J^n=I$, the coefficient of $N$ gives
+$$
+p\mid n,
+$$
+while the scalar term gives
+$$
+3\mid n.
+$$
+Conversely $J^{3p}=I$. Since $p\neq3$, the order of Frobenius on $V$ is exactly $3p$.
+
+In particular, $\beta_2$ has Frobenius orbit of length $3p$, so the smallest constant field containing $V$ is
+$$
+C=\mathbb F_{p^{3p}}.
+$$
+Thus
 $$
 [C:\mathbb F_p]=3p.
 $$
 
-Step 4: Form the base field in which every translation is visible
+Step 3: Form the field containing the outer roots and all translations
 
-The rational function field $E=\mathbb F_p(t)$ has constant field $\mathbb F_p$, so
+The rational function field $E=\mathbb F_p(t)$ has constant field $\mathbb F_p$. Hence
 $$
 E\cap C=\mathbb F_p.
 $$
 Put
 $$
-B=C(t).
+D=C(t).
 $$
-Using $[E:K]=3$ from Step 1,
+Using Step 1 and Step 2,
 $$
-[B:K]=[C:\mathbb F_p][E:K]=3p\cdot3=9p.
-$$
-
-Over $B$,
-$$
-F(X)=\left(P(X)-b_0\right)\left(P(X)-b_1\right)\left(P(X)-b_2\right).
-$$
-Choose $x_0,x_1,x_2$ with
-$$
-P(x_i)=b_i.
-$$
-Since $V\subset B$, every root in the $i$th fiber is $x_i+v$ for $v\in V$.
-
-Step 5: Show that the first additive fiber has full degree
-
-The function
-$$
-b_0=t+\frac{z}{t}
-$$
-has a simple pole at $t=0$.
-
-Let $w$ be a valuation of $B(x_0)$ above that place and let $e$ be its ramification index. The equation
-$$
-P(x_0)=b_0
-$$
-forces $w(x_0)<0$. The term $x_0^{p^2}$ then has strictly smaller valuation than the two lower-degree terms, so
-$$
-p^2w(x_0)=-e.
-$$
-Therefore $p^2\mid e$.
-
-Since $x_0$ satisfies a polynomial of degree $p^2$,
-$$
-e\leq[B(x_0):B]\leq p^2.
-$$
-Consequently
-$$
-[B(x_0):B]=p^2.
+[D:K]=[C:\mathbb F_p][E:K]=3p\cdot3=9p.
 $$
 
-At $t=1$, the function $b_0$ is regular. The polynomial $P(X)-b_0$ is monic with derivative $z^2$, a unit at that place. Hence $B(x_0)/B$ is unramified above $t=1$.
+Over $D$,
+$$
+F(X)=\prod_{i=0}^{2}\left(P(X)-b_i\right),
+$$
+and every fiber of $P$ is a coset of $V\subset C$.
 
-Step 6: Prove that the second fiber contributes another full factor
+Step 4: Remove the hidden $P$-image parts of all three fibers
 
-The function
+From Step 1,
 $$
-b_1=\frac{1}{1-t}+z(1-t)
+tA=P(t)+t,
 $$
-has a simple pole at $t=1$.
-
-Because $B(x_0)/B$ is unramified there, $b_1$ still has pole order $1$ at every place of $B(x_0)$ above $t=1$.
-
-For a valuation $w$ of $B(x_0,x_1)$ above one of these places, let $e$ be the ramification index over $B(x_0)$. From
+and
 $$
-P(x_1)=b_1
+t^{-1}B=P(t^{-1})+t^{-1}.
 $$
-the same pole-order argument gives
+Therefore
 $$
-p^2\mid e.
-$$
-Since $x_1$ has degree at most $p^2$,
-$$
-[B(x_0,x_1):B(x_0)]=p^2.
-$$
-Together with Step 5,
-$$
-[B(x_0,x_1):B]=p^4.
-$$
-
-Step 7: Use the hidden relation to absorb the third fiber
-
-From Step 2,
-$$
-b_2=-z^2b_0-zb_1.
+b_i
+=z^iP(t)+z^{2i}P(t^{-1})+z^it+z^{2i}t^{-1}.
 $$
 Since $P$ is $\mathbb F_p$-linear,
 $$
-P(-z^2x_0-zx_1)=-z^2P(x_0)-zP(x_1)=b_2.
+b_i=P(z^it+z^{2i}t^{-1})+z^it+z^{2i}t^{-1}.
 $$
-Thus one root of the third fiber already belongs to $B(x_0,x_1)$. Since its other roots differ by elements of $V\subset B$, the entire third fiber is already split there.
+
+Choose $u,v$ satisfying
+$$
+P(u)=t,\qquad P(v)=t^{-1}.
+$$
+Then
+$$
+x_i=z^it+z^{2i}t^{-1}+z^iu+z^{2i}v
+$$
+satisfies
+$$
+P(x_i)=b_i.
+$$
+Thus every one of the three apparent additive fibers already splits after adjoining only $u$ and $v$, because the remaining roots are $x_i+V$.
 
 Hence
 $$
-L=B(x_0,x_1),
-$$
-so Step 6 gives
-$$
-[L:B]=p^4.
-$$
-Combining this with Step 4,
-$$
-[L:K]=p^4\cdot9p=9p^5.
+L\subseteq D(u,v).
 $$
 
-Final Answer: $\boxed{9p^5}$
+Conversely, the splitting field contains the three values $b_i=P(x_i)$ and therefore contains their splitting field $E$. Differences between two roots in one fiber give every element of $V$, so it contains $C$ and hence $D$.
+
+Choose one root $x_i$ from each fiber and put
+$$
+w_i=x_i-z^it-z^{2i}t^{-1}.
+$$
+Then
+$$
+w_i=z^iu+z^{2i}v.
+$$
+The two equations
+$$
+w_0=u+v,\qquad w_1=zu+z^2v
+$$
+have an invertible coefficient matrix over $\mathbb F_p$, since $z\neq z^2$. Thus $u,v\in L$. Therefore
+$$
+L=D(u,v).
+$$
+
+Step 5: Compute the first additive degree by ramification
+
+Consider the pole $t=\infty$ of $D$. Let $w$ be a valuation of $D(u)$ above it and let $e$ be its ramification index.
+
+The equation
+$$
+P(u)=t
+$$
+forces $w(u)<0$. Since
+$$
+P(u)=u^{p^3}-3zu^{p^2}+3z^2u^p-u,
+$$
+the first term has strictly smallest valuation. Hence
+$$
+p^3w(u)=-e.
+$$
+Therefore
+$$
+p^3\mid e.
+$$
+Since $u$ satisfies a polynomial of degree $p^3$,
+$$
+e\leq[D(u):D]\leq p^3.
+$$
+It follows that
+$$
+[D(u):D]=p^3.
+$$
+
+At the place $t=0$, the polynomial $P(X)-t$ is monic with coefficients integral there and derivative $-1$, a unit. Its discriminant is therefore a unit, so $D(u)/D$ is unramified at $t=0$.
+
+Step 6: Prove that the second additive extension is independent
+
+At every place of $D(u)$ above $t=0$, the extension from Step 5 is unramified. Hence $t^{-1}$ still has a simple pole.
+
+Let $w$ be a valuation of $D(u,v)$ above such a place, and let $e$ be its ramification index over $D(u)$. From
+$$
+P(v)=t^{-1},
+$$
+we again have $w(v)<0$, and the highest term gives
+$$
+p^3w(v)=-e.
+$$
+Thus
+$$
+p^3\mid e.
+$$
+Since $v$ has degree at most $p^3$ over $D(u)$,
+$$
+[D(u,v):D(u)]=p^3.
+$$
+Combining this with Step 5,
+$$
+[L:D]=[D(u,v):D]=p^6.
+$$
+
+Step 7: Assemble the splitting-field degree
+
+Step 3 gives
+$$
+[D:K]=9p,
+$$
+and Step 6 gives
+$$
+[L:D]=p^6.
+$$
+Therefore
+$$
+[L:K]=9p\cdot p^6=9p^7.
+$$
+
+Final Answer: $\boxed{9p^7}$
 
 ---
 
 ## Answer
 
-$9p^5$
+$9p^7$
 
 ---
 
@@ -263,6 +285,6 @@ $9p^5$
 
 - splitting fields
 - additive polynomials
-- cyclic function-field extensions
-- ramification of function fields
+- cyclic field extensions
 - finite-field Frobenius
+- ramification of function fields
