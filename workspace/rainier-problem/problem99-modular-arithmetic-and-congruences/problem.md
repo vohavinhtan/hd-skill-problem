@@ -2,19 +2,17 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime, let $x$ be an indeterminate, and put
+Let $p\geq2$ be an integer, let $u,T$ be indeterminates, and work in
 $$
-u=1+x,\qquad R=(\mathbb{Z}/p^3\mathbb{Z})[x].
+R=(\mathbb{Z}/p^4\mathbb{Z})[u,T].
 $$
-Let $2^{-1}$ denote the inverse of $2$ modulo $p^3$. Set
+Set $F_0=T$. For every $m\geq0$, define $F_{m+1}\in R$ by
 $$
-F_0=x+px^3+3\cdot2^{-1}p^2x^5.
+F_{m+1}=F_m+(-1)^mp\left(F_m^2+u^{m^2}F_m^4\right)
++p^2\left(F_m^3+3u^{m^2}F_m^5\right)
++6(-1)^mp^3u^{m^2}F_m^6.
 $$
-For every $m\geq0$, define $F_{m+1}\in R$ by
-$$
-F_{m+1}=u^{2m+1}F_m+(-1)^mpu^{2m+1}(u^{4m+2}-1)F_m^3+3\cdot2^{-1}p^2u^{2m+1}(u^{4m+2}-1)^2F_m^5.
-$$
-For an arbitrary integer $n\geq1$, determine $F_n$ in $R$, expressed only in terms of $p,n,u$. Fractional binomial powers of elements of $1+pR$ are interpreted by their finite binomial expansion in $R$.
+For an arbitrary integer $n\geq1$, determine the coefficient of $T^6$ in $F_{2n}$ as an element of $(\mathbb{Z}/p^4\mathbb{Z})[u]$.
 
 ---
 
@@ -25,12 +23,14 @@ For an arbitrary integer $n\geq1$, determine $F_n$ in $R$, expressed only in ter
 | **Domain** | Number Theory |
 | **Sub-domain** | Modular arithmetic and congruences |
 | **Problem Type** | Symbolic derivation |
-| **Answer Type** | Exact symbolic expression |
+| **Answer Type** | Polynomial or rational function |
 
 ---
 
 ## Domain Explanation
 
-This problem involves nonlinear polynomial identities modulo $p^3$ and cancellations whose form depends on the residue-class ring, which are part of Number Theory and Modular arithmetic and congruences.
-The problem also involves iteration, polynomial composition, and normalization of a recurrence, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
-However, the recurrence can be compressed only by keeping the first two prime-power correction layers and their interaction, so the modular structure is the primary mathematical content.
+This problem involves coefficient arithmetic modulo $p^4$, cancellation between successive residue-class polynomial iterations, and tracking which prime-power layers can affect a fixed coefficient,
+which are part of Number Theory and Modular arithmetic and congruences.
+The problem also involves nonlinear polynomial recurrence and formal coefficient extraction,
+which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
+However, the nonlinear terms are organized by their powers of $p$, and the requested coefficient is forced by cancellations between those modular layers rather than by ordinary recurrence solving.

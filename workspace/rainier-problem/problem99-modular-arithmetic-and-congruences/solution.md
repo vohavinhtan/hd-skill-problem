@@ -1,169 +1,152 @@
 ## Steps
 
-Step 1: Find the two alternating coordinates hidden in one recurrence step
-
-For $\varepsilon\in\{1,-1\}$ define
-$$
-\Phi_{\varepsilon}(T)=T-\varepsilon pT^3+\frac{3}{2}p^2T^5,
-\qquad
-\Psi_{\varepsilon}(T)=T+\varepsilon pT^3+\frac{3}{2}p^2T^5.
-$$
-Since
-$$
-\Phi_{\varepsilon}(T)^3\equiv T^3-3\varepsilon pT^5\pmod{p^2},
-\qquad
-\Phi_{\varepsilon}(T)^5\equiv T^5\pmod p,
-$$
-substitution gives
-$$
-\Psi_{\varepsilon}(\Phi_{\varepsilon}(T))=T
-$$
-in $R[T]$. Reversing the signs gives the other composition, so $\Phi_{\varepsilon}$ and $\Psi_{\varepsilon}$ are inverse maps modulo $p^3$.
-
-Let $a$ be any polynomial. Expanding only to the required $p$-adic orders gives
-$$
-\Psi_{\varepsilon}(a\Phi_{\varepsilon}(T))
-=aT+\varepsilon pa(a^2-1)T^3+\frac{3}{2}p^2a(a^2-1)^2T^5.
-$$
-Taking
-$$
-a=u^{2m+1},\qquad \varepsilon=(-1)^m
-$$
-recovers the stated recurrence. Also
-$$
-F_0=\Psi_1(x),
-$$
-so $\Phi_1(F_0)=x$.
-
-Step 2: Account for the change of coordinate at every sign flip
+Step 1: Record the coefficient layers that can reach degree six
 
 Put
 $$
-\varepsilon_m=(-1)^m,\qquad Y_m=\Phi_{\varepsilon_m}(F_m).
+s_m=(-1)^m,\qquad b_m=u^{m^2}.
 $$
-Because $\varepsilon_{m+1}=-\varepsilon_m$ and
+For the coefficient of $T^6$, only the following coefficients below order $p^3$ can feed the target:
 $$
-\Phi_{-\varepsilon}=\Psi_{\varepsilon},
+F_m=T+p(A_mT^2+B_mT^4)+p^2(C_mT^3+D_mT^5)+p^3H_mT^6+\cdots.
 $$
-Step 1 gives
-$$
-Y_{m+1}
-=\Psi_{\varepsilon_m}\left(\Psi_{\varepsilon_m}\left(u^{2m+1}Y_m\right)\right).
-$$
-A direct composition yields
-$$
-\Psi_{\varepsilon}(\Psi_{\varepsilon}(T))
-=T+2\varepsilon pT^3+6p^2T^5.
-$$
-Therefore
-$$
-Y_{m+1}
-=u^{2m+1}Y_m
-+2(-1)^mpu^{6m+3}Y_m^3
-+6p^2u^{10m+5}Y_m^5.
-$$
-The initial value is $Y_0=x$.
+Terms hidden by the dots either have $T$-degree different from those displayed or already carry $p^3$ and have degree different from $6$. Any later nonlinear use of such an order-$p^3$ term gains another factor $p$ and vanishes modulo $p^4$.
 
-Step 3: Remove the zero-order growth
-
-The product of the zero-order factors is
-$$
-\prod_{r=0}^{m-1}u^{2r+1}=u^{m^2}.
-$$
 Write
 $$
-Y_m=u^{m^2}Z_m.
+P=A_mT^2+B_mT^4,\qquad Q=C_mT^3+D_mT^5.
 $$
-Substitution into the recurrence from Step 2 and division by the common polynomial factor $u^{(m+1)^2}$ gives
+Modulo the precisions needed for the recurrence,
 $$
-Z_{m+1}
-=Z_m+2pc_mZ_m^3+6p^2c_m^2Z_m^5,
+F_m^2=T^2+2pTP+p^2(P^2+2TQ),
 $$
-where
 $$
-c_m=(-1)^mu^{2(m+1)^2}.
+F_m^3=T^3+3pT^2P\pmod{p^2},
 $$
-Thus the nonlinearity left after normalization depends on the entire signed history of the iteration, rather than on a single telescoping product.
+$$
+F_m^4=T^4+4pT^3P+p^2(6T^2P^2+4T^3Q),
+$$
+$$
+F_m^5=T^5+5pT^4P\pmod{p^2},
+$$
+and
+$$
+F_m^6\equiv T^6\pmod p.
+$$
+Comparing the coefficients below $p^3T^6$ gives
+$$
+A_{m+1}=A_m+s_m,
+$$
+$$
+B_{m+1}=B_m+s_mb_m,
+$$
+$$
+C_{m+1}=C_m+2s_mA_m+1,
+$$
+$$
+D_{m+1}=D_m+s_m(2B_m+4b_mA_m)+3b_m.
+$$
+All four initial values are zero.
 
-Step 4: Collapse the normalized compositions
+Step 2: Derive the recurrence for the target coefficient
 
-For any polynomial $c$, define temporarily
-$$
-H_c(T)=T+2pcT^3+6p^2c^2T^5.
-$$
-If
-$$
-W=H_d(T),
-$$
-then
-$$
-W^3\equiv T^3+6pdT^5\pmod{p^2},
-\qquad
-W^5\equiv T^5\pmod p.
-$$
-It follows that
-$$
-H_c(H_d(T))
-=T+2p(c+d)T^3+6p^2(c+d)^2T^5
-=H_{c+d}(T).
-$$
-Since $Z_0=x$, repeated composition gives
-$$
-Z_n=H_{C_n}(x),
-$$
-with
-$$
-C_n=\sum_{m=0}^{n-1}(-1)^mu^{2(m+1)^2}
-=\sum_{j=1}^{n}(-1)^{j-1}u^{2j^2}.
-$$
+The order-$p^3$ coefficient of $T^6$ receives contributions from every nonlinear block.
 
-Now put
+From $s_mpF_m^2$, the needed coefficient is
 $$
-L_q(T)=T+pqT^3+\frac{3}{2}p^2q^2T^5.
+s_m(2A_mB_m+2D_m).
 $$
-Then $\Psi_{\varepsilon}=L_{\varepsilon}$ and $H_c=L_{2c}$. The same expansion used for $H_c$ shows
+From $s_mpb_mF_m^4$, it is
 $$
-L_q(L_r(T))=L_{q+r}(T).
+s_mb_m(6A_m^2+4C_m).
 $$
-Also
+From $p^2F_m^3$, it is $3B_m$. From $3p^2b_mF_m^5$, it is $15b_mA_m$. The last term contributes $6s_mb_m$ directly. Therefore
 $$
-\Psi_{\varepsilon}(u^{n^2}T)
-=u^{n^2}L_{\varepsilon u^{2n^2}}(T).
+H_{m+1}=H_m+s_m(2A_mB_m+2D_m+6b_mA_m^2+4b_mC_m+6b_m)
++3B_m+15b_mA_m,
 $$
-Since $F_n=\Psi_{\varepsilon_n}(Y_n)$, we obtain
+with $H_0=0$.
+
+Step 3: Compress two consecutive iterations
+
+Consider the pair $m=2r,2r+1$. Suppose at its start
 $$
-F_n=u^{n^2}L_{K_n}(x),
+A_{2r}=C_{2r}=0,\qquad B_{2r}=D_{2r}=H_{2r}=S.
 $$
-where
+Put
 $$
-K_n=(-1)^nu^{2n^2}
-+2\sum_{j=1}^{n}(-1)^{j-1}u^{2j^2}.
+a=u^{4r^2},\qquad c=u^{(2r+1)^2}.
+$$
+For the even step, $s_{2r}=1$. Step 1 gives
+$$
+A_{2r+1}=C_{2r+1}=1,
+$$
+$$
+B_{2r+1}=S+a,
+$$
+and
+$$
+D_{2r+1}=S+2S+3a=3S+3a.
+$$
+Step 2 gives
+$$
+H_{2r+1}=S+2S+3S+6a=6S+6a.
 $$
 
-Step 5: Write the result as one compact element of the residue-class ring
+For the odd step, $s_{2r+1}=-1$. The first and third recurrences in Step 1 return
+$$
+A_{2r+2}=C_{2r+2}=0.
+$$
+The second gives
+$$
+B_{2r+2}=S+a-c.
+$$
+For $D$,
+$$
+D_{2r+2}=3S+3a-2(S+a)-4c+3c=S+a-c.
+$$
 
-By definition,
-$$
-L_{K_n}(x)
-=x+pK_nx^3+\frac{3}{2}p^2K_n^2x^5.
-$$
-For $z\in pR$,
-$$
-(1-z)^{-1/2}=1+\frac{z}{2}+\frac{3z^2}{8}
-$$
-because $z^3=0$ in the present substitution. Taking $z=2pK_nx^2$ gives
-$$
-L_{K_n}(x)=x(1-2pK_nx^2)^{-1/2}.
-$$
-Finally $x=u-1$, and substitution of the expression for $K_n$ gives the required element of $R$.
+Step 4: Show that the target follows the same paired increment
 
-Final Answer: $\boxed{u^{n^2}(u-1)(1-2p(u-1)^2((-1)^nu^{2n^2}+2\sum_{j=1}^n(-1)^{j-1}u^{2j^2}))^{-1/2}}$
+Apply the recurrence for $H$ from Step 2 to the odd step. At that point
+$$
+A=C=1,\qquad B=S+a,\qquad D=3S+3a,\qquad b_{2r+1}=c.
+$$
+The odd-step increment is
+$$
+-2(S+a)-2(3S+3a)-10c-6c+3(S+a)+15c
+=-5S-5a-c.
+$$
+Since $H_{2r+1}=6S+6a$, this gives
+$$
+H_{2r+2}=S+a-c.
+$$
+Therefore one complete pair preserves
+$$
+A=C=0,\qquad B=D=H
+$$
+and adds
+$$
+u^{4r^2}-u^{(2r+1)^2}
+$$
+to their common value.
+
+The assertion holds at $r=0$ because all five coefficients start at zero. Induction over the $n$ pairs gives
+$$
+H_{2n}=\sum_{r=0}^{n-1}\left(u^{4r^2}-u^{(2r+1)^2}\right).
+$$
+
+Step 5: Extract the coefficient of degree six
+
+The order-$p$ part of $F_{2n}$ has only the recorded degrees $2$ and $4$, while its order-$p^2$ part has only the recorded degrees $3$ and $5$ that can lie at degree at most $6$. Therefore the coefficient of $T^6$ comes entirely from $p^3H_{2n}T^6$.
+
+Final Answer: $\boxed{p^3\sum_{r=0}^{n-1}\left(u^{4r^2}-u^{(2r+1)^2}\right)}$
 
 ---
 
 ## Answer
 
-$u^{n^2}(u-1)(1-2p(u-1)^2((-1)^nu^{2n^2}+2\sum_{j=1}^n(-1)^{j-1}u^{2j^2}))^{-1/2}$
+$p^3\sum_{r=0}^{n-1}\left(u^{4r^2}-u^{(2r+1)^2}\right)$
 
 ---
 
@@ -175,14 +158,14 @@ $u^{n^2}(u-1)(1-2p(u-1)^2((-1)^nu^{2n^2}+2\sum_{j=1}^n(-1)^{j-1}u^{2j^2}))^{-1/2
 
 **Problem Type:** Symbolic derivation
 
-**Answer Type:** Exact symbolic expression
+**Answer Type:** Polynomial or rational function
 
 ---
 
 ## Solution Concepts
 
-- modular polynomial arithmetic
-- alternating coordinate conjugation
-- recurrence normalization
-- composition law modulo prime powers
-- finite binomial expansion
+- coefficient filtration modulo prime powers
+- nonlinear polynomial recurrence
+- paired recurrence cancellation
+- formal coefficient extraction
+- induction on paired iterations
