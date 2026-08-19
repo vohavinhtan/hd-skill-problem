@@ -1,265 +1,280 @@
 ## Steps
 
-Step 1: Recover the two Artin-Schreier generators
+Step 1: Encode Frobenius conjugates by the modular group algebra
 
 Put
 $$
-a=t^{-p}+t^{-2},
+N=p^2
+$$
+and let
+$$
+\sigma(x)=x^p
+$$
+on $E$. Define
+$$
+A=\mathbb F_p[S]/(S^N-1).
+$$
+Since the characteristic is $p$,
+$$
+S^N-1=S^{p^2}-1=(S-1)^{p^2}.
+$$
+Thus $A$ is a local ring whose maximal ideal is
+$$
+J=(S-1),
+$$
+and an element of $A$ is a unit exactly when its augmentation
+$$
+\varepsilon:A\to\mathbb F_p,
 \qquad
-b=2t^{-p}+t^{-2},
+S\mapsto1
 $$
-and
+is nonzero.
+
+By the normal basis theorem there is $\theta\in E$ such that
 $$
-Y=X^p-X-a.
+\theta,\sigma\theta,\ldots,\sigma^{N-1}\theta
+$$
+is an $\mathbb F_p$-basis of $E$. Hence the map
+$$
+A\to E,
+\qquad
+u\mapsto u(\sigma)\theta
+$$
+is an isomorphism of $A$-modules.
+
+Consequently every $\alpha\in E$ has a unique expression
+$$
+\alpha=u(\sigma)\theta
+$$
+with $u\in A$, and $\alpha$ is a normal generator exactly when $u\in A^\times$.
+
+Step 2: Translate the trace conditions into one group-algebra equation
+
+Let the involution on $A$ be
+$$
+\overline S=S^{-1}.
+$$
+For $\alpha\in E$, define
+$$
+H_\alpha(S)
+=
+\sum_{r=0}^{N-1}
+\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)S^r.
+$$
+Trace invariance under Frobenius gives
+$$
+\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)
+=
+\operatorname{Tr}\left(\alpha\sigma^{-r}(\alpha)\right),
+$$
+so
+$$
+\overline{H_\alpha}=H_\alpha.
+$$
+
+The required trace pattern is equivalent to
+$$
+H_\alpha=q,
+$$
+where
+$$
+q=5+S+S^{-1}+S^2+S^{-2}.
+$$
+Its augmentation is
+$$
+\varepsilon(q)=9\ne0,
+$$
+so $q$ is a unit of $A$.
+
+The matrix
+$$
+\left(
+\operatorname{Tr}\left(\alpha^{p^i}\alpha^{p^j}\right)
+\right)_{i,j}
+$$
+is the circulant matrix associated with multiplication by $H_\alpha$. Since $q$ is a unit, this matrix is nonsingular. Therefore every $\alpha$ satisfying the required conditions has linearly independent Frobenius conjugates and is a normal generator.
+
+Step 3: Obtain the norm equation governing all solutions
+
+Write
+$$
+\alpha=u(\sigma)\theta,
+\qquad
+u=\sum_i u_iS^i.
+$$
+For the coefficient of $S^r$ in $H_\alpha$,
+$$
+\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)
+=
+\sum_{i,j}u_i u_j
+\operatorname{Tr}\left(
+\sigma^i(\theta)\sigma^{r+j}(\theta)
+\right).
+$$
+Applying $\sigma^{-i}$ inside the trace gives
+$$
+\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)
+=
+\sum_{i,j}u_i u_j
+\operatorname{Tr}\left(
+\theta\sigma^{r+j-i}(\theta)
+\right).
+$$
+This is exactly the coefficient of $S^r$ in
+$$
+u\overline u\,H_\theta.
+$$
+Hence
+$$
+H_\alpha=u\overline u\,H_\theta.
+$$
+
+Because the trace pairing on the finite separable extension $E/\mathbb F_p$ is nondegenerate and the conjugates of $\theta$ form a basis, $H_\theta$ is a unit.
+
+Also
+$$
+\varepsilon(H_\theta)
+=
+\sum_r\operatorname{Tr}\left(\theta\sigma^r(\theta)\right)
+=
+\operatorname{Tr}(\theta)^2.
+$$
+The trace of $\theta$ is nonzero, since otherwise the sum of its $N$ conjugates would give a nontrivial linear relation among a normal basis.
+
+Thus the required condition becomes
+$$
+u\overline u=qH_\theta^{-1}.
+$$
+
+Step 4: Prove that the norm equation is solvable
+
+We use the following property of $A$. If
+$$
+h\in A^\times,
+\qquad
+\overline h=h,
+$$
+and $\varepsilon(h)$ is a square in $\mathbb F_p^\times$, then
+$$
+h=v\overline v
+$$
+for some $v\in A^\times$.
+
+Choose $a\in\mathbb F_p^\times$ with
+$$
+a^2=\varepsilon(h).
 $$
 Then
 $$
-F_p(X)=Y^p-b^{p-1}Y.
+c=a^{-2}h
 $$
-Since $b\ne0$,
-$$
-Y^p-b^{p-1}Y=0
-$$
-is equivalent to
-$$
-\left(\frac{Y}{b}\right)^p=\frac{Y}{b}.
-$$
-Hence every root satisfies
-$$
-X^p-X=a+cb
-$$
-for some $c\in\mathbb F_p$.
+lies in $1+J$ and satisfies $\overline c=c$.
 
-Choose $u,v$ with
+The group $1+J$ is a finite abelian $p$-group. Since $p$ is odd, squaring is a bijection on this group. Let $w\in1+J$ be the unique element with
 $$
-u^p-u=a,
-\qquad
-v^p-v=b.
+w^2=c.
 $$
-Then all roots of $F_p$ are
+Because
 $$
-u+cv+d,
-\qquad
-c,d\in\mathbb F_p.
+\overline w^2=\overline c=c=w^2,
 $$
-They are distinct because
+uniqueness gives
 $$
-F_p'(X)=b^{p-1}\ne0.
+\overline w=w.
 $$
-Conversely the splitting field contains a root with $c=0$ and the difference between roots belonging to $c=1$ and $c=0$, so it contains both $u$ and $v$. Therefore
+Therefore
 $$
-L_p=K(u,v).
+(aw)\overline{(aw)}
+=a^2w^2=h.
 $$
 
-Step 2: Remove the misleading pole order $p$
-
-Since
+Apply this to
 $$
-(t^{-1})^p-t^{-1}=t^{-p}-t^{-1},
+h=qH_\theta^{-1}.
 $$
-set
-$$
-u_0=u-t^{-1},
-\qquad
-v_0=v-2t^{-1}.
-$$
-Their equations become
-$$
-u_0^p-u_0=t^{-2}+t^{-1},
-$$
-and
-$$
-v_0^p-v_0=t^{-2}+2t^{-1}.
-$$
-
-Now put
-$$
-y=v_0-u_0,
-\qquad
-z=u_0.
-$$
-Then
-$$
-L_p=K(y,z),
-$$
-with
-$$
-y^p-y=t^{-1},
-$$
-and
-$$
-z^p-z=t^{-2}+t^{-1}.
-$$
-
-The first equation has reduced pole order $1$. In particular it defines a totally ramified extension
-$$
-K_1=K(y)
-$$
-of degree $p$.
-
-Step 3: Record the local Artin-Schreier different calculation
-
-Let $E$ be a local field of characteristic $p$ with uniformizer $\pi_0$, and suppose
-$$
-w^p-w=f
-$$
-where $f$ has pole order $r>0$ with $p\nmid r$.
-
-The equation cannot split over $E$, because if $h$ has a pole then $h^p-h$ has pole order divisible by $p$, while an integral $h$ gives no pole. Hence the extension has degree $p$ and is totally ramified.
-
-Normalize the extended valuation by
-$$
-v(\pi_0)=p.
-$$
-Then
-$$
-v(w)=-r.
-$$
-Choose integers $A,B$ with
-$$
-pA-rB=1,
-\qquad
-1\leq B<p.
-$$
-The element
-$$
-\varpi=\pi_0^Aw^B
-$$
-is a uniformizer. For a nontrivial automorphism
-$$
-\tau_c(w)=w+c,
-\qquad
-c\in\mathbb F_p^\times,
-$$
-the highest power of $w$ in
-$$
-(w+c)^B-w^B
-$$
-is $Bc\,w^{B-1}$, whose coefficient is nonzero. Hence
-$$
-v(\tau_c(\varpi)-\varpi)
-=pA-(B-1)r
-=r+1.
-$$
-Summing over the $p-1$ nontrivial automorphisms gives
-$$
-d=(p-1)(r+1).
-$$
-
-Applying this to
-$$
-y^p-y=t^{-1}
-$$
-gives
-$$
-d(K_1/K)=2(p-1).
-$$
-Also, with the valuation of $K_1$ normalized integrally,
-$$
-v_{K_1}(t)=p,
-\qquad
-v_{K_1}(y)=-1.
-$$
-
-Step 4: Reduce the second Artin-Schreier equation over $K_1$
-
-From Step 2,
-$$
-z^p-z=t^{-2}+t^{-1}.
-$$
-Using
-$$
-t^{-1}=y^p-y,
-$$
-the right side becomes
-$$
-(y^p-y)^2+(y^p-y).
-$$
-Expanding,
-$$
-t^{-2}+t^{-1}
-=
-y^{2p}-2y^{p+1}+y^2+y^p-y.
-$$
-
-Now
-$$
-(y^2+y)^p-(y^2+y)
-=
-y^{2p}+y^p-y^2-y.
-$$
-Set
-$$
-z_1=z-y^2-y.
-$$
-Subtracting the two Artin-Schreier coboundaries gives
-$$
-z_1^p-z_1
-=
--2y^{p+1}+2y^2.
-$$
-
 By Step 3,
 $$
-v_{K_1}(y)=-1.
-$$
-Therefore the right side has pole order exactly
-$$
-p+1.
-$$
-Since
-$$
-p\nmid p+1,
-$$
-this is already reduced. The extension
-$$
-L_p=K_1(z_1)
-$$
-has degree $p$, and Step 3 gives
-$$
-d(L_p/K_1)
+\varepsilon(h)
 =
-(p-1)(p+2).
+\frac{9}{\operatorname{Tr}(\theta)^2}
+=
+\left(\frac3{\operatorname{Tr}(\theta)}\right)^2.
+$$
+Hence the norm equation has at least one solution.
+
+Step 5: Count the kernel of the norm map
+
+Consider
+$$
+\nu:A^\times\to A^\times,
+\qquad
+\nu(u)=u\overline u.
+$$
+Every fiber of $\nu$ has size
+$$
+|\ker\nu|.
+$$
+By Step 4, its image consists exactly of the involution-fixed units whose augmentation is a nonzero square.
+
+The fixed subspace
+$$
+A^+=\{a\in A:\overline a=a\}
+$$
+has basis
+$$
+1,\quad S^r+S^{-r}
+\quad
+\left(1\leq r\leq\frac{N-1}{2}\right),
+$$
+so
+$$
+\dim_{\mathbb F_p}A^+=\frac{N+1}{2}.
+$$
+The kernel of augmentation on $A^+$ therefore has dimension
+$$
+\frac{N-1}{2}.
+$$
+For each prescribed nonzero augmentation there are
+$$
+p^{(N-1)/2}
+$$
+fixed elements. Exactly
+$$
+\frac{p-1}{2}
+$$
+nonzero elements of $\mathbb F_p$ are squares. Hence
+$$
+|\operatorname{im}\nu|
+=
+\frac{p-1}{2}p^{(N-1)/2}.
 $$
 
-Step 5: Combine the two wild differents
-
-The tower
+Since $A$ is local with maximal ideal of dimension $N-1$,
 $$
-K\subset K_1\subset L_p
+|A^\times|=(p-1)p^{N-1}.
 $$
-has
+Therefore
 $$
-e(L_p/K_1)=p.
-$$
-For a tower of finite separable local extensions,
-$$
-d(L_p/K)
+|\ker\nu|
 =
-d(L_p/K_1)
-+
-e(L_p/K_1)d(K_1/K).
-$$
-Using Steps 3 and 4,
-$$
-d_p
+\frac{(p-1)p^{N-1}}
+{\frac{p-1}{2}p^{(N-1)/2}}
 =
-(p-1)(p+2)
-+
-2p(p-1).
-$$
-Factoring gives
-$$
-d_p=(p-1)(3p+2).
+2p^{(N-1)/2}.
 $$
 
-Final Answer: $\boxed{(p-1)(3p+2)}$
+The norm equation from Step 3 is solvable by Step 4, so its solution set is one coset of this kernel. Each solution $u$ gives one distinct $\alpha$. With $N=p^2$,
+$$
+N_p=2p^{(p^2-1)/2}.
+$$
+
+Final Answer: $\boxed{2p^{(p^2-1)/2}}$
 
 ---
 
 ## Answer
 
-$(p-1)(3p+2)$
+$2p^{(p^2-1)/2}$
 
 ---
 
@@ -273,8 +288,8 @@ $(p-1)(3p+2)$
 
 ## Solution Concepts
 
-- Artin-Schreier extensions
-- local field valuations
-- ramification breaks
-- different exponents
-- tower law for differents
+- normal bases
+- modular group algebras
+- trace pairings
+- involution norm equations
+- finite local rings

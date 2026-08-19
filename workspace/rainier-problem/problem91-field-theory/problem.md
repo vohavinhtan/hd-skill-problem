@@ -2,24 +2,26 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime and let
+Let $p\geq7$ be a prime, put
 $$
-K=\mathbb F_p((t)).
+E=\mathbb F_{p^{p^2}},
 $$
-Let $L_p$ be the splitting field over $K$ of
+and let
 $$
-F_p(X)=
-\left(X^p-X-t^{-p}-t^{-2}\right)^p
--
-\left(2t^{-p}+t^{-2}\right)^{p-1}
-\left(X^p-X-t^{-p}-t^{-2}\right).
+\operatorname{Tr}:E\to\mathbb F_p
 $$
+be the field trace.
 
-If
+Determine the number $N_p$ of elements $\alpha\in E$ such that, for every $i,j\in\mathbb Z/p^2\mathbb Z$,
 $$
-\mathfrak D_{L_p/K}=\mathfrak P_{L_p}^{d_p}
+\operatorname{Tr}\left(\alpha^{p^i}\alpha^{p^j}\right)
+=
+\begin{cases}
+5,&i=j,\\
+1,&i-j\equiv\pm1,\pm2\pmod{p^2},\\
+0,&\text{otherwise}.
+\end{cases}
 $$
-is the different of $L_p/K$, determine $d_p$.
 
 ---
 
@@ -36,4 +38,4 @@ is the different of $L_p/K$, determine $d_p$.
 
 ## Domain Explanation
 
-The polynomial hides two dependent Artin-Schreier directions. Their apparent leading poles disappear after passage to Artin-Schreier classes, and one direction acquires a new pole order only after adjoining the first. The different exponent is determined by this second reduction and the tower law for differents.
+The prescribed trace relations form a nonsingular Frobenius-circulant Gram matrix. Counting the elements realizing it requires translating normal generators into units of the modular group algebra, converting the Gram condition into a norm equation for its involution, proving that this norm equation is solvable, and counting its unitary kernel.
