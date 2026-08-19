@@ -14,9 +14,15 @@ Let $s$ be transcendental over $\mathbb F_p$, put $K=\mathbb F_p(s)$, and define
 $$
 P(X)=X^{p^2}-2zX^p+z^2X.
 $$
+Set
+$$
+Q(Y)=Y^3+\left(sz-s-3z\right)Y^2+
+\left(-s^2z+4sz+2s-3z-3\right)Y
+-s^2-2sz+2s+3z-4.
+$$
 Let $L$ be the splitting field over $K$ of
 $$
-F(X)=P(X)^3-sP(X)^2+(s-3)P(X)+1.
+F(X)=Q(P(X)).
 $$
 
 Determine the exact degree $[L:K]$.
@@ -39,5 +45,5 @@ Determine the exact degree $[L:K]$.
 This problem involves splitting fields, cyclic function-field extensions, constant-field extensions, and ramification,
 which are part of Abstract Algebra and Field theory.
 The problem also involves finite-field Frobenius actions and rational transformations,
-which are part of Number Theory and algebraic function theory.
-However, those ingredients control the hidden outer cubic and the translation kernel, while the main task is to reconstruct the full field tower and prove the required extensions are independent.
+which are part of Number Theory and modular arithmetic and congruences.
+However, those ingredients control a hidden dependence among additive fibers, while the main task is to reconstruct the field tower and determine the degree of its splitting field.
