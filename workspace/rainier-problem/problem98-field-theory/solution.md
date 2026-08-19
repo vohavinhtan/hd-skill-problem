@@ -1,12 +1,12 @@
 ## Steps
 
-Step 1: Recover the hidden cyclic sextic field
+Step 1: Recover the hidden cyclic sextic field and the six radicands
 
 Let $\zeta$ be a primitive thirteenth root of unity and put
 $$
 \theta=\zeta+\zeta^{-1}.
 $$
-For $s_j=\zeta^j+\zeta^{-j}$,
+If $s_j=\zeta^j+\zeta^{-j}$, then
 $$
 s_0=2,\qquad s_1=\theta,\qquad s_{j+1}=\theta s_j-s_{j-1}.
 $$
@@ -14,7 +14,7 @@ Pairing the twelve nontrivial thirteenth roots gives
 $$
 1+s_1+s_2+s_3+s_4+s_5+s_6=0.
 $$
-Substitution from the recurrence gives
+Using the recurrence for the $s_j$ yields
 $$
 f(\theta)=0,
 $$
@@ -26,191 +26,197 @@ Since $\mathbb{Q}(\zeta)$ has degree $12$ and $\zeta$ is quadratic over $\mathbb
 $$
 [K:\mathbb{Q}]=6,\qquad K=\mathbb{Q}(\theta).
 $$
-This is the maximal real subfield of $\mathbb{Q}(\zeta)$ and is cyclic Galois of degree $6$.
+The field $K$ is the maximal real subfield of $\mathbb{Q}(\zeta)$, so it is cyclic Galois of degree $6$.
 
-Let $\sigma$ be induced by $\zeta\mapsto\zeta^2$, and write
+Let $\sigma$ be induced by $\zeta\mapsto\zeta^2$. Its restriction to $K$ has order $6$. Define
 $$
 \theta_i=\sigma^i(\theta),\qquad u_i=\theta_i+3
 $$
-with indices modulo $6$. Since
+with indices modulo $6$. Then
 $$
-f(-3)=233,
+\prod_{i=0}^5u_i=f(-3)=233.
 $$
-we have
+The prime $233$ is unramified in $K$ because $K$ is contained in the cyclotomic field of conductor $13$. Since $N_{K/\mathbb{Q}}(u_0)=233$, the ideal
 $$
-\prod_{i=0}^5u_i=233.
+P_0=(u_0)
 $$
-The prime $233$ satisfies $233\equiv-1\pmod{13}$, so it splits completely in the real cyclotomic field $K$. As each $u_i$ has norm $233$, the ideals
+is a prime of norm $233$. Its six Galois conjugates
 $$
 P_i=(u_i)
 $$
-are the six distinct primes of $K$ above $233$.
+are distinct primes above $233$.
 
-Now define
+Set
 $$
-c_i=\theta_i\frac{u_i}{u_{i+1}}.
+c_i=u_{i+1}u_{i+3}u_{i+4}u_{i+5}.
 $$
-For $i=0$, since $\sigma(\theta)=\theta^2-2$,
-$$
-c_0=\frac{\theta(\theta+3)}{\theta^2+1}.
-$$
-Put
-$$
-q(Y)=233Y^6-612Y^5-450Y^4+1356Y^3+592Y^2-549Y-233.
-$$
-The polynomial identity
-$$
-(T^2+1)^6q\left(\frac{T(T+3)}{T^2+1}\right)=f(T)R(T)
-$$
-holds with
-$$
-R(T)=337T^6+3386T^5-6905T^4-3620T^3+5055T^2+2346T+233.
-$$
-Hence $q(c_0)=0$, and applying $\sigma$ shows that $c_0,\ldots,c_5$ are roots of $q$.
+The ideals $(c_i)$ are distinct because each omits exactly the two primes $P_i$ and $P_{i+2}$. Hence the six conjugates $c_i$ are distinct.
 
-Because $\theta_i$ is a unit,
+The recurrence for $s_j$, followed by reduction modulo $f(\theta)=0$, gives
 $$
-(c_i)=P_iP_{i+1}^{-1}.
+c_0=16\theta^5-16\theta^4-71\theta^3+72\theta^2+37\theta+3.
 $$
-No nontrivial cyclic shift preserves this ordered pair of prime ideals, so $c_0$ has six distinct conjugates. It follows that $q/233$ is the minimal polynomial of $c_0$, $\mathbb{Q}(c_0)=K$, and the splitting field of $q$ is $K$.
+Writing
+$$
+C(T)=16T^5-16T^4-71T^3+72T^2+37T+3,
+$$
+elimination of $T$ from $f(T)=0$ and $Y=C(T)$ gives
+$$
+\operatorname{Res}_T(f(T),Y-C(T))
+=
+Y^6-305Y^5+32827Y^4-1685522Y^3+44571269Y^2-581869502Y+2947295521.
+$$
+Therefore the polynomial
+$$
+q(Y)=Y^6-305Y^5+32827Y^4-1685522Y^3+44571269Y^2-581869502Y+2947295521
+$$
+has roots $c_0,\ldots,c_5$. Since they are six distinct conjugates, $q$ is the minimal polynomial of $c_0$, and its splitting field is $K$.
 
-Step 2: Pass from the polynomial to a Kummer extension
+Step 2: Identify the cyclotomic base inside the splitting field
 
 Put
 $$
 m=2^n,\qquad E_n=K(\zeta_m),
 $$
-where $\zeta_m$ is a primitive $m$th root of unity. The given polynomial is
-$$
-g_n(x)=q(x^m).
-$$
-Its roots are all $m$th roots of the six numbers $c_i$.
+where $\zeta_m$ is a primitive $m$th root of unity.
 
-The cyclic field $K$ has a unique quadratic subfield, $\mathbb{Q}(\sqrt{13})$. Every quadratic subfield of a $2$-power cyclotomic field is among $\mathbb{Q}(i)$, $\mathbb{Q}(\sqrt2)$, and $\mathbb{Q}(\sqrt{-2})$, when such fields occur. Hence
+The field $K$ has a unique quadratic subfield, namely $\mathbb{Q}(\sqrt{13})$. For $n=1$, $\mathbb{Q}(\zeta_m)=\mathbb{Q}$. For $n=2$ its only quadratic subfield is $\mathbb{Q}(i)$, and for $n\geq3$ its quadratic subfields are
+$$
+\mathbb{Q}(i),\qquad \mathbb{Q}(\sqrt2),\qquad \mathbb{Q}(\sqrt{-2}).
+$$
+None is $\mathbb{Q}(\sqrt{13})$. Since the intersection degree divides both $6$ and $2^{n-1}$,
 $$
 K\cap\mathbb{Q}(\zeta_m)=\mathbb{Q}.
 $$
 Therefore
 $$
-[E_n:\mathbb{Q}]=6\varphi(2^n)=3\cdot2^n.
+[E_n:\mathbb{Q}]=6\cdot2^{n-1}=3\cdot2^n.
 $$
 
-The splitting field $L_n$ contains the $m$th powers $c_i$ of its roots, so it contains $K$. Ratios of two roots above one fixed $c_i$ give the $m$th roots of unity. Hence $E_n\subseteq L_n$, and
+The given polynomial is
 $$
-L_n=E_n(c_0^{1/m},c_1^{1/m},c_2^{1/m},c_3^{1/m},c_4^{1/m},c_5^{1/m}).
+g_n(x)=q(x^m).
+$$
+Its roots are all $m$th roots of the six $c_i$. Hence its splitting field contains every $c_i$, and therefore contains $K$. Ratios of the $m$ roots lying above one fixed $c_i$ contain all $m$th roots of unity, so the splitting field also contains $\zeta_m$. Consequently
+$$
+L_n=E_n\left(c_0^{1/m},c_1^{1/m},c_2^{1/m},c_3^{1/m},c_4^{1/m},c_5^{1/m}\right).
 $$
 
-Step 3: Determine what the prime valuations force
+Step 3: Translate radical relations into six valuation congruences
 
-Consider
+Because $E_n/K$ comes from a $2$-power cyclotomic extension, it is unramified at the primes above $233$. Choose a prime $Q_j$ of $E_n$ above $P_j$. Then
 $$
-\psi:(\mathbb{Z}/m\mathbb{Z})^6\longrightarrow E_n^\times/E_n^{\times m},
-$$
-defined by
-$$
-(r_0,\ldots,r_5)\longmapsto\left[\prod_{i=0}^5c_i^{r_i}\right].
-$$
-The extension $E_n/K$ is unramified above $233$. Choose a prime $Q_j$ of $E_n$ over $P_j$. From
-$$
-(c_i)=P_iP_{i+1}^{-1},
-$$
-we get
-$$
-v_{Q_j}(c_i)=
+v_{Q_j}(u_i)=
 \begin{cases}
-1,&j=i,\\
--1,&j=i+1,\\
-0,&\text{otherwise}.
+1,&i=j,\\
+0,&i\neq j.
 \end{cases}
 $$
 
-If $(r_0,\ldots,r_5)\in\ker\psi$, every valuation of the product is divisible by $m$. At $Q_j$ this gives
+Consider the homomorphism
 $$
-r_j-r_{j-1}\equiv0\pmod m.
+\psi:(\mathbb{Z}/m\mathbb{Z})^6\longrightarrow E_n^\times/E_n^{\times m}
 $$
-Hence
+defined by
 $$
-r_0\equiv r_1\equiv\cdots\equiv r_5\pmod m.
+(r_0,\ldots,r_5)\longmapsto
+\left[\prod_{i=0}^5c_i^{r_i}\right].
 $$
-Thus every possible relation is represented by a constant vector
+Let
 $$
-(t,t,t,t,t,t).
+R=r_0+r_1+r_2+r_3+r_4+r_5.
 $$
-Prime valuations alone do not decide which of these constant vectors are actual Kummer relations.
+The element $c_i$ contains every $u_j$ except $u_i$ and $u_{i+2}$. Therefore
+$$
+v_{Q_j}\left(\prod_{i=0}^5c_i^{r_i}\right)
+=
+R-r_j-r_{j-2}.
+$$
+If the product is an $m$th power, these six valuations are divisible by $m$, so
+$$
+r_j+r_{j-2}\equiv R\pmod m
+$$
+for every $j$ modulo $6$.
 
-Step 4: Resolve the remaining unit obstruction
+These congruences are also sufficient. Indeed, writing
+$$
+\prod_{i=0}^5c_i^{r_i}=\prod_{j=0}^5u_j^{R-r_j-r_{j-2}},
+$$
+if every exponent on the right is divisible by $m$, then the product is already an $m$th power in $K$. Hence the displayed system describes $\ker\psi$ exactly.
 
-The product of the six radicands is
+Step 4: Solve the relation kernel
+
+Compare the congruences for $j$ and $j+2$. They give
 $$
-\prod_{i=0}^5c_i=
-\left(\prod_{i=0}^5\theta_i\right)
-\left(\prod_{i=0}^5\frac{u_i}{u_{i+1}}\right).
-$$
-The second product telescopes to $1$. Since the constant term of $f$ is $-1$ and $\deg f=6$,
-$$
-N_{K/\mathbb{Q}}(\theta)=-1.
+r_{j-2}\equiv r_{j+2}\pmod m.
 $$
 Therefore
 $$
-\prod_{i=0}^5c_i=-1.
+r_0=r_2=r_4=a,\qquad r_1=r_3=r_5=b
 $$
-The constant vector $(t,\ldots,t)$ lies in $\ker\psi$ exactly when
+modulo $m$. Since
 $$
-(-1)^t\in E_n^{\times m}.
+R=3a+3b,
 $$
-Every even $t$ works.
+the even and odd congruences become
+$$
+2a\equiv3a+3b\pmod m,
+$$
+and
+$$
+2b\equiv3a+3b\pmod m.
+$$
+Equivalently,
+$$
+a+3b\equiv0\pmod m,\qquad 3a+b\equiv0\pmod m.
+$$
+The first gives
+$$
+a\equiv-3b\pmod m.
+$$
+Substitution into the second gives
+$$
+8b\equiv0\pmod m.
+$$
+Conversely, every $b$ satisfying this congruence, together with $a=-3b$, gives a kernel element.
 
-No odd $t$ works. If $y^m=-1$ for some $y\in E_n$, then $m=2^n$ forces $y$ to have exact order $2m$, so $E_n$ would contain a primitive $2m$th root of unity.
-
-Let
+Since $m=2^n$, the congruence $8b\equiv0\pmod m$ has
 $$
-C=\mathbb{Q}(\zeta_{2m}).
+\gcd(8,m)=2^{\min(3,n)}
 $$
-The same quadratic-subfield argument used in Step 2 gives
+solutions modulo $m$. Therefore
 $$
-K\cap C=\mathbb{Q}.
+|\ker\psi|=2^{\min(3,n)}.
 $$
-Hence
+The subgroup generated by the six classes $[c_i]$ in $E_n^\times/E_n^{\times m}$ has order
 $$
-[KC:\mathbb{Q}]=6\varphi(2m),
-$$
-while
-$$
-[E_n:\mathbb{Q}]=6\varphi(m).
-$$
-Since $\varphi(2m)=2\varphi(m)$ for $m=2^n$, we have
-$$
-[KC:E_n]=2.
-$$
-Thus $\zeta_{2m}\notin E_n$, so $-1$ is not an $m$th power in $E_n$.
-
-There are exactly $m/2$ even residue classes $t$ modulo $m$. Therefore
-$$
-|\ker\psi|=\frac m2.
-$$
-
-Step 5: Compute the splitting-field degree
-
-The field $E_n$ contains all $m$th roots of unity. Kummer theory identifies
-$$
-[L_n:E_n]
-$$
-with the order of the subgroup generated by $[c_0],\ldots,[c_5]$ in $E_n^\times/E_n^{\times m}$. Step 4 gives
-$$
-[L_n:E_n]=\frac{m^6}{m/2}=2m^5=2^{5n+1}.
-$$
-Combining this with the base degree from Step 2 gives
-$$
-[L_n:\mathbb{Q}]=2^{5n+1}\cdot3\cdot2^n=3\cdot2^{6n+1}.
+\frac{m^6}{2^{\min(3,n)}}
+=
+2^{6n-\min(3,n)}.
 $$
 
-Final Answer: $\boxed{3\cdot2^{6n+1}}$
+Step 5: Compute the Kummer degree
+
+The field $E_n$ contains all $m$th roots of unity. Kummer theory therefore identifies the degree obtained by adjoining the $m$th roots of $c_0,\ldots,c_5$ with the order of the subgroup generated by their classes in $E_n^\times/E_n^{\times m}$. Step 4 gives
+$$
+[L_n:E_n]=2^{6n-\min(3,n)}.
+$$
+Using the base degree from Step 2,
+$$
+[L_n:\mathbb{Q}]
+=
+2^{6n-\min(3,n)}\cdot3\cdot2^n
+=
+3\cdot2^{7n-\min(3,n)}.
+$$
+
+Final Answer: $\boxed{3\cdot2^{7n-\min(3,n)}}$
 
 ---
 
 ## Answer
 
-$3\cdot2^{6n+1}$
+$3\cdot2^{7n-\min(3,n)}$
 
 ---
 
@@ -232,4 +238,4 @@ $3\cdot2^{6n+1}$
 - real cyclotomic fields
 - Kummer extensions
 - prime ideal valuations
-- roots of unity
+- congruence kernels
