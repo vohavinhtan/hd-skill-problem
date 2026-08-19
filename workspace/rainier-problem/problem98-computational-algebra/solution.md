@@ -6,7 +6,7 @@ Let $\zeta$ be a primitive thirteenth root of unity and put
 $$
 \theta=\zeta+\zeta^{-1}.
 $$
-For $s_j=\zeta^j+\zeta^{-j}$, we have
+For $s_j=\zeta^j+\zeta^{-j}$,
 $$
 s_0=2,\qquad s_1=\theta,\qquad s_{j+1}=\theta s_j-s_{j-1}.
 $$
@@ -14,155 +14,182 @@ Pairing the twelve nontrivial thirteenth roots gives
 $$
 1+s_1+s_2+s_3+s_4+s_5+s_6=0.
 $$
-Substituting the recurrence into this relation gives
+Substitution from the recurrence yields
 $$
 \theta^6+\theta^5-5\theta^4-4\theta^3+6\theta^2+3\theta-1=0.
 $$
-The field $\mathbb{Q}(\zeta)$ has degree $12$, while $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb{Q}(\theta)$. This gives $[\mathbb{Q}(\theta):\mathbb{Q}]\geq6$. Since the displayed polynomial has degree $6$, it is the minimal polynomial of $\theta$. Its six roots are the real cyclotomic conjugates, so its splitting field is
+The field $\mathbb{Q}(\zeta)$ has degree $12$, while $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb{Q}(\theta)$. Hence $[\mathbb{Q}(\theta):\mathbb{Q}]\geq6$. The displayed polynomial has degree $6$, so it is the minimal polynomial of $\theta$. Its roots are the six real cyclotomic conjugates, and
 $$
-K=\mathbb{Q}(\theta),
+K=\mathbb{Q}(\theta)
 $$
-the maximal real subfield of $\mathbb{Q}(\zeta)$. The group $\operatorname{Gal}(K/\mathbb{Q})$ is cyclic of order $6$.
+is the maximal real subfield of $\mathbb{Q}(\zeta)$, cyclic Galois of degree $6$.
 
-Let $\sigma$ be induced by $\zeta\mapsto\zeta^2$, and write
+Let $\sigma$ be induced by $\zeta\mapsto\zeta^2$ and write
 $$
 \theta_i=\sigma^i(\theta)\qquad(0\leq i<6).
 $$
-After permuting the roots if needed, these are the six roots used in the definition of $V$.
+Permuting the roots only permutes the columns of $V$.
 
-Step 2: Factor the prime above the six conjugates of $\theta+3$
+Step 2: Determine the primes above $233$
 
 Put
 $$
 u_i=\theta_i+3.
 $$
-Because the minimal polynomial is $f(T)$ from the statement,
+Since the minimal polynomial of $\theta$ is $f$,
 $$
 \prod_{i=0}^5u_i=f(-3)=233.
 $$
-The prime $233$ is different from the conductor prime $13$, so it is unramified in $K$. Its Frobenius class in
+The prime $233$ is unramified in the real cyclotomic field of conductor $13$. Its Frobenius class is the class of
 $$
-(\mathbb{Z}/13\mathbb{Z})^\times/\{\pm1\}
+233\equiv-1\pmod{13}
 $$
-is the class of $233\equiv-1\pmod{13}$, which is the identity. It follows that $233$ splits completely in $K$.
+in $(\mathbb{Z}/13\mathbb{Z})^\times/\{\pm1\}$, so the Frobenius is trivial and $233$ splits completely in $K$.
 
-Each $u_i$ is an algebraic integer with
+Each $u_i$ is an algebraic integer of norm $233$. Therefore
 $$
-|N_{K/\mathbb{Q}}(u_i)|=233.
+P_i=(u_i)\qquad(0\leq i<6)
 $$
-Therefore the principal ideal $(u_i)$ is a prime ideal of norm $233$. The six ideals
-$$
-P_i=(u_i)
-$$
-are the six distinct primes of $\mathcal O_K$ above $233$.
+are the six distinct prime ideals of $\mathcal O_K$ above $233$.
 
-Step 3: Recover the valuation pattern hidden in $C(T)$
+Step 3: Recover the valuation matrix and its Gram matrix
 
-The first relevant conjugates of $\theta$ are
+The needed conjugates are
 $$
-\sigma(\theta)=\theta^2-2,\qquad \sigma^2(\theta)=\theta^4-4\theta^2+2,\qquad \sigma^4(\theta)=\theta^3-3\theta.
+\sigma(\theta)=\theta^2-2,\qquad
+\sigma^2(\theta)=\theta^4-4\theta^2+2,\qquad
+\sigma^4(\theta)=\theta^3-3\theta.
 $$
 The polynomial identity
 $$
-(T+3)(T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)=f(T)(T^4+2T^3-3T^2+2T+4)
+(T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)
+=
+f(T)(T+1)(T^2-2T+2)
 $$
-holds in $\mathbb{Z}[T]$. Evaluating at $T=\theta$ gives
+gives
 $$
-C(\theta)=u_0u_1u_2u_4.
+C(\theta)=u_1u_2u_4.
 $$
-Applying $\sigma^i$ gives, with indices modulo $6$,
+Applying $\sigma^i$ yields
 $$
-c_i=C(\theta_i)=u_i u_{i+1}u_{i+2}u_{i+4}.
+c_i=C(\theta_i)=u_{i+1}u_{i+2}u_{i+4},
 $$
-Since $(u_j)=P_j$,
+with indices modulo $6$. Hence
 $$
-(c_i)=P_iP_{i+1}P_{i+2}P_{i+4}.
+(c_i)=P_{i+1}P_{i+2}P_{i+4}.
 $$
-Ordering the rows by $P_0,\ldots,P_5$ and the columns by $c_0,\ldots,c_5$, the valuation matrix is
+Ordering rows by $P_0,\ldots,P_5$ and columns by $c_0,\ldots,c_5$ gives
 $$
-V=\begin{pmatrix}
-1&0&1&0&1&1\\
-1&1&0&1&0&1\\
-1&1&1&0&1&0\\
-0&1&1&1&0&1\\
-1&0&1&1&1&0\\
-0&1&0&1&1&1
+V=
+\begin{pmatrix}
+0&0&1&0&1&1\\
+1&0&0&1&0&1\\
+1&1&0&0&1&0\\
+0&1&1&0&0&1\\
+1&0&1&1&0&0\\
+0&1&0&1&1&0
 \end{pmatrix}.
 $$
-Other orderings only permute rows or columns and do not change the Smith normal form.
+A different ordering replaces $V$ by $RVS$ for permutation matrices $R,S$, so $V^{T}V$ is replaced by $S^{T}V^{T}VS$ and has the same Smith data.
 
-Step 4: Determine the Smith invariants of $V$
-
-The matrix $V$ is circulant with associated polynomial
+Direct multiplication gives
 $$
-p(x)=1+x+x^2+x^4.
-$$
-If $\omega$ runs through the sixth roots of unity, the determinant is
-$$
-\det V=\prod_{\omega^6=1}p(\omega).
-$$
-We have $p(1)=4$ and $p(-1)=2$. For a primitive cube root $\rho$, the relation $1+\rho+\rho^2=0$ gives
-$$
-p(\rho)=\rho,\qquad p(\rho^2)=\rho^2.
-$$
-For a primitive sixth root $\eta$, the relation $\eta^2-\eta+1=0$ gives $\eta^4=-\eta$, so
-$$
-p(\eta)=\eta,\qquad p(\eta^5)=\eta^5.
-$$
-Therefore
-$$
-\det V=8.
+G=V^{T}V=
+\begin{pmatrix}
+3&1&1&2&1&1\\
+1&3&1&1&2&1\\
+1&1&3&1&1&2\\
+2&1&1&3&1&1\\
+1&2&1&1&3&1\\
+1&1&2&1&1&3
+\end{pmatrix}.
 $$
 
-For each $1\leq k\leq5$, $V$ has a $k\times k$ minor equal to $\pm1$. For $k=1,2,3,5$, take the leading principal minor; their determinants are respectively
+Step 4: Compute the determinantal divisors of $A_n$
+
+Put $m=2^{n}$ and $A=G+mI_6$. Let $J$ be the all-ones matrix and let $S$ interchange the coordinate pairs $(1,4)$, $(2,5)$, $(3,6)$. Then
 $$
-1,\qquad1,\qquad1,\qquad1.
+G=J+2I_6+S.
 $$
-For $k=4$, use rows $1,2,3,4$ and columns $1,2,3,5$:
+On the $(-1)$-eigenspace of $S$, which has dimension $3$, $J$ vanishes and $A$ has eigenvalue $m+1$. On the $S$-fixed subspace orthogonal to $(1,1,1,1,1,1)$, which has dimension $2$, the eigenvalue is $m+3$. On the all-ones line it is $m+9$. Therefore
 $$
-\det\begin{pmatrix}
-1&0&1&1\\
-1&1&0&0\\
-1&1&1&1\\
-0&1&1&0
-\end{pmatrix}=-1.
-$$
-The first five determinantal divisors are all $1$, while the sixth is $|\det V|=8$. The Smith normal form of $V$ is
-$$
-D=\operatorname{diag}(1,1,1,1,1,8).
+\Delta_6=|\det A|=(m+1)^3(m+3)^2(m+9).
 $$
 
-Step 5: Incorporate the block $2^nI_6$
+The inverse is obtained from the same three subspaces:
+$$
+A^{-1}
+=
+\frac{m+2}{(m+1)(m+3)}I_6
+-
+\frac{1}{(m+1)(m+3)}S
+-
+\frac{1}{(m+3)(m+9)}J.
+$$
+Multiplying by $\Delta_6$ shows that every $5\times5$ minor is divisible by
+$$
+Q=(m+1)^2(m+3).
+$$
+The three types of entries of $\operatorname{adj}(A)/Q$ are
+$$
+m^2+10m+17,\qquad -(m+1),\qquad -2(m+5).
+$$
+Since $m$ is even,
+$$
+\gcd(m+1,2(m+5))=1,
+$$
+so
+$$
+\Delta_5=(m+1)^2(m+3).
+$$
 
-Write $m=2^n$. There are unimodular integer matrices $U,W$ with
+At $m=-1$, the first three rows of $A$ repeat as rows $4,5,6$, so every $4\times4$ minor is divisible by $m+1$. Two $4\times4$ minors are
 $$
-UVW=D.
+(m+1)^2
 $$
-Applying $U$ on the left and $\operatorname{diag}(W,U^{-1})$ on the right to
+and
 $$
-A_n=(V\mid mI_6)
+(m+1)(3m+11).
 $$
-gives a matrix equivalent over $\mathbb{Z}$ to
+Because $\gcd(m+1,3m+11)=\gcd(m+1,8)=1$, we get
 $$
-(D\mid mI_6).
+\Delta_4=m+1.
 $$
-For each row, the two relevant entries are $d_i$ and $m$, where
+There are $3\times3$ minors equal to $4$ and $m+1$, so $\Delta_3=1$ because $m+1$ is odd. A $2\times2$ minor equals $1$, and an entry equals $1$, giving
 $$
-(d_1,\ldots,d_6)=(1,1,1,1,1,8).
+\Delta_1=\Delta_2=\Delta_3=1.
 $$
-Integer column operations reduce the pair $(d_i,m)$ to $(\gcd(d_i,m),0)$. The first five nonzero Smith entries are $1$, and the last is
-$$
-\gcd(8,2^n)=2^{\min(3,n)}.
-$$
-These entries already satisfy the divisibility condition for Smith normal form.
 
-Final Answer: $\boxed{\operatorname{diag}(1,1,1,1,1,2^{\min(3,n)})}$
+Step 5: Read the Smith normal form
+
+If $d_1,\ldots,d_6$ are the Smith entries, then
+$$
+d_k=\frac{\Delta_k}{\Delta_{k-1}},
+\qquad \Delta_0=1.
+$$
+Using the determinantal divisors from Step 4,
+$$
+d_1=d_2=d_3=1,
+$$
+$$
+d_4=m+1,
+$$
+$$
+d_5=(m+1)(m+3),
+$$
+and
+$$
+d_6=(m+1)(m+3)(m+9).
+$$
+Substituting $m=2^{n}$ gives the requested canonical form.
+
+Final Answer: $\boxed{\operatorname{diag}(1,1,1,2^{n}+1,(2^{n}+1)(2^{n}+3),(2^{n}+1)(2^{n}+3)(2^{n}+9))}$
 
 ---
 
 ## Answer
 
-$\operatorname{diag}(1,1,1,1,1,2^{\min(3,n)})$
+$\operatorname{diag}(1,1,1,2^{n}+1,(2^{n}+1)(2^{n}+3),(2^{n}+1)(2^{n}+3)(2^{n}+9))$
 
 ---
 
@@ -182,6 +209,6 @@ $\operatorname{diag}(1,1,1,1,1,2^{\min(3,n)})$
 
 - real cyclotomic fields
 - prime ideal valuations
-- circulant matrices
+- Gram matrices
 - determinantal divisors
 - smith normal form
