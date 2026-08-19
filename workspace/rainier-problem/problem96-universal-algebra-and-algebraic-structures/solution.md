@@ -12,9 +12,7 @@ r-r'+r''+(q-q')(q'-q'')+\frac12(q-q'+q'')^2.
 $$
 Expanding the quadratic terms gives
 $$
-(q-q')(q'-q'')+\frac12(q-q'+q'')^2
-=
-\frac12q^2-\frac12q'^2+\frac12q''^2.
+(q-q')(q'-q'')+\frac12(q-q'+q'')^2=\frac12q^2-\frac12q'^2+\frac12q''^2.
 $$
 Therefore $\Phi$ converts $m$ into
 $$
@@ -22,7 +20,7 @@ $$
 $$
 on the additive group $S^2$.
 
-A congruence for this ternary operation is determined by the class $K$ of $0$. If $a,b\in K$, then $m(a,0,b)=a+b\in K$ and $m(0,a,0)=-a\in K$. Hence $K$ is an additive subgroup, and
+A congruence for this ternary operation is determined by the class $K$ of $0$. If $a,b\in K$, then $m(a,0,b)=a+b\in K$ and $m(0,a,0)=-a\in K$. This makes $K$ an additive subgroup, and
 $$
 x\equiv y\pmod K\quad\Longleftrightarrow\quad x-y\in K.
 $$
@@ -34,19 +32,14 @@ For $\sigma$, the first new coordinate is $\alpha^2z$. Its second new coordinate
 $$
 q-\frac12\alpha^4z^2+\frac12(\alpha^2z)^2=q.
 $$
-Hence
+So
 $$
 \Phi\sigma\Phi^{-1}(q,z)=(\alpha^2z,q).
 $$
 
 For $\delta$, the definition gives
 $$
-\Phi\delta\Phi^{-1}(q,z)
-=
-\left(
--\alpha z-\alpha^2z',\,
--q'
-\right).
+\Phi\delta\Phi^{-1}(q,z)=\left(-\alpha z-\alpha^2z',-q'\right).
 $$
 
 Introduce
@@ -79,13 +72,9 @@ in characteristic $p$, as $N=pn$. Therefore $D$ is a derivation of $T$.
 
 For $q,z\in S$,
 $$
-D(q+z\beta)
-=
--q'\beta-z'\beta^2-\alpha z
-=
--\alpha z-\alpha^2z'-q'\beta.
+D(q+z\beta)=-q'\beta-z'\beta^2-\alpha z=-\alpha z-\alpha^2z'-q'\beta.
 $$
-Thus $\delta$ becomes the derivation $D$.
+So $\delta$ becomes the derivation $D$.
 
 Step 3: Recover the full hidden ring action
 
@@ -103,7 +92,7 @@ The subspace $K$ is stable under multiplication by $\alpha$. It is then stable u
 $$
 T=S[\beta]/(\beta^2-\alpha^2).
 $$
-Hence $K$ is an ideal of $T$. Compatibility with $\delta$ adds the condition
+Therefore $K$ is an ideal of $T$. Compatibility with $\delta$ adds the condition
 $$
 D(K)\subseteq K.
 $$
@@ -127,14 +116,9 @@ All mixed terms in $(y-x)^N$ vanish because $xy=0$, so $\alpha^N=0$ becomes
 $$
 y^N+(-1)^Nx^N=0.
 $$
-Thus
+This gives
 $$
-T\cong
-\mathbb F_p[x,y]/
-\left(
-xy,\,
-y^N+(-1)^Nx^N
-\right).
+T\cong\mathbb F_p[x,y]/\left(xy,\,y^N+(-1)^Nx^N\right).
 $$
 
 Set
@@ -155,8 +139,7 @@ D(x)=x,\qquad D(y)=-y,\qquad D(s)=Ns=0.
 $$
 Therefore $D$ descends to
 $$
-B=T/(s)\cong
-\mathbb F_p[x,y]/(xy,x^N,y^N).
+B=T/(s)\cong\mathbb F_p[x,y]/(xy,x^N,y^N).
 $$
 The zero ideal of $T$ contributes one extra $D$-stable ideal, while every other ideal corresponds to an ideal of $B$.
 
@@ -180,10 +163,9 @@ J=X_a\oplus Y_b.
 $$
 These give $N^2$ monomial ideals.
 
-Otherwise both branch intersections drop by one degree. Modulo $X_{a+1}\oplus Y_{b+1}$, the ideal is a one-dimensional subspace projecting nontrivially to both coordinates. Hence
+Otherwise both branch intersections drop by one degree. Modulo $X_{a+1}\oplus Y_{b+1}$, the ideal is a one-dimensional subspace projecting nontrivially to both coordinates. Therefore
 $$
-J=
-\mathbb F_p(x^a+\lambda y^b)+X_{a+1}+Y_{b+1},
+J=\mathbb F_p(x^a+\lambda y^b)+X_{a+1}+Y_{b+1},
 $$
 where
 $$
@@ -227,11 +209,7 @@ C_n(p)=N^2+(p-1)Q+2.
 $$
 Substituting $N=pn$ and the value of $Q$ gives
 $$
-C_n(p)
-=
-p^2n^2+(p-1)(pn^2-2n+1)+2
-=
-p(2p-1)n^2-2(p-1)n+p+1.
+C_n(p)=p^2n^2+(p-1)(pn^2-2n+1)+2=p(2p-1)n^2-2(p-1)n+p+1.
 $$
 
 Final Answer: $\boxed{p(2p-1)n^{2}-2(p-1)n+p+1}$
