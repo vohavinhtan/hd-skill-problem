@@ -34,47 +34,36 @@ Conversely, any ordered plane full binary forest with $n$ roots, $n$ internal ve
 
 Step 2: Count all labeled forests
 
-Let $C(z)$ be the generating series for plane full binary trees, where $z$ marks internal vertices. A tree is either a leaf or an internal vertex with two ordered subtrees, so
-$$
-C(z)=1+zC(z)^2.
-$$
-Set
-$$
-D(z)=C(z)-1.
-$$
-Then
-$$
-D=z(1+D)^2.
-$$
+Read the vertices of an ordered plane full binary forest in preorder, one tree after another. Write $I$ for an internal vertex and $L$ for a leaf. Start with $n$ open root slots. Reading $I$ consumes one slot and creates two, so the number of open slots changes by $+1$; reading $L$ consumes one slot, so it changes by $-1$. If a full binary forest has $I_0$ internal vertices, $L_0$ leaves, and $R_0$ roots, then its edge count is both $2I_0$ and $I_0+L_0-R_0$, so $L_0=I_0+R_0$. Here $I_0=R_0=n$, so the word contains $n$ letters $I$ and $2n$ letters $L$. Conversely, fill the leftmost open slot at each letter: at $I$, replace that slot by ordered left and right child slots; at $L$, remove it. This reconstructs a unique ordered forest exactly when the number of open slots is positive before the last letter and is $0$ after it.
 
-An ordered forest with $n$ roots is counted by $C(z)^n=(1+D)^n$. For the equation $D=z(1+D)^2$, the Lagrange coefficient identity applied to $F(u)=(1+u)^n$ gives
+Give $I$ increment $+1$ and $L$ increment $-1$, and let $S_j$ be the sum of the first $j$ increments. The condition is
 $$
-[z^n]F(D)
-=
-\frac1n[u^{n-1}]F'(u)(1+u)^{2n}.
+n+S_j>0\quad(0\leq j<3n),
+\qquad
+n+S_{3n}=0.
 $$
-Since
+Reverse the word and change every increment's sign. The new word has $2n$ increments $+1$ and $n$ increments $-1$. If $T_k$ is its sum through position $k$, then
 $$
-F'(u)=n(1+u)^{n-1},
+T_k=-\left(S_{3n}-S_{3n-k}\right)=n+S_{3n-k}.
 $$
-we get
+The forest words are therefore in bijection with words having $2n$ increments $+1$, $n$ increments $-1$, and every partial sum positive.
+
+Such a positive word starts with $+1$. Delete that first increment and lower all subsequent heights by $1$. We must count words with $2n-1$ increments $+1$ and $n$ increments $-1$ whose partial sums never go below $0$. There are
 $$
-[z^n]C(z)^n
-=
-[u^{n-1}](1+u)^{3n-1}
-=
-\binom{3n-1}{n-1}
-=
-\frac13\binom{3n}{n}.
+\binom{3n-1}{n}
+$$
+unrestricted words of these multiplicities. For a word that does go below $0$, reflect the prefix through its first visit to $-1$, interchanging $+1$ and $-1$ on that prefix. Before reflection that prefix has one more $-1$ than $+1$, so reflection changes the total multiplicities to $2n$ increments $+1$ and $n-1$ increments $-1$. This map is bijective: for a word with those new multiplicities, reflect the prefix through its first visit to $+1$ to recover the unique bad word. The number of bad words is therefore
+$$
+\binom{3n-1}{n-1}.
+$$
+The number of forest shapes is therefore
+$$
+\binom{3n-1}{n}-\binom{3n-1}{n-1}=\frac{2}{3}\binom{3n}{n}-\frac{1}{3}\binom{3n}{n}=\frac{1}{3}\binom{3n}{n}.
 $$
 
 After choosing the shape, the $n$ internal vertices can be labeled in $n!$ ways and the $2n$ leaves in $(2n)!$ ways. This yields
 $$
-|\mathcal N_n|
-=
-\frac13\binom{3n}{n}n!(2n)!
-=
-\frac{(3n)!}{3}.
+|\mathcal N_n|=\frac{1}{3}\binom{3n}{n}n!(2n)!=\frac{(3n)!}{3}.
 $$
 
 Step 3: Reduce all non-full orbits to the half-turn
@@ -91,7 +80,7 @@ An inhabitant has orbit smaller than $n$ exactly when its stabilizer is nontrivi
 
 Put
 $$
-m=\frac n2.
+m=\frac{n}{2}.
 $$
 The half-turn pairs tensor components by
 $$
@@ -114,7 +103,7 @@ If an inhabitant is fixed by $h$, the tree in component $i+m$ is obtained from t
 
 The first half contains exactly one member of each of the $m$ internal-label pairs, so it has $m$ internal vertices. A full binary forest with $m$ roots and $m$ internal vertices has $2m$ leaves. By the calculation in Step 2 with $m$ in place of $n$, the number of first-half forest shapes is
 $$
-\frac13\binom{3m}{m}.
+\frac{1}{3}\binom{3m}{m}.
 $$
 
 For the internal labels, choose one member from each pair in $2^m$ ways, then assign the chosen labels to the $m$ internal vertices in $m!$ ways.
@@ -123,9 +112,7 @@ The $x$-labels give $m$ pairs and the $y$-labels give another $m$ pairs. Choose 
 
 The number of half-turn-fixed inhabitants is
 $$
-\frac13\binom{3m}{m}2^{3m}m!(2m)!
-=
-\frac{2^{3m}(3m)!}{3}.
+\frac{1}{3}\binom{3m}{m}2^{3m}m!(2m)!=\frac{2^{3m}(3m)!}{3}.
 $$
 Since $m=n/2$, this is
 $$
@@ -136,9 +123,7 @@ Step 5: Count the full cyclic orbits
 
 Step 3 shows that the inhabitants in non-full orbits are exactly those counted in Step 4. The number with orbit size $n$ is therefore
 $$
-\frac{(3n)!}{3}
--
-\frac{2^{3n/2}(3n/2)!}{3}.
+\frac{(3n)!}{3}-\frac{2^{3n/2}(3n/2)!}{3}.
 $$
 Every full orbit contains exactly $n$ inhabitants, so the required number of orbits is
 $$
@@ -159,8 +144,8 @@ $\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}$
 
 | Field | Value |
 |---|---|
-| **Domain** | Logic, Set Theory, and Foundations |
-| **Sub-domain** | Type theory and formal systems |
+| **Domain** | Discrete Mathematics and Combinatorics |
+| **Sub-domain** | Enumerative Combinatorics |
 | **Problem Type** | Exact computation |
 | **Answer Type** | Exact scalar |
 
@@ -170,6 +155,6 @@ $\frac{(3n)!-2^{3n/2}(3n/2)!}{3n}$
 
 - linear lambda calculus
 - beta eta normal forms
-- resource sensitive typing
 - plane binary forests
+- reflection principle
 - cyclic group actions

@@ -39,15 +39,23 @@ and then restoring the binders and tensor components to the displayed index orde
 
 Determine the number of cyclic orbits of size exactly $n$ in $\mathcal N_n$.
 
+---
+
 ## Domain Classification
 
 | Field | Value |
 |---|---|
-| **Domain** | Logic, Set Theory, and Foundations |
-| **Sub-domain** | Type theory and formal systems |
+| **Domain** | Discrete Mathematics and Combinatorics |
+| **Sub-domain** | Enumerative Combinatorics |
 | **Problem Type** | Exact computation |
 | **Answer Type** | Exact scalar |
 
+---
+
 ## Domain Explanation
 
-The problem counts long normal inhabitants in a resource-sensitive typed calculus. Linearity forces every inhabitant to encode a labeled ordered binary forest, and the cyclic symmetry then imposes a second structural constraint on the forest and its resource labels.
+This problem involves counting labeled plane binary forests and cyclic symmetry classes,
+which are part of the Discrete Mathematics and Combinatorics domain and its Enumerative Combinatorics sub-domain.
+The problem also involves linear lambda terms and beta-eta-long normal forms,
+which are part of the Logic, Set Theory, and Foundations domain and its Type theory and formal systems sub-domain.
+However, the typed calculus supplies the objects being counted, while the decisive work is the enumeration of forest shapes and symmetry-fixed configurations.
