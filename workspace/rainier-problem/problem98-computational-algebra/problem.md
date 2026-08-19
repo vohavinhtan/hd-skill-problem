@@ -8,7 +8,7 @@ f(T)=T^6+T^5-5T^4-4T^3+6T^2+3T-1
 $$
 and
 $$
-C(T)=16T^4+24T^3-39T^2-40T+49.
+C(T)=-2T^5+4T^4+14T^3-10T^2-21T+17.
 $$
 Let $K$ be the splitting field of $f$ over $\mathbb{Q}$, let $\theta_1,\ldots,\theta_6$ be the roots of $f$ in any order, and put
 $$
@@ -20,9 +20,9 @@ V=\left(v_{\mathfrak p_i}(c_j)\right)_{\substack{1\leq i\leq s\\1\leq j\leq6}},
 $$
 where $v_{\mathfrak p}(c)$ is the exponent of $\mathfrak p$ in the principal fractional ideal $(c)$. For each integer $n\geq1$, set
 $$
-A_n=\left(V\mid 2^n I_s\right).
+A_n=V^{T}V+2^{n}I_6.
 $$
-Determine the nonzero diagonal block in the Smith normal form of $A_n$ over $\mathbb{Z}$.
+Determine the Smith normal form of $A_n$ over $\mathbb{Z}$.
 
 ---
 
@@ -39,4 +39,4 @@ Determine the nonzero diagonal block in the Smith normal form of $A_n$ over $\ma
 
 ## Domain Explanation
 
-This problem involves constructing an exact integer valuation matrix and reducing it to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves cyclotomic fields and prime-ideal factorization, which are part of Number Theory and Computational number theory. However, those number-field structures are used to construct the matrix, while the requested object is its canonical integer normal form.
+This problem involves constructing an exact integer valuation matrix and determining the Smith normal form of a parameterized Gram matrix, which are part of Abstract Algebra and Computational algebra. The problem also involves cyclotomic fields and prime-ideal factorization, which are part of Number Theory and Computational number theory. However, those number-field structures construct the integer matrix, while the requested object is its canonical form over $\mathbb{Z}$.
