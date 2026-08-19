@@ -1,201 +1,241 @@
 ## Steps
 
-Step 1: Recover the two-stage additive extension
+Step 1: Reveal the hidden rational coordinate
 
-Let $\alpha$ be a root of $F$ and put
+For $X\neq-1$, set
 $$
-y=\alpha^p-z\alpha.
+Y=\frac{X-1}{X+1}.
 $$
-Since $z^p=z$,
+Then
 $$
-y^p-zy=\alpha^{p^2}-2z\alpha^p+z^2\alpha=t.
+(X+1)^{p^2}Y^{p^2}=(X-1)^{p^2},
 $$
-Thus
 $$
-y^p-zy=t,\qquad \alpha^p-z\alpha=y.
+(X+1)^{p^2}Y^p=(X-1)^p(X+1)^{p^2-p},
 $$
-
-We first compute the degree of $K(\alpha)/K$. Let $v_\infty$ be the valuation of $K$ with $v_\infty(t)=-1$, and extend it to a valuation $w$ of $K(y)$. If $e$ is the ramification index, then $w(t)=-e$.
-
-The equation $y^p-zy=t$ forces $w(y)<0$. Hence
+and
 $$
-w(y^p-zy)=pw(y)=-e.
+(X+1)^{p^2}Y=(X-1)(X+1)^{p^2-1}.
 $$
-Therefore $p\mid e$. Since $y$ satisfies a polynomial of degree $p$ over $K$,
+Hence
 $$
-e\leq[K(y):K]\leq p,
+N(X)=(X+1)^{p^2}\left(Y^{p^2}-2zY^p+z^2Y\right).
 $$
-so
+Since $N(-1)=(-2)^{p^2}\neq0$, the point $X=-1$ is not a root of $F$. Thus the roots of $F$ correspond bijectively under
 $$
-[K(y):K]=p.
+X=\frac{1+Y}{1-Y}
 $$
-
-Also $t=y^p-zy$, so $K(y)=\mathbb F_p(y)$. At the pole of $y$ in this rational function field, repeat the same argument with
+to the roots of
 $$
-\alpha^p-z\alpha=y.
-$$
-Any extension of that pole to $K(\alpha)$ has ramification index divisible by $p$, while $\alpha$ has degree at most $p$ over $K(y)$. Hence
-$$
-[K(\alpha):K(y)]=p.
-$$
-Consequently,
-$$
-[K(\alpha):K]=p^2.
+\left(Y^{p^2}-2zY^p+z^2Y\right)^2=t.
 $$
 
-Step 2: Determine the full translation kernel
+Put
+$$
+P(Y)=Y^{p^2}-2zY^p+z^2Y.
+$$
+Because $z\in\mathbb F_p$,
+$$
+P=(\tau-z)^2,
+$$
+where $\tau(c)=c^p$.
 
-The difference of any two roots of $F$ belongs to
+Step 2: Determine the translation kernel and its constant field
+
+Let
 $$
-V=\{u:(u^p-zu)^p-z(u^p-zu)=0\}.
+V=\ker P.
 $$
-Equivalently,
-$$
-V=\ker(\tau-z)^2,
-$$
-where $\tau(u)=u^p$.
+Since $P'(Y)=z^2\neq0$, the kernel has $p^2$ elements and is two-dimensional over $\mathbb F_p$.
 
 Choose $\beta\neq0$ with
 $$
-\beta^p=z\beta.
+\beta^p=z\beta,
 $$
-Such a $\beta$ exists in the algebraic closure. Since $z^3=1$,
-$$
-\beta^{p^3}=\beta.
-$$
-Choose $\gamma$ satisfying
+and choose $\gamma$ with
 $$
 \gamma^p-z\gamma=\beta.
 $$
 Then
 $$
-(\tau-z)^2\gamma=0,
-$$
-while $(\tau-z)\gamma=\beta\neq0$. Hence $\beta,\gamma$ are linearly independent over $\mathbb F_p$.
-
-The polynomial $(\tau-z)^2(X)$ is separable of degree $p^2$, so its kernel has exactly $p^2$ elements. Therefore
-$$
 V=\mathbb F_p\beta\oplus\mathbb F_p\gamma.
 $$
-The roots of $F$ are precisely
-$$
-\alpha+V.
-$$
+Indeed, $\beta,\gamma\in V$ and they are linearly independent because $(\tau-z)\beta=0$ while $(\tau-z)\gamma=\beta\neq0$.
 
-Step 3: Find the minimal constant field containing the kernel
-
-Frobenius acts on the basis $\beta,\gamma$ by
+Frobenius acts by
 $$
 \beta^p=z\beta,\qquad \gamma^p=z\gamma+\beta.
 $$
-For every integer $n\geq1$, induction gives
+Induction gives
 $$
 \gamma^{p^n}=z^n\gamma+nz^{n-1}\beta.
 $$
-Indeed, applying Frobenius to the formula for $n$ gives
-$$
-\gamma^{p^{n+1}}=z^{n+1}\gamma+(n+1)z^n\beta.
-$$
+Therefore $\gamma^{p^n}=\gamma$ precisely when $3\mid n$ and $p\mid n$. Since $p\neq3$, the least such $n$ is $3p$.
 
-Thus $\gamma^{p^n}=\gamma$ exactly when
-$$
-z^n=1
-$$
-and
-$$
-n=0\quad\text{in }\mathbb F_p.
-$$
-The first condition is equivalent to $3\mid n$, and the second to $p\mid n$. Since $p\neq3$, the least positive such $n$ is $3p$. Hence
-$$
-[\mathbb F_p(\gamma):\mathbb F_p]=3p,
-$$
-so
-$$
-\mathbb F_p(\gamma)=\mathbb F_{p^{3p}}.
-$$
-This field also contains $\beta=\gamma^p-z\gamma$. Write
+Thus the smallest finite field containing $V$ is
 $$
 C=\mathbb F_{p^{3p}}.
 $$
-Because every root is $\alpha+i\beta+j\gamma$ with $i,j\in\mathbb F_p$,
-$$
-L=C(\alpha).
-$$
 
-Step 4: Compute the degree of the splitting field
+Step 3: Build the nonconstant part of the splitting field
 
-Since
+Choose $\delta$ satisfying
 $$
-t=(\alpha^p-z\alpha)^p-z(\alpha^p-z\alpha),
+\delta^2=t,
 $$
-we have
+and choose $\alpha$ satisfying
 $$
-K(\alpha)=\mathbb F_p(\alpha).
+P(\alpha)=\delta.
 $$
-This is a rational function field over $\mathbb F_p$, so its constant field is exactly $\mathbb F_p$. Therefore
+Then
 $$
-K(\alpha)\cap C=\mathbb F_p.
+P(-\alpha)=-\delta.
 $$
-Using Step 1 and $[C:\mathbb F_p]=3p$,
+Since every fiber of the additive polynomial $P$ is a coset of $V$, the solutions of
 $$
-[L:K]=[K(\alpha):K][C:\mathbb F_p]=p^2\cdot3p=3p^3.
+P(Y)^2=t
 $$
-
-Step 5: Construct the translation and Frobenius automorphisms
-
-Define $K$-automorphisms $a,b$ of $L$ by fixing $C$ and setting
+are exactly
 $$
-a(\alpha)=\alpha+\beta,\qquad b(\alpha)=\alpha+\gamma.
-$$
-Because $\beta,\gamma\in V$, both images are roots of the same equation as $\alpha$. Hence
-$$
-a^p=b^p=1,\qquad [a,b]=1.
-$$
-
-Define $r$ by
-$$
-r(\alpha)=\alpha,\qquad r(c)=c^p\quad(c\in C).
-$$
-Since $C=\mathbb F_{p^{3p}}$, the automorphism $r$ has order $3p$.
-
-The Frobenius formulas from Step 3 give
-$$
-rar^{-1}(\alpha)=\alpha+\beta^p=\alpha+z\beta=a^z(\alpha),
+\alpha+V
 $$
 and
 $$
-rbr^{-1}(\alpha)=\alpha+\gamma^p=\alpha+\beta+z\gamma=ab^z(\alpha).
+-\alpha+V.
 $$
-All these automorphisms act identically on $C$ where required, so
+Hence the splitting field is
 $$
-rar^{-1}=a^z,\qquad rbr^{-1}=ab^z.
+L=C(\alpha),
+$$
+because $\delta=P(\alpha)$ already lies in $C(\alpha)$.
+
+We now compute the degree of $K(\alpha)/K$. Put
+$$
+u=\alpha^p-z\alpha.
+$$
+Then
+$$
+u^p-zu=\delta,\qquad \delta^2=t.
+$$
+First,
+$$
+[K(\delta):K]=2
+$$
+because $t$ has odd valuation $-1$ at infinity and hence is not a square in $K$.
+
+Over $K(\delta)=\mathbb F_p(\delta)$, the element $\delta$ has a simple pole at infinity. If $w$ extends that valuation to $K(\delta,u)$ with ramification index $e$, then $w(u)<0$ and
+$$
+w(u^p-zu)=pw(u)=-e.
+$$
+Thus $p\mid e$. Since $u$ satisfies a degree-$p$ polynomial,
+$$
+[K(\delta,u):K(\delta)]=p.
 $$
 
-Step 6: Prove that these relations give the full Galois group
+Also $\delta=u^p-zu$, so $K(\delta,u)=\mathbb F_p(u)$. The element $u$ has a simple pole in this rational function field. Applying the same valuation argument to
+$$
+\alpha^p-z\alpha=u
+$$
+gives
+$$
+[K(\alpha):K(\delta,u)]=p.
+$$
+Therefore
+$$
+[K(\alpha):K]=2p^2.
+$$
 
-The relations allow every word in $r,a,b$ to be rewritten in the form
+Step 4: Separate the constant extension
+
+Since
+$$
+t=P(\alpha)^2,
+$$
+we have
+$$
+K(\alpha)=\mathbb F_p(\alpha),
+$$
+a rational function field with constant field exactly $\mathbb F_p$. Hence
+$$
+K(\alpha)\cap C=\mathbb F_p.
+$$
+Using Step 2 and Step 3,
+$$
+[L:K]=[K(\alpha):K][C:\mathbb F_p]=2p^2\cdot3p=6p^3.
+$$
+
+Step 5: Construct the translation subgroup
+
+Define automorphisms $a,b$ fixing $C$ and satisfying
+$$
+a(\alpha)=\alpha+\beta,\qquad b(\alpha)=\alpha+\gamma.
+$$
+Because $\beta,\gamma\in V$, both preserve $P(\alpha)$ and hence fix $t$. Therefore
+$$
+a^p=b^p=1,\qquad [a,b]=1.
+$$
+They generate a subgroup isomorphic to $C_p^2$.
+
+Step 6: Combine the two outer actions into one generator
+
+Let $\varphi$ fix $\alpha$ and act on $C$ by Frobenius:
+$$
+\varphi(c)=c^p.
+$$
+Then $\varphi$ has order $3p$.
+
+Let $\iota$ fix $C$ and send
+$$
+\iota(\alpha)=-\alpha.
+$$
+Since $P(-\alpha)^2=P(\alpha)^2=t$, this is a $K$-automorphism of order $2$.
+
+The automorphisms $\varphi$ and $\iota$ commute. Since $\gcd(2,3p)=1$, the element
+$$
+r=\iota\varphi
+$$
+has order $6p$.
+
+Conjugation by $\varphi$ sends translation by $c\in V$ to translation by $c^p$, while conjugation by $\iota$ sends translation by $c$ to translation by $-c$. Therefore conjugation by $r$ sends translation by $c$ to translation by $-c^p$.
+
+Using
+$$
+\beta^p=z\beta,\qquad \gamma^p=\beta+z\gamma,
+$$
+we obtain
+$$
+rar^{-1}=a^{-z},
+$$
+and
+$$
+rbr^{-1}=a^{-1}b^{-z}.
+$$
+
+Step 7: Close the presentation
+
+The relations obtained so far reduce every word to
 $$
 a^ib^jr^k,
 $$
 where
 $$
-0\leq i,j<p,\qquad 0\leq k<3p.
+0\leq i,j<p,\qquad 0\leq k<6p.
 $$
-The $3p^3$ automorphisms of these forms are distinct. Their restrictions to $C$ distinguish $k$, since $r$ has order $3p$. Once $k$ is fixed, their images of $\alpha$ differ by
-$$
-i\beta+j\gamma,
-$$
-and the linear independence of $\beta,\gamma$ distinguishes $(i,j)$.
+These $6p^3$ automorphisms are distinct. Their restrictions to the cyclic group generated by $r$ distinguish $k$, and after $k$ is fixed, the image of $\alpha$ distinguishes the translation $i\beta+j\gamma$.
 
-They therefore form a subgroup of $\operatorname{Gal}(L/K)$ of order $3p^3$. Step 4 gives $[L:K]=3p^3$, and $L$ is a splitting field of the separable polynomial $F$. Hence this subgroup is the full Galois group.
+Thus the generated subgroup has order $6p^3$. Step 4 gives
+$$
+[L:K]=6p^3,
+$$
+so this subgroup is all of $\operatorname{Gal}(L/K)$.
 
-Final Answer: $\boxed{\langle r,a,b\mid r^{3p}=a^p=b^p=1,\ [a,b]=1,\ rar^{-1}=a^z,\ rbr^{-1}=ab^z\rangle}$
+Final Answer: $\boxed{\langle r,a,b\mid r^{6p}=a^p=b^p=[a,b]=1,\ rar^{-1}=a^{-z},\ rbr^{-1}=a^{-1}b^{-z}\rangle}$
 
 ---
 
 ## Answer
 
-$\langle r,a,b\mid r^{3p}=a^p=b^p=1,\ [a,b]=1,\ rar^{-1}=a^z,\ rbr^{-1}=ab^z\rangle$
+$\langle r,a,b\mid r^{6p}=a^p=b^p=[a,b]=1,\ rar^{-1}=a^{-z},\ rbr^{-1}=a^{-1}b^{-z}\rangle$
 
 ---
 
