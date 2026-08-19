@@ -1,168 +1,204 @@
 ## Steps
 
-Step 1: Reduce the retained words to a two-defect family
+Step 1: Convert the local adjacency condition into three interacting defect blocks
 
-Cut a word immediately before each copy of $L_r$ and write its cyclic run lengths as $a_1,\ldots,a_{2q}$. Put
+Put
 $$
-B_a=L_rR_r^a=\begin{pmatrix}1+ar^2&r\\ar&1\end{pmatrix},
+P=L_rR_r^n=\begin{pmatrix}1+nr^2&r\\nr&1\end{pmatrix},
 \qquad
-P=B_n,\qquad Q=B_{n+1},\qquad X=PQ.
+Q=L_rR_r^{n+1}=\begin{pmatrix}1+(n+1)r^2&r\\(n+1)r&1\end{pmatrix}.
 $$
-Because every $a_i$ is $n$ or $n+1$, let $x$ be the number equal to $n+1$. The prescribed number of copies of $R_r$ gives
+If $x$ of the $2q$ gap lengths equal $n+1$, then the total number of copies of $R_r$ is
 $$
-2qn+x=(2n+1)q,
+n(2q-x)+(n+1)x=2nq+x.
 $$
-so $x=q$. There are therefore $q$ copies each of $P$ and $Q$.
+This equals $(2n+1)q$, so $x=q$. Every retained gap sequence therefore contains $q$ letters $P$ and $q$ letters $Q$.
 
-In any cyclic binary word, the numbers of transitions $PQ$ and $QP$ agree. Since
+For any cyclic binary word with equal numbers of $P$ and $Q$, the numbers of transitions $PQ$ and $QP$ are equal. Hence
 $$
-q=\#(PP)+\#(PQ)=\#(QQ)+\#(QP),
+q=\#(PP)+\#(PQ)=\#(QQ)+\#(QP)
 $$
-the hypothesis $\#(PP)=2$ also forces $\#(QQ)=2$. Each $PP$ is followed immediately by a $QQ$. Between these two $P^2Q^2$ blocks no further equal pair is allowed, so both intervening arcs alternate. With
-$$
-m=q-4,
-$$
-every retained trace is therefore
-$$
-T_j=\operatorname{tr}\left(P^2Q^2X^jP^2Q^2X^{m-j}\right),
-\qquad 0\leq j\leq m.
-$$
-Cyclically interchanging the two defect blocks sends $j$ to $m-j$, so $T_j=T_{m-j}$.
+implies $\#(PP)=\#(QQ)$. There are exactly three $PP$ pairs, so there are exactly three $QQ$ pairs.
 
-Step 2: Isolate the interaction between the two defect blocks
-
-Multiplication of $P$ and $Q$ gives
+Every $PP$ is followed by $QQ$. Such a $PP$ cannot overlap another $PP$, because an overlapping pair would require its third letter to be both $P$ and $Q$. The three blocks
 $$
-X=
-\begin{pmatrix}
-1+(3n+2)r^2+n(n+1)r^4&2r+nr^3\\
-(2n+1)r+n(n+1)r^3&1+nr^2
-\end{pmatrix}.
+D=P^2Q^2
 $$
-Hence $\det X=1$ and $\operatorname{tr}X=\tau$. Subtracting the four entries of $P^2Q^2$ from those of $X^2$ gives
+are therefore disjoint and account for every equal adjacency. Between consecutive copies of $D$ the letters must alternate. With
 $$
-K=X^2-P^2Q^2=
-\begin{pmatrix}
-r^4-r^2&r^3\\
-r^3&r^2
-\end{pmatrix}.
+X=PQ,\qquad m=q-6,
 $$
-The displayed matrices give
+every retained trace has the form
 $$
-\operatorname{tr}K=r^4,\qquad
-\det K=-r^4,\qquad
-\operatorname{tr}(KX)=r^4\tau.
-$$
-
-Since $P^2Q^2=X^2-K$, cyclicity of trace expands $T_j$ as
-$$
-T_j=\operatorname{tr}(X^{m+4})-2\operatorname{tr}(KX^{m+2})+h_j,
-$$
-where
-$$
-h_j=\operatorname{tr}(KX^jKX^{m-j}).
-$$
-The first two terms do not depend on $j$. Ranking the retained traces is therefore exactly the problem of ranking the interaction terms $h_j$.
-
-Step 3: Rank the interaction terms by diagonalizing the unimodular matrix
-
-Since $\tau>2$ and $\det X=1$, the eigenvalues of $X$ are $\lambda$ and $\lambda^{-1}$ with $\lambda>1$. Put
-$$
-\delta=\lambda-\lambda^{-1},
+T(a,b,c)=\operatorname{tr}(DX^aDX^bDX^c),
 \qquad
-\delta^2=\tau^2-4.
+a,b,c\geq0,\qquad a+b+c=m.
+$$
+Conversely, every such product has the required gap counts and exactly the prescribed three $PP$ pairs. The trace-ranking problem has been reduced to integer triples of fixed sum.
+
+Step 2: Extract the spectral interaction carried by the three gaps
+
+Multiplication gives $\det X=1$ and
+$$
+\operatorname{tr}X=\tau.
+$$
+Since $\tau>2$, write the eigenvalues of $X$ as $\lambda,\lambda^{-1}$ with $\lambda>1$, and set
+$$
+\Delta=\lambda-\lambda^{-1},
+\qquad
+\Delta^2=\tau^2-4.
 $$
 In an eigenbasis of $X$, write
 $$
-K=\begin{pmatrix}a&b\\c&d\end{pmatrix}.
-$$
-The three identities from Step 2 become
-$$
-a+d=r^4,
-\qquad
-a\lambda+d\lambda^{-1}=r^4(\lambda+\lambda^{-1}),
-\qquad
-ad-bc=-r^4.
-$$
-Subtracting $\lambda^{-1}(a+d)=r^4\lambda^{-1}$ from the second equation gives
-$$
-a=\frac{r^4\lambda}{\delta},
-\qquad
-d=-\frac{r^4\lambda^{-1}}{\delta}.
-$$
-Therefore
-$$
-bc=ad+r^4
-=\frac{r^4(\tau^2-r^4-4)}{\tau^2-4}.
-$$
-This is positive because $\tau\geq6r^4$ and $r\geq1$.
-
-Multiplying the four entries in the eigenbasis gives
-$$
-h_j=a^2\lambda^m+d^2\lambda^{-m}
-+bc\left(\lambda^{m-2j}+\lambda^{-(m-2j)}\right).
-$$
-For $0\leq j\leq m/2$, the first two terms are fixed, while
-$$
-\lambda^{m-2j}+\lambda^{-(m-2j)}
-$$
-strictly decreases as $j$ increases. Since $bc>0$ and $m\geq4$, the three largest distinct traces are
-$$
-M_{q,1}=T_0,\qquad M_{q,2}=T_1,\qquad M_{q,3}=T_2.
+D=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}.
 $$
 
-Step 4: Compute the two trace spacings
+To determine the signs of these entries, first compute
+$$
+X^2-D=
+\begin{pmatrix}r^4-r^2&r^3\\r^3&r^2\end{pmatrix}=K.
+$$
+Since $\operatorname{tr}(X^2)=\tau^2-2$ and $\operatorname{tr}K=r^4$,
+$$
+d:=\operatorname{tr}D=\tau^2-r^4-2.
+$$
+Also $\operatorname{tr}(KX)=r^4\tau$, while Cayley-Hamilton gives $\operatorname{tr}(X^3)=\tau^3-3\tau$. Hence
+$$
+e:=\operatorname{tr}(DX)=\tau^3-3\tau-r^4\tau=\tau(d-1).
+$$
+
+In the eigenbasis,
+$$
+\alpha+\delta=d,\qquad
+\alpha\lambda+\delta\lambda^{-1}=e.
+$$
+Thus
+$$
+\alpha=\frac{\lambda(d-1)-\lambda^{-1}}{\Delta}>0.
+$$
+Moreover,
+$$
+d\tau-e=\alpha\lambda^{-1}+\delta\lambda.
+$$
+Multiplying this identity by $e$ gives
+$$
+e(d\tau-e)=d^2+\alpha\delta(\tau^2-4).
+$$
+Since $\det D=1$,
+$$
+\beta\gamma=\alpha\delta-1
+=\frac{r^4(\tau^2-r^4-4)}{\tau^2-4}>0.
+$$
+It follows from $\alpha\delta=1+\beta\gamma$ and $\alpha>0$ that $\delta>0$ as well.
+
+Step 3: Rank all triples by a strictly convex spectral quantity
+
+Expanding the trace in the eigenbasis gives
+$$
+T(a,b,c)=
+\alpha^3\lambda^m+\delta^3\lambda^{-m}
++\beta\gamma\left(
+\alpha\sum_{\mathrm{cyc}}\lambda^{m-2a}
++\delta\sum_{\mathrm{cyc}}\lambda^{2a-m}
+\right).
+$$
+The first two terms are fixed when $a+b+c=m$. The remaining part is
+$$
+\beta\gamma\bigl(f(a)+f(b)+f(c)\bigr),
+$$
+where
+$$
+f(x)=\alpha\lambda^{m-2x}+\delta\lambda^{2x-m}.
+$$
+Both coefficients are positive, and
+$$
+f''(x)=4(\log\lambda)^2
+\left(\alpha\lambda^{m-2x}+\delta\lambda^{2x-m}\right)>0.
+$$
+Thus $f$ is strictly convex.
+
+For integers $y\geq x\geq1$, strict convexity implies
+$$
+f(y+1)+f(x-1)>f(y)+f(x).
+$$
+Transferring one unit from a smaller positive component to a larger one therefore strictly raises $T$. Starting from any triple and repeating such transfers shows that the largest value occurs at a permutation of
+$$
+(m,0,0).
+$$
+After this triple is excluded, the largest remaining one is a permutation of
+$$
+(m-1,1,0).
+$$
+If neither of these occurs, the largest component is at most $m-2$. When it is $m-2$, the remaining sum is $2$, and strict convexity ranks $(2,0)$ above $(1,1)$. If the largest component is smaller, a transfer raises the trace until this boundary is reached. Since $m=q-6\geq4$, the three largest distinct traces correspond exactly to
+$$
+(m,0,0),\qquad(m-1,1,0),\qquad(m-2,2,0).
+$$
+
+Step 4: Convert the three trace levels to a second-order recurrence
+
+For
+$$
+T_k=T(m-k,k,0),
+$$
+the expansion from Step 3 becomes
+$$
+T_k=C_m+\beta\gamma(\alpha+\delta)
+\left(\lambda^{m-2k}+\lambda^{-(m-2k)}\right),
+$$
+where $C_m$ does not depend on $k$.
 
 Define
 $$
-u_0=1,\qquad u_1=\tau,\qquad u_{k+1}=\tau u_k-u_{k-1}.
+u_0=1,\qquad u_1=\tau,\qquad u_{j+1}=\tau u_j-u_{j-1}.
 $$
-The eigenvalue formula is
+Then
 $$
-u_k=\frac{\lambda^{k+1}-\lambda^{-(k+1)}}{\delta}.
+u_j=\frac{\lambda^{j+1}-\lambda^{-(j+1)}}{\Delta}.
 $$
-For $d\geq2$,
+For $s\geq2$,
 $$
-\lambda^d+\lambda^{-d}
--\lambda^{d-2}-\lambda^{-(d-2)}
-=\delta^2u_{d-2}.
+\lambda^s+\lambda^{-s}
+-\lambda^{s-2}-\lambda^{-(s-2)}
+=\Delta^2u_{s-2}.
 $$
-Using the expression for $h_j$ from Step 3,
+Since
 $$
-h_j-h_{j+1}
-=r^4(\tau^2-r^4-4)u_{m-2j-2}.
+\beta\gamma(\alpha+\delta)\Delta^2
+=r^4(\tau^2-r^4-4)(\tau^2-r^4-2)=\kappa,
 $$
-Since $m=q-4$,
+the rankings in Step 3 give
 $$
-M_{q,1}-M_{q,2}
-=r^4(\tau^2-r^4-4)u_{q-6},
+M_{q,1}-M_{q,2}=\kappa u_{m-2},
 $$
 and
 $$
-M_{q,2}-M_{q,3}
-=r^4(\tau^2-r^4-4)u_{q-8}.
+M_{q,2}-M_{q,3}=\kappa u_{m-4}.
 $$
-Hence
+Therefore
 $$
 (M_{q,1}-M_{q,2})(M_{q,1}-M_{q,3})
-=r^8(\tau^2-r^4-4)^2u_{q-6}(u_{q-6}+u_{q-8}).
+=\kappa^2u_{m-2}(u_{m-2}+u_{m-4}).
+$$
+Putting $k=q-10$ gives $m=k+4$, so the coefficient of $t^k$ is
+$$
+\kappa^2u_{k+2}(u_{k+2}+u_k).
 $$
 
-Step 5: Sum the recurrence products and reduce the rational function
+Step 5: Sum the coefficient sequence and certify reduced form
 
-Put $k=q-8$ and
+Set
 $$
 v_k=u_ku_{k+2}.
 $$
-Substitution of $u_{k+2}=\tau u_{k+1}-u_k$ shows that
+Substituting the recurrence shows that
 $$
 u_{k+1}^2-u_ku_{k+2}
 $$
-is independent of $k$; at $k=0$ it equals $1$. Thus
+has the same value for consecutive $k$. At $k=0$ it equals $1$, so
 $$
 u_{k+1}^2-v_k=1.
 $$
-A second substitution into the recurrence gives
+A second substitution gives
 $$
 v_{k+1}-(\tau^2-2)v_k+v_{k-1}=\tau^2-2
 \qquad(k\geq1),
@@ -173,42 +209,32 @@ v_0=\tau^2-1,
 \qquad
 v_1=\tau^2(\tau^2-2).
 $$
-For $V(t)=\sum_{k\geq0}v_kt^k$, summing this recurrence yields
+For $V(t)=\sum_{k\geq0}v_kt^k$, summing the recurrence yields
 $$
-V(t)=
-\frac{\tau^2-1-t}
-{(1-t)(1-(\tau^2-2)t+t^2)}.
+V(t)=\frac{\tau^2-1-t}{(1-t)(1-(\tau^2-2)t+t^2)}.
 $$
-
-The identity $u_{k+2}^2=v_{k+1}+1$ also gives
+Since $u_{k+2}^2=v_{k+1}+1$,
 $$
 \sum_{k\geq0}u_{k+2}^2t^k
 =\frac{V(t)-(\tau^2-1)}{t}+\frac{1}{1-t}.
 $$
-Adding $V(t)$ and taking a common denominator produces
+Adding $V(t)$ gives
 $$
 \sum_{k\geq0}u_{k+2}(u_{k+2}+u_k)t^k
 =
 \frac{\tau^2((\tau^2-1)(1-t)+t^2)}
 {(1-t)(1-(\tau^2-2)t+t^2)}.
 $$
-The numerator does not vanish at $t=1$. If the two quadratic factors
-$$
-t^2-(\tau^2-1)t+\tau^2-1
-$$
-and
-$$
-t^2-(\tau^2-2)t+1
-$$
-had a common root, subtracting them would force $t=\tau^2-2$, while substitution into the second gives $1$. No cancellation is possible.
 
-Final Answer: $\boxed{\frac{r^8(\tau^2-r^4-4)^2\tau^2((\tau^2-1)(1-t)+t^2)}{(1-t)(1-(\tau^2-2)t+t^2)}}$
+The numerator factor $(\tau^2-1)(1-t)+t^2$ equals $1$ at $t=1$. If it and $1-(\tau^2-2)t+t^2$ had a common root, subtracting the two quadratics would give $t=\tau^2-2$; substitution into the denominator quadratic gives $1$. The displayed fraction is reduced.
+
+Final Answer: $\boxed{\frac{\kappa^2\tau^2((\tau^2-1)(1-t)+t^2)}{(1-t)(1-(\tau^2-2)t+t^2)}}$
 
 ---
 
 ## Answer
 
-$\frac{r^8(\tau^2-r^4-4)^2\tau^2((\tau^2-1)(1-t)+t^2)}{(1-t)(1-(\tau^2-2)t+t^2)}$
+$\frac{\kappa^2\tau^2((\tau^2-1)(1-t)+t^2)}{(1-t)(1-(\tau^2-2)t+t^2)}$
 
 ---
 
@@ -223,7 +249,7 @@ $\frac{r^8(\tau^2-r^4-4)^2\tau^2((\tau^2-1)(1-t)+t^2)}{(1-t)(1-(\tau^2-2)t+t^2)}
 ## Solution Concepts
 
 - cyclic run-length encoding
-- interaction of matrix defects
-- eigenvalue decomposition of unimodular matrices
-- second-order trace recurrence
+- defect-block decomposition
+- spectral trace expansion
+- strict convexity and majorization
 - rational generating functions
