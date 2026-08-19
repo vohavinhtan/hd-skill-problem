@@ -1,48 +1,33 @@
+```markdown id="qh91pg"
 # Normalized Math Problem
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime, let $t$ be transcendental over $\mathbb F_p$, and put
+Let $p\geq5$ be a prime and let $x$ be transcendental over $\mathbb F_p$. Put
 $$
-K=\mathbb F_p(t).
-$$
-
-Choose
-$$
-\lambda\in\mathbb F_{p^3}\setminus\mathbb F_p
-$$
-and put
-$$
-\lambda_i=\lambda^{p^i},
-\qquad
-x_i=t-\lambda_i
-$$
-for $i\in\mathbb Z/3\mathbb Z$.
-
-Define
-$$
-a_i=
-2x_i^{-2}-x_{i-1}^{-2}
-+4x_i^{-1}-x_{i-2}^{-1},
+L=\mathbb F_p(x)
 $$
 and
 $$
-F_p(X)=
-\prod_{i=0}^{2}
-\left(X^p-X-a_i\right).
+J=
+\frac{(x^{p^2}-x)^{p+1}}
+{(x^p-x)^{p^2+1}}.
 $$
-The three factors are cyclically permuted by
+Set
 $$
-\operatorname{Gal}(\mathbb F_{p^3}/\mathbb F_p),
+K=\mathbb F_p(J),
 $$
-so
+and define the intermediate fields
 $$
-F_p(X)\in K[X].
+E=K(x^p-x),
+\qquad
+F=K(x^{-p}-x^{-1}).
 $$
 
-Let $L_p$ be the splitting field of $F_p(X)$ over $K$.
-
-Determine the genus of the function field $L_p$.
+Determine
+$$
+[EF:E\cap F].
+$$
 
 ---
 
@@ -59,4 +44,4 @@ Determine the genus of the function field $L_p$.
 
 ## Domain Explanation
 
-The polynomial descends from three Artin-Schreier equations over a cubic constant extension. The splitting field itself must first be shown to recover that constant field. The three Artin-Schreier classes satisfy a characteristic-dependent global relation controlled by the determinant $7$, while at each branch point their local images have dimension two with two different conductor levels. The genus follows only after combining the global rank calculation with the local different contributions.
+The displayed rational invariant hides the full projective linear action on a rational function field. The two intermediate fields are fixed fields of opposite unipotent subgroups. Their compositum is controlled by the intersection of those subgroups, whereas their field intersection is controlled by the subgroup they generate, which is the index-two projective special linear subgroup.
