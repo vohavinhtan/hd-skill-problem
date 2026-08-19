@@ -18,7 +18,7 @@ Substituting the recurrence into this relation gives
 $$
 \theta^6+\theta^5-5\theta^4-4\theta^3+6\theta^2+3\theta-1=0.
 $$
-The field $\mathbb{Q}(\zeta)$ has degree $12$, while $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb{Q}(\theta)$. Hence $[\mathbb{Q}(\theta):\mathbb{Q}]\geq6$. Since the displayed polynomial has degree $6$, it is the minimal polynomial of $\theta$. Its six roots are the real cyclotomic conjugates, so its splitting field is
+The field $\mathbb{Q}(\zeta)$ has degree $12$, while $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb{Q}(\theta)$. This gives $[\mathbb{Q}(\theta):\mathbb{Q}]\geq6$. Since the displayed polynomial has degree $6$, it is the minimal polynomial of $\theta$. Its six roots are the real cyclotomic conjugates, so its splitting field is
 $$
 K=\mathbb{Q}(\theta),
 $$
@@ -44,7 +44,7 @@ The prime $233$ is different from the conductor prime $13$, so it is unramified 
 $$
 (\mathbb{Z}/13\mathbb{Z})^\times/\{\pm1\}
 $$
-is the class of $233\equiv-1\pmod{13}$, which is the identity. Hence $233$ splits completely in $K$.
+is the class of $233\equiv-1\pmod{13}$, which is the identity. It follows that $233$ splits completely in $K$.
 
 Each $u_i$ is an algebraic integer with
 $$
@@ -127,7 +127,7 @@ $$
 0&1&1&0
 \end{pmatrix}=-1.
 $$
-Hence the first five determinantal divisors are all $1$, while the sixth is $|\det V|=8$. The Smith normal form of $V$ is
+The first five determinantal divisors are all $1$, while the sixth is $|\det V|=8$. The Smith normal form of $V$ is
 $$
 D=\operatorname{diag}(1,1,1,1,1,8).
 $$
