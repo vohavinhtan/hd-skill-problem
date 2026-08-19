@@ -2,30 +2,20 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime and let
+Let $p\geq5$ be a prime, let $t$ be transcendental over $\mathbb F_p$, and put
 $$
-K=\mathbb F_p(s,t),
+K=\mathbb F_p(t).
 $$
-where $s,t$ are algebraically independent over $\mathbb F_p$.
 
-In an algebraic closure of $K$, let $u,v$ be the unique elements satisfying
+Let $L_p$ be the splitting field over $K$ of
 $$
-u^{p^3}=s+t^p,
-\qquad
-v^{p^3}=t+s^p.
-$$
-Define
-$$
-E=K\left(u+v,\ u^{p^2}+2v^{p^2}\right)
-$$
-and
-$$
-F=K\left(u+2v,\ u^p+3v^p\right).
+F_p(X)=
+X^8-4tX^6+(6t^2-2t)X^4+(4t^2-4t^3)X^2+t^4-2t^3+t^2-t.
 $$
 
 Determine
 $$
-[E\cap F:K].
+[L_p:K].
 $$
 
 ---
@@ -43,4 +33,4 @@ $$
 
 ## Domain Explanation
 
-The two extensions are mixed subfields of the same purely inseparable radical tower. Determining their intersection requires first detecting a hidden change of p-basis, then recovering different levels of the radical tower from the mixed generators, and finally using differentials to rule out an additional common degree-p layer.
+The degree-eight polynomial conceals an iterated quadratic map. Its successive splitting fields form multiquadratic layers, but maximal growth at the final layer is not visible from the first two. Proving the final independence requires locating a new valuation from the critical orbit and transferring it among the conjugate third-level radicands.
