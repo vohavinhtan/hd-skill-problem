@@ -58,7 +58,7 @@ Determine $H_{n,r}(t)$ as an explicit reduced rational function of $t$, with den
 | Field | Value |
 |---|---|
 | **Domain** | Discrete Mathematics and Combinatorics |
-| **Sub-domain** | Enumerative combinatorics |
+| **Sub-domain** | Generating functions |
 | **Problem Type** | Symbolic derivation |
 | **Answer Type** | Polynomial or rational function |
 
@@ -66,8 +66,8 @@ Determine $H_{n,r}(t)$ as an explicit reduced rational function of $t$, with den
 
 ## Domain Explanation
 
-This problem involves cyclic words, constrained gap sequences, and extremal combinatorial arrangements,
-which are part of Discrete Mathematics and Combinatorics and Enumerative combinatorics.
-The problem also involves traces and products of matrices,
+This problem involves rational generating functions arising from constrained cyclic word sequences,
+which are part of Discrete Mathematics and Combinatorics and Generating functions.
+The problem also involves traces, products, and recurrences of small matrices,
 which are part of Linear Algebra and Matrices and matrix operations.
-However, the matrix calculations encode the combinatorial structure and are less central than the classification and generating function of the extremal gap patterns.
+However, the matrix calculations are auxiliary tools for deriving the coefficient sequence, while the requested object and final structural reduction are a rational generating function.
