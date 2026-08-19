@@ -16,7 +16,7 @@ P(X)=X^{p^2}-2zX^p+z^2X.
 $$
 Let $L$ be the splitting field over $K$ of
 $$
-F(X)=P(X)^2-sP(X)+1.
+F(X)=P(X)^3-sP(X)^2+(s-3)P(X)+1.
 $$
 
 Determine the exact degree $[L:K]$.
@@ -36,8 +36,8 @@ Determine the exact degree $[L:K]$.
 
 ## Domain Explanation
 
-This problem involves splitting fields, constant-field extensions, ramification, and intersections of Galois extensions,
+This problem involves splitting fields, cyclic function-field extensions, constant-field extensions, and ramification,
 which are part of Abstract Algebra and Field theory.
-The problem also involves finite-field Frobenius actions and congruences,
-which are part of Number Theory and modular arithmetic and congruences.
-However, the congruence controls the constant translation kernel, while the main difficulty is determining the degree of the full splitting field by proving that two coupled additive extensions are independent.
+The problem also involves finite-field Frobenius actions and rational transformations,
+which are part of Number Theory and algebraic function theory.
+However, those ingredients control the hidden outer cubic and the translation kernel, while the main task is to reconstruct the full field tower and prove the required extensions are independent.

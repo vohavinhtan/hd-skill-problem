@@ -1,55 +1,69 @@
 ## Steps
 
-Step 1: Split the outer quadratic without splitting the additive fibers
+Step 1: Reconstruct the hidden cyclic cubic extension
 
-Since
+Set
 $$
-z^2+z+1=0,
+H(T)=T^3-sT^2+(s-3)T+1.
 $$
-we have $z^3=1$ and $z\neq1$. Also $p\neq3$.
+Let $t$ be a root of $H$. Solving $H(t)=0$ for $s$ gives
+$$
+s=\frac{t^3-3t+1}{t(t-1)}.
+$$
+The rational function on the right has degree $3$, so
+$$
+[\mathbb F_p(t):\mathbb F_p(s)]=3.
+$$
 
-Let $t$ satisfy
+Define
 $$
-t^2-st+1=0.
+\sigma(t)=\frac{1}{1-t}.
 $$
 Then
 $$
-s=t+t^{-1}.
+\sigma^2(t)=\frac{t-1}{t},\qquad \sigma^3(t)=t.
 $$
-The element $s^2-4$ is not a square in $\mathbb F_p(s)$: it has simple zeros at $s=2$ and $s=-2$. Therefore
+Direct calculation gives
 $$
-[\mathbb F_p(t):K]=2.
+t+\frac{1}{1-t}+\frac{t-1}{t}=s,
 $$
-Moreover $\mathbb F_p(t)$ is a rational function field, because $s=t+t^{-1}$.
-
-Over $\mathbb F_p(t)$,
 $$
-F(X)=\left(P(X)-t\right)\left(P(X)-t^{-1}\right).
-$$
-The splitting field must therefore contain the splitting fields of both additive equations
-$$
-P(X)=t
+\frac{t}{1-t}+t-1-\frac{1}{t}=s-3,
 $$
 and
 $$
-P(X)=t^{-1}.
+t\frac{1}{1-t}\frac{t-1}{t}=-1.
+$$
+Hence the three roots of $H$ are
+$$
+t,\qquad \frac{1}{1-t},\qquad \frac{t-1}{t}.
+$$
+Thus
+$$
+E=\mathbb F_p(t)
+$$
+is already the splitting field of $H$ over $K$, and
+$$
+[E:K]=3.
 $$
 
-Step 2: Determine the translation kernel and the constants it forces
+Step 2: Determine the constant field forced by the additive kernel
 
-The polynomial $P$ satisfies
+Since $z^3=1$ and $z\neq1$,
 $$
 P=(\tau-z)^2,
 $$
-where $\tau(c)=c^p$. Its derivative is
+where $\tau(c)=c^p$.
+
+Let
+$$
+V=\ker P.
+$$
+Because
 $$
 P'(X)=z^2\neq0,
 $$
-so its kernel
-$$
-V=\ker P
-$$
-has $p^2$ distinct elements and is two-dimensional over $\mathbb F_p$.
+the space $V$ has $p^2$ elements.
 
 Choose $\beta\neq0$ with
 $$
@@ -59,11 +73,10 @@ and choose $\gamma$ with
 $$
 \gamma^p-z\gamma=\beta.
 $$
-Then $\beta,\gamma\in V$ and are linearly independent, so
+Then
 $$
 V=\mathbb F_p\beta\oplus\mathbb F_p\gamma.
 $$
-
 Frobenius acts by
 $$
 \beta^p=z\beta,\qquad \gamma^p=z\gamma+\beta.
@@ -72,120 +85,152 @@ Induction gives
 $$
 \gamma^{p^n}=z^n\gamma+nz^{n-1}\beta.
 $$
-Therefore $\gamma^{p^n}=\gamma$ exactly when $3\mid n$ and $p\mid n$. The least positive such $n$ is $3p$. Hence the smallest finite field containing $V$ is
+Therefore $\gamma^{p^n}=\gamma$ exactly when $3\mid n$ and $p\mid n$. Since $p\neq3$, the least positive such $n$ is $3p$. Hence the smallest constant field containing $V$ is
 $$
-C=\mathbb F_{p^{3p}}.
+C=\mathbb F_{p^{3p}},
 $$
-In particular,
+and
 $$
 [C:\mathbb F_p]=3p.
 $$
 
-Step 3: Compute the degree of each additive fiber
-
-Work over
+The rational function field $E=\mathbb F_p(t)$ has constant field $\mathbb F_p$, so
 $$
-E=C(t).
+C\cap E=\mathbb F_p.
 $$
-Choose $\alpha$ with
+Consequently, for
 $$
-P(\alpha)=t.
+B=C(t)
 $$
-Put
+we have
 $$
-u=\alpha^p-z\alpha.
-$$
-Then
-$$
-u^p-zu=t,\qquad \alpha^p-z\alpha=u.
+[B:K]=[C:\mathbb F_p][E:K]=9p.
 $$
 
-At the pole $t=\infty$, the first equation gives a degree-$p$ totally ramified extension. Indeed, if $w$ extends the pole valuation and $e$ is its ramification index, then $w(u)<0$ and
-$$
-pw(u)=-e.
-$$
-So $p\mid e$, while $u$ has degree at most $p$. The degree and ramification index are therefore both $p$.
+Step 3: Identify the three additive fibers
 
-Since $t=u^p-zu$, the field $C(t,u)$ equals $C(u)$. The element $u$ has a simple pole in this rational function field. Applying the same valuation argument to
+Over $B$, the outer cubic splits, so
 $$
-\alpha^p-z\alpha=u
+F(X)=
+\left(P(X)-t\right)
+\left(P(X)-\frac{1}{1-t}\right)
+\left(P(X)-\frac{t-1}{t}\right).
 $$
-gives another totally ramified degree-$p$ extension. Consequently
+Choose $x_0,x_1,x_2$ satisfying
 $$
-[E(\alpha):E]=p^2.
+P(x_0)=t,
 $$
-
-Choose $\eta$ with
 $$
-P(\eta)=t^{-1}.
-$$
-The same argument at the place $t=0$, where $t^{-1}$ has a simple pole, gives
-$$
-[E(\eta):E]=p^2.
-$$
-
-Because $C$ contains $V$, both extensions are Galois over $E$, with translation group isomorphic to $V$.
-
-Step 4: Prove that the two degree-$p^2$ extensions are linearly disjoint
-
-The extension $E(\alpha)/E$ is totally ramified at $t=\infty$. At every finite place where $t$ has no pole, both equations
-$$
-u^p-zu=t,\qquad \alpha^p-z\alpha=u
-$$
-have derivative $-z$, a unit. Their defining integral polynomials therefore have unit discriminant locally, so $E(\alpha)/E$ is unramified at $t=0$.
-
-Similarly, $E(\eta)/E$ is totally ramified at $t=0$ and unramified at $t=\infty$.
-
-Let
-$$
-M=E(\alpha)\cap E(\eta).
-$$
-If $M\neq E$, then $M/E$, as a nontrivial subextension of the totally ramified Galois extension $E(\alpha)/E$, is ramified at $t=\infty$. But $M$ is also a subextension of $E(\eta)/E$, which is unramified at $t=\infty$. This is impossible.
-
-Therefore
-$$
-E(\alpha)\cap E(\eta)=E,
+P(x_1)=\frac{1}{1-t},
 $$
 and
 $$
-[E(\alpha,\eta):E]=p^4.
+P(x_2)=\frac{t-1}{t}.
+$$
+Since $V\subset C$, every root in the corresponding fiber is $x_i+v$ with $v\in V$. Hence
+$$
+L=B(x_0,x_1,x_2).
 $$
 
-Step 5: Assemble the full splitting field degree
-
-Every root of $P(X)-t$ is
+The three right-hand sides have simple poles at three different places:
 $$
-\alpha+v,\qquad v\in V,
-$$
-and every root of $P(X)-t^{-1}$ is
-$$
-\eta+v,\qquad v\in V.
-$$
-Since $V\subset C$, the splitting field is
-$$
-L=C(t,\alpha,\eta).
+t\text{ at }\infty,\qquad
+\frac{1}{1-t}\text{ at }t=1,\qquad
+\frac{t-1}{t}\text{ at }t=0.
 $$
 
-The constant extension and the quadratic rational-function extension are disjoint:
+Step 4: Compute the first additive degree
+
+Consider the pole at $t=\infty$. If $w$ is a valuation of $B(x_0)$ above it and $e$ is the ramification index, then $w(x_0)<0$. Since the highest term of $P(x_0)$ dominates,
 $$
-C\cap\mathbb F_p(t)=\mathbb F_p.
+w(P(x_0))=p^2w(x_0)=-e.
 $$
 Therefore
 $$
-[C(t):K]=[C:\mathbb F_p][\mathbb F_p(t):K]=3p\cdot2=6p.
+p^2\mid e.
 $$
-Using Step 4,
+But $x_0$ satisfies a polynomial of degree $p^2$, so
 $$
-[L:K]=[L:C(t)][C(t):K]=p^4\cdot6p=6p^5.
+e\leq[B(x_0):B]\leq p^2.
+$$
+Thus
+$$
+[B(x_0):B]=p^2,
+$$
+and the place at infinity is totally ramified.
+
+At $t=0$ and $t=1$, the right-hand side $t$ is regular. Since the derivative of $P(X)-t$ with respect to $X$ is the nonzero constant $z^2$, the extension $B(x_0)/B$ is unramified at those two places.
+
+Step 5: Force independence of the second fiber
+
+At $t=1$, the extension $B(x_0)/B$ is unramified. Hence every valuation above $t=1$ still gives the function
+$$
+\frac{1}{1-t}
+$$
+a pole whose order is prime to $p$.
+
+Let $w$ be a valuation of $B(x_0,x_1)$ above such a place, and let $e$ be its ramification index over $B(x_0)$. The equation
+$$
+P(x_1)=\frac{1}{1-t}
+$$
+forces $w(x_1)<0$, and comparison of pole orders gives
+$$
+p^2w(x_1)=-e.
+$$
+Therefore $p^2\mid e$. Since $x_1$ has degree at most $p^2$,
+$$
+[B(x_0,x_1):B(x_0)]=p^2.
+$$
+Thus
+$$
+[B(x_0,x_1):B]=p^4.
 $$
 
-Final Answer: $\boxed{6p^5}$
+Both first two fibers are unramified at $t=0$, because their right-hand sides are regular there.
+
+Step 6: Force independence of the third fiber
+
+At every place of $B(x_0,x_1)$ above $t=0$, the function
+$$
+\frac{t-1}{t}
+$$
+has a pole whose order is prime to $p$.
+
+Applying the same valuation argument to
+$$
+P(x_2)=\frac{t-1}{t}
+$$
+shows that the ramification index contributed by adjoining $x_2$ is divisible by $p^2$. Since the defining polynomial has degree $p^2$,
+$$
+[B(x_0,x_1,x_2):B(x_0,x_1)]=p^2.
+$$
+Therefore
+$$
+[L:B]=p^6.
+$$
+
+Step 7: Assemble the full degree
+
+Step 2 gives
+$$
+[B:K]=9p,
+$$
+while Step 6 gives
+$$
+[L:B]=p^6.
+$$
+Hence
+$$
+[L:K]=9p\cdot p^6=9p^7.
+$$
+
+Final Answer: $\boxed{9p^7}$
 
 ---
 
 ## Answer
 
-$6p^5$
+$9p^7$
 
 ---
 
@@ -205,6 +250,6 @@ $6p^5$
 
 - splitting fields
 - additive polynomials
+- cyclic function-field extensions
 - ramification of function fields
 - finite-field Frobenius
-- linear disjointness
