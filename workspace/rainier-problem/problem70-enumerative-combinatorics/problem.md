@@ -57,8 +57,8 @@ Determine $H_{n,r}(t)$ as an explicit reduced rational function of $t$, with den
 
 | Field | Value |
 |---|---|
-| **Domain** | Linear Algebra |
-| **Sub-domain** | Matrices and matrix operations |
+| **Domain** | Discrete Mathematics and Combinatorics |
+| **Sub-domain** | Enumerative combinatorics |
 | **Problem Type** | Symbolic derivation |
 | **Answer Type** | Polynomial or rational function |
 
@@ -66,4 +66,8 @@ Determine $H_{n,r}(t)$ as an explicit reduced rational function of $t$, with den
 
 ## Domain Explanation
 
-The trace maximization first forces a balanced run structure in a family of noncommuting matrix products. The restricted lower trace then depends on the cyclic separation of the two defects. Solving the problem requires deriving the defect trace formula, optimizing a product of continuant terms over that separation, and converting the resulting parity-dependent extremal sequence into one rational generating function.
+This problem involves cyclic words, constrained gap sequences, and extremal combinatorial arrangements,
+which are part of Discrete Mathematics and Combinatorics and Enumerative combinatorics.
+The problem also involves traces and products of matrices,
+which are part of Linear Algebra and Matrices and matrix operations.
+However, the matrix calculations encode the combinatorial structure and are less central than the classification and generating function of the extremal gap patterns.
