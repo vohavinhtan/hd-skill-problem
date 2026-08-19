@@ -10,19 +10,27 @@ and
 $$
 C(T)=-2T^5+4T^4+14T^3-10T^2-21T+17.
 $$
-Let $K$ be the splitting field of $f$ over $\mathbb{Q}$, let $\theta_1,\ldots,\theta_6$ be the roots of $f$ in any order, and put
+Let $K$ be the splitting field of $f$ over $\mathbb{Q}$, and write its six real roots in increasing order as
+$$
+\theta_1<\theta_2<\cdots<\theta_6.
+$$
+Put
 $$
 c_j=C(\theta_j)\qquad(1\leq j\leq6).
 $$
-Let $\mathfrak p_1,\ldots,\mathfrak p_s$ be all prime ideals of $\mathcal O_K$ above $233$. Form the integer matrix
+Let $\mathfrak p_1,\ldots,\mathfrak p_s$ be all prime ideals of $\mathcal O_K$ above $233$, and form
 $$
 V=\left(v_{\mathfrak p_i}(c_j)\right)_{\substack{1\leq i\leq s\\1\leq j\leq6}},
 $$
-where $v_{\mathfrak p}(c)$ is the exponent of $\mathfrak p$ in the principal fractional ideal $(c)$. For each integer $n\geq1$, set
+where $v_{\mathfrak p}(c)$ is the exponent of $\mathfrak p$ in the principal fractional ideal $(c)$. Let $e_1,\ldots,e_6$ be the standard basis of $\mathbb Z^6$. For each integer $n\geq1$, set
 $$
-A_n=V^{T}V+2^{n}I_6.
+A_n=
+\begin{pmatrix}
+V^TV+2^nI_6&e_1+e_3\\
+(e_1+e_3)^T&0
+\end{pmatrix}.
 $$
-Determine the Smith normal form of $A_n$ over $\mathbb{Z}$.
+Determine the Smith normal form of $A_n$ over $\mathbb Z$.
 
 ---
 
@@ -39,4 +47,4 @@ Determine the Smith normal form of $A_n$ over $\mathbb{Z}$.
 
 ## Domain Explanation
 
-This problem involves constructing an exact integer valuation matrix and determining the Smith normal form of a parameterized Gram matrix, which are part of Abstract Algebra and Computational algebra. The problem also involves cyclotomic fields and prime-ideal factorization, which are part of Number Theory and Computational number theory. However, those number-field structures construct the integer matrix, while the requested object is its canonical form over $\mathbb{Z}$.
+This problem involves constructing an exact valuation matrix and reducing a bordered integer presentation matrix to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves cyclotomic fields and prime-ideal factorization, which are part of Number Theory and Computational number theory. However, those number-field structures determine the entries of the presentation matrix, while the requested object is its canonical form over $\mathbb Z$.
