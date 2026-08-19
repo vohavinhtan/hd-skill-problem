@@ -1,324 +1,341 @@
-```markdown id="zmy91p"
 ## Steps
 
-Step 1: Recover the projective linear Galois action
+Step 1: Recover the hidden dihedral group
 
-Let
+Choose a generator
 $$
-G=\operatorname{PGL}_2(\mathbb F_p)
+\zeta\in\mathbb F_p^\times
 $$
-act on $L=\mathbb F_p(x)$ by
+and put
 $$
-g(x)=\frac{ax+b}{cx+d},
+\eta=\zeta^2.
 $$
-where
+Then $\eta$ has order
 $$
-g=
-\begin{bmatrix}
-a&b\\
-c&d
-\end{bmatrix}.
+q=\frac m2.
 $$
 
-For
+Define automorphisms of $L$ by
 $$
-\Delta=ad-bc,
+\rho(x)=\eta x,
+\qquad
+\rho(y)=\eta^{-1}y,
 $$
-direct calculation gives
+and
 $$
-g(x)^{p^r}-g(x)
-=
-\frac{\Delta(x^{p^r}-x)}
-{(cx+d)^{p^r}(cx+d)}
+\tau(x)=y,
+\qquad
+\tau(y)=x.
 $$
-for $r=1,2$.
-
+They preserve
+$$
+x^m+y^m=1
+$$
+because
+$$
+\eta^m=1.
+$$
+Moreover
+$$
+\rho^q=1,
+\qquad
+\tau^2=1,
+\qquad
+\tau\rho\tau=\rho^{-1}.
+$$
 Hence
 $$
-\frac{(g(x)^{p^2}-g(x))^{p+1}}
-{(g(x)^p-g(x))^{p^2+1}}
-=
-\frac{(x^{p^2}-x)^{p+1}}
-{(x^p-x)^{p^2+1}},
+H=\langle\rho,\tau\rangle
 $$
-because the powers of $cx+d$ cancel and
+is dihedral of order
 $$
-\Delta^{p+1}=\Delta^{p^2+1}
-$$
-for $\Delta\in\mathbb F_p^\times$.
-
-Thus every element of $G$ fixes $J$, so
-$$
-K\subseteq L^G.
+2q=m.
 $$
 
 Put
 $$
-A=x^p-x.
+r=xy,
+\qquad
+z=x^q+y^q.
 $$
-Since
+Both are fixed by $\rho$ and $\tau$, so
 $$
-x^{p^2}-x=A^p+A,
-$$
-we have
-$$
-J=
-\frac{(A^{p-1}+1)^{p+1}}
-{A^{p^2-p}}.
-$$
-The numerator and denominator are coprime, and as rational functions of $x$ their degrees are respectively
-$$
-p(p-1)(p+1)=p(p^2-1)
-$$
-and
-$$
-p^2(p-1).
+K_p\subseteq L^H.
 $$
 Therefore
 $$
-[L:K]=p(p^2-1).
+[L:K_p]\geq|H|=m.
 $$
 
-But
+Step 2: Prove that these two invariants already generate the fixed field
+
+Set
 $$
-|G|
-=
-|\operatorname{PGL}_2(\mathbb F_p)|
-=
-p(p^2-1).
+A=x^q,
+\qquad
+B=y^q.
 $$
-Hence
+From the definitions of $r$ and $z$,
 $$
-K=L^G
+A+B=z
 $$
 and
 $$
-\operatorname{Gal}(L/K)\cong\operatorname{PGL}_2(\mathbb F_p).
+AB=(xy)^q=r^q.
 $$
-
-Step 2: Identify the subgroup fixing $E$
-
-Again put
+Thus $A$ and $B$ are the roots of
 $$
-A=x^p-x.
-$$
-For every $a\in\mathbb F_p$,
-$$
-(x+a)^p-(x+a)=x^p-x=A.
-$$
-Thus the translation subgroup
-$$
-U=
-\left\{
-\begin{bmatrix}
-1&a\\
-0&1
-\end{bmatrix}
-:a\in\mathbb F_p
-\right\}
-$$
-fixes $\mathbb F_p(A)$.
-
-The rational function $A=x^p-x$ has degree $p$, so
-$$
-[L:\mathbb F_p(A)]=p.
-$$
-Since $|U|=p$,
-$$
-\mathbb F_p(A)=L^U.
-$$
-
-Step 1 shows that $J$ is a rational function of $A$, so
-$$
-K\subseteq\mathbb F_p(A).
+T^2-zT+r^q.
 $$
 Consequently
 $$
-E=K(A)=\mathbb F_p(A)=L^U.
+[K_p(A):K_p]\leq2.
 $$
 
-Step 3: Identify the subgroup fixing $F$
-
-Put
+Since
 $$
-B=x^{-p}-x^{-1}.
+x^q=A,
 $$
-If
+we have
 $$
-y=x^{-1},
+[K_p(A,x):K_p(A)]\leq q.
 $$
-then
+Finally
 $$
-B=y^p-y.
+y=\frac r x,
 $$
-Therefore $B$ is fixed by translations
+so
 $$
-y\mapsto y+b,
-\qquad
-b\in\mathbb F_p.
-$$
-In terms of $x$, these transformations are
-$$
-x\mapsto\frac{x}{1+bx}.
-$$
-They form the opposite unipotent subgroup
-$$
-U^-=
-\left\{
-\begin{bmatrix}
-1&0\\
-b&1
-\end{bmatrix}
-:b\in\mathbb F_p
-\right\}.
-$$
-
-Since $B$ has rational-function degree $p$,
-$$
-[L:\mathbb F_p(B)]=p.
-$$
-Thus
-$$
-\mathbb F_p(B)=L^{U^-}.
-$$
-
-The transformation $x\mapsto x^{-1}$ lies in $G$, so it fixes $J$. Since $B=A(x^{-1})$, this also shows
-$$
-J\in\mathbb F_p(B).
+L=K_p(A,x).
 $$
 Hence
 $$
-F=K(B)=\mathbb F_p(B)=L^{U^-}.
+[L:K_p]\leq2q=m.
+$$
+Together with Step 1 this gives
+$$
+[L:K_p]=m
+$$
+and therefore
+$$
+K_p=L^H.
 $$
 
-Step 4: Determine the compositum and intersection
+Step 3: Compute the genus of the Fermat field
 
-By Galois correspondence,
+Work over an algebraic closure of $\mathbb F_p$; genus is unchanged by extending constants.
+
+The map given by $x$ has degree $m$, since
 $$
-EF=L^{U\cap U^-}.
+y^m=1-x^m.
 $$
-The only projective transformation that is simultaneously upper and lower unipotent is the identity, so
+The $m$ zeros of $1-x^m$ are simple because
 $$
-U\cap U^-=\{1\}.
+p\nmid m.
+$$
+Each is totally ramified with index $m$.
+
+At infinity, the pole order of $1-x^m$ is $m$, so there is no ramification there. Thus Riemann-Hurwitz gives
+$$
+2g(L)-2
+=
+-2m+m(m-1).
 $$
 Therefore
 $$
-EF=L.
+2g(L)-2=m^2-3m.
 $$
 
-For the intersection,
+Step 4: Count the fixed points of the nontrivial rotations
+
+Use the smooth projective model
 $$
-E\cap F=L^{\langle U,U^-\rangle}.
+X^m+Y^m=Z^m.
 $$
 
-Both $U$ and $U^-$ are represented by determinant-one matrices, so
+Consider
 $$
-\langle U,U^-\rangle
-\subseteq
-\operatorname{PSL}_2(\mathbb F_p).
-$$
-
-Conversely, the elementary matrices
-$$
-\begin{bmatrix}
-1&a\\
-0&1
-\end{bmatrix},
+\rho^j:
+[X:Y:Z]\mapsto
+[\eta^jX:\eta^{-j}Y:Z],
 \qquad
-\begin{bmatrix}
-1&0\\
-b&1
-\end{bmatrix}
+1\leq j<q.
 $$
-generate $\operatorname{SL}_2(\mathbb F_p)$. Indeed, left multiplication by such matrices performs elementary row additions. Given
-$$
-M=
-\begin{bmatrix}
-a&b\\
-c&d
-\end{bmatrix}
-\in\operatorname{SL}_2(\mathbb F_p),
-$$
-if $a\ne0$, a lower elementary matrix kills $c$, and upper elementary matrices together with the identity
-$$
-\begin{bmatrix}
-r&0\\
-0&r^{-1}
-\end{bmatrix}
-=
-\begin{bmatrix}
-1&r\\
-0&1
-\end{bmatrix}
-\begin{bmatrix}
-1&0\\
--r^{-1}&1
-\end{bmatrix}
-\begin{bmatrix}
-1&r\\
-0&1
-\end{bmatrix}
-\begin{bmatrix}
-0&-1\\
-1&0
-\end{bmatrix}
-$$
-reduce the remaining matrix to the identity; if $a=0$, first interchange the two rows using elementary matrices. Thus the two unipotent subgroups generate $\operatorname{SL}_2$.
 
-Passing to projective classes gives
+At an affine point $Z\ne0$, a fixed point would require
 $$
-\langle U,U^-\rangle
+\eta^jX=X,
+\qquad
+\eta^{-j}Y=Y.
+$$
+Since $\eta^j\ne1$, this forces
+$$
+X=Y=0,
+$$
+which is impossible on the curve.
+
+At infinity, both $X$ and $Y$ are nonzero. Such a point is fixed projectively exactly when
+$$
+\eta^j=\eta^{-j},
+$$
+or equivalently
+$$
+\eta^{2j}=1.
+$$
+
+If $q$ is odd, no nontrivial rotation satisfies this.
+
+If $q$ is even, the unique possibility is
+$$
+j=\frac q2.
+$$
+Then
+$$
+\eta^j=-1,
+$$
+and $\rho^{q/2}$ fixes every point at infinity. There are exactly $m$ such points, since
+$$
+\left(\frac XY\right)^m=-1.
+$$
+
+Thus the total fixed-point contribution from nontrivial rotations is
+$$
+0
+$$
+when $q$ is odd, and
+$$
+m
+$$
+when $q$ is even.
+
+Step 5: Count the fixed points of the reflections
+
+The $q$ reflections are
+$$
+\tau\rho^j,
+\qquad
+0\leq j<q.
+$$
+Such a reflection acts by
+$$
+[X:Y:Z]
+\mapsto
+[\eta^{-j}Y:\eta^jX:Z].
+$$
+
+At an affine fixed point,
+$$
+X=\eta^{-j}Y.
+$$
+Because $\eta^m=1$,
+$$
+X^m=Y^m.
+$$
+The Fermat equation becomes
+$$
+2Y^m=1.
+$$
+Since $p\ne2$, this has exactly $m$ geometric solutions. Hence every reflection fixes exactly $m$ affine points.
+
+There are no fixed points at infinity. Indeed, an eigenvector of the reflection has
+$$
+X=\pm\eta^{-j}Y.
+$$
+Since $m$ is even,
+$$
+X^m=Y^m,
+$$
+so the equation at infinity would give
+$$
+2Y^m=0,
+$$
+which is impossible.
+
+Therefore the reflections contribute
+$$
+qm=\frac{m^2}{2}
+$$
+fixed points in total.
+
+Step 6: Apply Riemann-Hurwitz to the quotient
+
+The group order is
+$$
+|H|=m=p-1,
+$$
+which is prime to $p$, so the quotient is tame.
+
+For a tame group action,
+$$
+\deg\operatorname{Diff}(L/K_p)
 =
-\operatorname{PSL}_2(\mathbb F_p).
+\sum_{1\ne h\in H}\#\operatorname{Fix}(h).
+$$
+
+Suppose first that $q$ is odd, equivalently
+$$
+p\equiv3\pmod4.
+$$
+Steps 4 and 5 give
+$$
+\deg\operatorname{Diff}(L/K_p)=\frac{m^2}{2}.
 $$
 Hence
 $$
-E\cap F=L^{\operatorname{PSL}_2(\mathbb F_p)}.
+m^2-3m
+=
+m(2g(K_p)-2)+\frac{m^2}{2}.
 $$
-
-Step 5: Compute the requested degree
-
-Since $p$ is odd,
+Dividing by $m$,
 $$
-\operatorname{PSL}_2(\mathbb F_p)
-$$
-has index $2$ in
-$$
-\operatorname{PGL}_2(\mathbb F_p).
+2g(K_p)-2=\frac m2-3.
 $$
 Therefore
 $$
-[E\cap F:K]=2.
+g(K_p)=\frac{m-2}{4}
+=
+\frac{p-3}{4}.
 $$
 
-From Step 4,
+Now suppose that $q$ is even, equivalently
 $$
-EF=L.
+p\equiv1\pmod4.
+$$
+The central rotation contributes the additional $m$ fixed points, so
+$$
+\deg\operatorname{Diff}(L/K_p)
+=
+\frac{m^2}{2}+m.
 $$
 Thus
 $$
-[EF:E\cap F]
+m^2-3m
 =
-[L:L^{\operatorname{PSL}_2(\mathbb F_p)}]
-=
-|\operatorname{PSL}_2(\mathbb F_p)|.
+m(2g(K_p)-2)+\frac{m^2}{2}+m.
 $$
-Finally,
+Hence
 $$
-|\operatorname{PSL}_2(\mathbb F_p)|
+2g(K_p)-2=\frac m2-4,
+$$
+and
+$$
+g(K_p)=\frac m4-1
 =
-\frac{|\operatorname{SL}_2(\mathbb F_p)|}{2}
-=
-\frac{p(p^2-1)}2.
+\frac{p-5}{4}.
 $$
 
-Final Answer: $\boxed{\frac{p(p^2-1)}2}$
+The two cases combine as
+$$
+g(K_p)=\left\lfloor\frac{p-3}{4}\right\rfloor.
+$$
+
+Final Answer: $\boxed{\left\lfloor\frac{p-3}{4}\right\rfloor}$
 
 ---
 
 ## Answer
 
-$\frac{p(p^2-1)}2$
+$\left\lfloor\frac{p-3}{4}\right\rfloor$
 
 ---
 
@@ -332,8 +349,8 @@ $\frac{p(p^2-1)}2$
 
 ## Solution Concepts
 
-- rational function fields
-- projective linear groups
-- fixed fields
-- unipotent subgroups
-- Galois correspondence
+- Fermat function fields
+- invariant subfields
+- dihedral group actions
+- fixed-point ramification
+- Riemann-Hurwitz

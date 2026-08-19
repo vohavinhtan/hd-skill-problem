@@ -1,33 +1,24 @@
-```markdown id="qh91pg"
 # Normalized Math Problem
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime and let $x$ be transcendental over $\mathbb F_p$. Put
+Let $p\geq5$ be a prime and put
 $$
-L=\mathbb F_p(x)
-$$
-and
-$$
-J=
-\frac{(x^{p^2}-x)^{p+1}}
-{(x^p-x)^{p^2+1}}.
-$$
-Set
-$$
-K=\mathbb F_p(J),
-$$
-and define the intermediate fields
-$$
-E=K(x^p-x),
+m=p-1,
 \qquad
-F=K(x^{-p}-x^{-1}).
+q=\frac{p-1}{2}.
 $$
 
-Determine
+Let $L=\mathbb F_p(x,y)$ be the function field defined by
 $$
-[EF:E\cap F].
+x^m+y^m=1.
 $$
+Inside $L$, set
+$$
+K_p=\mathbb F_p\left(xy,\ x^q+y^q\right).
+$$
+
+Determine the genus of the function field $K_p$.
 
 ---
 
@@ -44,4 +35,4 @@ $$
 
 ## Domain Explanation
 
-The displayed rational invariant hides the full projective linear action on a rational function field. The two intermediate fields are fixed fields of opposite unipotent subgroups. Their compositum is controlled by the intersection of those subgroups, whereas their field intersection is controlled by the subgroup they generate, which is the index-two projective special linear subgroup.
+The two displayed generators conceal a dihedral fixed field inside a Fermat function field. One must recover the full fixing group from the generators, prove that no larger extension remains, and then compute the genus of the quotient. The fixed-point contribution of the rotation subgroup changes according to the parity of $(p-1)/2$, although the two cases admit a single final formula.
