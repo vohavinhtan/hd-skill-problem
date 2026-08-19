@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Recover the cubic splitting field and diagonalize its three right-hand sides
+Step 1: Recover the cubic splitting field and diagonalize the three right-hand sides
 
 Since $z^3=1$ and $z\neq1$, the extension
 $$
@@ -21,7 +21,7 @@ The element $b_0$ is not fixed by $\sigma$, because in the basis $1,t,t^2$ of $E
 $$
 K(b_0)=E.
 $$
-Thus $Q$ is irreducible and $E$ is its splitting field.
+Therefore $Q$ is irreducible and $E$ is its splitting field.
 
 Use the Fourier combinations
 $$
@@ -34,17 +34,9 @@ and
 $$
 h_2=\frac{b_0+zb_1+z^2b_2}{3}.
 $$
-The identities
+The identities $1+z+z^2=0$ and $z^3=1$ give
 $$
-1+z+z^2=0
-$$
-and
-$$
-z^3=1
-$$
-give
-$$
-h_0=\frac1s=t^{-3},
+h_0=\frac{1}{s}=t^{-3},
 $$
 $$
 h_1=\frac{t}{s-1}=\frac{t}{t^3-1},
@@ -71,23 +63,18 @@ $$
 $$
 Therefore
 $$
-D\left(\frac{t^2}{3}\right)
-=\frac{s^{2m}-z}{3}t^2
-=h_2.
+D\left(\frac{t^2}{3}\right)=\frac{s^{2m}-z}{3}t^2=h_2.
 $$
 Put
 $$
 g=\frac{t^2}{3}.
 $$
-Thus the first two Fourier components require three successive $D$-preimages, while the third already has its first preimage in the base field:
+The first two Fourier components require three successive $D$-preimages, while the third already has its first preimage in the base field:
 $$
 D^3(X)=h_0,\qquad D^3(X)=h_1,\qquad D^3(X)=D(g).
 $$
 
-Because the Fourier matrix over $\mathbb F_p$ is invertible, adjoining one solution of each of these three equations gives the same splitting field over a field containing $\ker P$ as adjoining one solution of each equation
-$$
-P(X)=b_i.
-$$
+The Fourier matrix over $\mathbb F_p$ is invertible. Therefore, over any field containing $\ker P$, adjoining one solution of each of these three equations gives the same splitting field as adjoining one solution of each equation $P(X)=b_i$.
 
 Step 3: Determine the constant field containing the kernel of $P$
 
@@ -114,11 +101,11 @@ N^3=0,\qquad N^2\neq0.
 $$
 For $n\geq1$,
 $$
-J^n=z^nI+nz^{n-1}N+\binom n2z^{n-2}N^2.
+J^n=z^nI+nz^{n-1}N+\binom{n}{2}z^{n-2}N^2.
 $$
-If $J^n=I$, the coefficient of $N$ gives $p\mid n$, while the scalar term gives $3\mid n$. Conversely $J^{3p}=I$. Hence Frobenius has order $3p$ on $V$.
+If $J^n=I$, the coefficient of $N$ gives $p\mid n$, while the scalar term gives $3\mid n$. Conversely, $J^{3p}=I$. Frobenius therefore has order $3p$ on $V$.
 
-The smallest finite field containing $V$ is therefore
+The smallest finite field containing $V$ is
 $$
 C=\mathbb F_{p^{3p}},
 $$
@@ -155,14 +142,14 @@ At the place $t=0$, the first right-hand side has pole order $3$, which is not d
 $$
 pw(\gamma_0)=-3e.
 $$
-Thus $p\mid e$, and since $\gamma_0$ has degree at most $p$,
+This gives $p\mid e$, and since $\gamma_0$ has degree at most $p$,
 $$
 [B(\gamma_0):B]=p.
 $$
 
-The extension is unramified at $t=1$, because $h_0$ is regular there and the derivative of $X^p-zX-h_0$ is the unit $-z$.
+This extension is unramified at $t=1$, because $h_0$ is regular there and the derivative of $X^p-zX-h_0$ is the unit $-z$.
 
-At $t=1$, the function $h_1$ has a simple pole. Hence the same argument after adjoining $\gamma_0$ gives
+At $t=1$, the function $h_1$ has a simple pole. The same valuation argument after adjoining $\gamma_0$ gives
 $$
 [B(\gamma_0,\gamma_1):B(\gamma_0)]=p.
 $$
@@ -191,21 +178,21 @@ $$
 D(\delta_2)=g.
 $$
 
-At the place above $t=0$, the element $\gamma_0$ has pole order $3$. The other two right-hand sides are regular there. Therefore adjoining $\delta_0$ contributes degree $p$.
+At the place above $t=0$, the element $\gamma_0$ has pole order $3$, while the other two right-hand sides are regular there. Adjoining $\delta_0$ therefore contributes degree $p$.
 
-At a place above $t=1$, the element $\gamma_1$ has pole order $1$, while $\gamma_0$ and $g$ are regular. The extension already obtained from $\delta_0$ is unramified there, so adjoining $\delta_1$ contributes another factor $p$.
+At a place above $t=1$, the element $\gamma_1$ has pole order $1$, while $\gamma_0$ and $g$ are regular. The extension obtained from $\delta_0$ is unramified there, so adjoining $\delta_1$ contributes another factor $p$.
 
 At infinity, both $\gamma_0$ and $\gamma_1$ are integral because $h_0$ and $h_1$ have no poles there. The function
 $$
 g=\frac{t^2}{3}
 $$
-has pole order $2$, again prime to $p$. The previous extensions are unramified there, so adjoining $\delta_2$ contributes a third factor $p$.
+has pole order $2$, which is prime to $p$. The previous extensions are unramified there, so adjoining $\delta_2$ contributes a third factor $p$.
 
-Thus, with
+With
 $$
 B_2=B_1(\delta_0,\delta_1,\delta_2),
 $$
-we have
+we obtain
 $$
 [B_2:B_1]=p^3.
 $$
@@ -216,26 +203,24 @@ Choose $\alpha_0,\alpha_1,\alpha_2$ with
 $$
 D(\alpha_j)=\delta_j
 $$
-for $j=0,1,2$.
+for $j\in\{0,1,2\}$.
 
-At the place over $t=0$, the equation $D(\delta_0)=\gamma_0$ and the total ramification from Step 5 show that $\delta_0$ has pole order $3$. The other two $\delta_j$ are integral there. Hence adjoining $\alpha_0$ contributes degree $p$.
+At the place over $t=0$, the equation $D(\delta_0)=\gamma_0$ and the total ramification from Step 5 show that $\delta_0$ has pole order $3$, while $\delta_1,\delta_2$ are integral there. Adjoining $\alpha_0$ therefore contributes degree $p$.
 
-At the place over $t=1$, the element $\delta_1$ has pole order $1$, while the other two are integral. Hence adjoining $\alpha_1$ contributes another factor $p$.
+At the place over $t=1$, the element $\delta_1$ has pole order $1$, while $\delta_0,\delta_2$ are integral. Adjoining $\alpha_1$ contributes another factor $p$.
 
-At infinity, the element $\delta_2$ has pole order $2$, while $\delta_0,\delta_1$ are integral. Hence adjoining $\alpha_2$ contributes one more factor $p$.
+At infinity, the element $\delta_2$ has pole order $2$, while $\delta_0,\delta_1$ are integral. Adjoining $\alpha_2$ contributes one more factor $p$.
 
 Therefore
 $$
 [B_2(\alpha_0,\alpha_1,\alpha_2):B_2]=p^3.
 $$
-Combining Steps 4 through 6,
+Combining the degree factors from Steps 4 and 5 with this one gives
 $$
-[B_2(\alpha_0,\alpha_1,\alpha_2):B]
-=p^2\cdot p^3\cdot p^3
-=p^8.
+[B_2(\alpha_0,\alpha_1,\alpha_2):B]=p^2\cdot p^3\cdot p^3=p^8.
 $$
 
-Moreover,
+Also,
 $$
 D^3(\alpha_0)=h_0,\qquad D^3(\alpha_1)=h_1,
 $$
@@ -243,23 +228,21 @@ while
 $$
 D^3(\alpha_2)=D(g)=h_2.
 $$
-Thus these three elements split all three Fourier-transformed fibers and hence all three original fibers $P(X)=b_i$.
+These three elements split all three Fourier-transformed fibers and hence all three original fibers $P(X)=b_i$.
 
 Step 7: Identify the full splitting field and compute its degree
 
-The field constructed in Step 6 contains $B$, the full kernel $V$, and one root of each equation $P(X)=b_i$. It therefore splits $F$.
+The field $B_2(\alpha_0,\alpha_1,\alpha_2)$ contains $B$, the full kernel $V$, and one root of each equation $P(X)=b_i$. It therefore splits $F$.
 
-Conversely, the splitting field $L$ contains the values $P(x)$ of its roots, hence contains all roots $b_i$ of $Q$ and therefore contains $E$. Differences of two roots in the same additive fiber give every element of $V$, so $L$ contains $C$ and therefore $B$.
+Conversely, the splitting field $L$ contains the values $P(x)$ of its roots, so it contains all roots $b_i$ of $Q$ and therefore contains $E$. Differences of two roots in the same additive fiber give every element of $V$, so $L$ contains $C$ and therefore $B$.
 
-Taking Fourier combinations of one chosen root from each fiber gives elements satisfying the three transformed equations from Step 2. Their differences from the chosen $\alpha_j$ lie in $V\subset B$. Hence the field constructed above is contained in $L$.
-
-Therefore
+Taking Fourier combinations of one chosen root from each fiber gives elements satisfying the three transformed equations from Step 2. Their differences from the chosen $\alpha_j$ lie in $V\subset B$. Therefore
 $$
-[L:B]=p^8.
+L=B_2(\alpha_0,\alpha_1,\alpha_2).
 $$
-Using $[B:K]=9p$ from Step 3,
+Using Step 3 and Step 6,
 $$
-[L:K]=9p\cdot p^8=9p^9.
+[L:K]=[L:B][B:K]=p^8\cdot9p=9p^9.
 $$
 
 Final Answer: $\boxed{9p^9}$
@@ -273,10 +256,6 @@ $9p^9$
 ---
 
 ## Classification
-
-**Domain:** Abstract Algebra
-
-**Sub-domain:** Field theory
 
 **Problem Type:** Exact computation
 
