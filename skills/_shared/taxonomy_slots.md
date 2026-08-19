@@ -2,7 +2,7 @@
 
 This file is the source of truth for currently usable taxonomy slots. Update it whenever the portal capacity changes. Skills must read this file before choosing or changing a Domain/Sub-domain, Problem Type, or Answer Type.
 
-Last updated from user-provided portal snapshot: **2026-08-19**. The portal snapshot contains **87 currently available Domain/Sub-domain rows**. The table below is derived directly from `available_segments`; any Domain/Sub-domain pair absent from that list must be treated as unavailable for the current snapshot rather than carried forward from older snapshots.
+Last updated from user-provided portal snapshot: **2026-08-19**. The portal snapshot contains **86 currently available Domain/Sub-domain rows**. The table below is derived directly from `available_segments`; any Domain/Sub-domain pair absent from that list must be treated as unavailable for the current snapshot rather than carried forward from older snapshots.
 
 ## Selection Rules
 
@@ -18,8 +18,7 @@ Last updated from user-provided portal snapshot: **2026-08-19**. The portal snap
 
 | Domain | Sub-domain | Remaining slots | Status | Notes |
 |---|---|---:|---|---|
-| Abstract Algebra | Field theory | 1 | open | 2026-08-19 user-provided portal snapshot. |
-| Abstract Algebra | Computational algebra | 9 | open | 2026-08-19 user-provided portal snapshot. |
+| Abstract Algebra | Computational algebra | 8 | open | 2026-08-19 user-provided portal snapshot. |
 | Algebra, Functions, and Trigonometry | Polynomial and rational functions | 9 | open | 2026-08-19 user-provided portal snapshot. |
 | Algebra, Functions, and Trigonometry | Equations and inequalities | 11 | open | 2026-08-19 user-provided portal snapshot. |
 | Algebra, Functions, and Trigonometry | Systems of equations | 11 | open | 2026-08-19 user-provided portal snapshot. |
@@ -30,7 +29,7 @@ Last updated from user-provided portal snapshot: **2026-08-19**. The portal snap
 | Algebra, Functions, and Trigonometry | Exponential and logarithmic functions | 13 | open | 2026-08-19 user-provided portal snapshot. |
 | Algebra, Functions, and Trigonometry | Functions and graphs | 13 | open | 2026-08-19 user-provided portal snapshot. |
 | Analysis | Harmonic analysis | 3 | open | 2026-08-19 user-provided portal snapshot. |
-| Analysis | Fourier analysis | 6 | open | 2026-08-19 user-provided portal snapshot. |
+| Analysis | Fourier analysis | 5 | open | 2026-08-19 user-provided portal snapshot. |
 | Analysis | Metric spaces | 9 | open | 2026-08-19 user-provided portal snapshot. |
 | Calculus | Integration | 9 | open | 2026-08-19 user-provided portal snapshot. |
 | Calculus | Applications of integration | 10 | open | 2026-08-19 user-provided portal snapshot. |
@@ -51,9 +50,9 @@ Last updated from user-provided portal snapshot: **2026-08-19**. The portal snap
 | Differential Equations and Dynamical Systems | Initial value problems | 12 | open | 2026-08-19 user-provided portal snapshot. |
 | Differential Equations and Dynamical Systems | Numerical differential equations | 12 | open | 2026-08-19 user-provided portal snapshot. |
 | Discrete Mathematics and Combinatorics | Design theory and finite geometry | 2 | open | 2026-08-19 user-provided portal snapshot. |
+| Discrete Mathematics and Combinatorics | Probabilistic combinatorics | 2 | open | 2026-08-19 user-provided portal snapshot. |
 | Discrete Mathematics and Combinatorics | Basic counting principles | 3 | open | 2026-08-19 user-provided portal snapshot. |
-| Discrete Mathematics and Combinatorics | Probabilistic combinatorics | 3 | open | 2026-08-19 user-provided portal snapshot. |
-| Discrete Mathematics and Combinatorics | Generating functions | 5 | open | 2026-08-19 user-provided portal snapshot. |
+| Discrete Mathematics and Combinatorics | Generating functions | 4 | open | 2026-08-19 user-provided portal snapshot. |
 | Discrete Mathematics and Combinatorics | Matroid theory | 6 | open | 2026-08-19 user-provided portal snapshot. |
 | Euclidean, Coordinate, and Transformational Geometry | Solid geometry | 2 | open | 2026-08-19 user-provided portal snapshot. |
 | Euclidean, Coordinate, and Transformational Geometry | Euclidean geometry | 4 | open | 2026-08-19 user-provided portal snapshot. |
@@ -78,8 +77,8 @@ Last updated from user-provided portal snapshot: **2026-08-19**. The portal snap
 | Number Theory | Elementary number theory | 8 | open | 2026-08-19 user-provided portal snapshot. |
 | Number Theory | Quadratic residues and reciprocity | 9 | open | 2026-08-19 user-provided portal snapshot. |
 | Number Theory | Multiplicative functions | 12 | open | 2026-08-19 user-provided portal snapshot. |
+| Number Theory | Analytic number theory | 14 | open | 2026-08-19 user-provided portal snapshot. |
 | Number Theory | Computational number theory | 14 | open | 2026-08-19 user-provided portal snapshot. |
-| Number Theory | Analytic number theory | 15 | open | 2026-08-19 user-provided portal snapshot. |
 | Optimization and Numerical Mathematics | Approximation theory | 3 | open | 2026-08-19 user-provided portal snapshot. |
 | Optimization and Numerical Mathematics | Linear programming | 4 | open | 2026-08-19 user-provided portal snapshot. |
 | Optimization and Numerical Mathematics | Nonlinear optimization | 4 | open | 2026-08-19 user-provided portal snapshot. |
