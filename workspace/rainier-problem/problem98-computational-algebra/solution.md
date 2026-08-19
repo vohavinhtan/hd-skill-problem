@@ -143,7 +143,7 @@ $$
 \Delta_5=(m+1)^2(m+3).
 $$
 
-At $m=-1$, the first three rows of $A$ repeat as rows $4,5,6$, so every $4\times4$ minor is divisible by $m+1$. Two $4\times4$ minors are
+At $m=-1$, rows $1,2,3$ of $A$ equal rows $4,5,6$, so every $4\times4$ minor polynomial vanishes at $m=-1$ and is divisible by $m+1$. The minors on rows $1,2,3,4$ with columns $1,2,5,6$ and $1,4,5,6$ are respectively
 $$
 (m+1)^2
 $$
@@ -155,7 +155,7 @@ Because $\gcd(m+1,3m+11)=\gcd(m+1,8)=1$, we get
 $$
 \Delta_4=m+1.
 $$
-There are $3\times3$ minors equal to $4$ and $m+1$, so $\Delta_3=1$ because $m+1$ is odd. A $2\times2$ minor equals $1$, and an entry equals $1$, giving
+The minors on rows $1,2,3$ with columns $4,5,6$ and $1,4,5$ are respectively $4$ and $m+1$. Since $m+1$ is odd, $\Delta_3=1$. The minor on rows $1,2$ and columns $3,4$ equals $1$, and $A$ has entries equal to $1$, so
 $$
 \Delta_1=\Delta_2=\Delta_3=1.
 $$
