@@ -62,9 +62,7 @@ $$
 $$
 The polynomial identity
 $$
-(T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)
-=
-f(T)(T+1)(T^2-2T+2)
+(T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)=f(T)(T+1)(T^2-2T+2)
 $$
 gives
 $$
