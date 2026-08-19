@@ -2,25 +2,30 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime, put
+Let $p\geq5$ be a prime and let
 $$
-E=\mathbb F_{p^{p^2}},
+K=\mathbb F_p(s,t),
 $$
-and let
-$$
-\operatorname{Tr}:E\to\mathbb F_p
-$$
-be the field trace.
+where $s,t$ are algebraically independent over $\mathbb F_p$.
 
-Determine the number $N_p$ of elements $\alpha\in E$ such that, for every $i,j\in\mathbb Z/p^2\mathbb Z$,
+In an algebraic closure of $K$, let $u,v$ be the unique elements satisfying
 $$
-\operatorname{Tr}\left(\alpha^{p^i}\alpha^{p^j}\right)
-=
-\begin{cases}
-5,&i=j,\\
-1,&i-j\equiv\pm1,\pm2\pmod{p^2},\\
-0,&\text{otherwise}.
-\end{cases}
+u^{p^3}=s+t^p,
+\qquad
+v^{p^3}=t+s^p.
+$$
+Define
+$$
+E=K\left(u+v,\ u^{p^2}+2v^{p^2}\right)
+$$
+and
+$$
+F=K\left(u+2v,\ u^p+3v^p\right).
+$$
+
+Determine
+$$
+[E\cap F:K].
 $$
 
 ---
@@ -38,4 +43,4 @@ $$
 
 ## Domain Explanation
 
-The prescribed trace relations form a nonsingular Frobenius-circulant Gram matrix. Counting the elements realizing it requires translating normal generators into units of the modular group algebra, converting the Gram condition into a norm equation for its involution, proving that this norm equation is solvable, and counting its unitary kernel.
+The two extensions are mixed subfields of the same purely inseparable radical tower. Determining their intersection requires first detecting a hidden change of p-basis, then recovering different levels of the radical tower from the mixed generators, and finally using differentials to rule out an additional common degree-p layer.

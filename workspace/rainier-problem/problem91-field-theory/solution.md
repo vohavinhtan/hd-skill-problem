@@ -1,280 +1,285 @@
 ## Steps
 
-Step 1: Encode Frobenius conjugates by the modular group algebra
+Step 1: Identify the hidden p-basis
 
 Put
 $$
-N=p^2
-$$
-and let
-$$
-\sigma(x)=x^p
-$$
-on $E$. Define
-$$
-A=\mathbb F_p[S]/(S^N-1).
-$$
-Since the characteristic is $p$,
-$$
-S^N-1=S^{p^2}-1=(S-1)^{p^2}.
-$$
-Thus $A$ is a local ring whose maximal ideal is
-$$
-J=(S-1),
-$$
-and an element of $A$ is a unit exactly when its augmentation
-$$
-\varepsilon:A\to\mathbb F_p,
+a=s+t^p,
 \qquad
-S\mapsto1
+b=t+s^p.
 $$
-is nonzero.
-
-By the normal basis theorem there is $\theta\in E$ such that
+Since
 $$
-\theta,\sigma\theta,\ldots,\sigma^{N-1}\theta
+K^p=\mathbb F_p(s^p,t^p),
 $$
-is an $\mathbb F_p$-basis of $E$. Hence the map
+the differential space
 $$
-A\to E,
+\Omega_{K/K^p}
+$$
+has basis $ds,dt$. In characteristic $p$,
+$$
+da=ds,
 \qquad
-u\mapsto u(\sigma)\theta
-$$
-is an isomorphism of $A$-modules.
-
-Consequently every $\alpha\in E$ has a unique expression
-$$
-\alpha=u(\sigma)\theta
-$$
-with $u\in A$, and $\alpha$ is a normal generator exactly when $u\in A^\times$.
-
-Step 2: Translate the trace conditions into one group-algebra equation
-
-Let the involution on $A$ be
-$$
-\overline S=S^{-1}.
-$$
-For $\alpha\in E$, define
-$$
-H_\alpha(S)
-=
-\sum_{r=0}^{N-1}
-\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)S^r.
-$$
-Trace invariance under Frobenius gives
-$$
-\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)
-=
-\operatorname{Tr}\left(\alpha\sigma^{-r}(\alpha)\right),
-$$
-so
-$$
-\overline{H_\alpha}=H_\alpha.
-$$
-
-The required trace pattern is equivalent to
-$$
-H_\alpha=q,
-$$
-where
-$$
-q=5+S+S^{-1}+S^2+S^{-2}.
-$$
-Its augmentation is
-$$
-\varepsilon(q)=9\ne0,
-$$
-so $q$ is a unit of $A$.
-
-The matrix
-$$
-\left(
-\operatorname{Tr}\left(\alpha^{p^i}\alpha^{p^j}\right)
-\right)_{i,j}
-$$
-is the circulant matrix associated with multiplication by $H_\alpha$. Since $q$ is a unit, this matrix is nonsingular. Therefore every $\alpha$ satisfying the required conditions has linearly independent Frobenius conjugates and is a normal generator.
-
-Step 3: Obtain the norm equation governing all solutions
-
-Write
-$$
-\alpha=u(\sigma)\theta,
-\qquad
-u=\sum_i u_iS^i.
-$$
-For the coefficient of $S^r$ in $H_\alpha$,
-$$
-\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)
-=
-\sum_{i,j}u_i u_j
-\operatorname{Tr}\left(
-\sigma^i(\theta)\sigma^{r+j}(\theta)
-\right).
-$$
-Applying $\sigma^{-i}$ inside the trace gives
-$$
-\operatorname{Tr}\left(\alpha\sigma^r(\alpha)\right)
-=
-\sum_{i,j}u_i u_j
-\operatorname{Tr}\left(
-\theta\sigma^{r+j-i}(\theta)
-\right).
-$$
-This is exactly the coefficient of $S^r$ in
-$$
-u\overline u\,H_\theta.
+db=dt.
 $$
 Hence
 $$
-H_\alpha=u\overline u\,H_\theta.
+da\wedge db=ds\wedge dt\ne0.
 $$
 
-Because the trace pairing on the finite separable extension $E/\mathbb F_p$ is nondegenerate and the conjugates of $\theta$ form a basis, $H_\theta$ is a unit.
+Therefore $a,b$ are p-independent. Since
+$$
+[K:K^p]=p^2,
+$$
+they form a p-basis of $K$.
 
-Also
+For
 $$
-\varepsilon(H_\theta)
-=
-\sum_r\operatorname{Tr}\left(\theta\sigma^r(\theta)\right)
-=
-\operatorname{Tr}(\theta)^2.
-$$
-The trace of $\theta$ is nonzero, since otherwise the sum of its $N$ conjugates would give a nontrivial linear relation among a normal basis.
-
-Thus the required condition becomes
-$$
-u\overline u=qH_\theta^{-1}.
-$$
-
-Step 4: Prove that the norm equation is solvable
-
-We use the following property of $A$. If
-$$
-h\in A^\times,
+B_1=K(u^{p^2},v^{p^2}),
 \qquad
-\overline h=h,
+B_2=K(u^p,v^p),
+\qquad
+B_3=K(u,v),
 $$
-and $\varepsilon(h)$ is a square in $\mathbb F_p^\times$, then
+we consequently have
 $$
-h=v\overline v
+[B_1:K]=p^2,
+\qquad
+[B_2:B_1]=p^2,
+\qquad
+[B_3:B_2]=p^2.
 $$
-for some $v\in A^\times$.
+Indeed, at each stage the two displayed generators are independent pth roots of the p-basis from the preceding stage.
 
-Choose $a\in\mathbb F_p^\times$ with
+Step 2: Rewrite $E$ as one simple extension above $B_1$
+
+Set
 $$
-a^2=\varepsilon(h).
+x=u+v,
+\qquad
+y=u^{p^2}+2v^{p^2}.
 $$
 Then
 $$
-c=a^{-2}h
+x^{p^2}=u^{p^2}+v^{p^2}.
 $$
-lies in $1+J$ and satisfies $\overline c=c$.
+Subtracting gives
+$$
+v^{p^2}=y-x^{p^2},
+$$
+and then
+$$
+u^{p^2}=2x^{p^2}-y.
+$$
+Thus
+$$
+B_1\subseteq E.
+$$
+Since $y\in B_1$, it follows that
+$$
+E=B_1(x).
+$$
 
-The group $1+J$ is a finite abelian $p$-group. Since $p$ is odd, squaring is a bijection on this group. Let $w\in1+J$ be the unique element with
+Now
 $$
-w^2=c.
+x^p=u^p+v^p.
 $$
+This element is not in $B_1$. If it were, then
+$$
+x^{p^2}=u^{p^2}+v^{p^2}
+$$
+would be a pth power in $B_1$. But $u^{p^2},v^{p^2}$ form a p-basis at this level, so in
+$$
+\Omega_{B_1/B_1^p}
+$$
+we have
+$$
+d(x^{p^2})=d(u^{p^2})+d(v^{p^2})\ne0,
+$$
+whereas every pth power has zero differential.
+
+Hence $x^p\notin B_1$ while $x^{p^2}\in B_1$, so
+$$
+[E:B_1]=p^2.
+$$
+
+Step 3: Rewrite $F$ as one degree-p extension above $B_2$
+
+Set
+$$
+z=u+2v,
+\qquad
+w=u^p+3v^p.
+$$
+Then
+$$
+z^p=u^p+2v^p.
+$$
+Therefore
+$$
+v^p=w-z^p,
+$$
+and
+$$
+u^p=3z^p-2w.
+$$
+Thus
+$$
+B_2\subseteq F.
+$$
+Since $w\in B_2$,
+$$
+F=B_2(z).
+$$
+
+We have
+$$
+z^p\in B_2.
+$$
+On the other hand $z\notin B_2$. By Step 1,
+$$
+[B_3:B_2]=p^2,
+$$
+and $u,v$ form a p-basis of $B_3$ over $B_2$. Hence
+$$
+du,dv
+$$
+are linearly independent in
+$$
+\Omega_{B_3/B_2}.
+$$
+But
+$$
+dz=du+2dv\ne0,
+$$
+so $z$ cannot belong to $B_2$. Consequently
+$$
+[F:B_2]=p.
+$$
+
+Step 4: Exhibit a degree-$p^3$ field contained in the intersection
+
+By Step 2,
+$$
+x^p=u^p+v^p.
+$$
+Since $B_2\subseteq F$, we have
+$$
+x^p\in F.
+$$
+Also
+$$
+B_1\subseteq B_2\subseteq F,
+$$
+while $B_1\subseteq E$ and $x^p\in E$.
+
+Therefore
+$$
+H=B_1(x^p)
+$$
+satisfies
+$$
+H\subseteq E\cap F.
+$$
+
+Step 2 showed that
+$$
+x^p\notin B_1,
+$$
+whereas
+$$
+(x^p)^p=x^{p^2}\in B_1.
+$$
+Hence
+$$
+[H:B_1]=p.
+$$
+Using Step 1,
+$$
+[H:K]=p^3.
+$$
+
+Moreover,
+$$
+E=H(x)
+$$
+and $x^p\in H$. Since $x\notin H$, we have
+$$
+[E:H]=p.
+$$
+
+Step 5: Rule out the last possible common layer
+
 Because
 $$
-\overline w^2=\overline c=c=w^2,
+H\subseteq E\cap F\subseteq E
 $$
-uniqueness gives
+and
 $$
-\overline w=w.
+[E:H]=p,
 $$
-Therefore
+either
 $$
-(aw)\overline{(aw)}
-=a^2w^2=h.
+E\cap F=H
 $$
+or
+$$
+E\subseteq F.
+$$
+It remains to exclude the second possibility.
 
-Apply this to
+Recall from Step 3 that
 $$
-h=qH_\theta^{-1}.
-$$
-By Step 3,
-$$
-\varepsilon(h)
-=
-\frac{9}{\operatorname{Tr}(\theta)^2}
-=
-\left(\frac3{\operatorname{Tr}(\theta)}\right)^2.
-$$
-Hence the norm equation has at least one solution.
-
-Step 5: Count the kernel of the norm map
-
-Consider
-$$
-\nu:A^\times\to A^\times,
+F=B_2(z),
 \qquad
-\nu(u)=u\overline u.
+z=u+2v.
 $$
-Every fiber of $\nu$ has size
-$$
-|\ker\nu|.
-$$
-By Step 4, its image consists exactly of the involution-fixed units whose augmentation is a nonzero square.
+Suppose $x=u+v$ belonged to $F$. Then $x\in B_2(z)$.
 
-The fixed subspace
+Inside
 $$
-A^+=\{a\in A:\overline a=a\}
+\Omega_{B_3/B_2},
 $$
-has basis
+the image of the one-generator extension $B_2(z)$ is contained in the one-dimensional $B_3$-subspace generated by $dz$. Thus there would be some $c\in B_3$ such that
 $$
-1,\quad S^r+S^{-r}
-\quad
-\left(1\leq r\leq\frac{N-1}{2}\right),
+dx=c\,dz.
 $$
-so
+But
 $$
-\dim_{\mathbb F_p}A^+=\frac{N+1}{2}.
+dx=du+dv,
+\qquad
+dz=du+2dv.
 $$
-The kernel of augmentation on $A^+$ therefore has dimension
+Since $du,dv$ are linearly independent, comparison of the $du$ coefficients gives
 $$
-\frac{N-1}{2}.
+c=1,
 $$
-For each prescribed nonzero augmentation there are
+while comparison of the $dv$ coefficients would then give
 $$
-p^{(N-1)/2}
+1=2,
 $$
-fixed elements. Exactly
-$$
-\frac{p-1}{2}
-$$
-nonzero elements of $\mathbb F_p$ are squares. Hence
-$$
-|\operatorname{im}\nu|
-=
-\frac{p-1}{2}p^{(N-1)/2}.
-$$
+a contradiction.
 
-Since $A$ is local with maximal ideal of dimension $N-1$,
-$$
-|A^\times|=(p-1)p^{N-1}.
-$$
 Therefore
 $$
-|\ker\nu|
-=
-\frac{(p-1)p^{N-1}}
-{\frac{p-1}{2}p^{(N-1)/2}}
-=
-2p^{(N-1)/2}.
+x\notin F,
+$$
+so $E$ is not contained in $F$. Hence
+$$
+E\cap F=H.
+$$
+Using Step 4,
+$$
+[E\cap F:K]=p^3.
 $$
 
-The norm equation from Step 3 is solvable by Step 4, so its solution set is one coset of this kernel. Each solution $u$ gives one distinct $\alpha$. With $N=p^2$,
-$$
-N_p=2p^{(p^2-1)/2}.
-$$
-
-Final Answer: $\boxed{2p^{(p^2-1)/2}}$
+Final Answer: $\boxed{p^3}$
 
 ---
 
 ## Answer
 
-$2p^{(p^2-1)/2}$
+$p^3$
 
 ---
 
@@ -288,8 +293,8 @@ $2p^{(p^2-1)/2}$
 
 ## Solution Concepts
 
-- normal bases
-- modular group algebras
-- trace pairings
-- involution norm equations
-- finite local rings
+- purely inseparable extensions
+- p-bases
+- Kähler differentials
+- radical towers
+- field intersections
