@@ -1,255 +1,228 @@
 ## Steps
 
-Step 1: Recover the hidden Fibonacci indices
+Step 1: Rewrite the recurrence as a polynomial dynamical system
 
-Let
+Set
 $$
-\alpha=-10+3\sqrt{11},\qquad \alpha^{-1}=-10-3\sqrt{11},
+X_k=(a_k,a_{k+1},a_{k+2})
 $$
-so $\alpha\alpha^{-1}=1$ and $\alpha+\alpha^{-1}=-20$. For $m\geq0$, set
+and define
 $$
-B_m=\alpha^m+\alpha^{-m}.
+F(x,y,z)=(y,z,yz-x).
+$$
+The recurrence is exactly
+$$
+X_{k+1}=F(X_k),
+$$
+with
+$$
+X_0=7(1,2,3).
+$$
+Every coordinate of $F(x,y,z)$ is divisible by $7$ whenever $x,y,z$ are divisible by $7$. Hence every $X_k$ is congruent to $(0,0,0)$ modulo $7$. It follows that
+$$
+T_1=1.
+$$
+
+Step 2: Find the first return modulo $7^2$
+
+For $X=7(x,y,z)$, the product term in the third coordinate of $F(X)$ is divisible by $7^2$. Therefore
+$$
+F(7x,7y,7z)\equiv7J(x,y,z)\pmod{7^2},
+$$
+where
+$$
+J(x,y,z)=(y,z,-x).
+$$
+Starting from $(1,2,3)$ modulo $7$, successive applications of $J$ give
+$$
+(1,2,3),
+$$
+$$
+(2,3,-1),
+$$
+$$
+(3,-1,-2),
+$$
+$$
+(-1,-2,-3),
+$$
+$$
+(-2,-3,1),
+$$
+$$
+(-3,1,2),
+$$
+$$
+(1,2,3).
+$$
+The first six vectors are distinct modulo $7$. Thus the first return of $X_k$ modulo $7^2$ has length $6$, so
+$$
+T_2=6.
+$$
+In particular, every return modulo any higher power of $7$ must have index divisible by $6$.
+
+Step 3: Compute the first nonlinear displacement after six iterates
+
+We need the first terms of $F^6$ near $(0,0,0)$. Keeping every monomial of total degree at most $3$ during the six substitutions gives
+$$
+F(x,y,z)=(y,z,-x+yz),
+$$
+$$
+F^2(x,y,z)=(z,-x+yz,-y-xz+yz^2),
+$$
+$$
+F^3(x,y,z)=(-x+yz,-y-xz+yz^2,-z+xy+x^2z-y^2z),
+$$
+$$
+F^4(x,y,z)=(-y-xz+yz^2,-z+xy+x^2z-y^2z,x+xz^2-xy^2),
+$$
+$$
+F^5(x,y,z)=(-z+xy+x^2z-y^2z,x+xz^2-xy^2,y+x^2y-yz^2),
+$$
+and
+$$
+F^6(x,y,z)=(x+xz^2-xy^2,y+x^2y-yz^2,z+y^2z-x^2z)
+$$
+up to terms of total degree at least $4$.
+
+Put $G=F^6$. Since $G$ is a polynomial map with integer coefficients, there is a polynomial vector $R$ whose monomials all have degree at least $4$ such that
+$$
+G(x,y,z)-(x,y,z)=Q(x,y,z)+R(x,y,z),
+$$
+where
+$$
+Q(x,y,z)=\left(x(z^2-y^2),y(x^2-z^2),z(y^2-x^2)\right).
+$$
+At $v=(1,2,3)$,
+$$
+Q(v)=(5,-16,9).
+$$
+Hence
+$$
+G(X_0)-X_0=7^3Q(v)+7^4R(v).
+$$
+Since $(5,-16,9)$ is not divisible coordinatewise by $7$, every coordinate of $G(X_0)-X_0$ is divisible by $7^3$ and at least one is not divisible by $7^4$. Thus
+$$
+G(X_0)\equiv X_0\pmod{7^3},
+$$
+but
+$$
+G(X_0)\not\equiv X_0\pmod{7^4}.
+$$
+Step 2 rules out a smaller positive return, so
+$$
+T_3=6.
+$$
+
+Step 4: Establish the lifting law for the six-step map
+
+Write
+$$
+G(U)=U+H(U).
+$$
+Step 3 shows that every monomial of every coordinate of $H$ has total degree at least $3$.
+
+Suppose $U,V\in7\mathbb{Z}_7^3$ and
+$$
+U\equiv V\pmod{7^s}.
+$$
+For a monomial of degree at least $3$, its value at $U$ minus its value at $V$ can be expanded as a sum of terms containing one coordinate difference and at least two further factors divisible by $7$. Therefore
+$$
+H(U)\equiv H(V)\pmod{7^{s+2}}.
+$$
+It follows by induction on $m$ that
+$$
+G^m(U)-G^m(V)\equiv U-V\pmod{7^{s+2}}
+$$
+whenever $U\equiv V\pmod{7^s}$.
+
+For a vector $W$, let
+$$
+\nu(W)=\min_i v_7(W_i).
+$$
+Step 3 gives
+$$
+\nu(G(X_0)-X_0)=3.
+$$
+We claim that for every integer $t\geq1$,
+$$
+\nu(G^t(X_0)-X_0)=3+v_7(t).
+$$
+
+To prove the claim, set
+$$
+\Phi_r=G^{7^r},\qquad D_r=\Phi_r-\operatorname{id}.
+$$
+Assume
+$$
+\nu(D_r(X_0))=3+r.
+$$
+The congruence property for iterates gives, for each $j$,
+$$
+D_r(\Phi_r^j(X_0))\equiv D_r(X_0)\pmod{7^{5+r}}.
+$$
+Therefore
+$$
+D_{r+1}(X_0)
+=
+\sum_{j=0}^{6}D_r(\Phi_r^j(X_0))
+\equiv
+7D_r(X_0)\pmod{7^{5+r}}.
+$$
+The leading term on the right has valuation $4+r$, while the error has valuation at least $5+r$. Hence
+$$
+\nu(D_{r+1}(X_0))=4+r.
+$$
+Starting with $r=0$ proves
+$$
+\nu(G^{7^r}(X_0)-X_0)=3+r.
+$$
+
+Now write $t=7^ru$ with $7\nmid u$. Applying the same telescoping sum to $\Phi_r^u$ gives
+$$
+\Phi_r^u(X_0)-X_0\equiv uD_r(X_0)\pmod{7^{5+r}}.
+$$
+Since $u$ is a $7$-adic unit,
+$$
+\nu(G^t(X_0)-X_0)=3+r=3+v_7(t),
+$$
+which proves the claim.
+
+Step 5: Determine the least return modulo every higher power
+
+For $n\geq3$, any return index is divisible by $6$ by Step 2. Write it as
+$$
+k=6t.
 $$
 Then
 $$
-B_1=-20,\qquad B_2=(-20)^2-2=398,\qquad B_3=(-20)^3-3(-20)=-7940.
+X_k=G^t(X_0).
 $$
-For integers $u\geq v\geq0$,
+By Step 4,
 $$
-B_uB_v=B_{u+v}+B_{u-v}.
-$$
-
-Let $F_0=0$, $F_1=1$, and $F_{j+2}=F_{j+1}+F_j$. We claim
-$$
-a_k=B_{F_{k+2}}.
-$$
-This holds for $k=0,1,2$ because $F_2=1$, $F_3=2$, and $F_4=3$. If it holds through index $k+2$, then
-$$
-a_{k+2}a_{k+1}
-=
-B_{F_{k+4}}B_{F_{k+3}}
-=
-B_{F_{k+5}}+B_{F_{k+2}},
-$$
-since $F_{k+4}-F_{k+3}=F_{k+2}$. Subtracting $a_k=B_{F_{k+2}}$ gives $a_{k+3}=B_{F_{k+5}}$. Therefore
-$$
-a_k=B_{F_{k+2}}
-$$
-for every $k\geq0$.
-
-Step 2: Determine the order of the outer quadratic unit
-
-Choose the $19$-adic square root of $11$ that is congruent to $7$ modulo $19$. Then
-$$
-\alpha\equiv-10+3\cdot7\equiv11\pmod{19}.
-$$
-Since $11^3\equiv1\pmod{19}$ and $11\not\equiv1\pmod{19}$, the order of $\alpha$ modulo $19$ is $3$.
-
-The equation $\alpha^2+20\alpha+1=0$ gives
-$$
-\alpha^2+\alpha+1=-19\alpha,
-$$
-and therefore
-$$
-\alpha^3-1=-19\alpha(\alpha-1).
-$$
-Both $\alpha$ and $\alpha-1$ are $19$-adic units, so
-$$
-v_{19}(\alpha^3-1)=1.
-$$
-
-If $u$ is a $19$-adic unit, the binomial expansion shows
-$$
-v_{19}\left((1+19u)^{19^r}-1\right)=r+1.
-$$
-Indeed, after each raising to the nineteenth power, the first nonconstant term gains exactly one factor of $19$, while every later binomial term has at least one additional factor. Raising afterward to an exponent not divisible by $19$ does not change that valuation. Consequently,
-$$
-v_{19}(\alpha^{3t}-1)=1+v_{19}(t).
-$$
-The multiplicative order of $\alpha$ modulo $19^n$ is therefore
-$$
-M_n=3\cdot19^{n-1}.
-$$
-
-Step 3: Convert a return of the original recurrence into a Fibonacci congruence
-
-For $y=\alpha^m$,
-$$
-y(B_m-B_1)
-=
-y^2-(\alpha+\alpha^{-1})y+1
-=
-(y-\alpha)(y-\alpha^{-1}).
-$$
-The two roots differ by
-$$
-\alpha-\alpha^{-1}=6\sqrt{11},
-$$
-which is a $19$-adic unit. Therefore the two factors on the right cannot both be divisible by $19$. Their product is divisible by $19^n$ exactly when one factor is divisible by $19^n$. Hence
-$$
-B_m\equiv B_1\pmod{19^n}
-$$
-is equivalent to
-$$
-\alpha^m\equiv\alpha\pmod{19^n}
-\quad\text{or}\quad
-\alpha^m\equiv\alpha^{-1}\pmod{19^n}.
-$$
-Using the order $M_n$ from Step 2,
-$$
-B_m\equiv-20\pmod{19^n}
+G^t(X_0)\equiv X_0\pmod{7^n}
 $$
 if and only if
 $$
-m\equiv\pm1\pmod{M_n}.
+3+v_7(t)\geq n.
 $$
-Step 1 now gives
+For $n\geq3$, the least positive $t$ satisfying this is
 $$
-a_k\equiv-20\pmod{19^n}
+t=7^{n-3}.
 $$
-if and only if
+Thus
 $$
-F_{k+2}\equiv\pm1\pmod{3\cdot19^{n-1}}.
+T_n=6\cdot7^{n-3}\qquad(n\geq3).
 $$
+Together with Steps 1 and 2, this gives the full sequence.
 
-Step 4: Determine the order governing Fibonacci numbers modulo powers of 19
-
-Choose the $19$-adic square root of $5$ congruent to $9$ modulo $19$, and put
-$$
-\gamma=\frac{1+\sqrt5}{2}.
-$$
-Then $\gamma\equiv5\pmod{19}$ and $\gamma^2=\gamma+1$. Since
-$$
-5^3\equiv11\pmod{19},\qquad 5^9\equiv1\pmod{19},
-$$
-the order of $\gamma$ modulo $19$ is $9$.
-
-The identity
-$$
-\gamma^m=F_m\gamma+F_{m-1}
-$$
-gives
-$$
-\gamma^9-1=34\gamma+20.
-$$
-Let $\delta=1-\gamma$, the conjugate of $\gamma$. Since $\gamma+\delta=1$ and $\gamma\delta=-1$,
-$$
-(34\gamma+20)(34\delta+20)
-=
--34^2+34\cdot20+20^2
-=
--76
-=
--4\cdot19.
-$$
-Modulo $19$, $\delta\equiv15$, so
-$$
-34\delta+20\equiv17\pmod{19}.
-$$
-The conjugate factor is a unit, and therefore
-$$
-v_{19}(\gamma^9-1)=1.
-$$
-The same lifting argument as in Step 2 shows that the order of $\gamma$ modulo $19^s$ is
-$$
-L_s=9\cdot19^{s-1}\qquad(s\geq1).
-$$
-
-Step 5: Classify all occurrences of $1$ and $-1$ in the Fibonacci sequence modulo $19^s$
-
-Since $\gamma^{-1}=\gamma-1$, the other root of $x^2-x-1$ is $-\gamma^{-1}$. Therefore
-$$
-F_m=\frac{\gamma^m-(-\gamma^{-1})^m}{\gamma+\gamma^{-1}}.
-$$
-Write $y=\gamma^m$ and $d=\gamma+\gamma^{-1}=\sqrt5$.
-
-If $m$ is odd, then
-$$
-yd(F_m-1)=(y-\gamma)(y-\gamma^{-1}),
-$$
-and
-$$
-yd(F_m+1)=(y+\gamma)(y+\gamma^{-1}).
-$$
-The roots in either factorization differ by the unit $\gamma-\gamma^{-1}=1$. The first factorization gives
-$$
-F_m\equiv1\pmod{19^s}
-$$
-exactly when
-$$
-m\equiv1\pmod{L_s}
-\quad\text{or}\quad
-m\equiv-1\pmod{L_s}.
-$$
-The second would require a power of $\gamma$ to equal $-1$. This is impossible because $L_s$ is odd while $-1$ has order $2$. Thus no odd $m$ satisfies $F_m\equiv-1\pmod{19^s}$.
-
-If $m$ is even, then
-$$
-yd(F_m-1)=(y-\gamma^2)(y+\gamma^{-2}),
-$$
-and
-$$
-yd(F_m+1)=(y-\gamma^{-2})(y+\gamma^2).
-$$
-Here the two roots differ by the unit
-$$
-\gamma^2+\gamma^{-2}=3.
-$$
-Again the branches containing a minus sign are impossible because $-1$ is not a power of $\gamma$. Therefore
-$$
-F_m\equiv1\pmod{19^s}
-$$
-exactly when
-$$
-m\equiv2\pmod{L_s},
-$$
-while
-$$
-F_m\equiv-1\pmod{19^s}
-$$
-exactly when
-$$
-m\equiv-2\pmod{L_s}.
-$$
-
-Step 6: Impose the modulus 3 condition and find the first admissible index
-
-For $n=1$, Step 3 only requires $F_{k+2}\equiv\pm1\pmod3$. Since $F_3=2\equiv-1\pmod3$, the first positive index is $k=1$. Thus $T_1=1$.
-
-Now let $n\geq2$ and put
-$$
-L=9\cdot19^{n-2}.
-$$
-Modulo $3$, the Fibonacci residues over one period are
-$$
-0,1,1,-1,0,-1,-1,1,
-$$
-and $(F_8,F_9)\equiv(0,1)\pmod3$, so the period repeats after $8$ indices.
-
-For odd $m$, Step 5 requires $m\equiv\pm1\pmod L$ and the sign modulo $19^{n-1}$ is $+1$. Since $L$ is odd, the first odd representatives after the excluded value $m=1$ are
-$$
-2L-1,\qquad2L+1.
-$$
-Also
-$$
-L=9\cdot19^{n-2}\equiv3^{n-2}\pmod8.
-$$
-If $n$ is even, then $L\equiv1\pmod8$, so $2L-1\equiv1\pmod8$ gives Fibonacci residue $1$ modulo $3$, while $2L+1\equiv3\pmod8$ gives $-1$. If $n$ is odd, then $L\equiv3\pmod8$, so $2L+1\equiv7\pmod8$ gives residue $1$, while $2L-1\equiv5\pmod8$ gives $-1$. The first admissible odd value is therefore
-$$
-m=2L-(-1)^n.
-$$
-
-For even $m$ with sign $+1$, Step 5 gives $m\equiv2\pmod L$. The value $m=2$ corresponds to $k=0$, and the next even representative is $2L+2$, which is larger than the odd candidate. For sign $-1$, the first even representative of $m\equiv-2\pmod L$ is $2L-2$. It is congruent to $0$ or $4$ modulo $8$, so its Fibonacci residue modulo $3$ is $0$, not $-1$. The next such representative is already larger than the odd candidate.
-
-Therefore the least admissible $m=k+2$ is $2L-(-1)^n$. Subtracting $2$ and inserting $L=9\cdot19^{n-2}$ gives the return time.
-
-Final Answer: $\boxed{T_1=1,\quad T_n=18\cdot19^{n-2}-2-(-1)^n\quad(n\geq2)}$
+Final Answer: $\boxed{T_1=1,\quad T_2=6,\quad T_n=6\cdot7^{n-3}\quad(n\geq3)}$
 
 ---
 
 ## Answer
 
-$T_1=1,\quad T_n=18\cdot19^{n-2}-2-(-1)^n\quad(n\geq2)$
+$T_1=1,\quad T_2=6,\quad T_n=6\cdot7^{n-3}\quad(n\geq3)$
 
 ---
 
@@ -268,7 +241,7 @@ $T_1=1,\quad T_n=18\cdot19^{n-2}-2-(-1)^n\quad(n\geq2)$
 ## Solution Concepts
 
 - modular arithmetic
-- multiplicative orders
-- quadratic units
-- Fibonacci identities
+- polynomial iteration
 - prime-power lifting
+- p-adic valuations
+- local linearization
