@@ -7,11 +7,16 @@ $$
 K=\mathbb F_p(t).
 $$
 
-Let $L_p$ be the splitting field over $K$ of
+Define
 $$
 F_p(X)=
-X^8-4tX^6+(6t^2-2t)X^4+(4t^2-4t^3)X^2+t^4-2t^3+t^2-t.
+(t^2-8)(X^3-3X)^2
+-2(t-2)(t^2-4)(X^3-3X)
++t(t^3-4t^2+16)
+\in K[X].
 $$
+
+Let $L_p$ be the splitting field of $F_p(X)$ over $K$.
 
 Determine
 $$
@@ -33,4 +38,4 @@ $$
 
 ## Domain Explanation
 
-The degree-eight polynomial conceals an iterated quadratic map. Its successive splitting fields form multiquadratic layers, but maximal growth at the final layer is not visible from the first two. Proving the final independence requires locating a new valuation from the critical orbit and transferring it among the conjugate third-level radicands.
+The polynomial hides two cubic extensions whose Galois closures have the same quadratic resolvent field. Determining the full splitting-field degree requires recovering those cubic factors, proving that both closures have symmetric Galois group, identifying their common quadratic subfield, and then using ramification to show that their remaining cubic layers are distinct.
