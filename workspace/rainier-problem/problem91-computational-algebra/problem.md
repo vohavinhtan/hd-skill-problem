@@ -2,21 +2,25 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime and write
+Let $p$ be a prime and write
 $$
 p-1=2^s d,
 $$
-where $d>1$ is odd. Let
+where $d>9$ is odd,
+$$
+3\mid d,\qquad 9\nmid d.
+$$
+Let
 $$
 L=\mathbb F_p(x,y),
 \qquad
-x^{p-1}+y^{p-1}+1=0.
+y^p-y=(x^p-x)^9.
 $$
 Inside $L$, define
 $$
-u=\frac{x^{2d}+y^{2d}+1}{(x^d+y^d+1)^2},
+u=(x^p-x)^{2d},
 \qquad
-v=\frac{x^{3d}+y^{3d}+1}{(x^d+y^d+1)^3},
+v=(x^p-x)^{2d-9}y,
 $$
 and let
 $$
@@ -42,12 +46,12 @@ Determine the genus of $K_p$ as an exact expression in $s$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves quotient curves, ramification, and genus,
+The problem also involves wild Artin-Schreier ramification and tame cyclic quotients,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is the algebraic reconstruction of a two-stage fixed field from normalized power sums, rather than the independent study of geometric structures.
+However, the main task is to reconstruct a two-stage fixed field and distinguish the different stabilizer types in its tame quotient before computing the genus.
 
 Specifically:
 
-- The stated generators encode power sums rather than the elementary symmetric invariants needed to identify the fixed field.
-- Recovering the quotient first requires passing through a diagonal subgroup whose order depends on the odd part of $p-1$.
-- The remaining permutation quotient has two different ramification classes, both of which contribute to the genus.
+- The expression $x^p-x$ conceals the fixed field of an additive translation group.
+- The two stated generators then conceal a cyclic scaling quotient whose action has two exceptional nonidentity elements with larger fixed fibers.
+- The final genus depends on combining the wild Artin-Schreier genus calculation with the nonuniform tame ramification of that cyclic quotient.
