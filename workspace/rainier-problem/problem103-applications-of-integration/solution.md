@@ -12,7 +12,7 @@ T(y)=\frac{5y+2}{y+4}.
 $$
 The assumptions become
 $$
-B(2s)=T(B(s)),\qquad B(1)=\frac12.
+B(2s)=T(B(s)),\qquad B(1)=\frac{1}{2}.
 $$
 For
 $$
@@ -20,7 +20,7 @@ q(y)=\frac{y-2}{y+1},
 $$
 algebra gives
 $$
-q\left(\frac{5y+2}{y+4}\right)=\frac12q(y).
+q\left(\frac{5y+2}{y+4}\right)=\frac{1}{2}q(y).
 $$
 The fractional linear map is one-to-one on its domain, with inverse
 $$
@@ -42,7 +42,7 @@ Changing variables $u=sv$ in the definition of $B$ gives
 $$
 B(s)=2\int_0^1(1-v)g(sv)\,dv.
 $$
-A finite concave function on $(0,\infty)$ has a limit at $0$ in $\mathbb R\cup\{-\infty\}$. Indeed, its secant slopes are nonincreasing, so the function is monotone on some interval next to $0$. The value $+\infty$ is impossible: for fixed $0<a<b$ and $0<s<a$, concavity gives
+A finite concave function on $(0,\infty)$ has a limit at $0$ in $\mathbb{R}\cup\{-\infty\}$. Indeed, its secant slopes are nonincreasing, so the function is monotone on some interval next to $0$. The value $+\infty$ is impossible: for fixed $0<a<b$ and $0<s<a$, concavity gives
 $$
 \frac{g(a)-g(s)}{a-s}\geq\frac{g(b)-g(a)}{b-a},
 $$
@@ -68,13 +68,13 @@ so $h$ is nonincreasing. The extended limit
 $$
 D=\lim_{s\downarrow0}h(s)
 $$
-therefore exists in $\mathbb R\cup\{+\infty\}$. Using $g(sv)+1=svh(sv)$ in the weighted average gives
+therefore exists in $\mathbb{R}\cup\{+\infty\}$. Using $g(sv)+1=svh(sv)$ in the weighted average gives
 $$
 \frac{B(s)+1}{s}=2\int_0^1v(1-v)h(sv)\,dv.
 $$
 For small $s$, the functions $h(sv)$ are bounded below by a fixed value of $h$. Subtracting this lower bound produces nonnegative functions, so monotone convergence applies as $s\downarrow0$. Since
 $$
-2\int_0^1v(1-v)\,dv=\frac13,
+2\int_0^1v(1-v)\,dv=\frac{1}{3},
 $$
 the last display tends to $D/3$, with the same conclusion if $D=+\infty$.
 
@@ -101,8 +101,7 @@ F(s)=s\frac{B(s)-2}{B(s)+1}
 $$
 is now defined for every $s>0$. The conjugacy from Step 1 gives $F(2s)=F(s)$. Also, Step 3 yields
 $$
-\lim_{s\downarrow0}F(s)
-=\lim_{s\downarrow0}s\frac{B(s)-2}{B(s)+1}=-1.
+\lim_{s\downarrow0}F(s)=\lim_{s\downarrow0}s\frac{B(s)-2}{B(s)+1}=-1.
 $$
 For fixed $s>0$,
 $$
@@ -129,8 +128,7 @@ J'(s)=\int_0^s g(u)\,du,\qquad J''(s)=g(s).
 $$
 Using the formula for $B$ from Step 4,
 $$
-J(s)=\frac{s^2B(s)}2
-=s^2-\frac32\left(s-1+\frac{1}{s+1}\right).
+J(s)=\frac{s^2B(s)}{2}=s^2-\frac{3}{2}\left(s-1+\frac{1}{s+1}\right).
 $$
 Two differentiations give
 $$
@@ -142,7 +140,7 @@ g''(s)=-\frac{36}{(s+1)^5}<0.
 $$
 The displayed formula for $J$ has $J(0)=J'(0)=0$. Its difference from the weighted integral of $g$ has zero second derivative. Its value and first derivative vanish at $0$, so the two functions agree. It gives $B(1)=1/2$. Also,
 $$
-\frac{B(s)-2}{B(s)+1}=-\frac1s,
+\frac{B(s)-2}{B(s)+1}=-\frac{1}{s},
 $$
 and replacing $s$ by $2s$ verifies the required fractional linear relation. Returning to $s=\log x$ finishes the recovery.
 Final Answer: $\boxed{f(x)=2-\frac{3}{(1+\log x)^3}}$
