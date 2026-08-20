@@ -22,19 +22,23 @@ and form
 $$
 V=\left(v_{\mathfrak p_i}(c_j)\right)_{0\leq i,j<6},
 $$
-where $v_{\mathfrak p}(c)$ is the exponent of the prime ideal $\mathfrak p$ in the principal fractional ideal $(c)$. Let $e_0,\ldots,e_5$ be the standard basis of $\mathbb Z^6$, and let $P$ be the cyclic permutation matrix defined by
+where $v_{\mathfrak p}(c)$ is the exponent of the prime ideal $\mathfrak p$ in the principal fractional ideal $(c)$. Let $e_0,\ldots,e_5$ be the standard basis of $\mathbb Z^6$, let $P$ be the cyclic permutation matrix defined by
 $$
 Pe_j=e_{j+1}
 $$
-with indices modulo $6$. For each integer $n\geq1$, set
+with indices modulo $6$, and let
+$$
+L=\left\{(x_0,\ldots,x_5)\in\mathbb Z^6:\sum_{j=0}^5x_j=0\right\}.
+$$
+For each integer $n\geq1$, set
 $$
 t_n=2^n-1
 $$
-and
+and define the endomorphism $\Phi_n:L\to L$ by
 $$
-A_n=V+2^n(I_6-P)-(e_1+e_4)(e_0+e_5)^T.
+\Phi_n(x)=\left(V+2^n(I_6-P)-(e_0-e_2)(e_4+e_5)^T\right)x.
 $$
-Determine the Smith normal form of $A_n$ over $\mathbb Z$.
+Determine the Smith normal form of $\Phi_n$ over $\mathbb Z$.
 
 ---
 
@@ -51,4 +55,4 @@ Determine the Smith normal form of $A_n$ over $\mathbb Z$.
 
 ## Domain Explanation
 
-This problem involves constructing an exact valuation matrix and reducing a structured rank-one-perturbed integer presentation matrix to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the presentation matrix, while the requested object is its canonical integer normal form.
+This problem involves constructing an exact valuation matrix and reducing an endomorphism of an integral lattice to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the lattice endomorphism, while the requested object is its canonical integer normal form.
