@@ -28,7 +28,7 @@ The identity
 $$
 (\zeta^k+\zeta^{-k})^2-2=\zeta^{2k}+\zeta^{-2k}
 $$
-shows that the recursion in the statement follows the Galois automorphism induced by $\zeta\mapsto\zeta^2$. Hence $\theta_0,\ldots,\theta_5$ are the six roots in cyclic Galois order.
+shows that the recursion in the statement follows the Galois automorphism induced by $\zeta\mapsto\zeta^2$. Therefore $\theta_0,\ldots,\theta_5$ are the six roots in cyclic Galois order.
 
 Step 2: Recover the valuation matrix
 
@@ -40,7 +40,7 @@ Since $f(-3)=233$,
 $$
 \prod_{j=0}^5u_j=233.
 $$
-The prime $233$ is unramified in the real cyclotomic field of conductor $13$, and $233\equiv-1\pmod{13}$ gives trivial Frobenius in $(\mathbb Z/13\mathbb Z)^\times/\{\pm1\}$. Hence $233$ splits completely in $K$. Each $u_j$ has norm $233$, so
+The prime $233$ is unramified in the real cyclotomic field of conductor $13$, and $233\equiv-1\pmod{13}$ gives trivial Frobenius in $(\mathbb Z/13\mathbb Z)^\times/\{\pm1\}$. Therefore $233$ splits completely in $K$. Each $u_j$ has norm $233$, so
 $$
 \mathfrak p_j=(u_j)
 $$
@@ -76,166 +76,143 @@ V=
 0&1&0&1&1&0
 \end{pmatrix}.
 $$
+Every column of $V$ has sum $3$. The image of $(e_0-e_2)(e_4+e_5)^T$ lies in $L$, and $I_6-P$ preserves $L$. Hence the formula in the statement does define an endomorphism of $L$.
 
-Step 3: Extract a hidden unimodular block
+Step 3: Write the endomorphism in a lattice basis
+
+Let
+$$
+b_i=e_i-e_5\qquad(0\leq i\leq4).
+$$
+These vectors form a basis of $L$. If $y\in L$, then
+$$
+y=\sum_{i=0}^4y_i b_i,
+$$
+so the coordinates of $y$ in this basis are its first five standard coordinates.
 
 Write
 $$
 t=t_n=2^n-1.
 $$
-The rank-one perturbation gives
+Applying $\Phi_n$ to $b_0,\ldots,b_4$ and keeping the first five coordinates gives the presentation matrix
 $$
-A_n=
+M(t)=
 \begin{pmatrix}
-t+1&0&1&0&1&-t\\
--t-1&t+1&0&1&0&0\\
-1&-t&t+1&0&1&0\\
-0&1&-t&t+1&0&1\\
-0&0&1&-t&t+1&-1\\
-0&1&0&1&-t&t+1
+2t+2&t+1&t+2&t+1&t+1\\
+-t-1&t&-1&0&-1\\
+0&-t-1&t&-1&1\\
+-1&0&-t-1&t&-1\\
+1&0&1&-t&t+1
 \end{pmatrix}.
 $$
-Permute the rows into the order $2,3,4,1,5,6$ and the columns into the order $4,5,6,1,2,3$. The resulting matrix is
-$$
-\begin{pmatrix}
-1&0&0&-t-1&t+1&0\\
-0&1&0&1&-t&t+1\\
-t+1&0&1&0&1&-t\\
-0&1&-t&t+1&0&1\\
--t&t+1&-1&0&0&1\\
-1&-t&t+1&0&1&0
-\end{pmatrix}.
-$$
-Its upper-left block is
+Thus the Smith form of $\Phi_n$ is the Smith form of $M(t)$.
+
+Step 4: Extract a hidden unimodular block
+
+Permute the columns of $M(t)$ into the order $3,5,1,2,4$. The upper-left $2\times2$ block is
 $$
 B=
 \begin{pmatrix}
-1&0&0\\
-0&1&0\\
-t+1&0&1
+t+2&t+1\\
+-1&-1
 \end{pmatrix},
+$$
+with
+$$
+\det B=-1,
 \qquad
 B^{-1}=
 \begin{pmatrix}
-1&0&0\\
-0&1&0\\
--t-1&0&1
+1&t+1\\
+-1&-t-2
 \end{pmatrix}.
 $$
-Since $\det B=1$, block row and column operations using $B^{-1}$ are unimodular. Clearing the other entries in the first three rows and columns leaves the Schur complement
+Using $B^{-1}$ in block row and column operations is unimodular. Clearing the other entries in the first two rows and columns leaves the Schur complement
 $$
-tR(t),
+tS(t),
 $$
 where
 $$
-R(t)=
+S(t)=
 \begin{pmatrix}
-t^2+2t+2&-t^2-2t+1&-t-1\\
-0&t&-t-3\\
--t^2-3t-1&(t+1)^2&2(t+1)
+t^2-t-2&-t^2-t+1&-t\\
+2-t^2&t(t+2)&t+2\\
+-t^2-t-1&(t+1)(t+2)&t
 \end{pmatrix}.
 $$
-Therefore
+Since $B$ is unimodular,
 $$
-A_n\sim I_3\oplus tR(t)
+M(t)\sim I_2\oplus tS(t)
 $$
 over $\mathbb Z$.
 
-Step 4: Determine the Smith invariants of the residual matrix
+Step 5: Determine the residual Smith form and assemble the answer
 
-Let $\delta$ be the gcd of the $2\times2$ minors of $R(t)$ and put
-$$
-g=\gcd(15,t+9).
-$$
-The entries $t$ and $t^2+2t+2$ have gcd $1$ because $t$ is odd, so the first Smith entry of $R(t)$ is $1$.
+The entries $-t$ and $t+2$ of $S(t)$ are coprime because $t$ is odd. Hence the first Smith entry of $S(t)$ is $1$.
 
-If $3\mid t$, then
+Let $\delta$ be the gcd of the $2\times2$ minors and put
 $$
-R(t)\equiv
+g=\gcd(5,t-1).
+$$
+If $5\mid t-1$, then
+$$
+S(t)\equiv
 \begin{pmatrix}
-2&1&2\\
-0&0&0\\
-2&1&2
-\end{pmatrix}
-\pmod3,
-$$
-which has rank $1$. If $5\mid t-1$, then
-$$
-R(t)\equiv
-\begin{pmatrix}
-0&3&3\\
-0&1&1\\
-0&4&4
+3&4&4\\
+1&3&3\\
+2&1&1
 \end{pmatrix}
 \pmod5,
 $$
-which also has rank $1$. Since $t+9\equiv t\pmod3$ and $t+9\equiv t-1\pmod5$, every $2\times2$ minor is divisible by $g$. Thus
-$$
-g\mid\delta.
-$$
+which has rank $1$. Therefore every $2\times2$ minor is divisible by $5$, so $g\mid\delta$.
 
-Four $2\times2$ minors are
+Four minors, using respectively row-column sets $(1,3;2,3)$, $(1,3;1,2)$, $(2,3;1,3)$, and $(2,3;2,3)$, are
 $$
-t(t^2+2t+2),\qquad -(t+3)(t^2+2t+2),
+t(2t+3),\qquad -(2t+1)(2t+3),
 $$
 $$
-t(t^2+3t+1),\qquad -(t+3)(t^2+3t+1).
+(t+1)(3t+2),\qquad -(t+2)(3t+2).
 $$
-Let $p$ be a prime divisor of $\delta$. If $p$ does not divide $t^2+2t+2$, the first pair forces $p\mid t$ and $p\mid t+3$, so $p=3$. The same conclusion follows from the second pair unless $p$ divides both quadratic factors. In that remaining case their difference is $t-1$, and substituting $t\equiv1\pmod p$ into $t^2+2t+2$ gives $p=5$. Hence no prime other than $3$ or $5$ divides $\delta$, and each occurs only under the congruence encoded by $g$.
+Let $p$ divide every $2\times2$ minor. From the first pair, either $p\mid2t+3$ or $p$ divides both $t$ and $2t+1$, which is impossible. Hence $p\mid2t+3$. The second pair similarly forces $p\mid3t+2$. Therefore
+$$
+p\mid3(2t+3)-2(3t+2)=5.
+$$
+Thus no prime other than $5$ divides $\delta$. If $5\mid\delta$, then $2t+3\equiv0\pmod5$, so $t\equiv1\pmod5$.
 
-The minor
-$$
-t^3+6t^2+6t-3
-$$
-shows that $9\nmid\delta$ when $3\mid t$: for $t=3s$, division by $3$ gives a number congruent to $-1$ modulo $3$. The minor
-$$
-t(t^2+3t+1)
-$$
-shows that $25\nmid\delta$ when $5\mid t-1$: for $t=1+5s$,
-$$
-t^2+3t+1=5(1+5s+5s^2),
-$$
-so the quotient of this minor by $5$ is congruent to $1$ modulo $5$. Therefore
+Write $t=1+5s$. Dividing the first and third displayed minors by $5$ gives quantities congruent modulo $5$ to $1+2s$ and $2(1+3s)$, because $t\equiv1$ and $t+1\equiv2$ modulo $5$. These cannot both vanish modulo $5$. Hence $25\nmid\delta$, and
 $$
 \delta=g.
 $$
 
-For the determinant, expansion along the second row gives
+Expanding $\det S(t)$ along the first row, the three complementary minors are
 $$
-\det R(t)
-=
-(t^2+2t+2)(t^3+7t^2+9t+3)
-+
-(-t^2-2t+1)(t^3+6t^2+10t+3)
--
-(-t-1)(-t^3-3t^2-t),
+-(t+2)(3t+2),\qquad (t+1)(3t+2),\qquad (t+2)(3t+2).
 $$
-which simplifies to
+Substitution gives
 $$
-\det R(t)=(2t+3)(7t+3).
+\det S(t)=6t^2+13t+6=(2t+3)(3t+2).
 $$
-Hence
+Therefore
 $$
-\operatorname{SNF}(R(t))=
-\operatorname{diag}\left(1,g,\frac{(2t+3)(7t+3)}{g}\right).
+\operatorname{SNF}(S(t))=
+\operatorname{diag}\left(1,g,\frac{(2t+3)(3t+2)}{g}\right).
 $$
+When $g=5$, both factors in the numerator are divisible by $5$, so the entries are in divisibility order.
 
-Step 5: Assemble the Smith normal form
-
-Multiplying a matrix by the positive integer $t$ multiplies every Smith entry by $t$. From Step 3 and Step 4,
+Multiplying a matrix by the positive integer $t$ multiplies every Smith entry by $t$. Step 4 now gives
 $$
-\operatorname{SNF}(A_n)=
-\operatorname{diag}\left(1,1,1,t,gt,\frac{t(2t+3)(7t+3)}{g}\right).
+\operatorname{SNF}(\Phi_n)=
+\operatorname{diag}\left(1,1,t,gt,\frac{t(2t+3)(3t+2)}{g}\right).
 $$
-If $3\mid g$, then both $2t+3$ and $7t+3$ are divisible by $3$. If $5\mid g$, then both are divisible by $5$. Therefore $g^2$ divides $(2t+3)(7t+3)$, so the displayed entries are in divisibility order. Substituting $t=t_n$ and $g=\gcd(15,t_n+9)$ gives the requested canonical form.
+Substituting $t=t_n$ and $g=\gcd(5,t_n-1)$ gives the requested canonical form.
 
-Final Answer: $\boxed{\operatorname{diag}(1,1,1,t_n,\gcd(15,t_n+9)t_n,\frac{t_n(2t_n+3)(7t_n+3)}{\gcd(15,t_n+9)})}$
+Final Answer: $\boxed{\operatorname{diag}(1,1,t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(5,t_n-1)})}$
 
 ---
 
 ## Answer
 
-$\operatorname{diag}(1,1,1,t_n,\gcd(15,t_n+9)t_n,\frac{t_n(2t_n+3)(7t_n+3)}{\gcd(15,t_n+9)})$
+$\operatorname{diag}(1,1,t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(5,t_n-1)})$
 
 ---
 
@@ -255,6 +232,6 @@ $\operatorname{diag}(1,1,1,t_n,\gcd(15,t_n+9)t_n,\frac{t_n(2t_n+3)(7t_n+3)}{\gcd
 
 - real cyclotomic fields
 - prime ideal valuations
+- invariant sublattices
 - unimodular block elimination
-- modular rank
 - smith normal form
