@@ -14,7 +14,7 @@ Pairing the twelve nontrivial thirteenth roots gives
 $$
 1+s_1+s_2+s_3+s_4+s_5+s_6=0.
 $$
-Substitution from the recurrence yields $f(\theta)=0$. Since $\mathbb Q(\zeta)$ has degree $12$ and $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb Q(\theta)$, the degree of $\mathbb Q(\theta)$ is $6$. Hence $f$ is the minimal polynomial of $\theta$, and
+Substitution from the recurrence gives $f(\theta)=0$. Since $\mathbb Q(\zeta)$ has degree $12$ and $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb Q(\theta)$, the field $\mathbb Q(\theta)$ has degree $6$. It follows that $f$ is the minimal polynomial of $\theta$, and
 $$
 K=\mathbb Q(\theta)
 $$
@@ -28,7 +28,7 @@ The identity
 $$
 (\zeta^k+\zeta^{-k})^2-2=\zeta^{2k}+\zeta^{-2k}
 $$
-shows that the recursion in the statement follows the Galois automorphism induced by $\zeta\mapsto\zeta^2$. Thus $\theta_0,\ldots,\theta_5$ are the six roots in cyclic Galois order.
+shows that the recursion in the statement follows the Galois automorphism induced by $\zeta\mapsto\zeta^2$. Therefore $\theta_0,\ldots,\theta_5$ are the six roots in cyclic Galois order.
 
 Step 2: Recover the valuation matrix
 
@@ -46,13 +46,13 @@ $$
 $$
 is a prime ideal above $233$.
 
-The conjugates needed below are
+The relevant conjugates are
 $$
 \theta_1=\theta_0^2-2,\qquad
 \theta_2=\theta_0^4-4\theta_0^2+2,\qquad
 \theta_4=\theta_0^3-3\theta_0.
 $$
-The polynomial identity
+The identity
 $$
 (T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)=f(T)(T+1)(T^2-2T+2)
 $$
@@ -77,17 +77,17 @@ V=
 \end{pmatrix}.
 $$
 
-Step 3: Isolate the singular specialization
+Step 3: Remove a hidden unimodular block
 
 Write
 $$
-m=2^n,\qquad t=m-1=t_n.
+t=t_n=2^n-1.
 $$
-From the definition of $P$,
+The rank-one term breaks the circulant form and gives
 $$
 A_n=
 \begin{pmatrix}
-t+1&0&1&0&1&-t\\
+t+1&0&1&1&1&-t\\
 -t&t+1&0&1&0&1\\
 1&-t&t+1&0&1&0\\
 0&1&-t&t+1&0&1\\
@@ -95,109 +95,185 @@ t+1&0&1&0&1&-t\\
 0&1&0&1&-t&t+1
 \end{pmatrix}.
 $$
-Rows $1,2$ and columns $3,4$ form an identity block. Move those two columns first and use the identity block to clear its two rows and columns. These are unimodular integer operations. The remaining Schur complement is
+Permute the columns into the order $2,4,5,1,3,6$. With the first three rows separated from the last three, write the result as
 $$
-tS(t),
+\begin{pmatrix}
+B&X\\
+Y&D
+\end{pmatrix},
 $$
 where
 $$
-S(t)=
+B=
 \begin{pmatrix}
--t-2&-1&-1&t+1\\
-2t+2&-t-2&1&-t-1\\
--t-1&t+1&1&2\\
-1&-1&-1&1
+0&1&1\\
+t+1&1&0\\
+-t&0&1
+\end{pmatrix},
+\qquad
+B^{-1}=
+\begin{pmatrix}
+-1&1&1\\
+t+1&-t&-t-1\\
+-t&t&t+1
+\end{pmatrix},
+$$
+$$
+X=
+\begin{pmatrix}
+t+1&1&-t\\
+-t&0&1\\
+1&t+1&0
+\end{pmatrix},
+\qquad
+Y=
+\begin{pmatrix}
+1&t+1&0\\
+0&-t&t+1\\
+1&1&-t
+\end{pmatrix},
+$$
+and
+$$
+D=
+\begin{pmatrix}
+0&-t&1\\
+1&1&0\\
+0&0&t+1
 \end{pmatrix}.
 $$
-Thus $A_n$ is equivalent over $\mathbb Z$ to
+Since $\det B=-1$, the block row and column operations
 $$
-I_2\oplus tS(t).
+\begin{pmatrix}
+I_3&0\\
+-YB^{-1}&I_3
+\end{pmatrix}
+\begin{pmatrix}
+B&X\\
+Y&D
+\end{pmatrix}
+\begin{pmatrix}
+I_3&-B^{-1}X\\
+0&I_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+B&0\\
+0&D-YB^{-1}X
+\end{pmatrix}
 $$
+are unimodular. Multiplying these displayed blocks gives
+$$
+D-YB^{-1}X=tR(t),
+$$
+where
+$$
+R(t)=
+\begin{pmatrix}
+-2t^2-3t+1&t^2+2t-1&t^2+3t+1\\
+(t+1)(4t-1)&-2t^2-3t-2&-2t^2-4t-1\\
+-2(t^2+t-1)&(t+1)^2&t^2+2t+2
+\end{pmatrix}.
+$$
+Because $B$ is unimodular,
+$$
+A_n\sim I_3\oplus tR(t)
+$$
+over $\mathbb Z$.
 
-Step 4: Determine the Smith invariants of the residual matrix
+Step 4: Determine the Smith form of the residual matrix
 
 Let
 $$
 g=\gcd(3,t).
 $$
-The entry $1$ in $S(t)$ gives first determinantal divisor $1$. Two $2\times2$ minors, using rows $1,2$ with columns $1,3$ and rows $3,4$ with columns $3,4$, are respectively
+The entries
 $$
-t\qquad\text{and}\qquad3.
+a=-2t^2-3t+1,\qquad c=t^2+3t+1
 $$
-Hence the second determinantal divisor divides $g$.
+satisfy
+$$
+2c+a=3(t+1).
+$$
+Also $c\equiv-1\pmod{t+1}$. Since $t=2^n-1$ is congruent to $0$ or $1$ modulo $3$, $c$ is congruent to $1$ or $2$ modulo $3$. Hence $\gcd(a,c)=1$, so the first Smith entry of $R(t)$ is $1$.
 
-At $t=0$,
+Let $\delta$ be the gcd of the $2\times2$ minors. If $3\mid t$, then modulo $3$,
 $$
-S(0)=
+R(t)\equiv
 \begin{pmatrix}
--2&-1&-1&1\\
-2&-2&1&-1\\
--1&1&1&2\\
-1&-1&-1&1
-\end{pmatrix}.
+1&-1&1\\
+-1&-2&-1\\
+2&1&2
+\end{pmatrix},
 $$
-Move the last row first, then perform
-$$
-R_2\leftarrow R_2+2R_1,\qquad
-R_3\leftarrow R_3-2R_1,\qquad
-R_4\leftarrow R_4+R_1.
-$$
-Next use
-$$
-C_2\leftarrow C_2+C_1,\qquad
-C_3\leftarrow C_3+C_1,\qquad
-C_4\leftarrow C_4-C_1.
-$$
-This produces $1$ in the first diagonal position and a lower $3\times3$ block equal to $3$ times a unimodular matrix. Hence
-$$
-\operatorname{SNF}(S(0))=\operatorname{diag}(1,3,3,3).
-$$
-If $3\mid t$, then $S(t)\equiv S(0)\pmod3$. Applying the same unimodular transformations shows that every $2\times2$ minor of $S(t)$ is divisible by $3$ and every $3\times3$ minor is divisible by $9$. Therefore the second and third determinantal divisors are divisible by $g$ and $g^2$.
+which has rank $1$. Therefore $g\mid\delta$.
 
-For the reverse divisibilities, the $3\times3$ minors on rows $1,2,4$ with columns $1,3,4$ and rows $1,2,3$ with columns $2,3,4$ are
+Three minors are
 $$
--t^2
+M_0=t^3+10t^2+8t-3,
+$$
+$$
+M_1=-t(t^2+1),
 $$
 and
 $$
--(t+3)^2.
+M_2=t^3+6t^2+11t+3.
 $$
-Thus the third determinantal divisor divides
+Another minor equals $-t^3-7t^2-7t+3$, so $\delta$ divides
 $$
-\gcd(t^2,(t+3)^2)=g^2.
+t(3t+1)=M_0+(-t^3-7t^2-7t+3).
 $$
-The second and third determinantal divisors are therefore exactly $g$ and $g^2$.
+Let $p$ be a prime divisor of $\delta$. If $p\mid t$, then $M_0\equiv-3\pmod p$, so $p=3$. If $p\nmid t$, then $M_1$ and $t(3t+1)$ force
+$$
+t^2\equiv-1\pmod p,\qquad 3t\equiv-1\pmod p.
+$$
+These congruences imply $p\mid10$. The case $p=2$ contradicts $M_2\equiv1\pmod2$. For $p=5$, the second congruence gives $t\equiv3\pmod5$, and then $M_2\equiv2\pmod5$. Hence no prime other than $3$ divides $\delta$.
 
-Expanding $\det S(t)$ along the last row gives the four contributions
+If $t=3s$, then
 $$
-(t+3)^2,\qquad -t(t+3),\qquad -t^2+6t+9,\qquad t^2+9t+9,
+\frac{M_0}{3}\equiv2s-1\pmod3,\qquad
+\frac{M_2}{3}\equiv2s+1\pmod3.
 $$
-whose sum is
+They cannot both vanish modulo $3$, so $9\nmid\delta$. Therefore
 $$
-9(2t+3).
-$$
-Hence
-$$
-\operatorname{SNF}(S(t))=
-\operatorname{diag}\left(1,g,g,\frac{9(2t+3)}{g^2}\right).
+\delta=g.
 $$
 
-Step 5: Read the Smith normal form of $A_n$
+Expanding the determinant along the first row gives
+$$
+\det R(t)
+=
+(-2t^2-3t+1)(t^3-t^2-4t-3)
+-
+(t^2+2t-1)(-t(t^2-7t-10))
++
+(t^2+3t+1)(t^3+3t^2+3t+3),
+$$
+so
+$$
+\det R(t)=t(19t+27).
+$$
+The Smith form of $R(t)$ is
+$$
+\operatorname{diag}\left(1,g,\frac{t(19t+27)}{g}\right).
+$$
 
-Multiplying a matrix by the positive integer $t$ multiplies every Smith entry by $t$. Combining Step 3 with Step 4 gives
+Step 5: Assemble the Smith form of $A_n$
+
+Multiplying a matrix by the positive integer $t$ multiplies each Smith entry by $t$. Step 3 and Step 4 give
 $$
 \operatorname{SNF}(A_n)=
-\operatorname{diag}\left(1,1,t,gt,gt,\frac{9t(2t+3)}{g^2}\right).
+\operatorname{diag}\left(1,1,1,t,gt,\frac{t^2(19t+27)}{g}\right).
 $$
-Since $t=t_n=2^n-1$ and $g=\gcd(3,t_n)$, this is already in divisibility order: when $g=3$, the last quotient is $t_n(2t_n+3)$ and $3\mid2t_n+3$; when $g=1$, the condition is immediate.
+When $g=3$, both $t$ and $19t+27$ are divisible by $3$, so the displayed entries satisfy the divisibility chain. Substituting $t=t_n$ gives the requested canonical form.
 
-Final Answer: $\boxed{\operatorname{diag}(1,1,t_n,\gcd(3,t_n)t_n,\gcd(3,t_n)t_n,\frac{9t_n(2t_n+3)}{\gcd(3,t_n)^2})}$
+Final Answer: $\boxed{\operatorname{diag}(1,1,1,t_n,\gcd(3,t_n)t_n,\frac{t_n^2(19t_n+27)}{\gcd(3,t_n)})}$
 
 ---
 
 ## Answer
 
-$\operatorname{diag}(1,1,t_n,\gcd(3,t_n)t_n,\gcd(3,t_n)t_n,\frac{9t_n(2t_n+3)}{\gcd(3,t_n)^2})$
+$\operatorname{diag}(1,1,1,t_n,\gcd(3,t_n)t_n,\frac{t_n^2(19t_n+27)}{\gcd(3,t_n)})$
 
 ---
 
@@ -217,6 +293,6 @@ $\operatorname{diag}(1,1,t_n,\gcd(3,t_n)t_n,\gcd(3,t_n)t_n,\frac{9t_n(2t_n+3)}{\
 
 - real cyclotomic fields
 - prime ideal valuations
-- singular specialization
+- unimodular block elimination
 - determinantal divisors
 - smith normal form
