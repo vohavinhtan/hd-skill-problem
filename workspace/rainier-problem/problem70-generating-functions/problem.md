@@ -1,8 +1,6 @@
 # Normalized Math Problem
 
-
 ## LaTeX (Normalized)
-
 
 Fix integers $n\geq2$ and $r\geq1$, and define
 $$
@@ -22,7 +20,6 @@ $$
 \eta=\tau^2-r^4-3.
 $$
 
-
 For each integer $m\geq4$ and each triple of nonnegative integers $a,b,c$ satisfying
 $$
 a+b+c=m,
@@ -32,13 +29,11 @@ $$
 T_m(a,b,c)=\operatorname{tr}\left(DX^aDX^bDX^c\right).
 $$
 
-
 Let
 $$
 M_{m,1}>M_{m,2}>M_{m,3}
 $$
 be the three largest distinct values among all $T_m(a,b,c)$.
-
 
 Determine, in reduced rational form, the ordinary generating function
 $$
@@ -46,12 +41,9 @@ $$
 (M_{m,1}-M_{m,2})(M_{m,1}-M_{m,3})t^{m-4}.
 $$
 
-
 ---
 
-
 ## Domain Classification
-
 
 | Field | Value |
 |---|---|
@@ -60,12 +52,9 @@ $$
 | **Problem Type** | Symbolic derivation |
 | **Answer Type** | Polynomial or rational function |
 
-
 ---
 
-
 ## Domain Explanation
-
 
 This problem involves an extremal sequence indexed by integer compositions and the derivation of its ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
 The problem also involves eigenvalues and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
