@@ -2,29 +2,25 @@
 
 ## LaTeX (Normalized)
 
-Let $f:(1,\infty)\to(-1,\infty)$ be continuous and satisfy $f(e)=0$. For every $x>1$, put
+Let $f:(1,\infty)\to\mathbb{R}$ be continuous and satisfy $f(e)=0$. For every $x>1$, put
 $$
 t=\log x.
 $$
 Suppose
 $$
-(1+16t^4)(f(x^2)-4t^2)(1+t^4+tf(x))
-=
-\left(2(1+t^4)(f(x)-t^2)+t^3(1+t^4+tf(x))\right)
-(1+16t^4+2tf(x^2))
+f(x^2)=2f(x)+2t^2
 $$
 and
 $$
-(1+81t^4)(f(x^3)-9t^2)(1+t^4+tf(x))
+f(x^3)+3t f(x^3)^2
 =
-\left(3(1+t^4)(f(x)-t^2)+4t^3(1+t^4+tf(x))\right)
-(1+81t^4+3tf(x^3)).
+3f(x)+3t f(x)^2+6t^2(1+4t-26t^2+40t^3).
 $$
 Determine
 $$
 \lim_{x\to1^+}
 \frac{
-f(x)+\frac{7}{6}(x-1)-\frac{19}{12}(x-1)^2-\frac{5}{36}(x-1)^3+\frac{9}{4}(x-1)^4
+f(x)+(x-1)-\frac{3}{2}(x-1)^2+\frac{4}{3}(x-1)^3-\frac{7}{6}(x-1)^4
 }{
 (x-1)^5
 }.
@@ -45,6 +41,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a one-sided limit whose value is fixed by continuity together with two nonlinear scaling identities, which are part of Calculus and Limits and continuity.
-The problem also involves logarithmic substitution, rational changes of dependent variable, and functional equations under multiplicative rescaling, which are part of Algebra, Functions, and Trigonometry and Exponential and logarithmic functions.
-However, those algebraic steps are used to recover the unique local behavior required for the limiting calculation, so limits and continuity remain the primary content.
+This problem involves a one-sided limit whose value is forced by continuity and two interacting dilation identities, which are part of Calculus and Limits and continuity.
+The problem also involves a nonlinear functional relation and logarithmic rescaling, which are part of Algebra, Functions, and Trigonometry and Exponential and logarithmic functions.
+However, those algebraic relations are used to prove the rigidity needed to determine the local expansion at the limiting point, so limits and continuity are the primary content.
