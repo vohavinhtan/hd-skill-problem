@@ -14,7 +14,7 @@ Pairing the twelve nontrivial thirteenth roots gives
 $$
 1+s_1+s_2+s_3+s_4+s_5+s_6=0.
 $$
-Substitution from the recurrence gives $f(\theta)=0$. Since $\mathbb Q(\zeta)$ has degree $12$ and $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb Q(\theta)$, the field $\mathbb Q(\theta)$ has degree $6$. Therefore $f$ is the minimal polynomial of $\theta$, and
+Substitution from the recurrence gives $f(\theta)=0$. Since $\mathbb Q(\zeta)$ has degree $12$ and $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb Q(\theta)$, the field $\mathbb Q(\theta)$ has degree $6$. $f$ is therefore the minimal polynomial of $\theta$, and
 $$
 K=\mathbb Q(\theta)
 $$
@@ -30,7 +30,7 @@ $$
 $$
 shows that the recursion in the statement follows the Galois automorphism induced by $\zeta\mapsto\zeta^2$. Therefore $\theta_0,\ldots,\theta_5$ are the six roots in cyclic Galois order.
 
-Step 2: Recover the valuation matrix
+Step 2: Recover the valuation matrix and verify the sublattice
 
 Put
 $$
@@ -46,7 +46,7 @@ $$
 $$
 is a prime ideal above $233$.
 
-The relevant conjugates are
+The conjugates needed below are
 $$
 \theta_1=\theta_0^2-2,\qquad
 \theta_2=\theta_0^4-4\theta_0^2+2,\qquad
@@ -64,7 +64,7 @@ Applying the cyclic Galois action gives
 $$
 c_j=u_{j+1}u_{j+2}u_{j+4}
 $$
-with indices modulo $6$. Therefore
+with indices modulo $6$. This gives
 $$
 V=
 \begin{pmatrix}
@@ -76,25 +76,41 @@ V=
 0&1&0&1&1&0
 \end{pmatrix}.
 $$
-Every column of $V$ has sum $3$. The image of $(e_0-e_2)(e_4+e_5)^T$ lies in $L$, and $I_6-P$ preserves $L$. Hence the formula in the statement does define an endomorphism of $L$.
 
-Step 3: Write the endomorphism in a lattice basis
+Let
+$$
+r=(1,0,1,0,1,0),\qquad \mathbf 1=(1,1,1,1,1,1).
+$$
+For $q=2^n$,
+$$
+r\left(V+q(I_6-P)\right)=(2q+1)r+(1-q)\mathbf 1.
+$$
+Also
+$$
+r(e_0-e_2)=0.
+$$
+It follows that $x\in\Lambda$ implies $r\Psi_n(x)\equiv0\pmod3$. Every column of $V$ has sum $3$, while $I_6-P$ and $e_0-e_2$ have coordinate sum $0$, so $\Psi_n(x)\in L$. The map $\Psi_n$ therefore preserves $\Lambda$.
+
+Step 3: Construct the presentation on the index-three lattice
 
 Let
 $$
 b_i=e_i-e_5\qquad(0\leq i\leq4).
 $$
-These vectors form a basis of $L$. If $y\in L$, then
+These form a basis of $L$. In this basis the condition defining $\Lambda$ is
 $$
-y=\sum_{i=0}^4y_i b_i,
+y_0+y_2+y_4\equiv0\pmod3.
 $$
-so the coordinates of $y$ in this basis are its first five standard coordinates.
+A basis of $\Lambda$ is
+$$
+d_0=3b_0,\qquad d_1=b_1,\qquad d_2=b_2-b_0,\qquad d_3=b_3,\qquad d_4=b_4-b_0.
+$$
 
 Write
 $$
 t=t_n=2^n-1.
 $$
-Applying $\Phi_n$ to $b_0,\ldots,b_4$ and keeping the first five coordinates gives the presentation matrix
+In the basis $b_0,\ldots,b_4$, the ambient operator has matrix
 $$
 M(t)=
 \begin{pmatrix}
@@ -105,114 +121,117 @@ M(t)=
 1&0&1&-t&t+1
 \end{pmatrix}.
 $$
-Thus the Smith form of $\Phi_n$ is the Smith form of $M(t)$.
-
-Step 4: Extract a hidden unimodular block
-
-Permute the columns of $M(t)$ into the order $3,5,1,2,4$. The upper-left $2\times2$ block is
+The change-of-basis matrix whose columns are $d_0,\ldots,d_4$ in the $b$-basis is
 $$
-B=
+U=
 \begin{pmatrix}
-t+2&t+1\\
--1&-1
-\end{pmatrix},
-$$
-with
-$$
-\det B=-1,
-\qquad
-B^{-1}=
-\begin{pmatrix}
-1&t+1\\
--1&-t-2
+3&0&-1&0&-1\\
+0&1&0&0&0\\
+0&0&1&0&0\\
+0&0&0&1&0\\
+0&0&0&0&1
 \end{pmatrix}.
 $$
-Using $B^{-1}$ in block row and column operations is unimodular. Clearing the other entries in the first two rows and columns leaves the Schur complement
+Since the columns of $U$ are a basis of $\Lambda$, the restriction matrix is
 $$
-tS(t),
-$$
-where
-$$
-S(t)=
+N(t)=U^{-1}M(t)U=
 \begin{pmatrix}
-t^2-t-2&-t^2-t+1&-t\\
-2-t^2&t(t+2)&t+2\\
--t^2-t-1&(t+1)(t+2)&t
+2t+3&0&0&0&0\\
+-3t-3&t&t&0&t\\
+0&-t-1&t&-1&1\\
+-3&0&-t&t&0\\
+3&0&0&-t&t
 \end{pmatrix}.
 $$
-Since $B$ is unimodular,
-$$
-M(t)\sim I_2\oplus tS(t)
-$$
-over $\mathbb Z$.
 
-Step 5: Determine the residual Smith form and assemble the answer
+Step 4: Determine the first four determinantal divisors
 
-The entries $-t$ and $t+2$ of $S(t)$ are coprime because $t$ is odd. Hence the first Smith entry of $S(t)$ is $1$.
+Let $\Delta_k$ be the gcd of the $k\times k$ minors of $N(t)$ and put
+$$
+a=\gcd(3,t),\qquad b=\gcd(5,t-1).
+$$
+The entry $-1$ gives
+$$
+\Delta_1=1.
+$$
 
-Let $\delta$ be the gcd of the $2\times2$ minors and put
+If $3\mid t$, reduction of $N(t)$ modulo $3$ has rank $1$, so every $2\times2$ minor is divisible by $3$. Two $2\times2$ minors are $t$ and $3$. This gives
 $$
-g=\gcd(5,t-1).
+\Delta_2=a.
 $$
-If $5\mid t-1$, then
-$$
-S(t)\equiv
-\begin{pmatrix}
-3&4&4\\
-1&3&3\\
-2&1&1
-\end{pmatrix}
-\pmod5,
-$$
-which has rank $1$. Therefore every $2\times2$ minor is divisible by $5$, so $g\mid\delta$.
 
-Four minors, using respectively row-column sets $(1,3;2,3)$, $(1,3;1,2)$, $(2,3;1,3)$, and $(2,3;2,3)$, are
+At $t=0$, the matrix $N(0)$ has rank $2$, so every $3\times3$ minor is divisible by $t$. If $3\mid t$, write such a minor as $tH(t)$. The value $H(0)$ is a sum of products involving $2\times2$ minors of $N(0)$, and all those minors are divisible by $3$ because $N(0)$ has rank $1$ modulo $3$. The difference $H(t)-H(0)$ is divisible by $t$, so $3\mid H(t)$. Every $3\times3$ minor is therefore divisible by $at$. Two such minors are
 $$
-t(2t+3),\qquad -(2t+1)(2t+3),
+3t\qquad\text{and}\qquad t^3,
+$$
+so
+$$
+\Delta_3=at.
+$$
+
+The rank of $N(0)$ is $2$, so multilinearity of a $4\times4$ determinant in $N(0)+tE$ shows that every $4\times4$ minor is divisible by $t^2$. If $3\mid t$, the coefficient after division by $t^2$ is divisible by $3$ for the same rank-one reduction of $N(0)$ modulo $3$. If $5\mid t-1$, then $N(1)$ has rank $3$ modulo $5$, so every $4\times4$ minor is divisible by $5$; since $t$ is nonzero modulo $5$, the quotient by $t^2$ is also divisible by $5$. This gives
+$$
+abt^2\mid\Delta_4.
+$$
+
+Four $4\times4$ minors, after division by $t^2$, are
+$$
+(t+2)(2t+3),\qquad (2t+1)(2t+3),
 $$
 $$
-(t+1)(3t+2),\qquad -(t+2)(3t+2).
+3(t^2+2t+2),\qquad t(3t+2).
 $$
-Let $p$ divide every $2\times2$ minor. From the first pair, either $p\mid2t+3$ or $p$ divides both $t$ and $2t+1$, which is impossible. Hence $p\mid2t+3$. The second pair similarly forces $p\mid3t+2$. Therefore
+Let $p$ divide all four quotients. If $p\neq3$, the first two force $p\mid2t+3$, and the last then forces $p\mid3t+2$ unless $p\mid t$, which would give $p=3$. It follows that
 $$
 p\mid3(2t+3)-2(3t+2)=5.
 $$
-Thus no prime other than $5$ divides $\delta$. If $5\mid\delta$, then $2t+3\equiv0\pmod5$, so $t\equiv1\pmod5$.
+Only $3$ and $5$ can occur. The factor $3$ occurs exactly when $3\mid t$, and the factor $5$ occurs exactly when $5\mid t-1$. When $3\mid t$, the third quotient divided by $3$ is congruent to $2$ modulo $3$, so no second factor $3$ is common. When $t=1+5s$, the first and fourth quotients divided by $5$ are congruent to
+$$
+3(1+2s)\qquad\text{and}\qquad 1+3s
+$$
+modulo $5$, and these cannot both vanish. No second factor $5$ is common. Therefore
+$$
+\Delta_4=abt^2.
+$$
 
-Write $t=1+5s$. Dividing the first and third displayed minors by $5$ gives quantities congruent modulo $5$ to $1+2s$ and $2(1+3s)$, because $t\equiv1$ and $t+1\equiv2$ modulo $5$. These cannot both vanish modulo $5$. Hence $25\nmid\delta$, and
+Step 5: Compute the determinant and read the Smith form
+
+Expanding $\det N(t)$ along its first row gives
 $$
-\delta=g.
+\det N(t)=(2t+3)
+\det\begin{pmatrix}
+t&t&0&t\\
+-t-1&t&-1&1\\
+0&-t&t&0\\
+0&0&-t&t
+\end{pmatrix}.
+$$
+Factoring $t$ from the first, third, and fourth rows of the $4\times4$ determinant leaves determinant $3t+2$. This gives
+$$
+\Delta_5=|\det N(t)|=t^3(2t+3)(3t+2).
 $$
 
-Expanding $\det S(t)$ along the first row, the three complementary minors are
+The Smith entries are
 $$
--(t+2)(3t+2),\qquad (t+1)(3t+2),\qquad (t+2)(3t+2).
+d_1=1,\qquad d_2=a,\qquad d_3=t,\qquad d_4=bt,
 $$
-Substitution gives
+and
 $$
-\det S(t)=6t^2+13t+6=(2t+3)(3t+2).
+d_5=\frac{t(2t+3)(3t+2)}{ab}.
 $$
-Therefore
+Since
 $$
-\operatorname{SNF}(S(t))=
-\operatorname{diag}\left(1,g,\frac{(2t+3)(3t+2)}{g}\right).
+ab=\gcd(15,t+9),
 $$
-When $g=5$, both factors in the numerator are divisible by $5$, so the entries are in divisibility order.
+because $t+9\equiv t\pmod3$ and $t+9\equiv t-1\pmod5$, the last entry has the form used below. For $t=2^n-1$, the conditions $a=3$ and $b=5$ cannot occur simultaneously; if $a=3$, then $3\mid2t+3$, while if $b=5$, both $2t+3$ and $3t+2$ are divisible by $5$. The displayed entries are therefore in divisibility order.
 
-Multiplying a matrix by the positive integer $t$ multiplies every Smith entry by $t$. Step 4 now gives
-$$
-\operatorname{SNF}(\Phi_n)=
-\operatorname{diag}\left(1,1,t,gt,\frac{t(2t+3)(3t+2)}{g}\right).
-$$
-Substituting $t=t_n$ and $g=\gcd(5,t_n-1)$ gives the requested canonical form.
-
-Final Answer: $\boxed{\operatorname{diag}(1,1,t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(5,t_n-1)})}$
+Final Answer: $\boxed{\operatorname{diag}(1,\gcd(3,t_n),t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(15,t_n+9)})}$
 
 ---
 
 ## Answer
 
-$\operatorname{diag}(1,1,t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(5,t_n-1)})$
+$\operatorname{diag}(1,\gcd(3,t_n),t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(15,t_n+9)})$
 
 ---
 
@@ -232,6 +251,6 @@ $\operatorname{diag}(1,1,t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(5,
 
 - real cyclotomic fields
 - prime ideal valuations
-- invariant sublattices
-- unimodular block elimination
+- finite-index sublattices
+- determinantal divisors
 - smith normal form
