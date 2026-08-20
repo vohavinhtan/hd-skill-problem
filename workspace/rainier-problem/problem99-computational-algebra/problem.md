@@ -2,30 +2,33 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime and work in the composition group
+Let $p\geq5$ be a prime and let
 $$
-\mathcal G=\left\{f(T)\in(\mathbb Z/p^7\mathbb Z)[T]/(T^{11}):f(T)=T+T^2h(T)\right\}.
+A=(\mathbb{Z}/p^5\mathbb{Z})[T]/(T^{13}).
 $$
-Composition is from right to left. For $f,g\in\mathcal G$, write
+For $r\in\{1,2,4\}$ define the derivation
 $$
-[f,g]=f\circ g\circ f^{-1}\circ g^{-1}.
+D_r=T^{r+1}\frac{d}{dT}.
 $$
-For every integer $a$, define
+For every integer $a$, define the automorphism
 $$
-P_a(T)=T+paT^2,
+E_{r,a}=\sum_{k=0}^{4}\frac{(pa)^k}{k!}D_r^k.
 $$
+For automorphisms $F,G$ of $A$, write
 $$
-Q_a(T)=T+paT^2+p^2aT^3,
+[F,G]=FGF^{-1}G^{-1},
 $$
-and
+where juxtaposition denotes composition and the rightmost operator acts first.
+
+Fix an integer $n\geq1$ and put
 $$
-R_a(T)=T+paT^5.
+X=E_{1,n},\qquad Y=E_{2,n+1},\qquad Z=E_{4,n+2}.
 $$
-Fix an integer $n\geq1$ and set
+Define
 $$
-W_n=[R_{n+2},[P_n,Q_{n+1}]].
+W_n=[[X,Y],Z][[Y,Z],X][[Z,X],Y].
 $$
-Determine the coefficient of $T^{10}$ in $W_n(T)$ as an element of $\mathbb Z/p^7\mathbb Z$.
+Determine the coefficient of $T^{10}$ in $W_n(T)$ as an element of $\mathbb{Z}/p^5\mathbb{Z}$.
 
 ---
 
@@ -42,6 +45,6 @@ Determine the coefficient of $T^{10}$ in $W_n(T)$ as an element of $\mathbb Z/p^
 
 ## Domain Explanation
 
-This problem involves composition, inversion, and nested commutators of truncated polynomial substitutions, which are part of Abstract Algebra and Computational algebra.
-The problem also involves prime-power congruences and filtration by powers of $p$, which are part of Number Theory and Modular arithmetic and congruences.
-However, the requested coefficient is determined by two successive cancellations in the noncommutative composition law, while modular arithmetic controls which correction layers survive.
+This problem involves automorphisms of a truncated polynomial algebra, iterated group commutators, and the Lie brackets of derivations, which are part of Abstract Algebra and Computational algebra.
+The problem also involves arithmetic modulo a prime power and a filtration by powers of $p$, which are part of Number Theory and Modular arithmetic and congruences.
+However, the first commutator layer cancels by a noncommutative identity, and the requested coefficient comes from the next Lie layer, so the algebraic commutator structure is primary.

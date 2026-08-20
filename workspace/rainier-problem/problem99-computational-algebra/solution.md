@@ -1,190 +1,195 @@
 ## Steps
 
-Step 1: Compute the composition defect of the inner pair
+Step 1: Compute the Lie brackets of the derivations
 
-Put
+For every polynomial $h$,
 $$
-a=n,\qquad b=n+1,\qquad P=P_a,\qquad Q=Q_b,
-$$
-and let
-$$
-C=[P,Q].
-$$
-The commutator identity gives
-$$
-C\circ Q\circ P=P\circ Q.
-$$
-Set
-$$
-H=Q\circ P,\qquad K=P\circ Q.
-$$
-Since
-$$
-P=T+paT^2,\qquad Q=T+pbT^2+p^2bT^3,
-$$
-we have
-$$
-P^2=T^2+2paT^3+p^2a^2T^4,
-$$
-and
-$$
-P^3=T^3+3paT^4+3p^2a^2T^5+p^3a^3T^6.
-$$
-Therefore
-$$
-H=T+p(a+b)T^2+p^2(2ab+b)T^3+p^3(a^2b+3ab)T^4+3p^4a^2bT^5+p^5a^3bT^6
-$$
-modulo $p^6$ and terms of degree greater than $6$.
-
-Also,
-$$
-Q^2=T^2+2pbT^3+p^2(b^2+2b)T^4+2p^3b^2T^5+p^4b^2T^6,
-$$
-so
-$$
-K=T+p(a+b)T^2+p^2(2ab+b)T^3+p^3a(b^2+2b)T^4+2p^4ab^2T^5+p^5ab^2T^6.
-$$
-Subtracting gives
-$$
-K-H=-p^3ab(a-b+1)T^4-p^4ab(3a-2b)T^5-p^5ab(a^2-b)T^6.
-$$
-Because $b=a+1$, the entire $p^3$ layer cancels:
-$$
-K-H=-p^4a(a+1)(a-2)T^5-p^5a(a+1)(a^2-a-1)T^6.
-$$
-
-Step 2: Recover the next two layers of the inner commutator
-
-Since $K-H$ starts at order $p^4$, write
-$$
-C(T)=T+p^4cT^5+p^5dT^6
-$$
-modulo $p^6$ and terms that cannot affect degrees at most $6$.
-
-From Step 1,
-$$
-H=T+p(2a+1)T^2+O(p^2).
-$$
-Hence
-$$
-H^5=T^5+5p(2a+1)T^6+O(p^2),
+D_rD_sh=(s+1)T^{r+s+1}h'+T^{r+s+2}h'',
 $$
 while
 $$
-H^6=T^6+O(p).
-$$
-The identity $C(H)=K$ now gives
-$$
-K-H=p^4cT^5+p^5\left(5c(2a+1)+d\right)T^6.
-$$
-Comparing the $p^4T^5$ coefficient with Step 1 yields
-$$
-c=-a(a+1)(a-2).
-$$
-Comparing the $p^5T^6$ coefficient yields
-$$
-5c(2a+1)+d=-a(a+1)(a^2-a-1).
-$$
-Substitution of $c$ gives
-$$
-d=a(a+1)(9a^2-14a-9).
-$$
-Thus
-$$
-C(T)=T-p^4a(a+1)(a-2)T^5+p^5a(a+1)(9a^2-14a-9)T^6+O(p^6).
-$$
-
-Step 3: Show why the leading outer commutator cancels
-
-Put
-$$
-r=n+2,\qquad R=R_r,
-$$
-so
-$$
-R(T)=T+prT^5.
-$$
-Write the inner commutator from Step 2 as
-$$
-C(T)=T+p^4cT^5+p^5dT^6+O(p^6).
-$$
-The $p$-leading term of $R$ and the $p^4$-leading term of $C$ are both multiples of $T^5$. Their first commutator contribution therefore cancels, so the coefficient $d$ from the next inner layer must be retained.
-
-To compute that remaining layer directly,
-$$
-R\circ C=C+prC^5,
-$$
-and
-$$
-C\circ R=R+p^4cR^5+p^5dR^6+O(p^7).
-$$
-Because the ring is truncated at $T^{11}$,
-$$
-C^5=T^5+5p^4cT^9+5p^5dT^{10}+O(p^6),
-$$
-$$
-R^5=T^5+5prT^9,
-$$
-and
-$$
-R^6=T^6+6prT^{10}.
+D_sD_rh=(r+1)T^{r+s+1}h'+T^{r+s+2}h''.
 $$
 Therefore
 $$
-R\circ C-C\circ R=-p^6rdT^{10}.
+[D_r,D_s]=(s-r)D_{r+s}.
 $$
-The terms involving $cT^9$ cancel exactly.
 
-Step 4: Recover the outer commutator from its composition defect
-
-Let
+Because $p^5=0$ in the coefficient ring,
 $$
-W=[R,C].
+E_{r,a}=\exp(paD_r)
+$$
+with the exponential truncated after degree $4$.
+
+Put
+$$
+U=pnD_1,\qquad V=p(n+1)D_2,\qquad W=p(n+2)D_4.
 $$
 Then
 $$
-W\circ C\circ R=R\circ C.
+X=e^U,\qquad Y=e^V,\qquad Z=e^W.
 $$
-Step 3 shows that the difference between the two sides without $W$ begins at order $p^6T^{10}$. Write
+
+Step 2: Expand a commutator through the cubic Lie layer
+
+For operators $R,S$ whose coefficients are divisible by $p$, the Baker-Campbell-Hausdorff expansion through total degree $3$ is
 $$
-W(T)=T+p^6eT^{10}.
+\log(e^Re^S)=R+S+\frac{1}{2}[R,S]
++\frac{1}{12}[R,[R,S]]
++\frac{1}{12}[S,[S,R]]
++O(p^4).
+$$
+Apply this first to $e^Re^Se^{-R}$ and then to the product with $e^{-S}$. Terms of total degree at most $3$ give
+$$
+\log[e^R,e^S]
+=
+[R,S]+\frac{1}{2}[R+S,[R,S]]+O(p^4).
+$$
+
+Write
+$$
+A_2=[R,S],\qquad
+A_3=\frac{1}{2}[R+S,[R,S]].
+$$
+If $Q$ is also of order $p$, another application of the same formula gives
+$$
+\log[[e^R,e^S],e^Q]
+=
+[A_2,Q]+[A_3,Q]+\frac{1}{2}[Q,[A_2,Q]]+O(p^5).
+$$
+Indeed, $A_2$ has order $p^2$ and $A_3$ has order $p^3$, while every omitted term has order at least $p^5$.
+
+Step 3: Show that the entire order-$p^3$ layer cancels
+
+Apply Step 2 cyclically to
+$$
+[[X,Y],Z],\qquad [[Y,Z],X],\qquad [[Z,X],Y].
+$$
+Their order-$p^3$ logarithmic terms are
+$$
+[[U,V],W],\qquad [[V,W],U],\qquad [[W,U],V].
+$$
+Their sum is zero by the Jacobi identity:
+$$
+[[U,V],W]+[[V,W],U]+[[W,U],V]=0.
+$$
+
+Each triple commutator is $I+O(p^3)$. Commutators between two such factors have order at least $p^6$, which vanishes modulo $p^5$. Therefore the order-$p^4$ logarithm of $W_n$ is the sum of the order-$p^4$ logarithms of the three factors.
+
+Step 4: Isolate the terms that can produce $T^{10}$
+
+The operator $D_j$ sends $T$ to $T^{j+1}$. Hence only a $D_9$ term can contribute to the coefficient of $T^{10}$.
+
+Write
+$$
+x=pn,\qquad y=p(n+1),\qquad z=p(n+2),
+$$
+so
+$$
+U=xD_1,\qquad V=yD_2,\qquad W=zD_4.
+$$
+At order $p^4$, a $D_9$ term must contain $U$ once, $V$ twice, and $W$ once, because
+$$
+1+2+2+4=9.
+$$
+
+For $\log[[X,Y],Z]$, the only such term is
+$$
+\frac{1}{2}[[V,[U,V]],W].
+$$
+Using Step 1,
+$$
+[U,V]=xyD_3,
+$$
+$$
+[V,[U,V]]=xy^2[D_2,D_3]=xy^2D_5,
+$$
+so
+$$
+\frac{1}{2}[[V,[U,V]],W]
+=
+\frac{1}{2}xy^2z[D_5,D_4]
+=
+-\frac{1}{2}xy^2zD_9.
+$$
+
+For $\log[[Y,Z],X]$, the relevant term is
+$$
+\frac{1}{2}[[V,[V,W]],U].
+$$
+Now
+$$
+[V,W]=2yzD_6,
+$$
+$$
+[V,[V,W]]=8y^2zD_8,
+$$
+hence
+$$
+\frac{1}{2}[[V,[V,W]],U]
+=
+4xy^2z[D_8,D_1]
+=
+-28xy^2zD_9.
+$$
+
+For $\log[[Z,X],Y]$, the relevant contribution is
+$$
+\frac{1}{2}[V,[[Z,X],V]].
 $$
 Since
 $$
-C\circ R=T+O(p),
+[Z,X]=-3xzD_5,
 $$
-we have
 $$
-(C\circ R)^{10}\equiv T^{10}\pmod p.
+[[Z,X],V]=9xyzD_7,
 $$
-Hence
+we get
 $$
-W(C\circ R)-(C\circ R)=p^6eT^{10}.
-$$
-Comparing with Step 3 gives
-$$
-e=-rd.
+\frac{1}{2}[V,[[Z,X],V]]
+=
+\frac{9}{2}xy^2z[D_2,D_7]
+=
+\frac{45}{2}xy^2zD_9.
 $$
 
-Step 5: Substitute the parameters
+Adding the three coefficients gives
+$$
+-\frac{1}{2}-28+\frac{45}{2}=-6.
+$$
+Therefore
+$$
+\log W_n=-6xy^2zD_9+\text{terms involving }D_j\text{ with }j\neq9
+$$
+at order $p^4$.
 
-From Step 2,
-$$
-d=n(n+1)(9n^2-14n-9),
-$$
-and Step 3 has $r=n+2$. Therefore
-$$
-e=-n(n+1)(n+2)(9n^2-14n-9).
-$$
-The coefficient of $T^{10}$ in $W_n(T)$ is $p^6e$.
+Step 5: Apply the resulting operator to $T$
 
-Final Answer: $\boxed{-p^6n(n+1)(n+2)(9n^2-14n-9)}$
+Since the logarithm begins at order $p^4$, its square has order $p^8$ and vanishes modulo $p^5$. Hence
+$$
+W_n=I+\log W_n.
+$$
+Because
+$$
+D_9(T)=T^{10},
+$$
+the coefficient of $T^{10}$ in $W_n(T)$ is
+$$
+-6xy^2z.
+$$
+Substituting
+$$
+x=pn,\qquad y=p(n+1),\qquad z=p(n+2)
+$$
+gives the required residue class.
+
+Final Answer: $\boxed{-6p^4n(n+1)^2(n+2)}$
 
 ---
 
 ## Answer
 
-$-p^6n(n+1)(n+2)(9n^2-14n-9)$
+$-6p^4n(n+1)^2(n+2)$
 
 ---
 
@@ -198,8 +203,8 @@ $-p^6n(n+1)(n+2)(9n^2-14n-9)$
 
 ## Solution Concepts
 
-- truncated substitution groups
-- commutator filtration
-- composition defect
-- prime-power cancellation
-- formal polynomial composition
+- truncated polynomial automorphisms
+- derivation commutators
+- Baker-Campbell-Hausdorff expansion
+- Jacobi identity
+- prime-power filtration
