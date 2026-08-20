@@ -4,39 +4,41 @@
 
 Fix integers $n\geq2$ and $r\geq1$, and define
 $$
-L_r=\begin{pmatrix}1&r\\0&1\end{pmatrix},
+P=\begin{pmatrix}1+nr^2&r\\nr&1\end{pmatrix},
 \qquad
-R_r=\begin{pmatrix}1&0\\r&1\end{pmatrix},
+Q=\begin{pmatrix}1+(n+1)r^2&r\\(n+1)r&1\end{pmatrix}.
 $$
-together with
+Set
 $$
-\tau=n(n+1)r^4+(4n+2)r^2+2
+X=PQ,\qquad D=P^2Q^2,
 $$
-and
+and define
 $$
-\kappa=r^4(\tau^2-r^4-4)(\tau^2-r^4-2).
+\tau=\operatorname{tr}X
+=n(n+1)r^4+(4n+2)r^2+2,
+\qquad
+\eta=\tau^2-r^4-3.
 $$
 
-For each integer $q\geq10$, consider cyclic equivalence classes, under cyclic rotation, of words containing exactly $2q$ copies of $L_r$ and $(2n+1)q$ copies of $R_r$, with no two copies of $L_r$ cyclically adjacent.
-
-Read cyclically the $2q$ lengths of the blocks of $R_r$ between consecutive copies of $L_r$. Retain only classes for which every such length is $n$ or $n+1$ and the resulting cyclic sequence has the following property: every maximal constant run has length $1$ or $2$; exactly six maximal runs have length $2$; after the length-$1$ runs are omitted, the values of the six length-$2$ runs alternate between $n$ and $n+1$; and exactly two of the three length-$2$ runs of value $n$ are immediately followed in the full run sequence by a length-$2$ run of value $n+1$.
-
-For a representative $A_1A_2\cdots A_{(2n+3)q}$, assign the trace
+For each integer $m\geq4$ and each triple of nonnegative integers $a,b,c$ satisfying
 $$
-\operatorname{tr}(A_1A_2\cdots A_{(2n+3)q}),
+a+b+c=m,
 $$
-which is independent of the representative because trace is invariant under cyclic rotation.
+define
+$$
+T_m(a,b,c)=\operatorname{tr}\left(DX^aDX^bDX^c\right).
+$$
 
 Let
 $$
-M_{q,1}>M_{q,2}>M_{q,3}
+M_{m,1}>M_{m,2}>M_{m,3}
 $$
-be the three largest distinct trace values arising from the retained classes.
+be the three largest distinct values among all $T_m(a,b,c)$.
 
 Determine, in reduced rational form, the ordinary generating function
 $$
-\sum_{q=10}^{\infty}
-(M_{q,1}-M_{q,2})(M_{q,1}-M_{q,3})t^{q-10}.
+\sum_{m=4}^{\infty}
+(M_{m,1}-M_{m,2})(M_{m,1}-M_{m,3})t^{m-4}.
 $$
 
 ---
@@ -54,6 +56,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves cyclic trace-ranking sequences and the derivation of an exact ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
-The problem also involves products, eigenvalues, and traces of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
-However, the matrix identities are used to derive and rank the coefficient sequence, while the requested final object is its reduced rational generating function.
+This problem involves an extremal sequence indexed by integer compositions and the derivation of its ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
+The problem also involves eigenvalues and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
+However, the matrix analysis determines the coefficient sequence, while the requested final object is its reduced rational generating function.
