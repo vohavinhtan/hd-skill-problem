@@ -2,21 +2,19 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime and let
+Let $p\equiv31\pmod{60}$ be a prime, put
 $$
-L=\mathbb F_p(x,y),
-\qquad
-y^p-y=
-\left(
-\frac{(x+1)(x-2)(2x-1)}{x(x-1)}
-\right)^3.
+n=p-1,
+$$
+and let
+$$
+L=\mathbb F_p(x,y),\qquad x^n+y^n+1=0.
 $$
 Inside $L$, define
 $$
-u=\frac{(x^2-x+1)^3}{x^2(x-1)^2},
+u=\frac{x^6y^6+x^6+y^6}{(x^6+y^6+1)^2},
 \qquad
-v=
-y\frac{(x+1)(x-2)(2x-1)}{x(x-1)},
+v=\frac{x^2y^2}{x^6+y^6+1},
 $$
 and let
 $$
@@ -42,12 +40,12 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves wild ramification and quotient-curve genus calculations,
+The problem also involves quotient curves, tame ramification, and genus calculations,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct a hidden nonabelian fixed field from the two stated generators before the ramification calculation can be carried out.
+However, the main task is to reconstruct the hidden finite group from the two stated generators and then derive the quotient ramification algebraically.
 
 Specifically:
 
-- The first generator conceals the square of a relative invariant for a six-element Möbius group.
-- The second generator couples that relative invariant to an Artin-Schreier coordinate, so identifying the automorphism action requires both pieces at once.
-- The genus calculation combines wild ramification in the Artin-Schreier cover with two different tame fixed-point classes in the hidden quotient group.
+- The generators encode normalized symmetric functions together with a cubic root of their third elementary symmetric function.
+- Recovering the fixed field requires identifying a twelve-element diagonal subgroup and its permutation normalizer.
+- The genus calculation requires a first quotient by the diagonal subgroup and a second quotient whose fixed points are recovered from entire cosets rather than from individual coordinate permutations.

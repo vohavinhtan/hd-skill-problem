@@ -1,219 +1,294 @@
 ## Steps
 
-Step 1: Discover the relative invariant hidden in the generators
+Step 1: Reconstruct the hidden finite group from the generators
 
-Put
+Write the Fermat curve projectively as
 $$
-h=\frac{(x+1)(x-2)(2x-1)}{x(x-1)}.
+C:\quad X^n+Y^n+Z^n=0.
 $$
-Expanding the numerator identity gives
+Since $p\equiv31\pmod{60}$, the integer $n$ is divisible by $6$. Put
 $$
-(x+1)^2(x-2)^2(2x-1)^2
-=
-4(x^2-x+1)^3-27x^2(x-1)^2.
+N=\frac{n}{6}.
 $$
-After division by $x^2(x-1)^2$,
-$$
-h^2=4u-27.
-$$
-Therefore $h$ has degree at most $2$ over $K_p$.
+Then $N$ is odd.
 
-The defining equation of $L$ is
+Choose a primitive sixth root $\zeta\in\mathbb F_p$. Let $D$ be the group of projective diagonal maps
 $$
-y^p-y=h^3,
+[X:Y:Z]\mapsto[\zeta^aX:\zeta^bY:\zeta^cZ]
 $$
-while
+such that
 $$
-v=yh.
+a+b+c\equiv0\pmod3.
 $$
-Once $h$ is known, $x$ satisfies
+Two triples differing by $(k,k,k)$ give the same projective map. There are $72$ triples satisfying the congruence and each projective class has $6$ representatives, so
 $$
-h\,x(x-1)=(x+1)(x-2)(2x-1),
-$$
-which is cubic in $x$, and then
-$$
-y=\frac{v}{h}.
-$$
-It follows that
-$$
-[L:K_p]\leq6.
+|D|=12.
 $$
 
-Step 2: Reconstruct the six automorphisms fixing $K_p$
+Coordinate permutations normalize $D$, because they preserve the congruence on $a+b+c$. Hence
+$$
+H=D\rtimes S_3
+$$
+has order
+$$
+|H|=72.
+$$
 
-Consider the Möbius transformations
+In homogeneous form,
 $$
-s(x)=1-x,
-\qquad
-t(x)=\frac1x.
+u=
+\frac{X^6Y^6+Y^6Z^6+Z^6X^6}
+{(X^6+Y^6+Z^6)^2},
 $$
-They satisfy
 $$
-s^2=t^2=1,
-\qquad
-(st)^3=1,
+v=
+\frac{(XYZ)^2}{X^6+Y^6+Z^6}.
 $$
-and generate a group $G\cong S_3$ of order $6$.
+Both functions are invariant under coordinate permutations. A diagonal element of $D$ multiplies $(XYZ)^2$ by
+$$
+\zeta^{2(a+b+c)}=1,
+$$
+and fixes every sixth power. Therefore
+$$
+K_p\subseteq L^H.
+$$
 
-Direct substitution gives
-$$
-h(1-x)=-h(x),
-\qquad
-h(1/x)=-h(x).
-$$
-The identity from Step 1 then shows that $u$ is fixed by both transformations.
+Step 2: Prove that the stated generators give the full fixed field
 
-Lift the generators to $L$ by
+Set
 $$
-s(x,y)=(1-x,-y),
-\qquad
-t(x,y)=\left(\frac1x,-y\right).
-$$
-Because $p$ is odd,
-$$
-(-y)^p-(-y)=-(y^p-y),
-$$
-and the right side $h^3$ also changes sign under either $s$ or $t$. These are automorphisms of $L$.
-
-Each odd element of $G$ changes the signs of both $y$ and $h$, while each even element fixes both signs. Therefore
-$$
-u\mapsto u,
-\qquad
-v=yh\mapsto yh.
-$$
-Thus
-$$
-K_p\subseteq L^G.
-$$
-The six elements of $G$ give six distinct $K_p$-automorphisms, so
-$$
-[L:K_p]\geq6.
-$$
-Together with Step 1,
-$$
-[L:K_p]=6
+S=X^6+Y^6+Z^6
 $$
 and
 $$
-K_p=L^G.
+\alpha=\frac{X^6}{S},
+\qquad
+\beta=\frac{Y^6}{S},
+\qquad
+\gamma=\frac{Z^6}{S}.
 $$
+Then
+$$
+\alpha+\beta+\gamma=1,
+$$
+$$
+\alpha\beta+\beta\gamma+\gamma\alpha=u,
+$$
+and
+$$
+\alpha\beta\gamma=v^3.
+$$
+Thus $\alpha,\beta,\gamma$ are the roots of
+$$
+T^3-T^2+uT-v^3.
+$$
+Over $K_p$ there are at most six possible orderings of these three roots.
 
-Step 3: Compute the genus of the Artin-Schreier curve
-
-The rational function $h$ has simple poles at
+On the affine chart $Z=1$,
 $$
-x=0,\qquad x=1,\qquad x=\infty.
+\frac{\alpha}{\gamma}=x^6,
+\qquad
+\frac{\beta}{\gamma}=y^6,
+\qquad
+\frac{v}{\gamma}=x^2y^2.
 $$
-Therefore $h^3$ has exactly three poles, each of order $3$.
-
-Since $p\geq5$, the pole order $3$ is prime to $p$. In particular, $h^3$ cannot have the form $w^p-w$ in $\mathbb F_p(x)$, because a pole of $w^p-w$ has order divisible by $p$. Hence
+After an ordering of $\alpha,\beta,\gamma$ is fixed, choose $x$ from the six roots of $x^6=\alpha/\gamma$. Then $y^2$ is forced by
 $$
-[L:\mathbb F_p(x)]=p.
+y^2=\frac{v}{\gamma x^2},
 $$
-
-For an Artin-Schreier extension with a pole of order $3$ prime to $p$, the unique point above that pole is totally ramified and has different exponent
+so there are at most two choices for $y$. Hence each ordering yields at most twelve pairs $(x,y)$, and
 $$
-(p-1)(3+1)=4(p-1).
+[L:K_p]\leq6\cdot12=72.
 $$
-Riemann-Hurwitz for $L/\mathbb F_p(x)$ gives
+The group $H$ supplies $72$ distinct $K_p$-automorphisms of $L$, so
 $$
-2g(L)-2
-=
--2p+3\cdot4(p-1)
-=
-10p-12.
+[L:K_p]\geq72.
 $$
 Therefore
 $$
-g(L)=5(p-1).
+[L:K_p]=72
+$$
+and
+$$
+K_p=L^H.
 $$
 
-Step 4: Count the fixed points of the transpositions
+Step 3: Compute the genus after quotienting by the diagonal subgroup
 
-The quotient $L/K_p$ has degree $6$, which is prime to $p$, so this quotient is tame.
-
-All three transpositions in $G$ are conjugate. It is enough to count the fixed points of
+Let
 $$
-s(x,y)=(1-x,-y).
+M=L^D.
 $$
-On the projective $x$-line, $s$ fixes exactly
+The Fermat curve has genus
 $$
-x=\frac12
-\qquad\text{and}\qquad
-x=\infty.
-$$
-
-At $x=1/2$, the factor $2x-1$ gives $h=0$. The fiber satisfies
-$$
-y^p-y=0.
-$$
-Among its $p$ points, the fixed condition $y=-y$ forces
-$$
-y=0.
-$$
-So exactly one point above $x=1/2$ is fixed.
-
-The point $x=\infty$ is a pole of $h^3$. Step 3 shows that there is a unique point of $L$ above it. Since $s$ fixes the base point, that unique point is fixed.
-
-Hence every transposition fixes exactly two points. The three transpositions contribute
-$$
-3\cdot2=6
-$$
-to the tame different.
-
-Step 5: Count the fixed points of the three-cycles and apply Riemann-Hurwitz
-
-A three-cycle is an even element of $G$, so it acts on $y$ without changing its sign. For example, $st$ acts on the $x$-line by
-$$
-x\mapsto1-\frac1x.
-$$
-Its fixed points satisfy
-$$
-x^2-x+1=0.
-$$
-There are two distinct roots over the algebraic closure because $p\neq3$.
-
-Neither root is a zero or pole of $h$. Above each one, the Artin-Schreier equation
-$$
-y^p-y=h^3
-$$
-has exactly $p$ distinct points. Since the three-cycle fixes $y$, all $p$ points above each fixed base point are fixed.
-
-Thus each of the two three-cycles fixes
-$$
-2p
-$$
-points, and together they contribute
-$$
-4p.
-$$
-
-Tame Riemann-Hurwitz for $L/K_p$ now gives
-$$
-10p-12
-=
-6(2g(K_p)-2)+6+4p.
-$$
-Therefore
-$$
-6(2g(K_p)-2)=6p-18,
+g(C)=\frac{(n-1)(n-2)}2,
 $$
 so
 $$
-2g(K_p)-2=p-3.
+2g(C)-2=n(n-3).
 $$
-Hence
+Because $p\nmid12$, the extension $L/M$ is tame.
+
+Represent an element of $D$ on the chart $Z=1$ by
 $$
-g(K_p)=\frac{p-1}{2}.
+d_{r,s}[X:Y:Z]=[\zeta^rX:\zeta^sY:Z],
+\qquad
+r+s\equiv0\pmod3.
+$$
+A nonidentity diagonal map can fix a point of $C$ only if two of the eigenvalues
+$$
+\zeta^r,\qquad\zeta^s,\qquad1
+$$
+are equal, since no coordinate point lies on $C$.
+
+The three possible equalities are $r=0$, $s=0$, and $r=s$. Under
+$$
+r+s\equiv0\pmod3,
+$$
+the only nonidentity possibilities are
+$$
+(r,s)=(0,3),\qquad(3,0),\qquad(3,3).
+$$
+Each fixes one coordinate line, and that line meets $C$ in exactly $n$ distinct points. The other eight nonidentity elements of $D$ have no fixed points.
+
+Riemann-Hurwitz gives
+$$
+n(n-3)=12(2g(M)-2)+3n.
+$$
+Thus
+$$
+2g(M)-2=\frac{n(n-6)}{12}.
+$$
+Since $n=6N$,
+$$
+2g(M)-2=3N(N-1).
 $$
 
-Final Answer: $\boxed{\frac{p-1}{2}}$
+Step 4: Count fixed points of the transpositions on the intermediate quotient
+
+The quotient group $H/D$ is $S_3$. Let $\tau$ be the transposition exchanging $X$ and $Y$.
+
+For any $\sigma\in S_3$,
+$$
+12\,\#\operatorname{Fix}_M(\sigma)
+=
+\sum_{d\in D}\#\operatorname{Fix}_C(d\sigma).
+$$
+To see this, count pairs $(P,d)$ satisfying $d\sigma(P)=P$. A $\sigma$-fixed $D$-orbit contributes
+$$
+|\operatorname{Orb}_D(P)|\,|\operatorname{Stab}_D(P)|=|D|=12,
+$$
+while a nonfixed orbit contributes nothing.
+
+For
+$$
+d_{r,s}\tau[X:Y:Z]=[\zeta^rY:\zeta^sX:Z],
+$$
+the two eigenvalues on the $X,Y$ block have square
+$$
+\zeta^{r+s}.
+$$
+
+If
+$$
+r+s\equiv0\pmod6,
+$$
+the block eigenvalues are $1$ and $-1$. The $1$-eigenspace together with the $Z$-axis is a projective line. On that line the Fermat equation becomes
+$$
+2X^n+Z^n=0,
+$$
+so $d_{r,s}\tau$ fixes exactly $n$ points.
+
+If
+$$
+r+s\equiv3\pmod6,
+$$
+the block eigenvalues $\lambda$ satisfy
+$$
+\lambda^2=-1.
+$$
+There are two eigenlines in $Z=0$. Since $n=6N$ and $N$ is odd,
+$$
+\lambda^n=(\lambda^2)^{3N}=-1.
+$$
+Both eigenlines therefore lie on
+$$
+X^n+Y^n=0,
+$$
+so $d_{r,s}\tau$ fixes exactly two points.
+
+Among the twelve elements of $D$, six have $r+s\equiv0\pmod6$ and six have $r+s\equiv3\pmod6$. Hence
+$$
+12\,\#\operatorname{Fix}_M(\tau)=6n+12.
+$$
+Therefore every transposition of $S_3$ fixes
+$$
+\frac n2+1=3N+1
+$$
+points of $M$.
+
+Step 5: Eliminate ramification from the three-cycles and finish
+
+Let $c$ be the coordinate cycle
+$$
+c[X:Y:Z]=[Y:Z:X].
+$$
+For $d_{r,s}\in D$, a fixed eigenline of $d_{r,s}c$ has a scalar $\lambda$ satisfying
+$$
+\lambda^3=\zeta^{r+s}.
+$$
+All three coordinates on such an eigenline are nonzero.
+
+Because $3\mid n$,
+$$
+\lambda^n=(\lambda^3)^{n/3}
+=
+\zeta^{(r+s)2N}.
+$$
+The condition $r+s\equiv0\pmod3$ makes this equal to $1$. The three coordinate $n$-th powers on every eigenline are therefore equal. The Fermat equation would give
+$$
+3X^n=0,
+$$
+which is impossible because $p\neq3$.
+
+Thus every element of the cosets $Dc$ and $Dc^2$ has no fixed point on $C$. By the counting identity in Step 4, the two three-cycles have no fixed points on $M$.
+
+The tame extension
+$$
+M/K_p
+$$
+has degree $6$. Its three transpositions each fix $3N+1$ points, while its two three-cycles fix none. Riemann-Hurwitz gives
+$$
+3N(N-1)
+=
+6(2g(K_p)-2)+3(3N+1).
+$$
+Therefore
+$$
+6(2g(K_p)-2)=3(N^2-4N-1),
+$$
+so
+$$
+g(K_p)=\frac{N^2-4N+3}{4}
+=
+\frac{(N-1)(N-3)}4.
+$$
+Since
+$$
+N=\frac{p-1}{6},
+$$
+we obtain
+$$
+g(K_p)=\frac{(p-7)(p-19)}{144}.
+$$
+
+Final Answer: $\boxed{\frac{(p-7)(p-19)}{144}}$
 
 ---
 
 ## Answer
 
-$\frac{p-1}{2}$
+$\frac{(p-7)(p-19)}{144}$
 
 ---
 
@@ -229,6 +304,6 @@ $\frac{p-1}{2}$
 
 - algebraic function fields
 - invariant subfields
-- Artin-Schreier extensions
 - finite group actions
+- orbit-stabilizer counting
 - Riemann-Hurwitz formula
