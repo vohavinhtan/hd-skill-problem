@@ -4,7 +4,7 @@
 
 Let $p\geq5$ be a prime and work in the composition group
 $$
-\mathcal G=\left\{f(T)\in(\mathbb Z/p^5\mathbb Z)[T]/(T^8):f(T)=T+T^2h(T)\right\}.
+\mathcal G=\left\{f(T)\in(\mathbb Z/p^7\mathbb Z)[T]/(T^{11}):f(T)=T+T^2h(T)\right\}.
 $$
 Composition is from right to left. For $f,g\in\mathcal G$, write
 $$
@@ -12,13 +12,20 @@ $$
 $$
 For every integer $a$, define
 $$
-P_a(T)=T+paT^2,\qquad Q_a(T)=T+paT^3.
+P_a(T)=T+paT^2,
+$$
+$$
+Q_a(T)=T+paT^2+p^2aT^3,
+$$
+and
+$$
+R_a(T)=T+paT^5.
 $$
 Fix an integer $n\geq1$ and set
 $$
-W_n=[Q_{n+3},[P_{n+2},[P_n,Q_{n+1}]]].
+W_n=[R_{n+2},[P_n,Q_{n+1}]].
 $$
-Determine the coefficient of $T^7$ in $W_n(T)$ as an element of $\mathbb Z/p^5\mathbb Z$.
+Determine the coefficient of $T^{10}$ in $W_n(T)$ as an element of $\mathbb Z/p^7\mathbb Z$.
 
 ---
 
@@ -35,6 +42,6 @@ Determine the coefficient of $T^7$ in $W_n(T)$ as an element of $\mathbb Z/p^5\m
 
 ## Domain Explanation
 
-This problem involves composition, inverses, and iterated commutators in a finite nilpotent group of truncated polynomial substitutions, which are part of Abstract Algebra and Computational algebra.
-The problem also involves coefficient arithmetic modulo a prime power and filtration by powers of $p$, which are part of Number Theory and Modular arithmetic and congruences.
-However, the decisive structure is the noncommutative composition law and the successive commutator filtration, while modular arithmetic controls only which layers survive.
+This problem involves composition, inversion, and nested commutators of truncated polynomial substitutions, which are part of Abstract Algebra and Computational algebra.
+The problem also involves prime-power congruences and filtration by powers of $p$, which are part of Number Theory and Modular arithmetic and congruences.
+However, the requested coefficient is determined by two successive cancellations in the noncommutative composition law, while modular arithmetic controls which correction layers survive.
