@@ -1,216 +1,216 @@
 ## Steps
 
-Step 1: Recover the invariants of the hidden translation group
+Step 1: Recover the elementary symmetric invariants from the stated power sums
 
 Put
 $$
-q=x^p-x,
+N=2^s,
 \qquad
-r=2y-x^2.
-$$
-Using the defining equation,
-$$
-r^p+r
-=
-2(y^p+y)-x^{2p}-x^2
-=
-2x^{p+1}-x^{2p}-x^2
-=
--(x^p-x)^2.
-$$
-Therefore
-$$
-r^p+r=-q^2.
-$$
-
-For each $a\in\mathbb F_p$, define
-$$
-\sigma_a(x)=x+a,
-$$
-$$
-\sigma_a(y)=y+ax+\frac{a^2}{2}.
-$$
-Since
-$$
-(x+a)^{p+1}
-=
-x^{p+1}+a(x^p+x)+a^2,
-$$
-the map $\sigma_a$ preserves $y^p+y=x^{p+1}$. Direct substitution gives
-$$
-\sigma_a(q)=q,
+a=x^d,
 \qquad
-\sigma_a(r)=r.
+b=y^d.
 $$
-The maps $\sigma_a$ form a group $P$ of order $p$.
+Since $p-1=dN$, the defining equation becomes
+$$
+a^N+b^N+1=0.
+$$
+Set
+$$
+S=a+b+1
+$$
+and
+$$
+\alpha=\frac aS,\qquad
+\beta=\frac bS,\qquad
+\gamma=\frac1S.
+$$
+Then
+$$
+\alpha+\beta+\gamma=1,
+$$
+while the stated generators are
+$$
+u=\alpha^2+\beta^2+\gamma^2,
+\qquad
+v=\alpha^3+\beta^3+\gamma^3.
+$$
 
 Let
 $$
-M=\mathbb F_p(q,r).
+e_2=\alpha\beta+\beta\gamma+\gamma\alpha,
+\qquad
+e_3=\alpha\beta\gamma.
 $$
-The element $x$ satisfies
+Newton's identities give
 $$
-T^p-T-q=0,
-$$
-and then
-$$
-y=\frac{r+x^2}{2}.
-$$
-Hence $[L:M]\leq p$. Since the $p$ distinct automorphisms in $P$ fix $M$,
-$$
-[L:M]=p
+u=1-2e_2,
 $$
 and
 $$
-M=L^P.
+v=1-3e_2+3e_3.
 $$
-
-Step 2: Recover the second hidden group and identify $K_p$
-
-Because $d\mid p-1$, choose $\lambda\in\mathbb F_p$ of order $d$. Define
+Because $p\geq7$,
 $$
-\rho(x)=\lambda x,
+e_2=\frac{1-u}{2},
 \qquad
-\rho(y)=\lambda^2y.
-$$
-Since
-$$
-\lambda^{p+1}=\lambda^2,
-$$
-the equation $y^p+y=x^{p+1}$ is preserved.
-
-On the invariants from Step 1,
-$$
-\rho(q)=\lambda q,
-\qquad
-\rho(r)=\lambda^2r.
-$$
-The stated generators are
-$$
-u=q^d,
-\qquad
-v=q^{d-2}r.
-$$
-Thus $\rho$ fixes both $u$ and $v$.
-
-Conversely, over $K_p$ the element $q$ satisfies
-$$
-T^d-u=0,
-$$
-and once $q$ is known,
-$$
-r=\frac{v}{q^{d-2}}.
-$$
-Therefore
-$$
-[M:K_p]\leq d.
-$$
-The $d$ powers of $\rho$ are distinct $K_p$-automorphisms of $M$, so
-$$
-[M:K_p]=d
-$$
-and
-$$
-K_p=M^{\langle\rho\rangle}.
-$$
-
-Step 3: Compute the genus of the intermediate curve
-
-The field $M$ is given by
-$$
-r^p+r=-q^2.
-$$
-After extending the constant field, choose a nonzero constant $\mu$ with
-$$
-\mu^p=-\mu
-$$
-and put $R=\mu r$. Then
-$$
-R^p-R=\mu q^2.
-$$
-Genus is unchanged by extending constants.
-
-The right side has a single pole, at $q=\infty$, of order $2$, which is prime to $p$. For an Artin-Schreier extension with one pole of order $2$, that pole is totally ramified with different exponent
-$$
-(p-1)(2+1)=3(p-1).
-$$
-Riemann-Hurwitz over the rational $q$-line gives
-$$
-2g(M)-2=-2p+3(p-1)=p-3.
+e_3=\frac{2v+1-3u}{6}.
 $$
 Hence
 $$
-g(M)=\frac{p-1}{2}.
+K_p=\mathbb F_p(e_2,e_3).
 $$
-There is a unique point of the smooth projective curve of $M$ above $q=\infty$.
+The three normalized coordinates are the roots of
+$$
+T^3-T^2+e_2T-e_3.
+$$
 
-Step 4: Count the fixed points of the cyclic quotient
+Step 2: Identify the full fixed field
 
-Consider a nonidentity power $\rho^k$, where
+Let $C$ be the projective Fermat curve
 $$
-1\leq k\leq d-1.
+X^{p-1}+Y^{p-1}+Z^{p-1}=0.
 $$
-On $M$ it acts by
+Choose the group
 $$
-(q,r)\mapsto(\lambda^kq,\lambda^{2k}r).
+D=\{(\lambda,\mu):\lambda^d=\mu^d=1\}
 $$
-Since $d$ is odd,
+acting on its affine function field by
 $$
-\lambda^k\neq1
+x\mapsto\lambda x,\qquad y\mapsto\mu y.
+$$
+It has order $d^2$. Coordinate permutations normalize this action, giving
+$$
+H=D\rtimes S_3,
+\qquad
+|H|=6d^2.
+$$
+
+The quantities $\alpha,\beta,\gamma$ depend only on $x^d,y^d,1$, and $e_2,e_3$ are symmetric in them. Therefore every element of $H$ fixes $K_p$.
+
+Conversely, over $K_p$ the unordered triple
+$$
+\{\alpha,\beta,\gamma\}
+$$
+is determined by the cubic in Step 1. There are at most six orderings. Once an ordering is chosen,
+$$
+x^d=\frac{\alpha}{\gamma},
+\qquad
+y^d=\frac{\beta}{\gamma}.
+$$
+There are at most $d$ choices for each of $x$ and $y$. Therefore
+$$
+[L:K_p]\leq6d^2.
+$$
+The group $H$ already gives $6d^2$ distinct $K_p$-automorphisms, so
+$$
+[L:K_p]=6d^2
 $$
 and
 $$
-\lambda^{2k}\neq1.
-$$
-Thus an affine fixed point must satisfy
-$$
-q=r=0.
-$$
-This point lies on $r^p+r=-q^2$, so it is fixed.
-
-The point above $q=\infty$ is also fixed: $\rho^k$ fixes the base point $\infty$, and Step 3 shows that only one point of $M$ lies above it. Hence every nonidentity element of $\langle\rho\rangle$ fixes exactly two points.
-
-The quotient $M/K_p$ has degree $d$, and $p\nmid d$, so it is tame. Its total different contribution is therefore
-$$
-2(d-1).
+K_p=L^H.
 $$
 
-Step 5: Apply Riemann-Hurwitz and simplify using the odd part of $p-1$
+Step 3: Pass through the diagonal quotient
 
-Riemann-Hurwitz for the degree-$d$ extension $M/K_p$ gives
+The fixed field of $D$ is
 $$
-p-3
-=
-d(2g(K_p)-2)+2(d-1).
+M=\mathbb F_p(a,b),
+\qquad
+a^N+b^N+1=0.
 $$
-Therefore
+Indeed, $a=x^d$ and $b=y^d$ are fixed by $D$, while $x$ and $y$ each have degree at most $d$ over $\mathbb F_p(a,b)$. The $d^2$ elements of $D$ give the reverse degree inequality.
+
+Thus $M$ is the function field of the smooth Fermat curve of degree $N$. Its genus is
 $$
-d(2g(K_p)-2)=p-2d-1.
-$$
-Using
-$$
-p-1=2^sd,
-$$
-we obtain
-$$
-p-2d-1=d(2^s-2).
-$$
-Hence
-$$
-2g(K_p)-2=2^s-2,
+g(M)=\frac{(N-1)(N-2)}2,
 $$
 so
 $$
-g(K_p)=2^{s-1}.
+2g(M)-2=N(N-3).
+$$
+Moreover
+$$
+K_p=M^{S_3}.
+$$
+Since $p\geq7$, this degree-$6$ quotient is tame.
+
+Step 4: Count the fixed points of the transpositions
+
+Consider the transposition exchanging the first two homogeneous coordinates of
+$$
+A^N+B^N+C^N=0.
+$$
+If $C\neq0$, a projective fixed point has $A=B$. The equation becomes
+$$
+2A^N+C^N=0,
+$$
+which has exactly $N$ solutions over the algebraic closure because $p\nmid N$.
+
+If $C=0$, the two possible fixed eigenlines are represented by
+$$
+[1:1:0]
+\qquad\text{and}\qquad
+[1:-1:0].
+$$
+The integer $N=2^s$ is even, so neither lies on the curve:
+$$
+1^N+(\pm1)^N=2\neq0.
+$$
+Each transposition therefore fixes exactly $N$ points. The three transpositions contribute
+$$
+3N
+$$
+to the tame different.
+
+Step 5: Count the fixed points of the three-cycles and apply Riemann-Hurwitz
+
+Let $\omega$ be a primitive cube root of unity over the algebraic closure. A nontrivial three-cycle has the three projective eigenlines
+$$
+[1:1:1],
+\qquad
+[1:\omega:\omega^2],
+\qquad
+[1:\omega^2:\omega].
+$$
+The first does not lie on the curve because $p\neq3$.
+
+Since $N$ is a power of $2$, it is not divisible by $3$. Therefore
+$$
+1+\omega^N+\omega^{2N}=0.
+$$
+The other two eigenlines lie on the Fermat curve. Each nontrivial three-cycle fixes exactly two points, so the two three-cycles contribute
+$$
+4.
 $$
 
-Final Answer: $\boxed{2^{s-1}}$
+Riemann-Hurwitz for $M/K_p$ gives
+$$
+N(N-3)=6(2g(K_p)-2)+3N+4.
+$$
+Therefore
+$$
+6(2g(K_p)-2)=N^2-6N-4.
+$$
+It follows that
+$$
+g(K_p)
+=
+1+\frac{N^2-6N-4}{12}
+=
+\frac{(N-2)(N-4)}{12}.
+$$
+Substituting $N=2^s$ gives
+$$
+g(K_p)=\frac{(2^s-2)(2^s-4)}{12}.
+$$
+
+Final Answer: $\boxed{\frac{(2^s-2)(2^s-4)}{12}}$
 
 ---
 
 ## Answer
 
-$2^{s-1}$
+$\frac{(2^s-2)(2^s-4)}{12}$
 
 ---
 
@@ -224,8 +224,8 @@ $2^{s-1}$
 
 ## Solution Concepts
 
-- function-field fixed fields
-- semidirect product actions
-- Artin-Schreier ramification
-- tame cyclic quotients
+- algebraic function fields
+- symmetric invariants
+- finite group actions
+- quotient curves
 - Riemann-Hurwitz formula

@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime. Write
+Let $p\geq7$ be a prime and write
 $$
 p-1=2^s d,
 $$
@@ -10,21 +10,20 @@ where $d>1$ is odd. Let
 $$
 L=\mathbb F_p(x,y),
 \qquad
-y^p+y=x^{p+1}.
+x^{p-1}+y^{p-1}+1=0.
 $$
 Inside $L$, define
 $$
-u=(x^p-x)^d,
-$$
-$$
-v=(x^p-x)^{d-2}(2y-x^2),
+u=\frac{x^{2d}+y^{2d}+1}{(x^d+y^d+1)^2},
+\qquad
+v=\frac{x^{3d}+y^{3d}+1}{(x^d+y^d+1)^3},
 $$
 and let
 $$
 K_p=\mathbb F_p(u,v).
 $$
 
-Determine the genus of $K_p$ as an exact expression in $p$.
+Determine the genus of $K_p$ as an exact expression in $s$.
 
 ---
 
@@ -43,12 +42,12 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves wild and tame ramification on quotient curves,
+The problem also involves quotient curves, ramification, and genus,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct two successive fixed fields from the stated generators and derive the genus from their algebraic ramification data.
+However, the main task is the algebraic reconstruction of a two-stage fixed field from normalized power sums, rather than the independent study of geometric structures.
 
 Specifically:
 
-- The combinations appearing in the generators conceal the fixed field of an additive translation group on the original curve.
-- The odd part $d$ of $p-1$ then produces a nontrivial cyclic action with different weights on the two recovered invariants.
-- The final genus depends on combining the wild Artin-Schreier quotient with a separate tame cyclic quotient.
+- The stated generators encode power sums rather than the elementary symmetric invariants needed to identify the fixed field.
+- Recovering the quotient first requires passing through a diagonal subgroup whose order depends on the odd part of $p-1$.
+- The remaining permutation quotient has two different ramification classes, both of which contribute to the genus.
