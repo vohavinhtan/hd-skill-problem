@@ -129,7 +129,7 @@ $$
 
 The vector $b=e_1+e_4$ is $S$-fixed. Its squared projection onto the all-ones line is $2/3$, and the remaining squared norm in the fixed subspace is $4/3$. Hence
 $$
-b^TH^{-1}b=rac{4}{3(q+3)}+\frac{2}{3(q+9)}=rac{2(q+7)}{(q+3)(q+9)}.
+b^TH^{-1}b=\frac{4}{3(q+3)}+\frac{2}{3(q+9)}=\frac{2(q+7)}{(q+3)(q+9)}.
 $$
 The bordered determinant formula now gives
 $$
