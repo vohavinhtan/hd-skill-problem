@@ -26,19 +26,22 @@ where $v_{\mathfrak p}(c)$ is the exponent of the prime ideal $\mathfrak p$ in t
 $$
 Pe_j=e_{j+1}
 $$
-with indices modulo $6$, and let
+with indices modulo $6$, and put
 $$
-L=\left\{(x_0,\ldots,x_5)\in\mathbb Z^6:\sum_{j=0}^5x_j=0\right\}.
+L=\left\{x\in\mathbb Z^6:\sum_{j=0}^5x_j=0\right\},
+$$
+$$
+\Lambda=\left\{x\in L:x_0+x_2+x_4\equiv0\pmod3\right\}.
 $$
 For each integer $n\geq1$, set
 $$
 t_n=2^n-1
 $$
-and define the endomorphism $\Phi_n:L\to L$ by
+and define $\Psi_n:\Lambda\to\Lambda$ by
 $$
-\Phi_n(x)=\left(V+2^n(I_6-P)-(e_0-e_2)(e_4+e_5)^T\right)x.
+\Psi_n(x)=\left(V+2^n(I_6-P)-(e_0-e_2)(e_4+e_5)^T\right)x.
 $$
-Determine the Smith normal form of $\Phi_n$ over $\mathbb Z$.
+Determine the Smith normal form of $\Psi_n$ over $\mathbb Z$.
 
 ---
 
@@ -55,4 +58,4 @@ Determine the Smith normal form of $\Phi_n$ over $\mathbb Z$.
 
 ## Domain Explanation
 
-This problem involves constructing an exact valuation matrix and reducing an endomorphism of an integral lattice to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the lattice endomorphism, while the requested object is its canonical integer normal form.
+This problem involves constructing an exact valuation matrix and reducing an endomorphism of a finite-index integral sublattice to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the sublattice endomorphism, while the requested object is its canonical integer normal form.
