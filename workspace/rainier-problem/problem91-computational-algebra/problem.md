@@ -2,19 +2,21 @@
 
 ## LaTeX (Normalized)
 
-Let $p\equiv31\pmod{60}$ be a prime, put
+Let $p\geq7$ be a prime and put
 $$
-n=p-1,
+h(x)=\frac{(x+1)(x-2)(2x-1)}{x(x-1)}.
 $$
-and let
+Let
 $$
-L=\mathbb F_p(x,y),\qquad x^n+y^n+1=0.
+L=\mathbb F_p(x,y),
+\qquad
+y^p-y=h(x)^5+h(x).
 $$
 Inside $L$, define
 $$
-u=\frac{x^6y^6+x^6+y^6}{(x^6+y^6+1)^2},
+u=\frac{(x^2-x+1)^3}{x^2(x-1)^2},
 \qquad
-v=\frac{x^2y^2}{x^6+y^6+1},
+v=yh(x),
 $$
 and let
 $$
@@ -40,12 +42,12 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves quotient curves, tame ramification, and genus calculations,
+The problem also involves Artin-Schreier ramification and quotient-curve genus calculations,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct the hidden finite group from the two stated generators and then derive the quotient ramification algebraically.
+However, the main task is to reconstruct the hidden fixed field from the stated generators before combining wild and tame ramification data.
 
 Specifically:
 
-- The generators encode normalized symmetric functions together with a cubic root of their third elementary symmetric function.
-- Recovering the fixed field requires identifying a twelve-element diagonal subgroup and its permutation normalizer.
-- The genus calculation requires a first quotient by the diagonal subgroup and a second quotient whose fixed points are recovered from entire cosets rather than from individual coordinate permutations.
+- The first generator conceals the square of a relative invariant for a six-element Möbius group.
+- The second generator couples that relative invariant to an Artin-Schreier coordinate, while the nonmonomial right side prevents the resulting quotient from collapsing to a single Kummer cover.
+- The genus calculation requires both the wild ramification of the original Artin-Schreier extension and separate fixed-point counts for the two nontrivial conjugacy classes of the hidden group.
