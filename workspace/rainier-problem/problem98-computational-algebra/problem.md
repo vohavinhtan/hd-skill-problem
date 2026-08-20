@@ -10,25 +10,29 @@ and
 $$
 C(T)=-2T^5+4T^4+14T^3-10T^2-21T+17.
 $$
-Let $K$ be the splitting field of $f$ over $\mathbb{Q}$, and write its six real roots in increasing order as
+Let $K$ be the splitting field of $f$ over $\mathbb Q$. Let $\theta_0$ be the largest real root of $f$, and define
 $$
-\theta_1<\theta_2<\cdots<\theta_6.
+\theta_{j+1}=\theta_j^2-2\qquad(0\leq j\leq4).
 $$
-Put
+For $0\leq j<6$, put
 $$
-c_j=C(\theta_j)\qquad(1\leq j\leq6).
+c_j=C(\theta_j),\qquad \mathfrak p_j=(\theta_j+3)\mathcal O_K,
 $$
-Let $\mathfrak p_1,\ldots,\mathfrak p_s$ be all prime ideals of $\mathcal O_K$ above $233$, and form
+and form
 $$
-V=\left(v_{\mathfrak p_i}(c_j)\right)_{\substack{1\leq i\leq s\\1\leq j\leq6}},
+V=\left(v_{\mathfrak p_i}(c_j)\right)_{0\leq i,j<6},
 $$
-where $v_{\mathfrak p}(c)$ is the exponent of $\mathfrak p$ in the principal fractional ideal $(c)$. Let $e_1,\ldots,e_6$ be the standard basis of $\mathbb Z^6$. For each integer $n\geq1$, set
+where $v_{\mathfrak p}(c)$ is the exponent of the prime ideal $\mathfrak p$ in the principal fractional ideal $(c)$. Let $P$ be the cyclic permutation matrix defined by
 $$
-A_n=
-\begin{pmatrix}
-V^TV+2^nI_6&e_1+e_3\\
-(e_1+e_3)^T&0
-\end{pmatrix}.
+Pe_j=e_{j+1}
+$$
+with indices modulo $6$. For each integer $n\geq1$, set
+$$
+t_n=2^n-1,
+$$
+and
+$$
+A_n=V+2^n(I_6-P).
 $$
 Determine the Smith normal form of $A_n$ over $\mathbb Z$.
 
@@ -47,4 +51,4 @@ Determine the Smith normal form of $A_n$ over $\mathbb Z$.
 
 ## Domain Explanation
 
-This problem involves constructing an exact valuation matrix and reducing a bordered integer presentation matrix to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves cyclotomic fields and prime-ideal factorization, which are part of Number Theory and Computational number theory. However, those number-field structures determine the entries of the presentation matrix, while the requested object is its canonical form over $\mathbb Z$.
+This problem involves constructing an exact valuation matrix and reducing a parameterized integer presentation matrix to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the presentation matrix, while the requested object is its canonical integer normal form.
