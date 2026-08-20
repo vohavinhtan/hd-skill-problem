@@ -2,21 +2,22 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime and put
+Let $p\geq7$ be a prime. Write
 $$
-h(x)=\frac{(x+1)(x-2)(2x-1)}{x(x-1)}.
+p-1=2^s d,
 $$
-Let
+where $d>1$ is odd. Let
 $$
 L=\mathbb F_p(x,y),
 \qquad
-y^p-y=h(x)^5+h(x).
+y^p+y=x^{p+1}.
 $$
 Inside $L$, define
 $$
-u=\frac{(x^2-x+1)^3}{x^2(x-1)^2},
-\qquad
-v=yh(x),
+u=(x^p-x)^d,
+$$
+$$
+v=(x^p-x)^{d-2}(2y-x^2),
 $$
 and let
 $$
@@ -42,12 +43,12 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves Artin-Schreier ramification and quotient-curve genus calculations,
+The problem also involves wild and tame ramification on quotient curves,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct the hidden fixed field from the stated generators before combining wild and tame ramification data.
+However, the main task is to reconstruct two successive fixed fields from the stated generators and derive the genus from their algebraic ramification data.
 
 Specifically:
 
-- The first generator conceals the square of a relative invariant for a six-element Möbius group.
-- The second generator couples that relative invariant to an Artin-Schreier coordinate, while the nonmonomial right side prevents the resulting quotient from collapsing to a single Kummer cover.
-- The genus calculation requires both the wild ramification of the original Artin-Schreier extension and separate fixed-point counts for the two nontrivial conjugacy classes of the hidden group.
+- The combinations appearing in the generators conceal the fixed field of an additive translation group on the original curve.
+- The odd part $d$ of $p-1$ then produces a nontrivial cyclic action with different weights on the two recovered invariants.
+- The final genus depends on combining the wild Artin-Schreier quotient with a separate tame cyclic quotient.

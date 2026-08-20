@@ -1,228 +1,216 @@
 ## Steps
 
-Step 1: Recover the relative invariant hidden by the generators
+Step 1: Recover the invariants of the hidden translation group
 
-Write
+Put
 $$
-h=h(x)=\frac{(x+1)(x-2)(2x-1)}{x(x-1)}.
+q=x^p-x,
+\qquad
+r=2y-x^2.
 $$
-Expanding gives
+Using the defining equation,
 $$
-(x+1)^2(x-2)^2(2x-1)^2
+r^p+r
 =
-4(x^2-x+1)^3-27x^2(x-1)^2.
+2(y^p+y)-x^{2p}-x^2
+=
+2x^{p+1}-x^{2p}-x^2
+=
+-(x^p-x)^2.
 $$
-After division by $x^2(x-1)^2$,
+Therefore
 $$
-h^2=4u-27.
-$$
-Therefore $h$ has degree at most $2$ over $K_p$.
-
-Also
-$$
-v=yh,
-$$
-so once $h$ is known,
-$$
-y=\frac{v}{h}.
-$$
-Finally $x$ satisfies
-$$
-h\,x(x-1)=(x+1)(x-2)(2x-1),
-$$
-which is cubic in $x$. Consequently
-$$
-[L:K_p]\leq6.
+r^p+r=-q^2.
 $$
 
-Step 2: Identify the six automorphisms fixing the stated field
-
-Consider
+For each $a\in\mathbb F_p$, define
 $$
-s(x)=1-x,
+\sigma_a(x)=x+a,
+$$
+$$
+\sigma_a(y)=y+ax+\frac{a^2}{2}.
+$$
+Since
+$$
+(x+a)^{p+1}
+=
+x^{p+1}+a(x^p+x)+a^2,
+$$
+the map $\sigma_a$ preserves $y^p+y=x^{p+1}$. Direct substitution gives
+$$
+\sigma_a(q)=q,
 \qquad
-t(x)=\frac1x.
+\sigma_a(r)=r.
 $$
-They satisfy
-$$
-s^2=t^2=1,
-\qquad
-(st)^3=1,
-$$
-so they generate a group isomorphic to $S_3$.
+The maps $\sigma_a$ form a group $P$ of order $p$.
 
-Direct substitution gives
+Let
 $$
-h(1-x)=-h(x),
-\qquad
-h(1/x)=-h(x).
+M=\mathbb F_p(q,r).
 $$
-Since the polynomial
+The element $x$ satisfies
 $$
-F(T)=T^5+T
+T^p-T-q=0,
 $$
-is odd, the maps
+and then
 $$
-s(x,y)=(1-x,-y),
-\qquad
-t(x,y)=\left(\frac1x,-y\right)
+y=\frac{r+x^2}{2}.
 $$
-preserve
+Hence $[L:M]\leq p$. Since the $p$ distinct automorphisms in $P$ fix $M$,
 $$
-y^p-y=F(h).
-$$
-Every odd permutation changes the signs of both $y$ and $h$, while every even permutation preserves both signs.
-
-The identity
-$$
-h^2=4u-27
-$$
-shows that $u$ is fixed, and
-$$
-v=yh
-$$
-is also fixed. Therefore
-$$
-K_p\subseteq L^{S_3}.
-$$
-The six group elements are distinct $K_p$-automorphisms, so
-$$
-[L:K_p]\geq6.
-$$
-Together with Step 1,
-$$
-[L:K_p]=6
+[L:M]=p
 $$
 and
 $$
-K_p=L^{S_3}.
+M=L^P.
 $$
 
-Step 3: Compute the genus of the Artin-Schreier curve
+Step 2: Recover the second hidden group and identify $K_p$
 
-The rational function $h$ has simple poles at
+Because $d\mid p-1$, choose $\lambda\in\mathbb F_p$ of order $d$. Define
 $$
-x=0,\qquad x=1,\qquad x=\infty.
+\rho(x)=\lambda x,
+\qquad
+\rho(y)=\lambda^2y.
 $$
-Because
+Since
 $$
-F(h)=h^5+h,
+\lambda^{p+1}=\lambda^2,
 $$
-the right side has a pole of order $5$ at each of these three places. Since $p\geq7$, the pole order is prime to $p$.
+the equation $y^p+y=x^{p+1}$ is preserved.
 
-A pole of an expression $w^p-w$ in $\mathbb F_p(x)$ has order divisible by $p$. Therefore $F(h)$ is not of that form, and
+On the invariants from Step 1,
 $$
-[L:\mathbb F_p(x)]=p.
+\rho(q)=\lambda q,
+\qquad
+\rho(r)=\lambda^2r.
 $$
+The stated generators are
+$$
+u=q^d,
+\qquad
+v=q^{d-2}r.
+$$
+Thus $\rho$ fixes both $u$ and $v$.
 
-For an Artin-Schreier extension with a pole of order $5$ prime to $p$, the unique point above that pole is totally ramified and has different exponent
+Conversely, over $K_p$ the element $q$ satisfies
 $$
-(p-1)(5+1)=6(p-1).
+T^d-u=0,
 $$
-Riemann-Hurwitz for $L/\mathbb F_p(x)$ gives
+and once $q$ is known,
 $$
-2g(L)-2
-=
--2p+3\cdot6(p-1)
-=
-16p-18.
+r=\frac{v}{q^{d-2}}.
 $$
 Therefore
 $$
-g(L)=8(p-1).
+[M:K_p]\leq d.
+$$
+The $d$ powers of $\rho$ are distinct $K_p$-automorphisms of $M$, so
+$$
+[M:K_p]=d
+$$
+and
+$$
+K_p=M^{\langle\rho\rangle}.
 $$
 
-Step 4: Count the fixed points of the transpositions
+Step 3: Compute the genus of the intermediate curve
 
-The extension $L/K_p$ has degree $6$, and $p\nmid6$, so it is tame.
+The field $M$ is given by
+$$
+r^p+r=-q^2.
+$$
+After extending the constant field, choose a nonzero constant $\mu$ with
+$$
+\mu^p=-\mu
+$$
+and put $R=\mu r$. Then
+$$
+R^p-R=\mu q^2.
+$$
+Genus is unchanged by extending constants.
 
-All three transpositions are conjugate. Consider
+The right side has a single pole, at $q=\infty$, of order $2$, which is prime to $p$. For an Artin-Schreier extension with one pole of order $2$, that pole is totally ramified with different exponent
 $$
-s(x,y)=(1-x,-y).
+(p-1)(2+1)=3(p-1).
 $$
-The transformation $x\mapsto1-x$ has two fixed points on the projective $x$-line:
+Riemann-Hurwitz over the rational $q$-line gives
 $$
-x=\frac12
-\qquad\text{and}\qquad
-x=\infty.
+2g(M)-2=-2p+3(p-1)=p-3.
+$$
+Hence
+$$
+g(M)=\frac{p-1}{2}.
+$$
+There is a unique point of the smooth projective curve of $M$ above $q=\infty$.
+
+Step 4: Count the fixed points of the cyclic quotient
+
+Consider a nonidentity power $\rho^k$, where
+$$
+1\leq k\leq d-1.
+$$
+On $M$ it acts by
+$$
+(q,r)\mapsto(\lambda^kq,\lambda^{2k}r).
+$$
+Since $d$ is odd,
+$$
+\lambda^k\neq1
+$$
+and
+$$
+\lambda^{2k}\neq1.
+$$
+Thus an affine fixed point must satisfy
+$$
+q=r=0.
+$$
+This point lies on $r^p+r=-q^2$, so it is fixed.
+
+The point above $q=\infty$ is also fixed: $\rho^k$ fixes the base point $\infty$, and Step 3 shows that only one point of $M$ lies above it. Hence every nonidentity element of $\langle\rho\rangle$ fixes exactly two points.
+
+The quotient $M/K_p$ has degree $d$, and $p\nmid d$, so it is tame. Its total different contribution is therefore
+$$
+2(d-1).
 $$
 
-At $x=1/2$,
-$$
-h=0,
-$$
-so the fiber satisfies
-$$
-y^p-y=0.
-$$
-A point fixed by $s$ must also satisfy $y=-y$. Since $p$ is odd, this forces
-$$
-y=0.
-$$
-Hence exactly one point above $x=1/2$ is fixed.
+Step 5: Apply Riemann-Hurwitz and simplify using the odd part of $p-1$
 
-At $x=\infty$, the function $F(h)$ has a pole of order $5$. Step 3 shows that there is a unique point of $L$ above $x=\infty$. Since the base point is fixed by $s$, that unique point is fixed.
-
-Each transposition therefore fixes exactly two points. The three transpositions contribute
+Riemann-Hurwitz for the degree-$d$ extension $M/K_p$ gives
 $$
-6
-$$
-to the tame different.
-
-Step 5: Count the fixed points of the three-cycles and apply Riemann-Hurwitz
-
-Take the three-cycle
-$$
-c=st.
-$$
-On the $x$-line,
-$$
-c(x)=1-\frac1x.
-$$
-Its fixed points satisfy
-$$
-x^2-x+1=0.
-$$
-Because $p\neq3$, there are two distinct such points over the algebraic closure.
-
-Neither is a zero or pole of $h$: substituting $x=-1$, $x=2$, or $x=1/2$ into $x^2-x+1$ gives a nonzero value when $p\neq3$. Thus the Artin-Schreier cover is unramified above both fixed base points and has exactly $p$ points over each one.
-
-A three-cycle is an even permutation, so its lift fixes $y$ rather than changing its sign. It also fixes $h$. Therefore all $p$ points above each of the two fixed base points are fixed. Each nontrivial three-cycle fixes
-$$
-2p
-$$
-points.
-
-There are two nontrivial three-cycles, so their total contribution is
-$$
-4p.
-$$
-Tame Riemann-Hurwitz for $L/K_p$ gives
-$$
-16p-18
+p-3
 =
-6(2g(K_p)-2)+6+4p.
+d(2g(K_p)-2)+2(d-1).
 $$
 Therefore
 $$
-6(2g(K_p)-2)=12p-24,
+d(2g(K_p)-2)=p-2d-1.
+$$
+Using
+$$
+p-1=2^sd,
+$$
+we obtain
+$$
+p-2d-1=d(2^s-2).
+$$
+Hence
+$$
+2g(K_p)-2=2^s-2,
 $$
 so
 $$
-2g(K_p)-2=2p-4.
-$$
-It follows that
-$$
-g(K_p)=p-1.
+g(K_p)=2^{s-1}.
 $$
 
-Final Answer: $\boxed{p-1}$
+Final Answer: $\boxed{2^{s-1}}$
 
 ---
 
 ## Answer
 
-$p-1$
+$2^{s-1}$
 
 ---
 
@@ -236,8 +224,8 @@ $p-1$
 
 ## Solution Concepts
 
-- algebraic function fields
-- invariant subfields
-- Artin-Schreier extensions
-- finite group actions
+- function-field fixed fields
+- semidirect product actions
+- Artin-Schreier ramification
+- tame cyclic quotients
 - Riemann-Hurwitz formula
