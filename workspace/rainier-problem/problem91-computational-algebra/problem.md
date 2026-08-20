@@ -2,24 +2,25 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq5$ be a prime and put
+Let $p\geq5$ be a prime and let
 $$
-m=\frac{p+1}{2}.
-$$
-Over $\mathbb F_{p^2}$ let
-$$
-L=\mathbb F_{p^2}(x,y),\qquad
-y^{p^2}-y=x^m-x^{-m}.
+L=\mathbb F_p(x,y),
+\qquad
+y^p-y=
+\left(
+\frac{(x+1)(x-2)(2x-1)}{x(x-1)}
+\right)^3.
 $$
 Inside $L$, define
 $$
-u=x+x^{-1},
+u=\frac{(x^2-x+1)^3}{x^2(x-1)^2},
 \qquad
-v=(y^p-y)(x-x^{-1}),
+v=
+y\frac{(x+1)(x-2)(2x-1)}{x(x-1)},
 $$
 and let
 $$
-K_p=\mathbb F_{p^2}(u,v).
+K_p=\mathbb F_p(u,v).
 $$
 
 Determine the genus of $K_p$ as an exact expression in $p$.
@@ -39,14 +40,14 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 ## Domain Explanation
 
-This problem involves algebraic function fields, fixed fields, finite automorphism groups, and extension degrees,
+This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves wild and tame ramification on algebraic curves,
+The problem also involves wild ramification and quotient-curve genus calculations,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct the hidden intermediate field and its automorphism tower algebraically before computing the genus.
+However, the main task is to reconstruct a hidden nonabelian fixed field from the two stated generators before the ramification calculation can be carried out.
 
 Specifically:
 
-- The first generator hides an involution on the rational coordinate, while the second simultaneously hides an additive translation invariant.
-- Recovering the fixed field requires a degree comparison rather than a direct polynomial relation between the stated generators.
-- The genus calculation passes through a wild Artin-Schreier quotient and then a separate tame involution quotient.
+- The first generator conceals the square of a relative invariant for a six-element Möbius group.
+- The second generator couples that relative invariant to an Artin-Schreier coordinate, so identifying the automorphism action requires both pieces at once.
+- The genus calculation combines wild ramification in the Artin-Schreier cover with two different tame fixed-point classes in the hidden quotient group.

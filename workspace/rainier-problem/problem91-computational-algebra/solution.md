@@ -1,226 +1,219 @@
 ## Steps
 
-Step 1: Find the automorphisms hidden by the two generators
-
-For each $c\in\mathbb F_p$, define
-$$
-\sigma_c(x)=x,\qquad \sigma_c(y)=y+c.
-$$
-Since $c^{p^2}=c$, every $\sigma_c$ preserves
-$$
-y^{p^2}-y=x^m-x^{-m}.
-$$
-The maps $\sigma_c$ form a group
-$$
-P\cong(\mathbb F_p,+)
-$$
-of order $p$.
-
-Also define
-$$
-\tau(x)=x^{-1},\qquad \tau(y)=-y.
-$$
-The right side changes sign under $x\mapsto x^{-1}$, while
-$$
-(-y)^{p^2}-(-y)=-(y^{p^2}-y),
-$$
-so $\tau$ is an automorphism of order $2$. Moreover
-$$
-\tau\sigma_c\tau=\sigma_{-c}.
-$$
-Hence
-$$
-H=\langle P,\tau\rangle
-$$
-has order $2p$.
-
-Now
-$$
-\sigma_c(y^p-y)=(y+c)^p-(y+c)=y^p-y,
-$$
-so every $\sigma_c$ fixes $u$ and $v$. Under $\tau$,
-$$
-x+x^{-1}\mapsto x+x^{-1},
-$$
-$$
-y^p-y\mapsto-(y^p-y),
-$$
-and
-$$
-x-x^{-1}\mapsto-(x-x^{-1}),
-$$
-so $\tau$ also fixes $u$ and $v$. Therefore
-$$
-K_p\subseteq L^H.
-$$
-
-Step 2: Prove that the stated generators give the full fixed field
-
-From
-$$
-u=x+x^{-1}
-$$
-the element $x$ satisfies
-$$
-T^2-uT+1=0.
-$$
-Thus
-$$
-[\mathbb F_{p^2}(x,u,v):K_p]\leq2.
-$$
+Step 1: Discover the relative invariant hidden in the generators
 
 Put
 $$
-z=y^p-y.
+h=\frac{(x+1)(x-2)(2x-1)}{x(x-1)}.
 $$
-Since
+Expanding the numerator identity gives
 $$
-v=z(x-x^{-1}),
+(x+1)^2(x-2)^2(2x-1)^2
+=
+4(x^2-x+1)^3-27x^2(x-1)^2.
 $$
-once $x$ is known we recover
+After division by $x^2(x-1)^2$,
 $$
-z=\frac{v}{x-x^{-1}}.
+h^2=4u-27.
 $$
-The element $y$ then satisfies
+Therefore $h$ has degree at most $2$ over $K_p$.
+
+The defining equation of $L$ is
 $$
-T^p-T-z=0,
+y^p-y=h^3,
 $$
-so it has degree at most $p$ over $\mathbb F_{p^2}(x,z)$. Hence
+while
 $$
-[L:K_p]\leq2p.
+v=yh.
+$$
+Once $h$ is known, $x$ satisfies
+$$
+h\,x(x-1)=(x+1)(x-2)(2x-1),
+$$
+which is cubic in $x$, and then
+$$
+y=\frac{v}{h}.
+$$
+It follows that
+$$
+[L:K_p]\leq6.
 $$
 
-The group $H$ already consists of $2p$ distinct $K_p$-automorphisms of $L$. Therefore
+Step 2: Reconstruct the six automorphisms fixing $K_p$
+
+Consider the Möbius transformations
 $$
-[L:K_p]\geq2p.
+s(x)=1-x,
+\qquad
+t(x)=\frac1x.
 $$
-Consequently
+They satisfy
 $$
-[L:K_p]=2p
+s^2=t^2=1,
+\qquad
+(st)^3=1,
+$$
+and generate a group $G\cong S_3$ of order $6$.
+
+Direct substitution gives
+$$
+h(1-x)=-h(x),
+\qquad
+h(1/x)=-h(x).
+$$
+The identity from Step 1 then shows that $u$ is fixed by both transformations.
+
+Lift the generators to $L$ by
+$$
+s(x,y)=(1-x,-y),
+\qquad
+t(x,y)=\left(\frac1x,-y\right).
+$$
+Because $p$ is odd,
+$$
+(-y)^p-(-y)=-(y^p-y),
+$$
+and the right side $h^3$ also changes sign under either $s$ or $t$. These are automorphisms of $L$.
+
+Each odd element of $G$ changes the signs of both $y$ and $h$, while each even element fixes both signs. Therefore
+$$
+u\mapsto u,
+\qquad
+v=yh\mapsto yh.
+$$
+Thus
+$$
+K_p\subseteq L^G.
+$$
+The six elements of $G$ give six distinct $K_p$-automorphisms, so
+$$
+[L:K_p]\geq6.
+$$
+Together with Step 1,
+$$
+[L:K_p]=6
 $$
 and
 $$
-K_p=L^H.
+K_p=L^G.
 $$
 
-Step 3: Pass first to the wild translation quotient
+Step 3: Compute the genus of the Artin-Schreier curve
 
-The subgroup $P$ is normal in $H$. Its fixed field is
+The rational function $h$ has simple poles at
 $$
-M=L^P=\mathbb F_{p^2}(x,z),
-\qquad z=y^p-y.
+x=0,\qquad x=1,\qquad x=\infty.
 $$
-Indeed, $P$ fixes $x,z$, while $y$ has degree at most $p$ over $\mathbb F_{p^2}(x,z)$ and $P$ supplies $p$ automorphisms.
+Therefore $h^3$ has exactly three poles, each of order $3$.
 
-Taking the $p$-th power of $z=y^p-y$ gives
+Since $p\geq5$, the pole order $3$ is prime to $p$. In particular, $h^3$ cannot have the form $w^p-w$ in $\mathbb F_p(x)$, because a pole of $w^p-w$ has order divisible by $p$. Hence
 $$
-z^p=y^{p^2}-y^p.
+[L:\mathbb F_p(x)]=p.
+$$
+
+For an Artin-Schreier extension with a pole of order $3$ prime to $p$, the unique point above that pole is totally ramified and has different exponent
+$$
+(p-1)(3+1)=4(p-1).
+$$
+Riemann-Hurwitz for $L/\mathbb F_p(x)$ gives
+$$
+2g(L)-2
+=
+-2p+3\cdot4(p-1)
+=
+10p-12.
 $$
 Therefore
 $$
-z^p+z=y^{p^2}-y=x^m-x^{-m}.
-$$
-Thus $M/\mathbb F_{p^2}(x)$ is an additive degree-$p$ extension.
-
-The rational function
-$$
-x^m-x^{-m}
-$$
-has exactly two poles, at $x=0$ and $x=\infty$, each of order $m$. Since
-$$
-p\nmid m,
-$$
-each pole is totally ramified in the degree-$p$ extension and has different exponent
-$$
-(p-1)(m+1).
+g(L)=5(p-1).
 $$
 
-Riemann-Hurwitz for $M/\mathbb F_{p^2}(x)$ gives
+Step 4: Count the fixed points of the transpositions
+
+The quotient $L/K_p$ has degree $6$, which is prime to $p$, so this quotient is tame.
+
+All three transpositions in $G$ are conjugate. It is enough to count the fixed points of
 $$
-2g(M)-2=-2p+2(p-1)(m+1).
+s(x,y)=(1-x,-y).
+$$
+On the projective $x$-line, $s$ fixes exactly
+$$
+x=\frac12
+\qquad\text{and}\qquad
+x=\infty.
+$$
+
+At $x=1/2$, the factor $2x-1$ gives $h=0$. The fiber satisfies
+$$
+y^p-y=0.
+$$
+Among its $p$ points, the fixed condition $y=-y$ forces
+$$
+y=0.
+$$
+So exactly one point above $x=1/2$ is fixed.
+
+The point $x=\infty$ is a pole of $h^3$. Step 3 shows that there is a unique point of $L$ above it. Since $s$ fixes the base point, that unique point is fixed.
+
+Hence every transposition fixes exactly two points. The three transpositions contribute
+$$
+3\cdot2=6
+$$
+to the tame different.
+
+Step 5: Count the fixed points of the three-cycles and apply Riemann-Hurwitz
+
+A three-cycle is an even element of $G$, so it acts on $y$ without changing its sign. For example, $st$ acts on the $x$-line by
+$$
+x\mapsto1-\frac1x.
+$$
+Its fixed points satisfy
+$$
+x^2-x+1=0.
+$$
+There are two distinct roots over the algebraic closure because $p\neq3$.
+
+Neither root is a zero or pole of $h$. Above each one, the Artin-Schreier equation
+$$
+y^p-y=h^3
+$$
+has exactly $p$ distinct points. Since the three-cycle fixes $y$, all $p$ points above each fixed base point are fixed.
+
+Thus each of the two three-cycles fixes
+$$
+2p
+$$
+points, and together they contribute
+$$
+4p.
+$$
+
+Tame Riemann-Hurwitz for $L/K_p$ now gives
+$$
+10p-12
+=
+6(2g(K_p)-2)+6+4p.
+$$
+Therefore
+$$
+6(2g(K_p)-2)=6p-18,
+$$
+so
+$$
+2g(K_p)-2=p-3.
 $$
 Hence
 $$
-2g(M)-2=2m(p-1)-2
-$$
-and
-$$
-g(M)=m(p-1).
+g(K_p)=\frac{p-1}{2}.
 $$
 
-Step 4: Determine the ramification of the remaining involution
-
-The involution $\tau$ descends to $M$ as
-$$
-\tau(x)=x^{-1},\qquad \tau(z)=-z.
-$$
-Since
-$$
-H/P\cong C_2,
-$$
-we have
-$$
-K_p=M^{\langle\tau\rangle}.
-$$
-
-A fixed point of $\tau$ away from the poles must satisfy
-$$
-x=x^{-1}
-$$
-and
-$$
-z=-z.
-$$
-Because $p$ is odd, this gives
-$$
-x\in\{1,-1\},
-\qquad
-z=0.
-$$
-For both $x=1$ and $x=-1$,
-$$
-x^m-x^{-m}=0,
-$$
-so $(1,0)$ and $(-1,0)$ are points of $M$.
-
-The points above $x=0$ and $x=\infty$ are exchanged by $\tau$, so neither is fixed. Thus $\tau$ has exactly two fixed points.
-
-Step 5: Apply tame Riemann-Hurwitz to the final quotient
-
-The extension $M/K_p$ has degree $2$, which is prime to $p$. Therefore it is tame, and the two fixed points of $\tau$ each contribute $1$ to the different.
-
-Riemann-Hurwitz gives
-$$
-2g(M)-2=2(2g(K_p)-2)+2.
-$$
-Using
-$$
-g(M)=m(p-1),
-$$
-we obtain
-$$
-2m(p-1)-2=4g(K_p)-2.
-$$
-Hence
-$$
-g(K_p)=\frac{m(p-1)}{2}.
-$$
-Since
-$$
-m=\frac{p+1}{2},
-$$
-we get
-$$
-g(K_p)=\frac{p^2-1}{4}.
-$$
-
-Final Answer: $\boxed{\frac{p^2-1}{4}}$
+Final Answer: $\boxed{\frac{p-1}{2}}$
 
 ---
 
 ## Answer
 
-$\frac{p^2-1}{4}$
+$\frac{p-1}{2}$
 
 ---
 
@@ -235,7 +228,7 @@ $\frac{p^2-1}{4}$
 ## Solution Concepts
 
 - algebraic function fields
-- fixed fields
+- invariant subfields
 - Artin-Schreier extensions
-- wild ramification
+- finite group actions
 - Riemann-Hurwitz formula
