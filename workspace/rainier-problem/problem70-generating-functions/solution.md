@@ -16,19 +16,19 @@ Set
 $$
 P=B_n,\qquad Q=B_{n+1},\qquad X=PQ,
 $$
-and introduce the four possible pairs of consecutive maximal runs
+and use
 $$
-X=PQ,\qquad U=P^2Q,\qquad V=PQ^2,\qquad D=P^2Q^2.
+U=P^2Q,\qquad V=PQ^2,\qquad D=P^2Q^2.
 $$
-There are three doubled $P$-runs and three doubled $Q$-runs. Exactly two doubled $P$-runs are immediately followed by doubled $Q$-runs, so there are two $D$ blocks, one $U$, and one $V$. The six doubled runs alternate in value after singleton runs are omitted. Up to cyclic rotation their exceptional block order is therefore
+There are three doubled $P$-runs and three doubled $Q$-runs. Exactly two doubled $P$-runs are immediately followed by doubled $Q$-runs, so there are two $D$ blocks, one $U$, and one $V$. After singleton runs are omitted, the six doubled runs alternate in value. Up to cyclic rotation, their exceptional block order is
 $$
 U,\ V,\ D,\ D.
 $$
-All other paired runs contribute $X$. Since there are $q-3$ paired maximal runs altogether, the number of $X$ blocks is
+All remaining paired runs contribute $X$. Since there are $q-3$ paired maximal runs, the number of $X$ blocks is
 $$
 m=q-7.
 $$
-Every retained trace is consequently
+Every retained trace is
 $$
 W(a,b,c,d)=\operatorname{tr}\left(UX^aVX^bDX^cDX^d\right),
 $$
@@ -47,16 +47,15 @@ Cayley-Hamilton gives
 $$
 X^j=f_jX-f_{j-1}I\qquad(j\geq1).
 $$
-
 Put
 $$
 H=DX-UV.
 $$
-The cases $j=0,1$ give
+The identities
 $$
-DX-UV=H,\qquad DX^2-UXV=\tau H.
+DX-UV=H,\qquad DX^2-UXV=\tau H
 $$
-Both sides satisfy the same recurrence in $j$, so
+are the initial cases of the same second-order recurrence in the exponent, so
 $$
 DX^{j+1}-UX^jV=f_{j+1}H\qquad(j\geq0).
 $$
@@ -65,19 +64,11 @@ For
 $$
 S(b,c,d)=\operatorname{tr}\left(HX^bDX^cDX^d\right),
 $$
-the complete $0$-$1$ data needed by Cayley-Hamilton are especially short. Write
+put
 $$
 \eta=\tau^2-r^4-3.
 $$
-Since
-$$
-\kappa=r^4(\eta^2-1),
-$$
-we also have
-$$
-\kappa+r^4=r^4\eta^2.
-$$
-Multiplication of the displayed $2\times2$ matrices gives
+Since $\kappa=r^4(\eta^2-1)$, also $\kappa+r^4=r^4\eta^2$. Multiplying the displayed $2\times2$ matrices gives the complete Cayley-Hamilton initial data
 $$
 \begin{array}{c|cccccccc}
 (b,c,d)&000&001&010&011&100&101&110&111\\ \hline
@@ -87,20 +78,20 @@ r^{-4}S(b,c,d)&
 \tau(\eta^2+\eta-1)&
 \tau\eta^2&
 \eta^2\tau^2-1
-\end{array}
+\end{array}.
 $$
 
-For $j\geq1$, the recurrence gives
+For $j\geq1$, the recurrence and $f_2=\tau$ give
 $$
 0\leq\frac{f_{j-1}}{f_j}<\frac1{\tau-1}.
 $$
-If $b,c,d>0$, put
+If $b,c,d>0$, write
 $$
 x=\frac{f_{b-1}}{f_b},\qquad
 y=\frac{f_{c-1}}{f_c},\qquad
 z=\frac{f_{d-1}}{f_d}.
 $$
-Expanding each power of $X$ by Cayley-Hamilton yields
+Expanding each power of $X$ by Cayley-Hamilton gives
 $$
 \frac{S(b,c,d)}{r^4f_bf_cf_d}
 =
@@ -113,8 +104,7 @@ $$
 \eta^2\tau^2-1-
 \frac{\tau(2\eta^2+2\eta-1)}{\tau-1}>0.
 $$
-
-When one exponent is zero, the same expansion reduces to
+If one exponent is zero, the same expansion gives
 $$
 S(b,c,0)=r^4f_bf_c
 \left(
@@ -143,52 +133,51 @@ $$
 S(b,0,0)=r^4(\eta^2+\eta-1)f_b,
 $$
 $$
-S(0,c,0)=r^4f_c,
-\qquad
-S(0,0,d)=r^4\eta f_d.
+S(0,c,0)=r^4f_c,\qquad S(0,0,d)=r^4\eta f_d.
 $$
-Thus $S(b,c,d)\geq0$, with equality only at $(0,0,0)$.
-
-Replacing $UX^aV$ by $DX^{a+1}$ now gives the exact collapse
+Therefore $S(b,c,d)\geq0$, with equality only at $(0,0,0)$. Replacing $UX^aV$ by $DX^{a+1}$ gives
 $$
 \widetilde W=
 \operatorname{tr}\left(DX^{a+b+1}DX^cDX^d\right),
 $$
-with
+and the exact loss is
 $$
-\widetilde W-W(a,b,c,d)
-=f_{a+1}S(b,c,d)\geq0.
+\widetilde W-W(a,b,c,d)=f_{a+1}S(b,c,d)\geq0.
 $$
 
-Step 3: Rank the collapse fibers and identify the three trace levels
+Step 3: Rank the collapsed traces and their largest preimages
 
 Let
 $$
 M=m+1=q-6.
 $$
-The collapsed trace has the form
+The collapsed trace is
 $$
 R(x,y,z)=\operatorname{tr}\left(DX^xDX^yDX^z\right),
 \qquad x+y+z=M.
 $$
-Diagonalize $X$ with eigenvalues $\lambda,\lambda^{-1}$, where $\lambda>1$. In this basis write
+Diagonalize $X$ with eigenvalues $\lambda,\lambda^{-1}$, where $\lambda>1$, and put $\Delta=\lambda-\lambda^{-1}$. Write
 $$
-D=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}.
+D=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}
 $$
-From
+in this eigenbasis. Since
 $$
 \operatorname{tr}D=\eta+1,\qquad
-\operatorname{tr}(DX)=\tau\eta,\qquad
-\det D=1,
+\operatorname{tr}(DX)=\tau\eta,
 $$
-one obtains
+solving the two linear equations for the diagonal entries gives
 $$
-\alpha>0,\qquad
-\delta>0,\qquad
-\beta\gamma=
-\frac{r^4(\eta-1)}{\tau^2-4}>0.
+\alpha=\frac{\eta\lambda-\lambda^{-1}}{\Delta}>0,
+\qquad
+\delta=\frac{\lambda-\eta\lambda^{-1}}{\Delta}>0.
 $$
-Expanding the trace gives a constant depending only on $M$ plus
+For the second inequality, $\lambda^2+\lambda^{-2}=\tau^2-2$ and $\lambda^{-2}<1$ give $\lambda^2>\tau^2-3>\eta$. Since $\det D=1$, substitution yields
+$$
+\beta\gamma=\alpha\delta-1
+=\frac{r^4(\eta-1)}{\tau^2-4}>0.
+$$
+
+Expansion in this basis writes $R(x,y,z)$ as a term depending only on $M$ plus
 $$
 \beta\gamma
 \sum_{s\in\{x,y,z\}}
@@ -197,54 +186,68 @@ $$
 \delta\lambda^{2s-M}
 \right).
 $$
-The summand is strictly convex in $s$. Moving one unit from a smaller positive part to a larger part strictly raises $R$. The first three distinct collapsed levels therefore correspond to
+The summand has second derivative
+$$
+4(\log\lambda)^2
+\left(
+\alpha\lambda^{M-2s}+
+\delta\lambda^{2s-M}
+\right)>0,
+$$
+so it is strictly convex. Moving one unit from a smaller positive part to a larger part strictly raises $R$. The first three distinct collapsed levels correspond to
 $$
 (M,0,0),\qquad
 (M-1,1,0),\qquad
 (M-2,2,0).
 $$
-Call them $A_0>A_1>A_2$. Applying Cayley-Hamilton to their differences, with the first two values supplied by the displayed matrices, gives
+Call them $A_0>A_1>A_2$. Since
 $$
-A_0-A_1=\kappa f_m,
+\lambda^s+\lambda^{-s}-\lambda^{s-2}-\lambda^{-(s-2)}
+=(\tau^2-4)f_{s-1},
 $$
 and
 $$
+\beta\gamma(\alpha+\delta)(\tau^2-4)
+=r^4(\eta^2-1)=\kappa,
+$$
+their differences are
+$$
+A_0-A_1=\kappa f_m,\qquad
 A_1-A_2=\kappa f_{m-2}.
 $$
 
-The collapse formula from Step 2 now gives a small fiber certificate:
+The collapse identity in Step 2 gives the largest preimage in each of these three fibers:
 $$
 \begin{array}{c|c|c}
-\text{collapsed level}&\text{largest preimage representative}&
-\text{loss from the collapsed level}\\ \hline
+\text{collapsed level}&\text{largest preimage}&\text{loss}\\ \hline
 A_0&W(m,0,0,0)&0\\
 A_1&W(0,0,m,0)&r^4f_m\\
 A_2&W(1,0,m-1,0)&r^4\tau f_{m-1}
-\end{array}
+\end{array}.
 $$
 For the first row, any other preimage has $c=d=0$ and $b\geq1$, so its loss is
 $$
 r^4(\eta^2+\eta-1)f_{a+1}f_b
-\geq
-r^4(\eta^2+\eta-1)f_m.
+\geq r^4(\eta^2+\eta-1)f_m.
 $$
-For the second and third rows, the three possible placements of the small parts $1$ and $2$ use the boundary formulas for $S$ from Step 2. Product monotonicity for the $f_j$ shows that the losses printed in the table are the smallest ones. The next boundary value is
+For the other two rows, the three possible placements of the small parts use the boundary formulas for $S$ in Step 2. The recurrence identity
 $$
-W(0,0,0,m)
-=
-A_0-r^4(\eta^2+\eta-1)f_m.
+f_{i+1}f_j-f_if_{j+1}=f_{j-i}\qquad(j\geq i)
 $$
-Every remaining collapse fiber is no larger than this value.
+orders those products and gives the two losses in the table. The next boundary value is
+$$
+W(0,0,0,m)=A_0-r^4(\eta^2+\eta-1)f_m,
+$$
+and every remaining collapse fiber is no larger.
 
 Put
 $$
 \rho=\kappa+r^4=r^4\eta^2.
 $$
-The three candidates in the table satisfy
+The three table entries satisfy
 $$
 W(m,0,0,0)-W(0,0,m,0)=\rho f_m,
 $$
-and
 $$
 W(m,0,0,0)-W(1,0,m-1,0)=\rho\tau f_{m-1}.
 $$
@@ -256,63 +259,68 @@ Also
 $$
 r^4(\eta^2+\eta-1)f_m-\rho\tau f_{m-1}>0,
 $$
-because $f_m>(\tau-1)f_{m-1}$ and $\eta\geq320$. Hence the next boundary value is strictly below the third candidate. The required three trace levels are exactly the three rows of the table.
+because $f_m>(\tau-1)f_{m-1}$, $\tau\geq18$, and $\eta\geq320$. The next boundary value lies below the third table entry. These are exactly $M_{q,1},M_{q,2},M_{q,3}$.
 
 Step 4: Express the requested coefficient through one recurrence product
 
 Since $m=q-7$, Step 3 gives
 $$
-M_{q,1}-M_{q,2}
-=
-(\kappa+r^4)f_{q-7},
+M_{q,1}-M_{q,2}=(\kappa+r^4)f_{q-7},
 $$
 and
 $$
-M_{q,1}-M_{q,3}
-=
-(\kappa+r^4)\tau f_{q-8}.
+M_{q,1}-M_{q,3}=(\kappa+r^4)\tau f_{q-8}.
 $$
 Therefore
 $$
 (M_{q,1}-M_{q,2})(M_{q,1}-M_{q,3})
-=
-(\kappa+r^4)^2\tau f_{q-7}f_{q-8}.
+=(\kappa+r^4)^2\tau f_{q-7}f_{q-8}.
 $$
 
 Step 5: Sum the product sequence
 
-Put $k=q-10$. The coefficient of $t^k$ is
-$$
-(\kappa+r^4)^2\tau f_{k+3}f_{k+2}.
-$$
-Set
+Put $k=q-10$ and
 $$
 z_k=f_{k+3}f_{k+2}.
 $$
-Since the characteristic roots of the recurrence for $f_j$ are $\lambda$ and $\lambda^{-1}$, the products $z_k$ have characteristic roots
+Writing
 $$
-1,\qquad \lambda^2,\qquad \lambda^{-2}.
+f_j=\frac{\lambda^j-\lambda^{-j}}{\lambda-\lambda^{-1}}
 $$
-Their recurrence is
+shows that $z_k$ is a linear combination of $1,\lambda^{2k},\lambda^{-2k}$. Therefore
 $$
 z_{k+3}-(\tau^2-1)z_{k+2}
 +(\tau^2-1)z_{k+1}-z_k=0.
 $$
-The first values are
+From
+$$
+f_2=\tau,\qquad
+f_3=\tau^2-1,\qquad
+f_4=\tau(\tau^2-2),\qquad
+f_5=\tau^4-3\tau^2+1,
+$$
+we get
 $$
 z_0=\tau(\tau^2-1),
 $$
 $$
-z_1=\tau(\tau^2-1)(\tau^2-2).
+z_1=\tau(\tau^2-1)(\tau^2-2),
 $$
-Substitution of one further recurrence value fixes the numerator, giving
 $$
-\sum_{k=0}^{\infty}z_kt^k
-=
+z_2=\tau(\tau^2-2)(\tau^4-3\tau^2+1).
+$$
+For $Z(t)=\sum_{k\geq0}z_kt^k$, multiplication by
+$$
+1-(\tau^2-1)t+(\tau^2-1)t^2-t^3
+=(1-t)(1-(\tau^2-2)t+t^2)
+$$
+and substitution of these initial values gives
+$$
+Z(t)=
 \frac{\tau\left((\tau^2-1)(1-t)+t^2\right)}
 {(1-t)(1-(\tau^2-2)t+t^2)}.
 $$
-The numerator factor is $1$ at $t=1$. If it shared a root with $1-(\tau^2-2)t+t^2$, subtraction would force $t=\tau^2-2$, but the latter quadratic then equals $1$. The fraction is reduced.
+Multiplying by the factor from Step 4 gives the required generating function. The numerator factor is $1$ at $t=1$. If it shared a root with $1-(\tau^2-2)t+t^2$, subtracting the two quadratic factors would force $t=\tau^2-2$, where the denominator quadratic equals $1$. The fraction is reduced.
 
 Final Answer: $\boxed{\frac{(\kappa+r^4)^2\tau^2((\tau^2-1)(1-t)+t^2)}{(1-t)(1-(\tau^2-2)t+t^2)}}$
 
