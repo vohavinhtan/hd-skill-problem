@@ -19,7 +19,7 @@ $$
 
 For each integer $q\geq10$, consider cyclic equivalence classes, under cyclic rotation, of words containing exactly $2q$ copies of $L_r$ and $(2n+1)q$ copies of $R_r$, with no two copies of $L_r$ cyclically adjacent.
 
-Read cyclically the $2q$ lengths of the blocks of $R_r$ between consecutive copies of $L_r$. Retain only classes for which every such length is $n$ or $n+1$, there are exactly three cyclic adjacent pairs $(n,n)$, and each such pair is immediately followed by two consecutive lengths $n+1,n+1$.
+Read cyclically the $2q$ lengths of the blocks of $R_r$ between consecutive copies of $L_r$. Retain only classes for which every such length is $n$ or $n+1$ and the resulting cyclic sequence has the following property: every maximal constant run has length $1$ or $2$; exactly six maximal runs have length $2$; after the length-$1$ runs are omitted, the values of the six length-$2$ runs alternate between $n$ and $n+1$; and exactly two of the three length-$2$ runs of value $n$ are immediately followed in the full run sequence by a length-$2$ run of value $n+1$.
 
 For a representative $A_1A_2\cdots A_{(2n+3)q}$, assign the trace
 $$
@@ -54,6 +54,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves cyclic trace-ranking sequences and an exact ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
-The problem also involves traces, eigenvalues, and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
-However, the matrix structure is used to derive and rank the coefficient sequence, while the requested final object is its reduced rational generating function.
+This problem involves cyclic trace-ranking sequences and the derivation of an exact ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
+The problem also involves products, eigenvalues, and traces of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
+However, the matrix identities are used to derive and rank the coefficient sequence, while the requested final object is its reduced rational generating function.
