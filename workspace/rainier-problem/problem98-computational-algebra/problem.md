@@ -32,7 +32,7 @@ t_n=2^n-1
 $$
 and
 $$
-A_n=V+2^n(I_6-P)+e_0e_3^T.
+A_n=V+2^n(I_6-P)-(e_1+e_4)(e_0+e_5)^T.
 $$
 Determine the Smith normal form of $A_n$ over $\mathbb Z$.
 
@@ -51,4 +51,4 @@ Determine the Smith normal form of $A_n$ over $\mathbb Z$.
 
 ## Domain Explanation
 
-This problem involves constructing an exact valuation matrix and reducing a rank-one-perturbed integer presentation matrix to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the presentation matrix, while the requested object is its canonical integer normal form.
+This problem involves constructing an exact valuation matrix and reducing a structured rank-one-perturbed integer presentation matrix to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the presentation matrix, while the requested object is its canonical integer normal form.
