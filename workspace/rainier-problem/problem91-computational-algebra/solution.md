@@ -1,228 +1,250 @@
 ## Steps
 
-Step 1: Recover the relative invariant hidden by the generators
+Step 1: Recover the hidden translation quotient
 
-Write
+Put
 $$
-h=h(x)=\frac{(x+1)(x-2)(2x-1)}{x(x-1)}.
+q=x^p-x.
 $$
-Expanding gives
+Then the defining equation becomes
 $$
-(x+1)^2(x-2)^2(2x-1)^2
-=
-4(x^2-x+1)^3-27x^2(x-1)^2.
-$$
-After division by $x^2(x-1)^2$,
-$$
-h^2=4u-27.
-$$
-Therefore $h$ has degree at most $2$ over $K_p$.
-
-Also
-$$
-v=yh,
-$$
-so once $h$ is known,
-$$
-y=\frac{v}{h}.
-$$
-Finally $x$ satisfies
-$$
-h\,x(x-1)=(x+1)(x-2)(2x-1),
-$$
-which is cubic in $x$. Consequently
-$$
-[L:K_p]\leq6.
+y^p-y=q^9.
 $$
 
-Step 2: Identify the six automorphisms fixing the stated field
-
-Consider
+For each $a\in\mathbb F_p$, define
 $$
-s(x)=1-x,
+\sigma_a(x)=x+a,
 \qquad
-t(x)=\frac1x.
+\sigma_a(y)=y.
 $$
-They satisfy
+Since
 $$
-s^2=t^2=1,
-\qquad
-(st)^3=1,
+(x+a)^p-(x+a)=x^p-x,
 $$
-so they generate a group isomorphic to $S_3$.
+every $\sigma_a$ preserves the defining equation. These automorphisms form a group $P$ of order $p$.
 
-Direct substitution gives
+Let
 $$
-h(1-x)=-h(x),
-\qquad
-h(1/x)=-h(x).
+M=\mathbb F_p(q,y).
 $$
-Since the polynomial
+The element $x$ satisfies
 $$
-F(T)=T^5+T
+T^p-T-q=0
 $$
-is odd, the maps
+over $M$, so
 $$
-s(x,y)=(1-x,-y),
-\qquad
-t(x,y)=\left(\frac1x,-y\right)
+[L:M]\leq p.
 $$
-preserve
+The group $P$ supplies $p$ distinct $M$-automorphisms of $L$. Hence
 $$
-y^p-y=F(h).
-$$
-Every odd permutation changes the signs of both $y$ and $h$, while every even permutation preserves both signs.
-
-The identity
-$$
-h^2=4u-27
-$$
-shows that $u$ is fixed, and
-$$
-v=yh
-$$
-is also fixed. Therefore
-$$
-K_p\subseteq L^{S_3}.
-$$
-The six group elements are distinct $K_p$-automorphisms, so
-$$
-[L:K_p]\geq6.
-$$
-Together with Step 1,
-$$
-[L:K_p]=6
+[L:M]=p
 $$
 and
 $$
-K_p=L^{S_3}.
+M=L^P.
 $$
 
-Step 3: Compute the genus of the Artin-Schreier curve
+Step 2: Identify the cyclic quotient encoded by $u$ and $v$
 
-The rational function $h$ has simple poles at
+Put
 $$
-x=0,\qquad x=1,\qquad x=\infty.
+e=2d.
 $$
-Because
+Since $e\mid p-1$, choose $\lambda\in\mathbb F_p^\times$ of order $e$. Define
 $$
-F(h)=h^5+h,
+\rho(x)=\lambda x,
+\qquad
+\rho(y)=\lambda^9y.
 $$
-the right side has a pole of order $5$ at each of these three places. Since $p\geq7$, the pole order is prime to $p$.
-
-A pole of an expression $w^p-w$ in $\mathbb F_p(x)$ has order divisible by $p$. Therefore $F(h)$ is not of that form, and
+Because $\lambda^p=\lambda$,
 $$
-[L:\mathbb F_p(x)]=p.
+\rho(q)=\lambda q.
 $$
-
-For an Artin-Schreier extension with a pole of order $5$ prime to $p$, the unique point above that pole is totally ramified and has different exponent
+Also
 $$
-(p-1)(5+1)=6(p-1).
-$$
-Riemann-Hurwitz for $L/\mathbb F_p(x)$ gives
-$$
-2g(L)-2
+(\lambda^9y)^p-\lambda^9y
 =
--2p+3\cdot6(p-1)
+\lambda^9(y^p-y)
 =
-16p-18.
+(\lambda q)^9,
+$$
+so $\rho$ is an automorphism of $L$. It normalizes $P$ and descends to $M$ as
+$$
+(q,y)\mapsto(\lambda q,\lambda^9y).
+$$
+
+The stated generators are
+$$
+u=q^e,
+\qquad
+v=q^{e-9}y.
+$$
+Therefore $\rho$ fixes both $u$ and $v$, so
+$$
+K_p\subseteq M^{\langle\rho\rangle}.
+$$
+
+Conversely, $q$ satisfies
+$$
+T^e-u=0
+$$
+over $K_p$, and once $q$ is known,
+$$
+y=vq^{9-e}.
+$$
+Thus
+$$
+[M:K_p]\leq e.
+$$
+The $e$ powers of $\rho$ are distinct $K_p$-automorphisms of $M$, giving
+$$
+[M:K_p]\geq e.
+$$
+Hence
+$$
+[M:K_p]=e
+$$
+and
+$$
+K_p=M^{\langle\rho\rangle}.
+$$
+
+Step 3: Compute the genus of the Artin-Schreier intermediate field
+
+The field $M$ is the Artin-Schreier function field
+$$
+y^p-y=q^9.
+$$
+The right side has a single pole at $q=\infty$, of order $9$. The hypotheses imply $p>9$, so this pole order is prime to $p$.
+
+The unique place above infinity is totally ramified and has different exponent
+$$
+(p-1)(9+1)=10(p-1).
+$$
+Riemann-Hurwitz for the degree-$p$ extension
+$$
+M/\mathbb F_p(q)
+$$
+gives
+$$
+2g(M)-2=-2p+10(p-1)=8p-10.
 $$
 Therefore
 $$
-g(L)=8(p-1).
+g(M)=4(p-1).
+$$
+There is exactly one point of the smooth projective curve of $M$ above $q=\infty$.
+
+Step 4: Separate the two types of nonidentity scaling elements
+
+Let
+$$
+1\leq j\leq e-1
+$$
+and put
+$$
+\mu=\lambda^j.
+$$
+A fixed affine point of $\rho^j$ must satisfy
+$$
+\mu q=q,
+\qquad
+\mu^9y=y.
+$$
+Since $\mu\neq1$, the first equation forces
+$$
+q=0.
 $$
 
-Step 4: Count the fixed points of the transpositions
+If
+$$
+\mu^9\neq1,
+$$
+then $y=0$. Thus $\rho^j$ fixes exactly one affine point, $(0,0)$, together with the unique point at infinity. Such an element has exactly two fixed points.
 
-The extension $L/K_p$ has degree $6$, and $p\nmid6$, so it is tame.
-
-All three transpositions are conjugate. Consider
+If
 $$
-s(x,y)=(1-x,-y).
+\mu^9=1,
 $$
-The transformation $x\mapsto1-x$ has two fixed points on the projective $x$-line:
-$$
-x=\frac12
-\qquad\text{and}\qquad
-x=\infty.
-$$
-
-At $x=1/2$,
-$$
-h=0,
-$$
-so the fiber satisfies
+then at $q=0$ the curve equation is
 $$
 y^p-y=0.
 $$
-A point fixed by $s$ must also satisfy $y=-y$. Since $p$ is odd, this forces
+It has exactly $p$ distinct solutions over the algebraic closure, and all are fixed. Including infinity, such an element has
 $$
-y=0.
+p+1
 $$
-Hence exactly one point above $x=1/2$ is fixed.
+fixed points.
 
-At $x=\infty$, the function $F(h)$ has a pole of order $5$. Step 3 shows that there is a unique point of $L$ above $x=\infty$. Since the base point is fixed by $s$, that unique point is fixed.
+Now
+$$
+\gcd(e,9)=\gcd(2d,9)=3
+$$
+because $3\mid d$ and $9\nmid d$. Hence exactly two nonidentity elements of $\langle\rho\rangle$ satisfy $\mu^9=1$.
 
-Each transposition therefore fixes exactly two points. The three transpositions contribute
+Therefore the two exceptional elements contribute
 $$
-6
+2(p+1),
 $$
-to the tame different.
+while the remaining
+$$
+e-3
+$$
+nonidentity elements contribute
+$$
+2(e-3).
+$$
+The total tame different contribution is
+$$
+R=2(p+1)+2(e-3)=2p+2e-4.
+$$
 
-Step 5: Count the fixed points of the three-cycles and apply Riemann-Hurwitz
+Step 5: Apply Riemann-Hurwitz to the cyclic quotient
 
-Take the three-cycle
+The extension
 $$
-c=st.
+M/K_p
 $$
-On the $x$-line,
+has degree $e=2d$, and $p\nmid e$, so it is tame. Riemann-Hurwitz gives
 $$
-c(x)=1-\frac1x.
+8p-10=e(2g(K_p)-2)+2p+2e-4.
 $$
-Its fixed points satisfy
+Hence
 $$
-x^2-x+1=0.
+e(2g(K_p)-2)=6p-6-2e.
 $$
-Because $p\neq3$, there are two distinct such points over the algebraic closure.
-
-Neither is a zero or pole of $h$: substituting $x=-1$, $x=2$, or $x=1/2$ into $x^2-x+1$ gives a nonzero value when $p\neq3$. Thus the Artin-Schreier cover is unramified above both fixed base points and has exactly $p$ points over each one.
-
-A three-cycle is an even permutation, so its lift fixes $y$ rather than changing its sign. It also fixes $h$. Therefore all $p$ points above each of the two fixed base points are fixed. Each nontrivial three-cycle fixes
+Using
 $$
-2p
+p-1=2^sd
 $$
-points.
-
-There are two nontrivial three-cycles, so their total contribution is
+and
 $$
-4p.
+e=2d,
 $$
-Tame Riemann-Hurwitz for $L/K_p$ gives
+we get
 $$
-16p-18
+e(2g(K_p)-2)
 =
-6(2g(K_p)-2)+6+4p.
+6\cdot2^sd-4d
+=
+2d(3\cdot2^s-2).
+$$
+Dividing by $e=2d$,
+$$
+2g(K_p)-2=3\cdot2^s-2.
 $$
 Therefore
 $$
-6(2g(K_p)-2)=12p-24,
-$$
-so
-$$
-2g(K_p)-2=2p-4.
-$$
-It follows that
-$$
-g(K_p)=p-1.
+g(K_p)=3\cdot2^{s-1}.
 $$
 
-Final Answer: $\boxed{p-1}$
+Final Answer: $\boxed{3\cdot2^{s-1}}$
 
 ---
 
 ## Answer
 
-$p-1$
+$3\cdot2^{s-1}$
 
 ---
 
@@ -236,8 +258,8 @@ $p-1$
 
 ## Solution Concepts
 
-- algebraic function fields
 - invariant subfields
 - Artin-Schreier extensions
-- finite group actions
+- semidirect product actions
+- tame ramification
 - Riemann-Hurwitz formula

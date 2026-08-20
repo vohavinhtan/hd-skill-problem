@@ -2,28 +2,32 @@
 
 ## LaTeX (Normalized)
 
-Let $p\geq7$ be a prime and put
+Let $p$ be a prime and write
 $$
-h(x)=\frac{(x+1)(x-2)(2x-1)}{x(x-1)}.
+p-1=2^s d,
+$$
+where $d>9$ is odd,
+$$
+3\mid d,\qquad 9\nmid d.
 $$
 Let
 $$
 L=\mathbb F_p(x,y),
 \qquad
-y^p-y=h(x)^5+h(x).
+y^p-y=(x^p-x)^9.
 $$
 Inside $L$, define
 $$
-u=\frac{(x^2-x+1)^3}{x^2(x-1)^2},
+u=(x^p-x)^{2d},
 \qquad
-v=yh(x),
+v=(x^p-x)^{2d-9}y,
 $$
 and let
 $$
 K_p=\mathbb F_p(u,v).
 $$
 
-Determine the genus of $K_p$ as an exact expression in $p$.
+Determine the genus of $K_p$ as an exact expression in $s$.
 
 ---
 
@@ -42,12 +46,12 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves Artin-Schreier ramification and quotient-curve genus calculations,
+The problem also involves wild Artin-Schreier ramification and tame cyclic quotients,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct the hidden fixed field from the stated generators before combining wild and tame ramification data.
+However, the main task is to reconstruct a two-stage fixed field and distinguish the different stabilizer types in its tame quotient before computing the genus.
 
 Specifically:
 
-- The first generator conceals the square of a relative invariant for a six-element Möbius group.
-- The second generator couples that relative invariant to an Artin-Schreier coordinate, while the nonmonomial right side prevents the resulting quotient from collapsing to a single Kummer cover.
-- The genus calculation requires both the wild ramification of the original Artin-Schreier extension and separate fixed-point counts for the two nontrivial conjugacy classes of the hidden group.
+- The expression $x^p-x$ conceals the fixed field of an additive translation group.
+- The two stated generators then conceal a cyclic scaling quotient whose action has two exceptional nonidentity elements with larger fixed fibers.
+- The final genus depends on combining the wild Artin-Schreier genus calculation with the nonuniform tame ramification of that cyclic quotient.
