@@ -4,28 +4,41 @@
 
 Let $q>1$ be real. Put
 $$
-\mathbf{1}=\begin{pmatrix}1\\1\\1\end{pmatrix},\qquad C=\begin{pmatrix}0&0&1\\1&0&0\\0&1&0\end{pmatrix},\qquad E=\begin{pmatrix}1&0&0\\0&0&0\\0&0&0\end{pmatrix}.
+\mathbf{1}=\begin{pmatrix}1\\1\\1\end{pmatrix},\qquad e=\begin{pmatrix}1\\0\\0\end{pmatrix},\qquad E=ee^{T},
 $$
-Define
+and define
 $$
-A_q=I_3-\frac{9q-1}{27q}\mathbf{1}\mathbf{1}^{T},\qquad B_q=\frac{1}{q}I_3+\frac{q-1}{3q}\mathbf{1}\mathbf{1}^{T}.
+A_q=I_3-\frac{9q-1}{27q}\mathbf{1}\mathbf{1}^{T},\qquad
+B_q=\frac{1}{q}I_3+\frac{q-1}{3q}\mathbf{1}\mathbf{1}^{T}.
 $$
 
-Let
+For every integer $n\geq3$, let
 $$
-X=\begin{pmatrix}X_0\\X_1\\X_2\\X_3\end{pmatrix}\in\mathbb{R}^{12},\qquad X_k\in\mathbb{R}^3,
+X^{(n)}=\begin{pmatrix}X_0\\X_1\\ \vdots\\X_n\end{pmatrix}\in\mathbb{R}^{3(n+1)},\qquad X_k\in\mathbb{R}^{3},
 $$
-be centered Gaussian with precision matrix
+be centered Gaussian with precision matrix $\Omega_{n,q}$ whose $3\times3$ blocks are
 $$
-\Omega_q=\begin{pmatrix}A_q+B_q+q^{-1}E&-C^{T}B_q&0&-q^{-1}E\\-B_qC&B_q+q^{-1}I_3&-q^{-1}C^{T}&0\\0&-q^{-1}C&2q^{-1}I_3&-q^{-1}C^{T}\\-q^{-1}E&0&-q^{-1}C&q^{-1}(I_3+E)\end{pmatrix}.
+(\Omega_{n,q})_{00}=\frac{1}{n}A_q+B_q+\frac{1}{nq}E,\qquad
+(\Omega_{n,q})_{nn}=B_q+\frac{1}{nq}E,
 $$
+$$
+(\Omega_{n,q})_{kk}=2B_q\qquad(1\leq k\leq n-1),
+$$
+$$
+(\Omega_{n,q})_{k-1,k}=(\Omega_{n,q})_{k,k-1}=-B_q\qquad(1\leq k\leq n),
+$$
+$$
+(\Omega_{n,q})_{0n}=(\Omega_{n,q})_{n0}=-\frac{1}{nq}E,
+$$
+with all remaining blocks zero.
+
 Set
 $$
-Y=X_1+C^{T}X_2-CE(X_3-X_0).
+Y_n=\frac{1}{n}\sum_{k=1}^{n-1}X_k-E(X_n-X_0).
 $$
-Using natural logarithms, determine the exact conditional mutual information
+Using natural logarithms, determine the exact value of
 $$
-I(X_0;X_3\mid Y).
+\lim_{n\to\infty}I(X_0;X_n\mid Y_n).
 $$
 
 ---
@@ -43,4 +56,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves conditional mutual information, jointly Gaussian subvectors, and conditional covariance, which are part of Probability and Statistics and Joint distributions and dependence. The problem also involves block precision matrices, orthogonal decompositions, and determinant identities, which are part of Linear Algebra and Determinants. However, those matrix operations are tools for evaluating a dependence functional of a Gaussian distribution rather than the mathematical object being classified.
+This problem involves conditional mutual information, jointly Gaussian vectors, and asymptotic conditional covariance, which are part of Probability and Statistics and Joint distributions and dependence. The problem also involves block matrices, orthogonal decompositions, and determinant identities, which are part of Linear Algebra and Determinants. However, those matrix methods are auxiliary tools for evaluating a dependence functional of a Gaussian family rather than the requested mathematical object.
