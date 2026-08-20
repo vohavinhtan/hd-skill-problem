@@ -1,152 +1,187 @@
 ## Steps
 
-Step 1: Track the coefficients through the three nonzero modular layers
+Step 1: Track every coefficient that can feed the target degree
 
-For each $m$, write the part of $F_m$ relevant to the coefficient of $T^4$ as
+Write
 $$
-F_m=T+pA_mT^2+p^2Q_mT^3+p^3R_mT^4+\text{terms irrelevant to }T^4.
-$$
-Initially
-$$
-A_0=Q_0=R_0=0.
-$$
-Put $a=a_m$ and $b=u^{m^2}$. Modulo $p^4$ and through degree $4$,
-$$
-F_m^2=T^2+2pA_mT^3+p^2(A_m^2+2Q_m)T^4,
-$$
-$$
-F_m^3=T^3+3pA_mT^4\pmod{p^2},
-$$
-and
-$$
-F_m^4\equiv T^4\pmod p.
-$$
-Substitution into the recurrence gives
-$$
-A_{m+1}=A_m+a,
-$$
-$$
-Q_{m+1}=Q_m+2aA_m+a^2+b,
-$$
-and
-$$
-R_{m+1}
+F_m
 =
-R_m+a(A_m^2+2Q_m)+3A_m(a^2+b)+a^3+2ab.
+T+p(A_mT^2+B_mT^3)
++p^2(C_mT^3+D_mT^4+E_mT^5)
++p^3(G_mT^4+H_mT^5)
++\cdots,
+$$
+where omitted terms cannot contribute to $T^5$ modulo $p^4$. Initially all seven displayed coefficients are zero.
+
+For one step put $a=a_m$ and $b=b_m$. Expanding only to the required orders gives
+$$
+A_{m+1}=A_m+a,\qquad B_{m+1}=B_m+b,
+$$
+$$
+C_{m+1}=C_m+2A_ma+a^2,
+$$
+$$
+D_{m+1}=D_m+3A_mb+2B_ma+3ab,
+$$
+$$
+E_{m+1}=E_m+3B_mb+3\cdot2^{-1}b^2,
+$$
+$$
+G_{m+1}=G_m+A_m^2a+3A_ma^2+2C_ma+a^3,
+$$
+and
+$$
+H_{m+1}
+=
+H_m
++3A_m^2b
++2A_mB_ma
++12A_mab
++3B_ma^2
++3C_mb
++2D_ma
++6a^2b.
 $$
 
-Step 2: Find coordinates in which the first two layers become additive
+Step 2: Remove the coefficients forced by the first-order accumulators
+
+The recurrence for $C_m$ is exactly the change in $A_m^2$:
+$$
+(A_m+a)^2-A_m^2=2A_ma+a^2.
+$$
+Since $C_0=A_0=0$,
+$$
+C_m=A_m^2.
+$$
+Similarly,
+$$
+3\cdot2^{-1}\left((B_m+b)^2-B_m^2\right)
+=
+3B_mb+3\cdot2^{-1}b^2,
+$$
+so
+$$
+E_m=3\cdot2^{-1}B_m^2.
+$$
+Using $C_m=A_m^2$ in the recurrence for $G_m$ gives
+$$
+G_{m+1}-G_m
+=
+3A_m^2a+3A_ma^2+a^3
+=
+(A_m+a)^3-A_m^3.
+$$
+Hence
+$$
+G_m=A_m^3.
+$$
+
+Step 3: Find the two triangular corrections hidden in the fourth and fifth degree layers
 
 Define
 $$
-B_m=Q_m-A_m^2.
+K_m=D_m-2A_mB_m.
 $$
-Using the first two recurrences from Step 1,
+Since
 $$
-B_{m+1}
+D_{m+1}-D_m=3A_mb+2B_ma+3ab,
+$$
+while
+$$
+2A_{m+1}B_{m+1}-2A_mB_m
 =
-Q_m+2aA_m+a^2+b-(A_m+a)^2
-=
-B_m+b.
+2A_mb+2B_ma+2ab,
 $$
-Thus
+we obtain
 $$
-A_{m+1}=A_m+a_m,\qquad B_{m+1}=B_m+u^{m^2}.
+K_{m+1}=K_m+bA_{m+1}.
 $$
 
-The remaining recurrence still mixes the two accumulated quantities. Define
+Now define
 $$
-C_m=R_m-A_m^3-2A_mB_m.
+N_m=H_m-3A_m^2B_m-2A_mK_m.
 $$
-Since $Q_m=A_m^2+B_m$, the recurrence for $R_m$ becomes
+Substitute $C_m=A_m^2$ and $D_m=K_m+2A_mB_m$ into the recurrence for $H_m$. Its increment becomes
 $$
-R_{m+1}
-=
-R_m+3aA_m^2+2aB_m+3A_ma^2+3A_mb+a^3+2ab.
+6A_m^2b+6A_mB_ma+12A_mab+3B_ma^2+2aK_m+6a^2b.
 $$
 Also
 $$
-(A_m+a)^3-A_m^3=3aA_m^2+3a^2A_m+a^3,
-$$
-and
-$$
-2(A_m+a)(B_m+b)-2A_mB_m
+3A_{m+1}^2B_{m+1}-3A_m^2B_m
 =
-2aB_m+2A_mb+2ab.
+3A_m^2b+6A_mB_ma+6A_mab+3B_ma^2+3a^2b,
 $$
-Subtracting these two changes from the change in $R_m$ leaves
+and, using $K_{m+1}=K_m+bA_{m+1}$,
 $$
-C_{m+1}=C_m+bA_m.
-$$
-Hence the nonlinear coefficient system has reduced to
-$$
-A_{m+1}=A_m+a_m,\qquad
-B_{m+1}=B_m+u^{m^2},\qquad
-C_{m+1}=C_m+u^{m^2}A_m.
-$$
-
-Step 3: Use the complete alternating binomial cancellation
-
-From $A_0=0$,
-$$
-A_m=\sum_{i=0}^{m-1}(-1)^i\binom{n}{i}.
-$$
-For $1\leq m\leq n$, the alternating partial-binomial identity is
-$$
-\sum_{i=0}^{m-1}(-1)^i\binom{n}{i}
+2A_{m+1}K_{m+1}-2A_mK_m
 =
-(-1)^{m-1}\binom{n-1}{m-1}.
+2aK_m+2bA_{m+1}^2.
 $$
-To verify it, apply Pascal's identity:
+Subtracting these changes leaves
 $$
-\binom{n}{i}=\binom{n-1}{i}+\binom{n-1}{i-1}.
+N_{m+1}-N_m=bA_{m+1}^2.
 $$
-The two alternating sums cancel except for their final term, giving the displayed formula.
-
-For $m=n+1$,
+Thus
 $$
-A_{n+1}=\sum_{i=0}^{n}(-1)^i\binom{n}{i}=0.
+N_{n+1}=\sum_{m=0}^{n}b_mA_{m+1}^2.
 $$
 
-Step 4: Evaluate the surviving noncommutative correction
+Step 4: Evaluate the first-order accumulators by alternating binomial cancellation
 
-Since $C_0=0$, Step 2 gives
+By definition,
 $$
-C_{n+1}=\sum_{m=0}^{n}u^{m^2}A_m.
+A_{m+1}=\sum_{j=0}^{m}(-1)^j\binom{n}{j}.
 $$
-The term $m=0$ is zero. Applying Step 3 for $1\leq m\leq n$ yields
+For $0\leq m\leq n-1$, Pascal's identity gives
 $$
-C_{n+1}
+A_{m+1}=(-1)^m\binom{n-1}{m}.
+$$
+At the final index,
+$$
+A_{n+1}=\sum_{j=0}^{n}(-1)^j\binom{n}{j}=0.
+$$
+Also
+$$
+B_{n+1}
 =
-\sum_{m=1}^{n}
-(-1)^{m-1}\binom{n-1}{m-1}u^{m^2}.
+\sum_{m=0}^{n}m(-1)^m\binom{n}{m}
+=0
+$$
+because $n\geq2$ and this is the first derivative at $1$ of $(1-z)^n$.
+
+Since $A_{n+1}=0$, the definition of $N_m$ gives
+$$
+H_{n+1}=N_{n+1}.
+$$
+Using $b_m=m(-1)^m\binom{n}{m}$ and the formula for $A_{m+1}$,
+$$
+H_{n+1}
+=
+\sum_{m=1}^{n-1}
+(-1)^m
+m\binom{n}{m}
+\binom{n-1}{m}^2.
 $$
 
-Now
-$$
-R_m=A_m^3+2A_mB_m+C_m.
-$$
-Because $A_{n+1}=0$, both terms involving $A_{n+1}$ vanish, so
-$$
-R_{n+1}=C_{n+1}.
-$$
-This is the point at which the order of the nonlinear updates matters: the surviving term records the interaction between the new $u^{m^2}$ contribution and the accumulated first-layer coefficient.
+Step 5: Show that no lower modular layer contributes to degree five
 
-Step 5: Extract the requested coefficient
-
-By construction,
+The coefficient of $T^5$ in $F_{n+1}$ is
 $$
-F_{n+1}=T+pA_{n+1}T^2+p^2Q_{n+1}T^3+p^3R_{n+1}T^4+\cdots.
+p^2E_{n+1}+p^3H_{n+1}.
 $$
-Therefore the coefficient of $T^4$ is $p^3R_{n+1}$.
+Step 2 gives
+$$
+E_{n+1}=3\cdot2^{-1}B_{n+1}^2=0.
+$$
+Therefore only the third modular layer survives.
 
-Final Answer: $\boxed{p^3\sum_{j=1}^{n}(-1)^{j-1}\binom{n-1}{j-1}u^{j^2}}$
+Final Answer: $\boxed{p^3\sum_{m=1}^{n-1}(-1)^m m\binom{n}{m}\binom{n-1}{m}^2}$
 
 ---
 
 ## Answer
 
-$p^3\sum_{j=1}^{n}(-1)^{j-1}\binom{n-1}{j-1}u^{j^2}$
+$p^3\sum_{m=1}^{n-1}(-1)^m m\binom{n}{m}\binom{n-1}{m}^2$
 
 ---
 
@@ -158,7 +193,7 @@ $p^3\sum_{j=1}^{n}(-1)^{j-1}\binom{n-1}{j-1}u^{j^2}$
 
 **Problem Type:** Symbolic derivation
 
-**Answer Type:** Polynomial or rational function
+**Answer Type:** Exact symbolic expression
 
 ---
 
@@ -166,6 +201,6 @@ $p^3\sum_{j=1}^{n}(-1)^{j-1}\binom{n-1}{j-1}u^{j^2}$
 
 - modular coefficient filtration
 - nonlinear recurrence normalization
-- triangular coordinate change
+- triangular coordinate correction
 - alternating binomial sums
-- formal coefficient extraction
+- order-sensitive polynomial composition
