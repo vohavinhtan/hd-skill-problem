@@ -1,133 +1,171 @@
 ## Steps
 
-Step 1: Replace the two endpoints by midpoint and half-width variables
+Step 1: Recover the hidden local coordinate
 
-We have
+Differentiate $g$:
 $$
-g'(t)=\frac{t}{1+t}.
+g'(t)=\frac{t}{(1-t)^2}.
 $$
-Thus $g$ is strictly decreasing on $(-1,0)$ and strictly increasing on $(0,\infty)$, with minimum value $0$ at $0$. Hence $y(x)$ exists uniquely for every sufficiently small $x>0$.
+Thus $g$ decreases on $(-\infty,0)$, increases on $(0,1)$, and has minimum value $0$ at $0$. Hence $y(x)$ exists uniquely.
 
-Put
+Introduce
 $$
-m=\frac{x+y(x)}2,\qquad r=\frac{x-y(x)}2.
+q=\frac{t}{1-t}.
 $$
 Then
 $$
-x=m+r,\qquad y(x)=m-r,
+1+q=\frac1{1-t},
+\qquad
+\frac{dq}{dt}=\frac1{(1-t)^2}.
 $$
-with $r>0$. The equality $g(x)=g(y(x))$ becomes
+If
+$$
+G(q)=q-\log(1+q),
+$$
+then
+$$
+g(t)=G(q).
+$$
+Put
+$$
+X=\frac{x}{1-x},
+\qquad
+Y=\frac{y(x)}{1-y(x)}.
+$$
+The level equation becomes
+$$
+G(X)=G(Y),
+$$
+with $X>0>Y$.
+
+Also
+$$
+X-Y=\frac{x-y(x)}{(1-x)(1-y(x))}.
+$$
+Therefore the definition of $M$ reduces exactly to
+$$
+M(x)=
+\frac{\displaystyle\int_Y^XG(q)\,dq}
+{G(X)(X-Y)}.
+$$
+
+Step 2: Parametrize the two transformed endpoints
+
+Set
+$$
+m=\frac{X+Y}{2},
+\qquad
+r=\frac{X-Y}{2}.
+$$
+The equality $G(X)=G(Y)$ gives
 $$
 2r=\log\frac{1+m+r}{1+m-r}.
 $$
-Exponentiating and solving for $1+m$ gives
-$$
-1+m=r\frac{e^{2r}+1}{e^{2r}-1}=r\coth r.
-$$
-Therefore
-$$
-m=r\coth r-1.
-$$
-In particular,
-$$
-x+y(x)=2(r\coth r-1).
-$$
-This relation is the needed second local scale: unlike $g(x)$, it depends on both branches rather than only on their common level.
-
-Step 2: Obtain an exact formula for $M(x)$ in terms of $r$
-
-Let
-$$
-L(r)=\log\frac{\sinh r}{r}.
-$$
-From Step 1,
+Exponentiating and solving for $m$ yields
 $$
 1+m=r\coth r.
 $$
-Using
-$$
-\coth r+1=\frac{e^r}{\sinh r},
-\qquad
-\coth r-1=\frac{e^{-r}}{\sinh r},
-$$
-we get
-$$
-1+x=\frac{re^r}{\sinh r},
-\qquad
-1+y(x)=\frac{re^{-r}}{\sinh r}.
-$$
 Hence
 $$
-\log(1+x)=r-L(r),
+m=r\coth r-1.
+$$
+
+Define
+$$
+L(r)=\log\frac{\sinh r}{r}.
+$$
+Since
+$$
+1+X=r(\coth r+1)=\frac{re^r}{\sinh r},
+$$
+and
+$$
+1+Y=r(\coth r-1)=\frac{re^{-r}}{\sinh r},
+$$
+we have
+$$
+\log(1+X)=r-L(r),
 \qquad
-\log(1+y(x))=-r-L(r).
+\log(1+Y)=-r-L(r).
 $$
 It follows that
 $$
-g(x)=m+L(r).
+G(X)=m+L(r).
 $$
 
-An antiderivative of $g$ is
+An antiderivative of $G$ is
 $$
-F(t)=\frac{t^2}{2}-(1+t)\log(1+t)+(1+t).
+F(q)=\frac{q^2}{2}-(1+q)\log(1+q)+(1+q).
 $$
-Using the two logarithmic identities above,
+Using the preceding formulas,
 $$
-F(x)-F(y(x))=2rL(r).
+(1+X)\log(1+X)-(1+Y)\log(1+Y)
+=
+2r(1+m)-2rL(r).
 $$
-Since $x-y(x)=2r$,
+Since
+$$
+\frac{X^2-Y^2}{2}=2mr,
+$$
+substitution into $F(X)-F(Y)$ gives
+$$
+F(X)-F(Y)=2rL(r).
+$$
+Therefore
 $$
 M(x)=\frac{L(r)}{m+L(r)}.
 $$
-Thus both the numerator and denominator of the original averaged integral have collapsed to functions of the single half-width $r$.
 
-Step 3: Expand $m$ and $M$ in the variable $u=r^2$
+Step 3: Relate the transformed half-width to the original branch sum
 
-The standard Taylor series give
+The inverse transformation is
+$$
+t=\frac{q}{1+q}.
+$$
+Thus
+$$
+x=1-\frac1{1+X}
+=
+1-\frac{e^{-r}\sinh r}{r},
+$$
+and
+$$
+y(x)=1-\frac1{1+Y}
+=
+1-\frac{e^r\sinh r}{r}.
+$$
+Consequently
+$$
+x+y(x)=2-\frac{\sinh(2r)}{r}.
+$$
+
+Put
+$$
+u=r^2,
+\qquad
+p=-x-y(x).
+$$
+Then
+$$
+p=
+\frac43u+\frac4{15}u^2+\frac8{315}u^3+\frac4{2835}u^4+O(u^5).
+$$
+
+The Taylor expansions
 $$
 r\coth r-1=
-\frac{r^2}{3}-\frac{r^4}{45}
-+\frac{2r^6}{945}-\frac{r^8}{4725}
-+\frac{2r^{10}}{93555}+O(r^{12}),
+\frac{u}{3}-\frac{u^2}{45}
++\frac{2u^3}{945}-\frac{u^4}{4725}
++\frac{2u^5}{93555}+O(u^6),
 $$
 and
 $$
 L(r)=
-\frac{r^2}{6}-\frac{r^4}{180}
-+\frac{r^6}{2835}-\frac{r^8}{37800}
-+\frac{r^{10}}{467775}+O(r^{12}).
+\frac{u}{6}-\frac{u^2}{180}
++\frac{u^3}{2835}-\frac{u^4}{37800}
++\frac{u^5}{467775}+O(u^6)
 $$
-Set
-$$
-u=r^2.
-$$
-Then
-$$
-m=
-\frac{u}{3}-\frac{u^2}{45}
-+\frac{2u^3}{945}-\frac{u^4}{4725}
-+\frac{2u^5}{93555}+O(u^6).
-$$
-Writing
-$$
-M=\frac13+c_1u+c_2u^2+c_3u^3+c_4u^4+O(u^5)
-$$
-and substituting into
-$$
-(m+L)M=L
-$$
-gives, by coefficient comparison,
-$$
-c_1=\frac1{135},
-\qquad
-c_2=-\frac1{1890},
-$$
-$$
-c_3=\frac{61}{1530900},
-\qquad
-c_4=-\frac{4619}{1515591000}.
-$$
-Therefore
+give, from Step 2,
 $$
 M=
 \frac13+\frac{u}{135}
@@ -139,96 +177,77 @@ $$
 
 Step 4: Revert the branch-sum series
 
-Put
-$$
-s=x+y(x)=2m.
-$$
-Step 3 gives
-$$
-s=
-\frac{2u}{3}-\frac{2u^2}{45}
-+\frac{4u^3}{945}-\frac{2u^4}{4725}
-+O(u^5).
-$$
 Seek
 $$
-u=As+Bs^2+Cs^3+Ds^4+O(s^5).
+u=Ap+Bp^2+Cp^3+Dp^4+O(p^5).
 $$
-Substitution into the preceding relation and comparison of powers of $s$ gives
+Substituting this into the expansion of $p$ from Step 3 and comparing coefficients gives
 $$
-A=\frac32,\qquad
-B=\frac3{20},\qquad
-C=\frac3{350},\qquad
-D=0.
+A=\frac34.
 $$
-Hence
+At the next three orders,
 $$
-u=
-\frac32s+\frac3{20}s^2+\frac3{350}s^3+O(s^5).
-$$
-
-Substituting this into the expansion of $M$ from Step 3 gives
-$$
-M=
-\frac13+\frac{s}{90}
--\frac{s^2}{12600}
--\frac{13s^3}{324000}
--\frac{1247s^4}{2095632000}
-+O(s^5).
-$$
-For example, the coefficients through fourth order are obtained from
-$$
-\frac1{135}\frac32=\frac1{90},
+\frac43B+\frac4{15}A^2=0,
 $$
 $$
-\frac1{135}\frac3{20}
--\frac1{1890}\left(\frac32\right)^2
-=-\frac1{12600},
-$$
-$$
-\frac1{135}\frac3{350}
--\frac1{1890}\,2\frac32\frac3{20}
-+\frac{61}{1530900}\left(\frac32\right)^3
-=-\frac{13}{324000},
+\frac43C+\frac8{15}AB+\frac8{315}A^3=0,
 $$
 and
 $$
--\frac1{1890}
-\left[
-\left(\frac3{20}\right)^2
-+2\frac32\frac3{350}
-\right]
-+
-\frac{61}{1530900}
-\left[
-3\left(\frac32\right)^2\frac3{20}
-\right]
--
-\frac{4619}{1515591000}
-\left(\frac32\right)^4
-=
--\frac{1247}{2095632000}.
+\frac43D+\frac4{15}(B^2+2AC)+\frac8{105}A^2B+\frac4{2835}A^4=0.
+$$
+Therefore
+$$
+B=-\frac9{80},
+\qquad
+C=\frac9{350},
+\qquad
+D=-\frac{39}{5600}.
+$$
+So
+$$
+u=
+\frac34p-\frac9{80}p^2+\frac9{350}p^3-\frac{39}{5600}p^4+O(p^5).
 $$
 
-Step 5: Evaluate the requested limit
-
-Since $s=x+y(x)$, Step 4 gives
+Substitution into the expansion of $M$ from Step 3 gives
 $$
-M(x)-\frac13-\frac{s}{90}
-+\frac{s^2}{12600}
-+\frac{13s^3}{324000}
-=
--\frac{1247}{2095632000}s^4+O(s^5).
+M=
+\frac13+\frac{p}{180}
+-\frac{19p^2}{16800}
++\frac{5381p^3}{18144000}
+-\frac{2924519p^4}{33530112000}
++O(p^5).
 $$
-Also $s\to0$ as $x\to0^+$. Dividing by $s^4$ yields the limit.
 
-Final Answer: $\boxed{-\frac{1247}{2095632000}}$
+Step 5: Evaluate the limit
+
+Let
+$$
+s=x+y(x).
+$$
+Since $p=-s$, Step 4 becomes
+$$
+M(x)=
+\frac13-\frac{s}{180}
+-\frac{19s^2}{16800}
+-\frac{5381s^3}{18144000}
+-\frac{2924519s^4}{33530112000}
++O(s^5).
+$$
+Also $s\to0$ as $x\to0^+$. Therefore the numerator in the requested quotient is
+$$
+-\frac{2924519}{33530112000}s^4+O(s^5).
+$$
+Dividing by $s^4$ gives the required value.
+
+Final Answer: $\boxed{-\frac{2924519}{33530112000}}$
 
 ---
 
 ## Answer
 
-$-\frac{1247}{2095632000}$
+$-\frac{2924519}{33530112000}$
 
 ---
 
@@ -247,7 +266,7 @@ $-\frac{1247}{2095632000}$
 ## Solution Concepts
 
 - implicit branches
-- midpoint and half-width coordinates
-- hyperbolic-function identities
+- Möbius coordinate changes
+- hyperbolic parametrization
 - series reversion
 - asymptotic limits
