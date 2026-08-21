@@ -16,29 +16,36 @@ and define
 $$
 \tau=\operatorname{tr}X
 =n(n+1)r^4+(4n+2)r^2+2,
+$$
+$$
+\chi=r^4(\tau^2-r^4-4),
 \qquad
-\eta=\tau^2-r^4-3.
+\rho=\chi(\tau^2-4+\chi).
 $$
 
-For each integer $m\geq4$ and each triple of nonnegative integers $a,b,c$ satisfying
+For each integer $k\geq2$ and each quadruple of positive integers $a,b,c,d$ satisfying
 $$
-a+b+c=m,
+a+b+c+d=4k,
 $$
 define
 $$
-T_m(a,b,c)=\operatorname{tr}\left(DX^aDX^bDX^c\right).
+T_k(a,b,c,d)
+=
+\operatorname{tr}\left(
+DX^aD^{-1}X^bDX^cD^{-1}X^d
+\right).
 $$
 
 Let
 $$
-M_{m,1}>M_{m,2}>M_{m,3}
+M_{k,1}>M_{k,2}>M_{k,3}
 $$
-be the three largest distinct values among all $T_m(a,b,c)$.
+be the three largest distinct values among all $T_k(a,b,c,d)$.
 
 Determine, in reduced rational form, the ordinary generating function
 $$
-\sum_{m=4}^{\infty}
-(M_{m,1}-M_{m,2})(M_{m,1}-M_{m,3})t^{m-4}.
+\sum_{k=2}^{\infty}
+(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-2}.
 $$
 
 ---
@@ -56,6 +63,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves an extremal sequence indexed by integer compositions and the derivation of its ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
-The problem also involves eigenvalues and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
-However, the matrix analysis determines the coefficient sequence, while the requested final object is its reduced rational generating function.
+This problem involves extremal values over integer compositions and the derivation of their ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
+The problem also involves traces, conjugation, eigenvalues, and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
+However, the matrix structure is used to derive and rank the coefficient sequence, while the requested final object is its reduced rational generating function.
