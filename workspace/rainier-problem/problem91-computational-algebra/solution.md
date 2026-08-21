@@ -1,264 +1,293 @@
 ## Steps
 
-Step 1: Construct the hidden dihedral action
+Step 1: Reconstruct the group hidden by the generators
 
-Choose $\lambda\in\mathbb F_p^\times$ of order $2d$. Since $d$ is odd,
+Let $C$ be the smooth projective Fermat curve
 $$
-\lambda^d=-1.
+X^n+Y^n+Z^n=0.
 $$
-Put
+Choose a primitive ninth root $\zeta\in\mathbb F_p$.
+
+Let $D$ consist of the projective diagonal transformations
 $$
-m=(2^s+1)d.
+[X:Y:Z]\mapsto[\zeta^aX:\zeta^bY:\zeta^cZ]
 $$
-Because $2^s+1$ is odd,
+for which
 $$
-\lambda^m=-1.
+a+b+c\equiv0\pmod3.
+$$
+Subtracting $c$ from all three exponents gives the unique affine representative
+$$
+[X:Y:Z]\mapsto[\zeta^rX:\zeta^sY:Z],
+\qquad
+r+s\equiv0\pmod3.
+$$
+There are $9$ choices for $r$ and $3$ choices for $s$, so
+$$
+|D|=27.
 $$
 
-Define
+The condition on $a+b+c$ is symmetric in the coordinates, so $S_3$ normalizes $D$. Set
 $$
-\rho(z,y)=(\lambda z,-y),
-\qquad
-\tau(z,y)=(z^{-1},-y).
+H=D\rtimes S_3.
 $$
-Under $\rho$,
+Then
 $$
-z^m-z^{-m}\mapsto-(z^m-z^{-m}),
+|H|=27\cdot6=162.
 $$
-which agrees with the change
-$$
-y^p-y\mapsto-(y^p-y).
-$$
-The same is true under $\tau$. Hence both maps are automorphisms of $L$.
 
-They satisfy
+In homogeneous coordinates the two given functions are
 $$
-\rho^{2d}=\tau^2=1,
-\qquad
-\tau\rho\tau=\rho^{-1}.
+u=
+\frac{X^9Y^9+Y^9Z^9+Z^9X^9}
+{(X^9+Y^9+Z^9)^2},
 $$
-Thus
 $$
-H=\langle\rho,\tau\rangle
+v=
+\frac{(XYZ)^3}{X^9+Y^9+Z^9}.
 $$
-is a dihedral group of order $4d$.
-
-Let
+Every coordinate permutation fixes them. A diagonal element fixes every ninth power, while the numerator of $v$ is multiplied by
 $$
-t=z^d.
-$$
-Under $\rho$,
-$$
-t\mapsto-t,
-\qquad
-y\mapsto-y,
-$$
-while under $\tau$,
-$$
-t\mapsto t^{-1},
-\qquad
-y\mapsto-y.
+\zeta^{3(a+b+c)}=1.
 $$
 Therefore
-$$
-u=(t+t^{-1})^2
-$$
-and
-$$
-v=y(t-t^{-1})
-$$
-are fixed by $H$. Hence
 $$
 K_p\subseteq L^H.
 $$
 
-Step 2: Prove that the two generators give the full fixed field
+Step 2: Prove that the stated generators give the full fixed field
 
-From
+Put
 $$
-u=(t+t^{-1})^2
+S=X^9+Y^9+Z^9
 $$
-we obtain
+and
 $$
-t^4+(2-u)t^2+1=0.
+\alpha=\frac{X^9}{S},
+\qquad
+\beta=\frac{Y^9}{S},
+\qquad
+\gamma=\frac{Z^9}{S}.
 $$
-Thus
+Then
 $$
-[K_p(t):K_p]\leq4.
+\alpha+\beta+\gamma=1,
 $$
+$$
+\alpha\beta+\beta\gamma+\gamma\alpha=u,
+$$
+and
+$$
+\alpha\beta\gamma=v^3.
+$$
+Hence $\alpha,\beta,\gamma$ are the roots of
+$$
+T^3-T^2+uT-v^3.
+$$
+There are at most six possible orderings of these roots.
 
-Once $t$ is known, $z$ satisfies
+On the chart $Z=1$,
 $$
-z^d=t,
+x^9=\frac{\alpha}{\gamma},
+\qquad
+y^9=\frac{\beta}{\gamma},
+\qquad
+(xy)^3=\frac{v}{\gamma}.
 $$
-so adjoining $z$ costs degree at most $d$. Finally,
+After an ordering is chosen, there are at most nine choices for $x$. Once $x$ is chosen,
 $$
-y=\frac{v}{t-t^{-1}},
+y^3=\frac{v}{\gamma x^3},
 $$
-so $y$ is already determined after $t$ and $z$ are known. Therefore
+so there are at most three choices for $y$. Therefore
 $$
-[L:K_p]\leq4d.
+[L:K_p]\leq6\cdot9\cdot3=162.
 $$
-
-The group $H$ contains $4d$ distinct automorphisms fixing $K_p$, giving
+The group $H$ supplies $162$ distinct automorphisms fixing $K_p$, so
 $$
-[L:K_p]\geq4d.
+[L:K_p]\geq162.
 $$
 Consequently
 $$
-[L:K_p]=4d
+[L:K_p]=162
 $$
 and
 $$
 K_p=L^H.
 $$
 
-Step 3: Compute the genus of the Artin-Schreier curve
+Step 3: Count the fixed points of the nonidentity diagonal elements
 
-The rational function
+The Fermat curve has genus
 $$
-z^m-z^{-m}
+g(C)=\frac{(n-1)(n-2)}2,
 $$
-has exactly two poles, at $z=0$ and $z=\infty$, each of order $m$.
+so
+$$
+2g(C)-2=n(n-3).
+$$
+Since $p\nmid162$, the quotient by $H$ is tame.
 
-Since
+Use the affine representative
 $$
-m=(2^s+1)d
-$$
-and $m<p+(p-1)$ with neither factor divisible by $p$, we have
-$$
-p\nmid m.
-$$
-A pole of a function of the form $w^p-w$ has order divisible by $p$. Hence the defining right side is not of that form, so
-$$
-[L:\mathbb F_p(z)]=p.
-$$
-
-Each of the two poles is totally ramified and has different exponent
-$$
-(p-1)(m+1).
-$$
-Riemann-Hurwitz gives
-$$
-2g(L)-2
-=
--2p+2(p-1)(m+1)
-=
-2m(p-1)-2.
-$$
-Thus
-$$
-g(L)=m(p-1).
-$$
-There is one point of the smooth projective curve of $L$ above $z=0$ and one above $z=\infty$.
-
-Step 4: Count fixed points of rotations and the two reflection types
-
-Because $4d\mid p-1$, the extension $L/K_p$ is tame.
-
-For
-$$
-1\leq j\leq2d-1,
-$$
-the rotation $\rho^j$ acts on the base by
-$$
-z\mapsto\lambda^jz.
-$$
-Its only fixed base points are $0$ and $\infty$. By Step 3, each has a unique point above it. Hence every nonidentity rotation fixes exactly two points. Their total contribution is
-$$
-2(2d-1)=4d-2.
-$$
-
-Now consider
-$$
-g_j=\rho^j\tau,
+d_{r,s}[X:Y:Z]=[\zeta^rX:\zeta^sY:Z],
 \qquad
-0\leq j\leq2d-1.
+r+s\equiv0\pmod3.
 $$
-It acts by
+A nonidentity diagonal element can fix a point of $C$ only when two of its three eigenvalues are equal, because no coordinate point lies on $C$.
+
+The condition $\zeta^r=1$ gives
 $$
-g_j(z)=\frac{\lambda^j}{z},
+r=0,\qquad s\in\{3,6\},
+$$
+so there are two nonidentity elements fixing the line $Y,Z$. Similarly, two elements satisfy $s=0$ and fix the line $X,Z$.
+
+Finally,
+$$
+\zeta^r=\zeta^s
+$$
+means $r=s$. Together with $r+s\equiv0\pmod3$, this gives
+$$
+r=s\in\{3,6\},
+$$
+so two further elements fix the line $X,Y$.
+
+Each coordinate line meets $C$ in exactly $n$ distinct points because $p\nmid n$. Hence the six ramified diagonal elements contribute
+$$
+6n.
+$$
+
+Step 4: Count the fixed points of the transposition cosets
+
+Consider the transposition exchanging $X$ and $Y$. An element of its coset has the form
+$$
+g_{r,s}[X:Y:Z]=[\zeta^rY:\zeta^sX:Z],
 \qquad
-g_j(y)=(-1)^{j+1}y.
+r+s\equiv0\pmod3.
 $$
-A fixed base point satisfies
+On the $X,Y$ block its eigenvalues satisfy
 $$
-z^2=\lambda^j,
-$$
-so there are exactly two such points.
-
-At either one, put $t=z^d$. Then
-$$
-t^2=(z^2)^d=\lambda^{jd}=(-1)^j.
+\lambda^2=\zeta^{r+s}.
 $$
 
-If $j$ is even, then $t^2=1$. Since $2^s+1$ is odd,
+If
 $$
-z^m-z^{-m}=t^{2^s+1}-t^{-(2^s+1)}=0.
+r+s\equiv0\pmod9,
 $$
-Also $g_j(y)=-y$. The fixed condition forces $y=0$, so each even reflection fixes exactly two points.
+the eigenvalues are $1$ and $-1$. The $1$-eigenspace together with the $Z$-axis forms a projective line. Its intersection with $C$ has exactly $n$ points. The isolated $-1$ eigenline lies in $Z=0$, where the Fermat equation would give
+$$
+X^n+Y^n=2X^n\neq0
+$$
+because $n$ is even. Thus such an element fixes exactly $n$ points.
 
-If $j$ is odd, then $t^2=-1$. Because $s\geq2$,
+If
 $$
-2^s+1\equiv1\pmod4.
+r+s\not\equiv0\pmod9,
+$$
+the three projective eigenlines are isolated. The $Z$-axis is not on $C$. For either eigenline in $Z=0$,
+$$
+\frac{Y^n}{X^n}=\lambda^n.
+$$
+Write
+$$
+n=18M.
+$$
+Then
+$$
+\lambda^n=(\lambda^2)^{n/2}
+=\zeta^{(r+s)9M}=1.
+$$
+The Fermat equation again gives $2X^n\neq0$. Hence these elements have no fixed points.
+
+Among the $27$ pairs $(r,s)$ with $r+s\equiv0\pmod3$, exactly $9$ satisfy
+$$
+r+s\equiv0\pmod9.
+$$
+Therefore one transposition coset contributes
+$$
+9n.
+$$
+There are three transpositions, so all transposition cosets contribute
+$$
+27n.
+$$
+
+Step 5: Eliminate the three-cycle cosets and apply Riemann-Hurwitz
+
+Take the coordinate cycle
+$$
+c[X:Y:Z]=[Y:Z:X].
+$$
+An element of the coset $Dc$ can be written
+$$
+g[X:Y:Z]=[\zeta^rY:\zeta^sZ:X],
+\qquad
+r+s\equiv0\pmod3.
+$$
+If $[X:Y:Z]$ is fixed, all three coordinates are nonzero and for some eigenvalue $\lambda$,
+$$
+\lambda^3=\zeta^{r+s}.
+$$
+The eigenvector relations give
+$$
+Y^n=\lambda^nX^n,
+\qquad
+Z^n=\lambda^{2n}X^n.
+$$
+Since $n=18M$,
+$$
+\lambda^n=(\lambda^3)^{6M}
+=\zeta^{6M(r+s)}.
+$$
+The congruence $r+s\equiv0\pmod3$ makes the exponent divisible by $9$, so
+$$
+\lambda^n=1.
+$$
+The Fermat equation would then give
+$$
+3X^n=0,
+$$
+which is impossible because $p\neq3$. Thus no element of $Dc$ fixes a point. The same argument applies to $Dc^2$.
+
+The total fixed-point contribution from all nonidentity elements of $H$ is therefore
+$$
+6n+27n=33n.
+$$
+Tame Riemann-Hurwitz gives
+$$
+n(n-3)=162(2g(K_p)-2)+33n.
 $$
 Hence
 $$
-t^{2^s+1}=t,
-\qquad
-t^{-(2^s+1)}=-t,
+162(2g(K_p)-2)=n(n-36).
 $$
-so the right side equals $2t\neq0$. Now $g_j(y)=y$. The Artin-Schreier fiber over each fixed base point consists of $p$ distinct points, all fixed by $g_j$. Thus each odd reflection fixes exactly $2p$ points.
-
-Among the $2d$ reflections there are $d$ even indices and $d$ odd indices. Their total contribution is
+With
 $$
-2d+2pd.
-$$
-Therefore
-$$
-R=(4d-2)+(2d+2pd)=2pd+6d-2.
-$$
-
-Step 5: Apply Riemann-Hurwitz to the dihedral quotient
-
-Riemann-Hurwitz for the tame degree-$4d$ quotient gives
-$$
-2m(p-1)-2
-=
-4d(2g(K_p)-2)+2pd+6d-2.
-$$
-Using
-$$
-m=(2^s+1)d,
+n=18M,
 $$
 we obtain
 $$
-4d(2g(K_p)-2)
-=
-2d\left((2^s+1)(p-1)-p-3\right).
-$$
-The expression in parentheses simplifies to
-$$
-2^s(p-1)-4.
+2g(K_p)-2=2M(M-2).
 $$
 Therefore
 $$
-2g(K_p)-2
-=
-2^{s-1}(p-1)-2.
+g(K_p)=(M-1)^2.
 $$
-Hence
+Since
 $$
-g(K_p)=2^{s-2}(p-1).
+M=\frac{p-1}{18},
+$$
+we get
+$$
+g(K_p)=\left(\frac{p-19}{18}\right)^2.
 $$
 
-Final Answer: $\boxed{2^{s-2}(p-1)}$
+Final Answer: $\boxed{\left(\frac{p-19}{18}\right)^2}$
 
 ---
 
 ## Answer
 
-$2^{s-2}(p-1)$
+$\left(\frac{p-19}{18}\right)^2$
 
 ---
 
@@ -272,8 +301,8 @@ $2^{s-2}(p-1)$
 
 ## Solution Concepts
 
-- algebraic function fields
-- dihedral group actions
 - invariant subfields
-- Artin-Schreier ramification
+- diagonal group actions
+- semidirect products
+- fixed-point ramification
 - Riemann-Hurwitz formula
