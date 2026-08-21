@@ -2,32 +2,28 @@
 
 ## LaTeX (Normalized)
 
-Let $p$ be a prime and write
+Let $p\geq13$ be a prime and write
 $$
 p-1=2^s d,
 $$
-where $d>9$ is odd,
+where $s\geq2$ and $d>1$ is odd. Let
 $$
-3\mid d,\qquad 9\nmid d.
-$$
-Let
-$$
-L=\mathbb F_p(x,y),
+L=\mathbb F_p(z,y),
 \qquad
-y^p-y=(x^p-x)^9.
+y^p-y=z^{(2^s+1)d}-z^{-(2^s+1)d}.
 $$
 Inside $L$, define
 $$
-u=(x^p-x)^{2d},
+u=(z^d+z^{-d})^2,
 \qquad
-v=(x^p-x)^{2d-9}y,
+v=y(z^d-z^{-d}),
 $$
 and let
 $$
 K_p=\mathbb F_p(u,v).
 $$
 
-Determine the genus of $K_p$ as an exact expression in $s$.
+Determine the genus of $K_p$ as an exact expression in $p$ and $s$.
 
 ---
 
@@ -46,12 +42,12 @@ Determine the genus of $K_p$ as an exact expression in $s$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves wild Artin-Schreier ramification and tame cyclic quotients,
+The problem also involves Artin-Schreier ramification and quotient-curve genus calculations,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct a two-stage fixed field and distinguish the different stabilizer types in its tame quotient before computing the genus.
+However, the main task is to reconstruct a hidden nonabelian fixed field from the two stated generators before the ramification calculation can be completed.
 
 Specifically:
 
-- The expression $x^p-x$ conceals the fixed field of an additive translation group.
-- The two stated generators then conceal a cyclic scaling quotient whose action has two exceptional nonidentity elements with larger fixed fibers.
-- The final genus depends on combining the wild Artin-Schreier genus calculation with the nonuniform tame ramification of that cyclic quotient.
+- The first generator hides both a cyclic scaling ambiguity and inversion of the rational coordinate.
+- The second generator couples the Artin-Schreier coordinate to an anti-invariant, forcing a dihedral rather than cyclic fixed-field reconstruction.
+- The tame quotient contains two different reflection types with different fixed fibers, and both types are needed for the genus.

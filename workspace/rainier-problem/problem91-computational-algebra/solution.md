@@ -1,250 +1,264 @@
 ## Steps
 
-Step 1: Recover the hidden translation quotient
+Step 1: Construct the hidden dihedral action
 
+Choose $\lambda\in\mathbb F_p^\times$ of order $2d$. Since $d$ is odd,
+$$
+\lambda^d=-1.
+$$
 Put
 $$
-q=x^p-x.
+m=(2^s+1)d.
 $$
-Then the defining equation becomes
+Because $2^s+1$ is odd,
 $$
-y^p-y=q^9.
+\lambda^m=-1.
 $$
 
-For each $a\in\mathbb F_p$, define
+Define
 $$
-\sigma_a(x)=x+a,
+\rho(z,y)=(\lambda z,-y),
 \qquad
-\sigma_a(y)=y.
+\tau(z,y)=(z^{-1},-y).
 $$
-Since
+Under $\rho$,
 $$
-(x+a)^p-(x+a)=x^p-x,
+z^m-z^{-m}\mapsto-(z^m-z^{-m}),
 $$
-every $\sigma_a$ preserves the defining equation. These automorphisms form a group $P$ of order $p$.
+which agrees with the change
+$$
+y^p-y\mapsto-(y^p-y).
+$$
+The same is true under $\tau$. Hence both maps are automorphisms of $L$.
 
-Let
+They satisfy
 $$
-M=\mathbb F_p(q,y).
-$$
-The element $x$ satisfies
-$$
-T^p-T-q=0
-$$
-over $M$, so
-$$
-[L:M]\leq p.
-$$
-The group $P$ supplies $p$ distinct $M$-automorphisms of $L$. Hence
-$$
-[L:M]=p
-$$
-and
-$$
-M=L^P.
-$$
-
-Step 2: Identify the cyclic quotient encoded by $u$ and $v$
-
-Put
-$$
-e=2d.
-$$
-Since $e\mid p-1$, choose $\lambda\in\mathbb F_p^\times$ of order $e$. Define
-$$
-\rho(x)=\lambda x,
+\rho^{2d}=\tau^2=1,
 \qquad
-\rho(y)=\lambda^9y.
-$$
-Because $\lambda^p=\lambda$,
-$$
-\rho(q)=\lambda q.
-$$
-Also
-$$
-(\lambda^9y)^p-\lambda^9y
-=
-\lambda^9(y^p-y)
-=
-(\lambda q)^9,
-$$
-so $\rho$ is an automorphism of $L$. It normalizes $P$ and descends to $M$ as
-$$
-(q,y)\mapsto(\lambda q,\lambda^9y).
-$$
-
-The stated generators are
-$$
-u=q^e,
-\qquad
-v=q^{e-9}y.
-$$
-Therefore $\rho$ fixes both $u$ and $v$, so
-$$
-K_p\subseteq M^{\langle\rho\rangle}.
-$$
-
-Conversely, $q$ satisfies
-$$
-T^e-u=0
-$$
-over $K_p$, and once $q$ is known,
-$$
-y=vq^{9-e}.
+\tau\rho\tau=\rho^{-1}.
 $$
 Thus
 $$
-[M:K_p]\leq e.
+H=\langle\rho,\tau\rangle
 $$
-The $e$ powers of $\rho$ are distinct $K_p$-automorphisms of $M$, giving
-$$
-[M:K_p]\geq e.
-$$
-Hence
-$$
-[M:K_p]=e
-$$
-and
-$$
-K_p=M^{\langle\rho\rangle}.
-$$
-
-Step 3: Compute the genus of the Artin-Schreier intermediate field
-
-The field $M$ is the Artin-Schreier function field
-$$
-y^p-y=q^9.
-$$
-The right side has a single pole at $q=\infty$, of order $9$. The hypotheses imply $p>9$, so this pole order is prime to $p$.
-
-The unique place above infinity is totally ramified and has different exponent
-$$
-(p-1)(9+1)=10(p-1).
-$$
-Riemann-Hurwitz for the degree-$p$ extension
-$$
-M/\mathbb F_p(q)
-$$
-gives
-$$
-2g(M)-2=-2p+10(p-1)=8p-10.
-$$
-Therefore
-$$
-g(M)=4(p-1).
-$$
-There is exactly one point of the smooth projective curve of $M$ above $q=\infty$.
-
-Step 4: Separate the two types of nonidentity scaling elements
+is a dihedral group of order $4d$.
 
 Let
 $$
-1\leq j\leq e-1
+t=z^d.
 $$
-and put
+Under $\rho$,
 $$
-\mu=\lambda^j.
-$$
-A fixed affine point of $\rho^j$ must satisfy
-$$
-\mu q=q,
+t\mapsto-t,
 \qquad
-\mu^9y=y.
+y\mapsto-y,
 $$
-Since $\mu\neq1$, the first equation forces
+while under $\tau$,
 $$
-q=0.
-$$
-
-If
-$$
-\mu^9\neq1,
-$$
-then $y=0$. Thus $\rho^j$ fixes exactly one affine point, $(0,0)$, together with the unique point at infinity. Such an element has exactly two fixed points.
-
-If
-$$
-\mu^9=1,
-$$
-then at $q=0$ the curve equation is
-$$
-y^p-y=0.
-$$
-It has exactly $p$ distinct solutions over the algebraic closure, and all are fixed. Including infinity, such an element has
-$$
-p+1
-$$
-fixed points.
-
-Now
-$$
-\gcd(e,9)=\gcd(2d,9)=3
-$$
-because $3\mid d$ and $9\nmid d$. Hence exactly two nonidentity elements of $\langle\rho\rangle$ satisfy $\mu^9=1$.
-
-Therefore the two exceptional elements contribute
-$$
-2(p+1),
-$$
-while the remaining
-$$
-e-3
-$$
-nonidentity elements contribute
-$$
-2(e-3).
-$$
-The total tame different contribution is
-$$
-R=2(p+1)+2(e-3)=2p+2e-4.
-$$
-
-Step 5: Apply Riemann-Hurwitz to the cyclic quotient
-
-The extension
-$$
-M/K_p
-$$
-has degree $e=2d$, and $p\nmid e$, so it is tame. Riemann-Hurwitz gives
-$$
-8p-10=e(2g(K_p)-2)+2p+2e-4.
-$$
-Hence
-$$
-e(2g(K_p)-2)=6p-6-2e.
-$$
-Using
-$$
-p-1=2^sd
-$$
-and
-$$
-e=2d,
-$$
-we get
-$$
-e(2g(K_p)-2)
-=
-6\cdot2^sd-4d
-=
-2d(3\cdot2^s-2).
-$$
-Dividing by $e=2d$,
-$$
-2g(K_p)-2=3\cdot2^s-2.
+t\mapsto t^{-1},
+\qquad
+y\mapsto-y.
 $$
 Therefore
 $$
-g(K_p)=3\cdot2^{s-1}.
+u=(t+t^{-1})^2
+$$
+and
+$$
+v=y(t-t^{-1})
+$$
+are fixed by $H$. Hence
+$$
+K_p\subseteq L^H.
 $$
 
-Final Answer: $\boxed{3\cdot2^{s-1}}$
+Step 2: Prove that the two generators give the full fixed field
+
+From
+$$
+u=(t+t^{-1})^2
+$$
+we obtain
+$$
+t^4+(2-u)t^2+1=0.
+$$
+Thus
+$$
+[K_p(t):K_p]\leq4.
+$$
+
+Once $t$ is known, $z$ satisfies
+$$
+z^d=t,
+$$
+so adjoining $z$ costs degree at most $d$. Finally,
+$$
+y=\frac{v}{t-t^{-1}},
+$$
+so $y$ is already determined after $t$ and $z$ are known. Therefore
+$$
+[L:K_p]\leq4d.
+$$
+
+The group $H$ contains $4d$ distinct automorphisms fixing $K_p$, giving
+$$
+[L:K_p]\geq4d.
+$$
+Consequently
+$$
+[L:K_p]=4d
+$$
+and
+$$
+K_p=L^H.
+$$
+
+Step 3: Compute the genus of the Artin-Schreier curve
+
+The rational function
+$$
+z^m-z^{-m}
+$$
+has exactly two poles, at $z=0$ and $z=\infty$, each of order $m$.
+
+Since
+$$
+m=(2^s+1)d
+$$
+and $m<p+(p-1)$ with neither factor divisible by $p$, we have
+$$
+p\nmid m.
+$$
+A pole of a function of the form $w^p-w$ has order divisible by $p$. Hence the defining right side is not of that form, so
+$$
+[L:\mathbb F_p(z)]=p.
+$$
+
+Each of the two poles is totally ramified and has different exponent
+$$
+(p-1)(m+1).
+$$
+Riemann-Hurwitz gives
+$$
+2g(L)-2
+=
+-2p+2(p-1)(m+1)
+=
+2m(p-1)-2.
+$$
+Thus
+$$
+g(L)=m(p-1).
+$$
+There is one point of the smooth projective curve of $L$ above $z=0$ and one above $z=\infty$.
+
+Step 4: Count fixed points of rotations and the two reflection types
+
+Because $4d\mid p-1$, the extension $L/K_p$ is tame.
+
+For
+$$
+1\leq j\leq2d-1,
+$$
+the rotation $\rho^j$ acts on the base by
+$$
+z\mapsto\lambda^jz.
+$$
+Its only fixed base points are $0$ and $\infty$. By Step 3, each has a unique point above it. Hence every nonidentity rotation fixes exactly two points. Their total contribution is
+$$
+2(2d-1)=4d-2.
+$$
+
+Now consider
+$$
+g_j=\rho^j\tau,
+\qquad
+0\leq j\leq2d-1.
+$$
+It acts by
+$$
+g_j(z)=\frac{\lambda^j}{z},
+\qquad
+g_j(y)=(-1)^{j+1}y.
+$$
+A fixed base point satisfies
+$$
+z^2=\lambda^j,
+$$
+so there are exactly two such points.
+
+At either one, put $t=z^d$. Then
+$$
+t^2=(z^2)^d=\lambda^{jd}=(-1)^j.
+$$
+
+If $j$ is even, then $t^2=1$. Since $2^s+1$ is odd,
+$$
+z^m-z^{-m}=t^{2^s+1}-t^{-(2^s+1)}=0.
+$$
+Also $g_j(y)=-y$. The fixed condition forces $y=0$, so each even reflection fixes exactly two points.
+
+If $j$ is odd, then $t^2=-1$. Because $s\geq2$,
+$$
+2^s+1\equiv1\pmod4.
+$$
+Hence
+$$
+t^{2^s+1}=t,
+\qquad
+t^{-(2^s+1)}=-t,
+$$
+so the right side equals $2t\neq0$. Now $g_j(y)=y$. The Artin-Schreier fiber over each fixed base point consists of $p$ distinct points, all fixed by $g_j$. Thus each odd reflection fixes exactly $2p$ points.
+
+Among the $2d$ reflections there are $d$ even indices and $d$ odd indices. Their total contribution is
+$$
+2d+2pd.
+$$
+Therefore
+$$
+R=(4d-2)+(2d+2pd)=2pd+6d-2.
+$$
+
+Step 5: Apply Riemann-Hurwitz to the dihedral quotient
+
+Riemann-Hurwitz for the tame degree-$4d$ quotient gives
+$$
+2m(p-1)-2
+=
+4d(2g(K_p)-2)+2pd+6d-2.
+$$
+Using
+$$
+m=(2^s+1)d,
+$$
+we obtain
+$$
+4d(2g(K_p)-2)
+=
+2d\left((2^s+1)(p-1)-p-3\right).
+$$
+The expression in parentheses simplifies to
+$$
+2^s(p-1)-4.
+$$
+Therefore
+$$
+2g(K_p)-2
+=
+2^{s-1}(p-1)-2.
+$$
+Hence
+$$
+g(K_p)=2^{s-2}(p-1).
+$$
+
+Final Answer: $\boxed{2^{s-2}(p-1)}$
 
 ---
 
 ## Answer
 
-$3\cdot2^{s-1}$
+$2^{s-2}(p-1)$
 
 ---
 
@@ -258,8 +272,8 @@ $3\cdot2^{s-1}$
 
 ## Solution Concepts
 
+- algebraic function fields
+- dihedral group actions
 - invariant subfields
-- Artin-Schreier extensions
-- semidirect product actions
-- tame ramification
+- Artin-Schreier ramification
 - Riemann-Hurwitz formula
