@@ -8,19 +8,21 @@ t=\log x.
 $$
 Suppose
 $$
-f(x^2)=2f(x)+2t^2
+f(x^2)+2t f(x^2)^2
+=
+8f(x)+8t f(x)^2-4t^2+8t^4
 $$
 and
 $$
 f(x^3)+3t f(x^3)^2
 =
-3f(x)+3t f(x)^2+6t^2(1+4t-26t^2+40t^3).
+27f(x)+27t f(x)^2-18t^2+54t^4.
 $$
 Determine
 $$
 \lim_{x\to1^+}
 \frac{
-f(x)+(x-1)-\frac{3}{2}(x-1)^2+\frac{4}{3}(x-1)^3-\frac{7}{6}(x-1)^4
+f(x)-(x-1)^2+3(x-1)^3-\frac{59}{12}(x-1)^4
 }{
 (x-1)^5
 }.
@@ -41,6 +43,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a one-sided limit whose value is forced by continuity and two interacting dilation identities, which are part of Calculus and Limits and continuity.
-The problem also involves a nonlinear functional relation and logarithmic rescaling, which are part of Algebra, Functions, and Trigonometry and Exponential and logarithmic functions.
-However, those algebraic relations are used to prove the rigidity needed to determine the local expansion at the limiting point, so limits and continuity are the primary content.
+This problem involves a one-sided limit whose value is determined by continuity together with two nonlinear dilation relations, which are part of Calculus and Limits and continuity.
+The problem also involves logarithmic rescaling, a nonlinear change of dependent variable, and multiplicative-period rigidity, which are part of Algebra, Functions, and Trigonometry and Exponential and logarithmic functions.
+However, those algebraic operations are needed to determine the unique function before its local expansion can be evaluated, so the limiting calculation remains the primary content.
