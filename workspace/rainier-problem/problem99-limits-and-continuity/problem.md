@@ -2,42 +2,51 @@
 
 ## LaTeX (Normalized)
 
-Let $f:(1,\infty)\to\mathbb{R}$ be continuous. Suppose
+Let
+$$
+P(y)=y+2y^2+5y^3.
+$$
+Let $f:(1,\infty)\to\mathbb{R}$ be continuous and satisfy
 $$
 f(e)=0,
 $$
 $$
-f(e^2)+2f(e^2)^2+3f(e^2)^3=4\log2,
-$$
-and
-$$
-f(e^3)+2f(e^3)^2+3f(e^3)^3=9\log3.
+P(f(e^2))=8\log2,\qquad
+P(f(e^3))=27\log3,\qquad
+P(f(e^4))=128\log2.
 $$
 For every $x>1$, put
 $$
 t=\log x.
 $$
-Assume
+Suppose
 $$
-\frac{f(x^8)+2f(x^8)^2+3f(x^8)^3}{64}
--\frac{f(x^4)+2f(x^4)^2+3f(x^4)^3}{4}
-+\frac{5}{4}\left(f(x^2)+2f(x^2)^2+3f(x^2)^3\right)
--2\left(f(x)+2f(x)^2+3f(x)^3\right)=0
+\frac{P(f(x^{16}))}{256}
+-\frac{3P(f(x^8))}{32}
++\frac{13P(f(x^4))}{16}
+-3P(f(x^2))
++4P(f(x))
+=0
 $$
 and
 $$
-\frac{f(x^{27})+2f(x^{27})^2+3f(x^{27})^3}{729}
--\frac{5}{81}\left(f(x^9)+2f(x^9)^2+3f(x^9)^3\right)
-+\frac{7}{9}\left(f(x^3)+2f(x^3)^2+3f(x^3)^3\right)
--3\left(f(x)+2f(x)^2+3f(x)^3\right)=0.
+\frac{P(f(x^{81}))}{6561}
+-\frac{8P(f(x^{27}))}{729}
++\frac{22P(f(x^9))}{81}
+-\frac{8P(f(x^3))}{3}
++9P(f(x))
+=0.
 $$
 Determine
 $$
 \lim_{x\to1^+}
 \frac{
-f(x)-t^2\log t+2t^4(\log t)^2-5t^6(\log t)^3
+f(x)-t^3\log t
++2t^6(\log t)^2
+-3t^9(\log t)^3
+-10t^{12}(\log t)^4
 }{
-(x-1)^8(\log(x-1))^4
+(x-1)^{15}(\log(x-1))^5
 }.
 $$
 
@@ -56,6 +65,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a one-sided limit whose asymptotic behavior is fixed by continuity and two higher-order dilation relations, which are part of Calculus and Limits and continuity.
-The problem also involves finite-difference recurrences on logarithmic scale and inversion of a nonlinear algebraic coordinate, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
-However, those recurrence and algebraic steps are used to recover the endpoint behavior required by the stated limit, so limits and continuity are the primary content.
+This problem involves a one-sided limit whose endpoint behavior is forced by continuity and two fourth-order dilation relations, which are part of Calculus and Limits and continuity.
+The problem also involves constant-coefficient shift recurrences, repeated characteristic roots, and inversion of a nonlinear polynomial coordinate, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
+However, those recurrence and algebraic structures are used to recover the unique asymptotic behavior needed for the requested limit, so limits and continuity remain the primary content.
