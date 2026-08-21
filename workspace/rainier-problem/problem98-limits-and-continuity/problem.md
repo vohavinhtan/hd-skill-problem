@@ -20,11 +20,11 @@ Determine the exact value of
 $$
 \lim_{x\to0^+}
 \frac{
-M(x)-\dfrac13-\dfrac{2}{135}g(x)
-+\dfrac{4}{8505}g(x)^2
-+\dfrac{2}{25515}g(x)^3
+M(x)-\dfrac13-\dfrac{x+y(x)}{90}
++\dfrac{(x+y(x))^2}{12600}
++\dfrac{13(x+y(x))^3}{324000}
 }
-{g(x)^4}.
+{(x+y(x))^4}.
 $$
 
 ---
@@ -42,4 +42,8 @@ $$
 
 ## Domain Explanation
 
-This problem involves an implicitly defined branch, a local analytic normalization, and extraction of a high-order limit coefficient, which are part of Calculus and Limits and continuity. The problem also involves inverse power series and coefficient recurrences, which are part of Algebra, Functions, and Trigonometry and Algebraic expressions and manipulation. However, those algebraic tools are used to obtain the local asymptotic coefficient rather than to determine an algebraic object.
+This problem involves an implicitly defined branch, an exact local reparameterization, asymptotic series reversion, and extraction of a high-order limit coefficient,
+which are part of Calculus and Limits and continuity.
+The problem also involves hyperbolic-function identities and formal power-series algebra,
+which are part of Algebra, Functions, and Trigonometry and Algebraic expressions and manipulation.
+However, those identities are intermediate tools for resolving the implicit local geometry, while the requested object is an exact limit.

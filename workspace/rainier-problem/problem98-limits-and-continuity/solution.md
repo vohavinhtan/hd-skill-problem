@@ -1,188 +1,234 @@
 ## Steps
 
-Step 1: Normalize the two branches of the level equation
+Step 1: Replace the two endpoints by midpoint and half-width variables
 
 We have
 $$
 g'(t)=\frac{t}{1+t}.
 $$
-Thus $g$ decreases from $+\infty$ to $0$ on $(-1,0)$ and increases from $0$ on $(0,\infty)$. Hence the number $y(x)$ in the statement exists uniquely.
+Thus $g$ is strictly decreasing on $(-1,0)$ and strictly increasing on $(0,\infty)$, with minimum value $0$ at $0$. Hence $y(x)$ exists uniquely for every sufficiently small $x>0$.
 
-Near $0$,
+Put
 $$
-2g(t)=t^2-\frac23t^3+\frac12t^4-\frac25t^5+\cdots.
-$$
-Write
-$$
-2g(t)=t^2B(t),
-$$
-where $B$ is analytic near $0$ and $B(0)=1$. Define the signed local coordinate
-$$
-u=t\sqrt{B(t)}.
+m=\frac{x+y(x)}2,\qquad r=\frac{x-y(x)}2.
 $$
 Then
 $$
-u^2=2g(t),
+x=m+r,\qquad y(x)=m-r,
 $$
-and $u'(0)=1$. Let $t=\tau(u)$ be its analytic inverse near $0$.
-
-For $x>0$ close to $0$, put
+with $r>0$. The equality $g(x)=g(y(x))$ becomes
 $$
-U=\sqrt{2g(x)}.
+2r=\log\frac{1+m+r}{1+m-r}.
 $$
-Then $u(x)=U$. Since $y(x)<0$ and $g(y(x))=g(x)$,
+Exponentiating and solving for $1+m$ gives
 $$
-u(y(x))=-U.
+1+m=r\frac{e^{2r}+1}{e^{2r}-1}=r\coth r.
 $$
 Therefore
 $$
-x=\tau(U),\qquad y(x)=\tau(-U).
+m=r\coth r-1.
 $$
+In particular,
+$$
+x+y(x)=2(r\coth r-1).
+$$
+This relation is the needed second local scale: unlike $g(x)$, it depends on both branches rather than only on their common level.
 
-Step 2: Derive the inverse-series coefficients from a recurrence
+Step 2: Obtain an exact formula for $M(x)$ in terms of $r$
 
-Write
+Let
 $$
-\tau(u)=\sum_{m\geq1}a_mu^m.
+L(r)=\log\frac{\sinh r}{r}.
 $$
-Differentiating
-$$
-u^2=2g(\tau(u))
-$$
-gives
-$$
-\tau(u)\tau'(u)=u\bigl(1+\tau(u)\bigr).
-$$
-The positive branch gives $a_1=1$.
-
-For $k\geq2$, comparison of the coefficient of $u^k$ yields
-$$
-(k+1)a_k+
-\sum_{i=2}^{k-1}(k+1-i)a_i a_{k+1-i}
-=a_{k-1}.
-$$
-Successive use of this recurrence gives
-$$
-a_2=\frac13,\qquad
-a_3=\frac1{36},\qquad
-a_4=-\frac1{270},
-$$
-$$
-a_5=\frac1{4320},\qquad
-a_6=\frac1{17010},\qquad
-a_7=-\frac{139}{5443200},
-$$
-$$
-a_8=\frac1{204120},\qquad
-a_9=-\frac{571}{2351462400}.
-$$
-Only the odd-indexed coefficients will survive the symmetry between $U$ and $-U$.
-
-Step 3: Expand the interval length and the integral in the normalized coordinate
-
 From Step 1,
 $$
-x-y(x)=\tau(U)-\tau(-U).
+1+m=r\coth r.
+$$
+Using
+$$
+\coth r+1=\frac{e^r}{\sinh r},
+\qquad
+\coth r-1=\frac{e^{-r}}{\sinh r},
+$$
+we get
+$$
+1+x=\frac{re^r}{\sinh r},
+\qquad
+1+y(x)=\frac{re^{-r}}{\sinh r}.
 $$
 Hence
 $$
-x-y(x)=
-2\left(
-a_1U+a_3U^3+a_5U^5+a_7U^7+a_9U^9
-\right)+O(U^{11}).
+\log(1+x)=r-L(r),
+\qquad
+\log(1+y(x))=-r-L(r).
+$$
+It follows that
+$$
+g(x)=m+L(r).
 $$
 
-For the numerator of $M(x)$, use $v=u(t)$. Since $g(t)=v^2/2$ and $t=\tau(v)$,
+An antiderivative of $g$ is
 $$
-\int_{y(x)}^x g(t)\,dt
-=
-\frac12\int_{-U}^{U}v^2\tau'(v)\,dv.
+F(t)=\frac{t^2}{2}-(1+t)\log(1+t)+(1+t).
 $$
-Only the even part of $\tau'(v)$ contributes. Therefore
+Using the two logarithmic identities above,
 $$
-\int_{y(x)}^x g(t)\,dt
-=
-\frac{a_1}{3}U^3+
-\frac{3a_3}{5}U^5+
-\frac{5a_5}{7}U^7+
-\frac{7a_7}{9}U^9+
-\frac{9a_9}{11}U^{11}
-+O(U^{13}).
+F(x)-F(y(x))=2rL(r).
 $$
-Also
+Since $x-y(x)=2r$,
 $$
-g(x)\bigl(x-y(x)\bigr)
-=
-U^3\left(
-a_1+a_3U^2+a_5U^4+a_7U^6+a_9U^8
-\right)+O(U^{13}).
+M(x)=\frac{L(r)}{m+L(r)}.
 $$
+Thus both the numerator and denominator of the original averaged integral have collapsed to functions of the single half-width $r$.
 
-Step 4: Divide the two even series
+Step 3: Expand $m$ and $M$ in the variable $u=r^2$
 
-Write
+The standard Taylor series give
 $$
-M(x)=c_0+c_1U^2+c_2U^4+c_3U^6+c_4U^8+O(U^{10}).
-$$
-Multiplying by the denominator series from Step 3 and comparing coefficients gives
-$$
-c_0=\frac13,
-$$
-$$
-c_1=\frac{3a_3}{5}-c_0a_3=\frac1{135},
-$$
-$$
-c_2=\frac{5a_5}{7}-c_0a_5-c_1a_3=-\frac1{8505},
-$$
-$$
-c_3=\frac{7a_7}{9}-c_0a_7-c_1a_5-c_2a_3=-\frac1{102060},
+r\coth r-1=
+\frac{r^2}{3}-\frac{r^4}{45}
++\frac{2r^6}{945}-\frac{r^8}{4725}
++\frac{2r^{10}}{93555}+O(r^{12}),
 $$
 and
 $$
-c_4=
-\frac{9a_9}{11}
--c_0a_9-c_1a_7-c_2a_5-c_3a_3
+L(r)=
+\frac{r^2}{6}-\frac{r^4}{180}
++\frac{r^6}{2835}-\frac{r^8}{37800}
++\frac{r^{10}}{467775}+O(r^{12}).
+$$
+Set
+$$
+u=r^2.
+$$
+Then
+$$
+m=
+\frac{u}{3}-\frac{u^2}{45}
++\frac{2u^3}{945}-\frac{u^4}{4725}
++\frac{2u^5}{93555}+O(u^6).
+$$
+Writing
+$$
+M=\frac13+c_1u+c_2u^2+c_3u^3+c_4u^4+O(u^5)
+$$
+and substituting into
+$$
+(m+L)M=L
+$$
+gives, by coefficient comparison,
+$$
+c_1=\frac1{135},
+\qquad
+c_2=-\frac1{1890},
+$$
+$$
+c_3=\frac{61}{1530900},
+\qquad
+c_4=-\frac{4619}{1515591000}.
+$$
+Therefore
+$$
+M=
+\frac13+\frac{u}{135}
+-\frac{u^2}{1890}
++\frac{61u^3}{1530900}
+-\frac{4619u^4}{1515591000}
++O(u^5).
+$$
+
+Step 4: Revert the branch-sum series
+
+Put
+$$
+s=x+y(x)=2m.
+$$
+Step 3 gives
+$$
+s=
+\frac{2u}{3}-\frac{2u^2}{45}
++\frac{4u^3}{945}-\frac{2u^4}{4725}
++O(u^5).
+$$
+Seek
+$$
+u=As+Bs^2+Cs^3+Ds^4+O(s^5).
+$$
+Substitution into the preceding relation and comparison of powers of $s$ gives
+$$
+A=\frac32,\qquad
+B=\frac3{20},\qquad
+C=\frac3{350},\qquad
+D=0.
+$$
+Hence
+$$
+u=
+\frac32s+\frac3{20}s^2+\frac3{350}s^3+O(s^5).
+$$
+
+Substituting this into the expansion of $M$ from Step 3 gives
+$$
+M=
+\frac13+\frac{s}{90}
+-\frac{s^2}{12600}
+-\frac{13s^3}{324000}
+-\frac{1247s^4}{2095632000}
++O(s^5).
+$$
+For example, the coefficients through fourth order are obtained from
+$$
+\frac1{135}\frac32=\frac1{90},
+$$
+$$
+\frac1{135}\frac3{20}
+-\frac1{1890}\left(\frac32\right)^2
+=-\frac1{12600},
+$$
+$$
+\frac1{135}\frac3{350}
+-\frac1{1890}\,2\frac32\frac3{20}
++\frac{61}{1530900}\left(\frac32\right)^3
+=-\frac{13}{324000},
+$$
+and
+$$
+-\frac1{1890}
+\left[
+\left(\frac3{20}\right)^2
++2\frac32\frac3{350}
+\right]
++
+\frac{61}{1530900}
+\left[
+3\left(\frac32\right)^2\frac3{20}
+\right]
+-
+\frac{4619}{1515591000}
+\left(\frac32\right)^4
 =
-\frac{281}{757795500}.
-$$
-Thus
-$$
-M(x)=
-\frac13+\frac{U^2}{135}
--\frac{U^4}{8505}
--\frac{U^6}{102060}
-+\frac{281U^8}{757795500}
-+O(U^{10}).
+-\frac{1247}{2095632000}.
 $$
 
-Step 5: Return to $g(x)$ and evaluate the limit
+Step 5: Evaluate the requested limit
 
-Since
+Since $s=x+y(x)$, Step 4 gives
 $$
-U^2=2g(x),
+M(x)-\frac13-\frac{s}{90}
++\frac{s^2}{12600}
++\frac{13s^3}{324000}
+=
+-\frac{1247}{2095632000}s^4+O(s^5).
 $$
-Step 4 becomes
-$$
-M(x)=
-\frac13+\frac{2}{135}g(x)
--\frac{4}{8505}g(x)^2
--\frac{2}{25515}g(x)^3
-+\frac{1124}{189448875}g(x)^4
-+O(g(x)^5).
-$$
-The numerator in the requested quotient is therefore
-$$
-\frac{1124}{189448875}g(x)^4+O(g(x)^5).
-$$
-Since $g(x)\to0$ as $x\to0^+$, division by $g(x)^4$ gives the required value.
+Also $s\to0$ as $x\to0^+$. Dividing by $s^4$ yields the limit.
 
-Final Answer: $\boxed{\frac{1124}{189448875}}$
+Final Answer: $\boxed{-\frac{1247}{2095632000}}$
 
 ---
 
 ## Answer
 
-$\frac{1124}{189448875}$
+$-\frac{1247}{2095632000}$
 
 ---
 
@@ -201,7 +247,7 @@ $\frac{1124}{189448875}$
 ## Solution Concepts
 
 - implicit branches
-- analytic inverse series
-- coefficient recurrences
-- asymptotic normalization
-- limits
+- midpoint and half-width coordinates
+- hyperbolic-function identities
+- series reversion
+- asymptotic limits
