@@ -27,9 +27,9 @@ $$
 \rho=\chi(\tau^2-4+\chi).
 $$
 
-For each integer $k\geq3$ and each quadruple of positive integers
+For each integer $k\geq4$ and each quadruple of positive integers
 $$
-a<b<c<d,\qquad a+b+c+d=4k+2,
+a<b<c<d,\qquad a+b+c+d=4k,
 $$
 define
 $$
@@ -48,7 +48,8 @@ be the three largest distinct values among all such $T_k(a,b,c,d)$.
 
 For compactness, put
 $$
-c_0=\omega\sigma-1,
+c_0=\omega^2+\omega-1,\qquad
+c_1=\omega c_0+1,
 $$
 $$
 Q(t)=1-\omega t+t^2,
@@ -56,17 +57,27 @@ Q(t)=1-\omega t+t^2,
 R(t)=1-(\omega^2-2)t+t^2,
 $$
 $$
-C(t)=c_0-\omega\sigma t+\omega t^2,
+U(t)
+=
+(\omega-1)\sigma^2c_0
+-(\omega-1)\sigma^2c_1t
++\omega^2c_0^2t^2
+-\omega c_0^2t^3
++\omega c_0t^4,
 $$
 and
 $$
-E(t)=c_0(1-\omega t+\omega t^2-t^3)+t^4.
+V(t)
+=
+\sigma(\omega^3-2\omega+2)
+-\sigma(\omega^3+\omega^2-2\omega+1)t
++c_1t^2.
 $$
 
 Determine, in reduced rational form, the ordinary generating function
 $$
-\sum_{k=3}^{\infty}
-(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-3}.
+\sum_{k=4}^{\infty}
+(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-4}.
 $$
 
 ---

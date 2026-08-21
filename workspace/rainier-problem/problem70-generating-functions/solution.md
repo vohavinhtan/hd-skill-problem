@@ -1,30 +1,18 @@
 ## Steps
 
-Step 1: Expand the alternating trace in an eigenbasis
+Step 1: Reduce the trace to a recurrence product and an imbalance term
 
 Since $\det P=\det Q=1$,
 $$
 \det X=\det D=1.
 $$
-Also $\tau\geq18$. Let the eigenvalues of $X$ be $\lambda,\lambda^{-1}$ with $\lambda>1$, and put
+Let the eigenvalues of $X$ be $\lambda,\lambda^{-1}$ with $\lambda>1$, and put
 $$
 \Delta=\lambda-\lambda^{-1}.
 $$
 Then
 $$
 \Delta^2=\tau^2-4.
-$$
-
-Multiplication of the displayed matrices gives
-$$
-\operatorname{tr}D=\tau^2-r^4-2,
-$$
-$$
-\operatorname{tr}(DX)=\tau(\tau^2-r^4-3),
-$$
-and
-$$
-\operatorname{tr}(DX^{-1})=\tau.
 $$
 
 In an eigenbasis of $X$, write
@@ -39,35 +27,34 @@ Since $\det D=1$,
 $$
 p-z=1.
 $$
-The three trace identities above give
+
+Multiplication of the displayed matrices gives
 $$
-\alpha+\delta=\tau^2-r^4-2,
-$$
-$$
-\alpha\lambda+\delta\lambda^{-1}
-=\tau(\tau^2-r^4-3),
+\operatorname{tr}D=\tau^2-r^4-2,
 $$
 $$
-\alpha\lambda^{-1}+\delta\lambda=\tau.
+\operatorname{tr}(DX)=\tau(\tau^2-r^4-3),
 $$
-Multiplying the last two equations and using
+and
 $$
-\lambda^2+\lambda^{-2}=\tau^2-2
+\operatorname{tr}(DX^{-1})=\tau.
 $$
-gives
+These identities imply
 $$
-z=\frac{\chi}{\Delta^2}.
-$$
-Therefore
-$$
-p=1+\frac{\chi}{\Delta^2},
+z=\frac{\chi}{\Delta^2},
 \qquad
-pz\Delta^4=\chi(\Delta^2+\chi)=\rho.
+p=1+\frac{\chi}{\Delta^2}.
+$$
+Consequently
+$$
+pz\Delta^4
+=\chi(\Delta^2+\chi)
+=\rho.
 $$
 
 Put
 $$
-L_j=\lambda^j+\lambda^{-j}
+L_j=\lambda^j+\lambda^{-j},
 $$
 and define
 $$
@@ -79,274 +66,312 @@ $$
 f_j=\frac{\lambda^j-\lambda^{-j}}{\Delta}.
 $$
 
-For $m=a+b+c+d$, collecting the diagonal and off-diagonal terms in the trace expansion gives
+Expanding the four occurrences of $D^{\pm1}$ in the eigenbasis gives
 $$
 T_k(a,b,c,d)
 =
-pL_m-zL_{a+c-b-d}
+pL_{4k}
+-zL_{a+c-b-d}
 +pz(L_{a+c}-L_{a-c})(L_{b+d}-L_{b-d}).
 $$
-Since
+The identity
 $$
-L_{x+y}-L_{x-y}=\Delta^2f_xf_y,
+L_{x+y}-L_{x-y}=\Delta^2f_xf_y
 $$
-we obtain
+therefore yields
 $$
 T_k(a,b,c,d)
 =
-pL_{4k+2}
+pL_{4k}
 +\rho f_af_bf_cf_d
 -\frac{\chi}{\Delta^2}L_{a+c-b-d}.
 $$
 
-Step 2: Rank the strictly increasing compositions
+Step 2: Determine the three largest recurrence products
 
-For integers $x\geq y+2$, the Binet formula gives
+For integers $x\geq y+2$,
 $$
 f_{x-1}f_{y+1}-f_xf_y=f_{x-y-1}>0.
 $$
-Balancing two unequal indices therefore strictly increases their recurrence product.
+A transfer of one unit from a larger index to a smaller index increases the product whenever the four indices remain distinct. Hence
+$$
+f_af_bf_cf_d
+$$
+is strictly increased by every legal balancing move.
 
-For an admissible quadruple, write
+Center an admissible quadruple at its average and write its deviations in decreasing order as
 $$
-(a,b,c,d)
-=
-(k-1,k,k+1,k+2)+(e_1,e_2,e_3,e_4).
+(d-k,c-k,b-k,a-k)=(x_1,x_2,x_3,x_4).
 $$
-Strict increase gives
+Then
 $$
-e_1\leq e_2\leq e_3\leq e_4,
+x_1>x_2>x_3>x_4,\qquad
+x_1+x_2+x_3+x_4=0.
+$$
+
+The least spread deviation vector is
+$$
+(2,1,-1,-2),
+$$
+corresponding to
+$$
+A=(k-2,k-1,k+1,k+2).
+$$
+There are two deviation vectors that can compete immediately below it:
+$$
+(3,0,-1,-2),
 \qquad
-e_1+e_2+e_3+e_4=0.
+(2,1,0,-3),
 $$
-Put
+corresponding to
 $$
-N(e)=|e_1|+|e_2|+|e_3|+|e_4|.
-$$
-
-The unique state with $N(e)=0$ is
-$$
-A=(k-1,k,k+1,k+2).
-$$
-The unique nonzero state with $N(e)=2$ is
-$$
-B=(k-2,k,k+1,k+3).
-$$
-
-If $N(e)>4$, choose the last negative $e_i$ and the first positive $e_j$. Replacing them by
-$$
-e_i+1,\qquad e_j-1
-$$
-preserves the nondecreasing order, reduces $N(e)$ by $2$, and performs a strict balancing move on the corresponding exponents. The recurrence product increases.
-
-The possible deviation vectors with $N(e)=4$ are
-$$
-(-2,0,0,2),\qquad
-(-2,0,1,1),\qquad
-(-1,-1,0,2),\qquad
-(-1,-1,1,1),
-$$
-subject to positivity of the resulting first exponent. The last vector gives
-$$
-C=(k-2,k-1,k+2,k+3).
-$$
-The other three are below $C$: the first is carried to $C$ by balancing the first two exponents and then the last two; the second is carried to $C$ by balancing the first two; the third is carried to $C$ by balancing the last two.
-
-It follows that the three largest recurrence products are those of $A,B,C$.
-
-For these patterns,
-$$
-a+c-b-d=-2,\ -4,\ -2
-$$
-respectively. Every quadruple below $C$ in recurrence product has product at most
-$$
-f_{k-2}f_{k-1}f_{k+2}f_{k+3}-1,
-$$
-because all $f_j$ are positive integers. Since $L_h\geq2$, its trace is at most
-$$
-pL_{4k+2}
-+\rho\left(f_{k-2}f_{k-1}f_{k+2}f_{k+3}-1\right)
--\frac{2\chi}{\Delta^2}.
-$$
-The trace at $C$ exceeds this bound by
-$$
-\rho-\frac{\chi(L_2-2)}{\Delta^2}
-=\rho-\chi>0.
-$$
-Hence no lower recurrence-product level can enter the top three trace values.
-
-Step 3: Compute the two required trace gaps
-
-The product identity
-$$
-f_if_j=\frac{L_{i+j}-L_{i-j}}{\Delta^2}
-$$
-gives
-$$
-f_{k-1}f_{k+2}-f_{k-2}f_{k+3}
-=\frac{L_5-L_3}{\Delta^2}
-=f_4
-=\tau\omega,
+B=(k-2,k-1,k,k+3),
 $$
 and
 $$
-f_kf_{k+1}-f_{k-1}f_{k+2}
-=\frac{L_3-L_1}{\Delta^2}
-=f_2
-=\tau.
+C=(k-3,k,k+1,k+2).
+$$
+
+To exclude every other vector, first note that four distinct integers of sum $0$ must satisfy $x_1\geq2$. Also $x_1+x_2\geq3$: if $x_1+x_2\leq2$, then $x_2\leq0$, $x_3\leq x_2-1$, and $x_4\leq x_2-2$, making the total sum negative.
+
+If $x_4\geq-2$, distinctness and zero sum force one of
+$$
+(2,1,-1,-2),
+\qquad
+(3,0,-1,-2).
+$$
+Therefore every vector other than those of $A$ and $B$ has
+$$
+x_4\leq-3.
+$$
+Its three leading partial sums consequently satisfy
+$$
+x_1\geq2,
+\qquad
+x_1+x_2\geq3,
+\qquad
+x_1+x_2+x_3=-x_4\geq3.
+$$
+Hence every such vector majorizes
+$$
+(2,1,0,-3).
+$$
+Repeated legal balancing moves therefore increase its recurrence product until $C$ is reached.
+
+Let $F_A,F_B,F_C$ denote the recurrence products at $A,B,C$. The identity
+$$
+f_{i+1}f_j-f_if_{j+1}=f_{j-i}
+$$
+gives
+$$
+F_A-F_B
+=
+\tau f_{k-2}f_{k-1},
+$$
+and
+$$
+F_A-F_C
+=
+\tau f_{k+1}f_{k+2}.
+$$
+Since $f_{k+1}f_{k+2}>f_{k-2}f_{k-1}$,
+$$
+F_A>F_B>F_C.
+$$
+Thus these are the three largest recurrence-product levels.
+
+Step 3: Show that the imbalance term does not alter the top three
+
+For $A$,
+$$
+a+c-b-d=-2.
+$$
+For both $B$ and $C$,
+$$
+a+c-b-d=-4.
+$$
+Therefore $B$ remains above $C$, since their imbalance penalties are equal.
+
+Any other admissible quadruple has recurrence product at most $F_C-1$, because all $f_j$ are positive integers. Its best possible imbalance penalty occurs when the imbalance is $0$, where $L_0=2$.
+
+Since
+$$
+L_4-2=\tau^2\Delta^2,
+$$
+we obtain
+$$
+T_k(C)-T_k(a,b,c,d)
+\geq
+\rho-\chi\tau^2.
+$$
+Now
+$$
+\rho-\chi\tau^2
+=
+\chi(\chi-4).
+$$
+Also
+$$
+\tau\geq6r^4,
+$$
+so
+$$
+\chi=r^4(\tau^2-r^4-4)>4.
+$$
+Hence every trace below the $C$ recurrence-product level remains below $T_k(C)$.
+
+The three largest distinct trace values are therefore represented by $A,B,C$.
+
+Step 4: Compute the two trace gaps
+
+Put
+$$
+q_j=f_jf_{j+1}.
+$$
+From Step 2,
+$$
+F_A-F_B=\tau q_{k-2},
+$$
+and
+$$
+F_A-F_C=\tau q_{k+1}.
 $$
 Also
 $$
 L_4-L_2=\Delta^2f_3=\Delta^2\sigma.
 $$
-
-Put
-$$
-q_k=f_kf_{k+1}.
-$$
-The first trace gap is
+Using the imbalance values from Step 3 gives
 $$
 M_{k,1}-M_{k,2}
 =
-\rho\tau\omega q_k+\chi\sigma.
+\rho\tau q_{k-2}+\chi\sigma,
 $$
-
-The same product identity gives
-$$
-f_{k-2}f_{k+3}
-=q_k-\tau\sigma.
-$$
-Since $A$ and $C$ both have $|a+c-b-d|=2$, their penalty terms are equal. Therefore
+and
 $$
 M_{k,1}-M_{k,3}
 =
-\rho\tau\sigma(q_k-\tau).
+\rho\tau q_{k+1}+\chi\sigma.
 $$
 
-The coefficient of $t^{k-3}$ is consequently
+Put
 $$
-\rho^2\tau^2\omega\sigma(q_k^2-\tau q_k)
-+\rho\chi\tau\sigma^2(q_k-\tau).
+h_j=\frac{q_j}{\tau}.
+$$
+Then
+$$
+h_0=0,\qquad h_1=1,
+$$
+and the recurrence for $f_j$ gives
+$$
+h_{j+2}=\omega h_{j+1}-h_j+1.
 $$
 
-Step 4: Sum the two recurrence-product sequences
+With $j=k-4$, the coefficient of $t^j$ becomes
+$$
+\rho^2\tau^4h_{j+2}h_{j+5}
++\rho\chi\tau^2\sigma(h_{j+2}+h_{j+5})
++\chi^2\sigma^2.
+$$
 
-From the Binet form,
+Step 5: Sum the shifted recurrence products
+
+Put
 $$
-q_k=\frac{L_{2k+1}-\tau}{\Delta^2}.
+y=\lambda^2.
 $$
-Set
+Then
 $$
-S(t)=\sum_{k=3}^{\infty}(q_k-\tau)t^{k-3}.
+y+y^{-1}=\omega,
 $$
-Since $k=3+j$,
+and
 $$
-S(t)
+h_j
 =
-\frac{1}{\Delta^2}
-\left(
-\frac{\lambda^7}{1-\lambda^2t}
-+\frac{\lambda^{-7}}{1-\lambda^{-2}t}
--\frac{\tau(\omega-1)}{1-t}
-\right).
-$$
-Using
-$$
-(1-\lambda^2t)(1-\lambda^{-2}t)=Q(t)
-$$
-and collecting the numerator gives
-$$
-S(t)=\frac{\tau C(t)}{(1-t)Q(t)}.
+\frac{\lambda^{2j+1}+\lambda^{-(2j+1)}-\tau}
+{\tau\Delta^2}.
 $$
 
-Next,
+For the linear shifted sum,
 $$
-q_k^2-\tau q_k
+h_{j+2}+h_{j+5}
 =
 \frac{
-L_{4k+2}+2-\tau\omega L_{2k+1}
-+\tau^2(\omega-1)
-}{\Delta^4}.
+(\lambda^5+\lambda^{11})y^j
++(\lambda^{-5}+\lambda^{-11})y^{-j}
+-2\tau
+}{\tau\Delta^2}.
 $$
-Hence
+Summing the three geometric series and using
 $$
-H(t):=
-\sum_{k=3}^{\infty}(q_k^2-\tau q_k)t^{k-3}
+(1-yt)(1-y^{-1}t)=Q(t)
 $$
-satisfies
+gives
 $$
-H(t)
+\sum_{j=0}^{\infty}(h_{j+2}+h_{j+5})t^j
 =
-\frac{1}{\Delta^4}
+\frac{V(t)}{(1-t)Q(t)}.
+$$
+
+For the product,
+$$
+h_{j+2}h_{j+5}
+=
+\frac{1}{\tau^2\Delta^4}
 \left(
-\frac{\lambda^{14}}{1-\lambda^4t}
-+\frac{\lambda^{-14}}{1-\lambda^{-4}t}
--\tau\omega
-\left(
-\frac{\lambda^7}{1-\lambda^2t}
-+\frac{\lambda^{-7}}{1-\lambda^{-2}t}
-\right)
-+\frac{2+\tau^2(\omega-1)}{1-t}
+\lambda^{16}y^{2j}
++\lambda^{-16}y^{-2j}
+-\tau(\lambda^5+\lambda^{11})y^j
+-\tau(\lambda^{-5}+\lambda^{-11})y^{-j}
++L_6+\tau^2
 \right).
 $$
 Since
 $$
-(1-\lambda^4t)(1-\lambda^{-4}t)=R(t),
+(1-y^2t)(1-y^{-2}t)=R(t),
 $$
-putting these terms over a common denominator gives
+summing these five geometric series over the common denominator gives
 $$
-H(t)=
-\frac{\tau^2\omega\sigma E(t)}
-{(1-t)Q(t)R(t)}.
+\sum_{j=0}^{\infty}h_{j+2}h_{j+5}t^j
+=
+\frac{U(t)}{(1-t)Q(t)R(t)}.
 $$
 
-Step 3 now gives the requested series as
+Substitution into the coefficient formula from Step 4 yields
 $$
-\rho^2\tau^2\omega\sigma H(t)
-+\rho\chi\tau\sigma^2S(t).
-$$
-Substitution and collection over the common denominator yield
-$$
+\sum_{k=4}^{\infty}
+(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-4}
+=
 \frac{
-\rho\tau^2\sigma^2
-\left(
-\rho\tau^2\omega^2E(t)
-+\chi R(t)C(t)
-\right)
+\rho^2\tau^4U(t)
++\rho\chi\tau^2\sigma V(t)R(t)
++\chi^2\sigma^2Q(t)R(t)
 }
 {(1-t)Q(t)R(t)}.
 $$
 
-The five characteristic roots are
+To see that the fraction is reduced, write each gap as a linear combination of
 $$
-1,\qquad
-\lambda^2,\qquad
-\lambda^{-2},\qquad
-\lambda^4,\qquad
-\lambda^{-4}.
+y^j,\qquad1,\qquad y^{-j}.
 $$
-Writing the coefficient sequence as
+The constant coefficient in either gap is
 $$
-(\rho\tau\omega q_k+\chi\sigma)
-\rho\tau\sigma(q_k-\tau)
+\chi\sigma-\frac{\rho\tau^2}{\Delta^2}
+=
+-\chi\left(1+\frac{\tau^2\chi}{\Delta^2}\right)\neq0.
 $$
-shows that the $\lambda^{\pm4k}$ coefficients are nonzero. The $\lambda^{\pm2k}$ coefficient is a nonzero multiple of
+The product sequence therefore has nonzero coefficients at all five modes
 $$
-(\tau^2-4)\chi\sigma-\rho\tau^2\omega^2<0.
+y^{2j},\qquad y^j,\qquad1,\qquad y^{-j},\qquad y^{-2j}.
 $$
-The constant-mode coefficient is a positive multiple of
-$$
-\chi\omega^2+(\omega-2)(\omega^2-\omega+1)>0.
-$$
-All five poles remain, so the displayed fraction is reduced.
+No factor among $(1-t)$, $Q(t)$, and $R(t)$ cancels.
 
-Final Answer: $\boxed{\frac{\rho\tau^2\sigma^2(\rho\tau^2\omega^2E(t)+\chi R(t)C(t))}{(1-t)Q(t)R(t)}}$
+Final Answer: $\boxed{\frac{\rho^2\tau^4U(t)+\rho\chi\tau^2\sigma V(t)R(t)+\chi^2\sigma^2Q(t)R(t)}{(1-t)Q(t)R(t)}}$
 
 ---
 
 ## Answer
 
-$\frac{\rho\tau^2\sigma^2(\rho\tau^2\omega^2E(t)+\chi R(t)C(t))}{(1-t)Q(t)R(t)}$
+$\frac{\rho^2\tau^4U(t)+\rho\chi\tau^2\sigma V(t)R(t)+\chi^2\sigma^2Q(t)R(t)}{(1-t)Q(t)R(t)}$
 
 ---
 
@@ -362,6 +387,6 @@ $\frac{\rho\tau^2\sigma^2(\rho\tau^2\omega^2E(t)+\chi R(t)C(t))}{(1-t)Q(t)R(t)}$
 
 - spectral trace expansion
 - recurrence-product balancing
-- strict integer compositions
-- characteristic-root summation
+- majorization of integer compositions
+- shifted recurrence products
 - rational generating functions
