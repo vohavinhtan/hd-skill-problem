@@ -2,32 +2,33 @@
 
 ## LaTeX (Normalized)
 
-Let $p>37$ be a prime satisfying
+Let $p$ be a prime and write
 $$
-p\equiv13\pmod{24},
+p-1=2^s d,
 $$
-and put
+where $s\geq2$ and $d>3$ is odd. Put
 $$
-n=p-1.
+m=(3\cdot2^s+1)d.
 $$
 Let
 $$
-L=\mathbb F_p(x,y),
+L=\mathbb F_{p^2}(z,y),
 \qquad
-x^n+y^n+1=0.
+y^{p^2}-y=z^m-z^{-m}.
 $$
 Inside $L$, define
 $$
-u=\frac{x^{12}y^{12}+x^{12}+y^{12}}{(x^{12}+y^{12}+1)^2},
-\qquad
-v=\frac{x^4y^4}{x^{12}+y^{12}+1},
+u=(z^d+z^{-d})^2,
+$$
+$$
+v=(y^p-y)(z^d-z^{-d}),
 $$
 and let
 $$
-K_p=\mathbb F_p(u,v).
+K_p=\mathbb F_{p^2}(u,v).
 $$
 
-Determine the genus of $K_p$ as an exact expression in $p$.
+Determine the genus of $K_p$ as an exact expression in $p$ and $s$.
 
 ---
 
@@ -46,12 +47,12 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves quotient curves, tame ramification, and genus calculations,
+The problem also involves Artin-Schreier ramification and tame quotient curves,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct the hidden semidirect-product fixed field from the stated generators and determine its nonuniform ramification.
+However, the main task is to reconstruct a hidden translation quotient followed by a nonabelian fixed field before the genus can be calculated.
 
 Specifically:
 
-- The generators recover normalized twelfth powers but retain a cubic root of their third elementary symmetric function.
-- The resulting diagonal subgroup is not the full group of independent twelfth-root scalings, so the problem does not reduce directly to a lower-degree Fermat curve.
-- Elements above a transposition split into three different fixed-point types, and that split is needed for the genus.
+- The expression $y^p-y$ conceals the fixed field of a nontrivial translation subgroup inside a degree-$p^2$ additive extension.
+- The remaining generators conceal both a cyclic scaling action and inversion, producing a dihedral quotient with two different reflection classes.
+- The genus calculation requires the wild ramification of the intermediate Artin-Schreier curve and the nonuniform tame ramification of the dihedral action.

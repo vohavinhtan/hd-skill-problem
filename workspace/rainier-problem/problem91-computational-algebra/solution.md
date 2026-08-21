@@ -1,278 +1,327 @@
 ## Steps
 
-Step 1: Identify the hidden automorphism group
-
-Let $C$ be the smooth projective Fermat curve
-$$
-X^n+Y^n+Z^n=0.
-$$
-Since $12\mid p-1$, choose a primitive twelfth root $\zeta\in\mathbb F_p$.
-
-Let $D$ consist of projective diagonal maps
-$$
-[X:Y:Z]\mapsto[\zeta^aX:\zeta^bY:\zeta^cZ]
-$$
-with
-$$
-a+b+c\equiv0\pmod3.
-$$
-Adding the same residue to $a,b,c$ does not change the projective map and preserves the congruence. There are
-$$
-\frac{12^3/3}{12}=48
-$$
-elements in $D$.
-
-Coordinate permutations normalize $D$. Set
-$$
-H=D\rtimes S_3.
-$$
-Then
-$$
-|H|=48\cdot6=288.
-$$
-
-In homogeneous form,
-$$
-u=
-\frac{X^{12}Y^{12}+Y^{12}Z^{12}+Z^{12}X^{12}}
-{(X^{12}+Y^{12}+Z^{12})^2},
-$$
-$$
-v=
-\frac{(XYZ)^4}{X^{12}+Y^{12}+Z^{12}}.
-$$
-Every coordinate permutation fixes these functions. For a diagonal element of $D$, the numerator of $v$ is multiplied by
-$$
-\zeta^{4(a+b+c)}=1,
-$$
-while all twelfth powers are fixed. Therefore
-$$
-K_p\subseteq L^H.
-$$
-
-Step 2: Prove that the stated generators give the full fixed field
+Step 1: Recover the hidden translation quotient
 
 Put
 $$
-S=X^{12}+Y^{12}+Z^{12}
-$$
-and
-$$
-\alpha=\frac{X^{12}}S,\qquad
-\beta=\frac{Y^{12}}S,\qquad
-\gamma=\frac{Z^{12}}S.
+w=y^p-y.
 $$
 Then
 $$
-\alpha+\beta+\gamma=1,
+w^p+w
+=
+y^{p^2}-y
+=
+z^m-z^{-m}.
 $$
+Hence
 $$
-\alpha\beta+\beta\gamma+\gamma\alpha=u,
+M=\mathbb F_{p^2}(z,w)
 $$
-and
-$$
-\alpha\beta\gamma=v^3.
-$$
-Thus $\alpha,\beta,\gamma$ are the roots of
-$$
-T^3-T^2+uT-v^3.
-$$
-There are at most six orderings of the three roots.
+is an Artin-Schreier function field.
 
-On the affine chart $Z=1$,
+For each $c\in\mathbb F_p$, define
 $$
-x^{12}=\frac{\alpha}{\gamma},
+\sigma_c(z)=z,
 \qquad
-y^{12}=\frac{\beta}{\gamma},
-\qquad
-(xy)^4=\frac v\gamma.
+\sigma_c(y)=y+c.
 $$
-After an ordering is fixed, there are at most twelve choices for $x$. Once $x$ is chosen,
+Since $c^{p^2}=c$, every $\sigma_c$ preserves the defining equation of $L$. Also
 $$
-y^4=\frac{v}{\gamma x^4},
+(y+c)^p-(y+c)=y^p-y,
 $$
-so there are at most four choices for $y$. Cubing this identity gives the already prescribed value of $y^{12}$ because
+so every $\sigma_c$ fixes $z$ and $w$.
+
+The element $y$ satisfies
 $$
-v^3=\alpha\beta\gamma.
+T^p-T-w=0
+$$
+over $M$, so
+$$
+[L:M]\leq p.
+$$
+The $p$ distinct translations $\sigma_c$ fix $M$, giving
+$$
+[L:M]\geq p.
 $$
 Therefore
 $$
-[L:K_p]\leq6\cdot12\cdot4=288.
+[L:M]=p
 $$
-The group $H$ supplies $288$ distinct automorphisms fixing $K_p$, so
-$$
-[L:K_p]=288
-$$
-and
-$$
-K_p=L^H.
-$$
+and $M$ is exactly the fixed field of the translation subgroup.
 
-Step 3: Count the ramified diagonal elements
+Step 2: Reconstruct the dihedral action encoded by $u$ and $v$
 
-The Fermat curve has
+Choose $\lambda\in\mathbb F_p^\times$ of order $2d$. Since $d$ is odd,
 $$
-g(C)=\frac{(n-1)(n-2)}2,
+\lambda^d=-1.
 $$
-so
-$$
-2g(C)-2=n(n-3).
-$$
-Since $p\nmid288$, the quotient by $H$ is tame.
-
-Represent an element of $D$ as
-$$
-d_{r,s}[X:Y:Z]=[\zeta^rX:\zeta^sY:Z],
-\qquad
-r+s\equiv0\pmod3.
-$$
-A nonidentity diagonal element fixes a point of $C$ only when two of
-$$
-\zeta^r,\qquad\zeta^s,\qquad1
-$$
-are equal, because none of the three coordinate points lies on $C$.
-
-If $r=0$, then
-$$
-s\in\{3,6,9\}.
-$$
-This gives three elements. The case $s=0$ gives three more. Finally, $r=s$ together with $r+s\equiv0\pmod3$ gives
-$$
-r=s\in\{3,6,9\},
-$$
-giving three more.
-
-Each of these nine elements fixes one projective coordinate line. Its intersection with $C$ consists of exactly $n$ distinct points. The remaining nonidentity diagonal elements have no fixed points. Their total contribution is
-$$
-9n.
-$$
-
-Step 4: Separate the three fixed-point types above a transposition
-
-Let $\tau$ exchange $X$ and $Y$. An element of the coset $D\tau$ has the form
-$$
-g_{r,s}[X:Y:Z]=[\zeta^rY:\zeta^sX:Z],
-\qquad
-r+s\equiv0\pmod3.
-$$
-The eigenvalues on the $X,Y$ block satisfy
-$$
-\lambda^2=\zeta^{r+s}.
-$$
-
 Write
 $$
-n=12M.
+A=3\cdot2^s+1,
 $$
-The congruence $p\equiv13\pmod{24}$ makes $M$ odd.
-
-There are twelve pairs $(r,s)$ for each possible residue
+so $m=Ad$. The integer $A$ is odd, hence
 $$
-r+s\equiv0,3,6,9\pmod{12}.
+\lambda^m=(\lambda^d)^A=-1.
 $$
 
-If $r+s\equiv0\pmod{12}$, the block has eigenvalue $1$. Its $1$-eigenline together with the $Z$-axis gives a projective line, and substitution into the Fermat equation gives exactly $n$ fixed points.
+Define automorphisms of $M$ by
+$$
+\rho(z,w)=(\lambda z,-w),
+$$
+$$
+\tau(z,w)=(z^{-1},-w).
+$$
+Under either map,
+$$
+z^m-z^{-m}
+$$
+changes sign, as does
+$$
+w^p+w.
+$$
+Thus both maps preserve $M$.
 
-Suppose next that $r+s\not\equiv0\pmod{12}$. The two block eigenlines lie in $Z=0$. On either eigenline,
+They satisfy
 $$
-\left(\frac YX\right)^n=\lambda^n
-=
-(\lambda^2)^{n/2}
-=
-\zeta^{6M(r+s)}
-=
-(-1)^{M(r+s)}.
-$$
-Since $M$ is odd, this equals $-1$ when
-$$
-r+s\equiv3,9\pmod{12},
-$$
-so both eigenlines lie on $C$. Such an element fixes exactly two points.
-
-When
-$$
-r+s\equiv6\pmod{12},
-$$
-the same expression equals $1$, so neither eigenline lies on $C$.
-
-One transposition coset therefore contributes
-$$
-12n+12\cdot2+12\cdot2=12n+48.
-$$
-There are three transpositions, giving
-$$
-36n+144.
-$$
-
-Step 5: Exclude three-cycle ramification and apply Riemann-Hurwitz
-
-Let
-$$
-c[X:Y:Z]=[Y:Z:X].
-$$
-An element of $Dc$ can be written
-$$
-g[X:Y:Z]=[\zeta^rY:\zeta^sZ:X],
+\rho^{2d}=\tau^2=1,
 \qquad
-r+s\equiv0\pmod3.
+\tau\rho\tau=\rho^{-1}.
 $$
-At a fixed point all coordinates are nonzero. If $\lambda$ is the corresponding eigenvalue, then
+Hence
 $$
-\lambda^3=\zeta^{r+s}.
+G=\langle\rho,\tau\rangle
 $$
-The eigenvector relations give
-$$
-Y^n=\lambda^nX^n,
-\qquad
-Z^n=\lambda^{2n}X^n.
-$$
-Since $n=12M$,
-$$
-\lambda^n=(\lambda^3)^{4M}
-=\zeta^{4M(r+s)}=1
-$$
-because $3\mid r+s$. The Fermat equation would then give
-$$
-3X^n=0,
-$$
-which is impossible. Thus no element of $Dc$ has a fixed point. The same applies to $Dc^2$.
+is dihedral of order $4d$.
 
-The full fixed-point contribution is
+Put
 $$
-R=9n+36n+144=45n+144.
+t=z^d.
 $$
-Tame Riemann-Hurwitz gives
+Then
 $$
-n(n-3)=288(2g(K_p)-2)+45n+144.
+u=(t+t^{-1})^2,
+\qquad
+v=w(t-t^{-1}).
 $$
-Therefore
+Under $\rho$,
 $$
-288(2g(K_p)-2)=n^2-48n-144.
+t\mapsto-t,\qquad w\mapsto-w,
 $$
-Using $n=12M$,
+and under $\tau$,
 $$
-2g(K_p)-2=\frac{M^2-4M-1}{2}.
+t\mapsto t^{-1},\qquad w\mapsto-w.
 $$
-It follows that
+Therefore $u$ and $v$ are fixed by $G$, so
 $$
-g(K_p)=\frac{(M-1)(M-3)}4.
+K_p\subseteq M^G.
 $$
-Since
+
+Step 3: Prove that the stated generators give the full fixed field
+
+From
 $$
-M=\frac{p-1}{12},
+u=(t+t^{-1})^2
 $$
 we obtain
 $$
-g(K_p)=\frac{(p-13)(p-37)}{576}.
+t^4+(2-u)t^2+1=0.
+$$
+Thus
+$$
+[K_p(t):K_p]\leq4.
 $$
 
-Final Answer: $\boxed{\frac{(p-13)(p-37)}{576}}$
+Once $t$ is known, $z$ satisfies
+$$
+z^d=t,
+$$
+so adjoining $z$ costs degree at most $d$. Also
+$$
+w=\frac{v}{t-t^{-1}}.
+$$
+Hence
+$$
+[M:K_p]\leq4d.
+$$
+
+The group $G$ contains $4d$ distinct automorphisms fixing $K_p$, so
+$$
+[M:K_p]\geq4d.
+$$
+Consequently
+$$
+[M:K_p]=4d
+$$
+and
+$$
+K_p=M^G.
+$$
+
+Together with Step 1, the full field $L$ has a hidden tower
+$$
+L\supset M\supset K_p
+$$
+of degrees $p$ and $4d$.
+
+Step 4: Compute the genus of the Artin-Schreier intermediate curve
+
+The rational function
+$$
+z^m-z^{-m}
+$$
+has exactly two poles, at $z=0$ and $z=\infty$, each of order $m$.
+
+Since
+$$
+m=3(p-1)+d,
+$$
+we have
+$$
+m\equiv d-3\pmod p.
+$$
+The hypothesis $d>3$ and $d<p$ gives
+$$
+p\nmid m.
+$$
+
+Thus each pole is totally ramified in the degree-$p$ Artin-Schreier extension
+$$
+M/\mathbb F_{p^2}(z)
+$$
+and has different exponent
+$$
+(p-1)(m+1).
+$$
+Riemann-Hurwitz gives
+$$
+2g(M)-2
+=
+-2p+2(p-1)(m+1)
+=
+2m(p-1)-2.
+$$
+Therefore
+$$
+g(M)=m(p-1).
+$$
+There is a unique point of $M$ above each of $z=0$ and $z=\infty$.
+
+Step 5: Count the fixed points of rotations and reflections
+
+The extension $M/K_p$ has degree $4d$, which is prime to $p$, so it is tame.
+
+For
+$$
+1\leq j\leq2d-1,
+$$
+the rotation $\rho^j$ acts on the base by
+$$
+z\mapsto\lambda^jz.
+$$
+Its only fixed base points are $0$ and $\infty$. By Step 4 each has a unique point above it, so every nonidentity rotation fixes exactly two points. The rotations contribute
+$$
+2(2d-1)=4d-2.
+$$
+
+Now consider the reflections
+$$
+g_j=\rho^j\tau,
+\qquad
+0\leq j\leq2d-1.
+$$
+They act by
+$$
+g_j(z)=\frac{\lambda^j}{z},
+\qquad
+g_j(w)=(-1)^{j+1}w.
+$$
+A fixed base point satisfies
+$$
+z^2=\lambda^j,
+$$
+so each reflection has two fixed base points.
+
+At such a point,
+$$
+t^2=z^{2d}=\lambda^{jd}=(-1)^j.
+$$
+
+If $j$ is even, then $t^2=1$. Since $A$ is odd,
+$$
+z^m-z^{-m}=t^A-t^{-A}=0.
+$$
+The reflection sends $w$ to $-w$, so a fixed point must have
+$$
+w=0.
+$$
+Each even reflection therefore fixes exactly two points.
+
+If $j$ is odd, then $t^2=-1$. Because $s\geq2$,
+$$
+A=3\cdot2^s+1\equiv1\pmod4.
+$$
+Hence
+$$
+t^A=t,
+\qquad
+t^{-A}=-t,
+$$
+and
+$$
+z^m-z^{-m}=2t\neq0.
+$$
+Now $g_j$ fixes $w$. The Artin-Schreier equation above each fixed base point has exactly $p$ distinct solutions, all fixed by $g_j$. Thus each odd reflection fixes exactly $2p$ points.
+
+There are $d$ even reflections and $d$ odd reflections. The reflection contribution is
+$$
+2d+2pd.
+$$
+The full tame different contribution is therefore
+$$
+R=2pd+6d-2.
+$$
+
+Step 6: Apply Riemann-Hurwitz to the dihedral quotient
+
+Riemann-Hurwitz for $M/K_p$ gives
+$$
+2m(p-1)-2
+=
+4d(2g(K_p)-2)+2pd+6d-2.
+$$
+Since
+$$
+m=(3\cdot2^s+1)d,
+$$
+we obtain
+$$
+4d(2g(K_p)-2)
+=
+2d\left((3\cdot2^s+1)(p-1)-p-3\right).
+$$
+The expression in parentheses is
+$$
+3\cdot2^s(p-1)-4.
+$$
+Therefore
+$$
+2g(K_p)-2
+=
+3\cdot2^{s-1}(p-1)-2.
+$$
+It follows that
+$$
+g(K_p)=3\cdot2^{s-2}(p-1).
+$$
+
+Final Answer: $\boxed{3\cdot2^{s-2}(p-1)}$
 
 ---
 
 ## Answer
 
-$\frac{(p-13)(p-37)}{576}$
+$3\cdot2^{s-2}(p-1)$
 
 ---
 
@@ -287,7 +336,7 @@ $\frac{(p-13)(p-37)}{576}$
 ## Solution Concepts
 
 - invariant subfields
-- semidirect product actions
-- projective fixed points
+- Artin-Schreier extensions
+- dihedral group actions
 - tame ramification
 - Riemann-Hurwitz formula
