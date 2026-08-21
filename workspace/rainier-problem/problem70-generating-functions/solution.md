@@ -1,12 +1,12 @@
 ## Steps
 
-Step 1: Put the alternating trace into spectral form
+Step 1: Expand the alternating trace in an eigenbasis
 
 Since $\det P=\det Q=1$,
 $$
 \det X=\det D=1.
 $$
-Let the eigenvalues of $X$ be $\lambda,\lambda^{-1}$ with $\lambda>1$, and put
+Also $\tau\geq18$. Let the eigenvalues of $X$ be $\lambda,\lambda^{-1}$ with $\lambda>1$, and put
 $$
 \Delta=\lambda-\lambda^{-1}.
 $$
@@ -15,7 +15,7 @@ $$
 \Delta^2=\tau^2-4.
 $$
 
-As in the multiplication of the displayed matrices,
+Multiplication of the displayed matrices gives
 $$
 \operatorname{tr}D=\tau^2-r^4-2,
 $$
@@ -31,13 +31,15 @@ In an eigenbasis of $X$, write
 $$
 D=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix},
 \qquad
-z=\beta\gamma.
+z=\beta\gamma,
+\qquad
+p=\alpha\delta.
 $$
-Because $\det D=1$,
+Since $\det D=1$,
 $$
-\alpha\delta=1+z.
+p-z=1.
 $$
-The three trace identities give
+The three trace identities above give
 $$
 \alpha+\delta=\tau^2-r^4-2,
 $$
@@ -52,230 +54,270 @@ Multiplying the last two equations and using
 $$
 \lambda^2+\lambda^{-2}=\tau^2-2
 $$
-yields
+gives
 $$
-z=\frac{r^4(\tau^2-r^4-4)}{\tau^2-4}
-=\frac{\chi}{\Delta^2}.
+z=\frac{\chi}{\Delta^2}.
 $$
-Put
+Therefore
 $$
-p=1+z.
-$$
-Then
-$$
-pz\Delta^4
-=\chi(\Delta^2+\chi)
-=\rho.
+p=1+\frac{\chi}{\Delta^2},
+\qquad
+pz\Delta^4=\chi(\Delta^2+\chi)=\rho.
 $$
 
-Define
+Put
 $$
-C_j=\lambda^j+\lambda^{-j},
+L_j=\lambda^j+\lambda^{-j}
 $$
-and
+and define
 $$
 f_0=0,\qquad f_1=1,\qquad
 f_{j+1}=\tau f_j-f_{j-1}.
 $$
-The Binet form is
+Then
 $$
 f_j=\frac{\lambda^j-\lambda^{-j}}{\Delta}.
 $$
 
-For $a+b+c+d=m$, expansion of
-$$
-DX^aD^{-1}X^bDX^cD^{-1}X^d
-$$
-in the eigenbasis gives
-$$
-T
-=
-p^2C_m
-+pz\left(
-C_{a+b-c-d}+C_{a+d-b-c}
--\sum_{s\in\{a,b,c,d\}}C_{m-2s}
-\right)
-+z^2C_{a-b+c-d}.
-$$
-Using
-$$
-C_uC_v=C_{u+v}+C_{u-v},
-$$
-this becomes
-$$
-T
-=
-pC_m-zC_{a+c-b-d}
-+pz(C_{a+c}-C_{a-c})(C_{b+d}-C_{b-d}).
-$$
-Also
-$$
-C_{x+y}-C_{x-y}
-=\Delta^2f_xf_y.
-$$
-Therefore, when $m=4k$,
+For $m=a+b+c+d$, collecting the diagonal and off-diagonal terms in the trace expansion gives
 $$
 T_k(a,b,c,d)
 =
-pC_{4k}
+pL_m-zL_{a+c-b-d}
++pz(L_{a+c}-L_{a-c})(L_{b+d}-L_{b-d}).
+$$
+Since
+$$
+L_{x+y}-L_{x-y}=\Delta^2f_xf_y,
+$$
+we obtain
+$$
+T_k(a,b,c,d)
+=
+pL_{4k+2}
 +\rho f_af_bf_cf_d
--\frac{\chi}{\Delta^2}C_{a+c-b-d}.
+-\frac{\chi}{\Delta^2}L_{a+c-b-d}.
 $$
 
-Step 2: Identify the three largest trace levels
+Step 2: Rank the strictly increasing compositions
 
 For integers $x\geq y+2$, the Binet formula gives
 $$
 f_{x-1}f_{y+1}-f_xf_y=f_{x-y-1}>0.
 $$
-Replacing $(x,y)$ by $(x-1,y+1)$ therefore increases the product while preserving the sum.
+Balancing two unequal indices therefore strictly increases their recurrence product.
 
-Among positive quadruples with sum $4k$, repeated balancing shows that
+For an admissible quadruple, write
 $$
-f_af_bf_cf_d
+(a,b,c,d)
+=
+(k-1,k,k+1,k+2)+(e_1,e_2,e_3,e_4).
 $$
-has its unique largest product value at the multiset
+Strict increase gives
 $$
-\{k,k,k,k\}.
-$$
-Among all remaining multisets, the largest product occurs at
-$$
-\{k+1,k,k,k-1\}.
-$$
-Indeed, any other nonconstant multiset admits a balancing move before reaching this one.
-
-For
-$$
-A=(k,k,k,k),
-$$
-we have
-$$
-a+c-b-d=0,
+e_1\leq e_2\leq e_3\leq e_4,
 \qquad
-f_af_bf_cf_d=f_k^4.
+e_1+e_2+e_3+e_4=0.
+$$
+Put
+$$
+N(e)=|e_1|+|e_2|+|e_3|+|e_4|.
 $$
 
-For the second product multiset, placing $k+1$ and $k-1$ in the same alternating pair, for example
+The unique state with $N(e)=0$ is
 $$
-B=(k+1,k,k-1,k),
+A=(k-1,k,k+1,k+2).
 $$
-gives
+The unique nonzero state with $N(e)=2$ is
 $$
-a+c-b-d=0.
-$$
-Placing them in opposite alternating pairs, for example
-$$
-C=(k+1,k,k,k-1),
-$$
-gives
-$$
-|a+c-b-d|=2.
-$$
-Both have product
-$$
-f_{k+1}f_{k-1}f_k^2.
+B=(k-2,k,k+1,k+3).
 $$
 
-The recurrence has the Cassini identity
+If $N(e)>4$, choose the last negative $e_i$ and the first positive $e_j$. Replacing them by
 $$
-f_k^2-f_{k+1}f_{k-1}=1.
+e_i+1,\qquad e_j-1
 $$
-Consequently
-$$
-T_k(A)-T_k(B)=\rho f_k^2.
-$$
-Since
-$$
-C_2-C_0=\Delta^2,
-$$
-we also have
-$$
-T_k(B)-T_k(C)=\chi.
-$$
+preserves the nondecreasing order, reduces $N(e)$ by $2$, and performs a strict balancing move on the corresponding exponents. The recurrence product increases.
 
-It remains to exclude quadruples with smaller product. Every $f_j$ is a positive integer for $j\geq1$, so every lower product is at most
+The possible deviation vectors with $N(e)=4$ are
 $$
-f_{k+1}f_{k-1}f_k^2-1.
+(-2,0,0,2),\qquad
+(-2,0,1,1),\qquad
+(-1,-1,0,2),\qquad
+(-1,-1,1,1),
 $$
-For any integer $h$,
+subject to positivity of the resulting first exponent. The last vector gives
 $$
-C_h\geq C_0=2.
+C=(k-2,k-1,k+2,k+3).
 $$
-Hence every such trace is at most
+The other three are below $C$: the first is carried to $C$ by balancing the first two exponents and then the last two; the second is carried to $C$ by balancing the first two; the third is carried to $C$ by balancing the last two.
+
+It follows that the three largest recurrence products are those of $A,B,C$.
+
+For these patterns,
 $$
-pC_{4k}
-+\rho\left(f_{k+1}f_{k-1}f_k^2-1\right)
+a+c-b-d=-2,\ -4,\ -2
+$$
+respectively. Every quadruple below $C$ in recurrence product has product at most
+$$
+f_{k-2}f_{k-1}f_{k+2}f_{k+3}-1,
+$$
+because all $f_j$ are positive integers. Since $L_h\geq2$, its trace is at most
+$$
+pL_{4k+2}
++\rho\left(f_{k-2}f_{k-1}f_{k+2}f_{k+3}-1\right)
 -\frac{2\chi}{\Delta^2}.
 $$
-On the other hand,
+The trace at $C$ exceeds this bound by
 $$
-T_k(C)
-=
-pC_{4k}
-+\rho f_{k+1}f_{k-1}f_k^2
--\frac{\chi}{\Delta^2}C_2.
+\rho-\frac{\chi(L_2-2)}{\Delta^2}
+=\rho-\chi>0.
 $$
-Their difference is at least
-$$
-\rho-\chi>0,
-$$
-because $\rho=\chi(\Delta^2+\chi)$ and $\Delta^2>1$.
+Hence no lower recurrence-product level can enter the top three trace values.
 
-Thus the three largest distinct levels are represented by $A,B,C$, and
-$$
-M_{k,1}-M_{k,2}=\rho f_k^2,
-$$
-$$
-M_{k,1}-M_{k,3}=\rho f_k^2+\chi.
-$$
-Therefore the coefficient of $t^{k-2}$ is
-$$
-\rho^2f_k^4+\rho\chi f_k^2.
-$$
+Step 3: Compute the two required trace gaps
 
-Step 3: Sum the square sequence
+The product identity
+$$
+f_if_j=\frac{L_{i+j}-L_{i-j}}{\Delta^2}
+$$
+gives
+$$
+f_{k-1}f_{k+2}-f_{k-2}f_{k+3}
+=\frac{L_5-L_3}{\Delta^2}
+=f_4
+=\tau\omega,
+$$
+and
+$$
+f_kf_{k+1}-f_{k-1}f_{k+2}
+=\frac{L_3-L_1}{\Delta^2}
+=f_2
+=\tau.
+$$
+Also
+$$
+L_4-L_2=\Delta^2f_3=\Delta^2\sigma.
+$$
 
 Put
 $$
-Q_2(t)=1-(\tau^2-2)t+t^2.
+q_k=f_kf_{k+1}.
 $$
-The characteristic roots of $f_k^2$ are
+The first trace gap is
 $$
-1,\qquad \lambda^2,\qquad \lambda^{-2}.
+M_{k,1}-M_{k,2}
+=
+\rho\tau\omega q_k+\chi\sigma.
 $$
-Therefore its denominator is
+
+The same product identity gives
 $$
-(1-t)Q_2(t).
+f_{k-2}f_{k+3}
+=q_k-\tau\sigma.
+$$
+Since $A$ and $C$ both have $|a+c-b-d|=2$, their penalty terms are equal. Therefore
+$$
+M_{k,1}-M_{k,3}
+=
+\rho\tau\sigma(q_k-\tau).
+$$
+
+The coefficient of $t^{k-3}$ is consequently
+$$
+\rho^2\tau^2\omega\sigma(q_k^2-\tau q_k)
++\rho\chi\tau\sigma^2(q_k-\tau).
+$$
+
+Step 4: Sum the two recurrence-product sequences
+
+From the Binet form,
+$$
+q_k=\frac{L_{2k+1}-\tau}{\Delta^2}.
+$$
+Set
+$$
+S(t)=\sum_{k=3}^{\infty}(q_k-\tau)t^{k-3}.
+$$
+Since $k=3+j$,
+$$
+S(t)
+=
+\frac{1}{\Delta^2}
+\left(
+\frac{\lambda^7}{1-\lambda^2t}
++\frac{\lambda^{-7}}{1-\lambda^{-2}t}
+-\frac{\tau(\omega-1)}{1-t}
+\right).
 $$
 Using
 $$
-f_2=\tau,\qquad
-f_3=\tau^2-1,\qquad
-f_4=\tau(\tau^2-2),
+(1-\lambda^2t)(1-\lambda^{-2}t)=Q(t)
 $$
-gives
+and collecting the numerator gives
 $$
-\sum_{k=2}^{\infty}f_k^2t^{k-2}
-=
-\frac{G(t)}{(1-t)Q_2(t)},
-$$
-where
-$$
-G(t)=\tau^2-(\tau^2-1)t+t^2.
+S(t)=\frac{\tau C(t)}{(1-t)Q(t)}.
 $$
 
-Step 4: Sum the fourth-power sequence
-
-The Binet formula gives
+Next,
 $$
-f_k^4
+q_k^2-\tau q_k
 =
 \frac{
-\lambda^{4k}+\lambda^{-4k}
--4\lambda^{2k}-4\lambda^{-2k}+6
+L_{4k+2}+2-\tau\omega L_{2k+1}
++\tau^2(\omega-1)
 }{\Delta^4}.
 $$
-Its five characteristic roots are
+Hence
+$$
+H(t):=
+\sum_{k=3}^{\infty}(q_k^2-\tau q_k)t^{k-3}
+$$
+satisfies
+$$
+H(t)
+=
+\frac{1}{\Delta^4}
+\left(
+\frac{\lambda^{14}}{1-\lambda^4t}
++\frac{\lambda^{-14}}{1-\lambda^{-4}t}
+-\tau\omega
+\left(
+\frac{\lambda^7}{1-\lambda^2t}
++\frac{\lambda^{-7}}{1-\lambda^{-2}t}
+\right)
++\frac{2+\tau^2(\omega-1)}{1-t}
+\right).
+$$
+Since
+$$
+(1-\lambda^4t)(1-\lambda^{-4}t)=R(t),
+$$
+putting these terms over a common denominator gives
+$$
+H(t)=
+\frac{\tau^2\omega\sigma E(t)}
+{(1-t)Q(t)R(t)}.
+$$
+
+Step 3 now gives the requested series as
+$$
+\rho^2\tau^2\omega\sigma H(t)
++\rho\chi\tau\sigma^2S(t).
+$$
+Substitution and collection over the common denominator yield
+$$
+\frac{
+\rho\tau^2\sigma^2
+\left(
+\rho\tau^2\omega^2E(t)
++\chi R(t)C(t)
+\right)
+}
+{(1-t)Q(t)R(t)}.
+$$
+
+The five characteristic roots are
 $$
 1,\qquad
 \lambda^2,\qquad
@@ -283,92 +325,28 @@ $$
 \lambda^4,\qquad
 \lambda^{-4}.
 $$
-Since
+Writing the coefficient sequence as
 $$
-\lambda^4+\lambda^{-4}
-=\tau^4-4\tau^2+2,
+(\rho\tau\omega q_k+\chi\sigma)
+\rho\tau\sigma(q_k-\tau)
 $$
-put
+shows that the $\lambda^{\pm4k}$ coefficients are nonzero. The $\lambda^{\pm2k}$ coefficient is a nonzero multiple of
 $$
-Q_4(t)=1-(\tau^4-4\tau^2+2)t+t^2.
+(\tau^2-4)\chi\sigma-\rho\tau^2\omega^2<0.
 $$
-The denominator is
+The constant-mode coefficient is a positive multiple of
 $$
-(1-t)Q_2(t)Q_4(t).
+\chi\omega^2+(\omega-2)(\omega^2-\omega+1)>0.
 $$
+All five poles remain, so the displayed fraction is reduced.
 
-Using
-$$
-f_2=\tau,
-$$
-$$
-f_3=\tau^2-1,
-$$
-$$
-f_4=\tau(\tau^2-2),
-$$
-$$
-f_5=\tau^4-3\tau^2+1,
-$$
-$$
-f_6=\tau(\tau^4-4\tau^2+3),
-$$
-determines the numerator
-$$
-H(t)
-=
-\tau^4
-+(-\tau^6+5\tau^4-4\tau^2+1)t
-+(\tau^6-5\tau^4+7\tau^2-1)t^2
-+(-\tau^4+3\tau^2-1)t^3
-+t^4.
-$$
-Hence
-$$
-\sum_{k=2}^{\infty}f_k^4t^{k-2}
-=
-\frac{H(t)}
-{(1-t)Q_2(t)Q_4(t)}.
-$$
-
-Step 5: Form the requested generating function
-
-Combining Steps 2 through 4 gives
-$$
-\sum_{k=2}^{\infty}
-(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-2}
-=
-\frac{
-\rho^2H(t)+\rho\chi G(t)Q_4(t)
-}
-{(1-t)Q_2(t)Q_4(t)}.
-$$
-
-No denominator factor cancels. In the Binet expansion of
-$$
-\rho^2f_k^4+\rho\chi f_k^2,
-$$
-the coefficients of $\lambda^{\pm4k}$ equal
-$$
-\frac{\rho^2}{\Delta^4}\neq0.
-$$
-The coefficients of $\lambda^{\pm2k}$ equal
-$$
--\frac{\rho\chi(3\Delta^2+4\chi)}{\Delta^4}\neq0,
-$$
-and the constant coefficient equals
-$$
-\frac{2\rho\chi(2\Delta^2+3\chi)}{\Delta^4}\neq0.
-$$
-All five poles remain, so the rational function is reduced.
-
-Final Answer: $\boxed{\frac{\rho^2H(t)+\rho\chi G(t)Q_4(t)}{(1-t)Q_2(t)Q_4(t)}}$
+Final Answer: $\boxed{\frac{\rho\tau^2\sigma^2(\rho\tau^2\omega^2E(t)+\chi R(t)C(t))}{(1-t)Q(t)R(t)}}$
 
 ---
 
 ## Answer
 
-$\frac{\rho^2H(t)+\rho\chi G(t)Q_4(t)}{(1-t)Q_2(t)Q_4(t)}$
+$\frac{\rho\tau^2\sigma^2(\rho\tau^2\omega^2E(t)+\chi R(t)C(t))}{(1-t)Q(t)R(t)}$
 
 ---
 
@@ -382,8 +360,8 @@ $\frac{\rho^2H(t)+\rho\chi G(t)Q_4(t)}{(1-t)Q_2(t)Q_4(t)}$
 
 ## Solution Concepts
 
-- alternating matrix conjugation
 - spectral trace expansion
 - recurrence-product balancing
-- extremal integer compositions
+- strict integer compositions
+- characteristic-root summation
 - rational generating functions

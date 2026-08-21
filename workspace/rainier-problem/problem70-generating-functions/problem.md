@@ -18,14 +18,18 @@ $$
 =n(n+1)r^4+(4n+2)r^2+2,
 $$
 $$
+\omega=\tau^2-2,\qquad
+\sigma=\tau^2-1,
+$$
+$$
 \chi=r^4(\tau^2-r^4-4),
 \qquad
 \rho=\chi(\tau^2-4+\chi).
 $$
 
-For each integer $k\geq2$ and each quadruple of positive integers $a,b,c,d$ satisfying
+For each integer $k\geq3$ and each quadruple of positive integers
 $$
-a+b+c+d=4k,
+a<b<c<d,\qquad a+b+c+d=4k+2,
 $$
 define
 $$
@@ -40,12 +44,29 @@ Let
 $$
 M_{k,1}>M_{k,2}>M_{k,3}
 $$
-be the three largest distinct values among all $T_k(a,b,c,d)$.
+be the three largest distinct values among all such $T_k(a,b,c,d)$.
+
+For compactness, put
+$$
+c_0=\omega\sigma-1,
+$$
+$$
+Q(t)=1-\omega t+t^2,
+\qquad
+R(t)=1-(\omega^2-2)t+t^2,
+$$
+$$
+C(t)=c_0-\omega\sigma t+\omega t^2,
+$$
+and
+$$
+E(t)=c_0(1-\omega t+\omega t^2-t^3)+t^4.
+$$
 
 Determine, in reduced rational form, the ordinary generating function
 $$
-\sum_{k=2}^{\infty}
-(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-2}.
+\sum_{k=3}^{\infty}
+(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-3}.
 $$
 
 ---
@@ -63,6 +84,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves extremal values over integer compositions and the derivation of their ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
-The problem also involves traces, conjugation, eigenvalues, and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
-However, the matrix structure is used to derive and rank the coefficient sequence, while the requested final object is its reduced rational generating function.
+This problem involves extremal values over strictly ordered integer compositions and the derivation of their ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
+The problem also involves matrix traces, eigenvalues, and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
+However, the matrix analysis determines the ranked coefficient sequence, while the requested final object is its reduced rational generating function.
