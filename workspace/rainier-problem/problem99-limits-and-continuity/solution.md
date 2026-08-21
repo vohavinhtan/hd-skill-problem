@@ -1,355 +1,311 @@
 ## Steps
 
-Step 1: Express the asymmetric moments through a symmetric reference measure
+Step 1: Convert the moment determinant to an endpoint-cluster integral
 
-Let $\mu_t$ be the probability measure with density proportional to
+Let
 $$
-x\exp\left(-\frac{x(1-x)}{t}\right).
-$$
-Then
-$$
-M_k(t)=\int_0^1x^k\,d\mu_t(x).
-$$
-Put
-$$
-S=2X-1.
-$$
-Let $\overline{\mu}_t$ be the probability measure with density proportional to
-$$
-\exp\left(-\frac{x(1-x)}{t}\right).
-$$
-Symmetry under $x\mapsto1-x$ gives
-$$
-\int_0^1x e^{-x(1-x)/t}\,dx
-=
-\frac12\int_0^1e^{-x(1-x)/t}\,dx.
-$$
-Since $2x=1+S$,
-$$
-\mathbb E_{\mu_t}[\varphi(S)]
-=
-\mathbb E_{\overline{\mu}_t}[(1+S)\varphi(S)].
-$$
-
-Write
-$$
-\nu_j=\mathbb E_{\overline{\mu}_t}[S^{2j}].
-$$
-Odd moments vanish under $\overline{\mu}_t$, so
-$$
-\mathbb E_{\mu_t}[S^{2j}]=\nu_j,
-$$
-while
-$$
-\mathbb E_{\mu_t}[S^{2j+1}]
-=
-\mathbb E_{\overline{\mu}_t}[S^{2j+2}]
-=
-\nu_{j+1}.
-$$
-
-Let $H_r$ be the order-$r$ moment determinant for $S$ under $\mu_t$. The affine change $S=2X-1$ has triangular change-of-basis matrix with diagonal
-$$
-1,2,2^2,\ldots,2^{r-1}.
-$$
-Therefore
-$$
-H_r=2^{r(r-1)}\Delta_r
+r=2m+1
 $$
 and
 $$
-\frac{\Delta_5}{\Delta_3^2}
-=
-\frac{1}{256}\frac{H_5}{H_3^2}.
+H_r(t)=\det\left(I_{i+j}(t)\right)_{0\leq i,j\leq r-1}.
+$$
+Since every entry of the normalized moment matrix is divided by $I_0(t)$,
+$$
+\Delta_r(t)=\frac{H_r(t)}{I_0(t)^r}.
 $$
 
-Step 2: Block-diagonalize the odd-order determinants
-
-Put
+Expanding two Vandermonde determinants and integrating term by term gives
 $$
-W=1-S^2=4X(1-X)
-$$
-and define symmetric moments
-$$
-\lambda_j=\mathbb E_{\overline{\mu}_t}[W^j].
-$$
-
-For $H_3$, reorder the basis $1,S,S^2$ as $1,S^2,S$ and replace $S$ by
-$$
-S-S^2.
-$$
-This is a unit-determinant basis change. For $j=0,1$,
-$$
-\mathbb E_{\mu_t}[S^{2j}(S-S^2)]
+H_r(t)
 =
-\nu_{j+1}-\nu_{j+1}
+\frac1{r!}
+\int_{[0,1]^r}
+\prod_{i<j}(x_i-x_j)^2
+\prod_{i=1}^r
+x_i e^{-x_i(1-x_i)/t}\,dx_i.
+$$
+
+Suppose $k$ variables lie near $0$ and $l=r-k$ lie near $1$. Write
+$$
+x_i=tu_i
+$$
+at the left endpoint and
+$$
+x_i=1-tv_i
+$$
+at the right endpoint. Each left variable contributes $t^2$, each right variable contributes $t$, and the two within-cluster Vandermonde factors contribute
+$$
+t^{k(k-1)+l(l-1)}.
+$$
+Hence this cluster allocation starts at
+$$
+t^{A_k},
+\qquad
+A_k=r+k+k(k-1)+(r-k)(r-k-1).
+$$
+For $k=m+d$,
+$$
+A_{m+d}-A_m=d(2d-1).
+$$
+Thus the unique leading allocation is
+$$
+k=m,\qquad l=m+1,
+$$
+while $k=m+1$ starts one power of $t$ later. Every other allocation starts at least three powers later. Therefore only these two allocations can affect the expansion through relative order $t^2$.
+
+Also,
+$$
+A_m=2m^2+3m+1.
+$$
+
+Step 2: Evaluate the endpoint partition constants
+
+For integers $k\geq0$ and $\alpha\geq0$, define
+$$
+Z_{k,\alpha}
 =
-0.
+\frac1{k!}
+\int_{(0,\infty)^k}
+\prod_{i<j}(u_i-u_j)^2
+\prod_{i=1}^ku_i^\alpha e^{-u_i}\,du_i.
 $$
-Hence
+Expanding the Vandermonde determinants gives
 $$
-H_3=D_2L,
+Z_{k,\alpha}
+=
+\det\left((i+j+\alpha)!\right)_{0\leq i,j\leq k-1}.
+$$
+Factor $(i+\alpha)!$ from row $i$. The remaining entry in column $j$ is
+$$
+(i+\alpha+1)(i+\alpha+2)\cdots(i+\alpha+j),
+$$
+a monic polynomial of degree $j$ in $i$. Its determinant is therefore the Vandermonde determinant at $0,1,\ldots,k-1$. Hence
+$$
+Z_{k,\alpha}
+=
+\prod_{j=0}^{k-1}j!(j+\alpha)!.
+$$
+
+For the leading allocation $(m,m+1)$ the constant is
+$$
+Z_{m,1}Z_{m+1,0}=C_m.
+$$
+For the allocation $(m+1,m)$,
+$$
+\frac{Z_{m+1,1}Z_{m,0}}{C_m}
+=
+\frac{m!(m+1)!}{(m!)^2}
+=
+m+1.
+$$
+
+Step 3: Compute the first two corrections in the leading endpoint allocation
+
+For the probability density proportional to
+$$
+\prod_{i<j}(u_i-u_j)^2\prod_i u_i^\alpha e^{-u_i},
+$$
+write
+$$
+p_j=\sum_i u_i^j,
+\qquad
+n=k+\alpha.
+$$
+Integration by parts gives, for any polynomial $F$,
+$$
+\mathbb E[p_qF]
+=
+\mathbb E\left[
+\alpha p_{q-1}F
++\sum_{j=0}^{q-1}p_jp_{q-1-j}F
++\sum_i u_i^q\frac{\partial F}{\partial u_i}
+\right].
+$$
+Taking successively $(q,F)=(1,1),(2,1),(1,p_1),(1,p_2),(3,1),(2,p_2)$ yields
+$$
+\mathbb E[p_1]=kn,
+$$
+$$
+\mathbb E[p_2]=kn(k+n),
+$$
+$$
+\operatorname{Var}(p_1)=kn,
+$$
+$$
+\operatorname{Cov}(p_1,p_2)=2kn(k+n),
+$$
+and
+$$
+\operatorname{Var}(p_2)
+=
+kn\left(4(k+n)^2+2kn+2\right).
+$$
+
+For the leading allocation, let $U_j$ denote the power sums of the $m$ left variables and $V_j$ those of the $m+1$ right variables. Expanding the logarithm of the scaled integrand gives
+$$
+tL_1+t^2L_2+O(t^3),
 $$
 where
 $$
-D_2=
-\det
-\begin{pmatrix}
-1&\nu_1\\
-\nu_1&\nu_2
-\end{pmatrix}
+L_1
+=
+U_2-2(m+1)U_1+V_2-(2m+1)V_1
 $$
 and
 $$
-L=\mathbb E_{\mu_t}[(S-S^2)^2]=\nu_1-\nu_2.
+L_2
+=
+-(m+1)U_2-\left(m+\frac12\right)V_2-2U_1V_1.
 $$
-Since $S^2=1-W$, translation of the polynomial variable gives
+Thus the relative integrand is
 $$
-D_2=\lambda_2-\lambda_1^2,
+1+tL_1+t^2\left(L_2+\frac12L_1^2\right)+O(t^3).
+$$
+
+For the left ensemble $(k,\alpha)=(m,1)$ and the right ensemble $(m+1,0)$, the formulas above give
+$$
+\mathbb E[L_1]=m+1.
+$$
+Writing
+$$
+L_1=A+B
+$$
+with
+$$
+A=U_2-2(m+1)U_1,
 \qquad
-L=\lambda_1-\lambda_2.
+B=V_2-(2m+1)V_1,
 $$
-
-For $H_5$, use the even basis
+the two endpoint ensembles are independent and
 $$
-1,S^2,S^4
-$$
-and replace the two odd basis vectors by
-$$
-U_0=S-S^2,
-$$
-$$
-U_1=(S-S^2)W.
-$$
-These vectors lie in the span of $1,S,S^2,S^3,S^4$, and the full basis change has determinant $\pm1$.
-
-For every polynomial $q(W)$,
-$$
-\mathbb E_{\mu_t}[q(W)(S-S^2)]
+\operatorname{Var}(A)
 =
-\mathbb E_{\overline{\mu}_t}[(1+S)q(W)S(1-S)]
+2m(m+1)(3m^2+m+1),
+$$
+$$
+\operatorname{Var}(B)
 =
-\mathbb E_{\overline{\mu}_t}[q(W)SW]
+(m+1)^2(6m^2+16m+13).
+$$
+The first-moment formulas also give
+$$
+\mathbb E[L_2]
 =
-0.
-$$
-Thus the even and odd blocks are orthogonal.
-
-Changing the even basis from $1,S^2,S^4$ to $1,W,W^2$ gives
-$$
-D_3=
-\det
-\begin{pmatrix}
-1&\lambda_1&\lambda_2\\
-\lambda_1&\lambda_2&\lambda_3\\
-\lambda_2&\lambda_3&\lambda_4
-\end{pmatrix}.
-$$
-For the odd block,
-$$
-\mathbb E_{\mu_t}[U_iU_j]
-=
-\mathbb E_{\overline{\mu}_t}
-\left[W^{i+j+1}(1-W)\right].
+-(m+1)^2(6m^2+6m+1).
 $$
 Therefore
 $$
-O=
-\det
-\begin{pmatrix}
-\lambda_1-\lambda_2&\lambda_2-\lambda_3\\
-\lambda_2-\lambda_3&\lambda_3-\lambda_4
-\end{pmatrix},
+\mathbb E\left[L_2+\frac12L_1^2\right]
+=
+3(m+1)(3m+2).
 $$
-and
+The leading cluster contributes
 $$
-H_5=D_3O.
+C_mt^{A_m}
+\left(
+1+(m+1)t+3(m+1)(3m+2)t^2+O(t^3)
+\right).
 $$
 
-Step 3: Obtain the endpoint moment expansions
+Step 4: Add the first subleading endpoint allocation
 
-Under the symmetric measure, the change
+For the allocation with $m+1$ variables near $0$ and $m$ near $1$, Step 1 shows that its leading power is $t^{A_m+1}$, and Step 2 shows that its leading constant relative to $C_m$ is $m+1$.
+
+For general left and right cluster sizes $k,l$, the first correction has expectation
 $$
-w=4x(1-x)
+k(k+1)(2k+1-2l)
++
+l^2(2l-2k-1).
 $$
-has two branches and gives a density for $W$ proportional to
+Taking
 $$
-e^{-w/(4t)}(1-w)^{-1/2},
-\qquad 0<w<1.
+k=m+1,\qquad l=m
 $$
-Using
+gives
 $$
-(1-w)^{-1/2}
+3(3m+2).
+$$
+Hence this cluster contributes
+$$
+C_m(m+1)t^{A_m+1}
+\left(1+3(3m+2)t+O(t^2)\right).
+$$
+
+All remaining endpoint allocations begin at relative order at least $t^3$. Adding the two relevant allocations gives
+$$
+H_r(t)
 =
-\sum_{j\geq0}\frac{\binom{2j}{j}}{4^j}w^j
+C_mt^{A_m}
+\left(
+1+2(m+1)t
++6(m+1)(3m+2)t^2
++O(t^3)
+\right).
 $$
-and substituting $w=4tu$, endpoint Laplace expansion gives
+
+Step 5: Normalize and extract the limit
+
+By symmetry,
 $$
-\lambda_m
+I_0(t)
 =
-(4t)^m
+\frac12
+\int_0^1e^{-x(1-x)/t}\,dx.
+$$
+Scaling one endpoint by $x=tu$ gives
+$$
+I_0(t)
+=
+t\int_0^\infty e^{-u}e^{tu^2}\,du
++O(e^{-c/t})
+$$
+for some $c>0$. Therefore
+$$
+I_0(t)
+=
+t\left(1+2t+12t^2+O(t^3)\right).
+$$
+Since $r=2m+1$,
+$$
+I_0(t)^r
+=
+t^r
+\left(
+1+2rt+(2r^2+10r)t^2+O(t^3)
+\right).
+$$
+
+Using Step 4 and
+$$
+A_m-r=m(2m+1),
+$$
+division gives
+$$
+\frac{\Delta_{2m+1}(t)}
+{C_mt^{m(2m+1)}}
+=
+1-2mt+6m(3m+1)t^2+O(t^3).
+$$
+Therefore
+$$
 \frac{
-\displaystyle\sum_{j\geq0}\binom{2j}{j}(m+j)!t^j
-}{
-\displaystyle\sum_{j\geq0}\binom{2j}{j}j!t^j
-}.
-$$
-Terms outside any fixed neighborhood of $w=0$ are exponentially small, so the displayed quotient may be expanded to any fixed algebraic order.
-
-The terms needed here are
-$$
-\lambda_1
+\displaystyle
+\frac{\Delta_{2m+1}(t)}
+{C_mt^{m(2m+1)}}
+-1+2mt
+}{t^2}
 =
-4t+8t^2+80t^3+1184t^4+O(t^5),
-$$
-$$
-\lambda_2
-=
-32t^2+128t^3+1664t^4+29696t^5+O(t^6),
-$$
-$$
-\lambda_3
-=
-384t^3+2304t^4+36864t^5+774144t^6+O(t^7),
-$$
-and
-$$
-\lambda_4
-=
-6144t^4+49152t^5+933888t^6+O(t^7).
+6m(3m+1)+O(t).
 $$
 
-Step 4: Expand the four determinant factors
-
-From Step 2,
-$$
-D_2=\lambda_2-\lambda_1^2,
-$$
-so Step 3 gives
-$$
-D_2
-=
-16t^2+64t^3+960t^4+O(t^5)
-=
-16t^2(1+4t+60t^2+O(t^3)).
-$$
-Also,
-$$
-L
-=
-4t-24t^2-48t^3+O(t^4)
-=
-4t(1-6t-12t^2+O(t^3)).
-$$
-
-For the $3\times3$ determinant,
-$$
-D_3
-=
-\lambda_2\lambda_4-\lambda_3^2-\lambda_1^2\lambda_4
-+2\lambda_1\lambda_2\lambda_3-\lambda_2^3.
-$$
-Substitution of the four expansions from Step 3 gives
-$$
-D_3
-=
-16384t^6+196608t^7+4521984t^8+O(t^9),
-$$
-so
-$$
-D_3
-=
-16384t^6(1+12t+276t^2+O(t^3)).
-$$
-
-For the odd block,
-$$
-O
-=
-(\lambda_1-\lambda_2)(\lambda_3-\lambda_4)
--(\lambda_2-\lambda_3)^2.
-$$
-The required differences are
-$$
-\lambda_1-\lambda_2
-=
-4t-24t^2-48t^3+O(t^4),
-$$
-$$
-\lambda_2-\lambda_3
-=
-32t^2-256t^3-640t^4+O(t^5),
-$$
-and
-$$
-\lambda_3-\lambda_4
-=
-384t^3-3840t^4-12288t^5+O(t^6).
-$$
-Hence
-$$
-O
-=
-512t^4-8192t^5+O(t^7)
-=
-512t^4(1-16t+O(t^3)).
-$$
-In particular, the relative $t^2$ term cancels.
-
-Step 5: Form the quotient and extract the first surviving correction
-
-Steps 1 and 2 give
-$$
-\frac{\Delta_5}{\Delta_3^2}
-=
-\frac{1}{256}
-\frac{D_3O}{D_2^2L^2}.
-$$
-Using Step 4, the constant prefactor is
-$$
-\frac{1}{256}
-\frac{16384\cdot512}{16^2\cdot4^2}
-=
-8,
-$$
-and the power of $t$ is $t^4$.
-
-The relative numerator is
-$$
-(1+12t+276t^2)(1-16t+O(t^3))
-=
-1-4t+84t^2+O(t^3).
-$$
-The relative denominator is
-$$
-(1+4t+60t^2)^2(1-6t-12t^2)^2
-=
-1-4t+52t^2+O(t^3).
-$$
-Therefore
-$$
-\frac{\Delta_5}{\Delta_3^2}
-=
-8t^4
-\frac{1-4t+84t^2+O(t^3)}
-{1-4t+52t^2+O(t^3)}
-=
-8t^4(1+32t^2+O(t^3)).
-$$
-Thus
-$$
-\frac{\Delta_5(t)}{\Delta_3(t)^2}
-=
-8t^4+256t^6+O(t^7).
-$$
-
-Final Answer: $\boxed{256}$
+Final Answer: $\boxed{6m(3m+1)}$
 
 ---
 
 ## Answer
 
-$256$
+$6m(3m+1)$
 
 ---
 
@@ -359,16 +315,16 @@ $256$
 
 **Sub-domain:** Limits and continuity
 
-**Problem Type:** Exact computation
+**Problem Type:** Symbolic derivation
 
-**Answer Type:** Exact scalar
+**Answer Type:** Exact symbolic expression
 
 ---
 
 ## Solution Concepts
 
 - endpoint Laplace asymptotics
-- asymmetric moment measures
-- Gram determinant basis changes
-- hidden block orthogonalization
-- asymptotic quotient cancellation
+- Hankel determinant integral representation
+- competing endpoint clusters
+- Vandermonde moment integrals
+- asymptotic normalization
