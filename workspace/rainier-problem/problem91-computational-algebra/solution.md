@@ -1,56 +1,51 @@
 ## Steps
 
-Step 1: Reconstruct the group hidden by the generators
+Step 1: Identify the hidden automorphism group
 
 Let $C$ be the smooth projective Fermat curve
 $$
 X^n+Y^n+Z^n=0.
 $$
-Choose a primitive ninth root $\zeta\in\mathbb F_p$.
+Since $12\mid p-1$, choose a primitive twelfth root $\zeta\in\mathbb F_p$.
 
-Let $D$ consist of the projective diagonal transformations
+Let $D$ consist of projective diagonal maps
 $$
 [X:Y:Z]\mapsto[\zeta^aX:\zeta^bY:\zeta^cZ]
 $$
-for which
+with
 $$
 a+b+c\equiv0\pmod3.
 $$
-Subtracting $c$ from all three exponents gives the unique affine representative
+Adding the same residue to $a,b,c$ does not change the projective map and preserves the congruence. There are
 $$
-[X:Y:Z]\mapsto[\zeta^rX:\zeta^sY:Z],
-\qquad
-r+s\equiv0\pmod3.
+\frac{12^3/3}{12}=48
 $$
-There are $9$ choices for $r$ and $3$ choices for $s$, so
-$$
-|D|=27.
-$$
+elements in $D$.
 
-The condition on $a+b+c$ is symmetric in the coordinates, so $S_3$ normalizes $D$. Set
+Coordinate permutations normalize $D$. Set
 $$
 H=D\rtimes S_3.
 $$
 Then
 $$
-|H|=27\cdot6=162.
+|H|=48\cdot6=288.
 $$
 
-In homogeneous coordinates the two given functions are
+In homogeneous form,
 $$
 u=
-\frac{X^9Y^9+Y^9Z^9+Z^9X^9}
-{(X^9+Y^9+Z^9)^2},
+\frac{X^{12}Y^{12}+Y^{12}Z^{12}+Z^{12}X^{12}}
+{(X^{12}+Y^{12}+Z^{12})^2},
 $$
 $$
 v=
-\frac{(XYZ)^3}{X^9+Y^9+Z^9}.
+\frac{(XYZ)^4}{X^{12}+Y^{12}+Z^{12}}.
 $$
-Every coordinate permutation fixes them. A diagonal element fixes every ninth power, while the numerator of $v$ is multiplied by
+Every coordinate permutation fixes these functions. For a diagonal element of $D$, the numerator of $v$ is multiplied by
 $$
-\zeta^{3(a+b+c)}=1.
+\zeta^{4(a+b+c)}=1,
 $$
-Therefore
+while all twelfth powers are fixed. Therefore
 $$
 K_p\subseteq L^H.
 $$
@@ -59,15 +54,13 @@ Step 2: Prove that the stated generators give the full fixed field
 
 Put
 $$
-S=X^9+Y^9+Z^9
+S=X^{12}+Y^{12}+Z^{12}
 $$
 and
 $$
-\alpha=\frac{X^9}{S},
-\qquad
-\beta=\frac{Y^9}{S},
-\qquad
-\gamma=\frac{Z^9}{S}.
+\alpha=\frac{X^{12}}S,\qquad
+\beta=\frac{Y^{12}}S,\qquad
+\gamma=\frac{Z^{12}}S.
 $$
 Then
 $$
@@ -80,44 +73,44 @@ and
 $$
 \alpha\beta\gamma=v^3.
 $$
-Hence $\alpha,\beta,\gamma$ are the roots of
+Thus $\alpha,\beta,\gamma$ are the roots of
 $$
 T^3-T^2+uT-v^3.
 $$
-There are at most six possible orderings of these roots.
+There are at most six orderings of the three roots.
 
-On the chart $Z=1$,
+On the affine chart $Z=1$,
 $$
-x^9=\frac{\alpha}{\gamma},
+x^{12}=\frac{\alpha}{\gamma},
 \qquad
-y^9=\frac{\beta}{\gamma},
+y^{12}=\frac{\beta}{\gamma},
 \qquad
-(xy)^3=\frac{v}{\gamma}.
+(xy)^4=\frac v\gamma.
 $$
-After an ordering is chosen, there are at most nine choices for $x$. Once $x$ is chosen,
+After an ordering is fixed, there are at most twelve choices for $x$. Once $x$ is chosen,
 $$
-y^3=\frac{v}{\gamma x^3},
+y^4=\frac{v}{\gamma x^4},
 $$
-so there are at most three choices for $y$. Therefore
+so there are at most four choices for $y$. Cubing this identity gives the already prescribed value of $y^{12}$ because
 $$
-[L:K_p]\leq6\cdot9\cdot3=162.
+v^3=\alpha\beta\gamma.
 $$
-The group $H$ supplies $162$ distinct automorphisms fixing $K_p$, so
+Therefore
 $$
-[L:K_p]\geq162.
+[L:K_p]\leq6\cdot12\cdot4=288.
 $$
-Consequently
+The group $H$ supplies $288$ distinct automorphisms fixing $K_p$, so
 $$
-[L:K_p]=162
+[L:K_p]=288
 $$
 and
 $$
 K_p=L^H.
 $$
 
-Step 3: Count the fixed points of the nonidentity diagonal elements
+Step 3: Count the ramified diagonal elements
 
-The Fermat curve has genus
+The Fermat curve has
 $$
 g(C)=\frac{(n-1)(n-2)}2,
 $$
@@ -125,105 +118,105 @@ so
 $$
 2g(C)-2=n(n-3).
 $$
-Since $p\nmid162$, the quotient by $H$ is tame.
+Since $p\nmid288$, the quotient by $H$ is tame.
 
-Use the affine representative
+Represent an element of $D$ as
 $$
 d_{r,s}[X:Y:Z]=[\zeta^rX:\zeta^sY:Z],
 \qquad
 r+s\equiv0\pmod3.
 $$
-A nonidentity diagonal element can fix a point of $C$ only when two of its three eigenvalues are equal, because no coordinate point lies on $C$.
+A nonidentity diagonal element fixes a point of $C$ only when two of
+$$
+\zeta^r,\qquad\zeta^s,\qquad1
+$$
+are equal, because none of the three coordinate points lies on $C$.
 
-The condition $\zeta^r=1$ gives
+If $r=0$, then
 $$
-r=0,\qquad s\in\{3,6\},
+s\in\{3,6,9\}.
 $$
-so there are two nonidentity elements fixing the line $Y,Z$. Similarly, two elements satisfy $s=0$ and fix the line $X,Z$.
+This gives three elements. The case $s=0$ gives three more. Finally, $r=s$ together with $r+s\equiv0\pmod3$ gives
+$$
+r=s\in\{3,6,9\},
+$$
+giving three more.
 
-Finally,
+Each of these nine elements fixes one projective coordinate line. Its intersection with $C$ consists of exactly $n$ distinct points. The remaining nonidentity diagonal elements have no fixed points. Their total contribution is
 $$
-\zeta^r=\zeta^s
-$$
-means $r=s$. Together with $r+s\equiv0\pmod3$, this gives
-$$
-r=s\in\{3,6\},
-$$
-so two further elements fix the line $X,Y$.
-
-Each coordinate line meets $C$ in exactly $n$ distinct points because $p\nmid n$. Hence the six ramified diagonal elements contribute
-$$
-6n.
+9n.
 $$
 
-Step 4: Count the fixed points of the transposition cosets
+Step 4: Separate the three fixed-point types above a transposition
 
-Consider the transposition exchanging $X$ and $Y$. An element of its coset has the form
+Let $\tau$ exchange $X$ and $Y$. An element of the coset $D\tau$ has the form
 $$
 g_{r,s}[X:Y:Z]=[\zeta^rY:\zeta^sX:Z],
 \qquad
 r+s\equiv0\pmod3.
 $$
-On the $X,Y$ block its eigenvalues satisfy
+The eigenvalues on the $X,Y$ block satisfy
 $$
 \lambda^2=\zeta^{r+s}.
 $$
 
-If
-$$
-r+s\equiv0\pmod9,
-$$
-the eigenvalues are $1$ and $-1$. The $1$-eigenspace together with the $Z$-axis forms a projective line. Its intersection with $C$ has exactly $n$ points. The isolated $-1$ eigenline lies in $Z=0$, where the Fermat equation would give
-$$
-X^n+Y^n=2X^n\neq0
-$$
-because $n$ is even. Thus such an element fixes exactly $n$ points.
-
-If
-$$
-r+s\not\equiv0\pmod9,
-$$
-the three projective eigenlines are isolated. The $Z$-axis is not on $C$. For either eigenline in $Z=0$,
-$$
-\frac{Y^n}{X^n}=\lambda^n.
-$$
 Write
 $$
-n=18M.
+n=12M.
 $$
-Then
-$$
-\lambda^n=(\lambda^2)^{n/2}
-=\zeta^{(r+s)9M}=1.
-$$
-The Fermat equation again gives $2X^n\neq0$. Hence these elements have no fixed points.
+The congruence $p\equiv13\pmod{24}$ makes $M$ odd.
 
-Among the $27$ pairs $(r,s)$ with $r+s\equiv0\pmod3$, exactly $9$ satisfy
+There are twelve pairs $(r,s)$ for each possible residue
 $$
-r+s\equiv0\pmod9.
-$$
-Therefore one transposition coset contributes
-$$
-9n.
-$$
-There are three transpositions, so all transposition cosets contribute
-$$
-27n.
+r+s\equiv0,3,6,9\pmod{12}.
 $$
 
-Step 5: Eliminate the three-cycle cosets and apply Riemann-Hurwitz
+If $r+s\equiv0\pmod{12}$, the block has eigenvalue $1$. Its $1$-eigenline together with the $Z$-axis gives a projective line, and substitution into the Fermat equation gives exactly $n$ fixed points.
 
-Take the coordinate cycle
+Suppose next that $r+s\not\equiv0\pmod{12}$. The two block eigenlines lie in $Z=0$. On either eigenline,
+$$
+\left(\frac YX\right)^n=\lambda^n
+=
+(\lambda^2)^{n/2}
+=
+\zeta^{6M(r+s)}
+=
+(-1)^{M(r+s)}.
+$$
+Since $M$ is odd, this equals $-1$ when
+$$
+r+s\equiv3,9\pmod{12},
+$$
+so both eigenlines lie on $C$. Such an element fixes exactly two points.
+
+When
+$$
+r+s\equiv6\pmod{12},
+$$
+the same expression equals $1$, so neither eigenline lies on $C$.
+
+One transposition coset therefore contributes
+$$
+12n+12\cdot2+12\cdot2=12n+48.
+$$
+There are three transpositions, giving
+$$
+36n+144.
+$$
+
+Step 5: Exclude three-cycle ramification and apply Riemann-Hurwitz
+
+Let
 $$
 c[X:Y:Z]=[Y:Z:X].
 $$
-An element of the coset $Dc$ can be written
+An element of $Dc$ can be written
 $$
 g[X:Y:Z]=[\zeta^rY:\zeta^sZ:X],
 \qquad
 r+s\equiv0\pmod3.
 $$
-If $[X:Y:Z]$ is fixed, all three coordinates are nonzero and for some eigenvalue $\lambda$,
+At a fixed point all coordinates are nonzero. If $\lambda$ is the corresponding eigenvalue, then
 $$
 \lambda^3=\zeta^{r+s}.
 $$
@@ -233,61 +226,53 @@ Y^n=\lambda^nX^n,
 \qquad
 Z^n=\lambda^{2n}X^n.
 $$
-Since $n=18M$,
+Since $n=12M$,
 $$
-\lambda^n=(\lambda^3)^{6M}
-=\zeta^{6M(r+s)}.
+\lambda^n=(\lambda^3)^{4M}
+=\zeta^{4M(r+s)}=1
 $$
-The congruence $r+s\equiv0\pmod3$ makes the exponent divisible by $9$, so
-$$
-\lambda^n=1.
-$$
-The Fermat equation would then give
+because $3\mid r+s$. The Fermat equation would then give
 $$
 3X^n=0,
 $$
-which is impossible because $p\neq3$. Thus no element of $Dc$ fixes a point. The same argument applies to $Dc^2$.
+which is impossible. Thus no element of $Dc$ has a fixed point. The same applies to $Dc^2$.
 
-The total fixed-point contribution from all nonidentity elements of $H$ is therefore
+The full fixed-point contribution is
 $$
-6n+27n=33n.
+R=9n+36n+144=45n+144.
 $$
 Tame Riemann-Hurwitz gives
 $$
-n(n-3)=162(2g(K_p)-2)+33n.
-$$
-Hence
-$$
-162(2g(K_p)-2)=n(n-36).
-$$
-With
-$$
-n=18M,
-$$
-we obtain
-$$
-2g(K_p)-2=2M(M-2).
+n(n-3)=288(2g(K_p)-2)+45n+144.
 $$
 Therefore
 $$
-g(K_p)=(M-1)^2.
+288(2g(K_p)-2)=n^2-48n-144.
+$$
+Using $n=12M$,
+$$
+2g(K_p)-2=\frac{M^2-4M-1}{2}.
+$$
+It follows that
+$$
+g(K_p)=\frac{(M-1)(M-3)}4.
 $$
 Since
 $$
-M=\frac{p-1}{18},
+M=\frac{p-1}{12},
 $$
-we get
+we obtain
 $$
-g(K_p)=\left(\frac{p-19}{18}\right)^2.
+g(K_p)=\frac{(p-13)(p-37)}{576}.
 $$
 
-Final Answer: $\boxed{\left(\frac{p-19}{18}\right)^2}$
+Final Answer: $\boxed{\frac{(p-13)(p-37)}{576}}$
 
 ---
 
 ## Answer
 
-$\left(\frac{p-19}{18}\right)^2$
+$\frac{(p-13)(p-37)}{576}$
 
 ---
 
@@ -302,7 +287,7 @@ $\left(\frac{p-19}{18}\right)^2$
 ## Solution Concepts
 
 - invariant subfields
-- diagonal group actions
-- semidirect products
-- fixed-point ramification
+- semidirect product actions
+- projective fixed points
+- tame ramification
 - Riemann-Hurwitz formula

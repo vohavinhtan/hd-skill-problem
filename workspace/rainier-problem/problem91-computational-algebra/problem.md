@@ -2,9 +2,9 @@
 
 ## LaTeX (Normalized)
 
-Let $p>19$ be a prime satisfying
+Let $p>37$ be a prime satisfying
 $$
-p\equiv1\pmod{18},
+p\equiv13\pmod{24},
 $$
 and put
 $$
@@ -18,9 +18,9 @@ x^n+y^n+1=0.
 $$
 Inside $L$, define
 $$
-u=\frac{x^9y^9+x^9+y^9}{(x^9+y^9+1)^2},
+u=\frac{x^{12}y^{12}+x^{12}+y^{12}}{(x^{12}+y^{12}+1)^2},
 \qquad
-v=\frac{x^3y^3}{x^9+y^9+1},
+v=\frac{x^4y^4}{x^{12}+y^{12}+1},
 $$
 and let
 $$
@@ -46,12 +46,12 @@ Determine the genus of $K_p$ as an exact expression in $p$.
 
 This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves quotient curves, ramification, and genus,
+The problem also involves quotient curves, tame ramification, and genus calculations,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct the hidden fixed field from the stated rational generators and determine the ramification of its finite algebraic quotient.
+However, the main task is to reconstruct the hidden semidirect-product fixed field from the stated generators and determine its nonuniform ramification.
 
 Specifically:
 
-- The generators determine symmetric functions of normalized ninth powers but retain a cubic root of the third elementary symmetric function.
-- Recovering the fixed field requires identifying a nontrivial diagonal subgroup and its permutation normalizer rather than passing directly to a lower-degree Fermat curve.
-- The genus calculation requires separate fixed-point analyses for diagonal elements, transposition cosets, and three-cycle cosets.
+- The generators recover normalized twelfth powers but retain a cubic root of their third elementary symmetric function.
+- The resulting diagonal subgroup is not the full group of independent twelfth-root scalings, so the problem does not reduce directly to a lower-degree Fermat curve.
+- Elements above a transposition split into three different fixed-point types, and that split is needed for the genus.
