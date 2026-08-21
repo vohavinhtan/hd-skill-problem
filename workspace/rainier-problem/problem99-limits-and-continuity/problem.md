@@ -2,37 +2,24 @@
 
 ## LaTeX (Normalized)
 
-Let
+For $0<t<1$ and each integer $k\geq0$, define
 $$
-P(y)=y+y^2+y^3.
-$$
-Let $f:(1,\infty)\to\mathbb{R}$ be continuous and satisfy
-$$
-f(e)=0.
-$$
-For every $x>1$, put
-$$
-t=\log x,
-\qquad
-\rho=t^2\left((\log t)^2+\log t\right).
-$$
-Suppose
-$$
-P\left(f\left(e^{t^2}\right)\right)-4t^2P(f(x))
-=
--2t^4\log t
+I_k(t)=\int_0^1 x^k\exp\left(-\frac{x(1-x)}{t}\right)\,dx
 $$
 and
 $$
-t^4P\left(f\left(e^{2/t}\right)\right)+4P(f(x))
-=
-4t^2\left(\left(\log\frac{2}{t}\right)^2+(\log t)^2+\log2\right).
+M_k(t)=\frac{I_k(t)}{I_0(t)}.
+$$
+For $r\in\{4,5\}$, put
+$$
+\Delta_r(t)=\det\left(M_{i+j}(t)\right)_{0\leq i,j\leq r-1}.
 $$
 Determine
 $$
-\lim_{x\to1^+}
-\frac{f(x)-\rho+\rho^2-\rho^3}
-{(x-1)^{10}(\log(x-1))^{10}}.
+\lim_{t\to0^+}
+\frac{
+\displaystyle\frac{\Delta_5(t)}{\Delta_4(t)^2}-64-1024t
+}{t^2}.
 $$
 
 ---
@@ -50,6 +37,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a one-sided limit whose asymptotic behavior is fixed by continuity and two nonlinear functional identities, which are part of Calculus and Limits and continuity.
-The problem also involves logarithmic coordinates, dilation-reflection rigidity, and inversion of a polynomial change of variable, which are part of Algebra, Functions, and Trigonometry and Functions and graphs.
-However, those algebraic structures are used to determine the endpoint expansion required by the stated limit, so limits and continuity are the primary content.
+This problem involves a singular one-sided limit obtained from moment determinants whose leading orders vanish as the underlying measure concentrates at two endpoints, which are part of Calculus and Limits and continuity.
+The problem also involves Gram determinants, symmetry of moments, and changes of polynomial basis, which are part of Linear Algebra and Determinants.
+However, those determinant identities only expose the cancellations needed before the endpoint asymptotics can be evaluated, so the limiting analysis is primary.
