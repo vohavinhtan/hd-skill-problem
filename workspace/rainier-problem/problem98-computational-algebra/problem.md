@@ -46,18 +46,20 @@ $$
 V+2^n(I_6-P)-(e_0-e_2)(e_4+e_5)^T
 \right)x.
 $$
-Let
+Define
 $$
-\pi:\Lambda\longrightarrow\mathbb Z^2,
-\qquad
 \pi(x)=(x_1,x_3),
+\qquad
+\rho(x)=(x_1+x_2,x_3+x_4),
 $$
-and define
+and let
 $$
 H_n=
 \left\{
 y\in\Lambda:
-\pi(y)\in\pi(\Psi_n(\Lambda))
+\pi(y)\in\pi(\Psi_n(\Lambda)),
+\quad
+\rho(y)\in\rho(\Psi_n(\Lambda))
 \right\}.
 $$
 Regard $\Psi_n$ as a homomorphism
@@ -81,4 +83,4 @@ Determine its Smith normal form over $\mathbb Z$.
 
 ## Domain Explanation
 
-This problem involves constructing relative presentation matrices for finite-index lattices and determining Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the lattice homomorphism, while the requested object is its canonical integer normal form after changing the codomain lattice.
+This problem involves intersecting projected-image conditions for finite-index lattices and determining a relative Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the lattice homomorphism, while the requested object is its canonical integer normal form after the codomain lattice is reconstructed.
