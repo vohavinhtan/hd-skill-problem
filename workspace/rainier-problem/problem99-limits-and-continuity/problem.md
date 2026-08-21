@@ -2,29 +2,31 @@
 
 ## LaTeX (Normalized)
 
-Let $f:(1,\infty)\to\mathbb{R}$ be continuous and satisfy $f(e)=0$. For every $x>1$, put
+Let $f:(1,\infty)\to\mathbb{R}$ be continuous and satisfy
+$$
+f(e)=0,\qquad f(e^2)=1.
+$$
+For every $x>1$, put
 $$
 t=\log x.
 $$
 Suppose
 $$
-f(x^2)+2t f(x^2)^2
-=
-8f(x)+8t f(x)^2-4t^2+8t^4
+f(x^4)+2t f(x^4)^2-6f(x^2)-6t f(x^2)^2+8f(x)+4t f(x)^2=24t^3
 $$
 and
 $$
-f(x^3)+3t f(x^3)^2
-=
-27f(x)+27t f(x)^2-18t^2+54t^4.
+f(x^9)+\frac{9}{2}t f(x^9)^2-12f(x^3)-18t f(x^3)^2
++27f(x)+\frac{27}{2}t f(x)^2=432t^3.
 $$
 Determine
 $$
 \lim_{x\to1^+}
 \frac{
-f(x)-(x-1)^2+3(x-1)^3-\frac{59}{12}(x-1)^4
+f(x)-(x-1)+\frac{5}{2}(x-1)^2-\frac{17}{6}(x-1)^3
++\frac{5}{6}(x-1)^4+\frac{451}{120}(x-1)^5
 }{
-(x-1)^5
+(x-1)^6
 }.
 $$
 
@@ -43,6 +45,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a one-sided limit whose value is determined by continuity together with two nonlinear dilation relations, which are part of Calculus and Limits and continuity.
-The problem also involves logarithmic rescaling, a nonlinear change of dependent variable, and multiplicative-period rigidity, which are part of Algebra, Functions, and Trigonometry and Exponential and logarithmic functions.
-However, those algebraic operations are needed to determine the unique function before its local expansion can be evaluated, so the limiting calculation remains the primary content.
+This problem involves a sixth-order one-sided limit whose local data must first be recovered from two dilation equations, which are part of Calculus and Limits and continuity.
+The problem also involves nonlinear changes of dependent variable, coupled second-order dilation recurrences, and irrational multiplicative periods, which are part of Algebra, Functions, and Trigonometry and Sequences and elementary recurrence relations.
+However, those recurrence arguments determine the unique function needed for the endpoint expansion, while the requested object itself is a limit.
