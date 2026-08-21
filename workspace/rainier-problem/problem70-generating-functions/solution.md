@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Reduce the trace to a recurrence product and an imbalance term
+Step 1: Reduce the trace to a recurrence product
 
 Since $\det P=\det Q=1$,
 $$
@@ -15,363 +15,328 @@ $$
 \Delta^2=\tau^2-4.
 $$
 
-In an eigenbasis of $X$, write
+Write
 $$
-D=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix},
-\qquad
-z=\beta\gamma,
-\qquad
-p=\alpha\delta.
+D=
+\begin{pmatrix}
+\alpha&\beta\\
+\gamma&\delta
+\end{pmatrix}
+$$
+in an eigenbasis of $X$, and put
+$$
+z=\beta\gamma,\qquad p=\alpha\delta.
 $$
 Since $\det D=1$,
 $$
 p-z=1.
 $$
 
-Multiplication of the displayed matrices gives
+From
 $$
-\operatorname{tr}D=\tau^2-r^4-2,
+X^2-D=
+\begin{pmatrix}
+r^4-r^2&r^3\\
+r^3&r^2
+\end{pmatrix},
 $$
+we obtain
 $$
-\operatorname{tr}(DX)=\tau(\tau^2-r^4-3),
+\operatorname{tr}D=\tau^2-r^4-2
 $$
 and
 $$
-\operatorname{tr}(DX^{-1})=\tau.
+\operatorname{tr}(DX)=\tau(\tau^2-r^4-3).
 $$
-These identities imply
+The Fricke identity gives
+$$
+\operatorname{tr}(DXD^{-1}X^{-1})
+=
+(\operatorname{tr}D)^2+\tau^2+\operatorname{tr}(DX)^2
+-\tau\operatorname{tr}D\operatorname{tr}(DX)-2.
+$$
+Substitution yields
+$$
+\operatorname{tr}(DXD^{-1}X^{-1})=2-\chi.
+$$
+
+On the other hand, direct multiplication in the eigenbasis gives
+$$
+\operatorname{tr}(DXD^{-1}X^{-1})=2-z\Delta^2.
+$$
+Hence
 $$
 z=\frac{\chi}{\Delta^2},
 \qquad
-p=1+\frac{\chi}{\Delta^2}.
+p=1+\frac{\chi}{\Delta^2},
 $$
-Consequently
+and therefore
 $$
 pz\Delta^4
 =\chi(\Delta^2+\chi)
 =\rho.
 $$
 
-Put
+Define
 $$
-L_j=\lambda^j+\lambda^{-j},
-$$
-and define
-$$
-f_0=0,\qquad f_1=1,\qquad
+f_0=0,\qquad
+f_1=1,\qquad
 f_{j+1}=\tau f_j-f_{j-1}.
 $$
 Then
 $$
-f_j=\frac{\lambda^j-\lambda^{-j}}{\Delta}.
+f_j=\frac{\lambda^j-\lambda^{-j}}{\Delta},
+\qquad
+\ell_j=\lambda^j+\lambda^{-j}.
 $$
 
-Expanding the four occurrences of $D^{\pm1}$ in the eigenbasis gives
+Expanding the trace in the eigenbasis gives
 $$
 T_k(a,b,c,d)
 =
-pL_{4k}
--zL_{a+c-b-d}
-+pz(L_{a+c}-L_{a-c})(L_{b+d}-L_{b-d}).
+p\ell_{4k}
+-z\ell_{a+c-b-d}
++pz(\ell_{a+c}-\ell_{a-c})(\ell_{b+d}-\ell_{b-d}).
 $$
-The identity
-$$
-L_{x+y}-L_{x-y}=\Delta^2f_xf_y
-$$
-therefore yields
-$$
-T_k(a,b,c,d)
-=
-pL_{4k}
-+\rho f_af_bf_cf_d
--\frac{\chi}{\Delta^2}L_{a+c-b-d}.
-$$
-
-Step 2: Determine the three largest recurrence products
-
-For integers $x\geq y+2$,
-$$
-f_{x-1}f_{y+1}-f_xf_y=f_{x-y-1}>0.
-$$
-A transfer of one unit from a larger index to a smaller index increases the product whenever the four indices remain distinct. Hence
-$$
-f_af_bf_cf_d
-$$
-is strictly increased by every legal balancing move.
-
-Center an admissible quadruple at its average and write its deviations in decreasing order as
-$$
-(d-k,c-k,b-k,a-k)=(x_1,x_2,x_3,x_4).
-$$
-Then
-$$
-x_1>x_2>x_3>x_4,\qquad
-x_1+x_2+x_3+x_4=0.
-$$
-
-The least spread deviation vector is
-$$
-(2,1,-1,-2),
-$$
-corresponding to
-$$
-A=(k-2,k-1,k+1,k+2).
-$$
-There are two deviation vectors that can compete immediately below it:
-$$
-(3,0,-1,-2),
-\qquad
-(2,1,0,-3),
-$$
-corresponding to
-$$
-B=(k-2,k-1,k,k+3),
-$$
-and
-$$
-C=(k-3,k,k+1,k+2).
-$$
-
-To exclude every other vector, first note that four distinct integers of sum $0$ must satisfy $x_1\geq2$. Also $x_1+x_2\geq3$: if $x_1+x_2\leq2$, then $x_2\leq0$, $x_3\leq x_2-1$, and $x_4\leq x_2-2$, making the total sum negative.
-
-If $x_4\geq-2$, distinctness and zero sum force one of
-$$
-(2,1,-1,-2),
-\qquad
-(3,0,-1,-2).
-$$
-Therefore every vector other than those of $A$ and $B$ has
-$$
-x_4\leq-3.
-$$
-Its three leading partial sums consequently satisfy
-$$
-x_1\geq2,
-\qquad
-x_1+x_2\geq3,
-\qquad
-x_1+x_2+x_3=-x_4\geq3.
-$$
-Hence every such vector majorizes
-$$
-(2,1,0,-3).
-$$
-Repeated legal balancing moves therefore increase its recurrence product until $C$ is reached.
-
-Let $F_A,F_B,F_C$ denote the recurrence products at $A,B,C$. The identity
-$$
-f_{i+1}f_j-f_if_{j+1}=f_{j-i}
-$$
-gives
-$$
-F_A-F_B
-=
-\tau f_{k-2}f_{k-1},
-$$
-and
-$$
-F_A-F_C
-=
-\tau f_{k+1}f_{k+2}.
-$$
-Since $f_{k+1}f_{k+2}>f_{k-2}f_{k-1}$,
-$$
-F_A>F_B>F_C.
-$$
-Thus these are the three largest recurrence-product levels.
-
-Step 3: Show that the imbalance term does not alter the top three
-
-For $A$,
-$$
-a+c-b-d=-2.
-$$
-For both $B$ and $C$,
-$$
-a+c-b-d=-4.
-$$
-Therefore $B$ remains above $C$, since their imbalance penalties are equal.
-
-Any other admissible quadruple has recurrence product at most $F_C-1$, because all $f_j$ are positive integers. Its best possible imbalance penalty occurs when the imbalance is $0$, where $L_0=2$.
-
 Since
 $$
-L_4-2=\tau^2\Delta^2,
+\ell_{x+y}-\ell_{x-y}=\Delta^2f_xf_y,
 $$
 we obtain
 $$
-T_k(C)-T_k(a,b,c,d)
-\geq
-\rho-\chi\tau^2.
-$$
-Now
-$$
-\rho-\chi\tau^2
+T_k(a,b,c,d)
 =
-\chi(\chi-4).
+p\ell_{4k}
++\rho f_af_bf_cf_d
+-\frac{\chi}{\Delta^2}\ell_{a+c-b-d}.
+$$
+
+Step 2: Determine the three smallest trace values
+
+For integers $1\leq x<d$,
+$$
+f_xf_d-f_{x-1}f_{d+1}=f_{d-x}>0.
+$$
+Thus moving one unit from a smaller exponent to the largest exponent strictly decreases the recurrence product.
+
+Also
+$$
+a+c-b-d=(a-b)+(c-d)<0.
+$$
+If one unit is moved from $a$ to $d$, or from $c$ to $d$, this quantity decreases by $2$, so its absolute value increases and the negative trace term decreases. If one unit is moved from $b$ to $d$, the quantity is unchanged. Every such legal outward transfer therefore strictly decreases $T_k$.
+
+If $a>1$, transfer one unit from $a$ to $d$. If $a=1$ but $b>2$, transfer one unit from $b$ to $d$. If $a=1$, $b=2$, but $c>3$, transfer one unit from $c$ to $d$. Hence every admissible quadruple other than
+$$
+A=(1,2,3,4k-6)
+$$
+admits a trace-decreasing transfer. Thus $A$ gives the smallest value.
+
+Put
+$$
+s=(a-1)+(b-2)+(c-3).
+$$
+Every legal outward transfer decreases $s$ by $1$. The unique admissible state with $s=1$ is
+$$
+B=(1,2,4,4k-7),
+$$
+so $B$ gives the second smallest value.
+
+There are exactly two states with $s=2$:
+$$
+C=(1,2,5,4k-8),
+\qquad
+E=(1,3,4,4k-8).
+$$
+Let $d=4k-8$. Their recurrence products differ by
+$$
+f_3f_4f_d-f_2f_5f_d
+=
+\tau f_d.
+$$
+Their imbalance magnitudes are $d-2$ and $d-4$, respectively. Since
+$$
+\ell_{d-2}-\ell_{d-4}
+=
+\Delta^2f_{d-3},
+$$
+we get
+$$
+T_k(E)-T_k(C)
+=
+\rho\tau f_d-\chi f_{d-3}>0.
+$$
+Indeed $\rho>\chi$, $\tau>1$, and $f_d>f_{d-3}$.
+
+Every state with $s\geq3$ can be reduced by outward transfers to one of the two $s=2$ states, decreasing the trace at every step. Hence it lies above at least one of $C,E$, and both lie above $C$. Therefore
+$$
+M_{k,1}=T_k(A),\qquad
+M_{k,2}=T_k(B),\qquad
+M_{k,3}=T_k(C).
+$$
+
+Step 3: Compute the two trace gaps
+
+Put
+$$
+m=4k.
+$$
+For $A$ and $B$, the recurrence-product difference is
+$$
+\tau^2(\tau^2-2)f_{m-7}
+-\tau(\tau^2-1)f_{m-6}.
+$$
+Using
+$$
+f_{j+1}=\tau f_j-f_{j-1}
+$$
+twice reduces this to
+$$
+\tau f_{m-10}.
+$$
+The imbalance contribution is
+$$
+\frac{\chi}{\Delta^2}
+(\ell_{m-8}-\ell_{m-10})
+=
+\chi f_{m-9}.
+$$
+Thus
+$$
+M_{k,2}-M_{k,1}
+=
+\rho\tau f_{4k-10}
++\chi f_{4k-9}.
+$$
+
+For $A$ and $C$, the recurrence-product difference is
+$$
+\tau(\tau^4-3\tau^2+1)f_{m-8}
+-\tau(\tau^2-1)f_{m-6}.
+$$
+The recurrence reduces this to
+$$
+\tau^2f_{m-11}.
 $$
 Also
 $$
-\tau\geq6r^4,
+\frac{\chi}{\Delta^2}
+(\ell_{m-8}-\ell_{m-12})
+=
+\chi(f_{m-9}+f_{m-11})
+=
+\chi\tau f_{m-10}.
 $$
-so
+Hence
 $$
-\chi=r^4(\tau^2-r^4-4)>4.
+M_{k,3}-M_{k,1}
+=
+\rho\tau^2f_{4k-11}
++\chi\tau f_{4k-10}.
 $$
-Hence every trace below the $C$ recurrence-product level remains below $T_k(C)$.
 
-The three largest distinct trace values are therefore represented by $A,B,C$.
+Set
+$$
+j=4k-10.
+$$
+The required coefficient is
+$$
+(\rho\tau f_j+\chi f_{j+1})
+(\rho\tau^2f_{j-1}+\chi\tau f_j).
+$$
 
-Step 4: Compute the two trace gaps
+Step 4: Sum the coefficient sequence
 
-Put
+Using
 $$
-q_j=f_jf_{j+1}.
+\Delta^2f_uf_v=\ell_{u+v}-\ell_{u-v},
 $$
-From Step 2,
+we obtain
 $$
-F_A-F_B=\tau q_{k-2},
+\Delta^2
+(M_{k,2}-M_{k,1})(M_{k,3}-M_{k,1})
+=
+\rho^2\tau^3\ell_{2j-1}
++2\rho\chi\tau^2\ell_{2j}
++\chi^2\tau\ell_{2j+1}
+-K.
+$$
+Since $j=4k-10$, the three indices are
+$$
+8k-21,\qquad
+8k-20,\qquad
+8k-19.
+$$
+
+The identity
+$$
+\ell_{q+8}=\Theta\ell_q-\ell_{q-8}
+$$
+shows that
+$$
+\sum_{h=0}^{\infty}\ell_{11+8h}t^h
+=
+\frac{\ell_{11}-\ell_3t}{R(t)},
+$$
+$$
+\sum_{h=0}^{\infty}\ell_{12+8h}t^h
+=
+\frac{\ell_{12}-\ell_4t}{R(t)},
 $$
 and
 $$
-F_A-F_C=\tau q_{k+1}.
-$$
-Also
-$$
-L_4-L_2=\Delta^2f_3=\Delta^2\sigma.
-$$
-Using the imbalance values from Step 3 gives
-$$
-M_{k,1}-M_{k,2}
+\sum_{h=0}^{\infty}\ell_{13+8h}t^h
 =
-\rho\tau q_{k-2}+\chi\sigma,
+\frac{\ell_{13}-\ell_5t}{R(t)}.
 $$
-and
-$$
-M_{k,1}-M_{k,3}
-=
-\rho\tau q_{k+1}+\chi\sigma.
-$$
-
-Put
-$$
-h_j=\frac{q_j}{\tau}.
-$$
-Then
-$$
-h_0=0,\qquad h_1=1,
-$$
-and the recurrence for $f_j$ gives
-$$
-h_{j+2}=\omega h_{j+1}-h_j+1.
-$$
-
-With $j=k-4$, the coefficient of $t^j$ becomes
-$$
-\rho^2\tau^4h_{j+2}h_{j+5}
-+\rho\chi\tau^2\sigma(h_{j+2}+h_{j+5})
-+\chi^2\sigma^2.
-$$
-
-Step 5: Sum the shifted recurrence products
-
-Put
-$$
-y=\lambda^2.
-$$
-Then
-$$
-y+y^{-1}=\omega,
-$$
-and
-$$
-h_j
-=
-\frac{\lambda^{2j+1}+\lambda^{-(2j+1)}-\tau}
-{\tau\Delta^2}.
-$$
-
-For the linear shifted sum,
-$$
-h_{j+2}+h_{j+5}
-=
-\frac{
-(\lambda^5+\lambda^{11})y^j
-+(\lambda^{-5}+\lambda^{-11})y^{-j}
--2\tau
-}{\tau\Delta^2}.
-$$
-Summing the three geometric series and using
-$$
-(1-yt)(1-y^{-1}t)=Q(t)
-$$
-gives
-$$
-\sum_{j=0}^{\infty}(h_{j+2}+h_{j+5})t^j
-=
-\frac{V(t)}{(1-t)Q(t)}.
-$$
-
-For the product,
-$$
-h_{j+2}h_{j+5}
-=
-\frac{1}{\tau^2\Delta^4}
-\left(
-\lambda^{16}y^{2j}
-+\lambda^{-16}y^{-2j}
--\tau(\lambda^5+\lambda^{11})y^j
--\tau(\lambda^{-5}+\lambda^{-11})y^{-j}
-+L_6+\tau^2
-\right).
-$$
-Since
-$$
-(1-y^2t)(1-y^{-2}t)=R(t),
-$$
-summing these five geometric series over the common denominator gives
-$$
-\sum_{j=0}^{\infty}h_{j+2}h_{j+5}t^j
-=
-\frac{U(t)}{(1-t)Q(t)R(t)}.
-$$
-
-Substitution into the coefficient formula from Step 4 yields
+With $h=k-4$, the definition of $A(t)$ therefore gives
 $$
 \sum_{k=4}^{\infty}
-(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-4}
+(M_{k,2}-M_{k,1})(M_{k,3}-M_{k,1})t^{k-4}
 =
-\frac{
-\rho^2\tau^4U(t)
-+\rho\chi\tau^2\sigma V(t)R(t)
-+\chi^2\sigma^2Q(t)R(t)
-}
-{(1-t)Q(t)R(t)}.
+\frac{1}{\tau^2-4}
+\left(
+\frac{A(t)}{R(t)}
+-\frac{K}{1-t}
+\right).
+$$
+Combining the two terms yields
+$$
+\frac{(1-t)A(t)-KR(t)}
+{(\tau^2-4)(1-t)R(t)}.
 $$
 
-To see that the fraction is reduced, write each gap as a linear combination of
+To verify reducedness, write the two gaps as
 $$
-y^j,\qquad1,\qquad y^{-j}.
+\frac{a_+\lambda^j-a_-\lambda^{-j}}{\Delta},
+\qquad
+\frac{b_+\lambda^j-b_-\lambda^{-j}}{\Delta},
 $$
-The constant coefficient in either gap is
+where
 $$
-\chi\sigma-\frac{\rho\tau^2}{\Delta^2}
-=
--\chi\left(1+\frac{\tau^2\chi}{\Delta^2}\right)\neq0.
+a_+=\rho\tau+\chi\lambda,\qquad
+a_-=\rho\tau+\chi\lambda^{-1},
 $$
-The product sequence therefore has nonzero coefficients at all five modes
 $$
-y^{2j},\qquad y^j,\qquad1,\qquad y^{-j},\qquad y^{-2j}.
+b_+=\rho\tau^2\lambda^{-1}+\chi\tau,\qquad
+b_-=\rho\tau^2\lambda+\chi\tau.
 $$
-No factor among $(1-t)$, $Q(t)$, and $R(t)$ cancels.
+All four quantities are positive. Their product therefore has nonzero coefficients at the three modes
+$$
+\lambda^{2j},\qquad1,\qquad\lambda^{-2j}.
+$$
+As $j$ increases by $4$, these give the three distinct characteristic roots
+$$
+\lambda^8,\qquad1,\qquad\lambda^{-8}.
+$$
+Thus neither $(1-t)$ nor $R(t)$ cancels.
 
-Final Answer: $\boxed{\frac{\rho^2\tau^4U(t)+\rho\chi\tau^2\sigma V(t)R(t)+\chi^2\sigma^2Q(t)R(t)}{(1-t)Q(t)R(t)}}$
+Final Answer: $\boxed{\frac{(1-t)A(t)-KR(t)}{(\tau^2-4)(1-t)R(t)}}$
 
 ---
 
 ## Answer
 
-$\frac{\rho^2\tau^4U(t)+\rho\chi\tau^2\sigma V(t)R(t)+\chi^2\sigma^2Q(t)R(t)}{(1-t)Q(t)R(t)}$
+$\frac{(1-t)A(t)-KR(t)}{(\tau^2-4)(1-t)R(t)}$
 
 ---
 
@@ -386,7 +351,7 @@ $\frac{\rho^2\tau^4U(t)+\rho\chi\tau^2\sigma V(t)R(t)+\chi^2\sigma^2Q(t)R(t)}{(1
 ## Solution Concepts
 
 - spectral trace expansion
-- recurrence-product balancing
-- majorization of integer compositions
-- shifted recurrence products
+- outward transfer ordering
+- extremal integer compositions
+- recurrence product identities
 - rational generating functions

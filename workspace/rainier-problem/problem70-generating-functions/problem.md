@@ -18,13 +18,34 @@ $$
 =n(n+1)r^4+(4n+2)r^2+2,
 $$
 $$
-\omega=\tau^2-2,\qquad
-\sigma=\tau^2-1,
-$$
-$$
 \chi=r^4(\tau^2-r^4-4),
 \qquad
 \rho=\chi(\tau^2-4+\chi).
+$$
+
+Define
+$$
+\ell_0=2,\qquad
+\ell_1=\tau,\qquad
+\ell_{j+1}=\tau\ell_j-\ell_{j-1},
+$$
+and put
+$$
+\Theta=\ell_8,
+\qquad
+R(t)=1-\Theta t+t^2.
+$$
+Also put
+$$
+K=\rho^2\tau^4+\rho\chi\tau^4+\chi^2\tau^2,
+$$
+and
+$$
+A(t)
+=
+\rho^2\tau^3(\ell_{11}-\ell_3t)
++2\rho\chi\tau^2(\ell_{12}-\ell_4t)
++\chi^2\tau(\ell_{13}-\ell_5t).
 $$
 
 For each integer $k\geq4$ and each quadruple of positive integers
@@ -42,42 +63,14 @@ $$
 
 Let
 $$
-M_{k,1}>M_{k,2}>M_{k,3}
+M_{k,1}<M_{k,2}<M_{k,3}
 $$
-be the three largest distinct values among all such $T_k(a,b,c,d)$.
-
-For compactness, put
-$$
-c_0=\omega^2+\omega-1,\qquad
-c_1=\omega c_0+1,
-$$
-$$
-Q(t)=1-\omega t+t^2,
-\qquad
-R(t)=1-(\omega^2-2)t+t^2,
-$$
-$$
-U(t)
-=
-(\omega-1)\sigma^2c_0
--(\omega-1)\sigma^2c_1t
-+\omega^2c_0^2t^2
--\omega c_0^2t^3
-+\omega c_0t^4,
-$$
-and
-$$
-V(t)
-=
-\sigma(\omega^3-2\omega+2)
--\sigma(\omega^3+\omega^2-2\omega+1)t
-+c_1t^2.
-$$
+be the three smallest distinct values among all such $T_k(a,b,c,d)$.
 
 Determine, in reduced rational form, the ordinary generating function
 $$
 \sum_{k=4}^{\infty}
-(M_{k,1}-M_{k,2})(M_{k,1}-M_{k,3})t^{k-4}.
+(M_{k,2}-M_{k,1})(M_{k,3}-M_{k,1})t^{k-4}.
 $$
 
 ---
@@ -97,4 +90,4 @@ $$
 
 This problem involves extremal values over strictly ordered integer compositions and the derivation of their ordinary generating function, which are part of Discrete Mathematics and Combinatorics, specifically Generating functions.
 The problem also involves matrix traces, eigenvalues, and products of unimodular matrices, which are part of Linear Algebra, specifically Eigenvalues and eigenvectors.
-However, the matrix analysis determines the ranked coefficient sequence, while the requested final object is its reduced rational generating function.
+However, the matrix analysis determines the three extremal coefficient levels, while the requested final object is their reduced rational generating function.
