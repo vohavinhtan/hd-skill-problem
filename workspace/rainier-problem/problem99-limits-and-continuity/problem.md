@@ -4,13 +4,13 @@
 
 For $0<t<1$ and each integer $k\geq0$, define
 $$
-I_k(t)=\int_0^1 x^k\exp\left(-\frac{x(1-x)}{t}\right)\,dx
+I_k(t)=\int_0^1x^{k+1}\exp\left(-\frac{x(1-x)}{t}\right)\,dx
 $$
 and
 $$
 M_k(t)=\frac{I_k(t)}{I_0(t)}.
 $$
-For $r\in\{4,5\}$, put
+For $r\in\{3,5\}$, put
 $$
 \Delta_r(t)=\det\left(M_{i+j}(t)\right)_{0\leq i,j\leq r-1}.
 $$
@@ -18,8 +18,8 @@ Determine
 $$
 \lim_{t\to0^+}
 \frac{
-\displaystyle\frac{\Delta_5(t)}{\Delta_4(t)^2}-64-1024t
-}{t^2}.
+\displaystyle\frac{\Delta_5(t)}{\Delta_3(t)^2}-8t^4
+}{t^6}.
 $$
 
 ---
@@ -37,6 +37,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a singular one-sided limit obtained from moment determinants whose leading orders vanish as the underlying measure concentrates at two endpoints, which are part of Calculus and Limits and continuity.
-The problem also involves Gram determinants, symmetry of moments, and changes of polynomial basis, which are part of Linear Algebra and Determinants.
-However, those determinant identities only expose the cancellations needed before the endpoint asymptotics can be evaluated, so the limiting analysis is primary.
+This problem involves a singular one-sided limit of moment determinants for a measure whose mass concentrates near two endpoints at unequal weights, which are part of Calculus and Limits and continuity.
+The problem also involves Gram determinants, non-orthogonal parity components, and a change of polynomial basis, which are part of Linear Algebra and Determinants.
+However, those determinant structures expose the cancellations needed to obtain the endpoint asymptotics, while the requested object itself is an exact limit.

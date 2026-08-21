@@ -1,11 +1,10 @@
 ## Steps
 
-Step 1: Replace the endpoint problem by moments of one small variable
+Step 1: Express the asymmetric moments through a symmetric reference measure
 
-Normalize the positive measure
+Let $\mu_t$ be the probability measure with density proportional to
 $$
-d\mu_t(x)=\frac{1}{I_0(t)}
-\exp\left(-\frac{x(1-x)}{t}\right)\,dx.
+x\exp\left(-\frac{x(1-x)}{t}\right).
 $$
 Then
 $$
@@ -13,255 +12,344 @@ M_k(t)=\int_0^1x^k\,d\mu_t(x).
 $$
 Put
 $$
-z=x(1-x)
+S=2X-1.
 $$
-and write
+Let $\overline{\mu}_t$ be the probability measure with density proportional to
 $$
-m_j(t)=\int_0^1z^j\,d\mu_t(x).
+\exp\left(-\frac{x(1-x)}{t}\right).
 $$
-
-The two branches of $z=x(1-x)$ give
+Symmetry under $x\mapsto1-x$ gives
 $$
-J_j(t):=\int_0^1z^j e^{-z/t}\,dx
+\int_0^1x e^{-x(1-x)/t}\,dx
 =
-2\int_0^{1/4}\frac{z^je^{-z/t}}{\sqrt{1-4z}}\,dz,
+\frac12\int_0^1e^{-x(1-x)/t}\,dx.
 $$
-with
+Since $2x=1+S$,
 $$
-m_j(t)=\frac{J_j(t)}{J_0(t)}.
-$$
-
-Near $z=0$,
-$$
-\frac{1}{\sqrt{1-4z}}
+\mathbb E_{\mu_t}[\varphi(S)]
 =
-1+2z+6z^2+20z^3+70z^4+O(z^5).
-$$
-For any fixed $\eta\in(0,1/4)$, the part of the integral over $[\eta,1/4]$ is $O(e^{-\eta/t})$. On $[0,\eta]$, insert the displayed Taylor expansion and use
-$$
-\int_0^\infty z^me^{-z/t}\,dz=m!t^{m+1}.
-$$
-This yields the expansions needed below:
-$$
-m_1=t+2t^2+20t^3+O(t^4),
-$$
-$$
-m_2=2t^2+8t^3+104t^4+O(t^5),
-$$
-$$
-m_3=6t^3+36t^4+576t^5+O(t^6),
-$$
-$$
-m_4=24t^4+192t^5+3648t^6+O(t^7).
+\mathbb E_{\overline{\mu}_t}[(1+S)\varphi(S)].
 $$
 
-Step 2: Factor the two Hankel determinants by symmetry
+Write
+$$
+\nu_j=\mathbb E_{\overline{\mu}_t}[S^{2j}].
+$$
+Odd moments vanish under $\overline{\mu}_t$, so
+$$
+\mathbb E_{\mu_t}[S^{2j}]=\nu_j,
+$$
+while
+$$
+\mathbb E_{\mu_t}[S^{2j+1}]
+=
+\mathbb E_{\overline{\mu}_t}[S^{2j+2}]
+=
+\nu_{j+1}.
+$$
+
+Let $H_r$ be the order-$r$ moment determinant for $S$ under $\mu_t$. The affine change $S=2X-1$ has triangular change-of-basis matrix with diagonal
+$$
+1,2,2^2,\ldots,2^{r-1}.
+$$
+Therefore
+$$
+H_r=2^{r(r-1)}\Delta_r
+$$
+and
+$$
+\frac{\Delta_5}{\Delta_3^2}
+=
+\frac{1}{256}\frac{H_5}{H_3^2}.
+$$
+
+Step 2: Block-diagonalize the odd-order determinants
 
 Put
 $$
-y=x-\frac12.
+W=1-S^2=4X(1-X)
 $$
-Changing the polynomial basis from
+and define symmetric moments
 $$
-1,x,x^2,\ldots
-$$
-to
-$$
-1,y,y^2,\ldots
-$$
-uses a unit triangular matrix, so it does not change any Gram determinant $\Delta_r$.
-
-The measure $\mu_t$ is invariant under $x\mapsto1-x$, hence all odd moments of $y$ vanish. Also
-$$
-y^2=\frac14-z.
+\lambda_j=\mathbb E_{\overline{\mu}_t}[W^j].
 $$
 
-For $r=4$, reorder the basis as
+For $H_3$, reorder the basis $1,S,S^2$ as $1,S^2,S$ and replace $S$ by
 $$
-1,y^2,y,y^3.
+S-S^2.
 $$
-The Gram matrix becomes block diagonal, so
+This is a unit-determinant basis change. For $j=0,1$,
 $$
-\Delta_4=VO,
+\mathbb E_{\mu_t}[S^{2j}(S-S^2)]
+=
+\nu_{j+1}-\nu_{j+1}
+=
+0.
+$$
+Hence
+$$
+H_3=D_2L,
 $$
 where
 $$
-V=
+D_2=
 \det
 \begin{pmatrix}
-1&\mathbb E(y^2)\\
-\mathbb E(y^2)&\mathbb E(y^4)
+1&\nu_1\\
+\nu_1&\nu_2
 \end{pmatrix}
 $$
 and
 $$
+L=\mathbb E_{\mu_t}[(S-S^2)^2]=\nu_1-\nu_2.
+$$
+Since $S^2=1-W$, translation of the polynomial variable gives
+$$
+D_2=\lambda_2-\lambda_1^2,
+\qquad
+L=\lambda_1-\lambda_2.
+$$
+
+For $H_5$, use the even basis
+$$
+1,S^2,S^4
+$$
+and replace the two odd basis vectors by
+$$
+U_0=S-S^2,
+$$
+$$
+U_1=(S-S^2)W.
+$$
+These vectors lie in the span of $1,S,S^2,S^3,S^4$, and the full basis change has determinant $\pm1$.
+
+For every polynomial $q(W)$,
+$$
+\mathbb E_{\mu_t}[q(W)(S-S^2)]
+=
+\mathbb E_{\overline{\mu}_t}[(1+S)q(W)S(1-S)]
+=
+\mathbb E_{\overline{\mu}_t}[q(W)SW]
+=
+0.
+$$
+Thus the even and odd blocks are orthogonal.
+
+Changing the even basis from $1,S^2,S^4$ to $1,W,W^2$ gives
+$$
+D_3=
+\det
+\begin{pmatrix}
+1&\lambda_1&\lambda_2\\
+\lambda_1&\lambda_2&\lambda_3\\
+\lambda_2&\lambda_3&\lambda_4
+\end{pmatrix}.
+$$
+For the odd block,
+$$
+\mathbb E_{\mu_t}[U_iU_j]
+=
+\mathbb E_{\overline{\mu}_t}
+\left[W^{i+j+1}(1-W)\right].
+$$
+Therefore
+$$
 O=
 \det
 \begin{pmatrix}
-\mathbb E(y^2)&\mathbb E(y^4)\\
-\mathbb E(y^4)&\mathbb E(y^6)
-\end{pmatrix}.
+\lambda_1-\lambda_2&\lambda_2-\lambda_3\\
+\lambda_2-\lambda_3&\lambda_3-\lambda_4
+\end{pmatrix},
 $$
-Since $y^2=1/4-z$, translation does not change the first determinant:
+and
 $$
-V=m_2-m_1^2.
+H_5=D_3O.
 $$
-Using Step 1,
+
+Step 3: Obtain the endpoint moment expansions
+
+Under the symmetric measure, the change
 $$
-V=t^2+4t^3+60t^4+O(t^5).
+w=4x(1-x)
+$$
+has two branches and gives a density for $W$ proportional to
+$$
+e^{-w/(4t)}(1-w)^{-1/2},
+\qquad 0<w<1.
+$$
+Using
+$$
+(1-w)^{-1/2}
+=
+\sum_{j\geq0}\frac{\binom{2j}{j}}{4^j}w^j
+$$
+and substituting $w=4tu$, endpoint Laplace expansion gives
+$$
+\lambda_m
+=
+(4t)^m
+\frac{
+\displaystyle\sum_{j\geq0}\binom{2j}{j}(m+j)!t^j
+}{
+\displaystyle\sum_{j\geq0}\binom{2j}{j}j!t^j
+}.
+$$
+Terms outside any fixed neighborhood of $w=0$ are exponentially small, so the displayed quotient may be expanded to any fixed algebraic order.
+
+The terms needed here are
+$$
+\lambda_1
+=
+4t+8t^2+80t^3+1184t^4+O(t^5),
+$$
+$$
+\lambda_2
+=
+32t^2+128t^3+1664t^4+29696t^5+O(t^6),
+$$
+$$
+\lambda_3
+=
+384t^3+2304t^4+36864t^5+774144t^6+O(t^7),
+$$
+and
+$$
+\lambda_4
+=
+6144t^4+49152t^5+933888t^6+O(t^7).
+$$
+
+Step 4: Expand the four determinant factors
+
+From Step 2,
+$$
+D_2=\lambda_2-\lambda_1^2,
+$$
+so Step 3 gives
+$$
+D_2
+=
+16t^2+64t^3+960t^4+O(t^5)
+=
+16t^2(1+4t+60t^2+O(t^3)).
+$$
+Also,
+$$
+L
+=
+4t-24t^2-48t^3+O(t^4)
+=
+4t(1-6t-12t^2+O(t^3)).
+$$
+
+For the $3\times3$ determinant,
+$$
+D_3
+=
+\lambda_2\lambda_4-\lambda_3^2-\lambda_1^2\lambda_4
++2\lambda_1\lambda_2\lambda_3-\lambda_2^3.
+$$
+Substitution of the four expansions from Step 3 gives
+$$
+D_3
+=
+16384t^6+196608t^7+4521984t^8+O(t^9),
+$$
+so
+$$
+D_3
+=
+16384t^6(1+12t+276t^2+O(t^3)).
 $$
 
 For the odd block,
 $$
 O
 =
-\mathbb E\left(\frac14-z\right)
-\mathbb E\left(\frac14-z\right)^3
--
-\mathbb E\left(\frac14-z\right)^2{}^2.
+(\lambda_1-\lambda_2)(\lambda_3-\lambda_4)
+-(\lambda_2-\lambda_3)^2.
 $$
-Expanding in $m_1,m_2,m_3$ gives
+The required differences are
 $$
-O=
-\frac{
-m_2-m_1^2-4m_3+4m_1m_2+16m_1m_3-16m_2^2
-}{16}.
-$$
-Substitution from Step 1 yields
-$$
-O=\frac{t^2}{16}-\frac34t^3-\frac14t^4+O(t^5).
-$$
-Therefore
-$$
-\Delta_4
+\lambda_1-\lambda_2
 =
-\frac{t^4}{16}-\frac12t^5+\frac12t^6+O(t^7).
+4t-24t^2-48t^3+O(t^4),
 $$
-
-Step 3: Reduce the fifth-order determinant to a smaller moment determinant
-
-For $\Delta_5$, reorder the centered basis as
 $$
-1,y^2,y^4,y,y^3.
-$$
-The same symmetry gives
-$$
-\Delta_5=EO,
-$$
-where $O$ is the block from Step 2 and
-$$
-E=
-\det
-\begin{pmatrix}
-1&\mathbb E(y^2)&\mathbb E(y^4)\\
-\mathbb E(y^2)&\mathbb E(y^4)&\mathbb E(y^6)\\
-\mathbb E(y^4)&\mathbb E(y^6)&\mathbb E(y^8)
-\end{pmatrix}.
-$$
-
-The basis
-$$
-1,\frac14-z,\left(\frac14-z\right)^2
-$$
-is obtained from $1,z,z^2$ by a triangular transformation with determinant $1$ in absolute value. Hence
-$$
-E=
-\det
-\begin{pmatrix}
-1&m_1&m_2\\
-m_1&m_2&m_3\\
-m_2&m_3&m_4
-\end{pmatrix}.
-$$
-
-Insert the expansions from Step 1. Expanding the $3\times3$ determinant gives
-$$
-E=4t^6+48t^7+1104t^8+O(t^9).
-$$
-Multiplying by the expansion of $O$ from Step 2,
-$$
-\Delta_5
+\lambda_2-\lambda_3
 =
-\left(4t^6+48t^7+1104t^8+O(t^9)\right)
-\left(\frac{t^2}{16}-\frac34t^3-\frac14t^4+O(t^5)\right).
+32t^2-256t^3-640t^4+O(t^5),
 $$
-The coefficient of $t^9$ cancels:
+and
 $$
-4\left(-\frac34\right)+48\left(\frac1{16}\right)=0.
-$$
-The next coefficient is
-$$
-4\left(-\frac14\right)
-+48\left(-\frac34\right)
-+1104\left(\frac1{16}\right)
-=32.
-$$
-Thus
-$$
-\Delta_5=\frac14t^8+32t^{10}+O(t^{11}).
-$$
-
-Step 4: Expand the determinant quotient through second order
-
-From Step 2,
-$$
-\Delta_4
+\lambda_3-\lambda_4
 =
-\frac{t^4}{16}
-\left(1-8t+8t^2+O(t^3)\right).
-$$
-Therefore
-$$
-\Delta_4^2
-=
-\frac{t^8}{256}
-\left(1-16t+80t^2+O(t^3)\right).
-$$
-Step 3 gives
-$$
-\Delta_5
-=
-\frac{t^8}{4}
-\left(1+128t^2+O(t^3)\right).
+384t^3-3840t^4-12288t^5+O(t^6).
 $$
 Hence
 $$
-\frac{\Delta_5}{\Delta_4^2}
+O
 =
-64
-\frac{1+128t^2+O(t^3)}
-{1-16t+80t^2+O(t^3)}.
-$$
-Since
-$$
-\frac{1}{1-16t+80t^2}
+512t^4-8192t^5+O(t^7)
 =
-1+16t+176t^2+O(t^3),
+512t^4(1-16t+O(t^3)).
 $$
-we obtain
+In particular, the relative $t^2$ term cancels.
+
+Step 5: Form the quotient and extract the first surviving correction
+
+Steps 1 and 2 give
 $$
-\frac{\Delta_5}{\Delta_4^2}
+\frac{\Delta_5}{\Delta_3^2}
 =
-64+1024t+19456t^2+O(t^3).
+\frac{1}{256}
+\frac{D_3O}{D_2^2L^2}.
+$$
+Using Step 4, the constant prefactor is
+$$
+\frac{1}{256}
+\frac{16384\cdot512}{16^2\cdot4^2}
+=
+8,
+$$
+and the power of $t$ is $t^4$.
+
+The relative numerator is
+$$
+(1+12t+276t^2)(1-16t+O(t^3))
+=
+1-4t+84t^2+O(t^3).
+$$
+The relative denominator is
+$$
+(1+4t+60t^2)^2(1-6t-12t^2)^2
+=
+1-4t+52t^2+O(t^3).
+$$
+Therefore
+$$
+\frac{\Delta_5}{\Delta_3^2}
+=
+8t^4
+\frac{1-4t+84t^2+O(t^3)}
+{1-4t+52t^2+O(t^3)}
+=
+8t^4(1+32t^2+O(t^3)).
+$$
+Thus
+$$
+\frac{\Delta_5(t)}{\Delta_3(t)^2}
+=
+8t^4+256t^6+O(t^7).
 $$
 
-Step 5: Take the prescribed limit
-
-Subtracting the first two displayed terms from Step 4 gives
-$$
-\frac{\Delta_5(t)}{\Delta_4(t)^2}-64-1024t
-=
-19456t^2+O(t^3).
-$$
-Division by $t^2$ and passage to $t\to0^+$ yields the requested value.
-
-Final Answer: $\boxed{19456}$
+Final Answer: $\boxed{256}$
 
 ---
 
 ## Answer
 
-$19456$
+$256$
 
 ---
 
@@ -280,7 +368,7 @@ $19456$
 ## Solution Concepts
 
 - endpoint Laplace asymptotics
-- moment Gram determinants
-- symmetry block decomposition
-- change of polynomial basis
-- asymptotic quotient expansion
+- asymmetric moment measures
+- Gram determinant basis changes
+- hidden block orthogonalization
+- asymptotic quotient cancellation
