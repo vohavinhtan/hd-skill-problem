@@ -28,10 +28,12 @@ Pe_j=e_{j+1}
 $$
 with indices modulo $6$, and put
 $$
-L=\left\{x\in\mathbb Z^6:\sum_{j=0}^5x_j=0\right\},
-$$
-$$
-\Lambda=\left\{x\in L:x_0+x_2+x_4\equiv0\pmod3\right\}.
+\Lambda=
+\left\{
+x\in\mathbb Z^6:
+\sum_{j=0}^5x_j=0,\quad
+x_0+x_2+x_4\equiv0\pmod3
+\right\}.
 $$
 For each integer $n\geq1$, set
 $$
@@ -39,9 +41,30 @@ t_n=2^n-1
 $$
 and define $\Psi_n:\Lambda\to\Lambda$ by
 $$
-\Psi_n(x)=\left(V+2^n(I_6-P)-(e_0-e_2)(e_4+e_5)^T\right)x.
+\Psi_n(x)=
+\left(
+V+2^n(I_6-P)-(e_0-e_2)(e_4+e_5)^T
+\right)x.
 $$
-Determine the Smith normal form of $\Psi_n$ over $\mathbb Z$.
+Let
+$$
+\pi:\Lambda\longrightarrow\mathbb Z^2,
+\qquad
+\pi(x)=(x_1,x_3),
+$$
+and define
+$$
+H_n=
+\left\{
+y\in\Lambda:
+\pi(y)\in\pi(\Psi_n(\Lambda))
+\right\}.
+$$
+Regard $\Psi_n$ as a homomorphism
+$$
+\Psi_n:\Lambda\longrightarrow H_n.
+$$
+Determine its Smith normal form over $\mathbb Z$.
 
 ---
 
@@ -58,4 +81,4 @@ Determine the Smith normal form of $\Psi_n$ over $\mathbb Z$.
 
 ## Domain Explanation
 
-This problem involves constructing an exact valuation matrix and reducing an endomorphism of a finite-index integral sublattice to Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the sublattice endomorphism, while the requested object is its canonical integer normal form.
+This problem involves constructing relative presentation matrices for finite-index lattices and determining Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the lattice homomorphism, while the requested object is its canonical integer normal form after changing the codomain lattice.

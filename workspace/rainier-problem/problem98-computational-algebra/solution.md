@@ -6,7 +6,11 @@ Let $\zeta$ be a primitive thirteenth root of unity and put
 $$
 \theta=\zeta+\zeta^{-1}.
 $$
-For $s_j=\zeta^j+\zeta^{-j}$,
+For
+$$
+s_j=\zeta^j+\zeta^{-j},
+$$
+we have
 $$
 s_0=2,\qquad s_1=\theta,\qquad s_{j+1}=\theta s_j-s_{j-1}.
 $$
@@ -14,13 +18,25 @@ Pairing the twelve nontrivial thirteenth roots gives
 $$
 1+s_1+s_2+s_3+s_4+s_5+s_6=0.
 $$
-Substitution from the recurrence gives $f(\theta)=0$. Since $\mathbb Q(\zeta)$ has degree $12$ and $\zeta$ satisfies $X^2-\theta X+1=0$ over $\mathbb Q(\theta)$, the field $\mathbb Q(\theta)$ has degree $6$. $f$ is therefore the minimal polynomial of $\theta$, and
+Substitution from the recurrence gives
+$$
+f(\theta)=0.
+$$
+The field $\mathbb Q(\zeta)$ has degree $12$, while $\zeta$ satisfies
+$$
+X^2-\theta X+1=0
+$$
+over $\mathbb Q(\theta)$. Hence $[\mathbb Q(\theta):\mathbb Q]=6$, so $f$ is the minimal polynomial of $\theta$ and
 $$
 K=\mathbb Q(\theta)
 $$
 is the maximal real subfield of $\mathbb Q(\zeta)$.
 
-The six roots are $2\cos(2\pi k/13)$ for $1\leq k\leq6$, so the largest is
+The six roots are
+$$
+2\cos\frac{2\pi k}{13}\qquad(1\leq k\leq6).
+$$
+The largest is
 $$
 \theta_0=\zeta+\zeta^{-1}.
 $$
@@ -28,19 +44,27 @@ The identity
 $$
 (\zeta^k+\zeta^{-k})^2-2=\zeta^{2k}+\zeta^{-2k}
 $$
-shows that the recursion in the statement follows the Galois automorphism induced by $\zeta\mapsto\zeta^2$. Therefore $\theta_0,\ldots,\theta_5$ are the six roots in cyclic Galois order.
+shows that $\theta_{j+1}=\theta_j^2-2$ is the action induced by $\zeta\mapsto\zeta^2$. Therefore $\theta_0,\ldots,\theta_5$ are the six roots in cyclic Galois order.
 
-Step 2: Recover the valuation matrix and verify the sublattice
+Step 2: Recover the valuation matrix and verify the lattice map
 
 Put
 $$
 u_j=\theta_j+3.
 $$
-Since $f(-3)=233$,
+Since
+$$
+f(-3)=233,
+$$
+we have
 $$
 \prod_{j=0}^5u_j=233.
 $$
-The prime $233$ is unramified in the real cyclotomic field of conductor $13$, and $233\equiv-1\pmod{13}$ gives trivial Frobenius in $(\mathbb Z/13\mathbb Z)^\times/\{\pm1\}$. Therefore $233$ splits completely in $K$. Each $u_j$ has norm $233$, so
+The prime $233$ is unramified in the real cyclotomic field of conductor $13$, and
+$$
+233\equiv-1\pmod{13}
+$$
+has trivial class in $(\mathbb Z/13\mathbb Z)^\times/\{\pm1\}$. Therefore $233$ splits completely in $K$. Each $u_j$ has norm $233$, so
 $$
 \mathfrak p_j=(u_j)
 $$
@@ -52,9 +76,11 @@ $$
 \theta_2=\theta_0^4-4\theta_0^2+2,\qquad
 \theta_4=\theta_0^3-3\theta_0.
 $$
-The identity
+The polynomial identity
 $$
-(T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)=f(T)(T+1)(T^2-2T+2)
+(T^2+1)(T^4-4T^2+5)(T^3-3T+3)-C(T)
+=
+f(T)(T+1)(T^2-2T+2)
 $$
 gives
 $$
@@ -62,9 +88,9 @@ C(\theta_0)=u_1u_2u_4.
 $$
 Applying the cyclic Galois action gives
 $$
-c_j=u_{j+1}u_{j+2}u_{j+4}
+c_j=u_{j+1}u_{j+2}u_{j+4},
 $$
-with indices modulo $6$. This gives
+with indices modulo $6$. Hence
 $$
 V=
 \begin{pmatrix}
@@ -79,159 +105,318 @@ $$
 
 Let
 $$
-r=(1,0,1,0,1,0),\qquad \mathbf 1=(1,1,1,1,1,1).
+r=(1,0,1,0,1,0),
+\qquad
+\mathbf 1=(1,1,1,1,1,1).
 $$
-For $q=2^n$,
+For $q=2^n$, multiplication of the displayed matrices gives
 $$
-r\left(V+q(I_6-P)\right)=(2q+1)r+(1-q)\mathbf 1.
+r\left(V+q(I_6-P)\right)
+=
+(2q+1)r+(1-q)\mathbf 1.
 $$
 Also
 $$
 r(e_0-e_2)=0.
 $$
-It follows that $x\in\Lambda$ implies $r\Psi_n(x)\equiv0\pmod3$. Every column of $V$ has sum $3$, while $I_6-P$ and $e_0-e_2$ have coordinate sum $0$, so $\Psi_n(x)\in L$. The map $\Psi_n$ therefore preserves $\Lambda$.
+If $x\in\Lambda$, then $\mathbf 1x=0$ and $rx\equiv0\pmod3$, so
+$$
+r\Psi_n(x)=(2q+1)rx\equiv0\pmod3.
+$$
+Every column of $V$ has sum $3$, while $I_6-P$ and $e_0-e_2$ have coordinate sum $0$. Hence $\Psi_n(x)$ also has coordinate sum $0$. Thus $\Psi_n$ preserves $\Lambda$.
 
-Step 3: Construct the presentation on the index-three lattice
+Step 3: Construct the projected image lattice
 
-Let
+Define
 $$
-b_i=e_i-e_5\qquad(0\leq i\leq4).
+d_0=3(e_0-e_5),\qquad
+d_1=e_1-e_5,\qquad
+d_2=e_2-e_0,
 $$
-These form a basis of $L$. In this basis the condition defining $\Lambda$ is
 $$
-y_0+y_2+y_4\equiv0\pmod3.
+d_3=e_3-e_5,\qquad
+d_4=e_4-e_0.
 $$
-A basis of $\Lambda$ is
+These form a basis of $\Lambda$. Indeed, for $x\in\Lambda$, put
 $$
-d_0=3b_0,\qquad d_1=b_1,\qquad d_2=b_2-b_0,\qquad d_3=b_3,\qquad d_4=b_4-b_0.
+z_0=\frac{x_0+x_2+x_4}{3},
+\qquad
+z_1=x_1,\quad z_2=x_2,\quad z_3=x_3,\quad z_4=x_4.
+$$
+Then
+$$
+x=z_0d_0+z_1d_1+z_2d_2+z_3d_3+z_4d_4.
 $$
 
 Write
 $$
 t=t_n=2^n-1.
 $$
-In the basis $b_0,\ldots,b_4$, the ambient operator has matrix
+Applying $\Psi_n$ to the five basis vectors gives the matrix
 $$
-M(t)=
-\begin{pmatrix}
-2t+2&t+1&t+2&t+1&t+1\\
--t-1&t&-1&0&-1\\
-0&-t-1&t&-1&1\\
--1&0&-t-1&t&-1\\
-1&0&1&-t&t+1
-\end{pmatrix}.
-$$
-The change-of-basis matrix whose columns are $d_0,\ldots,d_4$ in the $b$-basis is
-$$
-U=
-\begin{pmatrix}
-3&0&-1&0&-1\\
-0&1&0&0&0\\
-0&0&1&0&0\\
-0&0&0&1&0\\
-0&0&0&0&1
-\end{pmatrix}.
-$$
-Since the columns of $U$ are a basis of $\Lambda$, the restriction matrix is
-$$
-N(t)=U^{-1}M(t)U=
+N(t)=
 \begin{pmatrix}
 2t+3&0&0&0&0\\
 -3t-3&t&t&0&t\\
 0&-t-1&t&-1&1\\
 -3&0&-t&t&0\\
 3&0&0&-t&t
-\end{pmatrix}.
+\end{pmatrix}
+$$
+in the basis $d_0,\ldots,d_4$.
+
+For a vector with $d$-coordinates $(z_0,\ldots,z_4)$,
+$$
+\pi(x)=(z_1,z_3).
+$$
+The projected image $\pi(\Psi_n(\Lambda))$ is therefore generated by
+$$
+(-3(t+1),-3),\qquad
+(t,0),\qquad
+(t,-t),\qquad
+(0,t).
+$$
+Put
+$$
+a=\gcd(3,t).
+$$
+These generators span
+$$
+\mathbb Z(a,a)+\mathbb Z(0,t).
+$$
+For one inclusion,
+$$
+(t,0)=\frac{t}{a}(a,a)-(0,t),
+$$
+$$
+(t,-t)=(t,0)-(0,t),
+$$
+and
+$$
+(-3(t+1),-3)
+=
+-\frac{3(t+1)}{a}(a,a)+3(0,t).
+$$
+For the reverse inclusion,
+$$
+(-3,-3)=(-3(t+1),-3)+3(t,0)
+$$
+and
+$$
+(t,t)=(t,0)+(0,t).
+$$
+Choose integers $u,v$ with
+$$
+-3u+tv=a.
+$$
+Then
+$$
+u(-3,-3)+v(t,t)=(a,a).
+$$
+
+A basis of $H_n$ is consequently
+$$
+h_0=d_0,\qquad
+h_1=a(d_1+d_3),\qquad
+h_2=d_2,\qquad
+h_3=td_3,\qquad
+h_4=d_4.
+$$
+In particular,
+$$
+[\Lambda:H_n]=at.
 $$
 
 Step 4: Determine the first four determinantal divisors
 
-Let $\Delta_k$ be the gcd of the $k\times k$ minors of $N(t)$ and put
+If a vector in $H_n$ has $d$-coordinates $(y_0,\ldots,y_4)$, its coordinates in the $h$-basis are
 $$
-a=\gcd(3,t),\qquad b=\gcd(5,t-1).
+y_0,\qquad
+\frac{y_1}{a},\qquad
+y_2,\qquad
+\frac{y_3-y_1}{t},\qquad
+y_4.
 $$
-The entry $-1$ gives
+Applying this conversion to the columns of $N(t)$ gives the relative presentation matrix
+$$
+R(t)=
+\begin{pmatrix}
+2t+3&0&0&0&0\\
+-\frac{3(t+1)}a&\frac ta&\frac ta&0&\frac ta\\
+0&-t-1&t&-1&1\\
+3&-1&-2&1&-1\\
+3&0&0&-t&t
+\end{pmatrix}.
+$$
+
+Let $\Delta_k$ be the gcd of the $k\times k$ minors of $R(t)$. The entry $-1$ gives
 $$
 \Delta_1=1.
 $$
+Two $2\times2$ minors are
+$$
+\frac3a
+\qquad\text{and}\qquad
+\frac ta.
+$$
+Their gcd is $1$ because $a=\gcd(3,t)$, so
+$$
+\Delta_2=1.
+$$
+Two $3\times3$ minors are
+$$
+-\frac6a
+\qquad\text{and}\qquad
+\frac{t^2}{a}.
+$$
+If $a=1$, then $t$ is odd and not divisible by $3$, so these two integers are coprime. If $a=3$, they are $-2$ and $t^2/3$, and the latter is odd. Hence
+$$
+\Delta_3=1.
+$$
 
-If $3\mid t$, reduction of $N(t)$ modulo $3$ has rank $1$, so every $2\times2$ minor is divisible by $3$. Two $2\times2$ minors are $t$ and $3$. This gives
+Put
 $$
-\Delta_2=a.
+b=\gcd(5,t-1).
+$$
+Consider the two row vectors
+$$
+\ell_1=(-1,0,0,0,1),
+\qquad
+\ell_2=(1,a,0,0,0).
+$$
+They satisfy
+$$
+\begin{pmatrix}
+\ell_1\\
+\ell_2
+\end{pmatrix}
+R(t)
+=
+t
+\begin{pmatrix}
+-2&0&0&-1&1\\
+-1&1&1&0&1
+\end{pmatrix}.
+$$
+The $2\times5$ matrix with rows $\ell_1,\ell_2$ has a $2\times2$ minor equal to $-1$. Therefore the cokernel of $R(t)$ surjects onto $(\mathbb Z/t\mathbb Z)^2$. Since the first three invariant factors are $1$, the fourth invariant factor is divisible by $t$.
+
+If $b=5$, then $t\equiv1\pmod5$. For $t=2^n-1$, this forces $n\equiv1\pmod4$, so $a=1$. Reducing $R(t)$ modulo $5$ and performing row operations gives
+$$
+\begin{pmatrix}
+1&0&0&3&2\\
+0&1&0&3&4\\
+0&0&1&0&4\\
+0&0&0&0&0\\
+0&0&0&0&0
+\end{pmatrix}.
+$$
+Its rank is $3$, so every $4\times4$ minor is divisible by $5$. Thus
+$$
+bt\mid\Delta_4.
 $$
 
-At $t=0$, the matrix $N(0)$ has rank $2$, so every $3\times3$ minor is divisible by $t$. If $3\mid t$, write such a minor as $tH(t)$. The value $H(0)$ is a sum of products involving $2\times2$ minors of $N(0)$, and all those minors are divisible by $3$ because $N(0)$ has rank $1$ modulo $3$. The difference $H(t)-H(0)$ is divisible by $t$, so $3\mid H(t)$. Every $3\times3$ minor is therefore divisible by $at$. Two such minors are
+Three $4\times4$ minors are
 $$
-3t\qquad\text{and}\qquad t^3,
+\frac{t(t+2)(2t+3)}a,
+\qquad
+\frac{t(t-2)(2t+3)}a,
+\qquad
+\frac{t^2(3t+2)}a.
 $$
-so
+Because $t$ is odd,
 $$
-\Delta_3=at.
+\gcd(t+2,t-2)=1.
 $$
-
-The rank of $N(0)$ is $2$, so multilinearity of a $4\times4$ determinant in $N(0)+tE$ shows that every $4\times4$ minor is divisible by $t^2$. If $3\mid t$, the coefficient after division by $t^2$ is divisible by $3$ for the same rank-one reduction of $N(0)$ modulo $3$. If $5\mid t-1$, then $N(1)$ has rank $3$ modulo $5$, so every $4\times4$ minor is divisible by $5$; since $t$ is nonzero modulo $5$, the quotient by $t^2$ is also divisible by $5$. This gives
+After removing the common factor $t$, the gcd of the first two quotients is
 $$
-abt^2\mid\Delta_4.
+\frac{2t+3}{a}.
 $$
-
-Four $4\times4$ minors, after division by $t^2$, are
+Also
 $$
-(t+2)(2t+3),\qquad (2t+1)(2t+3),
+\gcd\left(\frac{2t+3}{a},\frac ta\right)=1,
 $$
+so the gcd of all three quotients is
 $$
-3(t^2+2t+2),\qquad t(3t+2).
+\gcd\left(\frac{2t+3}{a},3t+2\right).
 $$
-Let $p$ divide all four quotients. If $p\neq3$, the first two force $p\mid2t+3$, and the last then forces $p\mid3t+2$ unless $p\mid t$, which would give $p=3$. It follows that
+Any common prime divides
 $$
-p\mid3(2t+3)-2(3t+2)=5.
+3(2t+3)-2(3t+2)=5.
 $$
-Only $3$ and $5$ can occur. The factor $3$ occurs exactly when $3\mid t$, and the factor $5$ occurs exactly when $5\mid t-1$. When $3\mid t$, the third quotient divided by $3$ is congruent to $2$ modulo $3$, so no second factor $3$ is common. When $t=1+5s$, the first and fourth quotients divided by $5$ are congruent to
+It occurs exactly when $t\equiv1\pmod5$. Therefore this gcd is $b$, and
 $$
-3(1+2s)\qquad\text{and}\qquad 1+3s
-$$
-modulo $5$, and these cannot both vanish. No second factor $5$ is common. Therefore
-$$
-\Delta_4=abt^2.
+\Delta_4=bt.
 $$
 
 Step 5: Compute the determinant and read the Smith form
 
 Expanding $\det N(t)$ along its first row gives
 $$
-\det N(t)=(2t+3)
-\det\begin{pmatrix}
+\det N(t)
+=
+(2t+3)
+\det
+\begin{pmatrix}
 t&t&0&t\\
 -t-1&t&-1&1\\
 0&-t&t&0\\
 0&0&-t&t
 \end{pmatrix}.
 $$
-Factoring $t$ from the first, third, and fourth rows of the $4\times4$ determinant leaves determinant $3t+2$. This gives
+Factoring $t$ from the first, third, and fourth rows leaves
 $$
-\Delta_5=|\det N(t)|=t^3(2t+3)(3t+2).
+\det
+\begin{pmatrix}
+1&1&0&1\\
+-t-1&t&-1&1\\
+0&-1&1&0\\
+0&0&-1&1
+\end{pmatrix}
+=
+3t+2.
+$$
+Hence
+$$
+|\det N(t)|=t^3(2t+3)(3t+2).
+$$
+Since the $h$-basis has index $at$ in the $d$-basis,
+$$
+|\det R(t)|
+=
+\frac{t^2(2t+3)(3t+2)}{a}.
+$$
+Thus
+$$
+\Delta_5=
+\frac{t^2(2t+3)(3t+2)}{a}.
 $$
 
-The Smith entries are
+The Smith invariant factors are
 $$
-d_1=1,\qquad d_2=a,\qquad d_3=t,\qquad d_4=bt,
+1,\qquad1,\qquad1,\qquad bt,\qquad
+\frac{t(2t+3)(3t+2)}{ab}.
+$$
+Now
+$$
+a=\gcd(3,t)=\gcd(3,t+9),
 $$
 and
 $$
-d_5=\frac{t(2t+3)(3t+2)}{ab}.
+b=\gcd(5,t-1)=\gcd(5,t+9).
 $$
-Since
+Since $3$ and $5$ are coprime,
 $$
-ab=\gcd(15,t+9),
+ab=\gcd(15,t+9).
 $$
-because $t+9\equiv t\pmod3$ and $t+9\equiv t-1\pmod5$, the last entry has the form used below. For $t=2^n-1$, the conditions $a=3$ and $b=5$ cannot occur simultaneously; if $a=3$, then $3\mid2t+3$, while if $b=5$, both $2t+3$ and $3t+2$ are divisible by $5$. The displayed entries are therefore in divisibility order.
+If $b=5$, both $2t+3$ and $3t+2$ are divisible by $5$; if $a=3$, then $2t+3$ is divisible by $3$. Hence the displayed invariant factors are in divisibility order.
 
-Final Answer: $\boxed{\operatorname{diag}(1,\gcd(3,t_n),t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(15,t_n+9)})}$
+Final Answer: $\boxed{\operatorname{diag}(1,1,1,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(15,t_n+9)})}$
 
 ---
 
 ## Answer
 
-$\operatorname{diag}(1,\gcd(3,t_n),t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(15,t_n+9)})$
+$\operatorname{diag}(1,1,1,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2)}{\gcd(15,t_n+9)})$
 
 ---
 
@@ -251,6 +436,6 @@ $\operatorname{diag}(1,\gcd(3,t_n),t_n,\gcd(5,t_n-1)t_n,\frac{t_n(2t_n+3)(3t_n+2
 
 - real cyclotomic fields
 - prime ideal valuations
-- finite-index sublattices
-- determinantal divisors
+- finite-index lattices
+- projected image lattices
 - smith normal form
