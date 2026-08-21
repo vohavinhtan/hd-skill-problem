@@ -2,71 +2,28 @@
 
 ## LaTeX (Normalized)
 
-Let
+Work in
 $$
-f(T)=T^6+T^5-5T^4-4T^3+6T^2+3T-1
+R=\mathbb Q[x,y,z]
+$$
+with lexicographic order $x>y>z$. Let $I=(h_1,h_2,h_3)$, where
+$$
+h_1=
+2x^3+3x^2y+3x^2z+2x^2+3xy^2+2xy+3xz^2+2xz+2x
++2y^3+3y^2z+2y^2+3yz^2+2yz+2y+2z^3+2z^2+2z-682,
+$$
+$$
+h_2=
+4x^3+6x^2y+6x^2z+4x^2+6xy^2+4xy+6xz^2+4xz+2x
++4y^3+6y^2z+4y^2+6yz^2+4yz+2y+4z^3+4z^2+2z-1350,
 $$
 and
 $$
-C(T)=-2T^5+4T^4+14T^3-10T^2-21T+17.
+h_3=
+8x^3+12x^2y+12x^2z+6x^2+12xy^2+6xy+12xz^2+6xz+4x
++8y^3+12y^2z+6y^2+12yz^2+6yz+4y+8z^3+6z^2+4z-2616.
 $$
-Let $K$ be the splitting field of $f$ over $\mathbb Q$. Let $\theta_0$ be the largest real root of $f$, and define
-$$
-\theta_{j+1}=\theta_j^2-2\qquad(0\leq j\leq4).
-$$
-For $0\leq j<6$, put
-$$
-c_j=C(\theta_j),\qquad \mathfrak p_j=(\theta_j+3)\mathcal O_K,
-$$
-and form
-$$
-V=\left(v_{\mathfrak p_i}(c_j)\right)_{0\leq i,j<6},
-$$
-where $v_{\mathfrak p}(c)$ is the exponent of the prime ideal $\mathfrak p$ in the principal fractional ideal $(c)$. Let $e_0,\ldots,e_5$ be the standard basis of $\mathbb Z^6$, let $P$ be the cyclic permutation matrix defined by
-$$
-Pe_j=e_{j+1}
-$$
-with indices modulo $6$, and put
-$$
-\Lambda=
-\left\{
-x\in\mathbb Z^6:
-\sum_{j=0}^5x_j=0,\quad
-x_0+x_2+x_4\equiv0\pmod3
-\right\}.
-$$
-For each integer $n\geq1$, set
-$$
-t_n=2^n-1
-$$
-and define $\Psi_n:\Lambda\to\Lambda$ by
-$$
-\Psi_n(x)=
-\left(
-V+2^n(I_6-P)-(e_0-e_2)(e_4+e_5)^T
-\right)x.
-$$
-Define
-$$
-\pi(x)=(x_1,x_3),
-\qquad
-\rho(x)=(x_1+x_2,x_3+x_4),
-$$
-and let
-$$
-H_n=
-\left\{
-y\in\Lambda:
-\pi(y)\in\pi(\Psi_n(\Lambda)),
-\quad
-\rho(y)\in\rho(\Psi_n(\Lambda))
-\right\}.
-$$
-Regard $\Psi_n$ as a homomorphism
-$$
-\Psi_n:\Lambda\longrightarrow H_n.
-$$
-Determine its Smith normal form over $\mathbb Z$.
+Determine the reduced Gröbner basis of $I$ for this order.
 
 ---
 
@@ -83,4 +40,4 @@ Determine its Smith normal form over $\mathbb Z$.
 
 ## Domain Explanation
 
-This problem involves intersecting projected-image conditions for finite-index lattices and determining a relative Smith normal form, which are part of Abstract Algebra and Computational algebra. The problem also involves a real cyclotomic field and prime-ideal valuations, which are part of Number Theory and Computational number theory. However, those number-field ingredients determine the lattice homomorphism, while the requested object is its canonical integer normal form after the codomain lattice is reconstructed.
+This problem asks for a reduced Gröbner basis under a fixed monomial order, which is part of Abstract Algebra and Computational algebra. The problem also uses symmetric-polynomial reconstruction and elimination, which are part of Algebra and polynomial manipulation. However, those identities recover a simpler generating system, while the requested object is the canonical reduced Gröbner basis.
