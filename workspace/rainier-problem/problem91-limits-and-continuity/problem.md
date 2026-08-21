@@ -2,9 +2,9 @@
 
 ## LaTeX (Normalized)
 
-For each prime power $Q$ satisfying
+For each prime power $Q>37$ satisfying
 $$
-Q\equiv17\pmod{24},
+Q\equiv19\pmod{36},
 $$
 put
 $$
@@ -17,29 +17,27 @@ L_Q=\mathbb F_Q(x,y),
 x^n+y^n+1=0.
 $$
 
-Let $K_Q$ be the common fixed field in $L_Q$ of the two automorphisms
+Inside $L_Q$, define
 $$
-(x,y)\longmapsto
-\left(
--\frac{x}{y},
-\frac1y
-\right)
+u=
+\frac{x^{18}y^{18}+x^{18}+y^{18}}
+{(x^{18}+y^{18}+1)^2},
 $$
-and
 $$
-(x,y)\longmapsto
-\left(
--\frac1x,
--\frac yx
-\right).
+v=
+\frac{x^6y^6}{x^{18}+y^{18}+1},
+$$
+and let
+$$
+K_Q=\mathbb F_Q(u,v).
 $$
 
 Determine the exact value of
 $$
-\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv17\pmod{24}}}
-Q\left(\sqrt{48g(K_Q)}-Q+7\right).
+\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv19\pmod{36}}}
+Q\left(\sqrt{1296g(K_Q)}-Q+37\right).
 $$
-The indexing set is unbounded; for example, $Q=17^{2k+1}$ is admissible for every $k\geq0$.
+The indexing set is unbounded; for example, $Q=19^{2k+1}$ is admissible for every $k\geq1$.
 
 ---
 
@@ -56,14 +54,14 @@ The indexing set is unbounded; for example, $Q=17^{2k+1}$ is admissible for ever
 
 ## Domain Explanation
 
-This problem involves an exact limit whose first nonzero term appears only after cancellation of two leading asymptotic orders,
+This problem involves an exact renormalized limit whose value depends on a lower-order term after cancellation,
 which are part of Calculus and Limits and continuity.
-The problem also involves algebraic function fields, finite group actions, fixed fields, and ramification,
+The problem also involves algebraic function fields, invariant subfields, finite group actions, and ramification,
 which are part of Abstract Algebra and Computational algebra.
-However, the algebraic calculations supply the exact expression whose asymptotic cancellation determines the requested scalar limit.
+However, those algebraic calculations determine the exact sequence entering the requested limit, while the final object is one exact scalar limit.
 
 Specifically:
 
-- The two displayed automorphisms conceal the full projective signed-permutation group rather than presenting its structure directly.
-- The exact genus requires three different fixed-point behaviors among the nonidentity group elements.
-- The requested limit depends on the constant correction in the genus formula, so the leading quadratic and linear terms alone are insufficient.
+- The two rational generators conceal a semidirect-product fixed field rather than displaying its automorphisms.
+- Recovering the field degree requires reconstructing normalized symmetric coordinates together with a restricted root-of-unity ambiguity.
+- The constant term needed by the limit comes from three distinct fixed-point behaviors in the tame quotient.
