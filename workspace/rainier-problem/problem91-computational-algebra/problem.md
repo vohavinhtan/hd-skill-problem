@@ -2,33 +2,35 @@
 
 ## LaTeX (Normalized)
 
-Let $p$ be a prime and write
+Let $p$ be a prime satisfying
 $$
-p-1=2^s d,
+p\equiv1\pmod{42},
 $$
-where $s\geq2$ and $d>3$ is odd. Put
+and put
 $$
-m=(3\cdot2^s+1)d.
+n=p-1.
 $$
-Let
+Choose a primitive cube root $\omega\in\mathbb F_p$ and a primitive $21$st root $\zeta\in\mathbb F_p$. Let
 $$
-L=\mathbb F_{p^2}(z,y),
+L=\mathbb F_p(x,y),
 \qquad
-y^{p^2}-y=z^m-z^{-m}.
+x^n+\omega y^n+\omega^2=0.
 $$
-Inside $L$, define
+Define automorphisms of $L$ by
 $$
-u=(z^d+z^{-d})^2,
+\sigma(x,y)=(\zeta x,\zeta^{-4}y),
 $$
 $$
-v=(y^p-y)(z^d-z^{-d}),
+\tau(x,y)=\left(\frac{y}{x},\frac1x\right),
 $$
 and let
 $$
-K_p=\mathbb F_{p^2}(u,v).
+H=\langle\sigma,\tau\rangle,
+\qquad
+K_p=L^H.
 $$
 
-Determine the genus of $K_p$ as an exact expression in $p$ and $s$.
+Determine the genus of $K_p$ as an exact expression in $p$.
 
 ---
 
@@ -45,14 +47,14 @@ Determine the genus of $K_p$ as an exact expression in $p$ and $s$.
 
 ## Domain Explanation
 
-This problem involves algebraic function fields, invariant subfields, finite automorphism groups, and extension degrees,
+This problem involves algebraic function fields, finite automorphism groups, fixed fields, and extension degrees,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves Artin-Schreier ramification and tame quotient curves,
+The problem also involves quotient curves, projective fixed points, and tame ramification,
 which are part of Topology and Geometry and Differential geometry.
-However, the main task is to reconstruct a hidden translation quotient followed by a nonabelian fixed field before the genus can be calculated.
+However, the main task is to reconstruct the nonabelian automorphism group and derive the ramification of its quotient algebraically.
 
 Specifically:
 
-- The expression $y^p-y$ conceals the fixed field of a nontrivial translation subgroup inside a degree-$p^2$ additive extension.
-- The remaining generators conceal both a cyclic scaling action and inversion, producing a dihedral quotient with two different reflection classes.
-- The genus calculation requires the wild ramification of the intermediate Artin-Schreier curve and the nonuniform tame ramification of the dihedral action.
+- The two generators form a nonabelian group of order $63$ rather than a cyclic or dihedral group.
+- The diagonal subgroup acts without fixed points, while every element in the two nontrivial cosets has fixed points because of the twisted Fermat coefficients.
+- The genus depends on combining the semidirect-product structure with the full tame fixed-point contribution.
