@@ -23,8 +23,12 @@ Determine
 $$
 \lim_{n\to\infty}
 \left(
-8\frac{H_{2n}(\alpha_x)}{H_n(\alpha_x)}
-\right)^{n^2}.
+512\frac{
+H_n(\alpha_x)H_{4n}(\alpha_x)^4
+}{
+H_{2n}(\alpha_x)^5
+}
+\right)^{n^3}.
 $$
 
 ---
@@ -42,8 +46,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a parameter-dependent limit whose first nonzero asymptotic correction must be identified before a second exponential limit can be evaluated,
-which are part of Calculus and Limits and continuity.
-The problem also involves a structured determinant and cancellation among its entries,
-which are part of Linear Algebra and Determinants.
-However, the determinant serves to generate the asymptotic expansion, while the requested object is determined by two successive limiting arguments.
+This problem involves successive asymptotic cancellations and an exponential limit determined by a higher-order term, which are part of Calculus and Limits and continuity.
+The problem also involves a structured determinant whose cancellations determine the relevant asymptotic coefficients, which are part of Linear Algebra and Determinants.
+However, the determinant is an intermediate source of the asymptotic data, while the requested object is obtained through the limiting behavior of a scale-canceling quotient.

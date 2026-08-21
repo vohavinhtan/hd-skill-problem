@@ -1,20 +1,18 @@
 ## Steps
 
-Step 1: Collapse the determinant to four scalar powers
+Step 1: Reduce the determinant to four scalar powers
 
 Put
 $$
-\varepsilon=\frac1n,
+\varepsilon=\frac{1}{n},
 \qquad
-u=x\varepsilon,
-\qquad
-N=n+\alpha.
+N=\varepsilon^{-1}+\alpha.
 $$
-For $s\in\{-2,-1,0,1,2\}$, write
+For $s\in\{-2,-1,0,1,2\}$, let
 $$
-a_s=(1+su)^N.
+a_s=(1+sx\varepsilon)^N.
 $$
-The determinant is
+Since $a_0=1$,
 $$
 H_n(\alpha)
 =
@@ -25,38 +23,37 @@ a_{-1}&1&a_1\\
 1&a_1&a_2
 \end{pmatrix}.
 $$
-Expanding this $3\times3$ determinant gives
+Expanding the determinant gives
 $$
 H_n(\alpha)
 =
 a_{-2}a_2-a_{-2}a_1^2-a_{-1}^2a_2+2a_{-1}a_1-1.
 $$
-
-Each product is a single power:
+The products simplify to
 $$
-a_{-2}a_2=(1-4u^2)^N,
-$$
-$$
-a_{-2}a_1^2=(1-3u^2-2u^3)^N,
+a_{-2}a_2=(1-4x^2\varepsilon^2)^N,
 $$
 $$
-a_{-1}^2a_2=(1-3u^2+2u^3)^N,
+a_{-2}a_1^2=(1-3x^2\varepsilon^2-2x^3\varepsilon^3)^N,
+$$
+$$
+a_{-1}^2a_2=(1-3x^2\varepsilon^2+2x^3\varepsilon^3)^N,
 $$
 and
 $$
-a_{-1}a_1=(1-u^2)^N.
+a_{-1}a_1=(1-x^2\varepsilon^2)^N.
 $$
-Hence
+Hence the determinant has been reduced to
 $$
 H_n(\alpha)
 =
-(1-4u^2)^N
--(1-3u^2-2u^3)^N
--(1-3u^2+2u^3)^N
-+2(1-u^2)^N-1.
+(1-4x^2\varepsilon^2)^N
+-(1-3x^2\varepsilon^2-2x^3\varepsilon^3)^N
+-(1-3x^2\varepsilon^2+2x^3\varepsilon^3)^N
++2(1-x^2\varepsilon^2)^N-1.
 $$
 
-Step 2: Derive the first three nonzero asymptotic coefficients
+Step 2: Obtain the expansion through the third relative correction
 
 For constants $A,B$, set
 $$
@@ -64,14 +61,13 @@ F_{A,B}(\varepsilon)
 =
 (1+A\varepsilon^2+B\varepsilon^3)^{\varepsilon^{-1}+\alpha}.
 $$
-Expanding the logarithm through order $\varepsilon^5$ gives
+Write
 $$
 \log F_{A,B}(\varepsilon)
 =
-L_1\varepsilon+L_2\varepsilon^2+L_3\varepsilon^3
-+L_4\varepsilon^4+L_5\varepsilon^5+O(\varepsilon^6),
+\sum_{j=1}^{6}L_j\varepsilon^j+O(\varepsilon^7).
 $$
-where
+Expansion of the logarithm gives
 $$
 L_1=A,
 \qquad
@@ -82,169 +78,211 @@ L_3=-\frac{A^2}{2}+\alpha B,
 \qquad
 L_4=-AB-\frac{\alpha A^2}{2},
 $$
+$$
+L_5=\frac{A^3}{3}-\frac{B^2}{2}-\alpha AB,
+$$
 and
 $$
-L_5=\frac{A^3}{3}-\frac{B^2}{2}-\alpha AB.
+L_6=A^2B+\alpha\left(\frac{A^3}{3}-\frac{B^2}{2}\right).
 $$
 
-Write
+If
 $$
 F_{A,B}(\varepsilon)
 =
-\sum_{m=0}^{5}c_m\varepsilon^m+O(\varepsilon^6),
+\sum_{m=0}^{6}c_m\varepsilon^m+O(\varepsilon^7),
 \qquad
-c_0=1.
+c_0=1,
 $$
-Differentiating the exponential representation gives the coefficient recurrence
+then differentiating the exponential series yields
 $$
 mc_m=\sum_{j=1}^{m}jL_jc_{m-j}.
 $$
 
-The four powers from Step 1 correspond to
+Apply this recurrence to
 $$
-(A,B)=(-4x^2,0),
+(-4x^2,0),\quad
+(-3x^2,-2x^3),\quad
+(-3x^2,2x^3),\quad
+(-x^2,0),
 $$
-$$
-(A,B)=(-3x^2,-2x^3),
-$$
-$$
-(A,B)=(-3x^2,2x^3),
-$$
-and
-$$
-(A,B)=(-x^2,0),
-$$
-with coefficients $1,-1,-1,2$, respectively. Applying the displayed recurrence for $m\leq5$, the coefficients of $\varepsilon$ and $\varepsilon^2$ cancel, while
+with respective weights $1,-1,-1,2$. The coefficients of $\varepsilon$ and $\varepsilon^2$ cancel, and the next four coefficients are
 $$
 [\varepsilon^3]H_n(\alpha)=-2x^6,
 $$
 $$
 [\varepsilon^4]H_n(\alpha)
 =
-2x^6(2x^2-3\alpha+1),
+2x^6(-3\alpha+2x^2+1),
 $$
-and
 $$
 [\varepsilon^5]H_n(\alpha)
 =
 -\frac{x^6}{2}
 \left(
-9x^4-32\alpha x^2+24x^2+12\alpha^2-8\alpha
+12\alpha^2-32\alpha x^2-8\alpha+9x^4+24x^2
+\right),
+$$
+and
+$$
+[\varepsilon^6]H_n(\alpha)
+=
+\frac{x^6}{6}
+\left(
+-12\alpha^3+144\alpha^2x^2+12\alpha^2
+-135\alpha x^4-216\alpha x^2
++22x^6+162x^4+48x^2
 \right).
 $$
-Therefore
-$$
-H_n(\alpha)
-=
--\frac{2x^6}{n^3}
-+\frac{2x^6(2x^2-3\alpha+1)}{n^4}
-+O(n^{-5}).
-$$
 
-Step 3: Recover the hidden parameter from the first ratio limit
+Step 3: Determine the parameter and specialize the higher-order expansion
 
-Write
+The first two nonzero terms give
 $$
 H_n(\alpha)
 =
 -\frac{2x^6}{n^3}
 \left(
-1+\frac{b}{n}+O(n^{-2})
+1+\frac{3\alpha-2x^2-1}{n}+O(n^{-2})
 \right).
 $$
-Comparison with Step 2 gives
-$$
-b=3\alpha-2x^2-1.
-$$
-Thus
+Therefore
 $$
 8\frac{H_{2n}(\alpha)}{H_n(\alpha)}
 =
-\frac{1+\frac{b}{2n}+O(n^{-2})}
-{1+\frac{b}{n}+O(n^{-2})}
-=
-1-\frac{b}{2n}+O(n^{-2}).
+1-\frac{3\alpha-2x^2-1}{2n}+O(n^{-2}).
 $$
-Consequently
+The defining condition for $\alpha_x$ is thus equivalent to
 $$
-\lim_{n\to\infty}
-n\left(
-8\frac{H_{2n}(\alpha)}{H_n(\alpha)}-1
-\right)
-=
--\frac b2.
+3\alpha_x-2x^2-1=0,
 $$
-The defining limit vanishes exactly when
-$$
-3\alpha-2x^2-1=0.
-$$
-Hence the required real number exists uniquely and equals
+so
 $$
 \alpha_x=\frac{2x^2+1}{3}.
 $$
+This also proves uniqueness.
 
-Step 4: Extract the next surviving term and evaluate the exponential limit
-
-Substituting
+Substituting this value into the coefficients from Step 2 gives
 $$
-\alpha=\frac{2x^2+1}{3}
+[\varepsilon^4]H_n(\alpha_x)=0,
 $$
-into the $\varepsilon^5$ coefficient from Step 2 gives
 $$
-H_n(\alpha_x)
+[\varepsilon^5]H_n(\alpha_x)
 =
--\frac{2x^6}{n^3}
-+\frac{x^6(21x^4-40x^2+4)}{6n^5}
-+O(n^{-6}).
+\frac{x^6}{6}
+\left(
+21x^4-40x^2+4
+\right),
 $$
-Thus
+and
+$$
+[\varepsilon^6]H_n(\alpha_x)
+=
+-\frac{x^6}{54}
+\left(
+68x^6-333x^4+48x^2-8
+\right).
+$$
+Hence
 $$
 H_n(\alpha_x)
 =
 -\frac{2x^6}{n^3}
 \left(
-1-\frac{21x^4-40x^2+4}{12n^2}
-+O(n^{-3})
-\right).
+1+\frac{b}{n^2}+\frac{c}{n^3}+O(n^{-4})
+\right),
 $$
-Set
+where
 $$
-a=-\frac{21x^4-40x^2+4}{12}.
+b=-\frac{21x^4-40x^2+4}{12},
 $$
-Then
+and
 $$
-8\frac{H_{2n}(\alpha_x)}{H_n(\alpha_x)}
+c=\frac{68x^6-333x^4+48x^2-8}{108}.
+$$
+
+Step 4: Use the three scales to cancel the lower correction
+
+For $s\in\{1,2,4\}$, write
+$$
+H_{sn}(\alpha_x)
 =
-\frac{1+\frac{a}{4n^2}+O(n^{-3})}
-{1+\frac{a}{n^2}+O(n^{-3})}
+-\frac{2x^6}{s^3n^3}S_{s,n},
+$$
+where
+$$
+S_{s,n}
 =
-1-\frac{3a}{4n^2}+O(n^{-3}).
+1+\frac{b}{s^2n^2}
++\frac{c}{s^3n^3}
++O(n^{-4}).
+$$
+The powers in the required quotient give
+$$
+512\frac{H_n(\alpha_x)H_{4n}(\alpha_x)^4}
+{H_{2n}(\alpha_x)^5}
+=
+\frac{S_{1,n}S_{4,n}^4}{S_{2,n}^5},
+$$
+because
+$$
+512\frac{4^{-12}}{2^{-15}}=1.
+$$
+
+For sufficiently large $n$, all $S_{s,n}$ are positive, and
+$$
+\log S_{s,n}
+=
+\frac{b}{s^2n^2}
++\frac{c}{s^3n^3}
++O(n^{-4}).
+$$
+Thus
+$$
+\log\left(
+512\frac{H_n(\alpha_x)H_{4n}(\alpha_x)^4}
+{H_{2n}(\alpha_x)^5}
+\right)
+=
+\frac{b}{n^2}
+\left(
+1+\frac{4}{16}-\frac{5}{4}
+\right)
++
+\frac{c}{n^3}
+\left(
+1+\frac{4}{64}-\frac{5}{8}
+\right)
++O(n^{-4}).
+$$
+The quadratic correction cancels, while
+$$
+1+\frac{4}{64}-\frac{5}{8}=\frac{7}{16}.
 $$
 Therefore
 $$
-8\frac{H_{2n}(\alpha_x)}{H_n(\alpha_x)}
-=
-1+\frac{21x^4-40x^2+4}{16n^2}
-+O(n^{-3}).
-$$
-Taking logarithms,
-$$
-n^2\log\left(
-8\frac{H_{2n}(\alpha_x)}{H_n(\alpha_x)}
+n^3
+\log\left(
+512\frac{H_n(\alpha_x)H_{4n}(\alpha_x)^4}
+{H_{2n}(\alpha_x)^5}
 \right)
-=
-\frac{21x^4-40x^2+4}{16}
-+O(n^{-1}).
+\longrightarrow
+\frac{7c}{16}.
 $$
-Exponentiating yields the required limit.
+Substituting the value of $c$ gives
+$$
+\frac{7c}{16}
+=
+\frac{7(68x^6-333x^4+48x^2-8)}{1728}.
+$$
 
-Final Answer: $\boxed{\exp\left(\frac{21x^4-40x^2+4}{16}\right)}$
+Final Answer: $\boxed{\exp\left(\frac{7(68x^6-333x^4+48x^2-8)}{1728}\right)}$
 
 ---
 
 ## Answer
 
-$\exp\left(\frac{21x^4-40x^2+4}{16}\right)$
+$\exp\left(\frac{7(68x^6-333x^4+48x^2-8)}{1728}\right)$
 
 ---
 
@@ -260,6 +298,6 @@ $\exp\left(\frac{21x^4-40x^2+4}{16}\right)$
 
 - determinant expansion
 - asymptotic cancellation
-- logarithmic series
 - parameter identification
+- multiscale quotient
 - exponential limits
