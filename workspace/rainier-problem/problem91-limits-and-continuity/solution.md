@@ -1,228 +1,355 @@
 ## Steps
 
-Step 1: Recover simpler generators
+Step 1: Recover the invariant generators
 
-Set
+Put
 $$
-p=x^{12},
+S=x^7+y^7+1,
+$$
+$$
+A=\frac{x^7y^7+x^7+y^7}{S^2},
 \qquad
-q=\frac{y}{x^5}.
+B=\frac{x^7y^7}{S^3}.
 $$
-The displayed functions satisfy
+The definitions give
 $$
-u=\frac{p}{1+q},
+u=A+B^2,
 \qquad
-v=\frac{q}{1+p}.
+v=B+u^3.
 $$
-From these two equations,
+They can be inverted in sequence:
 $$
-p=u(1+q),
-\qquad
-q=v(1+p).
+B=v-u^3,
 $$
-Substituting the second equation into the first gives
 $$
-p(1-uv)=u(1+v),
-$$
-and substituting the first into the second gives
-$$
-q(1-uv)=v(1+u).
+A=u-(v-u^3)^2.
 $$
 Therefore
 $$
-p=\frac{u(1+v)}{1-uv},
-\qquad
-q=\frac{v(1+u)}{1-uv}.
+K_q=\mathbb F_q(A,B).
 $$
-It follows that
-$$
-K_Q=\mathbb F_Q(p,q).
-$$
-
-Step 2: Identify the hidden fixed field
-
-Since $Q\equiv13\pmod{24}$, the field $\mathbb F_Q$ contains a primitive twelfth root $\eta$. Define
-$$
-\sigma(x)=\eta x,
-\qquad
-\sigma(y)=\eta^5y.
-$$
-Because $12\mid n=Q-1$, this preserves
-$$
-x^n+y^n+1=0.
-$$
-The automorphism $\sigma$ has order $12$. Both recovered generators are fixed:
-$$
-\sigma(p)=p,
-\qquad
-\sigma(q)=q.
-$$
-This gives
-$$
-K_Q\subseteq L_Q^{\langle\sigma\rangle}.
-$$
-
-Conversely, once $p$ and $q$ are known, $x$ satisfies
-$$
-x^{12}=p,
-$$
-and then
-$$
-y=qx^5.
-$$
-There are at most $12$ possibilities for $x$, so
-$$
-[L_Q:K_Q]\leq12.
-$$
-The powers of $\sigma$ give $12$ distinct $K_Q$-automorphisms of $L_Q$, which gives the reverse inequality. Therefore
-$$
-K_Q=L_Q^{\langle\sigma\rangle}.
-$$
-
-Step 3: Compute the quotient genus
-
-Let $C_Q$ be the smooth projective Fermat curve
-$$
-X^n+Y^n+Z^n=0.
-$$
-Its genus satisfies
-$$
-2g(C_Q)-2=n(n-3).
-$$
-The characteristic does not divide $12$, so the cyclic quotient is tame.
-
-On projective coordinates,
-$$
-\sigma^k[X:Y:Z]=[\eta^kX:\eta^{5k}Y:Z].
-$$
-For $1\leq k\leq11$, the first two eigenvalues are equal exactly when
-$$
-4k\equiv0\pmod{12},
-$$
-so this occurs for
-$$
-k=3,6,9.
-$$
-Neither $\eta^k$ nor $\eta^{5k}$ equals $1$ for a nonzero residue $k$.
-
-If $k\notin\{3,6,9\}$, all three eigenvalues are distinct. The only fixed projective points are the three coordinate points, none of which lies on $C_Q$.
-
-For $k=3,6,9$, the fixed locus consists of the line $Z=0$ and the point $[0:0:1]$. The point is not on $C_Q$, while
-$$
-X^n+Y^n=0
-$$
-has exactly $n$ distinct projective solutions on $Z=0$. The total fixed-point contribution is
-$$
-R=3n.
-$$
-
-Riemann-Hurwitz gives
-$$
-n(n-3)=12\bigl(2g(K_Q)-2\bigr)+3n.
-$$
-Solving,
-$$
-24g(K_Q)=n^2-6n+24.
-$$
-Since $n=Q-1$,
-$$
-24g(K_Q)=Q^2-8Q+31.
-$$
-
-Step 4: Expand the linked genus ratios
-
-Every odd power of $Q$ is again congruent to $13\pmod{24}$, so the genus formula from Step 3 applies to $Q^3,Q^9,Q^{27}$.
 
 Set
 $$
-F(T)=\sqrt{T^2-8T+31},
+\alpha=\frac{x^7}{S},
 \qquad
-f(T)=\frac{F(T)}T.
-$$
-The common factor $1/\sqrt{24}$ cancels from every ratio. Define
-$$
-A_0=\frac{F(Q^3)}{Q^2F(Q)},
+\beta=\frac{y^7}{S},
 \qquad
-A_1=\frac{F(Q^9)}{Q^6F(Q^3)},
-\qquad
-A_2=\frac{F(Q^{27})}{Q^{18}F(Q^9)}.
+\gamma=\frac1S.
 $$
 Then
 $$
-A_0=\frac{f(Q^3)}{f(Q)},
+\alpha+\beta+\gamma=1,
+$$
+$$
+A=\alpha\beta+\beta\gamma+\gamma\alpha,
 \qquad
-A_1=\frac{f(Q^9)}{f(Q^3)},
-\qquad
-A_2=\frac{f(Q^{27})}{f(Q^9)}.
+B=\alpha\beta\gamma.
+$$
+The unordered triple $\{\alpha,\beta,\gamma\}$ is therefore determined by $A,B$, since its elements are the roots of
+$$
+T^3-T^2+AT-B.
 $$
 
-Using
+Step 2: Identify the fixed field
+
+Choose a primitive seventh root $\zeta\in\mathbb F_q$. Let $D$ be the projective diagonal group
 $$
-\sqrt{1+z}=1+\frac z2-\frac{z^2}{8}+\frac{z^3}{16}+O(z^4)
+[X:Y:Z]\longmapsto
+[\zeta^aX:\zeta^bY:Z],
+\qquad
+a,b\in\mathbb Z/7\mathbb Z.
 $$
-with
+It has order $49$. Coordinate permutations normalize $D$, so
 $$
-z=-\frac8T+\frac{31}{T^2},
+G=D\rtimes S_3
 $$
-gives
+has order
 $$
-f(T)=1-\frac4T+\frac{15}{2T^2}+\frac{30}{T^3}+O(T^{-4}).
+|G|=294.
 $$
-Multiplying this by
+
+Both $A$ and $B$ depend only on the elementary symmetric functions of
 $$
-1+\frac aT+\frac b{T^2}+\frac c{T^3}
+\frac{X^7}{X^7+Y^7+Z^7},
+\qquad
+\frac{Y^7}{X^7+Y^7+Z^7},
+\qquad
+\frac{Z^7}{X^7+Y^7+Z^7},
 $$
-and matching the coefficients through $T^{-3}$ yields
+so every element of $G$ fixes $A,B$. This gives
 $$
-\frac1{f(T)}=1+\frac4T+\frac{17}{2T^2}-\frac{26}{T^3}+O(T^{-4}).
+K_q\subseteq L_q^G.
 $$
-Since
+
+Conversely, after choosing one of the at most six orderings of $\alpha,\beta,\gamma$,
 $$
-f(T^3)=1-\frac4{T^3}+O(T^{-6}),
+x^7=\frac{\alpha}{\gamma},
+\qquad
+y^7=\frac{\beta}{\gamma}.
 $$
-we get
+There are at most seven choices for each of $x$ and $y$. Therefore
 $$
-\frac{f(T^3)}{f(T)}=1+\frac4T+\frac{17}{2T^2}-\frac{30}{T^3}+O(T^{-4}).
+[L_q:K_q]\leq6\cdot7^2=294.
 $$
-Applying this with $T=Q,Q^3,Q^9$ gives
+The group $G$ supplies $294$ distinct $K_q$-automorphisms, so
 $$
-A_0=1+\frac4Q+\frac{17}{2Q^2}-\frac{30}{Q^3}+O(Q^{-4}),
-$$
-$$
-A_1=1+\frac4{Q^3}+\frac{17}{2Q^6}-\frac{30}{Q^9}+O(Q^{-12}),
+[L_q:K_q]=294
 $$
 and
 $$
-A_2=1+\frac4{Q^9}+\frac{17}{2Q^{18}}-\\frac{30}{Q^{27}}+O(Q^{-36}).
+K_q=L_q^G.
 $$
 
-Step 5: Evaluate the nested cancellation
+Step 3: Count the diagonal and transposition fixed points
 
-The first cancellation gives
+Let $C_q$ be the smooth Fermat curve
 $$
-(A_0-1)-Q^2(A_1-1)=\frac{17}{2Q^2}-\frac{30}{Q^3}+O(Q^{-4}).
+X^n+Y^n+Z^n=0.
 $$
-The same calculation at the next scale gives
+The characteristic does not divide $294$, and
 $$
-(A_1-1)-Q^6(A_2-1)=\frac{17}{2Q^6}-\frac{30}{Q^9}+O(Q^{-12}).
+2g(C_q)-2=n(n-3).
 $$
-After multiplication by $Q^4$,
-$$
-Q^4\bigl((A_1-1)-Q^6(A_2-1)\bigr)=\frac{17}{2Q^2}+O(Q^{-5}).
-$$
-Subtracting leaves
-$$
-(A_0-1)-Q^2(A_1-1)-Q^4\bigl((A_1-1)-Q^6(A_2-1)\bigr)=-\frac{30}{Q^3}+O(Q^{-4}).
-$$
-Multiplication by $Q^3$ gives the required limit.
 
-Final Answer: $\boxed{-30}$
+A nonidentity element
+$$
+d_{r,s}[X:Y:Z]=[\zeta^rX:\zeta^sY:Z]
+$$
+can fix a point of $C_q$ only when two of
+$$
+\zeta^r,\qquad\zeta^s,\qquad1
+$$
+coincide. The possibilities are
+$$
+r=0,\qquad s=0,\qquad r=s.
+$$
+Each gives six nonidentity elements. The three sets are disjoint away from the identity, and every such element fixes one coordinate line containing exactly $n$ points of $C_q$. The diagonal contribution is
+$$
+R_D=18n.
+$$
+
+Let $\tau$ exchange $X$ and $Y$. An element of $D\tau$ has the form
+$$
+g_{r,s}[X:Y:Z]
+=
+[\zeta^rY:\zeta^sX:Z].
+$$
+Put
+$$
+k\equiv r+s\pmod7.
+$$
+Each value of $k$ occurs for seven pairs $(r,s)$.
+
+For $k=0$, the $X,Y$ block has eigenvalues $1,-1$. Its $1$-eigenspace together with the $Z$-axis is a projective line meeting $C_q$ in $n$ points. The isolated $-1$ eigenline lies in $Z=0$ and is not on $C_q$, since $n$ is even. These seven elements contribute $7n$.
+
+For $k\neq0$, a fixed point would lie on an eigenline in $Z=0$. If $\lambda$ is its eigenvalue, then
+$$
+\lambda^2=\zeta^k.
+$$
+Because $7\mid n$ and $n$ is even,
+$$
+\lambda^n
+=
+(\lambda^2)^{n/2}
+=
+1.
+$$
+The ratio of the two nonzero coordinates therefore has $n$th power $1$, whereas the Fermat equation on $Z=0$ requires $-1$. No such point exists.
+
+There are three transposition cosets, so
+$$
+R_T=21n.
+$$
+
+Step 4: Find the residue-sensitive three-cycle contribution
+
+Let
+$$
+c[X:Y:Z]=[Y:Z:X].
+$$
+An element of $Dc$ can be written
+$$
+g[X:Y:Z]=[\zeta^rY:\zeta^sZ:X].
+$$
+At a fixed eigenline with eigenvalue $\lambda$,
+$$
+\lambda^3=\zeta^{r+s}.
+$$
+All three coordinates are nonzero. Their $n$th powers are proportional to
+$$
+1,\qquad t,\qquad t^2,
+\qquad
+t=\lambda^n.
+$$
+Since $7\mid n$,
+$$
+t^3=1.
+$$
+The Fermat equation on the eigenline becomes
+$$
+1+t+t^2=0.
+$$
+
+If $3\nmid n$, the three eigenvalues differ by cube roots of unity, and their corresponding values of $t$ run through all three cube roots of unity. Exactly two satisfy
+$$
+1+t+t^2=0.
+$$
+Every element of $Dc$ then fixes two points.
+
+If $3\mid n$, write $n=3m$. Since $7\mid n$, also $7\mid m$, and
+$$
+t=(\lambda^3)^m=\zeta^{(r+s)m}=1.
+$$
+No eigenline lies on $C_q$.
+
+Each of $Dc$ and $Dc^2$ contains $49$ elements. If
+$$
+\delta_q=
+\begin{cases}
+1,&3\nmid(q-1),\\
+0,&3\mid(q-1),
+\end{cases}
+$$
+their combined contribution is
+$$
+R_C=196\delta_q.
+$$
+The total fixed-point contribution is
+$$
+R=39n+196\delta_q.
+$$
+
+Step 5: Derive the two genus laws
+
+Riemann-Hurwitz gives
+$$
+n(n-3)
+=
+294\bigl(2g(K_q)-2\bigr)
++
+39n
++
+196\delta_q.
+$$
+Solving and using $n=q-1$ gives
+$$
+588g(K_q)
+=
+q^2-44q+631-196\delta_q.
+$$
+
+For $Q\equiv29\pmod{42}$,
+$$
+Q\equiv2\pmod3,
+$$
+so
+$$
+\delta_Q=1
+$$
+and
+$$
+588g(K_Q)=Q^2-44Q+435.
+$$
+
+Also
+$$
+Q^2\equiv1\pmod{42}.
+$$
+Every further even power remains congruent to $1\pmod{42}$, so
+$$
+\delta_{Q^2}=\delta_{Q^4}=\delta_{Q^8}=0.
+$$
+Therefore
+$$
+588g(K_{Q^{2j}})
+=
+Q^{4j}-44Q^{2j}+631
+$$
+for $j=1,2,3$.
+
+Step 6: Evaluate the nested cancellation
+
+Put
+$$
+z=\frac1Q.
+$$
+Define the three ratios occurring in the problem by
+$$
+A_0=\frac{g(K_{Q^2})}{Q^2g(K_Q)},
+$$
+$$
+A_1=\frac{g(K_{Q^4})}{Q^4g(K_{Q^2})},
+$$
+$$
+A_2=\frac{g(K_{Q^8})}{Q^8g(K_{Q^4})}.
+$$
+The genus formulas from Step 5 give
+$$
+A_0=
+\frac{1-44z^2+631z^4}
+{1-44z+435z^2}.
+$$
+Since
+$$
+\frac1{1-44z+435z^2}
+=
+1+44z+1501z^2+O(z^3),
+$$
+we get
+$$
+A_0
+=
+1+44z+1457z^2+O(z^3).
+$$
+
+For the later scales,
+$$
+A_1
+=
+\frac{1-44z^4+631z^8}
+{1-44z^2+631z^4}
+=
+1+44z^2+1261z^4+O(z^6),
+$$
+and
+$$
+A_2
+=
+1+44z^4+1261z^8+O(z^{12}).
+$$
+
+The first cancellation is
+$$
+(A_0-1)-Q(A_1-1)
+=
+1457z^2+O(z^3).
+$$
+The second is
+$$
+(A_1-1)-Q^2(A_2-1)
+=
+1261z^4+O(z^6).
+$$
+After its additional factor $Q^2$,
+$$
+Q^2\bigl((A_1-1)-Q^2(A_2-1)\bigr)
+=
+1261z^2+O(z^4).
+$$
+Subtracting the two expressions leaves
+$$
+196z^2+O(z^3).
+$$
+Multiplication by $Q^2=z^{-2}$ gives the required limit.
+
+Final Answer: $\boxed{196}$
 
 ---
 
 ## Answer
 
-$-30$
+$196$
 
 ---
 
@@ -237,7 +364,7 @@ $-30$
 ## Solution Concepts
 
 - invariant subfields
-- cyclic group actions
+- semidirect product actions
 - projective fixed points
 - Riemann-Hurwitz formula
 - asymptotic cancellation

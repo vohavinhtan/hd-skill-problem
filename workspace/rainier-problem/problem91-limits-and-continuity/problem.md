@@ -2,39 +2,67 @@
 
 ## LaTeX (Normalized)
 
-For each prime power $Q>37$ satisfying
+For each prime power $q>7$ satisfying
 $$
-Q\equiv13\pmod{24},
+q\equiv1\pmod7,
+\qquad
+\gcd(q,6)=1,
 $$
 put
 $$
-n=Q-1
+n=q-1
 $$
 and let
 $$
-L_Q=\mathbb F_Q(x,y),
+L_q=\mathbb F_q(x,y),
 \qquad
 x^n+y^n+1=0.
 $$
 
-Inside $L_Q$, define
+Inside $L_q$, define
 $$
-u=\frac{x^{17}}{x^5+y},
+u=
+\frac{x^7y^7+x^7+y^7}{(x^7+y^7+1)^2}
++
+\left(
+\frac{x^7y^7}{(x^7+y^7+1)^3}
+\right)^2,
 $$
 $$
-v=\frac{y}{x^5(1+x^{12})},
+v=
+\frac{x^7y^7}{(x^7+y^7+1)^3}
++
+u^3,
 $$
 and let
 $$
-K_Q=\mathbb F_Q(u,v).
+K_q=\mathbb F_q(u,v).
 $$
 
 Determine the exact value of
 $$
-\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv13\pmod{24}}}Q^3\left[\left(\frac{\sqrt{g(K_{Q^3})}}{Q^2\sqrt{g(K_Q)}}-1-Q^2\left(\frac{\sqrt{g(K_{Q^9})}}{Q^6\sqrt{g(K_{Q^3})}}-1\right)\right)-Q^4\left(\frac{\sqrt{g(K_{Q^9})}}{Q^6\sqrt{g(K_{Q^3})}}-1-Q^6\left(\frac{\sqrt{g(K_{Q^{27}})}}{Q^{18}\sqrt{g(K_{Q^9})}}-1\right)\right)\right].
+\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv29\pmod{42}}}
+Q^2
+\left[
+\left(
+\frac{g(K_{Q^2})}{Q^2g(K_Q)}
+-1
+-Q\left(
+\frac{g(K_{Q^4})}{Q^4g(K_{Q^2})}-1
+\right)
+\right)
+-
+Q^2\left(
+\frac{g(K_{Q^4})}{Q^4g(K_{Q^2})}
+-1
+-Q^2\left(
+\frac{g(K_{Q^8})}{Q^8g(K_{Q^4})}-1
+\right)
+\right)
+\right].
 $$
 
-The indexing set is unbounded; for example, $Q=13^{2k+1}$ is admissible for every $k\geq1$.
+The indexing set is unbounded; for example, $Q=29^{2k+1}$ is admissible for every $k\geq0$.
 
 ---
 
@@ -51,14 +79,14 @@ The indexing set is unbounded; for example, $Q=13^{2k+1}$ is admissible for ever
 
 ## Domain Explanation
 
-This problem involves an exact nested renormalized limit in which two successive lower-order asymptotic terms cancel,
+This problem involves a renormalized limit with two linked cancellations across different scales,
 which are part of Calculus and Limits and continuity.
-The problem also involves algebraic function fields, hidden invariant subfields, finite cyclic actions, and ramification,
+The problem also involves algebraic function fields, invariant subfields, finite group actions, and ramification,
 which are part of Abstract Algebra and Computational algebra.
-However, the algebraic calculations determine the exact genus sequence entering the limit, while the requested object is one exact scalar limit.
+However, those algebraic calculations determine the genus sequence entering the requested limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The two rational generators conceal weighted monomial invariants rather than symmetric power sums.
-- Recovering the field requires identifying a cyclic action whose nonidentity elements have different projective fixed loci.
-- A second scale cancellation removes the first two accessible asymptotic coefficients, so the answer depends on the next term.
+- The displayed generators hide the elementary symmetric invariants of a projective diagonal-permutation action.
+- The fixed-point contribution of the three-cycle cosets changes when the field size is squared.
+- The nested scale comparison removes the shared asymptotic terms and leaves the correction caused by that ramification change.
