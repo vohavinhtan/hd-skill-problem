@@ -2,14 +2,18 @@
 
 ## LaTeX (Normalized)
 
-For each integer $N\geq1$ and $k\in\{0,1,\ldots,6\}$, define
+For each integer $N\geq1$ and $k\in\{0,1,2,3,4\}$, define
 $$
 M_{k,N}
 =
 \frac{\displaystyle\int_0^1 x^k
-\exp\!\left(-N\left[x\left(x-\frac13\right)(1-x)\right]^2\right)\,dx}
+\exp\!\left(
+-N\left[x(1-x)\left(x-\frac13\right)^2\right]^2
+\right)\,dx}
 {\displaystyle\int_0^1
-\exp\!\left(-N\left[x\left(x-\frac13\right)(1-x)\right]^2\right)\,dx}.
+\exp\!\left(
+-N\left[x(1-x)\left(x-\frac13\right)^2\right]^2
+\right)\,dx}.
 $$
 
 Set
@@ -18,19 +22,19 @@ H_N
 =
 \det
 \begin{pmatrix}
-M_{0,N}&M_{1,N}&M_{2,N}&M_{3,N}\\
-M_{1,N}&M_{2,N}&M_{3,N}&M_{4,N}\\
-M_{2,N}&M_{3,N}&M_{4,N}&M_{5,N}\\
-M_{3,N}&M_{4,N}&M_{5,N}&M_{6,N}
+M_{0,N}&M_{1,N}&M_{2,N}\\
+M_{1,N}&M_{2,N}&M_{3,N}\\
+M_{2,N}&M_{3,N}&M_{4,N}
 \end{pmatrix}.
 $$
 
 Determine the exact value of
 $$
 \lim_{N\to\infty}
-\sqrt N\left[
-NH_N-(4N)H_{4N}
-\right].
+N^{1/4}
+\left(
+\sqrt N\,H_N-\sqrt{16N}\,H_{16N}
+\right).
 $$
 
 ---
@@ -48,14 +52,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves an exact renormalized limit governed by the first correction to a singular moment determinant,
+This problem involves an exact renormalized limit whose value is determined by a lower-order term in a fractional-power asymptotic expansion,
 which are part of Calculus and Limits and continuity.
-The problem also involves Laplace asymptotics near several concentration points and Vandermonde moment identities,
+The problem also involves Laplace asymptotics near zeros with different multiplicities and a moment determinant,
 which are part of Calculus and Applications of integration.
-However, those integral calculations determine the asymptotic sequence entering the requested limit, while the final requested object is one exact scalar limit.
+However, the local integral analysis determines the asymptotic sequence entering the requested limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The weight has three inequivalent concentration points, so the centered-symmetry reduction of the two-well problem is unavailable.
-- The determinant first becomes nonzero when four samples occupy the three wells in a two-one-one pattern.
-- The scale difference removes that leading contribution, forcing the first correction from local Jacobians and cross-well displacements.
+- The two endpoint zeros and the interior double zero generate localization scales $N^{-1/2}$ and $N^{-1/4}$ simultaneously.
+- The dominant determinant term comes from samples occupying all three concentration regions, while the first correction comes from a different occupancy pattern.
+- The scale difference removes the dominant term and isolates the interaction between normalization and the first repeated-well contribution.

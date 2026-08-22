@@ -1,396 +1,201 @@
 ## Steps
 
-Step 1: Convert the determinant to a four-point integral
+Step 1: Convert the moment determinant to a three-point integral
 
 Put
 $$
-\phi(x)=x\left(x-\frac13\right)(1-x)
+\phi(x)=x(1-x)\left(x-\frac13\right)^2
 $$
 and
 $$
 Z_N=\int_0^1e^{-N\phi(x)^2}\,dx.
 $$
-The moment determinant identity gives
+The Vandermonde determinant identity gives
 $$
 H_N
 =
-\frac{1}{24Z_N^4}
-\int_{[0,1]^4}
-\prod_{1\leq i<j\leq4}(x_i-x_j)^2
-\exp\!\left(-N\sum_{i=1}^4\phi(x_i)^2\right)
-\,dx_1\cdots dx_4.
-$$
-
-Write
-$$
-\varepsilon=N^{-1/2}.
-$$
-The zeros of $\phi$ are
-$$
-r_0=0,\qquad r_1=\frac13,\qquad r_2=1.
-$$
-Each integration variable is exponentially concentrated within $O(\varepsilon)$ of one of these three points.
-
-With four variables and three wells, the smallest possible number of small pairwise differences occurs for an occupancy pattern $2+1+1$. It contributes one squared difference of order $\varepsilon^2$. The patterns $2+2$, $3+1$, and $4$ contain at least two small squared differences and contribute only $O(\varepsilon^4)$ to $H_N$. Therefore terms through order $\varepsilon^3$ come only from the three $2+1+1$ patterns.
-
-Step 2: Obtain the local branch expansions
-
-Near a root $r$, write a branch as
-$$
-x=r+ez,
-\qquad
-z\geq0,
-$$
-where $e=\pm1$ points into the interval. On that branch write
-$$
-|\phi(r+ez)|
-=
-az+bz^2+O(z^3).
-$$
-The four branches give
-$$
-(r,e,a,b)
-=
-\left(0,1,\frac13,-\frac43\right),
-$$
-$$
-(r,e,a,b)
-=
-\left(\frac13,1,\frac29,\frac13\right),
-\qquad
-\left(\frac13,-1,\frac29,-\frac13\right),
-$$
-and
-$$
-(r,e,a,b)
-=
-\left(1,-1,\frac23,-\frac53\right).
+\frac1{6Z_N^3}
+\int_{[0,1]^3}
+\prod_{1\leq i<j\leq3}(x_i-x_j)^2
+\exp\!\left(-N\sum_{i=1}^3\phi(x_i)^2\right)
+\,dx_1dx_2dx_3.
 $$
 
 Set
 $$
-u=\frac{|\phi(x)|}{\varepsilon}.
+\varepsilon=N^{-1/4}.
 $$
-Inverting the local expansion gives
+The zeros of $\phi$ are $0,\frac13,1$. The endpoints are simple zeros, so their localization scale is $\varepsilon^2$. The zero at $\frac13$ is double, so its localization scale is $\varepsilon$.
+
+Step 2: Compute the masses of the three concentration regions
+
+Near the middle zero write
 $$
-z=
-\frac{\varepsilon u}{a}
--
-\frac{b\varepsilon^2u^2}{a^3}
+x=\frac13+\varepsilon u.
+$$
+Then
+$$
+\phi(x)
+=
+\frac29\varepsilon^2u^2
 +
-O(\varepsilon^3),
+\frac13\varepsilon^3u^3
+-
+\varepsilon^4u^4.
 $$
-and
+Therefore
 $$
-|dx|
+e^{-N\phi(x)^2}
 =
-\frac{\varepsilon}{a}
+e^{-4u^4/81}
 \left(
-1-\frac{2b}{a^2}\varepsilon u+O(\varepsilon^2)
-\right)du.
+1-\frac4{27}\varepsilon u^5+O(\varepsilon^2)
+\right).
+$$
+The coefficient of $\varepsilon$ is odd, so its integral over the limiting full line vanishes. Define
+$$
+C=
+\int_{-\infty}^{\infty}e^{-4u^4/81}\,du
+=
+\frac{3\Gamma\!\left(\frac14\right)}{2\sqrt2}.
 $$
 
-Let
+At the left endpoint put $x=\varepsilon^2s$. Then
 $$
-I_m=\int_0^\infty u^me^{-u^2}\,du
+N\phi(x)^2=\frac{s^2}{81}+O(\varepsilon^2),
+$$
+so
+$$
+L=
+\int_0^\infty e^{-s^2/81}\,ds
 =
-\frac12\Gamma\!\left(\frac{m+1}{2}\right).
-$$
-If
-$$
-R_{j,m}
-=
-\int_{\text{near }r_j}
-(x-r_j)^m e^{-\phi(x)^2/\varepsilon^2}\,dx,
-$$
-then summing the branches at $r_j$ gives
-$$
-R_{j,m}
-=
-\varepsilon^{m+1}
-\left(c_{j,m}+\varepsilon d_{j,m}+O(\varepsilon^2)\right),
-$$
-where
-$$
-c_{j,m}
-=
-I_m\sum\frac{e^m}{a^{m+1}},
-$$
-$$
-d_{j,m}
-=
--(m+2)I_{m+1}
-\sum\frac{e^mb}{a^{m+3}}.
+\frac{9\sqrt\pi}{2}.
 $$
 
-For $m\leq3$, the needed coefficients are
+At the right endpoint put $x=1-\varepsilon^2s$. Then
 $$
-\begin{array}{c|cccc}
-r_j
-&
-c_{j,0}
-&
-d_{j,0}
-&
-c_{j,1}
-&
-d_{j,1}
-\\ \hline
-0
-&
-\frac{3\sqrt\pi}{2}
-&
-36
-&
-\frac92
-&
-81\sqrt\pi
-\\
-\frac13
-&
-\frac{9\sqrt\pi}{2}
-&
-0
-&
-0
-&
--\frac{6561\sqrt\pi}{32}
-\\
-1
-&
-\frac{3\sqrt\pi}{4}
-&
-\frac{45}{8}
-&
--\frac98
-&
--\frac{405\sqrt\pi}{64}
-\end{array}
+N\phi(x)^2=\frac{16s^2}{81}+O(\varepsilon^2),
 $$
-and
+so
 $$
-\begin{array}{c|cccc}
-r_j
-&
-c_{j,2}
-&
-d_{j,2}
-&
-c_{j,3}
-\\ \hline
-0
-&
-\frac{27\sqrt\pi}{4}
-&
-648
-&
-\frac{81}{2}
-\\
-\frac13
-&
-\frac{729\sqrt\pi}{16}
-&
-0
-&
-0
-\\
-1
-&
-\frac{27\sqrt\pi}{32}
-&
-\frac{405}{16}
-&
--\frac{81}{32}
-\end{array}.
+R=
+\int_0^\infty e^{-16s^2/81}\,ds
+=
+\frac{9\sqrt\pi}{8}.
 $$
 
-In particular,
+It follows that
 $$
 Z_N
 =
-\varepsilon
-\left(
-Z_0+\varepsilon Z_1+O(\varepsilon^2)
-\right),
-$$
-with
-$$
-Z_0=\frac{27\sqrt\pi}{4},
-\qquad
-Z_1=\frac{333}{8}.
+\varepsilon C
++
+\varepsilon^2(L+R)
++
+O(\varepsilon^3).
 $$
 
-Step 3: Compute the repeated-pair local integrals
+Step 3: Find the leading determinant contribution
 
-For the well $r_j$, put
+A configuration with one point near each of $0,\frac13,1$ has unnormalized mass of order
 $$
-W_j=R_{j,0},
-\qquad
-M_j=R_{j,1},
-\qquad
-S_j=R_{j,2},
-\qquad
-T_j=R_{j,3}.
-$$
-For two independent local variables around the same root, define
-$$
-P_j
+\varepsilon^2\cdot\varepsilon\cdot\varepsilon^2
 =
-\iint(\xi_1-\xi_2)^2\,d\nu_j(\xi_1)d\nu_j(\xi_2),
+\varepsilon^5.
 $$
-and
+Its squared Vandermonde factor tends to
 $$
-Q_j
+\left(\frac13\right)^2
+\left(\frac23\right)^2
 =
-\iint(\xi_1-\xi_2)^2(\xi_1+\xi_2)
-\,d\nu_j(\xi_1)d\nu_j(\xi_2),
-$$
-where $d\nu_j=e^{-\phi(x)^2/\varepsilon^2}dx$ on the corresponding neighborhood.
-
-Expanding the products gives
-$$
-P_j=2(W_jS_j-M_j^2),
-$$
-$$
-Q_j=2(W_jT_j-M_jS_j).
-$$
-Using Step 2,
-$$
-P_j
-=
-\varepsilon^4
-\left(p_j+\varepsilon p'_j+O(\varepsilon^2)\right),
-$$
-$$
-Q_j
-=
-\varepsilon^5
-\left(q_j+O(\varepsilon)\right),
-$$
-with
-$$
-(p_0,p'_0,q_0)
-=
-\left(
-\frac{81(\pi-2)}4,
-972\sqrt\pi,
-\frac{243\sqrt\pi}{4}
-\right),
-$$
-$$
-(p_1,p'_1,q_1)
-=
-\left(
-\frac{6561\pi}{16},
-0,
-0
-\right),
-$$
-and
-$$
-(p_2,p'_2,q_2)
-=
-\left(
-\frac{81(\pi-2)}{64},
-\frac{1215\sqrt\pi}{64},
--\frac{243\sqrt\pi}{128}
-\right).
+\frac4{81}.
 $$
 
-Step 4: Assemble the three two-one-one configurations
+There are six labelled assignments, which cancel the factor $1/6$ in Step 1. Therefore the coefficient of $\varepsilon^5$ in the numerator after that factor is
+$$
+A_0=\frac4{81}LCR.
+$$
 
-Suppose the repeated well is $r$, while the other two roots are $s,t$. Write
+No term of order $\varepsilon^6$ comes from this occupancy. Endpoint displacements start at order $\varepsilon^2$. The order-$\varepsilon$ middle displacement integrates to zero by symmetry, and the order-$\varepsilon$ correction to its local density is odd as well.
+
+After division by $Z_N^3$, the leading coefficient of $H_N$ is
 $$
-A=r-s,
-\qquad
-B=r-t,
-\qquad
-C=s-t.
-$$
-For local displacements $\xi_1,\xi_2,\eta,\theta$, the five cross-well squared differences satisfy
-$$
-\prod_{\text{cross pairs}}(x_i-x_j)^2
+c=\frac{A_0}{C^3}
 =
-A^4B^4C^2
+\frac4{81}\frac{LR}{C^2}
+=
+\frac{2\pi}{9\Gamma\!\left(\frac14\right)^2}.
+$$
+
+Step 4: Compute the first repeated-well contribution
+
+The next possible occupancy has two points near the middle zero and one point near an endpoint. Its unnormalized mass is $\varepsilon^4$, and the squared difference between the two middle points supplies another factor $\varepsilon^2$. Hence it contributes at order $\varepsilon^6$.
+
+Define
+$$
+J=
+\int_{\mathbb R^2}
+(u-v)^2
+e^{-4(u^4+v^4)/81}
+\,du\,dv.
+$$
+The limiting middle density is even, so
+$$
+J
+=
+2C
+\int_{-\infty}^{\infty}
+u^2e^{-4u^4/81}\,du.
+$$
+The second integral is
+$$
+\frac{27\Gamma\!\left(\frac34\right)}{4\sqrt2}.
+$$
+Using
+$$
+\Gamma\!\left(\frac14\right)
+\Gamma\!\left(\frac34\right)
+=
+\pi\sqrt2,
+$$
+we obtain
+$$
+J=\frac{81\pi\sqrt2}{8}.
+$$
+
+For a repeated middle pair and one left endpoint, the two cross-well squared differences tend to $(1/3)^4$. For a right endpoint they tend to $(2/3)^4$. There are three labelled assignments of each type, so the factor $1/6$ leaves
+$$
+A_1
+=
+\frac J2
 \left[
-1+c_r(\xi_1+\xi_2)+c_s\eta+c_t\theta+O(\varepsilon^2)
-\right],
-$$
-where
-$$
-c_r=\frac2A+\frac2B,
-$$
-$$
-c_s=-\frac4A+\frac2C,
-\qquad
-c_t=-\frac4B-\frac2C.
-$$
-
-There are $12$ labelled assignments for each choice of repeated well, while the determinant formula contributes the factor $1/24$. The contribution of one repeated root is therefore one half of
-$$
-A^4B^4C^2
-\left[
-P_rW_sW_t
+\left(\frac13\right)^4L
 +
-c_rQ_rW_sW_t
-+
-c_sP_rM_sW_t
-+
-c_tP_rW_sM_t
-\right]
+\left(\frac23\right)^4R
+\right].
 $$
-through order $\varepsilon^7$.
-
-Substitution of the coefficients from Steps 2 and 3 gives the following contributions to the coefficients of $\varepsilon^6$ and $\varepsilon^7$ in the unnormalized determinant integral:
+Substitution gives
 $$
-\begin{array}{c|cc}
-\text{repeated root}
-&
-U_0
-&
-U_1
-\\ \hline
-0
-&
-\frac{3\pi(\pi-2)}{16}
-&
-\frac{9\sqrt\pi(2+7\pi)}{16}
-\\
-\frac13
-&
-\frac{9\pi^2}{16}
-&
--\frac{405\pi^{3/2}}{32}
-\\
-1
-&
-\frac{3\pi(\pi-2)}{32}
-&
-\frac{9\sqrt\pi(\pi+8)}{64}
-\end{array}.
-$$
-Therefore
-$$
-U_0=\frac{9\pi(3\pi-2)}{32},
-$$
-$$
-U_1=\frac{9\sqrt\pi(16-61\pi)}{64}.
+A_1
+=
+\frac{45\pi\sqrt{2\pi}}{32}.
 $$
 
-Step 5: Extract the first two terms of $H_N$
+All remaining occupancy patterns contribute only $O(\varepsilon^7)$ or smaller to the numerator at the precision needed here.
 
-Steps 1 and 4 give
+Step 5: Assemble the fractional-power expansion
+
+From Steps 2 through 4,
 $$
 H_N
 =
-\frac{
-\varepsilon^6U_0+\varepsilon^7U_1+O(\varepsilon^8)
-}{
-\varepsilon^4
-\left(Z_0+\varepsilon Z_1+O(\varepsilon^2)\right)^4
-}.
+\frac{\varepsilon^5A_0+\varepsilon^6A_1+O(\varepsilon^7)}
+{\varepsilon^3C^3
+\left(
+1+3\frac{L+R}{C}\varepsilon+O(\varepsilon^2)
+\right)}.
 $$
-Therefore
+Thus
 $$
 H_N
 =
@@ -398,50 +203,83 @@ c\varepsilon^2+d\varepsilon^3+O(\varepsilon^4),
 $$
 where
 $$
-c=\frac{U_0}{Z_0^4}
+d
 =
-\frac{8(3\pi-2)}{59049\pi},
+\frac{A_1}{C^3}
+-
+3\frac{L+R}{C}c.
 $$
-and
+
+The first term is
+$$
+\frac{A_1}{C^3}
+=
+\frac{5\pi^{3/2}}
+{3\Gamma\!\left(\frac14\right)^3}.
+$$
+Also
+$$
+\frac{L+R}{C}
+=
+\frac{15\sqrt{2\pi}}
+{4\Gamma\!\left(\frac14\right)},
+$$
+so
+$$
+3\frac{L+R}{C}c
+=
+\frac{5\sqrt2\,\pi^{3/2}}
+{2\Gamma\!\left(\frac14\right)^3}.
+$$
+Therefore
 $$
 d
 =
-\frac{U_1}{Z_0^4}
--
-4\frac{Z_1U_0}{Z_0^5}
-=
-\frac{4(344-627\pi)}{177147\pi^{3/2}}.
+\frac{
+5\pi^{3/2}(2-3\sqrt2)
+}{
+6\Gamma\!\left(\frac14\right)^3
+}.
 $$
-Since $\varepsilon=N^{-1/2}$,
+
+Since $\varepsilon=N^{-1/4}$,
 $$
-NH_N
+\sqrt N\,H_N
 =
-c+dN^{-1/2}+O(N^{-1}).
+c+dN^{-1/4}+O(N^{-1/2}).
 $$
 
 Step 6: Evaluate the scale difference
 
-Replacing $N$ by $4N$ in Step 5 gives
+Replacing $N$ by $16N$ gives
 $$
-(4N)H_{4N}
+\sqrt{16N}\,H_{16N}
 =
-c+\frac d2N^{-1/2}+O(N^{-1}).
+c+\frac d2N^{-1/4}+O(N^{-1/2}),
 $$
-Therefore
+because
 $$
-NH_N-(4N)H_{4N}
+(16N)^{-1/4}
 =
-\frac d2N^{-1/2}+O(N^{-1}).
+\frac12N^{-1/4}.
 $$
-Multiplication by $\sqrt N$ leaves $d/2$.
+Hence
+$$
+N^{1/4}
+\left(
+\sqrt N\,H_N-\sqrt{16N}\,H_{16N}
+\right)
+=
+\frac d2+O(N^{-1/4}).
+$$
 
-Final Answer: $\boxed{\frac{2(344-627\pi)}{177147\pi^{3/2}}}$
+Final Answer: $\boxed{\frac{5\pi^{3/2}(2-3\sqrt2)}{12\Gamma(\frac14)^3}}$
 
 ---
 
 ## Answer
 
-$\frac{2(344-627\pi)}{177147\pi^{3/2}}$
+$\frac{5\pi^{3/2}(2-3\sqrt2)}{12\Gamma(\frac14)^3}$
 
 ---
 
@@ -456,7 +294,7 @@ $\frac{2(344-627\pi)}{177147\pi^{3/2}}$
 ## Solution Concepts
 
 - Laplace asymptotics
+- mixed localization scales
 - Hankel moment determinants
 - Vandermonde determinant identity
-- multiple concentration points
-- asymptotic cancellation
+- concentration-region decomposition
