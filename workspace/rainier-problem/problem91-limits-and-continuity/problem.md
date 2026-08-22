@@ -20,13 +20,17 @@ $$
 Inside $L_Q$, define
 $$
 u=
-\frac{x^{36}+y^{36}+1}
+\frac{x^{18}y^{18}+x^{18}+y^{18}+2x^{12}y^{12}}
 {(x^{18}+y^{18}+1)^2},
 $$
 $$
 v=
-\frac{x^{90}+y^{90}+1}
-{(x^{18}+y^{18}+1)^5},
+\frac{
+x^6y^6(x^{18}+y^{18}+1)^3
++
+3(x^{18}y^{18}+x^{18}+y^{18}+2x^{12}y^{12})^2
+}
+{(x^{18}+y^{18}+1)^4},
 $$
 and let
 $$
@@ -35,7 +39,7 @@ $$
 
 Determine the exact value of
 $$
-\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv19\pmod{108}}}
+\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv19\pmod{36}}}
 Q^2\left[
 \frac{\sqrt{g(K_{Q^3})}}
 {Q^2\sqrt{g(K_Q)}}-1
@@ -46,7 +50,8 @@ Q^2\left(
 \right)
 \right].
 $$
-The indexing set is unbounded; for example, $Q=19^{6k+1}$ is admissible for every $k\geq1$.
+
+The indexing set is unbounded; for example, $Q=19^{2k+1}$ is admissible for every $k\geq1$.
 
 ---
 
@@ -63,14 +68,14 @@ The indexing set is unbounded; for example, $Q=19^{6k+1}$ is admissible for ever
 
 ## Domain Explanation
 
-This problem involves an exact second-order scale-comparison limit whose leading correction cancels internally,
+This problem involves an exact multiscale limit in which the first asymptotic correction cancels and a lower-order coefficient must be recovered,
 which are part of Calculus and Limits and continuity.
-The problem also involves algebraic function fields, finite group actions, symmetric rational functions, and ramification,
+The problem also involves algebraic function fields, hidden invariant generators, finite group actions, and ramification,
 which are part of Abstract Algebra and Computational algebra.
-However, those algebraic calculations determine the exact genus asymptotics at three linked scales, while the final object is one exact scalar limit.
+However, those algebraic calculations determine the exact genus sequence entering the requested expression, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The rational generators encode the relevant quotient field indirectly rather than displaying its elementary symmetric coordinates.
-- The genus calculation requires reconciling several stabilizer behaviors with an arithmetic residue condition.
-- The three-scale normalization makes the requested scalar depend on a lower-order term rather than the dominant growth.
+- The displayed generators conceal two simpler invariants through a nonlinear change of coordinates.
+- Recovering the quotient degree requires retaining a root-of-unity phase that is lost by passing directly to eighteenth powers.
+- The three linked genus scales cancel the leading correction without printing the normalization constants that determine the answer.
