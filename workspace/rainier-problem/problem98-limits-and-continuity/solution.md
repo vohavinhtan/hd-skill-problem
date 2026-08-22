@@ -1,262 +1,265 @@
 ## Steps
 
-Step 1: Introduce a signed fourth-root coordinate
+Step 1: Expand the midpoint of the implicit branch
 
-We have
+Since
 $$
-g'(t)=\frac{t^3}{1-t}.
+g'(t)=\frac{t^3}{1-t},
 $$
-For $t<1$, the denominator is positive. Hence $g$ decreases on $(-\infty,0)$, increases on $(0,1)$, and has minimum value $0$ at $0$. This proves the stated uniqueness of $y(x)$.
-
-Near $0$,
-$$
-4g(t)=t^4+\frac45t^5+\frac23t^6+\frac47t^7+\cdots.
-$$
-Write
-$$
-4g(t)=t^4B(t),
-\qquad
-B(0)=1.
-$$
-Define
-$$
-u=tB(t)^{1/4}.
-$$
-This is analytic near $0$, satisfies $u'(0)=1$, and obeys
-$$
-u^4=4g(t).
-$$
-Let
-$$
-t=\tau(u)
-$$
-be its local analytic inverse. If
-$$
-U=(4g(x))^{1/4}>0,
-$$
-then
-$$
-x=\tau(U),
-\qquad
-y(x)=\tau(-U).
-$$
-
-Step 2: Compute the inverse coefficients needed later
-
-Write
-$$
-\tau(u)=u+a_2u^2+a_3u^3+a_4u^4+a_5u^5+a_6u^6+a_7u^7+O(u^8).
-$$
-Differentiating
-$$
-u^4=4g(\tau(u))
-$$
-and using $g'(t)=t^3/(1-t)$ gives
-$$
-\tau(u)^3\tau'(u)=u^3\bigl(1-\tau(u)\bigr).
-$$
-Coefficient comparison from $u^4$ through $u^9$ gives
-$$
-5a_2+1=0,
-$$
-$$
-6a_3+9a_2^2+a_2=0,
-$$
-$$
-7a_4+7a_2^3+21a_2a_3+a_3=0,
-$$
-$$
-8a_5+2a_2^4+24a_2^2a_3+24a_2a_4+12a_3^2+a_4=0,
-$$
-$$
-9a_6+9a_2^3a_3+27a_2^2a_4+27a_2a_3^2+27a_2a_5+27a_3a_4+a_5=0,
-$$
-and
-$$
-10a_7+10a_2^3a_4+15a_2^2a_3^2+30a_2^2a_5
-+60a_2a_3a_4+30a_2a_6+10a_3^3+30a_3a_5+15a_4^2+a_6=0.
-$$
-Solving successively,
-$$
-a_2=-\frac15,
-\qquad
-a_3=-\frac2{75},
-\qquad
-a_4=-\frac{11}{2625},
-$$
-$$
-a_5=-\frac9{35000},
-\qquad
-a_6=\frac{67}{262500},
-\qquad
-a_7=\frac{15581}{82687500}.
-$$
-
-Step 3: Expand the branch sum and the averaged integral
+the function $g$ decreases on $(-\infty,0)$ and increases on $(0,1)$. Hence the negative branch $y(x)$ is unique.
 
 Put
 $$
-q=U^2.
-$$
-The branch sum is
-$$
-x+y(x)=\tau(U)+\tau(-U).
-$$
-Only even coefficients remain, so
-$$
-x+y(x)=
-2a_2q+2a_4q^2+2a_6q^3+O(q^4).
-$$
-Using Step 2,
-$$
-x+y(x)=
--\frac25q-\frac{22}{2625}q^2+\frac{67}{131250}q^3+O(q^4).
-$$
-
-For $M(x)$, substitute $t=\tau(v)$. Since $g(\tau(v))=v^4/4$,
-$$
-\int_{y(x)}^xg(t)\,dt
-=
-\frac14\int_{-U}^{U}v^4\tau'(v)\,dv.
-$$
-Also
-$$
-g(x)\bigl(x-y(x)\bigr)
-=
-\frac{U^4}{4}\bigl(\tau(U)-\tau(-U)\bigr).
-$$
-Only odd coefficients of $\tau$ enter both expressions. Hence
-$$
-M(x)=
-\frac{
-\displaystyle
-\sum_{m\geq0}
-\frac{2m+1}{2m+5}a_{2m+1}q^m
-}
-{
-\displaystyle
-\sum_{m\geq0}
-a_{2m+1}q^m
-}.
-$$
-Using $a_1=1$ and the odd coefficients from Step 2,
-$$
-M(x)=
-\frac15-\frac{16}{2625}q
--\frac2{7875}q^2
-+\frac{84004}{1136953125}q^3
-+O(q^4).
-$$
-Define
-$$
-D(q)=
-\frac{2625}{16}
-\left(
-\frac15-M(x)
-\right).
+h=\frac{x-y(x)}2,
+\qquad
+c=\frac{x+y(x)}2.
 $$
 Then
 $$
-D(q)=
-q+\frac1{24}q^2
--\frac{21001}{1732500}q^3
-+O(q^4).
-$$
-
-Step 4: Resolve the second implicit branch
-
-Write $z=z(x)$. Its defining equation is
-$$
-4g(z)=D(q)^2.
-$$
-Both sides are positive for small $x>0$, so
-$$
-\sqrt{4g(z)}=D(q).
-$$
-From the Taylor series of $g$,
-$$
-\sqrt{4g(z)}
-=
-z^2+\frac25z^3+\frac{19}{75}z^4
-+\frac{484}{2625}z^5
-+\frac{4541}{31500}z^6
-+O(z^7).
-$$
-Seek
-$$
-q=
-z^2+b_3z^3+b_4z^4+b_5z^5+b_6z^6+O(z^7).
-$$
-Substituting this into
-$$
-D(q)=
-q+\frac1{24}q^2
--\frac{21001}{1732500}q^3
-+O(q^4)
-$$
-and matching powers of $z$ gives
-$$
-b_3=\frac25,
+x=c+h,
 \qquad
-b_4=\frac{127}{600},
+y(x)=c-h.
+$$
+Near $0$,
+$$
+g(t)=\sum_{m\ge4}\frac{t^m}{m}.
+$$
+The level equation is
+$$
+g(c+h)-g(c-h)=0.
+$$
+Its leading term forces $c=O(h^2)$, so write
+$$
+c=Ah^2+Bh^4+Ch^6+O(h^8).
+$$
+Expansion through $h^9$ gives
+$$
+g(c+h)-g(c-h)=
+\frac{2(5A+1)}5h^5
++
+\frac{2(7A^3+14A^2+7A+7B+1)}7h^7
 $$
 $$
-b_5=\frac{793}{5250},
 \qquad
-b_6=\frac{1829173}{13860000}.
++
+\frac{2(9A^4+30A^3+27A^2B+27A^2+36AB+9A+9B+9C+1)}9h^9
++O(h^{11}).
 $$
-Thus
+The three coefficients vanish successively, giving
 $$
-q=
-z^2+\frac25z^3+\frac{127}{600}z^4
-+\frac{793}{5250}z^5
-+\frac{1829173}{13860000}z^6
-+O(z^7).
+A=-\frac15,
+\qquad
+B=-\frac{13}{875},
+\qquad
+C=-\frac{254}{196875}.
 $$
-
-Step 5: Compose the two local expansions
-
-From Step 3,
+Therefore
 $$
-x+y(x)=
--\frac25q-\frac{22}{2625}q^2+\frac{67}{131250}q^3+O(q^4).
-$$
-Using the series for $q$ from Step 4,
-$$
-q^2=
-z^4+\frac45z^5+\frac{139}{225}z^6+O(z^7),
+c=
+-\frac15h^2
+-\frac{13}{875}h^4
+-\frac{254}{196875}h^6
++O(h^8),
 $$
 and
 $$
-q^3=z^6+O(z^7).
+x+y(x)=
+-\frac25h^2
+-\frac{26}{875}h^4
++O(h^6).
 $$
-Substitution gives
+
+Step 2: Expand the averaged integral
+
+Since $x-y(x)=2h$,
+$$
+M(x)=
+\frac{\displaystyle\int_{c-h}^{c+h}g(t)\,dt}
+{2h\,g(c+h)}.
+$$
+Substituting the expansion of $c$ from Step 1 and integrating the power series of $g$ termwise gives
+$$
+\int_{c-h}^{c+h}g(t)\,dt
+=
+\frac{h^5}{10}
++\frac{4h^7}{525}
++\frac{121h^9}{157500}
++O(h^{11}),
+$$
+while
+$$
+2h\,g(c+h)
+=
+\frac{h^5}{2}
++\frac{4h^7}{75}
++\frac{121h^9}{17500}
++O(h^{11}).
+$$
+Dividing,
+$$
+M(x)=
+\frac15
+-\frac{16}{2625}h^2
+-\frac{38}{65625}h^4
++O(h^6).
+$$
+Consequently
+$$
+\frac{2625}{16}\left(\frac15-M(x)\right)
+=
+h^2+\frac{19}{200}h^4+O(h^6).
+$$
+
+Step 3: Use the derivative of the branch to create the dependent cancellation
+
+Regard $c$ as a function of $h$. Since
+$$
+x=c(h)+h,
+\qquad
+y=c(h)-h,
+$$
+we have
+$$
+y'(x)=\frac{c'(h)-1}{c'(h)+1}.
+$$
+Therefore
+$$
+\frac{1+y'(x)}{1-y'(x)}=c'(h).
+$$
+Also
+$$
+\frac{2(x+y(x))}{x-y(x)}=\frac{2c(h)}h.
+$$
+Using the coefficients from Step 1,
+$$
+\frac{2c(h)}h-c'(h)
+=
+\frac{26}{875}h^3
++\frac{1016}{196875}h^5
++O(h^7).
+$$
+Hence
+$$
+\frac{875}{26}
+\left(
+\frac{2(x+y(x))}{x-y(x)}
+-\frac{1+y'(x)}{1-y'(x)}
+\right)
+=
+h^3+\frac{508}{2925}h^5+O(h^7).
+$$
+Combining this with Step 2,
+$$
+\frac{D(x)}5
+=
+\frac{h^5}{5}
++\frac{6287}{117000}h^7
++O(h^9).
+$$
+The leading coefficient is positive, so $D(x)>0$ for small $x>0$.
+
+Step 4: Resolve the secondary implicit parameter
+
+Define
+$$
+J(z)=
+-\log(1-z)-z-\frac{z^2}{2}-\frac{z^3}{3}-\frac{z^4}{4}.
+$$
+For $0<z<1$,
+$$
+J'(z)=\frac{z^4}{1-z}>0,
+$$
+so the $z(x)$ in the statement exists uniquely when $x$ is small. Its series is
+$$
+J(z)=
+\frac{z^5}{5}
++\frac{z^6}{6}
++\frac{z^7}{7}
++\frac{z^8}{8}
++O(z^9).
+$$
+Because $J(z)=D(x)/5$, Step 3 shows $z\sim h$. Seek
+$$
+h=z+pz^2+qz^3+rz^4+O(z^5).
+$$
+Substitution into
+$$
+\frac{h^5}{5}
++\frac{6287}{117000}h^7
++O(h^9)
+=
+\frac{z^5}{5}
++\frac{z^6}{6}
++\frac{z^7}{7}
++\frac{z^8}{8}
++O(z^9)
+$$
+gives at order $z^6$
+$$
+p=\frac16.
+$$
+After inserting this value, the coefficient of $z^7$ gives
+$$
+q=\frac{27491}{819000},
+$$
+and the coefficient of $z^8$ gives
+$$
+r=\frac{16747}{546000}.
+$$
+Therefore
+$$
+h=
+z+\frac{z^2}{6}
++\frac{27491}{819000}z^3
++\frac{16747}{546000}z^4
++O(z^5).
+$$
+
+Step 5: Compose with the branch-sum expansion
+
+From Step 4,
+$$
+h^2=
+z^2+\frac13z^3
++\frac{19433}{204750}z^4
++\frac{89107}{1228500}z^5
++O(z^6),
+$$
+and
+$$
+h^4=
+z^4+\frac23z^5+O(z^6).
+$$
+Using the expansion from Step 1,
+$$
+x+y(x)=
+-\frac25h^2-\frac{26}{875}h^4+O(h^6),
+$$
+we obtain
 $$
 x+y(x)=
 -\frac25z^2
--\frac4{25}z^3
--\frac{977}{10500}z^4
--\frac{881}{13125}z^5
--\frac{132059}{2310000}z^6
-+O(z^7).
+-\frac{2}{15}z^3
+-\frac{4949}{73125}z^4
+-\frac{21421}{438750}z^5
++O(z^6).
 $$
 Therefore
 $$
 x+y(x)
 +\frac25z^2
-+\frac4{25}z^3
-+\frac{977}{10500}z^4
-+\frac{881}{13125}z^5
++\frac{2}{15}z^3
++\frac{4949}{73125}z^4
 =
--\frac{132059}{2310000}z^6+O(z^7).
+-\frac{21421}{438750}z^5+O(z^6).
 $$
-Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^6$ gives the requested limit.
+Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^5$ gives the requested limit.
 
-Final Answer: $\boxed{-\frac{132059}{2310000}}$
+Final Answer: $\boxed{-\frac{21421}{438750}}$
 
 ## Answer
 
-$-\frac{132059}{2310000}$
+$-\frac{21421}{438750}$
 
 ## Classification
 
@@ -270,8 +273,8 @@ $-\frac{132059}{2310000}$
 
 ## Solution Concepts
 
-- degenerate implicit branches
-- signed fourth-root coordinates
-- inverse power series
-- nested series reversion
-- asymptotic limits
+- implicit branches
+- derivative cancellation
+- asymptotic expansions
+- series reversion
+- limits

@@ -16,17 +16,22 @@ M(x)=
 \frac{\displaystyle\int_{y(x)}^x g(t)\,dt}
 {g(x)\bigl(x-y(x)\bigr)}.
 $$
-For all sufficiently small $x>0$, let $z(x)>0$ be the unique number satisfying
+Define
 $$
-g(z(x))
-=
-\frac14
-\left[
-\frac{2625}{16}
+D(x)=
+\frac{2625}{16}\left(\frac15-M(x)\right)
+\frac{875}{26}
 \left(
-\frac15-M(x)
-\right)
-\right]^2.
+\frac{2(x+y(x))}{x-y(x)}
+-\frac{1+y'(x)}{1-y'(x)}
+\right).
+$$
+For all sufficiently small $x>0$, let $z(x)\in(0,1)$ be the unique number satisfying
+$$
+-\log(1-z(x))-z(x)-\frac{z(x)^2}{2}
+-\frac{z(x)^3}{3}-\frac{z(x)^4}{4}
+=
+\frac{D(x)}5.
 $$
 Determine the exact value of
 $$
@@ -34,11 +39,10 @@ $$
 \frac{
 x+y(x)
 +\dfrac25z(x)^2
-+\dfrac4{25}z(x)^3
-+\dfrac{977}{10500}z(x)^4
-+\dfrac{881}{13125}z(x)^5
++\dfrac{2}{15}z(x)^3
++\dfrac{4949}{73125}z(x)^4
 }
-{z(x)^6}.
+{z(x)^5}.
 $$
 
 ---
@@ -56,4 +60,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves two dependent implicit local branches, degenerate asymptotic normalization, series reversion, and a high-order limit coefficient, which are part of Calculus and Limits and continuity. The problem also involves inverse power series and algebraic composition of local expansions, which are part of Algebra, Functions, and Trigonometry and Algebraic expressions and manipulation. However, those algebraic operations serve the local limit calculation rather than defining the requested object.
+This problem involves an implicit branch, differentiation of that branch, asymptotic cancellation, series reversion, and extraction of a high-order limit coefficient, which are part of Calculus and Limits and continuity. The problem also involves formal power-series composition and logarithmic expansions, which are part of Algebra, Functions, and Trigonometry and Algebraic expressions and manipulation. However, those algebraic operations resolve dependent local parameters, while the requested object is an exact limit.
