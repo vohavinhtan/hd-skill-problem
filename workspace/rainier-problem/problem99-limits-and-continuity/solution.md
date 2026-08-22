@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Find the two dominant clusters and the first neighboring clusters
+Step 1: Identify the dominant and neighboring cluster allocations
 
 Put
 $$
@@ -8,7 +8,7 @@ q=\sqrt t,
 \qquad
 \phi(x)=x(1-x)(3x-1)^2.
 $$
-Andreief's identity gives
+Andréief's identity gives
 $$
 D_m(t)
 =
@@ -18,17 +18,17 @@ D_m(t)
 \prod_i
 \left(1+q(3x_i-1)\right)e^{-\phi(x_i)/t}\,dx_i.
 $$
-The zeros of $\phi$ are $0,1/3,1$. Use
+The zeros of $\phi$ are $0,1/3,1$. Use the local scales
 $$
 x=q^2u,\qquad
 x=\frac13+\frac q{\sqrt2}z,\qquad
 x=1-\frac{q^2}{4}v.
 $$
-If $k,l,r$ variables occupy these three neighborhoods, respectively, then
+If $k,l,r$ variables occupy these three neighborhoods, then
 $$
 k+l+r=4m+2
 $$
-and their contribution starts at
+and the Jacobians together with the internal squared Vandermonde factors contribute
 $$
 t^{E(k,l,r)},
 \qquad
@@ -51,31 +51,35 @@ E(k,l,r)-E_0
 =
 \frac32a^2+ac+\frac32c^2-2a-2c+\frac12.
 $$
-After replacing $a,c$ by $a-1/2,c-1/2$, the quadratic part has eigenvalues $1$ and $2$. If the gap is at most $3/2$, then
+Completing the quadratic form gives
 $$
-\left(a-\frac12\right)^2+
-\left(c-\frac12\right)^2\leq2.
+E(k,l,r)-E_0
+=
+\frac32\left(a-\frac12\right)^2
++\left(a-\frac12\right)\left(c-\frac12\right)
++\frac32\left(c-\frac12\right)^2.
 $$
-Since $a,c$ are integers, only $a,c\in\{0,1\}$ remain. Their gaps are
+For integer $a,c$, the minimum $0$ occurs exactly at
 $$
-0\quad\text{for }(a,c)=(0,1),(1,0),
+(a,c)=(0,1),(1,0),
 $$
-and
-$$
-\frac12\quad\text{for }(a,c)=(0,0),(1,1).
-$$
-Thus the two dominant allocations are
+so the two dominant allocations are
 $$
 (m,2m+1,m+1),
 \qquad
-(m+1,2m+1,m),
+(m+1,2m+1,m).
 $$
-and the only neighboring allocations relevant through $q^3=t^{3/2}$ are
+The next gap is $1/2$, attained exactly at
+$$
+(a,c)=(0,0),(1,1),
+$$
+giving
 $$
 (m,2m+2,m),
 \qquad
 (m+1,2m,m+1).
 $$
+All other allocations start beyond the relative order $q^3=t^{3/2}$ required by the limit.
 
 Step 2: Evaluate the four leading local constants
 
@@ -88,9 +92,9 @@ $$
 G_n=
 \pi^{n/2}2^{-n(n-1)/2}\prod_{j=0}^{n-1}j!.
 $$
-These follow from the factorial moment determinant for the Laguerre weight $e^{-u}$ and the monic Hermite norms for $e^{-z^2}$.
+These are the Laguerre and Gaussian Vandermonde integrals for the local weights $e^{-u}$ and $e^{-z^2}$.
 
-For a cluster $(k,l,r)$, the right-endpoint scaling contributes $4^{-r^2}$, the center scaling contributes $2^{-l^2/2}$, and the limiting left-center and right-center squared distances are $1/9$ and $4/9$. Hence
+For a cluster $(k,l,r)$, the right-endpoint scaling contributes $4^{-r^2}$ and the center scaling contributes $2^{-l^2/2}$. The limiting squared distances from the center to the left and right clusters are $1/9$ and $4/9$. Therefore
 $$
 K_{k,l,r}
 =
@@ -100,7 +104,7 @@ K_{k,l,r}
 L_kL_rG_l.
 $$
 
-For each dominant allocation,
+For the two dominant allocations, substitution into this formula gives
 $$
 K_{m,2m+1,m+1}
 =
@@ -108,17 +112,15 @@ K_{m+1,2m+1,m}
 =
 \frac{C_m}{2}.
 $$
-The equality follows directly from the displayed formula after interchanging the endpoint cluster sizes.
-
-Use
+Using
 $$
 \frac{L_{n+1}}{L_n}=(n!)^2,
 \qquad
 \frac{G_{n+1}}{G_n}
 =
-\sqrt{\pi}\,2^{-n}n!.
+\sqrt{\pi}\,2^{-n}n!,
 $$
-Relative to either dominant constant,
+the neighboring cluster ratios are
 $$
 \frac{K_{m,2m+2,m}}{C_m/2}
 =
@@ -135,7 +137,7 @@ $$
 s_m.
 $$
 
-Step 3: Derive the unperturbed local correction for an arbitrary cluster
+Step 3: Derive the unperturbed local correction formula
 
 For a cluster $(k,l,r)$, write
 $$
@@ -143,7 +145,7 @@ U_j=\sum_{i=1}^k u_i^j,\qquad
 V_j=\sum_{i=1}^r v_i^j,\qquad
 Z_j=\sum_{i=1}^l z_i^j.
 $$
-After the leading local densities are removed, the logarithm of the part not containing $1+q(3x-1)$ begins as
+After removing the leading local densities, the logarithm of the part not containing $1+q(3x-1)$ has the form
 $$
 qA+q^2B+O(q^3),
 $$
@@ -158,9 +160,6 @@ $$
 B=
 7U_2+V_2-(6l+2r)U_1
 -\left(\frac{3l}{4}+\frac k2\right)V_1
-$$
-$$
-\qquad
 +\frac94Z_4
 -\left(\frac{9k}{2}+\frac{9r}{8}\right)Z_2.
 $$
@@ -174,7 +173,7 @@ $$
 +\sum_i u_i^q\frac{\partial F}{\partial u_i}
 \right].
 $$
-Taking $F=1$ gives
+Taking $F=1$ yields
 $$
 \mathbb E[U_1]=k^2,\qquad
 \mathbb E[U_2]=2k^3,
@@ -190,7 +189,7 @@ $$
 +\sum_i z_i^j\frac{\partial F}{\partial z_i}
 \right].
 $$
-The cases needed here give
+The required moments are
 $$
 \mathbb E[Z_2]=\frac{l^2}{2},
 \qquad
@@ -203,13 +202,13 @@ $$
 \qquad
 \mathbb E[Z_3^2]=\frac{3l(4l^2+1)}8.
 $$
-Therefore the expected relative $q^2$ coefficient without the new factor is
+Hence the expected relative $q^2$ coefficient before the perturbing factor is
 $$
 \mathcal Q(k,l,r)
 =
 \mathbb E[B]+\frac12\mathbb E[A^2],
 $$
-with
+which expands to
 $$
 \mathcal Q(k,l,r)
 =
@@ -218,10 +217,11 @@ $$
 $$
 $$
 \qquad
-+\frac{63}{32}l^3+\frac98l^2r+\frac38lr^2+\frac{99}{128}l.
++\frac{63}{32}l^3+\frac98l^2r
++\frac38lr^2+\frac{99}{128}l.
 $$
 
-Step 4: Incorporate the perturbation and obtain the dependent $q^3$ coefficient
+Step 4: Add the perturbation and compute the dependent coefficients
 
 At the three local scales,
 $$
@@ -246,7 +246,7 @@ h=-k+2r,
 \qquad
 d=-\frac k2-2r.
 $$
-The expected local expansion becomes
+The expected local expansion is
 $$
 1+hq+\alpha(k,l,r)q^2+\beta(k,l,r)q^3+O(q^4),
 $$
@@ -257,11 +257,11 @@ $$
 \mathcal Q(k,l,r)+d+\frac{h^2}{2}.
 $$
 
-The unperturbed $q^3$ logarithmic term is odd in the Gaussian variables. Since $A$ is odd and $B$ is even, its integrated contribution
+The unperturbed $q^3$ logarithmic term is odd in the Gaussian variables. Since $A$ is odd and $B$ is even,
 $$
-\mathbb E\left[C+AB+\frac16A^3\right]
+\mathbb E\left[C+AB+\frac16A^3\right]=0.
 $$
-vanishes. The new $q^3$ terms give
+The perturbation therefore gives
 $$
 \beta(k,l,r)
 =
@@ -273,7 +273,7 @@ $$
 +\frac{9l}{4}
 \left(2k-r-\frac{3l}{4}\right).
 $$
-The last term comes from the product of the Gaussian-linear perturbation with $A$, because
+The last term comes from the product of the Gaussian-linear perturbation with $A$, since
 $$
 \frac3{\sqrt2}\mathbb E[AZ_1]
 =
@@ -281,7 +281,7 @@ $$
 \left(2k-r-\frac{3l}{4}\right).
 $$
 
-For the first dominant cluster,
+For $(m,2m+1,m+1)$,
 $$
 h=m+2,
 $$
@@ -293,7 +293,7 @@ $$
 \beta=
 \frac{64m^3+5514m^2+9521m+2994}{384}.
 $$
-For the second dominant cluster,
+For $(m+1,2m+1,m)$,
 $$
 h=m-1,
 $$
@@ -320,32 +320,32 @@ h=m+1,
 \frac{32m^2+1875m+736}{64}.
 $$
 
-Step 5: Combine both dominant clusters with both neighboring clusters
+Step 5: Combine the four cluster expansions and evaluate the limit
 
-Divide by
+After division by
 $$
-C_mt^{4m^2+4m+3/2}.
+C_mt^{4m^2+4m+3/2},
 $$
-Since the two dominant clusters each have leading weight $C_m/2$, while the neighboring leading weights are $r_mC_m/2$ and $s_mC_m/2$, Steps 2 and 4 give
+the two dominant clusters each have leading weight $1/2$, while the neighboring clusters have leading weights $r_m/2$ and $s_m/2$. Therefore
 $$
 \frac{D_m(t)}{C_mt^{4m^2+4m+3/2}}
 =
 1+c_1q+c_2q^2+c_3q^3+o(q^3).
 $$
-The coefficient of $q$ is
+Using Step 4,
 $$
 c_1
 =
-m+\frac12+\frac{r_m+s_m}{2}.
+m+\frac12+\frac{r_m+s_m}{2},
 $$
-The coefficient of $q^2$ is
+and
 $$
 c_2
 =
 \frac{64m^2+1774m+1015}{128}
 +\frac{mr_m+(m+1)s_m}{2}.
 $$
-At order $q^3$, both dominant $\beta$ terms and both neighboring $\alpha$ terms survive:
+At order $q^3$, both dominant $\beta$ terms and both neighboring $\alpha$ terms remain:
 $$
 c_3
 =
@@ -358,7 +358,7 @@ r_m(32m^2+1811m+1107)
 +s_m(32m^2+1875m+736)
 }{128}.
 $$
-Since $q^3=t^{3/2}$, the two coefficients explicitly subtracted in the problem remove the $q$ and $q^2$ layers.
+Since $q^3=t^{3/2}$, the two terms subtracted in the problem remove the $q$ and $q^2$ coefficients.
 
 Final Answer: $\boxed{\frac{128m^3+10452m^2+13012m+1533}{768}+\frac{r_m(32m^2+1811m+1107)+s_m(32m^2+1875m+736)}{128}}$
 
