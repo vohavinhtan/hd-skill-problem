@@ -4,8 +4,7 @@
 
 Fix a nonzero real number $x$. For every real $\alpha$ and every integer $n>2|x|$, define
 $$
-H_n(\alpha)
-=
+H_n(\alpha)=
 \det\left[
 \left(1+\frac{(i+j)x}{n}\right)^{n+\alpha(i+j)}
 \right]_{i,j=-1}^{1}.
