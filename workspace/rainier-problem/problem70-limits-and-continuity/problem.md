@@ -16,13 +16,23 @@ $$
 \min\{0,x\}<\alpha_n<\max\{0,x\}.
 $$
 
+Set
+$$
+D_n=\det\left[\alpha_{8^{i+j}n}\right]_{i,j=0}^{3}.
+$$
+
 Determine
 $$
 \lim_{n\to\infty}
-n^2
-\det\left[
-\alpha_{8^{i+j}n}
-\right]_{i,j=0}^{3}.
+n^{2/3}
+\left[
+64\frac{D_{8n}}{D_n}
+-128\frac{D_{64n}}{D_{8n}}
++1
+-\left(
+64\frac{D_{8n}}{D_n}-1
+\right)^2
+\right].
 $$
 
 ---
@@ -40,6 +50,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a singularly scaled zero of a parameter-dependent sequence and a second limit that extracts several successive asymptotic corrections, which are part of Calculus and Limits and continuity.
-The problem also involves structured determinants and rank-deficient matrix limits, which are part of Linear Algebra and Determinants.
-However, the determinant calculations supply the asymptotic data, while the requested object is determined by the limiting behavior of the moving zero and its scaled copies.
+This problem involves a singularly scaled moving zero and a limit in which two successive asymptotic terms cancel, which are part of Calculus and Limits and continuity.
+The problem also involves structured determinants and low-rank expansions, which are part of Linear Algebra and Determinants.
+However, the determinant structure supplies the asymptotic coefficients, while the requested object is determined by the limiting behavior after two dependent cancellations.

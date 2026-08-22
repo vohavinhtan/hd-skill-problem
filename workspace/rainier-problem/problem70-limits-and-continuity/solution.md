@@ -1,202 +1,144 @@
 ## Steps
 
-Step 1: Find the local form of the determinant near its degenerate parameter
+Step 1: Obtain the singular equation governing the moving zero
 
 Put
 $$
-t=\frac1n,
+s=n^{-1/3},
 \qquad
-\delta=\alpha-\frac{x}{2}.
+\alpha=\frac{x}{2}+xsy.
 $$
 For $k\in\{-2,-1,0,1,2\}$, define
 $$
-g_k(t,\alpha)
-=
-e^{-kx}(1+kxt)^{t^{-1}+\alpha k}.
-$$
-Since $k=i+j$, the factors $e^{ix}$ and $e^{jx}$ can be removed from the rows and columns of the defining determinant. Their total product is $1$, so
-$$
-H_n(\alpha)=
-\det[g_{i+j}(t,\alpha)]_{i,j=-1}^{1}.
-$$
-
-Expansion of the logarithm gives
-$$
-\log g_k
-=
-\mu k^2t+\nu k^3t^2+\xi k^4t^3+\eta k^5t^4+O(t^5),
-$$
-where
-$$
-\mu=x\delta,
-$$
-$$
-\nu=\frac{x^3}{12}-\frac{x^2\delta}{2},
-$$
-$$
-\xi=-\frac{x^4}{12}+\frac{x^3\delta}{3},
-$$
-and
-$$
-\eta=\frac{3x^5}{40}-\frac{x^4\delta}{4}.
-$$
-
-Exponentiating,
-$$
 g_k
 =
-1+\mu k^2t+
-\left(
-\nu k^3+\frac{\mu^2k^4}{2}
-\right)t^2
-+
-\left(
-\xi k^4+\mu\nu k^5+\frac{\mu^3k^6}{6}
-\right)t^3
-+
-c_{4,k}t^4+O(t^5),
+e^{-kx}
+\left(1+kxs^3\right)^{s^{-3}+\alpha k}.
 $$
-where
-$$
-c_{4,k}
-=
-\eta k^5+\mu\xi k^6+\frac{\nu^2k^6}{2}
-+\frac{\mu^2\nu k^7}{2}
-+\frac{\mu^4k^8}{24}.
-$$
-
-The $3\times3$ determinant has the scalar form
+The factors $e^{ix}$ and $e^{jx}$ removed from row $i$ and column $j$ have total product $1$, so
 $$
 H_n(\alpha)
 =
-g_{-2}g_2-g_{-2}g_1^2-g_{-1}^2g_2
-+2g_{-1}g_1-1.
+\det[g_{i+j}]_{i,j=-1}^{1}.
 $$
-Substituting the displayed coefficients, the terms of orders $t$ and $t^2$ cancel, while
-$$
-[t^3]H_n(\alpha)=16\mu^3
-$$
-and
-$$
-[t^4]H_n(\alpha)
-=
-4\left(
-16\mu^4+12\mu\xi-9\nu^2
-\right).
-$$
-The $\eta$ terms cancel from the latter coefficient.
 
-After replacing $\mu,\nu,\xi$ by their expressions in $\delta$,
+The logarithm is
+$$
+\log g_k
+=
+\left(s^{-3}+\alpha k\right)
+\log(1+kxs^3)-kx.
+$$
+Expanding the logarithm and then the exponential through the terms that can contribute to order $s^{16}$ in the determinant gives
+$$
+\frac{H_n\left(\frac{x}{2}+xsy\right)}{x^6s^{12}}
+=
+16y^3-\frac14
+-ys
++7y^2s^2
++x^2\left(64y^4-\frac32y\right)s^4
++O(s^5).
+$$
+There is no $s^3$ term.
+
+This expansion is uniform for bounded $y$. It also locates every zero in the prescribed interval. Indeed, with
+$$
+\delta=\alpha-\frac{x}{2},
+$$
+the same calculation before setting $\delta=xsy$ gives
 $$
 H_n\left(\frac{x}{2}+\delta\right)
 =
-16x^3\delta^3t^3
-+
-\left(
-64x^4\delta^4
-+7x^4\delta^2
--x^5\delta
--\frac{x^6}{4}
-\right)t^4
-+O(t^5).
+16x^3\delta^3n^{-3}+O(n^{-4})
 $$
-The remainder is uniform for $\delta$ in any fixed bounded interval.
+uniformly when $\delta$ stays in a fixed bounded interval away from the scale $n^{-1/3}$. Hence a zero in the prescribed interval must satisfy
+$$
+\delta=O(n^{-1/3}),
+$$
+so $y$ is bounded.
 
-Step 2: Locate the unique zero and obtain its first three corrections
+The limiting equation is
+$$
+16y^3-\frac14=0,
+$$
+whose only real root is
+$$
+y=\frac14.
+$$
+Near $1/4$, the derivative of the normalized left side with respect to $y$ is
+$$
+48y^2+O(s)>0.
+$$
+Its values on two fixed points on opposite sides of $1/4$ have opposite signs for small $s$. Thus the required zero exists and is unique for all sufficiently large $n$.
 
-Let
-$$
-s=t^{1/3}=n^{-1/3}.
-$$
-If a zero remains between $0$ and $x$, the expansion from Step 1 first forces
-$$
-\delta=O(s),
-$$
-because otherwise the cubic term
-$$
-16x^3\delta^3t^3
-$$
-dominates all terms of order $t^4$.
+Step 2: Recover five terms of the zero expansion
 
 Write
 $$
-\delta=xsy.
+y=a_0+a_1s+a_2s^2+a_3s^3+a_4s^4+O(s^5).
 $$
-Dividing the expansion in Step 1 by $x^6s^{12}$ gives
+Substitute this into
 $$
-0
-=
-16y^3-\frac14-ys+7y^2s^2+O(s^3).
+16y^3-\frac14
+-ys
++7y^2s^2
++x^2\left(64y^4-\frac32y\right)s^4
++O(s^5)=0.
 $$
-For bounded $y$, the left side converges uniformly to
-$$
-16y^3-\frac14,
-$$
-whose only real zero is $y=1/4$.
 
-Any zero between $0$ and $x$ has bounded $y$. Away from a fixed neighborhood of $1/4$, the limiting cubic is bounded away from zero. On
+The constant coefficient factors as
 $$
-\frac18\leq y\leq\frac38,
+\frac{(4a_0-1)(16a_0^2+4a_0+1)}4=0.
 $$
-the derivative of the displayed equation with respect to $y$ is
+The only real choice is
 $$
-48y^2+O(s)>0
+a_0=\frac14.
 $$
-for small $s$, and the values at the two endpoints have opposite signs. There is therefore exactly one such zero for all sufficiently large $n$.
 
-Write its scaled position as
+The coefficient of $s$ is
 $$
-y=a+bs+cs^2+O(s^3).
-$$
-The constant term gives
-$$
-16a^3-\frac14=0,
+a_0(48a_0a_1-1)=0,
 $$
 so
 $$
-a=\frac14.
+a_1=\frac1{12}.
 $$
-The coefficient of $s$ is
+
+The coefficient of $s^2$ is
 $$
-48a^2b-a=0,
+48a_0^2a_2+7a_0^2+48a_0a_1^2-a_1=0,
 $$
 which gives
 $$
-b=\frac1{12}.
+a_2=-\frac7{48}.
 $$
-The coefficient of $s^2$ is
+
+The coefficient of $s^3$ is
 $$
-48a^2c+48ab^2-b+7a^2=0,
+48a_0^2a_3
++96a_0a_1a_2
++14a_0a_1
++16a_1^3-a_2=0,
 $$
 so
 $$
-c=-\frac7{48}.
+a_3=-\frac{67}{1296}.
 $$
-Thus
+
+After these values are inserted, the coefficient of $s^4$ reduces to
+$$
+\frac{15552a_4-648x^2-1591}{5184}=0.
+$$
+Therefore
+$$
+a_4=\frac{648x^2+1591}{15552}.
+$$
+
+Since $\alpha_n=x/2+xsy$, we have
 $$
 \alpha_n
 =
-\frac{x}{2}
-+\frac{x}{4n^{1/3}}
-+\frac{x}{12n^{2/3}}
--\frac{7x}{48n}
-+O(n^{-4/3}).
-$$
-
-Step 3: Convert the outer determinant into four rank-one modes
-
-Put
-$$
-q=n^{-1/3}.
-$$
-For a fixed nonnegative integer $m$, Step 2 gives
-$$
-\alpha_{8^mn}
-=
-d_0+d_1q\,2^{-m}
-+d_2q^2\,4^{-m}
-+d_3q^3\,8^{-m}
-+O(q^4),
+d_0+d_1s+d_2s^2+d_3s^3+d_4s^4+d_5s^5+O(s^6),
 $$
 where
 $$
@@ -205,101 +147,211 @@ d_0=\frac{x}{2},
 d_1=\frac{x}{4},
 \qquad
 d_2=\frac{x}{12},
+$$
+$$
+d_3=-\frac{7x}{48},
 \qquad
-d_3=-\frac{7x}{48}.
-$$
-
-Set
-$$
-z_0=1,\qquad
-z_1=\frac12,\qquad
-z_2=\frac14,\qquad
-z_3=\frac18,
+d_4=-\frac{67x}{1296},
 $$
 and
 $$
-v_j=
+d_5=\frac{x(648x^2+1591)}{15552}.
+$$
+
+Step 3: Expand the outer determinant beyond its leading Vandermonde term
+
+Put
+$$
+q=n^{-1/3},
+\qquad
+z_r=2^{-r}.
+$$
+For every fixed nonnegative integer $m$,
+$$
+\alpha_{8^mn}
+=
+\sum_{r=0}^{5}d_rq^rz_r^m+O(q^6).
+$$
+
+For a four-element set $S$ of nonnegative integers, define
+$$
+V_S=\prod_{\substack{r<s\\r,s\in S}}(z_s-z_r).
+$$
+The matrix
+$$
+[\alpha_{8^{i+j}n}]_{i,j=0}^{3}
+$$
+is a sum of rank-one matrices
+$$
+d_rq^r
 \begin{pmatrix}
-1\\z_j\\z_j^2\\z_j^3
+1\\z_r\\z_r^2\\z_r^3
+\end{pmatrix}
+\begin{pmatrix}
+1&z_r&z_r^2&z_r^3
 \end{pmatrix}.
 $$
-For
+Multilinearity of the determinant shows that four distinct modes are required. Thus, through order $q^8$,
 $$
-A_n=
-[\alpha_{8^{i+j}n}]_{i,j=0}^{3},
-$$
-the preceding expansion becomes
-$$
-A_n
+D_n
 =
-d_0v_0v_0^{T}
-+d_1qv_1v_1^{T}
-+d_2q^2v_2v_2^{T}
-+d_3q^3v_3v_3^{T}
-+O(q^4).
+C_0q^6+C_1q^7+C_2q^8+O(q^9),
 $$
+where
+$$
+C_0=d_0d_1d_2d_3V_{\{0,1,2,3\}}^2,
+$$
+$$
+C_1=d_0d_1d_2d_4V_{\{0,1,2,4\}}^2,
+$$
+and
+$$
+C_2
+=
+d_0d_1d_2d_5V_{\{0,1,2,5\}}^2
++d_0d_1d_3d_4V_{\{0,1,3,4\}}^2.
+$$
+These are the only four-index sets with sums $6$, $7$, and $8$, respectively.
 
-The first four displayed terms are rank one. Multilinearity of the determinant shows that a nonzero leading term must take one column direction from each of $v_0,v_1,v_2,v_3$. Therefore
+Write
 $$
-\det A_n
+D_n=C_0q^6(1+aq+bq^2+O(q^3)).
+$$
+The required Vandermonde ratios are
+$$
+\frac{V_{\{0,1,2,4\}}}{V_{\{0,1,2,3\}}}
 =
-d_0d_1d_2d_3q^6
-\det[v_0\ v_1\ v_2\ v_3]^2
-+O(q^7).
+\frac{15}{8},
 $$
-Any term involving the $O(q^4)$ remainder has order at least
 $$
-q^{0+1+2+4}=q^7.
-$$
-
-Step 4: Evaluate the remaining finite determinant
-
-The matrix with columns $v_0,v_1,v_2,v_3$ is a Vandermonde matrix, so
-$$
-\det[v_0\ v_1\ v_2\ v_3]
+\frac{V_{\{0,1,2,5\}}}{V_{\{0,1,2,3\}}}
 =
-\prod_{0\leq i<j\leq3}(z_j-z_i).
+\frac{155}{64},
 $$
-Using
+and
 $$
-z_0=1,\qquad
-z_1=\frac12,\qquad
-z_2=\frac14,\qquad
-z_3=\frac18,
-$$
-gives
-$$
-\det[v_0\ v_1\ v_2\ v_3]
+\frac{V_{\{0,1,3,4\}}}{V_{\{0,1,2,3\}}}
 =
-\frac{63}{2^{14}}.
+\frac{35}{32}.
+$$
+Therefore
+$$
+a
+=
+\frac{d_4}{d_3}
+\left(\frac{15}{8}\right)^2
+=
+\frac{1675}{1344}.
 $$
 Also
 $$
-d_0d_1d_2d_3
+b
 =
--\frac{7x^4}{9\cdot2^9}.
+\frac{d_5}{d_3}
+\left(\frac{155}{64}\right)^2
++
+\frac{d_4}{d_2}
+\left(\frac{35}{32}\right)^2.
+$$
+Using the coefficients from Step 2,
+$$
+\frac{d_5}{d_3}
+=
+-\frac{648x^2+1591}{2268},
+\qquad
+\frac{d_4}{d_2}
+=
+-\frac{67}{108}.
+$$
+Hence
+$$
+b
+=
+-\frac{25(622728x^2+1804723)}{9289728}.
+$$
+
+Step 4: Use the second cancellation in the scale ratios
+
+Define temporarily
+$$
+R_n=64\frac{D_{8n}}{D_n}.
+$$
+Replacing $n$ by $8n$ replaces $q$ by $q/2$. From Step 3,
+$$
+R_n
+=
+\frac{1+\frac{a}{2}q+\frac{b}{4}q^2+O(q^3)}
+{1+aq+bq^2+O(q^3)}.
+$$
+Expanding the quotient gives
+$$
+R_n
+=
+1-\frac{a}{2}q
++\left(
+\frac{a^2}{2}-\frac{3b}{4}
+\right)q^2
++O(q^3).
+$$
+Put
+$$
+r_1=-\frac a2,
+\qquad
+r_2=\frac{a^2}{2}-\frac{3b}{4}.
+$$
+Then
+$$
+R_n=1+r_1q+r_2q^2+O(q^3),
+$$
+while
+$$
+R_{8n}
+=
+1+\frac{r_1}{2}q+\frac{r_2}{4}q^2+O(q^3).
+$$
+
+The expression inside the square brackets in the problem is
+$$
+R_n-2R_{8n}+1-(R_n-1)^2.
+$$
+The linear term cancels:
+$$
+R_n-2R_{8n}+1
+=
+\frac{r_2}{2}q^2+O(q^3).
+$$
+Also
+$$
+(R_n-1)^2=r_1^2q^2+O(q^3).
+$$
+Therefore
+$$
+R_n-2R_{8n}+1-(R_n-1)^2
+=
+\left(
+\frac{r_2}{2}-r_1^2
+\right)q^2+O(q^3).
 $$
 Since
 $$
-q^6=n^{-2},
-$$
-we obtain
-$$
-n^2\det A_n
-\longrightarrow
--\frac{7x^4}{9\cdot2^9}
-\frac{63^2}{2^{28}}
+\frac{r_2}{2}-r_1^2
 =
--\frac{3087x^4}{2^{37}}.
+-\frac{3b}{8},
+$$
+and $q^2=n^{-2/3}$, the required limit is
+$$
+-\frac{3b}{8}
+=
+\frac{25(622728x^2+1804723)}{24772608}.
 $$
 
-Final Answer: $\boxed{-\frac{3087x^4}{2^{37}}}$
+Final Answer: $\boxed{\frac{25(622728x^2+1804723)}{24772608}}$
 
 ---
 
 ## Answer
 
-$-\frac{3087x^4}{2^{37}}$
+$\frac{25(622728x^2+1804723)}{24772608}$
 
 ---
 
@@ -315,6 +367,6 @@ $-\frac{3087x^4}{2^{37}}$
 
 - singular asymptotic scaling
 - moving zeros
-- determinant cancellation
-- rank-one expansions
-- vandermonde determinant
+- rank-one determinant expansion
+- vandermonde determinants
+- asymptotic cancellation
