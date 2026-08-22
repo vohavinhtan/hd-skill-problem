@@ -7,28 +7,22 @@ $$
 H_n(\alpha)
 =
 \det\left[
-\left(1+\frac{(i+j)x}{n}\right)^{n+\alpha}
+\left(1+\frac{(i+j)x}{n}\right)^{n+\alpha(i+j)}
 \right]_{i,j=-1}^{1}.
 $$
 
-Let $\alpha_x$ be the unique real number satisfying
+For every sufficiently large $n$, let $\alpha_n$ be the unique real zero of $H_n(\alpha)$ satisfying
 $$
-\lim_{n\to\infty}
-n\left(
-8\frac{H_{2n}(\alpha_x)}{H_n(\alpha_x)}-1
-\right)=0.
+\min\{0,x\}<\alpha_n<\max\{0,x\}.
 $$
 
 Determine
 $$
 \lim_{n\to\infty}
-\left(
-512\frac{
-H_n(\alpha_x)H_{4n}(\alpha_x)^4
-}{
-H_{2n}(\alpha_x)^5
-}
-\right)^{n^3}.
+n^2
+\det\left[
+\alpha_{8^{i+j}n}
+\right]_{i,j=0}^{3}.
 $$
 
 ---
@@ -46,6 +40,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves successive asymptotic cancellations and an exponential limit determined by a higher-order term, which are part of Calculus and Limits and continuity.
-The problem also involves a structured determinant whose cancellations determine the relevant asymptotic coefficients, which are part of Linear Algebra and Determinants.
-However, the determinant is an intermediate source of the asymptotic data, while the requested object is obtained through the limiting behavior of a scale-canceling quotient.
+This problem involves a singularly scaled zero of a parameter-dependent sequence and a second limit that extracts several successive asymptotic corrections, which are part of Calculus and Limits and continuity.
+The problem also involves structured determinants and rank-deficient matrix limits, which are part of Linear Algebra and Determinants.
+However, the determinant calculations supply the asymptotic data, while the requested object is determined by the limiting behavior of the moving zero and its scaled copies.
