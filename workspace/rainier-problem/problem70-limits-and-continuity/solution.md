@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Obtain the singular equation governing the moving zero
+Step 1: Derive the singular equation for the moving zero
 
 Put
 $$
@@ -8,28 +8,38 @@ s=n^{-1/3},
 \qquad
 \alpha=\frac{x}{2}+xsy.
 $$
-For $k\in\{-2,-1,0,1,2\}$, define
+For $k\in\{-2,-1,0,1,2\}$, set
 $$
 g_k
 =
 e^{-kx}
 \left(1+kxs^3\right)^{s^{-3}+\alpha k}.
 $$
-The factors $e^{ix}$ and $e^{jx}$ removed from row $i$ and column $j$ have total product $1$, so
+The factors removed from row $i$ and column $j$ have total product $1$, so
 $$
-H_n(\alpha)
-=
-\det[g_{i+j}]_{i,j=-1}^{1}.
+H_n(\alpha)=\det[g_{i+j}]_{i,j=-1}^{1}.
 $$
 
-The logarithm is
+Expansion of the logarithm gives
 $$
 \log g_k
 =
-\left(s^{-3}+\alpha k\right)
-\log(1+kxs^3)-kx.
+k^2x^2ys^4
++\frac{k^3x^3}{12}s^6
+-\frac{k^3x^3y}{2}s^7
+-\frac{k^4x^4}{12}s^9
++\frac{k^4x^4y}{3}s^{10}
++\frac{3k^5x^5}{40}s^{12}
+-\frac{k^5x^5y}{4}s^{13}
++O(s^{15}).
 $$
-Expanding the logarithm and then the exponential through the terms that can contribute to order $s^{16}$ in the determinant gives
+Also
+$$
+H_n(\alpha)
+=
+g_{-2}g_2-g_{-2}g_1^2-g_{-1}^2g_2+2g_{-1}g_1-1.
+$$
+Exponentiating the displayed logarithms and collecting the determinant terms gives
 $$
 \frac{H_n\left(\frac{x}{2}+xsy\right)}{x^6s^{12}}
 =
@@ -37,321 +47,291 @@ $$
 -ys
 +7y^2s^2
 +x^2\left(64y^4-\frac32y\right)s^4
-+O(s^5).
+-14x^2y^2s^5
++O(s^6).
 $$
-There is no $s^3$ term.
-
-This expansion is uniform for bounded $y$. It also locates every zero in the prescribed interval. Indeed, with
-$$
-\delta=\alpha-\frac{x}{2},
-$$
-the same calculation before setting $\delta=xsy$ gives
-$$
-H_n\left(\frac{x}{2}+\delta\right)
-=
-16x^3\delta^3n^{-3}+O(n^{-4})
-$$
-uniformly when $\delta$ stays in a fixed bounded interval away from the scale $n^{-1/3}$. Hence a zero in the prescribed interval must satisfy
-$$
-\delta=O(n^{-1/3}),
-$$
-so $y$ is bounded.
+The missing $s^3$ coefficient is zero.
 
 The limiting equation is
 $$
 16y^3-\frac14=0,
 $$
-whose only real root is
-$$
-y=\frac14.
-$$
-Near $1/4$, the derivative of the normalized left side with respect to $y$ is
-$$
-48y^2+O(s)>0.
-$$
-Its values on two fixed points on opposite sides of $1/4$ have opposite signs for small $s$. Thus the required zero exists and is unique for all sufficiently large $n$.
+whose only real root is $1/4$. Its derivative there is $3$, so the normalized equation is strictly increasing near that root for small $s$. Outside a fixed neighborhood of $1/4$, the limiting cubic is bounded away from zero. This proves that the zero in the stated interval is eventually unique.
 
-Step 2: Recover five terms of the zero expansion
+Step 2: Continue the Puiseux expansion one term beyond the previous cancellation
 
 Write
 $$
-y=a_0+a_1s+a_2s^2+a_3s^3+a_4s^4+O(s^5).
+y=a_0+a_1s+a_2s^2+a_3s^3+a_4s^4+a_5s^5+O(s^6).
 $$
-Substitute this into
+The constant coefficient gives
 $$
-16y^3-\frac14
--ys
-+7y^2s^2
-+x^2\left(64y^4-\frac32y\right)s^4
-+O(s^5)=0.
+16a_0^3-\frac14=0,
 $$
-
-The constant coefficient factors as
-$$
-\frac{(4a_0-1)(16a_0^2+4a_0+1)}4=0.
-$$
-The only real choice is
+so the real branch has
 $$
 a_0=\frac14.
 $$
-
-The coefficient of $s$ is
+The coefficients of $s$, $s^2$, and $s^3$ give successively
 $$
-a_0(48a_0a_1-1)=0,
+48a_0^2a_1-a_0=0,
 $$
-so
 $$
-a_1=\frac1{12}.
+48a_0^2a_2+48a_0a_1^2-a_1+7a_0^2=0,
 $$
-
-The coefficient of $s^2$ is
+and
 $$
-48a_0^2a_2+7a_0^2+48a_0a_1^2-a_1=0,
+48a_0^2a_3+96a_0a_1a_2+16a_1^3-a_2+14a_0a_1=0.
 $$
-which gives
+Hence
 $$
-a_2=-\frac7{48}.
-$$
-
-The coefficient of $s^3$ is
-$$
-48a_0^2a_3
-+96a_0a_1a_2
-+14a_0a_1
-+16a_1^3-a_2=0,
-$$
-so
-$$
+a_1=\frac1{12},
+\qquad
+a_2=-\frac7{48},
+\qquad
 a_3=-\frac{67}{1296}.
 $$
 
-After these values are inserted, the coefficient of $s^4$ reduces to
+After these values are inserted, the $s^4$ equation reduces to
 $$
-\frac{15552a_4-648x^2-1591}{5184}=0.
+15552a_4-648x^2-1591=0,
+$$
+and the $s^5$ equation reduces to
+$$
+24a_5-5x^2=0.
 $$
 Therefore
 $$
-a_4=\frac{648x^2+1591}{15552}.
+a_4=\frac{648x^2+1591}{15552},
+\qquad
+a_5=\frac{5x^2}{24}.
 $$
 
-Since $\alpha_n=x/2+xsy$, we have
+Since $\alpha_n=x/2+xsy$,
 $$
 \alpha_n
 =
-d_0+d_1s+d_2s^2+d_3s^3+d_4s^4+d_5s^5+O(s^6),
+\sum_{r=0}^{6}d_rs^r+O(s^7),
 $$
 where
 $$
 d_0=\frac{x}{2},
-\qquad
+\quad
 d_1=\frac{x}{4},
-\qquad
+\quad
 d_2=\frac{x}{12},
-$$
-$$
+\quad
 d_3=-\frac{7x}{48},
-\qquad
+$$
+$$
 d_4=-\frac{67x}{1296},
-$$
-and
-$$
-d_5=\frac{x(648x^2+1591)}{15552}.
+\quad
+d_5=\frac{x(648x^2+1591)}{15552},
+\quad
+d_6=\frac{5x^3}{24}.
 $$
 
-Step 3: Expand the outer determinant beyond its leading Vandermonde term
+Step 3: Expand the outer determinant through its fourth nonzero order
 
-Put
-$$
-q=n^{-1/3},
-\qquad
-z_r=2^{-r}.
-$$
-For every fixed nonnegative integer $m$,
+For fixed $m\geq0$,
 $$
 \alpha_{8^mn}
 =
-\sum_{r=0}^{5}d_rq^rz_r^m+O(q^6).
+\sum_{r=0}^{6}d_rs^r2^{-rm}+O(s^7).
 $$
-
-For a four-element set $S$ of nonnegative integers, define
+Put
 $$
-V_S=\prod_{\substack{r<s\\r,s\in S}}(z_s-z_r).
-$$
-The matrix
-$$
-[\alpha_{8^{i+j}n}]_{i,j=0}^{3}
-$$
-is a sum of rank-one matrices
-$$
-d_rq^r
+z_r=2^{-r},
+\qquad
+v_r=
 \begin{pmatrix}
 1\\z_r\\z_r^2\\z_r^3
-\end{pmatrix}
-\begin{pmatrix}
-1&z_r&z_r^2&z_r^3
 \end{pmatrix}.
 $$
-Multilinearity of the determinant shows that four distinct modes are required. Thus, through order $q^8$,
+Then
+$$
+[\alpha_{8^{i+j}n}]_{i,j=0}^{3}
+=
+\sum_{r\geq0}d_rs^rv_rv_r^T.
+$$
+
+For a four-element set $S$, write
+$$
+V_S=\prod_{\substack{r<q\\r,q\in S}}(z_q-z_r).
+$$
+Cauchy-Binet gives
 $$
 D_n
 =
-C_0q^6+C_1q^7+C_2q^8+O(q^9),
+\sum_{|S|=4}
+\left(\prod_{r\in S}d_r\right)
+s^{\sum_{r\in S}r}V_S^2.
+$$
+Thus
+$$
+D_n
+=
+Ks^6
+\left(
+1+As+Bs^2+Cs^3+O(s^4)
+\right),
 $$
 where
 $$
-C_0=d_0d_1d_2d_3V_{\{0,1,2,3\}}^2,
+K=d_0d_1d_2d_3V_{\{0,1,2,3\}}^2
+=-\frac{3087x^4}{2^{37}}\neq0.
 $$
-$$
-C_1=d_0d_1d_2d_4V_{\{0,1,2,4\}}^2,
-$$
-and
-$$
-C_2
-=
-d_0d_1d_2d_5V_{\{0,1,2,5\}}^2
-+d_0d_1d_3d_4V_{\{0,1,3,4\}}^2.
-$$
-These are the only four-index sets with sums $6$, $7$, and $8$, respectively.
 
-Write
-$$
-D_n=C_0q^6(1+aq+bq^2+O(q^3)).
-$$
-The required Vandermonde ratios are
+The Vandermonde ratios needed at the next three orders are
 $$
 \frac{V_{\{0,1,2,4\}}}{V_{\{0,1,2,3\}}}
-=
-\frac{15}{8},
+=\frac{15}{8},
 $$
 $$
 \frac{V_{\{0,1,2,5\}}}{V_{\{0,1,2,3\}}}
-=
-\frac{155}{64},
+=\frac{155}{64},
+\qquad
+\frac{V_{\{0,1,3,4\}}}{V_{\{0,1,2,3\}}}
+=\frac{35}{32},
 $$
 and
 $$
-\frac{V_{\{0,1,3,4\}}}{V_{\{0,1,2,3\}}}
-=
-\frac{35}{32}.
+\frac{V_{\{0,1,2,6\}}}{V_{\{0,1,2,3\}}}
+=\frac{1395}{512},
 $$
-Therefore
 $$
-a
+\frac{V_{\{0,1,3,5\}}}{V_{\{0,1,2,3\}}}
+=\frac{465}{256},
+\qquad
+\frac{V_{\{0,2,3,4\}}}{V_{\{0,1,2,3\}}}
+=\frac{15}{64}.
+$$
+
+The sets whose index sums are $7$, $8$, and $9$ now give
+$$
+A
 =
 \frac{d_4}{d_3}
 \left(\frac{15}{8}\right)^2
 =
-\frac{1675}{1344}.
+\frac{1675}{1344},
 $$
-Also
 $$
-b
+B
 =
 \frac{d_5}{d_3}
 \left(\frac{155}{64}\right)^2
 +
 \frac{d_4}{d_2}
-\left(\frac{35}{32}\right)^2.
-$$
-Using the coefficients from Step 2,
-$$
-\frac{d_5}{d_3}
+\left(\frac{35}{32}\right)^2
 =
--\frac{648x^2+1591}{2268},
-\qquad
-\frac{d_4}{d_2}
-=
--\frac{67}{108}.
+-\frac{25(622728x^2+1804723)}{9289728},
 $$
-Hence
+and
 $$
-b
+C
 =
--\frac{25(622728x^2+1804723)}{9289728}.
+\frac{d_6}{d_3}
+\left(\frac{1395}{512}\right)^2
++
+\frac{d_5}{d_2}
+\left(\frac{465}{256}\right)^2
++
+\frac{d_4}{d_1}
+\left(\frac{15}{64}\right)^2.
+$$
+Simplification gives
+$$
+C
+=
+-\frac{225(292144x^2-131761)}{7340032}.
 $$
 
-Step 4: Use the second cancellation in the scale ratios
+Step 4: Identify the scale cancellation in logarithmic coordinates
 
-Define temporarily
+Set
 $$
-R_n=64\frac{D_{8n}}{D_n}.
-$$
-Replacing $n$ by $8n$ replaces $q$ by $q/2$. From Step 3,
-$$
-R_n
-=
-\frac{1+\frac{a}{2}q+\frac{b}{4}q^2+O(q^3)}
-{1+aq+bq^2+O(q^3)}.
-$$
-Expanding the quotient gives
-$$
-R_n
-=
-1-\frac{a}{2}q
-+\left(
-\frac{a^2}{2}-\frac{3b}{4}
-\right)q^2
-+O(q^3).
-$$
-Put
-$$
-r_1=-\frac a2,
-\qquad
-r_2=\frac{a^2}{2}-\frac{3b}{4}.
-$$
-Then
-$$
-R_n=1+r_1q+r_2q^2+O(q^3),
-$$
-while
-$$
-R_{8n}
-=
-1+\frac{r_1}{2}q+\frac{r_2}{4}q^2+O(q^3).
-$$
-
-The expression inside the square brackets in the problem is
-$$
-R_n-2R_{8n}+1-(R_n-1)^2.
-$$
-The linear term cancels:
-$$
-R_n-2R_{8n}+1
-=
-\frac{r_2}{2}q^2+O(q^3).
-$$
-Also
-$$
-(R_n-1)^2=r_1^2q^2+O(q^3).
-$$
-Therefore
-$$
-R_n-2R_{8n}+1-(R_n-1)^2
-=
-\left(
-\frac{r_2}{2}-r_1^2
-\right)q^2+O(q^3).
+E(s)=1+As+Bs^2+Cs^3+O(s^4).
 $$
 Since
 $$
-\frac{r_2}{2}-r_1^2
-=
--\frac{3b}{8},
+D_n=Ks^6E(s),
 $$
-and $q^2=n^{-2/3}$, the required limit is
+replacing $n$ by $8n$, $64n$, and $512n$ replaces $s$ by $s/2$, $s/4$, and $s/8$.
+
+The quantity inside the final power is therefore
 $$
--\frac{3b}{8}
+64^3
+\frac{D_{8n}^{\,7}D_{512n}^{\,8}}
+{D_nD_{64n}^{\,14}}
 =
-\frac{25(622728x^2+1804723)}{24772608}.
+\frac{E(s/2)^7E(s/8)^8}
+{E(s)E(s/4)^{14}},
+$$
+because the factors $K$, $s^6$, and all powers of $2$ cancel.
+
+Write
+$$
+\log E(s)
+=
+As+\left(B-\frac{A^2}{2}\right)s^2
++Gs^3+O(s^4),
+$$
+where
+$$
+G=C-AB+\frac{A^3}{3}.
+$$
+The scale weights satisfy
+$$
+\frac72+\frac88-1-\frac{14}{4}=0
+$$
+and
+$$
+\frac74+\frac8{64}-1-\frac{14}{16}=0,
+$$
+while
+$$
+\frac78+\frac8{512}-1-\frac{14}{64}
+=-\frac{21}{64}.
+$$
+Hence
+$$
+\log\left(
+64^3
+\frac{D_{8n}^{\,7}D_{512n}^{\,8}}
+{D_nD_{64n}^{\,14}}
+\right)
+=
+-\frac{21G}{64}s^3+O(s^4).
 $$
 
-Final Answer: $\boxed{\frac{25(622728x^2+1804723)}{24772608}}$
+Using the values of $A,B,C$,
+$$
+G
+=
+-\frac{25(12002770836x^2-18768001859)}
+{43698880512}.
+$$
+Since $s^3=n^{-1}$,
+$$
+n\log\left(
+64^3
+\frac{D_{8n}^{\,7}D_{512n}^{\,8}}
+{D_nD_{64n}^{\,14}}
+\right)
+\longrightarrow
+\frac{25(12002770836x^2-18768001859)}
+{133177540608}.
+$$
+Exponentiating gives the required limit.
+
+Final Answer: $\boxed{\exp\left(\frac{25(12002770836x^2-18768001859)}{133177540608}\right)}$
 
 ---
 
 ## Answer
 
-$\frac{25(622728x^2+1804723)}{24772608}$
+$\exp\left(\frac{25(12002770836x^2-18768001859)}{133177540608}\right)$
 
 ---
 
@@ -367,6 +347,6 @@ $\frac{25(622728x^2+1804723)}{24772608}$
 
 - singular asymptotic scaling
 - moving zeros
-- rank-one determinant expansion
+- cauchy-binet formula
 - vandermonde determinants
-- asymptotic cancellation
+- multiscale cancellation

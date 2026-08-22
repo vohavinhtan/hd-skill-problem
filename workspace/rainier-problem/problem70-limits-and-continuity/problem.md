@@ -24,15 +24,11 @@ $$
 Determine
 $$
 \lim_{n\to\infty}
-n^{2/3}
-\left[
-64\frac{D_{8n}}{D_n}
--128\frac{D_{64n}}{D_{8n}}
-+1
--\left(
-64\frac{D_{8n}}{D_n}-1
-\right)^2
-\right].
+\left(
+64^3
+\frac{D_{8n}^{\,7}D_{512n}^{\,8}}
+{D_nD_{64n}^{\,14}}
+\right)^n.
 $$
 
 ---
@@ -50,6 +46,8 @@ $$
 
 ## Domain Explanation
 
-This problem involves a singularly scaled moving zero and a limit in which two successive asymptotic terms cancel, which are part of Calculus and Limits and continuity.
-The problem also involves structured determinants and low-rank expansions, which are part of Linear Algebra and Determinants.
-However, the determinant structure supplies the asymptotic coefficients, while the requested object is determined by the limiting behavior after two dependent cancellations.
+This problem involves a moving zero with fractional-power asymptotics and a limit whose scale weights cancel two successive correction terms,
+which are part of Calculus and Limits and continuity.
+The problem also involves structured determinants, rank-one expansions, and Vandermonde factors,
+which are part of Linear Algebra and Determinants.
+However, those determinant identities provide the asymptotic data, while the requested object is determined by the final multiscale limiting cancellation.
