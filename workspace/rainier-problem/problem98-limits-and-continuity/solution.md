@@ -1,253 +1,262 @@
 ## Steps
 
-Step 1: Recover the hidden local coordinate
+Step 1: Reduce the original branch equation to one parameter
 
-Differentiate $g$:
-$$
-g'(t)=\frac{t}{(1-t)^2}.
-$$
-Thus $g$ decreases on $(-\infty,0)$, increases on $(0,1)$, and has minimum value $0$ at $0$. Hence $y(x)$ exists uniquely.
-
-Introduce
-$$
-q=\frac{t}{1-t}.
-$$
-Then
-$$
-1+q=\frac1{1-t},
-\qquad
-\frac{dq}{dt}=\frac1{(1-t)^2}.
-$$
-If
-$$
-G(q)=q-\log(1+q),
-$$
-then
-$$
-g(t)=G(q).
-$$
 Put
 $$
-X=\frac{x}{1-x},
+a=\frac1{1-x},
 \qquad
-Y=\frac{y(x)}{1-y(x)}.
+b=\frac1{1-y(x)}.
 $$
-The level equation becomes
+Then $a>1>b>0$, and
 $$
-G(X)=G(Y),
-$$
-with $X>0>Y$.
-
-Also
-$$
-X-Y=\frac{x-y(x)}{(1-x)(1-y(x))}.
-$$
-Therefore the definition of $M$ reduces exactly to
-$$
-M(x)=
-\frac{\displaystyle\int_Y^XG(q)\,dq}
-{G(X)(X-Y)}.
-$$
-
-Step 2: Parametrize the two transformed endpoints
-
-Set
-$$
-m=\frac{X+Y}{2},
+g(x)=a-1-\log a,
 \qquad
-r=\frac{X-Y}{2}.
-$$
-The equality $G(X)=G(Y)$ gives
-$$
-2r=\log\frac{1+m+r}{1+m-r}.
-$$
-Exponentiating and solving for $m$ yields
-$$
-1+m=r\coth r.
-$$
-Hence
-$$
-m=r\coth r-1.
-$$
-
-Define
-$$
-L(r)=\log\frac{\sinh r}{r}.
-$$
-Since
-$$
-1+X=r(\coth r+1)=\frac{re^r}{\sinh r},
-$$
-and
-$$
-1+Y=r(\coth r-1)=\frac{re^{-r}}{\sinh r},
-$$
-we have
-$$
-\log(1+X)=r-L(r),
-\qquad
-\log(1+Y)=-r-L(r).
-$$
-It follows that
-$$
-G(X)=m+L(r).
-$$
-
-An antiderivative of $G$ is
-$$
-F(q)=\frac{q^2}{2}-(1+q)\log(1+q)+(1+q).
-$$
-Using the preceding formulas,
-$$
-(1+X)\log(1+X)-(1+Y)\log(1+Y)
-=
-2r(1+m)-2rL(r).
-$$
-Since
-$$
-\frac{X^2-Y^2}{2}=2mr,
-$$
-substitution into $F(X)-F(Y)$ gives
-$$
-F(X)-F(Y)=2rL(r).
+g(y(x))=b-1-\log b.
 $$
 Therefore
 $$
-M(x)=\frac{L(r)}{m+L(r)}.
+a-b=\log\frac ab.
+$$
+Write
+$$
+L=\log\frac ab>0.
+$$
+Then $a=e^Lb$ and $a-b=L$, so
+$$
+b=\frac{L}{e^L-1},
+\qquad
+a=\frac{Le^L}{e^L-1}.
 $$
 
-Step 3: Relate the transformed half-width to the original branch sum
-
-The inverse transformation is
+Since
 $$
-t=\frac{q}{1+q}.
+x=1-\frac1a,
+\qquad
+y(x)=1-\frac1b,
 $$
-Thus
+we obtain
 $$
-x=1-\frac1{1+X}
+x+y(x)
 =
-1-\frac{e^{-r}\sinh r}{r},
+2-\frac1a-\frac1b
+=
+2-\frac{2\sinh L}{L}.
+$$
+Hence
+$$
+x+y(x)
+=
+-\frac{L^2}{3}
+-\frac{L^4}{60}
+-\frac{L^6}{2520}
++O(L^8).
+$$
+
+Step 2: Express $M(x)$ in the same parameter
+
+The substitution
+$$
+q=\frac1{1-t}
+$$
+gives
+$$
+dq=\frac{dt}{(1-t)^2}
 $$
 and
 $$
-y(x)=1-\frac1{1+Y}
+g(t)=q-1-\log q.
+$$
+Thus
+$$
+\int_{y(x)}^x\frac{g(t)}{(1-t)^2}\,dt
 =
-1-\frac{e^r\sinh r}{r}.
+\int_b^a(q-1-\log q)\,dq.
 $$
-Consequently
+An antiderivative is
 $$
-x+y(x)=2-\frac{\sinh(2r)}{r}.
+\frac{q^2}{2}-q\log q.
 $$
-
-Put
+Using $a-b=L$ and $\log a=\log b+L$ gives
 $$
-u=r^2,
+\int_b^a(q-1-\log q)\,dq
+=
+L\left(-\frac L2-\log b\right).
+$$
+Also
+$$
+\frac{x-y(x)}{(1-x)(1-y(x))}=a-b=L.
+$$
+Therefore
+$$
+M(x)=
+\frac{-L/2-\log b}{b-1-\log b},
 \qquad
-p=-x-y(x).
-$$
-Then
-$$
-p=
-\frac43u+\frac4{15}u^2+\frac8{315}u^3+\frac4{2835}u^4+O(u^5).
+b=\frac{L}{e^L-1}.
 $$
 
 The Taylor expansions
 $$
-r\coth r-1=
-\frac{u}{3}-\frac{u^2}{45}
-+\frac{2u^3}{945}-\frac{u^4}{4725}
-+\frac{2u^5}{93555}+O(u^6),
+\log\frac{L}{e^L-1}
+=
+-\frac L2-\frac{L^2}{24}
++\frac{L^4}{2880}
+-\frac{L^6}{181440}
++O(L^8)
 $$
 and
 $$
-L(r)=
-\frac{u}{6}-\frac{u^2}{180}
-+\frac{u^3}{2835}-\frac{u^4}{37800}
-+\frac{u^5}{467775}+O(u^6)
+\frac{L}{e^L-1}
+=
+1-\frac L2+\frac{L^2}{12}
+-\frac{L^4}{720}
++\frac{L^6}{30240}
++O(L^8)
 $$
-give, from Step 2,
+give
 $$
-M=
-\frac13+\frac{u}{135}
--\frac{u^2}{1890}
-+\frac{61u^3}{1530900}
--\frac{4619u^4}{1515591000}
-+O(u^5).
+M(x)=
+\frac13+\frac{L^2}{540}
+-\frac{L^4}{30240}
++\frac{61L^6}{97977600}
++O(L^8).
 $$
+In particular $M(x)>1/3$ for sufficiently small $x>0$, so the positive number $z(x)$ in the statement exists uniquely.
 
-Step 4: Revert the branch-sum series
+Step 3: Resolve the second implicit normalization
 
-Seek
+For brevity write $z=z(x)$. From Step 2,
 $$
-u=Ap+Bp^2+Cp^3+Dp^4+O(p^5).
+270\left(M(x)-\frac13\right)
+=
+\frac{L^2}{2}
+-\frac{L^4}{112}
++\frac{61L^6}{362880}
++O(L^8).
 $$
-Substituting this into the expansion of $p$ from Step 3 and comparing coefficients gives
+The defining equation for $z$ is therefore
 $$
-A=\frac34.
+z-\log(1+z)
+=
+\frac{L^2}{2}
+-\frac{L^4}{112}
++\frac{61L^6}{362880}
++O(L^8).
 $$
-At the next three orders,
+Since both sides have leading term one half of the square of their positive local parameter, write
 $$
-\frac43B+\frac4{15}A^2=0,
+L=z+Az^2+Bz^3+Cz^4+Dz^5+O(z^6).
+$$
+Now
+$$
+z-\log(1+z)
+=
+\frac{z^2}{2}
+-\frac{z^3}{3}
++\frac{z^4}{4}
+-\frac{z^5}{5}
++\frac{z^6}{6}
++O(z^7).
+$$
+Substitution and comparison of coefficients of $z^3,z^4,z^5,z^6$ gives
+$$
+A+\frac13=0,
 $$
 $$
-\frac43C+\frac8{15}AB+\frac8{315}A^3=0,
+\frac{A^2}{2}+B-\frac{29}{112}=0,
+$$
+$$
+AB-\frac{A}{28}+C+\frac15=0,
 $$
 and
 $$
-\frac43D+\frac4{15}(B^2+2AC)+\frac8{105}A^2B+\frac4{2835}A^4=0.
+-\frac{3A^2}{56}+AC+\frac{B^2}{2}-\frac{B}{28}+D-\frac{60419}{362880}=0.
+$$
+Thus
+$$
+A=-\frac13,
+\qquad
+B=\frac{205}{1008},
+$$
+$$
+C=-\frac{2179}{15120},
+\qquad
+D=\frac{161113}{1451520}.
 $$
 Therefore
 $$
-B=-\frac9{80},
-\qquad
-C=\frac9{350},
-\qquad
-D=-\frac{39}{5600}.
-$$
-So
-$$
-u=
-\frac34p-\frac9{80}p^2+\frac9{350}p^3-\frac{39}{5600}p^4+O(p^5).
+L=
+z-\frac{z^2}{3}
++\frac{205z^3}{1008}
+-\frac{2179z^4}{15120}
++\frac{161113z^5}{1451520}
++O(z^6).
 $$
 
-Substitution into the expansion of $M$ from Step 3 gives
+Step 4: Transfer the branch sum to the secondary parameter
+
+From Step 1,
 $$
-M=
-\frac13+\frac{p}{180}
--\frac{19p^2}{16800}
-+\frac{5381p^3}{18144000}
--\frac{2924519p^4}{33530112000}
-+O(p^5).
+x+y(x)
+=
+-\frac{L^2}{3}
+-\frac{L^4}{60}
+-\frac{L^6}{2520}
++O(L^8).
+$$
+Using the expansion from Step 3,
+$$
+L^2=
+z^2-\frac23z^3
++\frac{1169}{2016}z^4
+-\frac{5929}{15120}z^5
++\frac{782063}{4354560}z^6
++O(z^7),
+$$
+and
+$$
+L^4=
+z^4-\frac43z^5
++\frac{203}{126}z^6
++O(z^7).
+$$
+Also
+$$
+L^6=z^6+O(z^7).
+$$
+Substitution gives
+$$
+x+y(x)
+=
+-\frac{z^2}{3}
++\frac{2z^3}{9}
+-\frac{53z^4}{280}
++\frac{103z^5}{630}
+-\frac{552011z^6}{3810240}
++O(z^7).
 $$
 
-Step 5: Evaluate the limit
+Step 5: Evaluate the requested limit
 
-Let
+Rearranging the expansion in Step 4,
 $$
-s=x+y(x).
+x+y(x)
++\frac{z^2}{3}
+-\frac{2z^3}{9}
++\frac{53z^4}{280}
+-\frac{103z^5}{630}
+=
+-\frac{552011}{3810240}z^6+O(z^7).
 $$
-Since $p=-s$, Step 4 becomes
-$$
-M(x)=
-\frac13-\frac{s}{180}
--\frac{19s^2}{16800}
--\frac{5381s^3}{18144000}
--\frac{2924519s^4}{33530112000}
-+O(s^5).
-$$
-Also $s\to0$ as $x\to0^+$. Therefore the numerator in the requested quotient is
-$$
--\frac{2924519}{33530112000}s^4+O(s^5).
-$$
-Dividing by $s^4$ gives the required value.
+Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^6$ gives the limit.
 
-Final Answer: $\boxed{-\frac{2924519}{33530112000}}$
+Final Answer: $\boxed{-\frac{552011}{3810240}}$
 
 ---
 
 ## Answer
 
-$-\frac{2924519}{33530112000}$
+$-\frac{552011}{3810240}$
 
 ---
 
@@ -265,8 +274,8 @@ $-\frac{2924519}{33530112000}$
 
 ## Solution Concepts
 
-- implicit branches
-- Möbius coordinate changes
-- hyperbolic parametrization
+- nested implicit branches
+- exponential-logarithmic coordinates
 - series reversion
-- asymptotic limits
+- asymptotic composition
+- limits
