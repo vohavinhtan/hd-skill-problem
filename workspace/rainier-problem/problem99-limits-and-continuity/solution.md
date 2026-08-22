@@ -27,17 +27,13 @@ k+l+r=4m.
 $$
 Use the local scales
 $$
-x=tu,\qquad
-x=\frac12+\sqrt{t}\,z,\qquad
-x=1-tv.
+x=tu,\qquad x=\frac12+\sqrt{t}\,z,\qquad x=1-tv.
 $$
 A left or right variable contributes one power of $t$ from its differential, while a center variable contributes $t^{1/2}$. The squared Vandermonde factors inside the three clusters contribute
 $$
-t^{k(k-1)},\qquad
-t^{l(l-1)/2},\qquad
-t^{r(r-1)}.
+t^{k(k-1)},\qquad t^{l(l-1)/2},\qquad t^{r(r-1)}.
 $$
-Cross-cluster distances have nonzero limits. The total power is therefore
+Cross-cluster distances have nonzero limits. The total power is
 $$
 E(k,l,r)=k^2+r^2+\frac{l^2}{2}.
 $$
@@ -56,7 +52,7 @@ The unique minimum is $(a,c)=(0,0)$, corresponding to
 $$
 (k,l,r)=(m,2m,m).
 $$
-The smallest positive gap is $3/2$, attained only for
+The smallest positive gap is $3/2$, attained exactly for
 $$
 (a,c)\in\{(1,0),(-1,0),(0,1),(0,-1)\}.
 $$
@@ -64,7 +60,7 @@ All other allocations begin at relative order at least $t^2$.
 
 Step 2: Evaluate the leading local partition constant
 
-Define
+For $k\geq0$, define
 $$
 L_k=
 \frac1{k!}
@@ -76,12 +72,12 @@ Expanding the two Vandermonde determinants gives
 $$
 L_k=\det\left((i+j)!\right)_{0\leq i,j\leq k-1}.
 $$
-Factor $i!$ from row $i$. The entry remaining in column $j$ is a monic polynomial of degree $j$ in $i$, so its determinant is the Vandermonde determinant at $0,1,\ldots,k-1$. Therefore
+Factor $i!$ from row $i$. The remaining entry in column $j$ is a monic polynomial of degree $j$ in $i$, so its determinant is the Vandermonde determinant at $0,1,\ldots,k-1$. Hence
 $$
 L_k=\prod_{j=0}^{k-1}(j!)^2.
 $$
 
-For the center cluster define
+For the center cluster, define
 $$
 G_l=
 \frac1{l!}
@@ -99,7 +95,7 @@ $$
 =
 \sqrt{\pi}\,2^{-j}j!,
 $$
-obtained by integrating its Rodrigues formula by parts $j$ times. Gram factorization then gives
+obtained by integrating the Rodrigues formula by parts $j$ times. Gram factorization gives
 $$
 G_l=
 \pi^{l/2}2^{-l(l-1)/2}\prod_{j=0}^{l-1}j!.
@@ -111,9 +107,7 @@ $$
 $$
 Its leading constant is
 $$
-2^{-8m^2}L_m^2G_{2m}
-=
-C_m.
+2^{-8m^2}L_m^2G_{2m}=C_m.
 $$
 
 Step 3: Compute the first correction of the dominant allocation
@@ -124,11 +118,11 @@ U_j=\sum_{i=1}^m u_i^j,\qquad
 V_j=\sum_{i=1}^m v_i^j,\qquad
 Z_j=\sum_{a=1}^{2m}z_a^j.
 $$
-After the leading densities
+After removing the leading densities
 $$
 e^{-\sum u_i}e^{-\sum v_i}e^{-\sum z_a^2}
 $$
-and the constant cross factor are removed, the logarithm of the remaining integrand has the form
+and the constant cross factor, the logarithm of the remaining integrand is
 $$
 tL_1+O(t^2),
 $$
@@ -138,23 +132,22 @@ L_1
 =
 5(U_2+V_2)-10m(U_1+V_1)+4Z_4-8mZ_2.
 $$
-For example,
+Indeed,
 $$
-\frac{\phi(tu)}{t}=u-5tu^2+O(t^2)
+\frac{\phi(tu)}{t}=u-5tu^2+O(t^2),
 $$
-and
 $$
-\frac{\phi(1/2+\sqrt{t}\,z)}{t}=z^2-4tz^4.
+\frac{\phi(1/2+\sqrt{t}\,z)}{t}=z^2-4tz^4,
 $$
-For a left-center pair,
+and for a left-center pair,
 $$
 2\log\left(1+2\sqrt{t}\,z-2tu\right)
 =
 4\sqrt{t}\,z-4tu-4tz^2+O(t^{3/2}),
 $$
-while the corresponding right-center expansion has the opposite $\sqrt{t}$ term. With equal left and right cluster sizes, those terms cancel.
+while the right-center expansion has the opposite $\sqrt{t}$ term. Equal left and right cluster sizes cancel those terms.
 
-The integrated dominant contribution has no $t^{3/2}$ term. Indeed, replacing $\sqrt t$ by $-\sqrt t$ and simultaneously sending
+The dominant contribution has no $t^{3/2}$ term. Replacing $\sqrt t$ by $-\sqrt t$ and simultaneously sending
 $$
 (u,v,z)\longmapsto(v,u,-z)
 $$
@@ -162,25 +155,14 @@ leaves the scaled integral unchanged, so its expansion contains only integer pow
 
 For the Laguerre density defining $L_m$, integration by parts gives
 $$
-\mathbb E[U_1]=m^2,
-\qquad
-\mathbb E[U_2]=2m^3.
+\mathbb E[U_1]=m^2,\qquad
+\mathbb E[U_2]=2m^3,
 $$
-The first identity follows from integrating
-$$
-\sum_i\frac{\partial}{\partial u_i}(u_i\rho),
-$$
-and the second from the same calculation with $u_i^2\rho$. The same formulas hold for $V_1,V_2$.
-
-For the Gaussian density defining $G_n$, the corresponding integration-by-parts identities give
+and the same formulas hold for $V_1,V_2$. For the Gaussian density defining $G_n$, integration by parts gives
 $$
 \mathbb E[Z_2]=\frac{n^2}{2}.
 $$
-To obtain the fourth moment, write $Z_1=\sum z_i$. The Vandermonde factor is unchanged by a common translation, so the center-of-mass coordinate has density proportional to
-$$
-e^{-Z_1^2/n},
-$$
-and
+The Vandermonde factor is invariant under a common translation. Hence the center-of-mass coordinate has density proportional to $e^{-Z_1^2/n}$, so
 $$
 \mathbb E[Z_1^2]=\frac n2.
 $$
@@ -196,19 +178,16 @@ n\mathbb E[Z_2]+\frac12\mathbb E[Z_1^2]
 =
 \frac{n(2n^2+1)}4.
 $$
-Taking $n=2m$,
+With $n=2m$,
 $$
-\mathbb E[Z_2]=2m^2,
-$$
-$$
+\mathbb E[Z_2]=2m^2,\qquad
 \mathbb E[Z_4]=4m^3+\frac m2.
 $$
-
-The two endpoint contributions to $\mathbb E[L_1]$ vanish:
+The two endpoint parts of $\mathbb E[L_1]$ vanish:
 $$
 5(2m^3)-10m(m^2)=0.
 $$
-The center contribution is
+The center part is
 $$
 4\left(4m^3+\frac m2\right)-8m(2m^2)=2m.
 $$
@@ -219,25 +198,23 @@ $$
 
 Step 4: Evaluate the four first competing allocations
 
-For general cluster sizes, the leading local constant is
+For general cluster sizes,
 $$
 K_{k,l,r}=2^{-2l(k+r)}L_kL_rG_l.
 $$
-The two allocations
+The allocations
 $$
 (m+1,2m-1,m),\qquad (m,2m-1,m+1)
 $$
-have the same ratio to the dominant constant. Using
+have the same ratio to the dominant constant. From Step 2,
 $$
-\frac{L_{m+1}}{L_m}=(m!)^2
-$$
-and
-$$
+\frac{L_{m+1}}{L_m}=(m!)^2,
+\qquad
 \frac{G_{2m-1}}{G_{2m}}
 =
-\frac{2^{2m-1}}{\sqrt{\pi}(2m-1)!},
+\frac{2^{2m-1}}{\sqrt{\pi}(2m-1)!}.
 $$
-together with the cross-factor ratio $4$, this ratio is
+The cross-factor ratio is $4$, so their common ratio is
 $$
 R_+
 =
@@ -248,17 +225,15 @@ The other two allocations are
 $$
 (m-1,2m+1,m),\qquad (m,2m+1,m-1).
 $$
-Since
+Again from Step 2,
 $$
-\frac{L_{m-1}}{L_m}=\frac1{((m-1)!)^2}
-$$
-and
-$$
+\frac{L_{m-1}}{L_m}=\frac1{((m-1)!)^2},
+\qquad
 \frac{G_{2m+1}}{G_{2m}}
 =
-\sqrt{\pi}\,2^{-2m}(2m)!,
+\sqrt{\pi}\,2^{-2m}(2m)!.
 $$
-their common ratio is
+Including the cross-factor ratio gives
 $$
 R_-
 =
@@ -266,16 +241,16 @@ R_-
 \frac{(2m)!}{((m-1)!)^2}.
 $$
 
-Each of these four allocations starts at relative order $t^{3/2}$. Corrections inside them begin at higher relative order, while Step 1 shows that every other allocation starts at relative order at least $t^2$. Consequently,
+Each of these four allocations starts at relative order $t^{3/2}$ by Step 1. Corrections within them start later, and every other allocation starts at relative order at least $t^2$. Therefore
 $$
 \frac{D_m(t)}{C_mt^{4m^2}}
 =
 1+2mt+2(R_++R_-)t^{3/2}+O(t^2).
 $$
 
-Step 5: Simplify the surviving coefficient
+Step 5: Simplify the coefficient and take the limit
 
-Using
+Since the problem defines
 $$
 b_m=\binom{2m}{m},
 $$
@@ -283,7 +258,7 @@ we have
 $$
 \frac{(m!)^2}{(2m-1)!}
 =
-\frac{2m}{b_m}
+\frac{2m}{b_m},
 $$
 and
 $$
@@ -291,19 +266,19 @@ $$
 =
 m^2b_m.
 $$
-Therefore
+Using these identities in Step 4 gives
 $$
 2R_+
 =
-\frac{2^{2m+3}m}{\sqrt{\pi}\,b_m},
+\frac{2^{2m+3}m}{\sqrt{\pi}b_m},
 $$
 and
 $$
 2R_-
 =
-2^{3-2m}\sqrt{\pi}\,m^2b_m.
+2^{3-2m}\sqrt{\pi}m^2b_m.
 $$
-Subtracting the constant and $t$ terms from Step 4 and dividing by $t^{3/2}$ gives the required limit.
+Subtracting $1+2mt$ from the normalized determinant expansion in Step 4 and dividing by $t^{3/2}$ leaves the sum of these two coefficients.
 
 Final Answer: $\boxed{\frac{2^{2m+3}m}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m}$
 
@@ -316,10 +291,6 @@ $\frac{2^{2m+3}m}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m$
 ---
 
 ## Classification
-
-**Domain:** Calculus
-
-**Sub-domain:** Limits and continuity
 
 **Problem Type:** Symbolic derivation
 
