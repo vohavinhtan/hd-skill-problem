@@ -1,34 +1,39 @@
+```markdown id="9xbjk8"
 # Normalized Math Problem
 
 ## LaTeX (Normalized)
 
 Let
 $$
-R=\frac{\Gamma(\frac34)}{\Gamma(\frac14)}.
+R=\frac{\sqrt\pi}{\Gamma(\frac16)}.
 $$
-For each positive integer $n$, let $\lambda_n,\mu_n\in\mathbb R$ be the unique pair satisfying
-$$
-\int_{-\infty}^{\infty}
-x
-\exp\!\left(
--nx^4(1+x+x^2)+\lambda_nx+\mu_nx^2
-\right)\,dx=0
-$$
-and
+For all sufficiently large positive integers $n$, let $\lambda_n$ be the smallest positive real number satisfying
 $$
 \int_{-\infty}^{\infty}
-\left(x^2-Rn^{-1/2}\right)
+\left[
+nx^8
+-\frac{7-36R^3}{6(1-12R^3)}x^2
++\frac{2R}{3(1-12R^3)}n^{-1/3}
+\right]
+$$
+$$
+\qquad\qquad
+\times
 \exp\!\left(
--nx^4(1+x+x^2)+\lambda_nx+\mu_nx^2
-\right)\,dx=0.
+-nx^2(x^2-\lambda_n)^2(1+x^2)
+\right)\,dx
+=0.
 $$
 Determine the exact value of
 $$
 \lim_{n\to\infty}
-n^{1/2}
+n^{2/3}
 \left[
-\mu_n-
-\frac{3R^2-1}{2(4R^2-1)}
+\lambda_n
+-
+\sqrt{
+\frac{13-240R^3}{2(13-204R^3)}
+}\,n^{-1/2}
 \right].
 $$
 
@@ -47,4 +52,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for a second-order limit of parameters defined implicitly by two integral constraints, so Calculus and Limits and continuity is the best fit. Its derivation also uses asymptotic integration and gamma-function moments, which relate to Integration, but those computations serve the extraction of the limiting coefficient rather than being the requested object.
+The problem asks for a refined limit of a root defined implicitly by a parameter-dependent integral, so Calculus and Limits and continuity is the best fit. Its derivation also uses asymptotic integration and gamma-function moments, which relate to Integration, but the main difficulty is the degenerate implicit limit and the resulting fractional root scale.
