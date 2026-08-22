@@ -1,321 +1,381 @@
 ## Steps
 
-Step 1: Split the determinant into two endpoint Hankel problems
+Step 1: Rank the local particle allocations
 
-Set
+Let
 $$
-x=\frac{1+y}{2}.
+\phi(x)=x(1-x)(2x-1)^2
 $$
-For $N=4m$, the triangular change from $1,x,\ldots,x^{N-1}$ to $1,y,\ldots,y^{N-1}$ and the factor $dx=dy/2$ give
+and put $s=\sqrt t$. Andréief's identity gives
 $$
 D_m(t)
 =
-2^{-N^2}
-\det\left(
-\int_{-1}^1
-y^{i+j}
-e^{-y^2(1-y^2)/(4t)}\,dy
-\right)_{0\leq i,j<N}.
+\frac1{(4m)!}
+\int_{[0,1]^{4m}}
+\prod_{i<j}(x_i-x_j)^2
+\prod_{i=1}^{4m}
+\left(1+s(2x_i-1)\right)e^{-\phi(x_i)/t}\,dx_i.
 $$
-The weight is even. Separating even and odd powers and putting
+The factor $1+s(2x-1)$ stays positive for $0<t<1$ and tends to $1$ at all three zeros of $\phi$, so it changes local correction coefficients but not cluster exponents or leading constants.
+
+Suppose $a,b,c$ variables lie near $0,1/2,1$, respectively. Use
 $$
-s=y^2,\qquad \varepsilon=4t
+x=tu,\qquad
+x=\frac12+sz,\qquad
+x=1-tv.
+$$
+The Jacobians and internal squared Vandermonde factors give the power
+$$
+E(a,b,c)=a^2+c^2+\frac{b^2}{2},
+\qquad
+a+b+c=4m.
+$$
+Writing
+$$
+a=m+r,\qquad c=m+q,\qquad b=2m-r-q
 $$
 gives
 $$
-D_m(t)=2^{-16m^2}J_{-1/2}(\varepsilon)J_{1/2}(\varepsilon),
-$$
-where
-$$
-J_\alpha(\varepsilon)
+E(a,b,c)-4m^2
 =
-\det\left(
-\int_0^1
-s^{i+j+\alpha}e^{-s(1-s)/\varepsilon}\,ds
-\right)_{0\leq i,j\leq2m-1}.
+\frac{3r^2+2rq+3q^2}{2}.
 $$
+The relevant gaps through $5/2$ are therefore
+$$
+0,\qquad \frac32,\qquad 2.
+$$
+The dominant allocation is
+$$
+(m,2m,m).
+$$
+The gap-$3/2$ allocations are
+$$
+(m+1,2m-1,m),\qquad
+(m,2m-1,m+1),
+$$
+$$
+(m-1,2m+1,m),\qquad
+(m,2m+1,m-1).
+$$
+The gap-$2$ allocations are
+$$
+(m+1,2m,m-1),\qquad
+(m-1,2m,m+1).
+$$
+Every other allocation starts beyond relative order $t^{5/2}$.
 
-By Andréief's identity,
-$$
-J_\alpha(\varepsilon)
-=
-\frac1{(2m)!}
-\int_{[0,1]^{2m}}
-\Delta(s)^2
-\prod_{i=1}^{2m}
-s_i^\alpha e^{-s_i(1-s_i)/\varepsilon}\,ds_i.
-$$
-
-Step 2: Rank the endpoint splits and evaluate their leading constants
-
-Suppose $k=m+d$ variables lie near $0$ and $l=m-d$ near $1$. With
-$$
-s=\varepsilon u,\qquad s=1-\varepsilon v,
-$$
-the power of $\varepsilon$ is
-$$
-E_\alpha(d)
-=
-k^2+l^2+\alpha k.
-$$
-Relative to $d=0$,
-$$
-E_\alpha(d)-E_\alpha(0)=2d^2+\alpha d.
-$$
-
-For $\alpha=-1/2$, the gaps for $d=1,-1$ are $3/2,5/2$. For $\alpha=1/2$, the gaps for $d=-1,1$ are $3/2,5/2$. No other split enters through order $\varepsilon^{5/2}$.
+Step 2: Evaluate the leading constants of the competing clusters
 
 Define
 $$
-Z_k(a)=\prod_{j=0}^{k-1}j!\Gamma(j+a+1).
-$$
-The dominant constant is
-$$
-K_\alpha=Z_m(\alpha)Z_m(0).
-$$
-
-The relative constants of the gap-$3/2$ splits are
-$$
-A_-
-=
-\frac{Z_{m+1}(-1/2)Z_{m-1}(0)}
-{Z_m(-1/2)Z_m(0)}
-=
-2^{-2m}\sqrt{\pi}m^2b_m,
+L_n=
+\frac1{n!}
+\int_{(0,\infty)^n}
+\prod_{i<j}(u_i-u_j)^2
+\prod_i e^{-u_i}\,du_i
 $$
 and
 $$
-A_+
-=
-\frac{Z_{m-1}(1/2)Z_{m+1}(0)}
-{Z_m(1/2)Z_m(0)}
-=
-\frac{2^{2m}m}{\sqrt{\pi}b_m}.
+G_n=
+\frac1{n!}
+\int_{\mathbb R^n}
+\prod_{i<j}(z_i-z_j)^2
+\prod_i e^{-z_i^2}\,dz_i.
 $$
-The gap-$5/2$ constants are
+Vandermonde moment determinants give
 $$
-B_-
-=
-\frac{Z_{m-1}(-1/2)Z_{m+1}(0)}
-{Z_m(-1/2)Z_m(0)}
-=
-\frac{2^{2m-1}m(2m-1)}{\sqrt{\pi}b_m},
+L_n=\prod_{j=0}^{n-1}(j!)^2,
 $$
-and
+while the monic Hermite norms give
 $$
-B_+
-=
-\frac{Z_{m+1}(1/2)Z_{m-1}(0)}
-{Z_m(1/2)Z_m(0)}
-=
-2^{-2m-1}\sqrt{\pi}m^2(2m+1)b_m.
-$$
-These forms use
-$$
-\Gamma\left(m+\frac12\right)
-=
-\frac{b_m m!\sqrt{\pi}}{4^m}.
+G_n=
+\pi^{n/2}2^{-n(n-1)/2}\prod_{j=0}^{n-1}j!.
 $$
 
-Step 3: Expand the dominant split through order $\varepsilon^2$
-
-For the dominant split, let $U_j$ and $V_j$ be the power sums of the left and right variables. After the leading Laguerre densities are removed,
+For a cluster $(a,b,c)$, every endpoint-center squared distance tends to $1/4$. Hence its leading constant is
 $$
-\log F
+K_{a,b,c}
 =
-\varepsilon L_1+\varepsilon^2L_2+O(\varepsilon^3),
+2^{-2b(a+c)}L_aG_bL_c.
+$$
+For the dominant cluster,
+$$
+K_{m,2m,m}=C_m.
+$$
+
+For either gap-$3/2$ cluster with $b=2m-1$,
+$$
+R_+
+:=
+\frac{K_{m+1,2m-1,m}}{C_m}
+=
+\frac{2^{2m+2}m}{\sqrt{\pi}b_m}.
+$$
+For either gap-$3/2$ cluster with $b=2m+1$,
+$$
+R_-
+:=
+\frac{K_{m-1,2m+1,m}}{C_m}
+=
+2^{2-2m}\sqrt{\pi}m^2b_m.
+$$
+Thus their combined leading contribution is
+$$
+2(R_++R_-)t^{3/2}
+=
+\left(
+\frac{2^{2m+3}m}{\sqrt{\pi}b_m}
++2^{3-2m}\sqrt{\pi}m^2b_m
+\right)t^{3/2}.
+$$
+
+For either gap-$2$ allocation,
+$$
+\frac{K_{m+1,2m,m-1}}{C_m}
+=
+\frac{L_{m+1}L_{m-1}}{L_m^2}
+=
+m^2.
+$$
+Together they contribute $2m^2t^2$ at leading order.
+
+Step 3: Compute the dominant cluster through relative order $t^2$
+
+For the dominant allocation, put
+$$
+U_j=\sum_{i=1}^m u_i^j,\qquad
+V_j=\sum_{i=1}^m v_i^j,\qquad
+Z_j=\sum_{i=1}^{2m}z_i^j.
+$$
+After removing the leading Laguerre and Gaussian densities, the unperturbed part of the integrand has expansion
+$$
+1+tL_1+t^2\left(L_2+\frac12L_1^2\right)+O(t^3),
 $$
 where
 $$
-L_1
-=
-U_2-2mU_1+V_2-(2m+\alpha)V_1
+L_1=
+5(U_2+V_2)-10m(U_1+V_1)+4Z_4-8mZ_2
 $$
 and
 $$
-L_2
-=
--mU_2-\left(m+\frac{\alpha}{2}\right)V_2-2U_1V_1.
+L_2=
+-8(U_3+V_3)-9m(U_2+V_2)-2U_1V_1
+-16(U_1+V_1)Z_2-16mZ_4.
 $$
 
-For a Laguerre ensemble of size $m$ with parameter $a$, write $p_j=\sum x_i^j$. Integration by parts gives
+For the size-$m$ Laguerre ensemble,
 $$
-\mathbb E[p_1]=m(m+a),
-$$
-$$
-\mathbb E[p_2]=m(m+a)(2m+a),
-$$
-$$
-\operatorname{Var}(p_1)=m(m+a),
+\mathbb E[U_1]=m^2,\qquad
+\mathbb E[U_2]=2m^3,\qquad
+\mathbb E[U_3]=5m^4+m^2,
 $$
 $$
-\operatorname{Cov}(p_1,p_2)=2m(m+a)(2m+a),
+\operatorname{Var}(U_1)=m^2,\qquad
+\operatorname{Cov}(U_1,U_2)=4m^3,
+$$
+$$
+\operatorname{Var}(U_2)=2m^2(9m^2+1),
+$$
+with identical formulas for $V_j$. For the size-$2m$ Gaussian ensemble,
+$$
+\mathbb E[Z_1]=0,\qquad
+\mathbb E[Z_1^2]=m,
+$$
+$$
+\mathbb E[Z_2]=2m^2,\qquad
+\mathbb E[Z_4]=4m^3+\frac m2.
+$$
+The Gaussian integration-by-parts identities also give
+$$
+\operatorname{Var}(Z_2)=2m^2,
+$$
+$$
+\operatorname{Cov}(Z_2,Z_4)=m(8m^2+1),
+$$
+$$
+\operatorname{Var}(Z_4)=3m^2(12m^2+5).
+$$
+Substitution gives
+$$
+\mathbb E[L_1]=2m,
+$$
+$$
+\mathbb E[L_2]=-246m^4-24m^2,
 $$
 and
 $$
-\operatorname{Var}(p_2)
+\operatorname{Var}(L_1)=492m^4+276m^2.
+$$
+Therefore
+$$
+\mathbb E\left[L_2+\frac12L_1^2\right]
 =
-m(m+a)
-\left(
-4m^2+10m(m+a)+4(m+a)^2+2
-\right).
+116m^2.
 $$
-The left ensemble has parameter $\alpha$ and the right ensemble has parameter $0$. Substitution gives
+
+Now include the new factor
 $$
-\mathbb E[L_1]=\alpha^2m,
+Q=\prod_i\left(1+s(2x_i-1)\right).
 $$
+Under the dominant scaling,
 $$
-\mathbb E[L_2]
+Q
 =
--m^2(\alpha^2+6\alpha m+6m^2),
+1+tP_1+t^{3/2}P_{3/2}+t^2P_2+O(t^{5/2}),
+$$
+with
+$$
+P_1=-m+2Z_1,
+$$
+$$
+P_{3/2}=2(U_1-V_1),
 $$
 and
 $$
-\operatorname{Var}(L_1)
-=
-m\left(
-4\alpha^3+15\alpha^2m+12\alpha m^2+2\alpha+12m^3+4m
-\right).
+P_2=
+\frac{m(m-1)}2
++2(U_1+V_1)
++4\sum_{i<j}z_iz_j
+-2mZ_1.
 $$
-Therefore the coefficient of $\varepsilon^2$ is
+Since
 $$
-c_\alpha
-=
-\mathbb E[L_2]
-+\frac12\operatorname{Var}(L_1)
-+\frac12\mathbb E[L_1]^2,
+\sum_{i<j}z_iz_j=\frac{Z_1^2-Z_2}{2},
 $$
-so
+the listed moments give
 $$
-c_\alpha
-=
-\frac{\alpha^4m^2}{2}
-+2\alpha^3m
-+\frac{13\alpha^2m^2}{2}
-+\alpha m
-+2m^2.
+\mathbb E[P_1]=-m,
 $$
-At $\alpha=\pm1/2$,
 $$
-c_{-1/2}=\frac{3m(39m-8)}{32},
-\qquad
-c_{1/2}=\frac{3m(39m+8)}{32}.
+\mathbb E[P_2]=\frac{m^2+3m}{2}.
 $$
-Also,
+Also $L_1$ is even in the Gaussian variables, so
 $$
-\mathbb E[L_1]=\frac m4
+\mathbb E[L_1Z_1]=0.
 $$
-for both signs.
-
-Step 4: Compute the new dependent contribution at order $\varepsilon^{5/2}$
-
-A gap-$3/2$ split must now be expanded one order beyond its leading term. For $k=m+d$, $l=m-d$, its first correction is
+Hence
 $$
-a_{\alpha,d}
-=
-k(k+\alpha)(2k+\alpha-2l)
-+l^2(2l-2k-\alpha).
+\mathbb E[L_1P_1]=-m\mathbb E[L_1]=-2m^2.
 $$
-Expanding and factoring gives
+The dominant cluster therefore contributes
 $$
-a_{\alpha,d}
-=
-(\alpha+4d)(\alpha d+\alpha m+4dm).
+1+mt+\frac{229m^2+3m}{2}t^2+O(t^3)
 $$
-For the two gap-$3/2$ splits,
+relative to $C_mt^{4m^2}$. Its odd half-integer corrections vanish under
 $$
-a_{-1/2,1}
-=
-\frac{7(7m-1)}4,
-$$
-and
-$$
-a_{1/2,-1}
-=
-\frac{7(7m+1)}4.
+(u,v,z)\longmapsto(v,u,-z).
 $$
 
-The gap-$5/2$ coefficient in $J_{-1/2}$ is therefore
-$$
-A_-\frac{7(7m-1)}4+B_-,
-$$
-while that in $J_{1/2}$ is
-$$
-A_+\frac{7(7m+1)}4+B_+.
-$$
+Step 4: Compute the dependent corrections from the neighboring clusters
 
-When the two determinants are multiplied, the common dominant $\varepsilon$ correction $m/4$ also multiplies the opposite gap-$3/2$ term. Hence the relative coefficient of $\varepsilon^{5/2}$ in
+For a general cluster $(a,b,c)$, the coefficient of $s$ in the logarithm of the unperturbed scaled integrand is
 $$
-J_{-1/2}J_{1/2}
+4(a-c)Z_1.
 $$
-is
+The order-$t$ coefficient after expectation is therefore
 $$
-T_m
+\alpha_{a,b,c}
 =
-\frac{50m-7}{4}A_-
-+\frac{50m+7}{4}A_+
-+B_-+B_+.
+10(a^3+c^3)+b(2b^2+1)
+-(4b+2c)a^2-(4b+2a)c^2
+-2(a+c)b^2+4b(a-c)^2.
 $$
-
-The lower coefficients are
+Here the last term is
 $$
-\frac m2
-$$
-at order $\varepsilon$,
-$$
-A_-+A_+
-$$
-at order $\varepsilon^{3/2}$, and
-$$
-c_{-1/2}+c_{1/2}+\frac{m^2}{16}
+\frac12\mathbb E\left[16(a-c)^2Z_1^2\right]
 =
-\frac{59m^2}{8}
+4b(a-c)^2.
 $$
-at order $\varepsilon^2$.
 
-Step 5: Return to $t$ and simplify the surviving coefficient
-
-The gamma duplication formula gives
+For the first pair of gap-$3/2$ clusters,
 $$
-2^{-16m^2}K_{-1/2}K_{1/2}(4t)^{4m^2}
+\alpha_{m+1,2m-1,m}=54m+5.
+$$
+For the second pair,
+$$
+\alpha_{m-1,2m+1,m}=54m-5.
+$$
+
+The parity-breaking factor changes these first corrections. Its endpoint part begins as
+$$
+(1-s)^a(1+s)^c
 =
-C_mt^{4m^2}.
+1+(c-a)s+
+\frac{(c-a)^2-a-c}{2}s^2+O(s^3).
 $$
-Since $\varepsilon=4t$,
+The center factors add $2s^2Z_1$, whose expectation is zero. Thus the extra relative $t$ coefficient is
+$$
+q_{a,c}
+=
+\frac{(c-a)^2-a-c}{2}.
+$$
+For $(m+1,2m-1,m)$ and its reflection,
+$$
+q_{a,c}=-m,
+$$
+so their relative $t$ coefficient becomes
+$$
+53m+5.
+$$
+For $(m-1,2m+1,m)$ and its reflection,
+$$
+q_{a,c}=1-m,
+$$
+so their relative $t$ coefficient becomes
+$$
+53m-4.
+$$
+
+The order-$s$ perturbations of each reflected pair have opposite signs. Hence the gap-$3/2$ clusters make no net $t^2$ contribution. The same reflection cancellation removes the $t^{5/2}$ corrections coming from the two gap-$2$ clusters.
+
+Step 5: Assemble the expansion and take the limit
+
+Steps 2 and 3 give the coefficient of $t^2$:
+$$
+\frac{229m^2+3m}{2}+2m^2
+=
+\frac{233m^2+3m}{2}.
+$$
+From Step 4, the two $R_+$ clusters contribute
+$$
+2R_+(53m+5)
+=
+\frac{2^{2m+3}m(53m+5)}{\sqrt{\pi}b_m}
+$$
+at order $t^{5/2}$, while the two $R_-$ clusters contribute
+$$
+2R_-(53m-4)
+=
+2^{3-2m}\sqrt{\pi}m^2b_m(53m-4).
+$$
+Therefore
 $$
 \frac{D_m(t)}{C_mt^{4m^2}}
 =
-1+2mt
-+8(A_-+A_+)t^{3/2}
-+118m^2t^2
-+32T_mt^{5/2}
+1+mt
++\left(
+\frac{2^{2m+3}m}{\sqrt{\pi}b_m}
++2^{3-2m}\sqrt{\pi}m^2b_m
+\right)t^{3/2}
++\frac{233m^2+3m}{2}t^2
+$$
+$$
+\qquad
++\left(
+\frac{2^{2m+3}m(53m+5)}{\sqrt{\pi}b_m}
++2^{3-2m}\sqrt{\pi}m^2b_m(53m-4)
+\right)t^{5/2}
 +o(t^{5/2}).
 $$
-Step 2 gives
-$$
-8(A_-+A_+)
-=
-\frac{2^{2m+3}m}{\sqrt{\pi}b_m}
-+2^{3-2m}\sqrt{\pi}m^2b_m.
-$$
+The prescribed subtractions remove every earlier term.
 
-Using the four constants from Step 2 in $32T_m$, the terms containing $1/(\sqrt{\pi}b_m)$ combine to
-$$
-\frac{2^{2m+3}m(54m+5)}{\sqrt{\pi}b_m},
-$$
-while the terms containing $\sqrt{\pi}b_m$ combine to
-$$
-2^{3-2m}\sqrt{\pi}m^2b_m(54m-5).
-$$
-These are exactly the terms left after the four prescribed subtractions.
-
-Final Answer: $\boxed{\frac{2^{2m+3}m(54m+5)}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m(54m-5)}$
+Final Answer: $\boxed{\frac{2^{2m+3}m(53m+5)}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m(53m-4)}$
 
 ---
 
 ## Answer
 
-$\frac{2^{2m+3}m(54m+5)}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m(54m-5)$
+$\frac{2^{2m+3}m(53m+5)}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m(53m-4)$
 
 ---
 
@@ -330,7 +390,7 @@ $\frac{2^{2m+3}m(54m+5)}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m(54m-5)$
 ## Solution Concepts
 
 - competing Laplace clusters
-- parity decomposition of Hankel determinants
-- Laguerre moment recurrences
-- neighboring cluster corrections
+- Hankel determinant integrals
+- parity-breaking perturbations
+- Gaussian and Laguerre moment recurrences
 - fractional-order asymptotics
