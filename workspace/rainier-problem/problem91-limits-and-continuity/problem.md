@@ -2,9 +2,11 @@
 
 ## LaTeX (Normalized)
 
-For each prime power $q>13$ satisfying
+For each prime power $q>7$ satisfying
 $$
-q\equiv13\pmod{24},
+q\equiv1\pmod7,
+\qquad
+\gcd(q,6)=1,
 $$
 put
 $$
@@ -20,13 +22,17 @@ $$
 Inside $L_q$, define
 $$
 u=
-2x^2y^2+
-3\left(\frac{x^5}{y}+\frac{y^5}{x}\right),
+xy^2+\frac{y}{x^3}+\frac{x^2}{y^3}
++
+\left(
+\frac{y^3}{x^2}+\frac{x^3}{y}+\frac1{xy^2}
+\right)^2,
 $$
 $$
 v=
-5x^2y^2+
-7\left(\frac{x^5}{y}+\frac{y^5}{x}\right),
+\frac{y^3}{x^2}+\frac{x^3}{y}+\frac1{xy^2}
++
+u^3,
 $$
 and let
 $$
@@ -35,35 +41,30 @@ $$
 
 Determine the exact value of
 $$
-\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv13\pmod{24}}}
-Q^3
+\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv29\pmod{42}}}
+Q
 \left[
-\left(
-\frac{\sqrt{g(K_{Q^3})}}
-{Q^2\sqrt{g(K_Q)}}-1
-\right)
--
 Q^2
 \left(
-\frac{\sqrt{g(K_{Q^9})}}
-{Q^6\sqrt{g(K_{Q^3})}}-1
-\right)
+\frac{g(K_{Q^2})}{Q^2g(K_Q)}-1
 -
-Q^4
-\left(
-\frac{\sqrt{g(K_{Q^9})}}
-{Q^6\sqrt{g(K_{Q^3})}}-1
+Q\left(
+\frac{g(K_{Q^4})}{Q^4g(K_{Q^2})}-1
+\right)
+\right)
 -
 Q^6
 \left(
-\frac{\sqrt{g(K_{Q^{27}})}}
-{Q^{18}\sqrt{g(K_{Q^9})}}-1
+\frac{g(K_{Q^6})}{Q^6g(K_{Q^3})}-1
+-
+Q^3\left(
+\frac{g(K_{Q^{12}})}{Q^{12}g(K_{Q^6})}-1
 \right)
 \right)
 \right].
 $$
 
-The indexing set is unbounded; for example, $Q=13^{2k+1}$ is admissible for every $k\geq1$.
+The indexing set is unbounded; for example, $Q=29^{2k+1}$ is admissible for every $k\geq0$.
 
 ---
 
@@ -80,14 +81,14 @@ The indexing set is unbounded; for example, $Q=13^{2k+1}$ is admissible for ever
 
 ## Domain Explanation
 
-This problem involves a nested renormalized limit whose first two asymptotic contributions cancel,
+This problem involves a renormalized limit with two dependent scale cancellations,
 which are part of Calculus and Limits and continuity.
-The problem also involves algebraic function fields, hidden invariant subfields, nonabelian finite group actions, and ramification,
+The problem also involves algebraic function fields, finite nonabelian group actions, invariant fields, and ramification,
 which are part of Abstract Algebra and Computational algebra.
-However, the algebraic work determines the exact genus sequence entering the limit, while the requested object is one exact scalar limit.
+However, the algebraic calculations determine the exact genus sequence entering the requested limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The displayed generators conceal a cyclic fixed field followed by a nontrivial involution rather than a Fermat quotient obtained by taking common powers.
-- Recovering the field degree requires a monomial change with determinant twelve and a second quadratic descent.
-- The ramification count splits the involution coset into two different eigenvalue behaviors before the asymptotic cancellation can be evaluated.
+- The displayed generators conceal invariants of a cyclic diagonal action followed by a cyclic permutation action.
+- Recovering the quotient degree requires proving that three cyclic orderings survive while the three reversed orderings do not lie generically on the intermediate curve.
+- The ramification law changes between odd and even powers of the indexing prime power, and the final scale comparison removes the preceding asymptotic terms.

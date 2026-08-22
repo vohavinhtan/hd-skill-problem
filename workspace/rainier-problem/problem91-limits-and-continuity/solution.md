@@ -1,294 +1,365 @@
 ## Steps
 
-Step 1: Recover the two hidden invariants
+Step 1: Recover the hidden cyclic invariants
 
-Set
+Put
 $$
-p=x^2y^2,
+a=
+xy^2+\frac{y}{x^3}+\frac{x^2}{y^3},
+$$
+$$
+b=
+\frac{y^3}{x^2}+\frac{x^3}{y}+\frac1{xy^2}.
+$$
+The displayed generators satisfy
+$$
+u=a+b^2,
 \qquad
-w=\frac{x^5}{y}+\frac{y^5}{x}.
+v=b+u^3.
 $$
-The definitions of $u,v$ give
+They can be inverted:
 $$
-u=2p+3w,
+b=v-u^3,
 \qquad
-v=5p+7w.
-$$
-The coefficient matrix has determinant $-1$, so
-$$
-p=3v-7u,
-\qquad
-w=5u-2v.
+a=u-(v-u^3)^2.
 $$
 Therefore
 $$
-K_q=\mathbb F_q(p,w).
+K_q=\mathbb F_q(a,b).
 $$
 
-Now put
+Choose a primitive seventh root $\zeta\in\mathbb F_q$ and define
 $$
-r=\frac{x^5}{y}.
+\sigma[X:Y:Z]=[\zeta X:\zeta^2Y:\zeta^4Z].
 $$
-Since
+On the affine chart $Z=1$ this becomes
 $$
-p^2=x^4y^4,
-$$
-we have
-$$
-\frac{p^2}{r}=\frac{y^5}{x},
-$$
-and therefore
-$$
-w=r+\frac{p^2}{r}.
-$$
-Thus $r$ satisfies
-$$
-r^2-wr+p^2=0.
-$$
-
-Step 2: Identify the fixed field by two successive descents
-
-Because $12\mid q-1$, choose a primitive twelfth root $\eta\in\mathbb F_q$. Define
-$$
-\sigma(x)=\eta x,
+\sigma(x)=\zeta^4x,
 \qquad
-\sigma(y)=\eta^5y.
+\sigma(y)=\zeta^5y.
 $$
-The Fermat equation is preserved because $\eta^n=1$. Also
+Set
 $$
-\sigma(p)=p,
+p=xy^2,
 \qquad
-\sigma(r)=r.
+r=\frac{y}{x^3}.
 $$
-
-Conversely,
+Both functions are fixed by $\sigma$. Also
 $$
-x^{12}=pr^2,
+x^7=\frac{p}{r^2},
 \qquad
-y=\frac{x^5}{r}.
+y=rx^3.
 $$
-Once $p,r$ are fixed, there are at most twelve possibilities for $x$. Hence
+Thus
 $$
-[L_q:\mathbb F_q(p,r)]\leq12.
+[L_q:\mathbb F_q(p,r)]\leq7.
 $$
-The twelve powers of $\sigma$ are distinct automorphisms fixing $p,r$, so
+The seven powers of $\sigma$ give the reverse inequality, so
 $$
 \mathbb F_q(p,r)=L_q^{\langle\sigma\rangle}.
 $$
 
+Step 2: Detect the orientation lost by the symmetric generators
+
 Let
 $$
-\tau(x)=y,
+c[X:Y:Z]=[Y:Z:X].
+$$
+On affine coordinates,
+$$
+c(x,y)=\left(\frac yx,\frac1x\right).
+$$
+If
+$$
+s=\frac{x^2}{y^3},
+$$
+then direct substitution gives
+$$
+c(p)=r,
 \qquad
-\tau(y)=x.
+c(r)=s,
+\qquad
+c(s)=p,
 $$
-Then
+and
 $$
-\tau\sigma\tau=\sigma^5,
+prs=1.
 $$
-so $\tau$ normalizes $\langle\sigma\rangle$. It fixes $p$ and sends
+The functions recovered in Step 1 satisfy
 $$
-r\longmapsto\frac{p^2}{r}.
-$$
-The quadratic equation from Step 1 shows that
-$$
-\mathbb F_q(p,w)=\mathbb F_q(p,r)^{\langle\tau\rangle}.
+a=p+r+s,
+\qquad
+b=pr+rs+sp.
 $$
 
-The group
+Write
 $$
-H=\langle\sigma,\tau\rangle
+d=\frac{q-1}{7}.
 $$
-therefore has order $24$, and
+Using
+$$
+x^7=\frac{p}{r^2},
+\qquad
+y^7=p^3r,
+$$
+the Fermat equation becomes
+$$
+F(p,r)=p^d+p^{3d}r^{3d}+r^{2d}=0.
+$$
+The cubic
+$$
+T^3-aT^2+bT-1
+$$
+has roots $p,r,s$. Hence $a,b$ determine six possible orderings of these roots.
+
+The three cyclic orderings occur on the curve because they are obtained by powers of $c$. A reversed ordering would require, generically,
+$$
+F(r,p)=0.
+$$
+But
+$$
+F(p,r)-F(r,p)
+=
+(p^d-r^d)(1-p^d-r^d).
+$$
+This is not the zero function. At every point with $x=0$, the function $r=y/x^3$ has a pole while $p=xy^2$ has a zero, so neither factor can vanish identically.
+
+Therefore the reversed orderings do not lie generically on the intermediate curve. Exactly the three cyclic orderings remain, and
+$$
+[\mathbb F_q(p,r):\mathbb F_q(a,b)]=3.
+$$
+
+Step 3: Identify the full fixed field
+
+Conjugating the diagonal action by $c$ gives
+$$
+c\sigma c^{-1}=\sigma^2.
+$$
+Therefore
+$$
+H=\langle\sigma,c\rangle
+$$
+is a semidirect product of order
+$$
+|H|=21.
+$$
+Both $a$ and $b$ are fixed by $\sigma$ and by $c$, so
+$$
+K_q\subseteq L_q^H.
+$$
+Steps 1 and 2 give
+$$
+[L_q:K_q]=7\cdot3=21.
+$$
+Since $H$ already supplies $21$ distinct $K_q$-automorphisms,
 $$
 K_q=L_q^H.
 $$
 
-Step 3: Count all fixed points in the tame quotient
+Step 4: Compute the ramification of the quotient
 
 Let $C_q$ be the smooth projective Fermat curve
 $$
 X^n+Y^n+Z^n=0.
 $$
-Its genus satisfies
+The characteristic divides neither $3$ nor $7$, so the action is tame, and
 $$
 2g(C_q)-2=n(n-3).
 $$
-Since $q\equiv13\pmod{24}$, the characteristic divides neither $2$ nor $3$, so the action of $H$ is tame.
 
-On projective coordinates,
+For $1\leq k\leq6$, the three eigenvalues of $\sigma^k$ are
 $$
-\sigma^k[X:Y:Z]
+\zeta^k,\qquad\zeta^{2k},\qquad\zeta^{4k}.
+$$
+They are distinct. Its only projective fixed points are the three coordinate points, none of which lies on $C_q$. The nonidentity elements of $\langle\sigma\rangle$ contribute no fixed points.
+
+Consider
+$$
+g=\sigma^kc.
+$$
+It acts by
+$$
+g[X:Y:Z]
 =
-[\eta^kX:\eta^{5k}Y:Z].
+[\zeta^kY:\zeta^{2k}Z:\zeta^{4k}X].
 $$
-For a nonidentity power, two eigenvalues coincide exactly when
+At a fixed eigenline with eigenvalue $\lambda$,
 $$
-4k\equiv0\pmod{12}.
+\lambda^3=1.
 $$
-This gives
+Taking $X\neq0$, the eigenvector equations give
 $$
-k=3,6,9.
+Y=\lambda\zeta^{-k}X,
+\qquad
+Z=\lambda^2\zeta^{-3k}X.
 $$
-Each of these three elements fixes the line $Z=0$, which contains exactly $n$ points of $C_q$. Every other nonidentity power of $\sigma$ has three distinct eigendirections, namely the coordinate points, none of which lies on $C_q$. Thus
+Since $7\mid n$,
 $$
-R_{\sigma}=3n.
+Y^n=\lambda^nX^n,
+\qquad
+Z^n=\lambda^{2n}X^n.
 $$
-
-An element in the other coset has the form
+The Fermat equation on this eigenline is therefore
 $$
-h_k=\sigma^k\tau,
-$$
-with
-$$
-h_k[X:Y:Z]
-=
-[\eta^kY:\eta^{5k}X:Z].
-$$
-The eigenvalues on the $X,Y$ block satisfy
-$$
-\lambda^2=\eta^{6k}=(-1)^k.
+1+\lambda^n+\lambda^{2n}=0.
 $$
 
-If $k$ is even, the eigenvalues are $1,-1$. The $1$-eigenspace together with the $Z$-axis is a projective line. On this line,
+If $3\nmid n$, exactly the two nontrivial cube roots of unity satisfy this equation. Every element of the cosets
 $$
-Y=\eta^{-k}X,
+\langle\sigma\rangle c,
+\qquad
+\langle\sigma\rangle c^2
 $$
-so the Fermat equation becomes
-$$
-2X^n+Z^n=0.
-$$
-It has exactly $n$ distinct projective solutions. The isolated $-1$ eigendirection lies in $Z=0$ and has
-$$
-\left(\frac YX\right)^n=1,
-$$
-so it is not on $C_q$.
+then fixes two points.
 
-If $k$ is odd, the two block eigenvalues satisfy $\lambda^2=-1$. The $Z$-axis is not on $C_q$, and any other fixed point lies on $Z=0$. Since $12\mid n$,
-$$
-\lambda^n=1.
-$$
-Again the Fermat equation on $Z=0$ cannot hold.
+If $3\mid n$, every cube root has $\lambda^n=1$, and no such eigenline lies on $C_q$.
 
-There are six even residues $k$ modulo $12$. Hence
+Define
 $$
-R_{\tau}=6n,
+\delta_q=
+\begin{cases}
+1,&3\nmid(q-1),\\
+0,&3\mid(q-1).
+\end{cases}
 $$
-and the total fixed-point contribution is
+There are fourteen elements outside $\langle\sigma\rangle$, so the total fixed-point contribution is
 $$
-R=9n.
+R=28\delta_q.
 $$
 
-Step 4: Derive the exact genus formula
+Step 5: Derive the two genus formulas
 
 Tame Riemann-Hurwitz gives
 $$
 n(n-3)
 =
-24\bigl(2g(K_q)-2\bigr)+9n.
+21\bigl(2g(K_q)-2\bigr)
++
+28\delta_q.
+$$
+Solving and using $n=q-1$ yields
+$$
+42g(K_q)
+=
+q^2-5q+46-28\delta_q.
+$$
+
+For
+$$
+Q\equiv29\pmod{42},
+$$
+we have
+$$
+Q\equiv2\pmod3,
+$$
+so
+$$
+42g(K_Q)=Q^2-5Q+18.
+$$
+Every odd power of $Q$ is again congruent to $2$ modulo $3$, while every positive even power is congruent to $1$ modulo $3$. Therefore
+$$
+42g(K_{Q^{2j+1}})
+=
+Q^{4j+2}-5Q^{2j+1}+18,
+$$
+and
+$$
+42g(K_{Q^{2j}})
+=
+Q^{4j}-5Q^{2j}+46
+$$
+for the positive exponents occurring in the problem.
+
+Step 6: Evaluate the first scale cancellation
+
+For an odd-power admissible value $q$, put
+$$
+z=\frac1q.
+$$
+Step 5 gives
+$$
+\frac{g(K_{q^2})}{q^2g(K_q)}
+=
+\frac{1-5z^2+46z^4}{1-5z+18z^2}.
+$$
+Expanding the reciprocal denominator,
+$$
+\frac1{1-5z+18z^2}
+=
+1+5z+7z^2-55z^3+O(z^4).
 $$
 Therefore
 $$
-48g(K_q)=n^2-12n+48.
-$$
-Using $n=q-1$,
-$$
-48g(K_q)=q^2-14q+61.
+\frac{g(K_{q^2})}{q^2g(K_q)}-1
+=
+5z+2z^2-80z^3+O(z^4).
 $$
 
-Every odd power of a number congruent to $13$ modulo $24$ is again congruent to $13$ modulo $24$. The same formula therefore applies to
+The even-power quotient gives
 $$
-q=Q,\quad Q^3,\quad Q^9,\quad Q^{27}.
+\frac{g(K_{q^4})}{q^4g(K_{q^2})}
+=
+\frac{1-5z^4+46z^8}{1-5z^2+46z^4},
+$$
+so
+$$
+\frac{g(K_{q^4})}{q^4g(K_{q^2})}-1
+=
+5z^2-26z^4+O(z^6).
+$$
+Subtracting after multiplication by $q=z^{-1}$ gives
+$$
+\frac{g(K_{q^2})}{q^2g(K_q)}-1
+-
+q\left(
+\frac{g(K_{q^4})}{q^4g(K_{q^2})}-1
+\right)
+=
+2z^2-54z^3+O(z^4).
 $$
 
-Step 5: Evaluate the nested asymptotic cancellation
+Step 7: Perform the second scale cancellation
 
-Put
+Apply the result of Step 6 first with $q=Q$:
 $$
-f(z)=\sqrt{1-14z+61z^2}.
-$$
-From Step 4,
-$$
-\sqrt{g(K_q)}
+Q^2
+\left[
+\frac{g(K_{Q^2})}{Q^2g(K_Q)}-1
+-
+Q\left(
+\frac{g(K_{Q^4})}{Q^4g(K_{Q^2})}-1
+\right)
+\right]
 =
-\frac{q}{\sqrt{48}}f(q^{-1}).
-$$
-Hence
-$$
-\frac{\sqrt{g(K_{q^3})}}
-{q^2\sqrt{g(K_q)}}
-=
-\frac{f(q^{-3})}{f(q^{-1})}.
+2-\frac{54}{Q}+O(Q^{-2}).
 $$
 
-The binomial expansion gives
+Since $Q^3\equiv29\pmod{42}$, Step 6 also applies with $q=Q^3$:
 $$
-f(z)
+Q^6
+\left[
+\frac{g(K_{Q^6})}{Q^6g(K_{Q^3})}-1
+-
+Q^3\left(
+\frac{g(K_{Q^{12}})}{Q^{12}g(K_{Q^6})}-1
+\right)
+\right]
 =
-1-7z+6z^2+42z^3+O(z^4).
-$$
-Write
-$$
-\frac1{f(z)}
-=
-1+az+bz^2+cz^3+O(z^4).
-$$
-Multiplying by the preceding expansion and matching coefficients gives
-$$
-a=7,
-\qquad
-b=43,
-\qquad
-c=217.
-$$
-Also
-$$
-f(z^3)=1-7z^3+O(z^6).
-$$
-Therefore
-$$
-\frac{f(z^3)}{f(z)}
-=
-1+7z+43z^2+210z^3+O(z^4).
-$$
-
-Define only within this step
-$$
-A(q)=
-\frac{\sqrt{g(K_{q^3})}}
-{q^2\sqrt{g(K_q)}}-1.
-$$
-Then
-$$
-A(q)
-=
-\frac7q+\frac{43}{q^2}+\frac{210}{q^3}+O(q^{-4}).
-$$
-It follows that
-$$
-A(Q)-Q^2A(Q^3)
-=
-\frac{43}{Q^2}+\frac{210}{Q^3}+O(Q^{-4}),
-$$
-while
-$$
-Q^4\left(A(Q^3)-Q^6A(Q^9)\right)
-=
-\frac{43}{Q^2}+O(Q^{-5}).
+2-\frac{54}{Q^3}+O(Q^{-6}).
 $$
 Their difference is
 $$
-\frac{210}{Q^3}+O(Q^{-4}).
+-\frac{54}{Q}+O(Q^{-2}).
 $$
-Multiplication by $Q^3$ gives the requested limit.
+Multiplication by $Q$ gives the required limit.
 
-Final Answer: $\boxed{210}$
+Final Answer: $\boxed{-54}$
 
 ---
 
 ## Answer
 
-$210$
+$-54$
 
 ---
 
@@ -304,6 +375,6 @@ $210$
 
 - invariant subfields
 - semidirect product actions
-- projective fixed points
+- orientation obstruction
 - Riemann-Hurwitz formula
 - asymptotic cancellation
