@@ -7,9 +7,9 @@ $$
 M_{k,N}
 =
 \frac{\displaystyle\int_0^1 x^k
-\exp\!\left(-N x^2(1-x)^2\right)\,dx}
+\exp\!\left(-N\left[x\left(x-\frac13\right)(1-x)\right]^2\right)\,dx}
 {\displaystyle\int_0^1
-\exp\!\left(-N x^2(1-x)^2\right)\,dx}.
+\exp\!\left(-N\left[x\left(x-\frac13\right)(1-x)\right]^2\right)\,dx}.
 $$
 
 Set
@@ -28,12 +28,8 @@ $$
 Determine the exact value of
 $$
 \lim_{N\to\infty}
-N\left[
-N^2H_N
--
-3(4N)^2H_{4N}
-+
-2(16N)^2H_{16N}
+\sqrt N\left[
+NH_N-(4N)H_{4N}
 \right].
 $$
 
@@ -52,14 +48,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves a renormalized limit whose first two asymptotic contributions cancel,
+This problem involves an exact renormalized limit governed by the first correction to a singular moment determinant,
 which are part of Calculus and Limits and continuity.
-The problem also involves endpoint concentration, moment determinants, and local integral asymptotics,
+The problem also involves Laplace asymptotics near several concentration points and Vandermonde moment identities,
 which are part of Calculus and Applications of integration.
-However, the integral analysis determines the asymptotic sequence entering the requested expression, while the final requested object is one exact scalar limit.
+However, those integral calculations determine the asymptotic sequence entering the requested limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The moment determinant must first be converted into a four-sample Vandermonde expectation before its dominant configurations become visible.
-- The leading contribution comes from a two-point versus two-point endpoint split, while a three-point versus one-point split first enters one order later.
-- The three-scale combination removes both preceding coefficients, so the answer depends on the second correction to the endpoint-cluster expansion.
+- The weight has three inequivalent concentration points, so the centered-symmetry reduction of the two-well problem is unavailable.
+- The determinant first becomes nonzero when four samples occupy the three wells in a two-one-one pattern.
+- The scale difference removes that leading contribution, forcing the first correction from local Jacobians and cross-well displacements.

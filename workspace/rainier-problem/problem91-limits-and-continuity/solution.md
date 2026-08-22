@@ -1,385 +1,447 @@
 ## Steps
 
-Step 1: Convert the Hankel determinant to a four-point expectation
+Step 1: Convert the determinant to a four-point integral
 
-Let $\mu_N$ be the probability measure on $[0,1]$ with density
+Put
 $$
-\frac{\exp\!\left(-Nx^2(1-x)^2\right)}
-{\displaystyle\int_0^1\exp\!\left(-Nt^2(1-t)^2\right)\,dt}.
+\phi(x)=x\left(x-\frac13\right)(1-x)
 $$
-Then
+and
 $$
-M_{k,N}=\int_0^1x^k\,d\mu_N(x).
+Z_N=\int_0^1e^{-N\phi(x)^2}\,dx.
 $$
-
-For independent $X_1,\ldots,X_4$ with law $\mu_N$, expansion of the two Vandermonde determinants gives
+The moment determinant identity gives
 $$
 H_N
 =
-\frac1{4!}
-\mathbb E
-\left[
-\prod_{1\leq i<j\leq4}(X_i-X_j)^2
-\right].
+\frac{1}{24Z_N^4}
+\int_{[0,1]^4}
+\prod_{1\leq i<j\leq4}(x_i-x_j)^2
+\exp\!\left(-N\sum_{i=1}^4\phi(x_i)^2\right)
+\,dx_1\cdots dx_4.
 $$
-Indeed,
-$$
-\det(M_{i+j,N})_{0\leq i,j\leq3}
-=
-\frac1{4!}
-\int
-\det(X_j^i)_{0\leq i\leq3,\,1\leq j\leq4}^{\,2}
-\prod_{j=1}^4d\mu_N(X_j),
-$$
-and the determinant inside the integral is the Vandermonde product.
-
-The weight is invariant under $x\mapsto1-x$. Each sample therefore lies in the left or right half of $[0,1]$ with probability $1/2$.
-
-Put
-$$
-\varepsilon=N^{-1/2}.
-$$
-On the left endpoint write
-$$
-X=\varepsilon U.
-$$
-On the right endpoint write
-$$
-X=1-\varepsilon U.
-$$
-The two scaled conditional laws are identical.
-
-Step 2: Expand the scaled endpoint law
-
-Ignoring an exponentially small truncation at $U=1/(2\varepsilon)$, the scaled density is proportional to
-$$
-\exp\!\left(-U^2(1-\varepsilon U)^2\right).
-$$
-For fixed $U$,
-$$
-\exp\!\left(-U^2(1-\varepsilon U)^2\right)
-=
-e^{-U^2}
-\left[
-1+2\varepsilon U^3
-+\varepsilon^2(2U^6-U^4)
-+O(\varepsilon^3)
-\right].
-$$
-
-Let
-$$
-m_k
-=
-\frac{2}{\sqrt{\pi}}
-\int_0^\infty U^ke^{-U^2}\,dU
-=
-\frac{\Gamma\!\left(\frac{k+1}{2}\right)}{\sqrt{\pi}}.
-$$
-If $\mu_k(\varepsilon)$ denotes the $k$th moment of the scaled conditional law, normalization gives
-$$
-\mu_k(\varepsilon)
-=
-\frac{
-m_k+2\varepsilon m_{k+3}
-+\varepsilon^2(2m_{k+6}-m_{k+4})
-}
-{
-1+2\varepsilon m_3
-+\varepsilon^2(2m_6-m_4)
-}
-+
-O(\varepsilon^3).
-$$
-The values needed below include
-$$
-m_1=\frac1{\sqrt{\pi}},
-\qquad
-m_2=\frac12,
-\qquad
-m_3=\frac1{\sqrt{\pi}},
-\qquad
-m_4=\frac34,
-\qquad
-m_5=\frac2{\sqrt{\pi}},
-\qquad
-m_6=\frac{15}{8}.
-$$
-
-For independent $U_1,U_2$ having this scaled law, define
-$$
-A_\varepsilon
-=
-\mathbb E(U_1-U_2)^2,
-$$
-$$
-B_\varepsilon
-=
-\mathbb E\left[(U_1-U_2)^2(U_1+U_2)\right].
-$$
-Using
-$$
-A_\varepsilon
-=
-2\left(\mu_2(\varepsilon)-\mu_1(\varepsilon)^2\right)
-$$
-and
-$$
-B_\varepsilon
-=
-2\mu_3(\varepsilon)
--
-2\mu_1(\varepsilon)\mu_2(\varepsilon),
-$$
-the moment formula gives
-$$
-A_\varepsilon
-=
-1-\frac2\pi
-+
-\frac{8}{\pi^{3/2}}\varepsilon
-+
-\left(
-15-\frac{16}{\pi}-\frac{24}{\pi^2}
-\right)\varepsilon^2
-+
-O(\varepsilon^3),
-$$
-and
-$$
-B_\varepsilon
-=
-\frac1{\sqrt{\pi}}
-+
-\left(
-6-\frac8\pi
-\right)\varepsilon
-+
-O(\varepsilon^2).
-$$
-
-Step 3: Compute the two-left two-right contribution
-
-Take two samples near $0$,
-$$
-X_i=\varepsilon U_i,
-\qquad
-i=1,2,
-$$
-and two near $1$,
-$$
-X_{2+j}=1-\varepsilon V_j,
-\qquad
-j=1,2.
-$$
-The $U$-pair and $V$-pair are independent and have the scaled law from Step 2.
-
-The squared Vandermonde product is
-$$
-\varepsilon^4
-(U_1-U_2)^2(V_1-V_2)^2
-\prod_{i,j=1}^2
-\left(1-\varepsilon(U_i+V_j)\right)^2.
-$$
-Put
-$$
-S=U_1+U_2+V_1+V_2.
-$$
-The cross factor has expansion
-$$
-\prod_{i,j=1}^2
-\left(1-\varepsilon(U_i+V_j)\right)^2
-=
-1-4\varepsilon S+\varepsilon^2Q+O(\varepsilon^3),
-$$
-where
-$$
-Q
-=
-8S^2
--
-\sum_{i,j=1}^2(U_i+V_j)^2.
-$$
-
-Let
-$$
-a=1-\frac2\pi.
-$$
-Under the limiting half-Gaussian law,
-$$
-\mathbb E
-\left[
-(U_1-U_2)^2(V_1-V_2)^2Q
-\right]
-=
-8+\frac{14}{\pi}-\frac{32}{\pi^2}.
-$$
-This follows by expanding $Q$ and using
-$$
-m_0=1,\qquad
-m_1=\frac1{\sqrt{\pi}},
-\qquad
-m_2=\frac12,
-\qquad
-m_3=\frac1{\sqrt{\pi}},
-\qquad
-m_4=\frac34.
-$$
-
-Combining this value with $A_\varepsilon$ and $B_\varepsilon$ gives
-$$
-\mathbb E
-\left[
-(U_1-U_2)^2(V_1-V_2)^2
-\prod_{i,j=1}^2
-\left(1-\varepsilon(U_i+V_j)\right)^2
-\right]
-=
-a^2
--
-\frac{8a^2}{\sqrt{\pi}}\varepsilon
-+
-C\varepsilon^2
-+
-O(\varepsilon^3),
-$$
-where
-$$
-C
-=
--10+\frac{82}{\pi}-\frac{208}{\pi^2}+\frac{160}{\pi^3}.
-$$
-
-There are $\binom42=6$ assignments with two samples at each endpoint. Each assignment has probability $2^{-4}$. After the factor $1/4!$ from Step 1, their contribution to $N^2H_N=\varepsilon^{-4}H_N$ is
-$$
-\frac1{64}
-\left[
-a^2
--
-\frac{8a^2}{\sqrt{\pi}}\varepsilon
-+
-C\varepsilon^2
-\right]
-+
-O(\varepsilon^3).
-$$
-
-Step 4: Compute the first contribution from an unequal endpoint split
-
-A three-left one-right configuration contains three within-left differences. Its squared Vandermonde product starts at order
-$$
-\varepsilon^6.
-$$
-After multiplication by $N^2=\varepsilon^{-4}$, it first contributes at order $\varepsilon^2$.
-
-For three independent limiting half-Gaussian variables $U_1,U_2,U_3$,
-$$
-\mathbb E
-\prod_{1\leq i<j\leq3}(U_i-U_j)^2
-=
-6
-\det
-\begin{pmatrix}
-m_0&m_1&m_2\\
-m_1&m_2&m_3\\
-m_2&m_3&m_4
-\end{pmatrix}.
-$$
-Substituting the moments from Step 3 gives
-$$
-\mathbb E
-\prod_{1\leq i<j\leq3}(U_i-U_j)^2
-=
-\frac{3(\pi-3)}{2\pi}.
-$$
-
-There are eight configurations of type $3+1$ or $1+3$. Their total coefficient, including the probability $2^{-4}$ and the factor $1/24$, is
-$$
-\frac1{48}.
-$$
-Therefore their contribution to $N^2H_N$ is
-$$
-\frac{\pi-3}{32\pi}\varepsilon^2
-+
-O(\varepsilon^3).
-$$
-
-Configurations with all four samples near the same endpoint contain six small pairwise differences, so their squared Vandermonde product is $O(\varepsilon^{12})$. They do not affect the terms through order $\varepsilon^2$ after multiplication by $\varepsilon^{-4}$.
-
-Step 5: Assemble the expansion of the determinant
-
-Combining Steps 3 and 4,
-$$
-N^2H_N
-=
-c+dN^{-1/2}+eN^{-1}+O(N^{-3/2}),
-$$
-where
-$$
-c=\frac{1}{64}\left(1-\frac2\pi\right)^2,
-$$
-$$
-d=
--\frac{1}{8\sqrt{\pi}}
-\left(1-\frac2\pi\right)^2,
-$$
-and
-$$
-e
-=
-\frac{C}{64}
-+
-\frac{\pi-3}{32\pi}.
-$$
-Using the value of $C$ from Step 3,
-$$
-e
-=
-\frac{-2\pi^3+19\pi^2-52\pi+40}{16\pi^3}.
-$$
-
-Step 6: Apply the three-scale cancellation
 
 Write
 $$
-R_N=N^2H_N.
+\varepsilon=N^{-1/2}.
 $$
-Step 5 gives
+The zeros of $\phi$ are
 $$
-R_N
+r_0=0,\qquad r_1=\frac13,\qquad r_2=1.
+$$
+Each integration variable is exponentially concentrated within $O(\varepsilon)$ of one of these three points.
+
+With four variables and three wells, the smallest possible number of small pairwise differences occurs for an occupancy pattern $2+1+1$. It contributes one squared difference of order $\varepsilon^2$. The patterns $2+2$, $3+1$, and $4$ contain at least two small squared differences and contribute only $O(\varepsilon^4)$ to $H_N$. Therefore terms through order $\varepsilon^3$ come only from the three $2+1+1$ patterns.
+
+Step 2: Obtain the local branch expansions
+
+Near a root $r$, write a branch as
+$$
+x=r+ez,
+\qquad
+z\geq0,
+$$
+where $e=\pm1$ points into the interval. On that branch write
+$$
+|\phi(r+ez)|
 =
-c+dN^{-1/2}+eN^{-1}+O(N^{-3/2}),
+az+bz^2+O(z^3).
 $$
+The four branches give
 $$
-R_{4N}
+(r,e,a,b)
 =
-c+\frac{d}{2}N^{-1/2}+\frac{e}{4}N^{-1}+O(N^{-3/2}),
+\left(0,1,\frac13,-\frac43\right),
+$$
+$$
+(r,e,a,b)
+=
+\left(\frac13,1,\frac29,\frac13\right),
+\qquad
+\left(\frac13,-1,\frac29,-\frac13\right),
 $$
 and
 $$
-R_{16N}
+(r,e,a,b)
 =
-c+\frac{d}{4}N^{-1/2}+\frac{e}{16}N^{-1}+O(N^{-3/2}).
+\left(1,-1,\frac23,-\frac53\right).
 $$
-The constant and $N^{-1/2}$ terms cancel in
-$$
-R_N-3R_{4N}+2R_{16N}.
-$$
-The coefficient of $N^{-1}$ is
-$$
-e\left(1-\frac34+\frac{2}{16}\right)
-=
-\frac{3e}{8}.
-$$
-Multiplication by $N$ gives the requested limit.
 
-Final Answer: $\boxed{\frac{3(-2\pi^3+19\pi^2-52\pi+40)}{128\pi^3}}$
+Set
+$$
+u=\frac{|\phi(x)|}{\varepsilon}.
+$$
+Inverting the local expansion gives
+$$
+z=
+\frac{\varepsilon u}{a}
+-
+\frac{b\varepsilon^2u^2}{a^3}
++
+O(\varepsilon^3),
+$$
+and
+$$
+|dx|
+=
+\frac{\varepsilon}{a}
+\left(
+1-\frac{2b}{a^2}\varepsilon u+O(\varepsilon^2)
+\right)du.
+$$
+
+Let
+$$
+I_m=\int_0^\infty u^me^{-u^2}\,du
+=
+\frac12\Gamma\!\left(\frac{m+1}{2}\right).
+$$
+If
+$$
+R_{j,m}
+=
+\int_{\text{near }r_j}
+(x-r_j)^m e^{-\phi(x)^2/\varepsilon^2}\,dx,
+$$
+then summing the branches at $r_j$ gives
+$$
+R_{j,m}
+=
+\varepsilon^{m+1}
+\left(c_{j,m}+\varepsilon d_{j,m}+O(\varepsilon^2)\right),
+$$
+where
+$$
+c_{j,m}
+=
+I_m\sum\frac{e^m}{a^{m+1}},
+$$
+$$
+d_{j,m}
+=
+-(m+2)I_{m+1}
+\sum\frac{e^mb}{a^{m+3}}.
+$$
+
+For $m\leq3$, the needed coefficients are
+$$
+\begin{array}{c|cccc}
+r_j
+&
+c_{j,0}
+&
+d_{j,0}
+&
+c_{j,1}
+&
+d_{j,1}
+\\ \hline
+0
+&
+\frac{3\sqrt\pi}{2}
+&
+36
+&
+\frac92
+&
+81\sqrt\pi
+\\
+\frac13
+&
+\frac{9\sqrt\pi}{2}
+&
+0
+&
+0
+&
+-\frac{6561\sqrt\pi}{32}
+\\
+1
+&
+\frac{3\sqrt\pi}{4}
+&
+\frac{45}{8}
+&
+-\frac98
+&
+-\frac{405\sqrt\pi}{64}
+\end{array}
+$$
+and
+$$
+\begin{array}{c|cccc}
+r_j
+&
+c_{j,2}
+&
+d_{j,2}
+&
+c_{j,3}
+\\ \hline
+0
+&
+\frac{27\sqrt\pi}{4}
+&
+648
+&
+\frac{81}{2}
+\\
+\frac13
+&
+\frac{729\sqrt\pi}{16}
+&
+0
+&
+0
+\\
+1
+&
+\frac{27\sqrt\pi}{32}
+&
+\frac{405}{16}
+&
+-\frac{81}{32}
+\end{array}.
+$$
+
+In particular,
+$$
+Z_N
+=
+\varepsilon
+\left(
+Z_0+\varepsilon Z_1+O(\varepsilon^2)
+\right),
+$$
+with
+$$
+Z_0=\frac{27\sqrt\pi}{4},
+\qquad
+Z_1=\frac{333}{8}.
+$$
+
+Step 3: Compute the repeated-pair local integrals
+
+For the well $r_j$, put
+$$
+W_j=R_{j,0},
+\qquad
+M_j=R_{j,1},
+\qquad
+S_j=R_{j,2},
+\qquad
+T_j=R_{j,3}.
+$$
+For two independent local variables around the same root, define
+$$
+P_j
+=
+\iint(\xi_1-\xi_2)^2\,d\nu_j(\xi_1)d\nu_j(\xi_2),
+$$
+and
+$$
+Q_j
+=
+\iint(\xi_1-\xi_2)^2(\xi_1+\xi_2)
+\,d\nu_j(\xi_1)d\nu_j(\xi_2),
+$$
+where $d\nu_j=e^{-\phi(x)^2/\varepsilon^2}dx$ on the corresponding neighborhood.
+
+Expanding the products gives
+$$
+P_j=2(W_jS_j-M_j^2),
+$$
+$$
+Q_j=2(W_jT_j-M_jS_j).
+$$
+Using Step 2,
+$$
+P_j
+=
+\varepsilon^4
+\left(p_j+\varepsilon p'_j+O(\varepsilon^2)\right),
+$$
+$$
+Q_j
+=
+\varepsilon^5
+\left(q_j+O(\varepsilon)\right),
+$$
+with
+$$
+(p_0,p'_0,q_0)
+=
+\left(
+\frac{81(\pi-2)}4,
+972\sqrt\pi,
+\frac{243\sqrt\pi}{4}
+\right),
+$$
+$$
+(p_1,p'_1,q_1)
+=
+\left(
+\frac{6561\pi}{16},
+0,
+0
+\right),
+$$
+and
+$$
+(p_2,p'_2,q_2)
+=
+\left(
+\frac{81(\pi-2)}{64},
+\frac{1215\sqrt\pi}{64},
+-\frac{243\sqrt\pi}{128}
+\right).
+$$
+
+Step 4: Assemble the three two-one-one configurations
+
+Suppose the repeated well is $r$, while the other two roots are $s,t$. Write
+$$
+A=r-s,
+\qquad
+B=r-t,
+\qquad
+C=s-t.
+$$
+For local displacements $\xi_1,\xi_2,\eta,\theta$, the five cross-well squared differences satisfy
+$$
+\prod_{\text{cross pairs}}(x_i-x_j)^2
+=
+A^4B^4C^2
+\left[
+1+c_r(\xi_1+\xi_2)+c_s\eta+c_t\theta+O(\varepsilon^2)
+\right],
+$$
+where
+$$
+c_r=\frac2A+\frac2B,
+$$
+$$
+c_s=-\frac4A+\frac2C,
+\qquad
+c_t=-\frac4B-\frac2C.
+$$
+
+There are $12$ labelled assignments for each choice of repeated well, while the determinant formula contributes the factor $1/24$. The contribution of one repeated root is therefore one half of
+$$
+A^4B^4C^2
+\left[
+P_rW_sW_t
++
+c_rQ_rW_sW_t
++
+c_sP_rM_sW_t
++
+c_tP_rW_sM_t
+\right]
+$$
+through order $\varepsilon^7$.
+
+Substitution of the coefficients from Steps 2 and 3 gives the following contributions to the coefficients of $\varepsilon^6$ and $\varepsilon^7$ in the unnormalized determinant integral:
+$$
+\begin{array}{c|cc}
+\text{repeated root}
+&
+U_0
+&
+U_1
+\\ \hline
+0
+&
+\frac{3\pi(\pi-2)}{16}
+&
+\frac{9\sqrt\pi(2+7\pi)}{16}
+\\
+\frac13
+&
+\frac{9\pi^2}{16}
+&
+-\frac{405\pi^{3/2}}{32}
+\\
+1
+&
+\frac{3\pi(\pi-2)}{32}
+&
+\frac{9\sqrt\pi(\pi+8)}{64}
+\end{array}.
+$$
+Therefore
+$$
+U_0=\frac{9\pi(3\pi-2)}{32},
+$$
+$$
+U_1=\frac{9\sqrt\pi(16-61\pi)}{64}.
+$$
+
+Step 5: Extract the first two terms of $H_N$
+
+Steps 1 and 4 give
+$$
+H_N
+=
+\frac{
+\varepsilon^6U_0+\varepsilon^7U_1+O(\varepsilon^8)
+}{
+\varepsilon^4
+\left(Z_0+\varepsilon Z_1+O(\varepsilon^2)\right)^4
+}.
+$$
+Therefore
+$$
+H_N
+=
+c\varepsilon^2+d\varepsilon^3+O(\varepsilon^4),
+$$
+where
+$$
+c=\frac{U_0}{Z_0^4}
+=
+\frac{8(3\pi-2)}{59049\pi},
+$$
+and
+$$
+d
+=
+\frac{U_1}{Z_0^4}
+-
+4\frac{Z_1U_0}{Z_0^5}
+=
+\frac{4(344-627\pi)}{177147\pi^{3/2}}.
+$$
+Since $\varepsilon=N^{-1/2}$,
+$$
+NH_N
+=
+c+dN^{-1/2}+O(N^{-1}).
+$$
+
+Step 6: Evaluate the scale difference
+
+Replacing $N$ by $4N$ in Step 5 gives
+$$
+(4N)H_{4N}
+=
+c+\frac d2N^{-1/2}+O(N^{-1}).
+$$
+Therefore
+$$
+NH_N-(4N)H_{4N}
+=
+\frac d2N^{-1/2}+O(N^{-1}).
+$$
+Multiplication by $\sqrt N$ leaves $d/2$.
+
+Final Answer: $\boxed{\frac{2(344-627\pi)}{177147\pi^{3/2}}}$
 
 ---
 
 ## Answer
 
-$\frac{3(-2\pi^3+19\pi^2-52\pi+40)}{128\pi^3}$
+$\frac{2(344-627\pi)}{177147\pi^{3/2}}$
 
 ---
 
@@ -393,8 +455,8 @@ $\frac{3(-2\pi^3+19\pi^2-52\pi+40)}{128\pi^3}$
 
 ## Solution Concepts
 
-- endpoint Laplace asymptotics
+- Laplace asymptotics
 - Hankel moment determinants
 - Vandermonde determinant identity
-- endpoint cluster decomposition
+- multiple concentration points
 - asymptotic cancellation
