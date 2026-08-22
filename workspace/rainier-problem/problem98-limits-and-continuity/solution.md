@@ -1,324 +1,298 @@
-```markdown id="ifnfcq"
+```markdown id="f0h5ni"
 ## Steps
 
-Step 1: Find the coalescing scale and the reference moments
+Step 1: Rescale the integral and isolate the logarithmic perturbation
 
 Put
 $$
-\varepsilon=n^{-1/6},
+\varepsilon=n^{-1/4},
 \qquad
-x=\varepsilon u,
+\delta=\varepsilon^2=n^{-1/2},
 \qquad
-\lambda=\varepsilon^2a.
+L=\log n,
+\qquad
+x=\varepsilon u.
 $$
 Then
 $$
-n x^2(x^2-\lambda)^2(1+x^2)
+n^2x^8-2nx^4+\frac3{16}
 =
-u^2(u^2-a)^2(1+\varepsilon^2u^2).
-$$
-After removing the positive common factor from the bracket and the Jacobian, the equation for $\lambda_n$ becomes
-$$
-F(a,\varepsilon)=0,
+H(u),
 $$
 where
 $$
-F(a,\varepsilon)
-=
-\int_{-\infty}^{\infty}
-H(u)
-e^{-u^2(u^2-a)^2(1+\varepsilon^2u^2)}\,du
-$$
-and
-$$
-H(u)=
-u^8
--\frac{7-36R^3}{6(1-12R^3)}u^2
-+\frac{2R}{3(1-12R^3)}.
-$$
-
-Let $\langle\cdot\rangle$ denote expectation under the probability density proportional to $e^{-u^6}$ on $\mathbb R$. For even $j$,
-$$
-m_j:=\langle u^j\rangle
-=
-\frac{\Gamma(\frac{j+1}{6})}{\Gamma(\frac16)}.
-$$
-Hence
-$$
-m_2=R.
-$$
-The reflection identity
-$$
-\Gamma\!\left(\frac16\right)
-\Gamma\!\left(\frac56\right)=2\pi
-$$
-gives
-$$
-m_4=2R^2.
-$$
-Integration by parts yields
-$$
-m_{j+6}=\frac{j+1}{6}m_j.
-$$
-In particular,
-$$
-m_6=\frac16,
-\qquad
-m_8=\frac R2,
-\qquad
-m_{10}=\frac{5R^2}{3},
-$$
-$$
-m_{12}=\frac7{36},
-\qquad
-m_{14}=\frac{3R}{4},
-\qquad
-m_{16}=\frac{55R^2}{18},
-\qquad
-m_{20}=\frac{15R}{8}.
-$$
-
-Strict Cauchy-Schwarz applied to $u^2$ and $u^4$ gives
-$$
-m_4^2<m_2m_6.
-$$
-Therefore
-$$
-4R^4<\frac R6,
-$$
-so
-$$
-24R^3<1.
-$$
-All denominators occurring below are consequently nonzero.
-
-Step 2: Identify the hidden double cancellation
-
-Write
-$$
-c=\frac{7-36R^3}{6(1-12R^3)},
-\qquad
-d=\frac{2R}{3(1-12R^3)}.
-$$
-Then
-$$
-H(u)=u^8-cu^2+d.
-$$
-Using the moments from Step 1,
-$$
-\langle H\rangle
-=
-m_8-cm_2+d
-=0.
+H(u)=u^8-2u^4+\frac3{16}.
 $$
 Also
 $$
-\langle Hu^4\rangle
+x^2\log(x^2)
 =
-m_{12}-cm_6+dm_4
-=0.
-$$
-
-The second identity is the extra degeneracy: the usual linear response of the implicit equation with respect to $a$ vanishes.
-
-Indeed,
-$$
-\left.
-\frac{\partial}{\partial a}
-e^{-u^2(u^2-a)^2}
-\right|_{a=0}
-=
-2u^4e^{-u^6},
-$$
-so both the constant term and the first derivative of $F$ with respect to $a$ vanish at $(0,0)$.
-
-Step 3: Expand the degenerate implicit equation
-
-Relative to $e^{-u^6}$, the exponent correction is
-$$
-P=
-2au^4-a^2u^2-\varepsilon^2u^8
-+2a\varepsilon^2u^6
-+O(a^2\varepsilon^2).
-$$
-Keeping terms of total degree at most three in $a,\varepsilon$,
-$$
-e^P=
-1+2au^4
-+a^2(2u^8-u^2)
--\varepsilon^2u^8
-$$
-$$
-\qquad
-+a^3\left(\frac43u^{12}-2u^6\right)
-+2a\varepsilon^2(u^6-u^{12})
-+O_4,
-$$
-where $O_4$ contains only terms of total degree at least four.
-
-The two cancellations from Step 2 remove the first two terms after integration. Therefore
-$$
-F(a,\varepsilon)
-=
-A a^2+B\varepsilon^2
-+C a^3+D a\varepsilon^2
-+O(a^4+a^2\varepsilon^2+\varepsilon^4),
-$$
-apart from the fixed positive factor $\int_{\mathbb R}e^{-u^6}\,du$.
-
-The four coefficients are
-$$
-A=
-\left\langle
-H(2u^8-u^2)
-\right\rangle,
-$$
-$$
-B=-\langle Hu^8\rangle,
-$$
-$$
-C=
-\left\langle
-H\left(\frac43u^{12}-2u^6\right)
-\right\rangle,
-$$
-and
-$$
-D=
-2\langle H(u^6-u^{12})\rangle.
-$$
-Substitution of the moment list from Step 1 gives
-$$
-A=
-\frac{2R^2(13-204R^3)}
-{9(1-12R^3)},
-$$
-$$
-B=
--\frac{R^2(13-240R^3)}
-{9(1-12R^3)},
-$$
-$$
-C=
-\frac{R(77-972R^3)}
-{81(1-12R^3)},
-$$
-and
-$$
-D=
--\frac{2R(23-324R^3)}
-{27(1-12R^3)}.
-$$
-
-Because $24R^3<1$,
-$$
-A>0,
-\qquad
-B<0.
-$$
-
-Step 4: Resolve the fractional implicit branch
-
-Since the linear term in $a$ vanished, the scale is not $a=O(\varepsilon^2)$. Put
-$$
-a=\varepsilon b.
-$$
-Then Step 3 gives
-$$
-\frac{F(\varepsilon b,\varepsilon)}{\varepsilon^2}
-=
-Ab^2+B
-+\varepsilon(Cb^3+Db)
-+O(\varepsilon^2).
-$$
-At $\varepsilon=0$ the two roots are
-$$
-b=\pm\kappa,
-$$
-where
-$$
-\kappa^2=-\frac BA
-=
-\frac{13-240R^3}{2(13-204R^3)}.
-$$
-Both roots are simple because $A\kappa\neq0$. The implicit-function theorem therefore gives one positive root
-$$
-b(\varepsilon)=\kappa+\ell\varepsilon+O(\varepsilon^2).
-$$
-Since $F(0,\varepsilon)=B\varepsilon^2+O(\varepsilon^4)<0$ and the first positive local zero is the branch above, it corresponds to the smallest positive solution in the statement.
-
-Substitute
-$$
-b=\kappa+\ell\varepsilon+O(\varepsilon^2)
-$$
-into the divided equation. The coefficient of $\varepsilon$ is
-$$
-2A\kappa\ell+C\kappa^3+D\kappa.
+\delta u^2
+\left(
+\log(u^2)-\frac L2
+\right).
 $$
 Hence
 $$
-\ell=-\frac{C\kappa^2+D}{2A}.
+nx^4\left(1-x^2\log(x^2)+x^4\right)
+=
+u^4
++\frac{\delta L}{2}u^6
+-\delta u^6\log(u^2)
++\delta^2u^8.
 $$
-Using the displayed expressions for $A,C,D$ and $\kappa^2$ gives
+After removing the positive Jacobian $\varepsilon$, the defining equation is
 $$
-\ell=
-\frac{
-559872R^6-75732R^3+2587
-}
-{
-72R(13-204R^3)^2
-}.
+F_n(\lambda_n)=0,
+$$
+where
+$$
+F_n(\lambda)=
+\int_{\mathbb R}
+H(u)e^{-u^4}
+\exp\!\left[
+\lambda u^2
+-\frac{\delta L}{2}u^6
++\delta u^6\log(u^2)
+-\delta^2u^8
+\right]\,du.
 $$
 
-Step 5: Return to $\lambda_n$ and evaluate the limit
+Step 2: Find the two cancellations hidden in the polynomial factor
 
-Recall that
+Let $\langle\cdot\rangle$ denote expectation under the probability density proportional to $e^{-u^4}$ on $\mathbb R$, and write
 $$
-\lambda_n=\varepsilon^2a
+m_j=\langle u^j\rangle
+$$
+for even $j$. Direct integration gives
+$$
+m_j=
+\frac{\Gamma(\frac{j+1}{4})}{\Gamma(\frac14)}.
+$$
+In particular,
+$$
+m_2=R,
+\qquad
+m_4=\frac14,
+\qquad
+m_6=\frac{3R}{4},
+$$
+$$
+m_8=\frac5{16},
+\qquad
+m_{10}=\frac{21R}{16},
+\qquad
+m_{12}=\frac{45}{64},
+\qquad
+m_{14}=\frac{231R}{64}.
+$$
+
+For $H(u)=u^8-2u^4+3/16$,
+$$
+\langle H\rangle
+=
+\frac5{16}-\frac12+\frac3{16}
+=0,
 $$
 and
 $$
-a=\varepsilon b(\varepsilon).
+\langle Hu^2\rangle
+=
+\frac{21R}{16}
+-\frac{3R}{2}
++\frac{3R}{16}
+=0.
+$$
+Thus both the constant term and the linear response to $\lambda$ vanish.
+
+The next two moments are
+$$
+\langle Hu^4\rangle
+=
+\frac{45}{64}
+-\frac{10}{16}
++\frac3{64}
+=
+\frac18
+$$
+and
+$$
+\langle Hu^6\rangle
+=
+\frac{231R}{64}
+-\frac{42R}{16}
++\frac{9R}{64}
+=
+\frac{9R}{8}.
+$$
+
+Step 3: Determine the non-power leading scale of the positive root
+
+Suppose
+$$
+\lambda=O\left(\sqrt{\delta L}\right).
+$$
+Expanding the exponential in Step 1 and using the two cancellations from Step 2 gives
+$$
+\frac{F_n(\lambda)}
+{\int_{\mathbb R}e^{-u^4}\,du}
+=
+\frac{\lambda^2}{2}\langle Hu^4\rangle
+-\frac{\delta L}{2}\langle Hu^6\rangle
++\delta\langle Hu^6\log(u^2)\rangle
++o(\delta).
+$$
+Indeed,
+$$
+\lambda^3=O(\delta^{3/2}L^{3/2})=o(\delta),
+$$
+and
+$$
+\lambda\delta L
+=
+O(\delta^{3/2}L^{3/2})
+=
+o(\delta),
+$$
+so all omitted mixed and cubic terms are smaller than the order needed.
+
+Ignoring the order-$\delta$ term first,
+$$
+F_n(\lambda)
+=
+\frac{\int e^{-u^4}\,du}{16}
+\left(
+\lambda^2-9R\delta L
+\right)
++o(\delta L).
+$$
+For every fixed $c>0$,
+$$
+\frac{F_n(c\sqrt{\delta L})}
+{\delta L\int e^{-u^4}\,du}
+\longrightarrow
+\frac{c^2-9R}{16}.
+$$
+The expression is negative when $c<3\sqrt R$ and positive when $c>3\sqrt R$. The same estimate is uniform on compact $c$-intervals below $3\sqrt R$, so there is no smaller positive zero on that scale. Consequently the smallest positive zero satisfies
+$$
+\lambda_n
+\sim
+3\sqrt R\,\sqrt{\delta L}.
+$$
+
+Step 4: Evaluate the logarithmic moment that controls the correction
+
+For even $j$,
+$$
+\left\langle
+u^j\log(u^2)
+\right\rangle
+=
+\frac12m_j
+\psi\!\left(\frac{j+1}{4}\right).
 $$
 Therefore
 $$
-\lambda_n
+\langle Hu^6\log(u^2)\rangle
 =
-\kappa\varepsilon^3
-+\ell\varepsilon^4
-+O(\varepsilon^5).
+\frac12
+\left[
+m_{14}\psi\!\left(\frac{15}{4}\right)
+-2m_{10}\psi\!\left(\frac{11}{4}\right)
++\frac3{16}m_6\psi\!\left(\frac74\right)
+\right].
 $$
-Since
+Using
 $$
-\varepsilon^3=n^{-1/2},
-\qquad
-\varepsilon^4=n^{-2/3},
+\psi(z+1)=\psi(z)+\frac1z,
 $$
 we have
 $$
+\psi\!\left(\frac74\right)
+=
+\psi\!\left(\frac34\right)+\frac43,
+$$
+$$
+\psi\!\left(\frac{11}{4}\right)
+=
+\psi\!\left(\frac34\right)+\frac{40}{21},
+$$
+and
+$$
+\psi\!\left(\frac{15}{4}\right)
+=
+\psi\!\left(\frac34\right)+\frac{524}{231}.
+$$
+Substitution of the moments from Step 2 gives
+$$
+\langle Hu^6\log(u^2)\rangle
+=
+\frac{9R}{16}
+\left(
+\psi\!\left(\frac34\right)+3
+\right).
+$$
+
+Step 5: Extract the second term of the implicit root
+
+Steps 2 and 4 turn the expansion of $F_n$ into
+$$
+\frac{F_n(\lambda)}
+{\int_{\mathbb R}e^{-u^4}\,du}
+=
+\frac{\lambda^2}{16}
+-\frac{9R}{16}\delta L
++\frac{9R}{16}
+\left(
+\psi\!\left(\frac34\right)+3
+\right)\delta
++o(\delta).
+$$
+At $\lambda=\lambda_n$ this equals zero, so
+$$
+\lambda_n^2
+=
+9R\delta
+\left[
+L-\psi\!\left(\frac34\right)-3
+\right]
++o(\delta).
+$$
+Since $\lambda_n>0$,
+$$
 \lambda_n
 =
-\sqrt{
-\frac{13-240R^3}{2(13-204R^3)}
-}\,n^{-1/2}
-+
-\frac{
-559872R^6-75732R^3+2587
-}{
-72R(13-204R^3)^2
-}
-n^{-2/3}
-+O(n^{-5/6}).
+3\sqrt R\,\sqrt\delta\,\sqrt L
+\left[
+1-
+\frac{\psi(\frac34)+3}{2L}
++o\left(\frac1L\right)
+\right].
 $$
-The requested normalization isolates the second coefficient.
+As $\sqrt\delta=n^{-1/4}$,
+$$
+\lambda_n
+=
+3\sqrt R\,n^{-1/4}\sqrt{\log n}
+-\frac32\sqrt R
+\left(
+\psi\!\left(\frac34\right)+3
+\right)
+\frac{n^{-1/4}}{\sqrt{\log n}}
++
+o\left(
+\frac{n^{-1/4}}{\sqrt{\log n}}
+\right).
+$$
+Multiplication by $n^{1/4}\sqrt{\log n}$ gives the requested limit.
 
-Final Answer: $\boxed{\frac{559872R^6-75732R^3+2587}{72R(13-204R^3)^2}}$
+Final Answer: $\boxed{-\frac{3}{2}\sqrt{R}\left(\psi(\frac34)+3\right)}$
 
 ---
 
 ## Answer
 
-$\frac{559872R^6-75732R^3+2587}{72R(13-204R^3)^2}$
+$-\frac{3}{2}\sqrt{R}\left(\psi(\frac34)+3\right)$
 
 ---
 
@@ -336,8 +310,8 @@ $\frac{559872R^6-75732R^3+2587}{72R(13-204R^3)^2}$
 
 ## Solution Concepts
 
-- degenerate implicit limits
-- coalescing scales
+- logarithmic asymptotic scales
+- degenerate implicit roots
 - gamma-function moments
 - moment cancellation
-- fractional asymptotic branches
+- digamma-function moments
