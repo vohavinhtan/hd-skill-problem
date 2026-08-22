@@ -2,36 +2,34 @@
 
 ## LaTeX (Normalized)
 
-For each positive integer $n$, let $\lambda_n,\mu_n\in\mathbb R$ be the unique pair satisfying
+For each integer $n\geq2$, let $r_n>0$ be the unique number satisfying
 $$
-\int_0^1
-\left(x-\frac12\right)
-\exp\!\left(
--nx^4\left(x-\frac12\right)^2(1-x)^6
-+\lambda_nx+\mu_nx^2
-\right)\,dx=0
-$$
-and
-$$
-\int_0^1
-\left(x^2-\frac{5}{12}\right)
-\exp\!\left(
--nx^4\left(x-\frac12\right)^2(1-x)^6
-+\lambda_nx+\mu_nx^2
-\right)\,dx=0.
-$$
-Let
-$$
-G=\Gamma\!\left(\frac14\right).
+\log\left[
+\frac1{n^2}
+\prod_{k=1}^{n-1}
+\left(
+r_n^2+4\sin^2\frac{\pi k}{n}
+\right)
+\right]
++
+\frac{60}{n^2+11}
+\left[
+\sum_{k=1}^{n-1}
+\frac{1}{
+r_n^2+4\sin^2\frac{\pi k}{n}
+}
+-\frac{n^2-1}{12}
+\right]
+=
+\frac{13}{70n^2}.
 $$
 Determine the exact value of
 $$
 \lim_{n\to\infty}
-n^{1/6}
-\left[
-2\lambda_n+\mu_n-\log n
-+4\log\left(\frac{64\sqrt{2\pi}}{G}\right)
-\right].
+n^2
+\left(
+n^3r_n^2-12-\frac{28}{13n}
+\right).
 $$
 
 ---
@@ -49,4 +47,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves two implicitly coupled parameters, three concentration scales, and extraction of a correction to their logarithmic asymptotics, which are part of Calculus and Limits and continuity. The solution also uses local integral asymptotics and gamma-function moments, which are part of Calculus and Integration. The requested combination cannot be obtained from any one concentration point alone because its first correction is forced by the moment constraints through the displacement of a different concentration point.
+The requested object is a limit of an implicitly defined sequence whose scale and two correction terms must be recovered asymptotically, so Calculus and Limits and continuity is the best fit. The derivation also uses a finite trigonometric product and its logarithmic derivative, which connect to algebraic and trigonometric manipulation, but those identities serve the asymptotic limit rather than being the requested object.
