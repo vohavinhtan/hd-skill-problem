@@ -1,223 +1,247 @@
+```markdown id="f6f8jp"
 ## Steps
 
-Step 1: Recover a dual Gaussian representation
+Step 1: Identify the limiting lattice sum
 
-Define the $1$-periodic function
+Define
 $$
-G_n(a)=
-\sqrt n
-\sum_{m\in\mathbb Z}
-e^{-\pi n(m-a)^2}.
+F(a)=
+\sum_{k\in\mathbb Z}
+\frac{1}{(k-a)^2+1}.
 $$
-Its $k$th Fourier coefficient is
+For
 $$
-\int_0^1G_n(a)e^{-2\pi ika}\,da.
+f(x)=\frac1{x^2+1},
 $$
-After translating each interval by $m$ and combining them into $\mathbb R$, this becomes
+its Fourier transform in the convention
 $$
-\sqrt n
-\int_{\mathbb R}
-e^{-\pi nt^2}e^{2\pi ikt}\,dt.
+\widehat f(j)=
+\int_{\mathbb R}f(x)e^{-2\pi ijx}\,dx
 $$
-The Gaussian integral
+is
 $$
-\int_{\mathbb R}e^{-\pi nt^2}e^{2\pi ikt}\,dt
+\widehat f(j)=\pi e^{-2\pi|j|}.
+$$
+Applying the Fourier expansion of the periodization of $f$ gives
+$$
+F(a)
 =
-n^{-1/2}e^{-\pi k^2/n}
+\pi
+\left[
+1+2\sum_{j\geq1}e^{-2\pi j}\cos(2\pi ja)
+\right].
 $$
-therefore gives the Fourier coefficient $e^{-\pi k^2/n}$. Hence
+Writing $q=e^{-2\pi}$ and summing the geometric series,
 $$
-\Theta_n(a)
+1+2\sum_{j\geq1}q^j\cos(j\theta)
 =
-\sqrt n
-\sum_{m\in\mathbb Z}
-e^{-\pi n(m-a)^2}.
-$$
-
-Differentiating twice,
-$$
-\Theta_n''(a)+2\pi n\Theta_n(a)
-=
-4\pi^2n^{5/2}
-\sum_{m\in\mathbb Z}
-(m-a)^2e^{-\pi n(m-a)^2}.
-$$
-
-Step 2: Convert the root equation to a lattice competition
-
-Put
-$$
-N=\sqrt{\pi n},
-\qquad
-s=Na.
-$$
-Since
-$$
-\pi n(m-a)^2=(Nm-s)^2,
-$$
-the equation defining $a_n$ becomes
-$$
-\sum_{m\in\mathbb Z}
-(Nm-s_n)^2e^{-(Nm-s_n)^2}
-=
-e^{-1},
-$$
-where
-$$
-s_n=Na_n.
-$$
-
-Let
-$$
-h(t)=t^2e^{-t^2}.
-$$
-Then
-$$
-h(1)=e^{-1},
-\qquad
-h'(1)=0,
-\qquad
-h''(1)=-4e^{-1}.
-$$
-The root equation is
-$$
-h(s_n)
-+
-\sum_{m\ne0}h(Nm-s_n)
-=
-e^{-1}.
-$$
-
-For every fixed $\eta\in(0,1)$,
-$$
-\max_{0\leq s\leq1-\eta}h(s)<e^{-1}.
-$$
-Uniformly on this interval,
-$$
-\sum_{m\ne0}h(Nm-s)\to0.
-$$
-Hence there is no root with $s\leq1-\eta$ for large $n$.
-
-At $s=1$,
-$$
-h(1)+h(N-1)>e^{-1}.
-$$
-By continuity, a root lies below $1$. Since $a_n$ is the smallest positive root,
-$$
-s_n\to1,
-\qquad
-s_n<1
-$$
-for large $n$.
-
-Step 3: Identify the exponentially small forcing term
-
-Set
-$$
-d_n=1-s_n>0.
-$$
-Then $d_n\to0$. The nonzero lattice terms satisfy
-$$
-\sum_{m\ne0}h(Nm-s_n)
-=
-h(N-s_n)+o(h(N-1)).
-$$
-Indeed,
-$$
-\frac{h(N+s_n)}{h(N-1)}
-=
-O(e^{-4N}),
-$$
-while all terms with $|m|\geq2$ have still larger exponential decay.
-
-Since $s_n=1-d_n$,
-$$
-N-s_n=N-1+d_n.
-$$
-Once $d_n\to0$,
-$$
-\frac{h(N-1+d_n)}{h(N-1)}
-=
-\left(
-1+\frac{d_n}{N-1}
-\right)^2
-e^{-2(N-1)d_n-d_n^2}.
-$$
-The root equation itself will imply
-$$
-d_n=O\!\left(\sqrt{h(N-1)}\right),
-$$
-and therefore
-$$
-Nd_n\to0.
-$$
-Consequently
-$$
-h(N-s_n)
-=
-h(N-1)(1+o(1)).
-$$
-Thus
-$$
-\sum_{m\ne0}h(Nm-s_n)
-=
-(N-1)^2e^{-(N-1)^2}(1+o(1)).
-$$
-
-Step 4: Resolve the double-root splitting
-
-Taylor expansion of $h$ at its maximum $1$ gives
-$$
-h(1-d)
-=
-e^{-1}-2e^{-1}d^2+O(d^3).
-$$
-Using the root equation and Step 3,
-$$
-e^{-1}-h(1-d_n)
-=
-(N-1)^2e^{-(N-1)^2}(1+o(1)).
+\frac{1-q^2}{1-2q\cos\theta+q^2}.
 $$
 Therefore
 $$
-2e^{-1}d_n^2
-=
-(N-1)^2e^{-(N-1)^2}(1+o(1)).
-$$
-Since $d_n>0$,
-$$
-d_n
-=
-\sqrt{\frac e2}\,
-(N-1)e^{-(N-1)^2/2}(1+o(1)).
+F(a)=
+\frac{\pi\sinh(2\pi)}
+{\cosh(2\pi)-\cos(2\pi a)}.
 $$
 
-Step 5: Evaluate the requested limit
-
-Recall
+At
 $$
-N=\sqrt{\pi n},
+a_0=\frac13,
+$$
+we have
+$$
+\cos(2\pi a_0)=-\frac12,
+$$
+and consequently
+$$
+F(a_0)=\frac{\pi S}{H}.
+$$
+Thus $a_m\to a_0$ once the finite sums are shown to converge uniformly near $a_0$.
+
+Step 2: Compute the derivatives governing the implicit displacement
+
+Put
+$$
+D(a)=\cosh(2\pi)-\cos(2\pi a).
+$$
+Then
+$$
+F(a)=\frac{\pi S}{D(a)}.
+$$
+Since
+$$
+D'(a)=2\pi\sin(2\pi a),
+$$
+we obtain
+$$
+F'(a)=
+-\frac{2\pi^2S\sin(2\pi a)}{D(a)^2}.
+$$
+At $a_0=1/3$,
+$$
+D(a_0)=H,
 \qquad
-d_n=1-\sqrt{\pi n}\,a_n.
+\sin(2\pi a_0)=\frac{\sqrt3}{2},
 $$
-Step 4 yields
+so
 $$
-\frac{
-e^{(N-1)^2/2}
-}{N-1}
-d_n
-\to
-\sqrt{\frac e2}.
+F'(a_0)=
+-\frac{\pi^2\sqrt3\,S}{H^2}.
 $$
-Replacing $N$ by $\sqrt{\pi n}$ gives the required limit.
 
-Final Answer: $\boxed{\sqrt{\frac e2}}$
+Differentiating once more,
+$$
+F''(a)
+=
+-\frac{4\pi^3S\cos(2\pi a)}{D(a)^2}
++
+\frac{8\pi^3S\sin^2(2\pi a)}{D(a)^3}.
+$$
+Hence
+$$
+F''(a_0)
+=
+\frac{2\pi^3S}{H^2}
++
+\frac{6\pi^3S}{H^3}
+=
+\frac{2\pi^3S(H+3)}{H^3}.
+$$
+
+Since $F'(a)<0$ on the compact interval
+$$
+\left[\frac14,\frac5{12}\right],
+$$
+and the differentiated tails converge uniformly there, $F_m'(a)<0$ throughout that interval for large $m$. Uniform convergence of $F_m$ to $F$ then gives the stated unique solution near $a_0$.
+
+Step 3: Expand the omitted symmetric tail
+
+Let
+$$
+T_m(a)=F(a)-F_m(a).
+$$
+For $a$ in a fixed compact subset of $(0,\frac12)$,
+$$
+T_m(a)
+=
+\sum_{k=m+1}^{\infty}
+\left[
+\frac1{(k-a)^2+1}
++
+\frac1{(k+a)^2+1}
+\right].
+$$
+Expanding the paired summand for large $k$,
+$$
+\frac1{(k-a)^2+1}
++
+\frac1{(k+a)^2+1}
+=
+\frac2{k^2}+O(k^{-4}),
+$$
+uniformly in $a$ on that compact set.
+
+Also
+$$
+\sum_{k=m+1}^{\infty}\frac1{k^2}
+=
+\frac1m-\frac1{2m^2}+O(m^{-3}).
+$$
+Therefore
+$$
+T_m(a)
+=
+\frac2m-\frac1{m^2}+O(m^{-3})
+$$
+uniformly near $a_0$.
+
+The absence of an $a$-dependent term through order $m^{-2}$ is caused by the symmetric pairing of the positive and negative tails.
+
+Step 4: Solve the implicit equation through second order
+
+Write
+$$
+\delta_m=a_m-a_0.
+$$
+The defining equation is
+$$
+F(a_m)-T_m(a_m)=F(a_0).
+$$
+Since $F'(a_0)\neq0$ and $T_m=O(m^{-1})$,
+$$
+\delta_m=O(m^{-1}).
+$$
+Taylor expansion gives
+$$
+F'(a_0)\delta_m
++\frac12F''(a_0)\delta_m^2
+-\frac2m+\frac1{m^2}
+=
+O(m^{-3}).
+$$
+
+Seek
+$$
+\delta_m=
+\frac{d_1}{m}
++\frac{d_2}{m^2}
++O(m^{-3}).
+$$
+At order $m^{-1}$,
+$$
+F'(a_0)d_1=2,
+$$
+hence
+$$
+d_1=
+-\frac{2H^2}{\pi^2\sqrt3\,S}.
+$$
+
+At order $m^{-2}$,
+$$
+F'(a_0)d_2
++\frac12F''(a_0)d_1^2
++1=0.
+$$
+Now
+$$
+\frac12F''(a_0)d_1^2
+=
+\frac{4H(H+3)}{3\pi S}.
+$$
+Therefore
+$$
+d_2=
+\frac{H^2}{\pi^2\sqrt3\,S}
+\left(
+1+\frac{4H(H+3)}{3\pi S}
+\right).
+$$
+
+Step 5: Evaluate the normalized root displacement
+
+From Step 4,
+$$
+a_m-\frac13
+=
+-\frac{2H^2}{\pi^2\sqrt3\,S}\frac1m
++
+\frac{H^2}{\pi^2\sqrt3\,S}
+\left(
+1+\frac{4H(H+3)}{3\pi S}
+\right)\frac1{m^2}
++
+O(m^{-3}).
+$$
+Thus the subtraction appearing in the problem removes the first displacement, and multiplication by $m^2$ leaves the second coefficient.
+
+Final Answer: $\boxed{\frac{H^2}{\pi^2\sqrt3S}\left(1+\frac{4H(H+3)}{3\pi S}\right)}$
 
 ---
 
 ## Answer
 
-$\sqrt{\frac e2}$
+$\frac{H^2}{\pi^2\sqrt3S}\left(1+\frac{4H(H+3)}{3\pi S}\right)$
 
 ---
 
@@ -235,8 +259,8 @@ $\sqrt{\frac e2}$
 
 ## Solution Concepts
 
-- Gaussian lattice duality
-- Fourier coefficients
-- exponentially small asymptotics
-- implicit root splitting
-- double-root perturbation
+- periodized lattice sums
+- Fourier transformation
+- symmetric tail expansion
+- implicit root asymptotics
+- second-order limits

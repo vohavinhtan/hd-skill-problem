@@ -1,29 +1,31 @@
+```markdown id="r4wd2p"
 # Normalized Math Problem
 
 ## LaTeX (Normalized)
 
-For each positive integer $n$, define
+Let
 $$
-\Theta_n(a)=
-\sum_{k=-\infty}^{\infty}
-e^{-\pi k^2/n}\cos(2\pi ka).
+H=\cosh(2\pi)+\frac12,
+\qquad
+S=\sinh(2\pi).
 $$
-For all sufficiently large $n$, let $a_n\in(0,\frac12)$ be the smallest positive solution of
+For each positive integer $m$, define
 $$
-\Theta_n''(a_n)+2\pi n\Theta_n(a_n)
-=
-\frac{4\pi n^{3/2}}{e}.
+F_m(a)=
+\sum_{k=-m}^{m}
+\frac{1}{(k-a)^2+1}.
+$$
+For all sufficiently large $m$, let $a_m\in(\frac14,\frac5{12})$ be the unique solution of
+$$
+F_m(a_m)=\frac{\pi S}{H}.
 $$
 Determine the exact value of
 $$
-\lim_{n\to\infty}
-\frac{
-\exp\!\left(\frac{(\sqrt{\pi n}-1)^2}{2}\right)
-}{
-\sqrt{\pi n}-1
-}
+\lim_{m\to\infty}
+m^2
 \left(
-1-\sqrt{\pi n}\,a_n
+a_m-\frac13
++\frac{2H^2}{\pi^2\sqrt3\,S\,m}
 \right).
 $$
 
@@ -42,4 +44,4 @@ $$
 
 ## Domain Explanation
 
-The requested quantity is a refined limit for the smallest root of an $n$-dependent equation, so Calculus and Limits and continuity is the best fit. A Gaussian lattice duality is needed to expose the root scale, but that transformation is an intermediate device; the requested object is the exponentially rescaled limiting displacement of the implicit root.
+The requested object is a second-order limit of roots of a sequence of finite-sum equations, so Calculus and Limits and continuity is the best fit. The derivation also uses Fourier analysis of a lattice sum and an endpoint expansion of the omitted tail, but those tools serve the implicit-root limit rather than being the requested object.
