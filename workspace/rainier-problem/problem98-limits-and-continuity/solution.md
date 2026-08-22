@@ -1,284 +1,306 @@
 ## Steps
 
-Step 1: Separate the two boundary scales
+Step 1: Expand the two endpoint contributions
 
 Put
 $$
-\varepsilon=n^{-1/4}.
+s=n^{-1/4}.
 $$
 The phase
 $$
 \phi(x)=x^4(1-x)^2
 $$
-vanishes only at $0$ and $1$. Near $0$ its order is $4$, so the scale is $x=O(\varepsilon)$. Near $1$ its order is $2$, so the scale is $1-x=O(\varepsilon^2)$.
-
-Choose a fixed $\delta\in(0,1/2)$. On $[\delta,1-\delta]$ we have $\phi(x)\geq c_\delta>0$, so that portion of every $I_k(n)$ is exponentially small. It remains to expand the two endpoint pieces.
+vanishes only at $0$ and $1$. Near $0$ the scale is $x=O(s)$, while near $1$ the scale is $1-x=O(s^2)$. On every closed subinterval of $(0,1)$ the contribution is exponentially small.
 
 At $0$, set
 $$
-x=\varepsilon u.
+x=su.
 $$
 Then
 $$
-n x^4(1-x)^2
-=
-u^4(1-\varepsilon u)^2.
+n\phi(x)=u^4(1-su)^2
 $$
-Hence
+and
 $$
-e^{-n x^4(1-x)^2}
+e^{-n\phi(x)}
 =
 e^{-u^4}
 \left[
-1+2\varepsilon u^5
-+\varepsilon^2(2u^{10}-u^6)
-+O(\varepsilon^3)
+1+2su^5+s^2(2u^{10}-u^6)+O(s^3)
 \right].
 $$
-Define
+For
 $$
-A_m=\int_0^\infty u^m e^{-u^4}\,du
-=
-\frac14\Gamma\!\left(\frac{m+1}{4}\right).
+A_m=\int_0^\infty u^me^{-u^4}\,du,
 $$
-Therefore the contribution from $0$ is
+the substitution $v=u^4$ gives
+$$
+A_m=\frac14\Gamma\!\left(\frac{m+1}{4}\right).
+$$
+Hence
 $$
 I_k^{(0)}
 =
-\varepsilon^{k+1}
+s^{k+1}
 \left[
-A_k+2\varepsilon A_{k+5}
-+\varepsilon^2(2A_{k+10}-A_{k+6})
-+O(\varepsilon^3)
+A_k+2sA_{k+5}
++s^2(2A_{k+10}-A_{k+6})
++O(s^3)
 \right].
 $$
 
 At $1$, set
 $$
-1-x=\varepsilon^2v.
+1-x=s^2v.
 $$
 Then
 $$
-n x^4(1-x)^2
-=
-v^2(1-\varepsilon^2v)^4,
+n\phi(x)=v^2(1-s^2v)^4,
 $$
 so
 $$
-x^k e^{-n x^4(1-x)^2}
+x^ke^{-n\phi(x)}
 =
 e^{-v^2}
 \left[
-1+\varepsilon^2(4v^3-kv)+O(\varepsilon^4)
+1+s^2(4v^3-kv)+O(s^4)
 \right].
-$$
-Thus
-$$
-I_k^{(1)}
-=
-\varepsilon^2
-\left[
-B_0+\varepsilon^2B_{1,k}+O(\varepsilon^4)
-\right],
-$$
-where
-$$
-B_0=\frac{\sqrt\pi}{2},
-\qquad
-B_{1,k}
-=
-\int_0^\infty(4v^3-kv)e^{-v^2}\,dv
-=
-2-\frac{k}{2}.
-$$
-
-Step 2: Record the four moment expansions
-
-Write
-$$
-G=\Gamma\!\left(\frac14\right),
-\qquad
-R=\Gamma\!\left(\frac34\right).
-$$
-Using the formulas from Step 1,
-$$
-I_0=
-\frac{G}{4}\varepsilon
-+\frac{3\sqrt\pi}{4}\varepsilon^2
-+\frac{15R}{32}\varepsilon^3
-+O(\varepsilon^4).
-$$
-
-For $I_2$,
-$$
-I_2=
-\frac{\sqrt\pi}{2}\varepsilon^2
-+\frac{R}{4}\varepsilon^3
-+\frac32\varepsilon^4
-+\frac{35G}{128}\varepsilon^5
-+O(\varepsilon^6).
-$$
-
-For $I_3$,
-$$
-I_3=
-\frac{\sqrt\pi}{2}\varepsilon^2
-+\frac34\varepsilon^4
-+\frac{5G}{32}\varepsilon^5
-+O(\varepsilon^6).
-$$
-
-For $I_4$,
-$$
-I_4=
-\frac{\sqrt\pi}{2}\varepsilon^2
-+\frac{G}{16}\varepsilon^5
-+O(\varepsilon^6).
-$$
-
-The absence of an $\varepsilon^3$ term in $I_3,I_4$ is caused by the higher power of $x$ at the quartic endpoint, while the absence of an $\varepsilon^4$ correction from the quadratic endpoint in $I_4$ follows from
-$$
-B_{1,4}=0.
-$$
-
-Step 3: Use the determinant cancellation
-
-Put
-$$
-N=I_2I_4-I_3^2.
-$$
-The order-$\varepsilon^4$ terms cancel because all three moments have the same leading contribution from the endpoint $x=1$.
-
-At order $\varepsilon^5$,
-$$
-N=
-\frac{\sqrt\pi R}{8}\varepsilon^5+O(\varepsilon^6).
-$$
-At order $\varepsilon^6$, the coefficient is
-$$
-\frac{\sqrt\pi}{2}
-\left(
-\frac32-2\cdot\frac34
-\right)=0.
-$$
-Thus there is a second cancellation.
-
-At order $\varepsilon^7$, the coefficient is
-$$
-\frac{\sqrt\pi}{2}
-\left(
-\frac{35G}{128}
-+\frac{G}{16}
--2\frac{5G}{32}
-\right)
-=
-\frac{3\sqrt\pi G}{256}.
-$$
-Hence
-$$
-N=
-\frac{\sqrt\pi R}{8}\varepsilon^5
-+\frac{3\sqrt\pi G}{256}\varepsilon^7
-+O(\varepsilon^8).
-$$
-
-Step 4: Divide by the normalization
-
-From Step 2,
-$$
-I_0^2=
-\frac{G^2}{16}\varepsilon^2
-\left[
-1+\delta_1\varepsilon+\delta_2\varepsilon^2
-+O(\varepsilon^3)
-\right],
-$$
-where
-$$
-\delta_1=\frac{6\sqrt\pi}{G},
-$$
-and
-$$
-\delta_2=
-\frac{9\pi}{G^2}
-+\frac{15R}{4G}.
 $$
 Therefore
 $$
-H_n
+I_k^{(1)}
 =
-\varepsilon^3
+s^2
 \left[
-C_0+C_1\varepsilon+C_2\varepsilon^2
-+O(\varepsilon^3)
-\right],
+\frac{\sqrt\pi}{2}
++s^2\left(2-\frac{k}{2}\right)
++O(s^4)
+\right].
 $$
-with
+
+Step 2: Obtain the asymptotic expansion of $H_n$
+
+Write
 $$
-C_0=
-\frac{2\sqrt\pi R}{G^2},
+R=\Gamma\!\left(\frac34\right).
+$$
+Combining the two endpoint expansions gives
+$$
+I_0=
+\frac{G}{4}s
++\frac{3\sqrt\pi}{4}s^2
++\frac{15R}{32}s^3
++O(s^4),
 $$
 $$
-C_1=-\delta_1C_0
+I_2=
+\frac{\sqrt\pi}{2}s^2
++\frac{R}{4}s^3
++\frac32s^4
++\frac{35G}{128}s^5
++O(s^6),
+$$
+$$
+I_3=
+\frac{\sqrt\pi}{2}s^2
++\frac34s^4
++\frac{5G}{32}s^5
++O(s^6),
+$$
+and
+$$
+I_4=
+\frac{\sqrt\pi}{2}s^2
++\frac{G}{16}s^5
++O(s^6).
+$$
+
+Let
+$$
+N_n=I_2I_4-I_3^2.
+$$
+The $s^4$ terms cancel. At order $s^5$,
+$$
+N_n=
+\frac{\sqrt\pi R}{8}s^5+O(s^6).
+$$
+At order $s^6$ the coefficient is
+$$
+\frac{\sqrt\pi}{2}\frac32
+-2\frac{\sqrt\pi}{2}\frac34=0.
+$$
+At order $s^7$,
+$$
+\frac{\sqrt\pi}{2}
+\left(
+\frac{35G}{128}+\frac{G}{16}
+\right)
+-
+2\frac{\sqrt\pi}{2}\frac{5G}{32}
 =
--\frac{12\pi R}{G^3},
+\frac{3\sqrt\pi G}{256}.
+$$
+Thus
+$$
+N_n=
+\frac{\sqrt\pi R}{8}s^5
++\frac{3\sqrt\pi G}{256}s^7
++O(s^8).
+$$
+
+Also
+$$
+I_0^2=
+\frac{G^2}{16}s^2
+\left[
+1+\frac{6\sqrt\pi}{G}s
++\left(
+\frac{9\pi}{G^2}
++\frac{15R}{4G}
+\right)s^2
++O(s^3)
+\right].
+$$
+Division gives
+$$
+H_n=C_0s^3+C_1s^4+C_2s^5+O(s^6),
+$$
+where
+$$
+C_0=\frac{2\sqrt\pi R}{G^2},
+$$
+$$
+C_1=\frac{-12\pi R}{G^3},
 $$
 and
 $$
 C_2=
 \frac{3\sqrt\pi}{16G}
 +
-C_0(\delta_1^2-\delta_2).
+\frac{2\sqrt\pi R}{G^2}
+\left(
+\frac{27\pi}{G^2}
+-\frac{15R}{4G}
+\right).
 $$
 
-The reflection formula
+Using
 $$
-\Gamma\!\left(\frac14\right)
-\Gamma\!\left(\frac34\right)
-=
-\pi\sqrt2
+GR=\pi\sqrt2,
 $$
-gives
+these become
 $$
-C_0=
-\frac{2\sqrt2\,\pi^{3/2}}{G^3},
+C_0=\frac{2\sqrt2\,\pi^{3/2}}{G^3},
 $$
 $$
-C_1=
--\frac{12\sqrt2\,\pi^2}{G^4},
+C_1=\frac{-12\sqrt2\,\pi^2}{G^4},
 $$
 and
 $$
 C_2=
-\frac{
-3\sqrt\pi
-\left[
-G^4+(288\sqrt2-80)\pi^2
-\right]
-}
-{16G^5}.
+\frac{3\sqrt\pi\left[G^4+(288\sqrt2-80)\pi^2\right]}{16G^5}.
 $$
 
-Step 5: Match the normalization in the requested limit
+Step 3: Transfer the expansion to the dilated indices
+
+For every fixed nonnegative integer $j$,
+$$
+(16^jn)^{-1/4}=2^{-j}s.
+$$
+Hence
+$$
+H_{16^jn}
+=
+\sum_{m=0}^2
+C_m s^{m+3}2^{-j(m+3)}
++O(s^6).
+$$
+For $m\geq0$, put
+$$
+r_m=2^{-(m+3)}
+$$
+and
+$$
+v_m=
+\begin{pmatrix}
+1\\
+r_m\\
+r_m^2
+\end{pmatrix}.
+$$
+The $3\times3$ matrix defining $K_n$ has the expansion
+$$
+\left(H_{16^{i+j}n}\right)_{0\leq i,j\leq2}
+=
+\sum_{m\geq0}C_ms^{m+3}v_mv_m^T.
+$$
+
+Step 4: Locate the first nonzero determinant term
+
+Expand the determinant multilinearly using the rank-one summands from Step 3. Any term selecting the same index $m$ twice vanishes because the corresponding columns are proportional. The smallest possible sum of powers therefore comes from the three distinct indices
+$$
+m=0,1,2.
+$$
+Their total power of $s$ is
+$$
+3+4+5=12.
+$$
+All other triples have total power at least $13$. Hence
+$$
+K_n=
+C_0C_1C_2s^{12}
+\det(v_0,v_1,v_2)^2
++O(s^{13}).
+$$
+
+The determinant is a Vandermonde determinant in
+$$
+r_0=\frac18,\qquad
+r_1=\frac1{16},\qquad
+r_2=\frac1{32}.
+$$
+Thus
+$$
+\det(v_0,v_1,v_2)^2
+=
+\left[
+(r_1-r_0)(r_2-r_0)(r_2-r_1)
+\right]^2
+=
+\frac9{2^{28}}.
+$$
+Therefore
+$$
+K_n=
+\frac9{2^{28}}C_0C_1C_2s^{12}
++O(s^{13}).
+$$
+
+Step 5: Evaluate the limit
 
 Since
 $$
-\varepsilon=n^{-1/4},
+s^{12}=n^{-3},
 $$
-Step 4 gives
+we get
 $$
-n^{3/4}H_n
+\lim_{n\to\infty}n^3K_n
 =
-C_0+C_1n^{-1/4}+C_2n^{-1/2}
-+O(n^{-3/4}).
+\frac9{2^{28}}C_0C_1C_2.
 $$
-The two displayed subtraction terms in the problem remove $C_0$ and $C_1n^{-1/4}$. Multiplication by $n^{1/2}$ therefore leaves $C_2$.
+From Step 2,
+$$
+C_0C_1C_2
+=
+\frac{-9\pi^4\left[G^4+(288\sqrt2-80)\pi^2\right]}{G^{12}}.
+$$
+Substitution gives the requested exact value.
 
-Final Answer: $\boxed{\frac{3\sqrt{\pi}(\Gamma(\frac14)^4+(288\sqrt2-80)\pi^2)}{16\Gamma(\frac14)^5}}$
+Final Answer: $\boxed{\displaystyle -\frac{81\pi^4(G^4+(288\sqrt2-80)\pi^2)}{2^{28}G^{12}}}$
 
 ## Answer
 
-$\frac{3\sqrt{\pi}(\Gamma(\frac14)^4+(288\sqrt2-80)\pi^2)}{16\Gamma(\frac14)^5}$
+$\displaystyle -\frac{81\pi^4(G^4+(288\sqrt2-80)\pi^2)}{2^{28}G^{12}}$
 
 ## Classification
 
@@ -292,8 +314,8 @@ $\frac{3\sqrt{\pi}(\Gamma(\frac14)^4+(288\sqrt2-80)\pi^2)}{16\Gamma(\frac14)^5}$
 
 ## Solution Concepts
 
-- competing boundary layers
-- Laplace-type endpoint asymptotics
+- competing endpoint scales
+- Laplace-type asymptotics
 - determinant cancellation
-- gamma-function integrals
+- dilation structure
 - asymptotic limits
