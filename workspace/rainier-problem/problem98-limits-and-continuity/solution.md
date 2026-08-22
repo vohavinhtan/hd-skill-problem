@@ -1,264 +1,262 @@
 ## Steps
 
-Step 1: Reduce the original branch equation to one parameter
+Step 1: Introduce a signed fourth-root coordinate
 
-Put
+We have
 $$
-a=\frac1{1-x},
-\qquad
-b=\frac1{1-y(x)}.
+g'(t)=\frac{t^3}{1-t}.
 $$
-Then $a>1>b>0$, and
+For $t<1$, the denominator is positive. Hence $g$ decreases on $(-\infty,0)$, increases on $(0,1)$, and has minimum value $0$ at $0$. This proves the stated uniqueness of $y(x)$.
+
+Near $0$,
 $$
-g(x)=a-1-\log a,
-\qquad
-g(y(x))=b-1-\log b.
-$$
-Therefore
-$$
-a-b=\log\frac ab.
+4g(t)=t^4+\frac45t^5+\frac23t^6+\frac47t^7+\cdots.
 $$
 Write
 $$
-L=\log\frac ab>0.
-$$
-Then $a=e^Lb$ and $a-b=L$, so
-$$
-b=\frac{L}{e^L-1},
+4g(t)=t^4B(t),
 \qquad
-a=\frac{Le^L}{e^L-1}.
+B(0)=1.
 $$
-
-Since
+Define
 $$
-x=1-\frac1a,
+u=tB(t)^{1/4}.
+$$
+This is analytic near $0$, satisfies $u'(0)=1$, and obeys
+$$
+u^4=4g(t).
+$$
+Let
+$$
+t=\tau(u)
+$$
+be its local analytic inverse. If
+$$
+U=(4g(x))^{1/4}>0,
+$$
+then
+$$
+x=\tau(U),
 \qquad
-y(x)=1-\frac1b,
-$$
-we obtain
-$$
-x+y(x)
-=
-2-\frac1a-\frac1b
-=
-2-\frac{2\sinh L}{L}.
-$$
-Hence
-$$
-x+y(x)
-=
--\frac{L^2}{3}
--\frac{L^4}{60}
--\frac{L^6}{2520}
-+O(L^8).
+y(x)=\tau(-U).
 $$
 
-Step 2: Express $M(x)$ in the same parameter
+Step 2: Compute the inverse coefficients needed later
 
-The substitution
+Write
 $$
-q=\frac1{1-t}
+\tau(u)=u+a_2u^2+a_3u^3+a_4u^4+a_5u^5+a_6u^6+a_7u^7+O(u^8).
 $$
-gives
+Differentiating
 $$
-dq=\frac{dt}{(1-t)^2}
+u^4=4g(\tau(u))
+$$
+and using $g'(t)=t^3/(1-t)$ gives
+$$
+\tau(u)^3\tau'(u)=u^3\bigl(1-\tau(u)\bigr).
+$$
+Coefficient comparison from $u^4$ through $u^9$ gives
+$$
+5a_2+1=0,
+$$
+$$
+6a_3+9a_2^2+a_2=0,
+$$
+$$
+7a_4+7a_2^3+21a_2a_3+a_3=0,
+$$
+$$
+8a_5+2a_2^4+24a_2^2a_3+24a_2a_4+12a_3^2+a_4=0,
+$$
+$$
+9a_6+9a_2^3a_3+27a_2^2a_4+27a_2a_3^2+27a_2a_5+27a_3a_4+a_5=0,
 $$
 and
 $$
-g(t)=q-1-\log q.
+10a_7+10a_2^3a_4+15a_2^2a_3^2+30a_2^2a_5
++60a_2a_3a_4+30a_2a_6+10a_3^3+30a_3a_5+15a_4^2+a_6=0.
 $$
-Thus
+Solving successively,
 $$
-\int_{y(x)}^x\frac{g(t)}{(1-t)^2}\,dt
+a_2=-\frac15,
+\qquad
+a_3=-\frac2{75},
+\qquad
+a_4=-\frac{11}{2625},
+$$
+$$
+a_5=-\frac9{35000},
+\qquad
+a_6=\frac{67}{262500},
+\qquad
+a_7=\frac{15581}{82687500}.
+$$
+
+Step 3: Expand the branch sum and the averaged integral
+
+Put
+$$
+q=U^2.
+$$
+The branch sum is
+$$
+x+y(x)=\tau(U)+\tau(-U).
+$$
+Only even coefficients remain, so
+$$
+x+y(x)=
+2a_2q+2a_4q^2+2a_6q^3+O(q^4).
+$$
+Using Step 2,
+$$
+x+y(x)=
+-\frac25q-\frac{22}{2625}q^2+\frac{67}{131250}q^3+O(q^4).
+$$
+
+For $M(x)$, substitute $t=\tau(v)$. Since $g(\tau(v))=v^4/4$,
+$$
+\int_{y(x)}^xg(t)\,dt
 =
-\int_b^a(q-1-\log q)\,dq.
-$$
-An antiderivative is
-$$
-\frac{q^2}{2}-q\log q.
-$$
-Using $a-b=L$ and $\log a=\log b+L$ gives
-$$
-\int_b^a(q-1-\log q)\,dq
-=
-L\left(-\frac L2-\log b\right).
+\frac14\int_{-U}^{U}v^4\tau'(v)\,dv.
 $$
 Also
 $$
-\frac{x-y(x)}{(1-x)(1-y(x))}=a-b=L.
+g(x)\bigl(x-y(x)\bigr)
+=
+\frac{U^4}{4}\bigl(\tau(U)-\tau(-U)\bigr).
 $$
-Therefore
+Only odd coefficients of $\tau$ enter both expressions. Hence
 $$
 M(x)=
-\frac{-L/2-\log b}{b-1-\log b},
-\qquad
-b=\frac{L}{e^L-1}.
+\frac{
+\displaystyle
+\sum_{m\geq0}
+\frac{2m+1}{2m+5}a_{2m+1}q^m
+}
+{
+\displaystyle
+\sum_{m\geq0}
+a_{2m+1}q^m
+}.
 $$
-
-The Taylor expansions
-$$
-\log\frac{L}{e^L-1}
-=
--\frac L2-\frac{L^2}{24}
-+\frac{L^4}{2880}
--\frac{L^6}{181440}
-+O(L^8)
-$$
-and
-$$
-\frac{L}{e^L-1}
-=
-1-\frac L2+\frac{L^2}{12}
--\frac{L^4}{720}
-+\frac{L^6}{30240}
-+O(L^8)
-$$
-give
+Using $a_1=1$ and the odd coefficients from Step 2,
 $$
 M(x)=
-\frac13+\frac{L^2}{540}
--\frac{L^4}{30240}
-+\frac{61L^6}{97977600}
-+O(L^8).
+\frac15-\frac{16}{2625}q
+-\frac2{7875}q^2
++\frac{84004}{1136953125}q^3
++O(q^4).
 $$
-In particular $M(x)>1/3$ for sufficiently small $x>0$, so the positive number $z(x)$ in the statement exists uniquely.
+Define
+$$
+D(q)=
+\frac{2625}{16}
+\left(
+\frac15-M(x)
+\right).
+$$
+Then
+$$
+D(q)=
+q+\frac1{24}q^2
+-\frac{21001}{1732500}q^3
++O(q^4).
+$$
 
-Step 3: Resolve the second implicit normalization
+Step 4: Resolve the second implicit branch
 
-For brevity write $z=z(x)$. From Step 2,
+Write $z=z(x)$. Its defining equation is
 $$
-270\left(M(x)-\frac13\right)
+4g(z)=D(q)^2.
+$$
+Both sides are positive for small $x>0$, so
+$$
+\sqrt{4g(z)}=D(q).
+$$
+From the Taylor series of $g$,
+$$
+\sqrt{4g(z)}
 =
-\frac{L^2}{2}
--\frac{L^4}{112}
-+\frac{61L^6}{362880}
-+O(L^8).
-$$
-The defining equation for $z$ is therefore
-$$
-z-\log(1+z)
-=
-\frac{L^2}{2}
--\frac{L^4}{112}
-+\frac{61L^6}{362880}
-+O(L^8).
-$$
-Since both sides have leading term one half of the square of their positive local parameter, write
-$$
-L=z+Az^2+Bz^3+Cz^4+Dz^5+O(z^6).
-$$
-Now
-$$
-z-\log(1+z)
-=
-\frac{z^2}{2}
--\frac{z^3}{3}
-+\frac{z^4}{4}
--\frac{z^5}{5}
-+\frac{z^6}{6}
+z^2+\frac25z^3+\frac{19}{75}z^4
++\frac{484}{2625}z^5
++\frac{4541}{31500}z^6
 +O(z^7).
 $$
-Substitution and comparison of coefficients of $z^3,z^4,z^5,z^6$ gives
+Seek
 $$
-A+\frac13=0,
+q=
+z^2+b_3z^3+b_4z^4+b_5z^5+b_6z^6+O(z^7).
+$$
+Substituting this into
+$$
+D(q)=
+q+\frac1{24}q^2
+-\frac{21001}{1732500}q^3
++O(q^4)
+$$
+and matching powers of $z$ gives
+$$
+b_3=\frac25,
+\qquad
+b_4=\frac{127}{600},
 $$
 $$
-\frac{A^2}{2}+B-\frac{29}{112}=0,
-$$
-$$
-AB-\frac{A}{28}+C+\frac15=0,
-$$
-and
-$$
--\frac{3A^2}{56}+AC+\frac{B^2}{2}-\frac{B}{28}+D-\frac{60419}{362880}=0.
+b_5=\frac{793}{5250},
+\qquad
+b_6=\frac{1829173}{13860000}.
 $$
 Thus
 $$
-A=-\frac13,
-\qquad
-B=\frac{205}{1008},
-$$
-$$
-C=-\frac{2179}{15120},
-\qquad
-D=\frac{161113}{1451520}.
-$$
-Therefore
-$$
-L=
-z-\frac{z^2}{3}
-+\frac{205z^3}{1008}
--\frac{2179z^4}{15120}
-+\frac{161113z^5}{1451520}
-+O(z^6).
+q=
+z^2+\frac25z^3+\frac{127}{600}z^4
++\frac{793}{5250}z^5
++\frac{1829173}{13860000}z^6
++O(z^7).
 $$
 
-Step 4: Transfer the branch sum to the secondary parameter
+Step 5: Compose the two local expansions
 
-From Step 1,
+From Step 3,
 $$
-x+y(x)
-=
--\frac{L^2}{3}
--\frac{L^4}{60}
--\frac{L^6}{2520}
-+O(L^8).
+x+y(x)=
+-\frac25q-\frac{22}{2625}q^2+\frac{67}{131250}q^3+O(q^4).
 $$
-Using the expansion from Step 3,
+Using the series for $q$ from Step 4,
 $$
-L^2=
-z^2-\frac23z^3
-+\frac{1169}{2016}z^4
--\frac{5929}{15120}z^5
-+\frac{782063}{4354560}z^6
-+O(z^7),
+q^2=
+z^4+\frac45z^5+\frac{139}{225}z^6+O(z^7),
 $$
 and
 $$
-L^4=
-z^4-\frac43z^5
-+\frac{203}{126}z^6
-+O(z^7).
-$$
-Also
-$$
-L^6=z^6+O(z^7).
+q^3=z^6+O(z^7).
 $$
 Substitution gives
 $$
-x+y(x)
-=
--\frac{z^2}{3}
-+\frac{2z^3}{9}
--\frac{53z^4}{280}
-+\frac{103z^5}{630}
--\frac{552011z^6}{3810240}
+x+y(x)=
+-\frac25z^2
+-\frac4{25}z^3
+-\frac{977}{10500}z^4
+-\frac{881}{13125}z^5
+-\frac{132059}{2310000}z^6
 +O(z^7).
 $$
-
-Step 5: Evaluate the requested limit
-
-Rearranging the expansion in Step 4,
+Therefore
 $$
 x+y(x)
-+\frac{z^2}{3}
--\frac{2z^3}{9}
-+\frac{53z^4}{280}
--\frac{103z^5}{630}
++\frac25z^2
++\frac4{25}z^3
++\frac{977}{10500}z^4
++\frac{881}{13125}z^5
 =
--\frac{552011}{3810240}z^6+O(z^7).
+-\frac{132059}{2310000}z^6+O(z^7).
 $$
-Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^6$ gives the limit.
+Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^6$ gives the requested limit.
 
-Final Answer: $\boxed{-\frac{552011}{3810240}}$
-
----
+Final Answer: $\boxed{-\frac{132059}{2310000}}$
 
 ## Answer
 
-$-\frac{552011}{3810240}$
-
----
+$-\frac{132059}{2310000}$
 
 ## Classification
 
@@ -270,12 +268,10 @@ $-\frac{552011}{3810240}$
 
 **Answer Type:** Exact scalar
 
----
-
 ## Solution Concepts
 
-- nested implicit branches
-- exponential-logarithmic coordinates
-- series reversion
-- asymptotic composition
-- limits
+- degenerate implicit branches
+- signed fourth-root coordinates
+- inverse power series
+- nested series reversion
+- asymptotic limits
