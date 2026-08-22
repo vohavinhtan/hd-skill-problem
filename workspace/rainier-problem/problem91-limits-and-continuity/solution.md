@@ -1,379 +1,228 @@
 ## Steps
 
-Step 1: Undo the hidden change of generators
-
-Let
-$$
-C_Q:\quad X^n+Y^n+Z^n=0,
-\qquad
-n=Q-1.
-$$
-Since $Q\equiv19\pmod{36}$, write
-$$
-n=18M
-$$
-with $M$ odd.
+Step 1: Recover simpler generators
 
 Set
 $$
-S=X^{18}+Y^{18}+Z^{18},
-$$
-$$
-A=
-\frac{X^{18}Y^{18}+Y^{18}Z^{18}+Z^{18}X^{18}}{S^2},
-$$
-and
-$$
-B=\frac{(XYZ)^6}{S}.
-$$
-On the chart $Z=1$, the displayed generators satisfy
-$$
-u=A+2B^2
-$$
-and
-$$
-v=B+3u^2.
-$$
-Consequently
-$$
-B=v-3u^2,
-$$
-$$
-A=u-2(v-3u^2)^2.
-$$
-Thus
-$$
-K_Q=\mathbb F_Q(A,B).
-$$
-
-Define
-$$
-\alpha=\frac{X^{18}}S,
+p=x^{12},
 \qquad
-\beta=\frac{Y^{18}}S,
+q=\frac{y}{x^5}.
+$$
+The displayed functions satisfy
+$$
+u=\frac{p}{1+q},
 \qquad
-\gamma=\frac{Z^{18}}S.
+v=\frac{q}{1+p}.
 $$
-Then
+From these two equations,
 $$
-\alpha+\beta+\gamma=1,
-$$
-$$
-A=\alpha\beta+\beta\gamma+\gamma\alpha,
-$$
-and
-$$
-B^3=\alpha\beta\gamma.
-$$
-Hence $\alpha,\beta,\gamma$ are the roots of
-$$
-T^3-T^2+AT-B^3.
-$$
-
-Step 2: Recover the exact fixed field
-
-Choose a primitive eighteenth root $\xi\in\mathbb F_Q$. Let $D$ consist of the projective diagonal transformations
-$$
-[X:Y:Z]\longmapsto[\xi^aX:\xi^bY:\xi^cZ]
-$$
-for which
-$$
-a+b+c\equiv0\pmod3.
-$$
-Modulo simultaneous addition of the same residue to $a,b,c$, there are
-$$
-|D|=\frac{18^3}{3\cdot18}=108
-$$
-elements.
-
-Every coordinate permutation normalizes $D$. Therefore
-$$
-H=D\rtimes S_3
-$$
-has order
-$$
-|H|=648.
-$$
-The function $A$ is fixed by all projective diagonal transformations and by all coordinate permutations. Under a diagonal transformation,
-$$
-B\longmapsto\xi^{6(a+b+c)}B,
-$$
-so the defining congruence for $D$ makes $B$ fixed as well. Hence
-$$
-K_Q\subseteq L_Q^H.
-$$
-
-Conversely, $A$ and $B$ determine the unordered triple $\{\alpha,\beta,\gamma\}$, so there are at most six possible orderings. On $Z=1$,
-$$
-x^{18}=\frac{\alpha}{\gamma},
+p=u(1+q),
 \qquad
-y^{18}=\frac{\beta}{\gamma},
+q=v(1+p).
+$$
+Substituting the second equation into the first gives
+$$
+p(1-uv)=u(1+v),
+$$
+and substituting the first into the second gives
+$$
+q(1-uv)=v(1+u).
+$$
+Therefore
+$$
+p=\frac{u(1+v)}{1-uv},
 \qquad
-(xy)^6=\frac{B}{\gamma}.
+q=\frac{v(1+u)}{1-uv}.
 $$
-After an ordering is chosen, there are at most $18$ choices for $x$. Once $x$ is chosen,
+It follows that
 $$
-y^6=\frac{B}{\gamma x^6},
-$$
-so there are at most $6$ choices for $y$. Therefore
-$$
-[L_Q:K_Q]\leq6\cdot18\cdot6=648.
-$$
-Since $H$ already gives $648$ distinct $K_Q$-automorphisms,
-$$
-[L_Q:K_Q]=648
-$$
-and
-$$
-K_Q=L_Q^H.
+K_Q=\mathbb F_Q(p,q).
 $$
 
-Step 3: Count the diagonal fixed points
+Step 2: Identify the hidden fixed field
 
-The Fermat curve is smooth because the characteristic does not divide $n$. Thus
+Since $Q\equiv13\pmod{24}$, the field $\mathbb F_Q$ contains a primitive twelfth root $\eta$. Define
+$$
+\sigma(x)=\eta x,
+\qquad
+\sigma(y)=\eta^5y.
+$$
+Because $12\mid n=Q-1$, this preserves
+$$
+x^n+y^n+1=0.
+$$
+The automorphism $\sigma$ has order $12$. Both recovered generators are fixed:
+$$
+\sigma(p)=p,
+\qquad
+\sigma(q)=q.
+$$
+This gives
+$$
+K_Q\subseteq L_Q^{\langle\sigma\rangle}.
+$$
+
+Conversely, once $p$ and $q$ are known, $x$ satisfies
+$$
+x^{12}=p,
+$$
+and then
+$$
+y=qx^5.
+$$
+There are at most $12$ possibilities for $x$, so
+$$
+[L_Q:K_Q]\leq12.
+$$
+The powers of $\sigma$ give $12$ distinct $K_Q$-automorphisms of $L_Q$, which gives the reverse inequality. Therefore
+$$
+K_Q=L_Q^{\langle\sigma\rangle}.
+$$
+
+Step 3: Compute the quotient genus
+
+Let $C_Q$ be the smooth projective Fermat curve
+$$
+X^n+Y^n+Z^n=0.
+$$
+Its genus satisfies
 $$
 2g(C_Q)-2=n(n-3).
 $$
-Also the characteristic is neither $2$ nor $3$, so the action of $H$ is tame.
+The characteristic does not divide $12$, so the cyclic quotient is tame.
 
-Represent an element of $D$ by
+On projective coordinates,
 $$
-d_{r,s}[X:Y:Z]=[\xi^rX:\xi^sY:Z],
-\qquad
-r+s\equiv0\pmod3.
+\sigma^k[X:Y:Z]=[\eta^kX:\eta^{5k}Y:Z].
 $$
-A nonidentity diagonal element can fix a point of $C_Q$ only when two of
+For $1\leq k\leq11$, the first two eigenvalues are equal exactly when
 $$
-\xi^r,\qquad\xi^s,\qquad1
+4k\equiv0\pmod{12},
 $$
-are equal, since none of the three coordinate points lies on $C_Q$.
+so this occurs for
+$$
+k=3,6,9.
+$$
+Neither $\eta^k$ nor $\eta^{5k}$ equals $1$ for a nonzero residue $k$.
 
-If $r=0$, the congruence gives
-$$
-s\in\{3,6,9,12,15\},
-$$
-so there are five elements. The condition $s=0$ gives another five. If $r=s$, then $3\mid r$, giving five more.
+If $k\notin\{3,6,9\}$, all three eigenvalues are distinct. The only fixed projective points are the three coordinate points, none of which lies on $C_Q$.
 
-Each of these fifteen elements fixes one coordinate line, and every such line intersects $C_Q$ in exactly $n$ distinct points. Hence
+For $k=3,6,9$, the fixed locus consists of the line $Z=0$ and the point $[0:0:1]$. The point is not on $C_Q$, while
 $$
-R_D=15n.
+X^n+Y^n=0
 $$
-
-Step 4: Count the transposition and three-cycle fixed points
-
-Let $\tau$ exchange $X$ and $Y$. An element of $D\tau$ has the form
+has exactly $n$ distinct projective solutions on $Z=0$. The total fixed-point contribution is
 $$
-g_{r,s}[X:Y:Z]=[\xi^rY:\xi^sX:Z],
-\qquad
-r+s\equiv0\pmod3.
-$$
-Put
-$$
-k\equiv r+s\pmod{18}.
-$$
-Then
-$$
-k\in\{0,3,6,9,12,15\},
-$$
-and every such residue occurs for exactly $18$ pairs $(r,s)$.
-
-The eigenvalues on the $X,Y$ block satisfy
-$$
-\lambda^2=\xi^k.
-$$
-When $k=0$, the $1$-eigenspace together with the $Z$-axis is a projective line containing $n$ points of $C_Q$. The isolated $-1$ eigenline lies in $Z=0$ and does not lie on $C_Q$ because $n$ is even. Thus these elements contribute
-$$
-18n.
+R=3n.
 $$
 
-For $k\neq0$, possible fixed points lie on the two eigenlines in $Z=0$. On either eigenline,
+Riemann-Hurwitz gives
 $$
-\left(\frac YX\right)^n
-=
-\lambda^n
-=
-(\lambda^2)^{n/2}
-=
-\xi^{9Mk}
-=
-(-1)^k,
+n(n-3)=12\bigl(2g(K_Q)-2\bigr)+3n.
 $$
-because $M$ is odd. The Fermat equation on $Z=0$ requires this value to be $-1$. Hence precisely
+Solving,
 $$
-k=3,9,15
-$$
-contribute, with two fixed points for every element. One transposition coset therefore contributes
-$$
-18n+3\cdot18\cdot2=18n+108.
-$$
-There are three such cosets, so
-$$
-R_T=54n+324.
-$$
-
-Now let
-$$
-c[X:Y:Z]=[Y:Z:X].
-$$
-An element of $Dc$ has the form
-$$
-g[X:Y:Z]=[\xi^rY:\xi^sZ:X],
-\qquad
-r+s\equiv0\pmod3.
-$$
-At a fixed eigenline with eigenvalue $\lambda$,
-$$
-\lambda^3=\xi^{r+s}.
-$$
-All three coordinates are nonzero, and the eigenvector relations imply
-$$
-Y^n=\lambda^nX^n,
-\qquad
-Z^n=\lambda^{2n}X^n.
-$$
-Since $n=18M$,
-$$
-\lambda^n
-=
-(\lambda^3)^{n/3}
-=
-\xi^{6M(r+s)}
-=
-1,
-$$
-because $3\mid r+s$. Thus
-$$
-X^n=Y^n=Z^n.
-$$
-The Fermat equation would force
-$$
-3X^n=0,
-$$
-which is impossible. Hence neither $Dc$ nor $Dc^2$ contributes any fixed points.
-
-The total fixed-point contribution is therefore
-$$
-R=69n+324.
-$$
-
-Step 5: Derive the exact genus formula
-
-Tame Riemann-Hurwitz gives
-$$
-n(n-3)
-=
-648\bigl(2g(K_Q)-2\bigr)+69n+324.
-$$
-Thus
-$$
-648\bigl(2g(K_Q)-2\bigr)
-=
-n^2-72n-324.
-$$
-Therefore
-$$
-1296g(K_Q)
-=
-n^2-72n+972.
+24g(K_Q)=n^2-6n+24.
 $$
 Since $n=Q-1$,
 $$
-1296g(K_Q)
-=
-Q^2-74Q+1045
-=
-(Q-37)^2-324.
+24g(K_Q)=Q^2-8Q+31.
 $$
 
-Every odd power of an admissible $Q$ is again congruent to $19\pmod{36}$, so the same formula applies to $Q^3$ and $Q^9$.
+Step 4: Expand the linked genus ratios
 
-Step 6: Extract the surviving second-order coefficient
+Every odd power of $Q$ is again congruent to $13\pmod{24}$, so the genus formula from Step 3 applies to $Q^3,Q^9,Q^{27}$.
 
-Define
+Set
 $$
-F(q)=\sqrt{(q-37)^2-324}.
+F(T)=\sqrt{T^2-8T+31},
+\qquad
+f(T)=\frac{F(T)}T.
 $$
-The common factor $1/36$ in $\sqrt{g(K_q)}$ cancels from every ratio in the problem.
+The common factor $1/\sqrt{24}$ cancels from every ratio. Define
+$$
+A_0=\frac{F(Q^3)}{Q^2F(Q)},
+\qquad
+A_1=\frac{F(Q^9)}{Q^6F(Q^3)},
+\qquad
+A_2=\frac{F(Q^{27})}{Q^{18}F(Q^9)}.
+$$
+Then
+$$
+A_0=\frac{f(Q^3)}{f(Q)},
+\qquad
+A_1=\frac{f(Q^9)}{f(Q^3)},
+\qquad
+A_2=\frac{f(Q^{27})}{f(Q^9)}.
+$$
 
-For large $Q$,
-$$
-\frac{F(Q)}{Q}
-=
-\sqrt{1-\frac{74}{Q}+\frac{1045}{Q^2}}.
-$$
 Using
 $$
-\sqrt{1+z}
-=
-1+\frac z2-\frac{z^2}{8}+O(z^3),
+\sqrt{1+z}=1+\frac z2-\frac{z^2}{8}+\frac{z^3}{16}+O(z^4)
 $$
-we obtain
+with
 $$
-\frac{F(Q)}Q
-=
-1-\frac{37}{Q}-\frac{162}{Q^2}+O(Q^{-3}).
+z=-\frac8T+\frac{31}{T^2},
 $$
-Therefore
+gives
 $$
-\frac{Q}{F(Q)}
-=
-1+\frac{37}{Q}+\frac{1531}{Q^2}+O(Q^{-3}).
+f(T)=1-\frac4T+\frac{15}{2T^2}+\frac{30}{T^3}+O(T^{-4}).
 $$
-
-Also
+Multiplying this by
 $$
-\frac{F(Q^3)}{Q^3}
-=
-1-\frac{37}{Q^3}+O(Q^{-6}).
+1+\frac aT+\frac b{T^2}+\frac c{T^3}
 $$
-Hence
+and matching the coefficients through $T^{-3}$ yields
 $$
-\frac{\sqrt{g(K_{Q^3})}}
-{Q^2\sqrt{g(K_Q)}}
-=
-\frac{F(Q^3)}{Q^2F(Q)}
-=
-1+\frac{37}{Q}+\frac{1531}{Q^2}+O(Q^{-3}).
+\frac1{f(T)}=1+\frac4T+\frac{17}{2T^2}-\frac{26}{T^3}+O(T^{-4}).
 $$
-
-Similarly,
+Since
 $$
-\frac{\sqrt{g(K_{Q^9})}}
-{Q^6\sqrt{g(K_{Q^3})}}
-=
-1+\frac{37}{Q^3}+O(Q^{-6}),
+f(T^3)=1-\frac4{T^3}+O(T^{-6}),
 $$
-so
+we get
 $$
-Q^2\left(
-\frac{\sqrt{g(K_{Q^9})}}
-{Q^6\sqrt{g(K_{Q^3})}}-1
-\right)
-=
-\frac{37}{Q}+O(Q^{-4}).
+\frac{f(T^3)}{f(T)}=1+\frac4T+\frac{17}{2T^2}-\frac{30}{T^3}+O(T^{-4}).
 $$
-The two first-order terms cancel, leaving
+Applying this with $T=Q,Q^3,Q^9$ gives
 $$
-Q^2\left[
-\frac{\sqrt{g(K_{Q^3})}}
-{Q^2\sqrt{g(K_Q)}}-1
--
-Q^2\left(
-\frac{\sqrt{g(K_{Q^9})}}
-{Q^6\sqrt{g(K_{Q^3})}}-1
-\right)
-\right]
-=
-1531+O(Q^{-1}).
+A_0=1+\frac4Q+\frac{17}{2Q^2}-\frac{30}{Q^3}+O(Q^{-4}),
+$$
+$$
+A_1=1+\frac4{Q^3}+\frac{17}{2Q^6}-\frac{30}{Q^9}+O(Q^{-12}),
+$$
+and
+$$
+A_2=1+\frac4{Q^9}+\frac{17}{2Q^{18}}-\\frac{30}{Q^{27}}+O(Q^{-36}).
 $$
 
-Final Answer: $\boxed{1531}$
+Step 5: Evaluate the nested cancellation
+
+The first cancellation gives
+$$
+(A_0-1)-Q^2(A_1-1)=\frac{17}{2Q^2}-\frac{30}{Q^3}+O(Q^{-4}).
+$$
+The same calculation at the next scale gives
+$$
+(A_1-1)-Q^6(A_2-1)=\frac{17}{2Q^6}-\frac{30}{Q^9}+O(Q^{-12}).
+$$
+After multiplication by $Q^4$,
+$$
+Q^4\bigl((A_1-1)-Q^6(A_2-1)\bigr)=\frac{17}{2Q^2}+O(Q^{-5}).
+$$
+Subtracting leaves
+$$
+(A_0-1)-Q^2(A_1-1)-Q^4\bigl((A_1-1)-Q^6(A_2-1)\bigr)=-\frac{30}{Q^3}+O(Q^{-4}).
+$$
+Multiplication by $Q^3$ gives the required limit.
+
+Final Answer: $\boxed{-30}$
 
 ---
 
 ## Answer
 
-$1531$
+$-30$
 
 ---
 
@@ -388,7 +237,7 @@ $1531$
 ## Solution Concepts
 
 - invariant subfields
-- root-of-unity actions
+- cyclic group actions
 - projective fixed points
 - Riemann-Hurwitz formula
 - asymptotic cancellation

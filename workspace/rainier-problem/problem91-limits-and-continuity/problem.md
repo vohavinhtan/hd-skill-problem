@@ -4,7 +4,7 @@
 
 For each prime power $Q>37$ satisfying
 $$
-Q\equiv19\pmod{36},
+Q\equiv13\pmod{24},
 $$
 put
 $$
@@ -19,18 +19,10 @@ $$
 
 Inside $L_Q$, define
 $$
-u=
-\frac{x^{18}y^{18}+x^{18}+y^{18}+2x^{12}y^{12}}
-{(x^{18}+y^{18}+1)^2},
+u=\frac{x^{17}}{x^5+y},
 $$
 $$
-v=
-\frac{
-x^6y^6(x^{18}+y^{18}+1)^3
-+
-3(x^{18}y^{18}+x^{18}+y^{18}+2x^{12}y^{12})^2
-}
-{(x^{18}+y^{18}+1)^4},
+v=\frac{y}{x^5(1+x^{12})},
 $$
 and let
 $$
@@ -39,19 +31,10 @@ $$
 
 Determine the exact value of
 $$
-\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv19\pmod{36}}}
-Q^2\left[
-\frac{\sqrt{g(K_{Q^3})}}
-{Q^2\sqrt{g(K_Q)}}-1
--
-Q^2\left(
-\frac{\sqrt{g(K_{Q^9})}}
-{Q^6\sqrt{g(K_{Q^3})}}-1
-\right)
-\right].
+\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv13\pmod{24}}}Q^3\left[\left(\frac{\sqrt{g(K_{Q^3})}}{Q^2\sqrt{g(K_Q)}}-1-Q^2\left(\frac{\sqrt{g(K_{Q^9})}}{Q^6\sqrt{g(K_{Q^3})}}-1\right)\right)-Q^4\left(\frac{\sqrt{g(K_{Q^9})}}{Q^6\sqrt{g(K_{Q^3})}}-1-Q^6\left(\frac{\sqrt{g(K_{Q^{27}})}}{Q^{18}\sqrt{g(K_{Q^9})}}-1\right)\right)\right].
 $$
 
-The indexing set is unbounded; for example, $Q=19^{2k+1}$ is admissible for every $k\geq1$.
+The indexing set is unbounded; for example, $Q=13^{2k+1}$ is admissible for every $k\geq1$.
 
 ---
 
@@ -68,14 +51,14 @@ The indexing set is unbounded; for example, $Q=19^{2k+1}$ is admissible for ever
 
 ## Domain Explanation
 
-This problem involves an exact multiscale limit in which the first asymptotic correction cancels and a lower-order coefficient must be recovered,
+This problem involves an exact nested renormalized limit in which two successive lower-order asymptotic terms cancel,
 which are part of Calculus and Limits and continuity.
-The problem also involves algebraic function fields, hidden invariant generators, finite group actions, and ramification,
+The problem also involves algebraic function fields, hidden invariant subfields, finite cyclic actions, and ramification,
 which are part of Abstract Algebra and Computational algebra.
-However, those algebraic calculations determine the exact genus sequence entering the requested expression, while the final requested object is one exact scalar limit.
+However, the algebraic calculations determine the exact genus sequence entering the limit, while the requested object is one exact scalar limit.
 
 Specifically:
 
-- The displayed generators conceal two simpler invariants through a nonlinear change of coordinates.
-- Recovering the quotient degree requires retaining a root-of-unity phase that is lost by passing directly to eighteenth powers.
-- The three linked genus scales cancel the leading correction without printing the normalization constants that determine the answer.
+- The two rational generators conceal weighted monomial invariants rather than symmetric power sums.
+- Recovering the field requires identifying a cyclic action whose nonidentity elements have different projective fixed loci.
+- A second scale cancellation removes the first two accessible asymptotic coefficients, so the answer depends on the next term.
