@@ -33,8 +33,9 @@ $$
 \frac{4^m m}{\sqrt{2\pi}b_m}
 +\frac{m^2b_m}{4^m}\sqrt{\frac{\pi}{2}}
 \right)t^{3/2}
+-\frac{936209}{8192}m^2t^2
 }{
-t^2
+t^{5/2}
 }.
 $$
 
@@ -55,4 +56,4 @@ $$
 
 This problem involves a singular one-sided limit for a moment determinant whose weight concentrates at two endpoint minima and an asymmetric interior minimum, which are part of Calculus and Limits and continuity.
 The problem also involves Vandermonde determinants, competing local particle clusters, and Gaussian and Laguerre moment identities, which are part of Linear Algebra and Determinants.
-However, those determinant structures are used to derive the interacting integer and fractional asymptotic corrections required by the stated limit, so the limiting analysis is primary.
+However, those determinant structures determine several dependent fractional asymptotic layers before the requested limit can be evaluated, so the limiting analysis is primary.
