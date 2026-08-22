@@ -1,19 +1,22 @@
 ## Steps
 
-Step 1: Rank every cluster that can contribute through order $t^{5/2}$
+Step 1: Find the two dominant clusters and the first neighboring clusters
 
-Let
+Put
 $$
-\phi(x)=x(1-x)(3x-1)^2
+q=\sqrt t,
+\qquad
+\phi(x)=x(1-x)(3x-1)^2.
 $$
-and put $q=\sqrt t$. Andréief's identity gives
+Andreief's identity gives
 $$
 D_m(t)
 =
-\frac1{(4m)!}
-\int_{[0,1]^{4m}}
+\frac1{(4m+2)!}
+\int_{[0,1]^{4m+2}}
 \prod_{i<j}(x_i-x_j)^2
-\prod_{i=1}^{4m}e^{-\phi(x_i)/t}\,dx_i.
+\prod_i
+\left(1+q(3x_i-1)\right)e^{-\phi(x_i)/t}\,dx_i.
 $$
 The zeros of $\phi$ are $0,1/3,1$. Use
 $$
@@ -21,37 +24,62 @@ x=q^2u,\qquad
 x=\frac13+\frac q{\sqrt2}z,\qquad
 x=1-\frac{q^2}{4}v.
 $$
-If $k,l,r$ variables lie near these three points, the total power of $t$ is
+If $k,l,r$ variables occupy these three neighborhoods, respectively, then
 $$
-E(k,l,r)=k^2+\frac{l^2}{2}+r^2,
+k+l+r=4m+2
+$$
+and their contribution starts at
+$$
+t^{E(k,l,r)},
 \qquad
-k+l+r=4m.
+E(k,l,r)=k^2+\frac{l^2}{2}+r^2.
 $$
+
 Write
 $$
-k=m+a,\qquad r=m+c,\qquad l=2m-a-c.
+k=m+a,\qquad
+r=m+c,\qquad
+l=2m+2-a-c.
 $$
-Then
+Relative to
 $$
-E(k,l,r)-4m^2
+E_0=4m^2+4m+\frac32,
+$$
+we obtain
+$$
+E(k,l,r)-E_0
 =
-\frac{3a^2+2ac+3c^2}{2}.
+\frac32a^2+ac+\frac32c^2-2a-2c+\frac12.
 $$
-The minimum is attained only at $(a,c)=(0,0)$. The gap-$3/2$ pairs are
+After replacing $a,c$ by $a-1/2,c-1/2$, the quadratic part has eigenvalues $1$ and $2$. If the gap is at most $3/2$, then
 $$
-(1,0),\quad(-1,0),\quad(0,1),\quad(0,-1),
+\left(a-\frac12\right)^2+
+\left(c-\frac12\right)^2\leq2.
 $$
-and the gap-$2$ pairs are
+Since $a,c$ are integers, only $a,c\in\{0,1\}$ remain. Their gaps are
 $$
-(1,-1),\quad(-1,1).
+0\quad\text{for }(a,c)=(0,1),(1,0),
 $$
-There is no allocation at gap $5/2$.
+and
+$$
+\frac12\quad\text{for }(a,c)=(0,0),(1,1).
+$$
+Thus the two dominant allocations are
+$$
+(m,2m+1,m+1),
+\qquad
+(m+1,2m+1,m),
+$$
+and the only neighboring allocations relevant through $q^3=t^{3/2}$ are
+$$
+(m,2m+2,m),
+\qquad
+(m+1,2m,m+1).
+$$
 
-The dominant cluster can contribute at order $t^{5/2}$ only through its fifth local correction. The gap-$3/2$ clusters require their relative $t$ corrections, while the gap-$2$ clusters require relative $\sqrt t$ corrections.
+Step 2: Evaluate the four leading local constants
 
-Step 2: Record the four gap-$3/2$ leading constants
-
-Let
+Define
 $$
 L_n=\prod_{j=0}^{n-1}(j!)^2
 $$
@@ -60,7 +88,9 @@ $$
 G_n=
 \pi^{n/2}2^{-n(n-1)/2}\prod_{j=0}^{n-1}j!.
 $$
-For a cluster $(k,l,r)$, the local scaling and limiting cross distances give
+These follow from the factorial moment determinant for the Laguerre weight $e^{-u}$ and the monic Hermite norms for $e^{-z^2}$.
+
+For a cluster $(k,l,r)$, the right-endpoint scaling contributes $4^{-r^2}$, the center scaling contributes $2^{-l^2/2}$, and the limiting left-center and right-center squared distances are $1/9$ and $4/9$. Hence
 $$
 K_{k,l,r}
 =
@@ -69,98 +99,51 @@ K_{k,l,r}
 \left(\frac49\right)^{rl}
 L_kL_rG_l.
 $$
-At $(m,2m,m)$ this equals $C_m$.
 
-For the four gap-$3/2$ clusters, define
+For each dominant allocation,
 $$
-R_1=
-\frac{K_{m+1,2m-1,m}}{C_m},
-\qquad
-R_2=
-\frac{K_{m-1,2m+1,m}}{C_m},
-$$
-$$
-R_3=
-\frac{K_{m,2m-1,m+1}}{C_m},
-\qquad
-R_4=
-\frac{K_{m,2m+1,m-1}}{C_m}.
-$$
-Using
-$$
-\Gamma\left(m+\frac12\right)
+K_{m,2m+1,m+1}
 =
-\frac{b_m m!\sqrt{\pi}}{4^m},
+K_{m+1,2m+1,m}
+=
+\frac{C_m}{2}.
 $$
-the ratios simplify to
-$$
-R_1=
-\frac{9\,2^{2m-1/2}m}{\sqrt{\pi}b_m},
-$$
-$$
-R_2=
-9\,2^{-2m-1/2}\sqrt{\pi}m^2b_m,
-$$
-$$
-R_3=
-\frac{9\,2^{2m-9/2}m}{\sqrt{\pi}b_m},
-$$
-$$
-R_4=
-9\,2^{-2m-9/2}\sqrt{\pi}m^2b_m.
-$$
-Their sum is the coefficient of $t^{3/2}$ already subtracted in the problem.
+The equality follows directly from the displayed formula after interchanging the endpoint cluster sizes.
 
-Step 3: Derive the first correction for a general competing cluster
+Use
+$$
+\frac{L_{n+1}}{L_n}=(n!)^2,
+\qquad
+\frac{G_{n+1}}{G_n}
+=
+\sqrt{\pi}\,2^{-n}n!.
+$$
+Relative to either dominant constant,
+$$
+\frac{K_{m,2m+2,m}}{C_m/2}
+=
+\frac{9(2m+1)\sqrt{\pi}b_m}{2^{2m+5/2}}
+=
+r_m,
+$$
+and
+$$
+\frac{K_{m+1,2m,m+1}}{C_m/2}
+=
+\frac{9\,2^{2m-3/2}}{\sqrt{\pi}b_m}
+=
+s_m.
+$$
 
-For a cluster $(k,l,r)$, let
+Step 3: Derive the unperturbed local correction for an arbitrary cluster
+
+For a cluster $(k,l,r)$, write
 $$
 U_j=\sum_{i=1}^k u_i^j,\qquad
 V_j=\sum_{i=1}^r v_i^j,\qquad
 Z_j=\sum_{i=1}^l z_i^j.
 $$
-The phase expansions begin as
-$$
--\frac{\phi(q^2u)}{q^2}
-=
--u+7q^2u^2+O(q^4),
-$$
-$$
--\frac{\phi(1-q^2v/4)}{q^2}
-=
--v+q^2v^2+O(q^4),
-$$
-and
-$$
--\frac{\phi(1/3+qz/\sqrt2)}{q^2}
-=
--z^2-\frac{3q}{2\sqrt2}z^3+\frac94q^2z^4.
-$$
-
-For a left-center pair,
-$$
-2\log\left(1+\frac{3q}{\sqrt2}z-3q^2u\right)
-=
-3\sqrt2\,qz
-+q^2\left(-6u-\frac92z^2\right)
-+O(q^3).
-$$
-For a right-center pair,
-$$
-2\log\left(1-\frac{3q}{2\sqrt2}z-\frac38q^2v\right)
-=
--\frac{3q}{\sqrt2}z
-+q^2\left(-\frac34v-\frac98z^2\right)
-+O(q^3).
-$$
-For a left-right pair,
-$$
-2\log\left(1-q^2u-\frac14q^2v\right)
-=
-q^2\left(-2u-\frac12v\right)+O(q^4).
-$$
-
-Hence the logarithm of the relative local factor is
+After the leading local densities are removed, the logarithm of the part not containing $1+q(3x-1)$ begins as
 $$
 qA+q^2B+O(q^3),
 $$
@@ -181,38 +164,54 @@ $$
 +\frac94Z_4
 -\left(\frac{9k}{2}+\frac{9r}{8}\right)Z_2.
 $$
-The first relative $t=q^2$ coefficient is therefore
-$$
-\alpha(k,l,r)=\mathbb E[B]+\frac12\mathbb E[A^2].
-$$
 
-Step 4: Evaluate the four dependent correction coefficients
+For a size-$n$ Laguerre ensemble, integration by parts gives
+$$
+\mathbb E[p_qF]
+=
+\mathbb E\left[
+\sum_{j=0}^{q-1}p_jp_{q-1-j}F
++\sum_i u_i^q\frac{\partial F}{\partial u_i}
+\right].
+$$
+Taking $F=1$ gives
+$$
+\mathbb E[U_1]=k^2,\qquad
+\mathbb E[U_2]=2k^3,
+$$
+with the analogous formulas for $V_1,V_2$.
 
-For a size-$n$ Laguerre ensemble,
+For the Gaussian ensemble,
 $$
-\mathbb E\left[\sum u_i\right]=n^2,
-\qquad
-\mathbb E\left[\sum u_i^2\right]=2n^3.
+2\mathbb E[q_{j+1}F]
+=
+\mathbb E\left[
+\sum_{a=0}^{j-1}q_aq_{j-1-a}F
++\sum_i z_i^j\frac{\partial F}{\partial z_i}
+\right].
 $$
-For a size-$l$ Gaussian ensemble,
+The cases needed here give
 $$
 \mathbb E[Z_2]=\frac{l^2}{2},
 \qquad
-\mathbb E[Z_4]=\frac{l(2l^2+1)}4.
+\mathbb E[Z_4]=\frac{l(2l^2+1)}4,
 $$
-Gaussian integration by parts also gives
 $$
 \mathbb E[Z_1^2]=\frac l2,
-$$
-$$
+\qquad
 \mathbb E[Z_1Z_3]=\frac{3l^2}{4},
-$$
-$$
+\qquad
 \mathbb E[Z_3^2]=\frac{3l(4l^2+1)}8.
 $$
-Substituting these moments into Step 3 yields
+Therefore the expected relative $q^2$ coefficient without the new factor is
 $$
-\alpha(k,l,r)
+\mathcal Q(k,l,r)
+=
+\mathbb E[B]+\frac12\mathbb E[A^2],
+$$
+with
+$$
+\mathcal Q(k,l,r)
 =
 14k^3+2r^3-\frac32k^2l-2k^2r
 -\frac{45}{8}kl^2-\frac92klr-\frac12kr^2
@@ -222,72 +221,152 @@ $$
 +\frac{63}{32}l^3+\frac98l^2r+\frac38lr^2+\frac{99}{128}l.
 $$
 
-For the four gap-$3/2$ clusters this gives
+Step 4: Incorporate the perturbation and obtain the dependent $q^3$ coefficient
+
+At the three local scales,
 $$
-\alpha_1=
-\alpha(m+1,2m-1,m)
+\log\left(1+q(3q^2u-1)\right)
 =
-\frac{9710m+913}{128},
+-q-\frac12q^2+\left(3u-\frac13\right)q^3+O(q^4),
 $$
 $$
-\alpha_2=
-\alpha(m-1,2m+1,m)
+\log\left(1+\frac{3q^2}{\sqrt2}z\right)
 =
-\frac{9710m-913}{128},
+\frac{3q^2}{\sqrt2}z+O(q^4),
 $$
+and
 $$
-\alpha_3=
-\alpha(m,2m-1,m+1)
+\log\left(1+q\left(2-\frac34q^2v\right)\right)
 =
-\frac{1838m+1}{128},
+2q-2q^2+\left(\frac83-\frac34v\right)q^3+O(q^4).
 $$
+Set
 $$
-\alpha_4=
-\alpha(m,2m+1,m-1)
+h=-k+2r,
+\qquad
+d=-\frac k2-2r.
+$$
+The expected local expansion becomes
+$$
+1+hq+\alpha(k,l,r)q^2+\beta(k,l,r)q^3+O(q^4),
+$$
+where Step 3 gives
+$$
+\alpha(k,l,r)
 =
-\frac{1838m-1}{128}.
+\mathcal Q(k,l,r)+d+\frac{h^2}{2}.
 $$
 
-Every odd power of $q$ in the local expansion of the dominant cluster is an odd polynomial in the Gaussian variables, so its $q^5$ expectation vanishes. The same parity shows that the relative $q$ correction of each gap-$2$ cluster vanishes. Therefore the entire $t^{5/2}$ coefficient comes from the four products
+The unperturbed $q^3$ logarithmic term is odd in the Gaussian variables. Since $A$ is odd and $B$ is even, its integrated contribution
 $$
-R_1\alpha_1+R_2\alpha_2+R_3\alpha_3+R_4\alpha_4.
+\mathbb E\left[C+AB+\frac16A^3\right]
 $$
-
-Step 5: Simplify the surviving coefficient
-
-Using Step 2 and Step 4, the two terms containing $1/(\sqrt{2\pi}b_m)$ combine to
+vanishes. The new $q^3$ terms give
 $$
-\frac{9}{2048}
-\frac{4^m m(157198m+14609)}{\sqrt{2\pi}b_m}.
-$$
-The two terms containing $\sqrt{\pi/2}\,b_m$ combine to
-$$
-\frac{9}{2048}
-\frac{m^2b_m(157198m-14609)}{4^m}
-\sqrt{\frac{\pi}{2}}.
-$$
-Combining these over one denominator gives
-$$
-R_1\alpha_1+R_2\alpha_2+R_3\alpha_3+R_4\alpha_4
+\beta(k,l,r)
 =
-\frac{
-9m\left(
-16^m(157198m+14609)
-+\pi m b_m^2(157198m-14609)
-\right)
-}{
-2^{2m+11}\sqrt{2\pi}b_m
-}.
+3k^2-\frac k3+\frac{8r}{3}-\frac{3r^2}{4}
++h\mathcal Q(k,l,r)+hd+\frac{h^3}{6}
 $$
-The four terms subtracted in the problem remove all lower powers through $t^2$.
+$$
+\qquad
++\frac{9l}{4}
+\left(2k-r-\frac{3l}{4}\right).
+$$
+The last term comes from the product of the Gaussian-linear perturbation with $A$, because
+$$
+\frac3{\sqrt2}\mathbb E[AZ_1]
+=
+\frac{9l}{4}
+\left(2k-r-\frac{3l}{4}\right).
+$$
 
-Final Answer: $\boxed{\frac{9m(16^m(157198m+14609)+\pi mb_m^2(157198m-14609))}{2^{2m+11}\sqrt{2\pi}b_m}}$
+For the first dominant cluster,
+$$
+h=m+2,
+$$
+$$
+\alpha=
+\frac{64m^2+1966m+799}{128},
+$$
+$$
+\beta=
+\frac{64m^3+5514m^2+9521m+2994}{384}.
+$$
+For the second dominant cluster,
+$$
+h=m-1,
+$$
+$$
+\alpha=
+\frac{64m^2+1582m+1231}{128},
+$$
+$$
+\beta=
+\frac{64m^3+4938m^2+3491m-1461}{384}.
+$$
+For $(m,2m+2,m)$,
+$$
+h=m,
+\qquad
+\alpha=
+\frac{32m^2+1811m+1107}{64}.
+$$
+For $(m+1,2m,m+1)$,
+$$
+h=m+1,
+\qquad
+\alpha=
+\frac{32m^2+1875m+736}{64}.
+$$
+
+Step 5: Combine both dominant clusters with both neighboring clusters
+
+Divide by
+$$
+C_mt^{4m^2+4m+3/2}.
+$$
+Since the two dominant clusters each have leading weight $C_m/2$, while the neighboring leading weights are $r_mC_m/2$ and $s_mC_m/2$, Steps 2 and 4 give
+$$
+\frac{D_m(t)}{C_mt^{4m^2+4m+3/2}}
+=
+1+c_1q+c_2q^2+c_3q^3+o(q^3).
+$$
+The coefficient of $q$ is
+$$
+c_1
+=
+m+\frac12+\frac{r_m+s_m}{2}.
+$$
+The coefficient of $q^2$ is
+$$
+c_2
+=
+\frac{64m^2+1774m+1015}{128}
++\frac{mr_m+(m+1)s_m}{2}.
+$$
+At order $q^3$, both dominant $\beta$ terms and both neighboring $\alpha$ terms survive:
+$$
+c_3
+=
+\frac{128m^3+10452m^2+13012m+1533}{768}
+$$
+$$
+\qquad
++\frac{
+r_m(32m^2+1811m+1107)
++s_m(32m^2+1875m+736)
+}{128}.
+$$
+Since $q^3=t^{3/2}$, the two coefficients explicitly subtracted in the problem remove the $q$ and $q^2$ layers.
+
+Final Answer: $\boxed{\frac{128m^3+10452m^2+13012m+1533}{768}+\frac{r_m(32m^2+1811m+1107)+s_m(32m^2+1875m+736)}{128}}$
 
 ---
 
 ## Answer
 
-$\frac{9m(16^m(157198m+14609)+\pi mb_m^2(157198m-14609))}{2^{2m+11}\sqrt{2\pi}b_m}$
+$\frac{128m^3+10452m^2+13012m+1533}{768}+\frac{r_m(32m^2+1811m+1107)+s_m(32m^2+1875m+736)}{128}$
 
 ---
 
@@ -303,6 +382,6 @@ $\frac{9m(16^m(157198m+14609)+\pi mb_m^2(157198m-14609))}{2^{2m+11}\sqrt{2\pi}b_
 
 - competing Laplace clusters
 - Hankel determinant integrals
-- asymmetric saddle scaling
-- Gaussian moment recurrences
+- Gaussian and Laguerre moment recurrences
+- perturbative cluster coupling
 - fractional-order asymptotics
