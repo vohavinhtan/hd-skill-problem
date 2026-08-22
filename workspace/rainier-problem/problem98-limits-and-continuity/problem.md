@@ -1,40 +1,30 @@
-```markdown id="ql3x8e"
+```markdown id="n4j2sa"
 # Normalized Math Problem
 
 ## LaTeX (Normalized)
 
 Let
 $$
-R=\frac{\Gamma(\frac34)}{\Gamma(\frac14)},
-\qquad
-\psi(s)=\frac{\Gamma'(s)}{\Gamma(s)}.
+T(x)=x(1-x).
 $$
-For all sufficiently large positive integers $n$, let $\lambda_n$ be the smallest positive real number satisfying
+For each fixed $c\in(0,1)$ and all sufficiently large positive integers $n$, let $a_n(c)\in(0,\frac12)$ be the unique number satisfying
 $$
-\int_{-\infty}^{\infty}
-\left(
-n^2x^8-2nx^4+\frac3{16}
-\right)
+T^{\circ n}(a_n(c))=c\,a_n(c).
 $$
+Define
 $$
-\qquad\qquad
-\times
-\exp\!\left[
--nx^4\left(1-x^2\log(x^2)+x^4\right)
-+\lambda_n n^{1/2}x^2
-\right]\,dx=0,
-$$
-where $x^2\log(x^2)$ is interpreted as $0$ at $x=0$.
-
-Determine the exact value of
-$$
+L(c)=
 \lim_{n\to\infty}
-n^{1/4}\sqrt{\log n}
+n^2
 \left[
-\lambda_n
--3\sqrt{R}\,n^{-1/4}\sqrt{\log n}
-\right].
+\left(T^{\circ n}\right)'(a_n(c))
+-c^2
++\frac{c(1-c)^2}{n}
+\right],
 $$
+provided the limit exists.
+
+Determine the function $L:(0,1)\to\mathbb R$ explicitly.
 
 ---
 
@@ -44,11 +34,11 @@ $$
 |---|---|
 | **Domain** | Calculus |
 | **Sub-domain** | Limits and continuity |
-| **Problem Type** | Exact computation |
-| **Answer Type** | Exact scalar |
+| **Problem Type** | Symbolic derivation |
+| **Answer Type** | Function or mapping |
 
 ---
 
 ## Domain Explanation
 
-The requested object is a refined limit of an implicitly defined sequence whose leading scale contains both a fractional power of $n$ and a logarithmic factor, so Calculus and Limits and continuity is the best fit. The derivation also uses asymptotic integration and gamma-function moments, which relate to Integration, but those calculations serve the implicit limit rather than being the requested object.
+The requested object is a parameterized limit involving an implicitly selected initial point and the derivative of a long nonlinear iterate, so Calculus and Limits and continuity is the best fit. The derivation also uses recurrence asymptotics and Riemann-sum corrections, but these are intermediate tools for evaluating the limiting function.

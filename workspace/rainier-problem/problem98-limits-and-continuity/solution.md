@@ -1,298 +1,313 @@
-```markdown id="f0h5ni"
+```markdown id="py9gr6"
 ## Steps
 
-Step 1: Rescale the integral and isolate the logarithmic perturbation
+Step 1: Convert the nonlinear orbit to an additive recurrence
 
-Put
+Fix $c\in(0,1)$. For an orbit
 $$
-\varepsilon=n^{-1/4},
-\qquad
-\delta=\varepsilon^2=n^{-1/2},
-\qquad
-L=\log n,
-\qquad
-x=\varepsilon u.
+x_{k+1}=T(x_k)=x_k(1-x_k),
 $$
-Then
+put
 $$
-n^2x^8-2nx^4+\frac3{16}
+y_k=\frac{1-x_k}{x_k}=\frac1{x_k}-1.
+$$
+A direct calculation gives
+$$
+y_{k+1}
 =
-H(u),
+y_k+1+\frac1{y_k}.
 $$
-where
+
+If $x_0=a_n(c)$, the condition
 $$
-H(u)=u^8-2u^4+\frac3{16}.
+x_n=cx_0
 $$
-Also
+becomes
 $$
-x^2\log(x^2)
+y_n+1=\frac{y_0+1}{c}.
+$$
+Set
+$$
+\alpha=\frac{c}{1-c}.
+$$
+Since
+$$
+y_n-y_0
 =
-\delta u^2
+n+\sum_{k=0}^{n-1}\frac1{y_k},
+$$
+the orbit condition is equivalent to
+$$
+y_0+1
+=
+\alpha
 \left(
-\log(u^2)-\frac L2
+n+\sum_{k=0}^{n-1}\frac1{y_k}
 \right).
 $$
-Hence
-$$
-nx^4\left(1-x^2\log(x^2)+x^4\right)
-=
-u^4
-+\frac{\delta L}{2}u^6
--\delta u^6\log(u^2)
-+\delta^2u^8.
-$$
-After removing the positive Jacobian $\varepsilon$, the defining equation is
-$$
-F_n(\lambda_n)=0,
-$$
-where
-$$
-F_n(\lambda)=
-\int_{\mathbb R}
-H(u)e^{-u^4}
-\exp\!\left[
-\lambda u^2
--\frac{\delta L}{2}u^6
-+\delta u^6\log(u^2)
--\delta^2u^8
-\right]\,du.
-$$
 
-Step 2: Find the two cancellations hidden in the polynomial factor
+This equation also gives uniqueness. For fixed $y_0>1$, every $y_k$ is strictly increasing in $y_0$, so the sum of reciprocals is strictly decreasing in $y_0$, while the left side is strictly increasing. Existence for large $n$ follows from the corresponding continuous ratio
+$$
+\frac{T^{\circ n}(a)}a
+=
+\prod_{k=0}^{n-1}(1-x_k),
+$$
+which decreases from $1$ as $a\to0^+$ and is below $c$ at $a=1/2$ once $n$ is large.
 
-Let $\langle\cdot\rangle$ denote expectation under the probability density proportional to $e^{-u^4}$ on $\mathbb R$, and write
-$$
-m_j=\langle u^j\rangle
-$$
-for even $j$. Direct integration gives
-$$
-m_j=
-\frac{\Gamma(\frac{j+1}{4})}{\Gamma(\frac14)}.
-$$
-In particular,
-$$
-m_2=R,
-\qquad
-m_4=\frac14,
-\qquad
-m_6=\frac{3R}{4},
-$$
-$$
-m_8=\frac5{16},
-\qquad
-m_{10}=\frac{21R}{16},
-\qquad
-m_{12}=\frac{45}{64},
-\qquad
-m_{14}=\frac{231R}{64}.
-$$
+Step 2: Determine the first displacement of the implicit initial point
 
-For $H(u)=u^8-2u^4+3/16$,
+From the exact equation in Step 1,
 $$
-\langle H\rangle
-=
-\frac5{16}-\frac12+\frac3{16}
-=0,
+y_0=\alpha n+O(1).
 $$
-and
+The recurrence also gives, uniformly for $0\leq k\leq n$,
 $$
-\langle Hu^2\rangle
-=
-\frac{21R}{16}
--\frac{3R}{2}
-+\frac{3R}{16}
-=0.
+y_k=y_0+k+O(1).
 $$
-Thus both the constant term and the linear response to $\lambda$ vanish.
-
-The next two moments are
+Hence, with
 $$
-\langle Hu^4\rangle
-=
-\frac{45}{64}
--\frac{10}{16}
-+\frac3{64}
-=
-\frac18
-$$
-and
-$$
-\langle Hu^6\rangle
-=
-\frac{231R}{64}
--\frac{42R}{16}
-+\frac{9R}{64}
-=
-\frac{9R}{8}.
-$$
-
-Step 3: Determine the non-power leading scale of the positive root
-
-Suppose
-$$
-\lambda=O\left(\sqrt{\delta L}\right).
-$$
-Expanding the exponential in Step 1 and using the two cancellations from Step 2 gives
-$$
-\frac{F_n(\lambda)}
-{\int_{\mathbb R}e^{-u^4}\,du}
-=
-\frac{\lambda^2}{2}\langle Hu^4\rangle
--\frac{\delta L}{2}\langle Hu^6\rangle
-+\delta\langle Hu^6\log(u^2)\rangle
-+o(\delta).
-$$
-Indeed,
-$$
-\lambda^3=O(\delta^{3/2}L^{3/2})=o(\delta),
-$$
-and
-$$
-\lambda\delta L
-=
-O(\delta^{3/2}L^{3/2})
-=
-o(\delta),
-$$
-so all omitted mixed and cubic terms are smaller than the order needed.
-
-Ignoring the order-$\delta$ term first,
-$$
-F_n(\lambda)
-=
-\frac{\int e^{-u^4}\,du}{16}
-\left(
-\lambda^2-9R\delta L
-\right)
-+o(\delta L).
-$$
-For every fixed $c>0$,
-$$
-\frac{F_n(c\sqrt{\delta L})}
-{\delta L\int e^{-u^4}\,du}
-\longrightarrow
-\frac{c^2-9R}{16}.
-$$
-The expression is negative when $c<3\sqrt R$ and positive when $c>3\sqrt R$. The same estimate is uniform on compact $c$-intervals below $3\sqrt R$, so there is no smaller positive zero on that scale. Consequently the smallest positive zero satisfies
-$$
-\lambda_n
-\sim
-3\sqrt R\,\sqrt{\delta L}.
-$$
-
-Step 4: Evaluate the logarithmic moment that controls the correction
-
-For even $j$,
-$$
-\left\langle
-u^j\log(u^2)
-\right\rangle
-=
-\frac12m_j
-\psi\!\left(\frac{j+1}{4}\right).
-$$
-Therefore
-$$
-\langle Hu^6\log(u^2)\rangle
-=
-\frac12
-\left[
-m_{14}\psi\!\left(\frac{15}{4}\right)
--2m_{10}\psi\!\left(\frac{11}{4}\right)
-+\frac3{16}m_6\psi\!\left(\frac74\right)
-\right].
-$$
-Using
-$$
-\psi(z+1)=\psi(z)+\frac1z,
+t_k=\frac{k}{n},
 $$
 we have
 $$
-\psi\!\left(\frac74\right)
-=
-\psi\!\left(\frac34\right)+\frac43,
+\frac{y_k}{n}\to\alpha+t_k
 $$
+uniformly.
+
+The reciprocal sum in Step 1 is therefore a Riemann sum:
 $$
-\psi\!\left(\frac{11}{4}\right)
+\sum_{k=0}^{n-1}\frac1{y_k}
+\to
+\int_0^1\frac{dt}{\alpha+t}
 =
-\psi\!\left(\frac34\right)+\frac{40}{21},
+\log\frac{\alpha+1}{\alpha}.
+$$
+Since
+$$
+\frac{\alpha+1}{\alpha}=\frac1c,
+$$
+put
+$$
+\ell=\log\frac1c.
+$$
+The exact orbit condition now gives
+$$
+y_0
+=
+\alpha n+\alpha\ell-1+o(1).
+$$
+
+For a partial orbit,
+$$
+y_k
+=
+y_0+k+\sum_{j=0}^{k-1}\frac1{y_j}.
+$$
+The same uniform Riemann-sum argument gives
+$$
+\sum_{j=0}^{k-1}\frac1{y_j}
+=
+\log\frac{\alpha+t_k}{\alpha}+o(1).
+$$
+Thus, uniformly in $k$,
+$$
+y_k
+=
+n(\alpha+t_k)+q(t_k)+o(1),
+$$
+where
+$$
+q(t)=
+\alpha\ell-1+\log\frac{\alpha+t}{\alpha}.
+$$
+
+Step 3: Express the derivative as a product along the transformed orbit
+
+Differentiate
+$$
+y_{k+1}=y_k+1+\frac1{y_k}
+$$
+with respect to $y_0$. If
+$$
+p_k=\frac{\partial y_k}{\partial y_0},
+$$
+then
+$$
+p_0=1
 $$
 and
 $$
-\psi\!\left(\frac{15}{4}\right)
+p_{k+1}
 =
-\psi\!\left(\frac34\right)+\frac{524}{231}.
-$$
-Substitution of the moments from Step 2 gives
-$$
-\langle Hu^6\log(u^2)\rangle
-=
-\frac{9R}{16}
+p_k
 \left(
-\psi\!\left(\frac34\right)+3
+1-\frac1{y_k^2}
+\right).
+$$
+Therefore
+$$
+p_n=
+\prod_{k=0}^{n-1}
+\left(
+1-\frac1{y_k^2}
 \right).
 $$
 
-Step 5: Extract the second term of the implicit root
+Since
+$$
+x=\frac1{y+1},
+$$
+we have
+$$
+\frac{dy_0}{dx_0}=-\frac1{x_0^2},
+\qquad
+\frac{dx_n}{dy_n}=-x_n^2.
+$$
+It follows that
+$$
+\left(T^{\circ n}\right)'(a_n(c))
+=
+\frac{x_n^2}{x_0^2}p_n.
+$$
+Because $x_n=cx_0$,
+$$
+\left(T^{\circ n}\right)'(a_n(c))
+=
+c^2p_n.
+$$
 
-Steps 2 and 4 turn the expansion of $F_n$ into
+Step 4: Evaluate the product through order $n^{-2}$
+
+From Step 2,
 $$
-\frac{F_n(\lambda)}
-{\int_{\mathbb R}e^{-u^4}\,du}
+\frac1{y_k^2}
 =
-\frac{\lambda^2}{16}
--\frac{9R}{16}\delta L
-+\frac{9R}{16}
-\left(
-\psi\!\left(\frac34\right)+3
-\right)\delta
-+o(\delta).
+\frac1{n^2(\alpha+t_k)^2}
+-
+\frac{2q(t_k)}{n^3(\alpha+t_k)^3}
++o(n^{-3})
 $$
-At $\lambda=\lambda_n$ this equals zero, so
+uniformly.
+
+Summing the first term and using the endpoint correction for the left Riemann sum,
 $$
-\lambda_n^2
+\frac1{n^2}
+\sum_{k=0}^{n-1}
+\frac1{(\alpha+t_k)^2}
 =
-9R\delta
-\left[
-L-\psi\!\left(\frac34\right)-3
-\right]
-+o(\delta).
-$$
-Since $\lambda_n>0$,
-$$
-\lambda_n
-=
-3\sqrt R\,\sqrt\delta\,\sqrt L
-\left[
-1-
-\frac{\psi(\frac34)+3}{2L}
-+o\left(\frac1L\right)
-\right].
-$$
-As $\sqrt\delta=n^{-1/4}$,
-$$
-\lambda_n
-=
-3\sqrt R\,n^{-1/4}\sqrt{\log n}
--\frac32\sqrt R
-\left(
-\psi\!\left(\frac34\right)+3
-\right)
-\frac{n^{-1/4}}{\sqrt{\log n}}
+\frac1n
+\int_0^1\frac{dt}{(\alpha+t)^2}
 +
-o\left(
-\frac{n^{-1/4}}{\sqrt{\log n}}
+\frac1{2n^2}
+\left(
+\frac1{\alpha^2}
+-\frac1{(\alpha+1)^2}
+\right)
++o(n^{-2}).
+$$
+The integral is
+$$
+\int_0^1\frac{dt}{(\alpha+t)^2}
+=
+\frac1{\alpha(\alpha+1)}.
+$$
+
+For the second term,
+$$
+-\frac2{n^3}
+\sum_{k=0}^{n-1}
+\frac{q(t_k)}{(\alpha+t_k)^3}
+=
+-\frac2{n^2}
+\int_0^1
+\frac{q(t)}{(\alpha+t)^3}\,dt
++o(n^{-2}).
+$$
+Writing $s=\alpha+t$,
+$$
+\int
+\frac{\alpha\ell-1+\log(s/\alpha)}{s^3}\,ds
+=
+-\frac{
+2\alpha\ell-1+2\log(s/\alpha)
+}{4s^2}.
+$$
+Evaluating between $\alpha$ and $\alpha+1$, then using
+$$
+\alpha=\frac{c}{1-c},
+\qquad
+\ell=-\log c,
+$$
+gives
+$$
+\sum_{k=0}^{n-1}\frac1{y_k^2}
+=
+\frac{(1-c)^2}{c}\frac1n
++
+\frac{(1-c)^2(1-c^2+c\log c)}{c^2}\frac1{n^2}
++o(n^{-2}).
+$$
+
+Also $y_k\asymp n$, so
+$$
+\sum_{k=0}^{n-1}\frac1{y_k^4}=O(n^{-3}).
+$$
+Hence
+$$
+\log p_n
+=
+-\sum_{k=0}^{n-1}\frac1{y_k^2}
++O(n^{-3}).
+$$
+Exponentiating,
+$$
+p_n
+=
+1-\frac{(1-c)^2}{c}\frac1n
++
+\frac1{n^2}
+\left[
+\frac{(1-c)^4}{2c^2}
+-
+\frac{(1-c)^2(1-c^2+c\log c)}{c^2}
+\right]
++o(n^{-2}).
+$$
+
+Step 5: Recover the requested limiting function
+
+Step 3 gives
+$$
+\left(T^{\circ n}\right)'(a_n(c))
+=
+c^2
+-\frac{c(1-c)^2}{n}
+$$
+$$
+\qquad
++
+\frac{(1-c)^2}{2n^2}
+\left(
+3c^2-2c-1-2c\log c
+\right)
++o(n^{-2}).
+$$
+After subtracting the first two displayed terms in the definition of $L(c)$ and multiplying by $n^2$, the remaining coefficient is
+$$
+L(c)=
+\frac{(1-c)^2}{2}
+\left(
+3c^2-2c-1-2c\log c
 \right).
 $$
-Multiplication by $n^{1/4}\sqrt{\log n}$ gives the requested limit.
 
-Final Answer: $\boxed{-\frac{3}{2}\sqrt{R}\left(\psi(\frac34)+3\right)}$
+Final Answer: $\boxed{c\mapsto\frac{(1-c)^2}{2}(3c^2-2c-1-2c\log c)}$
 
 ---
 
 ## Answer
 
-$-\frac{3}{2}\sqrt{R}\left(\psi(\frac34)+3\right)$
+$c\mapsto\frac{(1-c)^2}{2}(3c^2-2c-1-2c\log c)$
 
 ---
 
@@ -302,16 +317,16 @@ $-\frac{3}{2}\sqrt{R}\left(\psi(\frac34)+3\right)$
 
 **Sub-domain:** Limits and continuity
 
-**Problem Type:** Exact computation
+**Problem Type:** Symbolic derivation
 
-**Answer Type:** Exact scalar
+**Answer Type:** Function or mapping
 
 ---
 
 ## Solution Concepts
 
-- logarithmic asymptotic scales
-- degenerate implicit roots
-- gamma-function moments
-- moment cancellation
-- digamma-function moments
+- nonlinear iteration
+- reciprocal conjugacy
+- variational recurrence
+- Riemann-sum correction
+- asymptotic products
