@@ -1,34 +1,51 @@
 ## Steps
 
-Step 1: Expand the two endpoint contributions
+Step 1: Prove uniqueness of the tuning parameter and identify its scale
 
 Put
 $$
+\phi(x)=x^4(1-x)^2,
+\qquad
+\psi(x)=x^4(5-4x).
+$$
+On $[0,1]$,
+$$
+\psi'(x)=20x^3(1-x)\geq0.
+$$
+For fixed $n$, define
+$$
+F_n(\lambda)=
+\frac{
+\int_0^1(2x-1)e^{-n\phi(x)+\lambda\psi(x)}\,dx
+}{
+\int_0^1e^{-n\phi(x)+\lambda\psi(x)}\,dx
+}.
+$$
+Differentiating with respect to $\lambda$ expresses $F_n'(\lambda)$ as the covariance of the two strictly increasing functions $2x-1$ and $\psi(x)$ under a positive density. Therefore
+$$
+F_n'(\lambda)>0.
+$$
+As $\lambda\to-\infty$, the density concentrates near $x=0$, so $F_n(\lambda)\to-1$. As $\lambda\to+\infty$, it concentrates near $x=1$, so $F_n(\lambda)\to1$. This proves existence and uniqueness of $\lambda_n$.
+
+Set
+$$
 s=n^{-1/4}.
 $$
-The phase
+The phase has a quartic zero at $0$ and a quadratic zero at $1$. The left contribution is therefore of size $s$, while the right contribution before tilting is of size $s^2$. The centering condition requires these masses to balance, so
 $$
-\phi(x)=x^4(1-x)^2
+e^{\lambda_n}s^2\asymp s.
 $$
-vanishes only at $0$ and $1$. Near $0$ the natural scale is $x=O(s)$, while near $1$ it is $1-x=O(s^2)$. The contribution from a fixed closed subinterval of $(0,1)$ is exponentially small.
+Consequently
+$$
+\lambda_n=-\log s+O(1).
+$$
+Define
+$$
+q_n=se^{\lambda_n}.
+$$
 
-At $0$, set
-$$
-x=su.
-$$
-Then
-$$
-n\phi(x)=u^4(1-su)^2
-$$
-and
-$$
-e^{-n\phi(x)}
-=
-e^{-u^4}
-\left[
-1+2su^5+s^2(2u^{10}-u^6)+O(s^3)
-\right].
-$$
+Step 2: Expand the two boundary layers
+
 For
 $$
 A_m=\int_0^\infty u^me^{-u^4}\,du,
@@ -37,21 +54,30 @@ the substitution $v=u^4$ gives
 $$
 A_m=\frac14\Gamma\!\left(\frac{m+1}{4}\right).
 $$
-Thus the left-end contribution is
+Near $0$, put $x=su$. Since
 $$
-I_k^{(0)}
+n\phi(x)=u^4(1-su)^2,
+$$
+we have
+$$
+e^{-n\phi(x)}
 =
-s^{k+1}
+e^{-u^4}
 \left[
-A_k+2sA_{k+5}
-+s^2(2A_{k+10}-A_{k+6})
-+O(s^3)
+1+2su^5+s^2(2u^{10}-u^6)
++s^3\left(\frac43u^{15}-2u^{11}\right)
++O(s^4)
 \right].
 $$
-
-At $1$, set
+Also
 $$
-1-x=s^2v.
+\lambda_n\psi(su)=O(s^4|\log s|)
+$$
+on the local scale, so the tilt does not affect the coefficients through order $s^3$.
+
+Near $1$, put
+$$
+x=1-s^2v.
 $$
 Then
 $$
@@ -59,284 +85,252 @@ n\phi(x)=v^2(1-s^2v)^4
 $$
 and
 $$
-x^ke^{-n\phi(x)}
-=
-e^{-v^2}
-\left[
-1+s^2(4v^3-kv)+O(s^4)
-\right].
-$$
-Hence
-$$
-I_k^{(1)}
-=
-s^2
-\left[
-\frac{\sqrt\pi}{2}
-+s^2\left(2-\frac{k}{2}\right)
-+O(s^4)
-\right].
-$$
-
-Step 2: Derive the first three coefficients of $H_n$
-
-Write
-$$
-R=\Gamma\!\left(\frac34\right).
-$$
-Combining the endpoint expansions from Step 1 gives
-$$
-I_0=
-\frac{G}{4}s
-+\frac{3\sqrt\pi}{4}s^2
-+\frac{15R}{32}s^3
-+O(s^4),
-$$
-$$
-I_2=
-\frac{\sqrt\pi}{2}s^2
-+\frac{R}{4}s^3
-+\frac32s^4
-+\frac{35G}{128}s^5
-+O(s^6),
-$$
-$$
-I_3=
-\frac{\sqrt\pi}{2}s^2
-+\frac34s^4
-+\frac{5G}{32}s^5
-+O(s^6),
-$$
-and
-$$
-I_4=
-\frac{\sqrt\pi}{2}s^2
-+\frac{G}{16}s^5
-+O(s^6).
-$$
-
-Put
-$$
-N_n=I_2I_4-I_3^2.
-$$
-The $s^4$ terms cancel. At order $s^5$ the coefficient is
-$$
-\frac{\sqrt\pi R}{8}.
-$$
-At order $s^6$,
-$$
-\frac{\sqrt\pi}{2}\frac32
--2\frac{\sqrt\pi}{2}\frac34=0.
-$$
-At order $s^7$,
-$$
-\frac{\sqrt\pi}{2}
-\left(
-\frac{35G}{128}+\frac{G}{16}
-\right)
--
-2\frac{\sqrt\pi}{2}\frac{5G}{32}
-=
-\frac{3\sqrt\pi G}{256}.
+\psi(1-s^2v)=1-10s^4v^2+O(s^6).
 $$
 Therefore
 $$
-N_n=
-\frac{\sqrt\pi R}{8}s^5
-+\frac{3\sqrt\pi G}{256}s^7
-+O(s^8).
-$$
-
-Also
-$$
-I_0^2=
-\frac{G^2}{16}s^2
+x^ke^{-n\phi(x)+\lambda_n\psi(x)}
+=
+e^{\lambda_n}e^{-v^2}
 \left[
-1+\frac{6\sqrt\pi}{G}s
-+\left(
-\frac{9\pi}{G^2}
-+\frac{15R}{4G}
-\right)s^2
-+O(s^3)
+1+s^2(4v^3-kv)+O(s^4|\log s|)
 \right].
 $$
-Division gives
+Writing
 $$
-H_n=C_0s^3+C_1s^4+C_2s^5+O(s^6),
+B_0=\frac{\sqrt\pi}{2},
+\qquad
+B_{1,k}=2-\frac{k}{2},
 $$
-where
+the right endpoint contributes
 $$
-C_0=\frac{2\sqrt\pi R}{G^2},
+sq_n\left[B_0+s^2B_{1,k}+O(s^4|\log s|)\right].
+$$
+
+The left coefficients needed below are
+$$
+A_0=\frac G4,
+\qquad
+A_1=\frac{\sqrt\pi}{4},
+\qquad
+A_2=\frac14\Gamma\!\left(\frac34\right),
 $$
 $$
-C_1=-\frac{12\pi R}{G^3},
+A_5=\frac{\sqrt\pi}{8},
+\qquad
+A_6=\frac{3}{16}\Gamma\!\left(\frac34\right),
+\qquad
+A_7=\frac14,
 $$
-and
 $$
-C_2=
-\frac{3\sqrt\pi}{16G}
-+
-\frac{2\sqrt\pi R}{G^2}
-\left(
-\frac{27\pi}{G^2}
--\frac{15R}{4G}
-\right).
+2A_{10}-A_6=\frac{15}{32}\Gamma\!\left(\frac34\right),
 $$
-Using
 $$
-GR=\pi\sqrt2,
+2A_{11}-A_7=\frac34,
+\qquad
+\frac43A_{15}-2A_{11}=1.
+$$
+
+Step 3: Use the centering condition to determine the hidden mass ratio
+
+Let
+$$
+J_k=
+\int_0^1
+x^k e^{-n\phi(x)+\lambda_n\psi(x)}\,dx.
+$$
+The defining condition for $\lambda_n$ is
+$$
+2J_1-J_0=0.
+$$
+Write
+$$
+R=\Gamma\!\left(\frac34\right)
+$$
+and seek
+$$
+q_n=q_0+q_1s+q_2s^2+q_3s^3+O(s^4|\log s|).
+$$
+Using Step 2 and dividing $2J_1-J_0$ by $s$, the constant term is
+$$
+q_0B_0-A_0,
+$$
+so
+$$
+q_0=\frac{G}{2\sqrt\pi}.
+$$
+The coefficient of $s$ is
+$$
+q_1B_0+2A_1-2A_5,
+$$
+which gives
+$$
+q_1=-\frac12.
+$$
+At order $s^2$,
+$$
+q_2B_0
++4A_6-(2A_{10}-A_6)
++q_0(2B_{1,1}-B_{1,0})=0.
+$$
+Since
+$$
+2B_{1,1}-B_{1,0}=1,
 $$
 we obtain
 $$
-C_0=\frac{2\sqrt2\,\pi^{3/2}}{G^3},
+q_2=
+-\frac{9R}{16\sqrt\pi}
+-\frac{G}{\pi}.
 $$
+At order $s^3$, the non-$q_3$ terms are
 $$
-C_1=-\frac{12\sqrt2\,\pi^2}{G^4},
-$$
-and
-$$
-C_2=
-\frac{3\sqrt\pi\left[G^4+(288\sqrt2-80)\pi^2\right]}
-{16G^5}.
-$$
-
-Step 3: Resolve the first dilation cancellation
-
-Since multiplication of $n$ by $16$ replaces $s$ by $s/2$,
-$$
-H_{16n}
+2(2A_{11}-A_7)
+-\left(\frac43A_{15}-2A_{11}\right)
++q_1
 =
-C_0\left(\frac{s}{2}\right)^3
-+C_1\left(\frac{s}{2}\right)^4
-+C_2\left(\frac{s}{2}\right)^5
-+O(s^6),
-$$
-and
-$$
-H_{256n}
-=
-C_0\left(\frac{s}{4}\right)^3
-+C_1\left(\frac{s}{4}\right)^4
-+C_2\left(\frac{s}{4}\right)^5
-+O(s^6).
-$$
-
-In
-$$
-K_n=H_nH_{256n}-H_{16n}^2,
-$$
-the $C_0^2s^6$ terms cancel.
-
-At order $s^7$, the coefficient is
-$$
-C_0C_1
-\left(
-4^{-4}+4^{-3}-2\cdot2^{-7}
-\right)
-=
-\frac{C_0C_1}{2^8}.
-$$
-At order $s^8$, the $C_1^2$ terms cancel because
-$$
-4^{-4}=2^{-8},
-$$
-while the $C_0C_2$ contribution is
-$$
-C_0C_2
-\left(
-4^{-5}+4^{-3}-2\cdot2^{-8}
-\right)
-=
-\frac{9C_0C_2}{2^{10}}.
-$$
-Consequently
-$$
-K_n=As^7+Bs^8+O(s^9),
-$$
-with
-$$
-A=\frac{C_0C_1}{2^8}
-=
--\frac{3\pi^{7/2}}{16G^7},
-$$
-and
-$$
-B=\frac{9C_0C_2}{2^{10}}
-=
-\frac{27\sqrt2\,\pi^2
-\left[G^4+(288\sqrt2-80)\pi^2\right]}
-{2^{13}G^8}.
-$$
-
-Step 4: Resolve the second dilation cancellation
-
-The expansion from Step 3 gives
-$$
-K_{16n}
-=
-A\left(\frac{s}{2}\right)^7
-+B\left(\frac{s}{2}\right)^8
-+O(s^9),
-$$
-and
-$$
-K_{256n}
-=
-A\left(\frac{s}{4}\right)^7
-+B\left(\frac{s}{4}\right)^8
-+O(s^9).
-$$
-The order-$s^{14}$ terms in
-$$
-K_nK_{256n}-K_{16n}^2
-$$
-cancel because
-$$
-4^{-7}=2^{-14}.
-$$
-The order-$s^{15}$ coefficient is
-$$
-AB
-\left(
-4^{-8}+4^{-7}-2\cdot2^{-15}
-\right)
-=
-\frac{AB}{2^{16}}.
+\frac32-1-\frac12=0.
 $$
 Therefore
 $$
-K_nK_{256n}-K_{16n}^2
+q_3=0.
+$$
+
+Step 4: Expand the normalization and the second moment
+
+The expansions from Steps 2 and 3 give
+$$
+J_0
 =
-\frac{AB}{2^{16}}s^{15}
-+O(s^{16}).
+s\left[
+D_0+D_2s^2+O(s^4|\log s|)
+\right],
+$$
+where
+$$
+D_0=\frac G2
+$$
+and
+$$
+D_2=
+\frac{3R}{16}
++\frac{G}{2\sqrt\pi}.
+$$
+The order-$s$ and order-$s^3$ coefficients vanish because
+$$
+q_1B_0+2A_5=0
+$$
+and
+$$
+q_3B_0+1+2q_1=0.
 $$
 
-Step 5: Evaluate the limit
-
-Since
+For $J_2$,
 $$
-s^{15}=n^{-15/4},
-$$
-the requested limit equals
-$$
-\frac{AB}{2^{16}}.
-$$
-Using the values of $A$ and $B$ from Step 3,
-$$
-\frac{AB}{2^{16}}
+J_2
 =
--\frac{
-81\sqrt2\,\pi^{11/2}
-\left[G^4+(288\sqrt2-80)\pi^2\right]
-}
-{2^{33}G^{15}}.
+s\left[
+N_0+N_1s+N_2s^2+O(s^4|\log s|)
+\right],
+$$
+with
+$$
+N_0=\frac G4,
+\qquad
+N_1=-\frac{\sqrt\pi}{4}.
+$$
+At order $s^2$,
+$$
+N_2=q_2B_0+A_2+q_0B_{1,2}.
+$$
+Since $B_{1,2}=1$, substitution of $q_2$ gives
+$$
+N_2=-\frac{R}{32}.
+$$
+The coefficient of $s^3$ vanishes:
+$$
+q_3B_0+2A_7+q_1B_{1,2}=0.
 $$
 
-Final Answer: $\boxed{-\frac{81\sqrt2\pi^{11/2}(G^4+(288\sqrt2-80)\pi^2)}{2^{33}G^{15}}}$
+The centering condition gives
+$$
+\frac{J_1}{J_0}=\frac12.
+$$
+Therefore
+$$
+V_n=\frac{J_2}{J_0}-\frac14,
+$$
+so
+$$
+\frac14-V_n=\frac12-\frac{J_2}{J_0}.
+$$
+
+Step 5: Divide the coupled expansions and evaluate the limit
+
+Using the forms from Step 4,
+$$
+\frac{J_2}{J_0}
+=
+\frac{N_0+N_1s+N_2s^2+O(s^4|\log s|)}
+{D_0+D_2s^2+O(s^4|\log s|)}.
+$$
+Since $N_0/D_0=1/2$,
+$$
+\frac14-V_n
+=
+-\frac{N_1}{D_0}s
+-\left(
+\frac{N_2}{D_0}
+-\frac{N_0D_2}{D_0^2}
+\right)s^2
++\frac{N_1D_2}{D_0^2}s^3
++O(s^4|\log s|).
+$$
+Substituting the coefficients gives
+$$
+\frac14-V_n
+=
+\frac{\sqrt\pi}{2G}s
++\left(
+\frac{1}{2\sqrt\pi}
++\frac{R}{4G}
+\right)s^2
+-\left(
+\frac{1}{2G}
++\frac{3\sqrt\pi R}{16G^2}
+\right)s^3
++O(s^4|\log s|).
+$$
+The reflection identity
+$$
+GR=\pi\sqrt2
+$$
+turns this into
+$$
+\frac14-V_n
+=
+\frac{\sqrt\pi}{2G}s
++\left(
+\frac{1}{2\sqrt\pi}
++\frac{\sqrt2\,\pi}{4G^2}
+\right)s^2
+-\left(
+\frac{1}{2G}
++\frac{3\sqrt2\,\pi^{3/2}}{16G^3}
+\right)s^3
++O(s^4|\log s|).
+$$
+Since $s=n^{-1/4}$, the normalization in the problem removes the first two terms and multiplication by $n^{3/4}=s^{-3}$ leaves the third coefficient.
+
+Final Answer: $\boxed{-\frac{1}{2G}-\frac{3\sqrt2\,\pi^{3/2}}{16G^3}}$
+
+---
 
 ## Answer
 
-$-\frac{81\sqrt2\pi^{11/2}(G^4+(288\sqrt2-80)\pi^2)}{2^{33}G^{15}}$
+$-\frac{1}{2G}-\frac{3\sqrt2\,\pi^{3/2}}{16G^3}$
+
+---
 
 ## Classification
 
@@ -348,10 +342,12 @@ $-\frac{81\sqrt2\pi^{11/2}(G^4+(288\sqrt2-80)\pi^2)}{2^{33}G^{15}}$
 
 **Answer Type:** Exact scalar
 
+---
+
 ## Solution Concepts
 
-- competing endpoint scales
-- Laplace-type asymptotics
-- moment cancellation
-- nested dilation cancellation
+- implicit exponential tilting
+- competing boundary layers
+- moment centering
+- gamma-function integrals
 - asymptotic limits
