@@ -20,12 +20,13 @@ $$
 Inside $L_Q$, define
 $$
 u=
-\frac{x^{18}y^{18}+x^{18}+y^{18}}
+\frac{x^{36}+y^{36}+1}
 {(x^{18}+y^{18}+1)^2},
 $$
 $$
 v=
-\frac{x^6y^6}{x^{18}+y^{18}+1},
+\frac{x^{90}+y^{90}+1}
+{(x^{18}+y^{18}+1)^5},
 $$
 and let
 $$
@@ -34,10 +35,18 @@ $$
 
 Determine the exact value of
 $$
-\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv19\pmod{36}}}
-Q\left(\sqrt{1296g(K_Q)}-Q+37\right).
+\lim_{\substack{Q\to\infty\\Q\text{ prime power}\\Q\equiv19\pmod{108}}}
+Q^2\left[
+\frac{\sqrt{g(K_{Q^3})}}
+{Q^2\sqrt{g(K_Q)}}-1
+-
+Q^2\left(
+\frac{\sqrt{g(K_{Q^9})}}
+{Q^6\sqrt{g(K_{Q^3})}}-1
+\right)
+\right].
 $$
-The indexing set is unbounded; for example, $Q=19^{2k+1}$ is admissible for every $k\geq1$.
+The indexing set is unbounded; for example, $Q=19^{6k+1}$ is admissible for every $k\geq1$.
 
 ---
 
@@ -54,14 +63,14 @@ The indexing set is unbounded; for example, $Q=19^{2k+1}$ is admissible for ever
 
 ## Domain Explanation
 
-This problem involves an exact renormalized limit whose value depends on a lower-order term after cancellation,
+This problem involves an exact second-order scale-comparison limit whose leading correction cancels internally,
 which are part of Calculus and Limits and continuity.
-The problem also involves algebraic function fields, invariant subfields, finite group actions, and ramification,
+The problem also involves algebraic function fields, finite group actions, symmetric rational functions, and ramification,
 which are part of Abstract Algebra and Computational algebra.
-However, those algebraic calculations determine the exact sequence entering the requested limit, while the final object is one exact scalar limit.
+However, those algebraic calculations determine the exact genus asymptotics at three linked scales, while the final object is one exact scalar limit.
 
 Specifically:
 
-- The two rational generators conceal a semidirect-product fixed field rather than displaying its automorphisms.
-- Recovering the field degree requires reconstructing normalized symmetric coordinates together with a restricted root-of-unity ambiguity.
-- The constant term needed by the limit comes from three distinct fixed-point behaviors in the tame quotient.
+- The rational generators encode the relevant quotient field indirectly rather than displaying its elementary symmetric coordinates.
+- The genus calculation requires reconciling several stabilizer behaviors with an arithmetic residue condition.
+- The three-scale normalization makes the requested scalar depend on a lower-order term rather than the dominant growth.

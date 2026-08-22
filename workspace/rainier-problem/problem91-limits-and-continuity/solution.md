@@ -1,22 +1,14 @@
 ## Steps
 
-Step 1: Recover the fixed field
+Step 1: Recover the hidden symmetric coordinates
 
 Let
 $$
 C_Q:\quad X^n+Y^n+Z^n=0,
 \qquad
-n=Q-1.
+n=Q-1=18M.
 $$
-Since
-$$
-Q\equiv19\pmod{36},
-$$
-write
-$$
-n=18M
-$$
-with $M$ odd.
+Since $Q\equiv19\pmod{36}$, the integer $M$ is odd. The characteristic is not $2$ or $3$. It is not $5$ either, because $Q\equiv3\pmod4$, whereas every power of $5$ is $1\pmod4$.
 
 Set
 $$
@@ -32,299 +24,303 @@ $$
 $$
 Then
 $$
-\alpha+\beta+\gamma=1,
+\alpha+\beta+\gamma=1.
 $$
+Write
 $$
-\alpha\beta+\beta\gamma+\gamma\alpha=u,
+e_2=\alpha\beta+\beta\gamma+\gamma\alpha,
+\qquad
+e_3=\alpha\beta\gamma.
+$$
+The given generators are
+$$
+u=\alpha^2+\beta^2+\gamma^2,
+\qquad
+v=\alpha^5+\beta^5+\gamma^5.
+$$
+Newton's identities give
+$$
+u=1-2e_2
 $$
 and
 $$
-\alpha\beta\gamma=v^3.
+v=1-5e_2+5e_2^2+5(1-e_2)e_3.
 $$
-Thus $\alpha,\beta,\gamma$ are the roots of
+Hence
 $$
-T^3-T^2+uT-v^3.
+e_2=\frac{1-u}{2},
+\qquad
+e_3=
+\frac{v-1+5e_2-5e_2^2}{5(1-e_2)}.
 $$
-There are at most six possible orderings.
+Here $1-e_2$ is nonzero in the function field. Otherwise $u=-1$ identically, so the nonzero homogeneous polynomial
+$$
+X^{36}+Y^{36}+Z^{36}+(X^{18}+Y^{18}+Z^{18})^2
+$$
+would vanish on the irreducible degree-$n$ Fermat curve, impossible because its degree is $36<n$.
 
-On the chart $Z=1$,
+Thus $K_Q$ contains $e_2,e_3$, and $\alpha,\beta,\gamma$ are the roots of
+$$
+T^3-T^2+e_2T-e_3.
+$$
+
+Step 2: Identify the fixed field
+
+Choose a primitive eighteenth root $\xi\in\mathbb F_Q$. Let $E$ be the projective diagonal group
+$$
+d_{r,s}[X:Y:Z]=[\xi^rX:\xi^sY:Z],
+\qquad
+r,s\in\mathbb Z/18\mathbb Z.
+$$
+Then
+$$
+|E|=18^2=324.
+$$
+Coordinate permutations normalize $E$, so
+$$
+G=E\rtimes S_3
+$$
+has order
+$$
+|G|=1944.
+$$
+The functions $u,v$ are symmetric in $\alpha,\beta,\gamma$, hence are fixed by $G$, and therefore
+$$
+K_Q\subseteq L_Q^G.
+$$
+
+Conversely, $e_2,e_3$ determine the unordered triple $\{\alpha,\beta,\gamma\}$, so there are at most six orderings. On $Z=1$,
 $$
 x^{18}=\frac{\alpha}{\gamma},
 \qquad
 y^{18}=\frac{\beta}{\gamma},
-\qquad
-(xy)^6=\frac{v}{\gamma}.
 $$
-After choosing an ordering, there are at most $18$ choices for $x$, and then
+giving at most $18^2$ choices after an ordering is chosen. Thus
 $$
-y^6=\frac{v}{\gamma x^6}
+[L_Q:K_Q]\leq6\cdot18^2=1944.
 $$
-gives at most $6$ choices for $y$. Therefore
+The group $G$ supplies $1944$ distinct $K_Q$-automorphisms of $L_Q$, so equality holds:
 $$
-[L_Q:K_Q]\leq6\cdot18\cdot6=648.
+K_Q=L_Q^G.
 $$
 
-Choose a primitive eighteenth root $\xi\in\mathbb F_Q$. Let $D$ be the projective diagonal group
-$$
-[X:Y:Z]\longmapsto[\xi^aX:\xi^bY:\xi^cZ]
-$$
-with
-$$
-a+b+c\equiv0\pmod3.
-$$
-There are
-$$
-|D|=\frac{18^3}{3\cdot18}=108
-$$
-such projective transformations.
+Step 3: Count diagonal and transposition fixed points
 
-Coordinate permutations normalize $D$, so
-$$
-H=D\rtimes S_3
-$$
-has order
-$$
-|H|=108\cdot6=648.
-$$
-The functions $u$ and $v$ are fixed by $H$, because the eighteenth powers are fixed by $D$ and
-$$
-(XYZ)^6\longmapsto\xi^{6(a+b+c)}(XYZ)^6=(XYZ)^6.
-$$
-Hence
-$$
-K_Q\subseteq L_Q^H.
-$$
-The group $H$ gives $648$ distinct $K_Q$-automorphisms of $L_Q$, so
-$$
-[L_Q:K_Q]\geq648.
-$$
-Therefore
-$$
-[L_Q:K_Q]=648
-$$
-and
-$$
-K_Q=L_Q^H.
-$$
-
-Step 2: Compute the genus of the covering curve
-
-The Fermat curve $C_Q$ is smooth because the characteristic does not divide
-$$
-n=Q-1.
-$$
-Therefore
-$$
-g(C_Q)=\frac{(n-1)(n-2)}2,
-$$
-so
+The Fermat curve is smooth because the characteristic does not divide $n$, and
 $$
 2g(C_Q)-2=n(n-3).
 $$
+The action is tame because the characteristic does not divide $1944$.
 
-The characteristic is neither $2$ nor $3$, so it does not divide
-$$
-|H|=648.
-$$
-Thus the quotient $C_Q/H$ is tame.
-
-Step 3: Count fixed points of diagonal elements
-
-Represent an element of $D$ by
-$$
-d_{r,s}[X:Y:Z]=[\xi^rX:\xi^sY:Z],
-\qquad
-r+s\equiv0\pmod3.
-$$
-A nonidentity diagonal element can fix a point of $C_Q$ only when two of
+A nonidentity $d_{r,s}$ can fix a point of $C_Q$ only if two of
 $$
 \xi^r,\qquad\xi^s,\qquad1
 $$
-are equal, because no coordinate point lies on $C_Q$.
-
-If $r=0$, then
+are equal, since no coordinate point lies on $C_Q$. Thus one of
 $$
-s\in\{3,6,9,12,15\},
+r=0,\qquad s=0,\qquad r=s
 $$
-giving five elements. The condition $s=0$ gives another five.
-
-If $r=s$, then the congruence condition gives
+must hold. Excluding the identity gives $17$ elements of each type, and each fixes a coordinate line meeting $C_Q$ in exactly $n$ points. Hence
 $$
-r=s\in\{3,6,9,12,15\},
-$$
-giving five more.
-
-Each of these fifteen elements fixes one coordinate line, and each such line meets $C_Q$ in exactly $n$ distinct points. Every other nonidentity element of $D$ has no fixed point. Hence the diagonal contribution is
-$$
-R_D=15n.
+R_E=51n.
 $$
 
-Step 4: Count fixed points above transpositions
-
-Let $\tau$ exchange $X$ and $Y$. Elements of $D\tau$ have the form
+Let $\tau$ exchange $X$ and $Y$. An element of $E\tau$ has the form
 $$
-g_{r,s}[X:Y:Z]=[\xi^rY:\xi^sX:Z],
-\qquad
-r+s\equiv0\pmod3.
+g_{r,s}[X:Y:Z]=[\xi^rY:\xi^sX:Z].
 $$
 Put
 $$
 k\equiv r+s\pmod{18}.
 $$
-Then
-$$
-k\in\{0,3,6,9,12,15\},
-$$
-and each residue occurs for exactly $18$ pairs $(r,s)$.
-
-The two eigenvalues on the $X,Y$ block satisfy
+Each $k$ occurs for exactly $18$ pairs $(r,s)$. The two eigenvalues on the $X,Y$ block satisfy
 $$
 \lambda^2=\xi^k.
 $$
+For $k=0$, the $1$-eigenspace is a projective line meeting $C_Q$ in $n$ points, while the isolated $-1$ eigenline is not on $C_Q$. These elements contribute $18n$.
 
-For $k=0$, the eigenvalues are $1$ and $-1$. The $1$-eigenspace together with the $Z$-axis is a projective line whose intersection with $C_Q$ consists of $n$ points. The isolated $-1$ eigenline lies in $Z=0$ and is not on $C_Q$ because $n$ is even. These $18$ elements contribute
+For $k\neq0$, only the two eigenlines in $Z=0$ can contribute. On either,
 $$
-18n.
-$$
-
-Now suppose $k\neq0$. The two eigenlines lie in $Z=0$. On either one,
-$$
-\left(\frac YX\right)^n=\lambda^n.
-$$
-Since $n=18M$ and $M$ is odd,
-$$
-\lambda^n
+\left(\frac YX\right)^n
 =
-(\lambda^2)^{n/2}
+\lambda^n
 =
 \xi^{9Mk}
 =
-(-1)^k.
+(-1)^k,
 $$
-The eigenline lies on
+because $M$ is odd. Hence both eigenlines lie on $C_Q$ exactly for odd $k$. There are nine odd residues, so one transposition coset contributes
 $$
-X^n+Y^n=0
+18n+9\cdot18\cdot2=18n+324.
 $$
-exactly when $k$ is odd. Thus the residues
+All three transposition cosets contribute
 $$
-k=3,9,15
-$$
-give two fixed points per element, while $k=6,12$ give none.
-
-One transposition coset contributes
-$$
-18n+3\cdot18\cdot2=18n+108.
-$$
-There are three transpositions, so
-$$
-R_T=54n+324.
+R_T=54n+972.
 $$
 
-Step 5: Show that three-cycle cosets have no fixed points
+Step 4: Count the residue-sensitive three-cycle contribution
 
 Let
 $$
 c[X:Y:Z]=[Y:Z:X].
 $$
-An element of $Dc$ has the form
+An element of $Ec$ can be written
 $$
-g[X:Y:Z]=[\xi^rY:\xi^sZ:X],
-\qquad
-r+s\equiv0\pmod3.
+g[X:Y:Z]=[\xi^rY:\xi^sZ:X].
 $$
-At a fixed projective point with eigenvalue $\lambda$,
+At an eigenline with eigenvalue $\lambda$,
 $$
 \lambda^3=\xi^{r+s}.
 $$
-All three coordinates are nonzero, and the eigenvector equations give
+All coordinates are nonzero. With
 $$
-Y^n=\lambda^nX^n,
-\qquad
-Z^n=\lambda^{2n}X^n.
+t=\lambda^n,
 $$
-Since $n=18M$,
+the Fermat equation on that eigenline is
 $$
-\lambda^n
-=
-(\lambda^3)^{n/3}
-=
-\xi^{6M(r+s)}.
+t+t^{-1}+1=0.
 $$
-Because
+Since $t^3=1$, this holds exactly when $t\neq1$. Moreover
 $$
-3\mid r+s,
-$$
-the exponent is divisible by $18$, so
-$$
-\lambda^n=1.
-$$
-Hence
-$$
-X^n=Y^n=Z^n.
-$$
-The Fermat equation would then require
-$$
-3X^n=0,
-$$
-which is impossible because the characteristic is not $3$.
-
-Thus no element of $Dc$ fixes a point. The same argument applies to $Dc^2$.
-
-Therefore the total fixed-point contribution is
-$$
-R=15n+54n+324=69n+324.
+t=\xi^{6M(r+s)}.
 $$
 
-Step 6: Compute the genus and evaluate the limit
+If $3\mid M$, then $t=1$ for every $r,s$, so $Ec$ contributes nothing. If $3\nmid M$, then $t\neq1$ exactly when $3\nmid r+s$. There are
+$$
+18\cdot12=216
+$$
+such elements, and each has three fixed eigenlines on $C_Q$. Thus $Ec$ contributes $648$, and the same is true for $Ec^2$.
+
+Let $\delta_Q=1$ if $3\nmid M$ and $\delta_Q=0$ if $3\mid M$. The total fixed-point contribution is
+$$
+R=105n+972+1296\delta_Q.
+$$
+
+Step 5: Obtain the genus at the three linked scales
 
 Tame Riemann-Hurwitz gives
 $$
-n(n-3)=648(2g(K_Q)-2)+69n+324.
+n(n-3)
+=
+1944\bigl(2g(K_Q)-2\bigr)
++
+105n+972+1296\delta_Q.
 $$
 Therefore
 $$
-648(2g(K_Q)-2)=n^2-72n-324.
+3888g(K_Q)
+=
+(Q-55)^2-1296\delta_Q.
 $$
-Adding $1296$ to both sides gives
+
+Now impose the limit condition $Q\equiv19\pmod{108}$. Then
 $$
-1296g(K_Q)=n^2-72n+972.
+M=\frac{Q-1}{18}\equiv1\pmod6,
 $$
+so $\delta_Q=1$ and
+$$
+3888g(K_Q)=(Q-55)^2-1296.
+$$
+
+For $Q^3$,
+$$
+\frac{Q^3-1}{18}
+=
+\frac{Q-1}{18}(Q^2+Q+1).
+$$
+Because $Q\equiv1\pmod3$, the second factor is divisible by $3$, so
+$$
+\delta_{Q^3}=0.
+$$
+The same argument applies to $Q^9=(Q^3)^3$, giving $\delta_{Q^9}=0$. Hence
+$$
+3888g(K_{Q^3})=(Q^3-55)^2,
+$$
+$$
+3888g(K_{Q^9})=(Q^9-55)^2.
+$$
+
+Step 6: Evaluate the second-order scale comparison
+
+Set
+$$
+A_Q=\sqrt{(Q-55)^2-1296}.
+$$
+Then
+$$
+\sqrt{g(K_Q)}=\frac{A_Q}{\sqrt{3888}},
+$$
+$$
+\sqrt{g(K_{Q^3})}=\frac{Q^3-55}{\sqrt{3888}},
+\qquad
+\sqrt{g(K_{Q^9})}=\frac{Q^9-55}{\sqrt{3888}}.
+$$
+
 Since
 $$
-n=Q-1,
-$$
-we obtain
-$$
-1296g(K_Q)=Q^2-74Q+1045=(Q-37)^2-324.
-$$
-
-Hence the expression in the problem equals
-$$
-Q\left(\sqrt{(Q-37)^2-324}-(Q-37)\right).
-$$
-Rationalizing,
-$$
-Q\left(\sqrt{(Q-37)^2-324}-(Q-37)\right)
+A_Q
 =
-\frac{-324Q}{\sqrt{(Q-37)^2-324}+Q-37}.
+Q\sqrt{1-\frac{110}{Q}+\frac{1729}{Q^2}},
 $$
-Dividing numerator and denominator by $Q$ gives
+the expansion
 $$
-\frac{-324}
-{\sqrt{\left(1-\frac{37}{Q}\right)^2-\frac{324}{Q^2}}+1-\frac{37}{Q}}.
+\sqrt{1+z}=1+\frac z2-\frac{z^2}{8}+O(z^3)
 $$
-As $Q\to\infty$, the denominator tends to $2$. Therefore the limit is
+gives
 $$
--162.
+\frac{A_Q}{Q}
+=
+1-\frac{55}{Q}-\frac{648}{Q^2}+O(Q^{-3}).
+$$
+Therefore
+$$
+\frac{Q}{A_Q}
+=
+1+\frac{55}{Q}+\frac{3673}{Q^2}+O(Q^{-3}).
+$$
+It follows that
+$$
+\frac{\sqrt{g(K_{Q^3})}}
+{Q^2\sqrt{g(K_Q)}}
+=
+\left(1-\frac{55}{Q^3}\right)\frac{Q}{A_Q}
+=
+1+\frac{55}{Q}+\frac{3673}{Q^2}+O(Q^{-3}).
 $$
 
-Final Answer: $\boxed{-162}$
+Also
+$$
+\frac{\sqrt{g(K_{Q^9})}}
+{Q^6\sqrt{g(K_{Q^3})}}
+=
+\frac{1-\frac{55}{Q^9}}
+{1-\frac{55}{Q^3}}
+=
+1+\frac{55}{Q^3}+O(Q^{-6}).
+$$
+Hence
+$$
+Q^2\left[
+\frac{\sqrt{g(K_{Q^3})}}
+{Q^2\sqrt{g(K_Q)}}-1
+-
+Q^2\left(
+\frac{\sqrt{g(K_{Q^9})}}
+{Q^6\sqrt{g(K_{Q^3})}}-1
+\right)
+\right]
+=
+3673+O(Q^{-1}).
+$$
+The required limit is therefore $3673$.
+
+Final Answer: $\boxed{3673}$
 
 ---
 
 ## Answer
 
-$-162$
+$3673$
 
 ---
 
@@ -339,7 +335,7 @@ $-162$
 ## Solution Concepts
 
 - invariant subfields
+- symmetric power sums
 - semidirect product actions
 - projective fixed points
 - Riemann-Hurwitz formula
-- rationalized limits
