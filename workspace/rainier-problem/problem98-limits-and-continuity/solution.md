@@ -1,313 +1,223 @@
-```markdown id="py9gr6"
 ## Steps
 
-Step 1: Convert the nonlinear orbit to an additive recurrence
+Step 1: Recover a dual Gaussian representation
 
-Fix $c\in(0,1)$. For an orbit
+Define the $1$-periodic function
 $$
-x_{k+1}=T(x_k)=x_k(1-x_k),
+G_n(a)=
+\sqrt n
+\sum_{m\in\mathbb Z}
+e^{-\pi n(m-a)^2}.
 $$
-put
+Its $k$th Fourier coefficient is
 $$
-y_k=\frac{1-x_k}{x_k}=\frac1{x_k}-1.
+\int_0^1G_n(a)e^{-2\pi ika}\,da.
 $$
-A direct calculation gives
+After translating each interval by $m$ and combining them into $\mathbb R$, this becomes
 $$
-y_{k+1}
+\sqrt n
+\int_{\mathbb R}
+e^{-\pi nt^2}e^{2\pi ikt}\,dt.
+$$
+The Gaussian integral
+$$
+\int_{\mathbb R}e^{-\pi nt^2}e^{2\pi ikt}\,dt
 =
-y_k+1+\frac1{y_k}.
+n^{-1/2}e^{-\pi k^2/n}
+$$
+therefore gives the Fourier coefficient $e^{-\pi k^2/n}$. Hence
+$$
+\Theta_n(a)
+=
+\sqrt n
+\sum_{m\in\mathbb Z}
+e^{-\pi n(m-a)^2}.
 $$
 
-If $x_0=a_n(c)$, the condition
+Differentiating twice,
 $$
-x_n=cx_0
+\Theta_n''(a)+2\pi n\Theta_n(a)
+=
+4\pi^2n^{5/2}
+\sum_{m\in\mathbb Z}
+(m-a)^2e^{-\pi n(m-a)^2}.
 $$
-becomes
+
+Step 2: Convert the root equation to a lattice competition
+
+Put
 $$
-y_n+1=\frac{y_0+1}{c}.
-$$
-Set
-$$
-\alpha=\frac{c}{1-c}.
+N=\sqrt{\pi n},
+\qquad
+s=Na.
 $$
 Since
 $$
-y_n-y_0
+\pi n(m-a)^2=(Nm-s)^2,
+$$
+the equation defining $a_n$ becomes
+$$
+\sum_{m\in\mathbb Z}
+(Nm-s_n)^2e^{-(Nm-s_n)^2}
 =
-n+\sum_{k=0}^{n-1}\frac1{y_k},
-$$
-the orbit condition is equivalent to
-$$
-y_0+1
-=
-\alpha
-\left(
-n+\sum_{k=0}^{n-1}\frac1{y_k}
-\right).
-$$
-
-This equation also gives uniqueness. For fixed $y_0>1$, every $y_k$ is strictly increasing in $y_0$, so the sum of reciprocals is strictly decreasing in $y_0$, while the left side is strictly increasing. Existence for large $n$ follows from the corresponding continuous ratio
-$$
-\frac{T^{\circ n}(a)}a
-=
-\prod_{k=0}^{n-1}(1-x_k),
-$$
-which decreases from $1$ as $a\to0^+$ and is below $c$ at $a=1/2$ once $n$ is large.
-
-Step 2: Determine the first displacement of the implicit initial point
-
-From the exact equation in Step 1,
-$$
-y_0=\alpha n+O(1).
-$$
-The recurrence also gives, uniformly for $0\leq k\leq n$,
-$$
-y_k=y_0+k+O(1).
-$$
-Hence, with
-$$
-t_k=\frac{k}{n},
-$$
-we have
-$$
-\frac{y_k}{n}\to\alpha+t_k
-$$
-uniformly.
-
-The reciprocal sum in Step 1 is therefore a Riemann sum:
-$$
-\sum_{k=0}^{n-1}\frac1{y_k}
-\to
-\int_0^1\frac{dt}{\alpha+t}
-=
-\log\frac{\alpha+1}{\alpha}.
-$$
-Since
-$$
-\frac{\alpha+1}{\alpha}=\frac1c,
-$$
-put
-$$
-\ell=\log\frac1c.
-$$
-The exact orbit condition now gives
-$$
-y_0
-=
-\alpha n+\alpha\ell-1+o(1).
-$$
-
-For a partial orbit,
-$$
-y_k
-=
-y_0+k+\sum_{j=0}^{k-1}\frac1{y_j}.
-$$
-The same uniform Riemann-sum argument gives
-$$
-\sum_{j=0}^{k-1}\frac1{y_j}
-=
-\log\frac{\alpha+t_k}{\alpha}+o(1).
-$$
-Thus, uniformly in $k$,
-$$
-y_k
-=
-n(\alpha+t_k)+q(t_k)+o(1),
+e^{-1},
 $$
 where
 $$
-q(t)=
-\alpha\ell-1+\log\frac{\alpha+t}{\alpha}.
+s_n=Na_n.
 $$
 
-Step 3: Express the derivative as a product along the transformed orbit
-
-Differentiate
+Let
 $$
-y_{k+1}=y_k+1+\frac1{y_k}
+h(t)=t^2e^{-t^2}.
 $$
-with respect to $y_0$. If
+Then
 $$
-p_k=\frac{\partial y_k}{\partial y_0},
+h(1)=e^{-1},
+\qquad
+h'(1)=0,
+\qquad
+h''(1)=-4e^{-1}.
 $$
-then
+The root equation is
 $$
-p_0=1
-$$
-and
-$$
-p_{k+1}
+h(s_n)
++
+\sum_{m\ne0}h(Nm-s_n)
 =
-p_k
+e^{-1}.
+$$
+
+For every fixed $\eta\in(0,1)$,
+$$
+\max_{0\leq s\leq1-\eta}h(s)<e^{-1}.
+$$
+Uniformly on this interval,
+$$
+\sum_{m\ne0}h(Nm-s)\to0.
+$$
+Hence there is no root with $s\leq1-\eta$ for large $n$.
+
+At $s=1$,
+$$
+h(1)+h(N-1)>e^{-1}.
+$$
+By continuity, a root lies below $1$. Since $a_n$ is the smallest positive root,
+$$
+s_n\to1,
+\qquad
+s_n<1
+$$
+for large $n$.
+
+Step 3: Identify the exponentially small forcing term
+
+Set
+$$
+d_n=1-s_n>0.
+$$
+Then $d_n\to0$. The nonzero lattice terms satisfy
+$$
+\sum_{m\ne0}h(Nm-s_n)
+=
+h(N-s_n)+o(h(N-1)).
+$$
+Indeed,
+$$
+\frac{h(N+s_n)}{h(N-1)}
+=
+O(e^{-4N}),
+$$
+while all terms with $|m|\geq2$ have still larger exponential decay.
+
+Since $s_n=1-d_n$,
+$$
+N-s_n=N-1+d_n.
+$$
+Once $d_n\to0$,
+$$
+\frac{h(N-1+d_n)}{h(N-1)}
+=
 \left(
-1-\frac1{y_k^2}
-\right).
+1+\frac{d_n}{N-1}
+\right)^2
+e^{-2(N-1)d_n-d_n^2}.
+$$
+The root equation itself will imply
+$$
+d_n=O\!\left(\sqrt{h(N-1)}\right),
+$$
+and therefore
+$$
+Nd_n\to0.
+$$
+Consequently
+$$
+h(N-s_n)
+=
+h(N-1)(1+o(1)).
+$$
+Thus
+$$
+\sum_{m\ne0}h(Nm-s_n)
+=
+(N-1)^2e^{-(N-1)^2}(1+o(1)).
+$$
+
+Step 4: Resolve the double-root splitting
+
+Taylor expansion of $h$ at its maximum $1$ gives
+$$
+h(1-d)
+=
+e^{-1}-2e^{-1}d^2+O(d^3).
+$$
+Using the root equation and Step 3,
+$$
+e^{-1}-h(1-d_n)
+=
+(N-1)^2e^{-(N-1)^2}(1+o(1)).
 $$
 Therefore
 $$
-p_n=
-\prod_{k=0}^{n-1}
-\left(
-1-\frac1{y_k^2}
-\right).
+2e^{-1}d_n^2
+=
+(N-1)^2e^{-(N-1)^2}(1+o(1)).
+$$
+Since $d_n>0$,
+$$
+d_n
+=
+\sqrt{\frac e2}\,
+(N-1)e^{-(N-1)^2/2}(1+o(1)).
 $$
 
-Since
+Step 5: Evaluate the requested limit
+
+Recall
 $$
-x=\frac1{y+1},
-$$
-we have
-$$
-\frac{dy_0}{dx_0}=-\frac1{x_0^2},
+N=\sqrt{\pi n},
 \qquad
-\frac{dx_n}{dy_n}=-x_n^2.
+d_n=1-\sqrt{\pi n}\,a_n.
 $$
-It follows that
+Step 4 yields
 $$
-\left(T^{\circ n}\right)'(a_n(c))
-=
-\frac{x_n^2}{x_0^2}p_n.
+\frac{
+e^{(N-1)^2/2}
+}{N-1}
+d_n
+\to
+\sqrt{\frac e2}.
 $$
-Because $x_n=cx_0$,
-$$
-\left(T^{\circ n}\right)'(a_n(c))
-=
-c^2p_n.
-$$
+Replacing $N$ by $\sqrt{\pi n}$ gives the required limit.
 
-Step 4: Evaluate the product through order $n^{-2}$
-
-From Step 2,
-$$
-\frac1{y_k^2}
-=
-\frac1{n^2(\alpha+t_k)^2}
--
-\frac{2q(t_k)}{n^3(\alpha+t_k)^3}
-+o(n^{-3})
-$$
-uniformly.
-
-Summing the first term and using the endpoint correction for the left Riemann sum,
-$$
-\frac1{n^2}
-\sum_{k=0}^{n-1}
-\frac1{(\alpha+t_k)^2}
-=
-\frac1n
-\int_0^1\frac{dt}{(\alpha+t)^2}
-+
-\frac1{2n^2}
-\left(
-\frac1{\alpha^2}
--\frac1{(\alpha+1)^2}
-\right)
-+o(n^{-2}).
-$$
-The integral is
-$$
-\int_0^1\frac{dt}{(\alpha+t)^2}
-=
-\frac1{\alpha(\alpha+1)}.
-$$
-
-For the second term,
-$$
--\frac2{n^3}
-\sum_{k=0}^{n-1}
-\frac{q(t_k)}{(\alpha+t_k)^3}
-=
--\frac2{n^2}
-\int_0^1
-\frac{q(t)}{(\alpha+t)^3}\,dt
-+o(n^{-2}).
-$$
-Writing $s=\alpha+t$,
-$$
-\int
-\frac{\alpha\ell-1+\log(s/\alpha)}{s^3}\,ds
-=
--\frac{
-2\alpha\ell-1+2\log(s/\alpha)
-}{4s^2}.
-$$
-Evaluating between $\alpha$ and $\alpha+1$, then using
-$$
-\alpha=\frac{c}{1-c},
-\qquad
-\ell=-\log c,
-$$
-gives
-$$
-\sum_{k=0}^{n-1}\frac1{y_k^2}
-=
-\frac{(1-c)^2}{c}\frac1n
-+
-\frac{(1-c)^2(1-c^2+c\log c)}{c^2}\frac1{n^2}
-+o(n^{-2}).
-$$
-
-Also $y_k\asymp n$, so
-$$
-\sum_{k=0}^{n-1}\frac1{y_k^4}=O(n^{-3}).
-$$
-Hence
-$$
-\log p_n
-=
--\sum_{k=0}^{n-1}\frac1{y_k^2}
-+O(n^{-3}).
-$$
-Exponentiating,
-$$
-p_n
-=
-1-\frac{(1-c)^2}{c}\frac1n
-+
-\frac1{n^2}
-\left[
-\frac{(1-c)^4}{2c^2}
--
-\frac{(1-c)^2(1-c^2+c\log c)}{c^2}
-\right]
-+o(n^{-2}).
-$$
-
-Step 5: Recover the requested limiting function
-
-Step 3 gives
-$$
-\left(T^{\circ n}\right)'(a_n(c))
-=
-c^2
--\frac{c(1-c)^2}{n}
-$$
-$$
-\qquad
-+
-\frac{(1-c)^2}{2n^2}
-\left(
-3c^2-2c-1-2c\log c
-\right)
-+o(n^{-2}).
-$$
-After subtracting the first two displayed terms in the definition of $L(c)$ and multiplying by $n^2$, the remaining coefficient is
-$$
-L(c)=
-\frac{(1-c)^2}{2}
-\left(
-3c^2-2c-1-2c\log c
-\right).
-$$
-
-Final Answer: $\boxed{c\mapsto\frac{(1-c)^2}{2}(3c^2-2c-1-2c\log c)}$
+Final Answer: $\boxed{\sqrt{\frac e2}}$
 
 ---
 
 ## Answer
 
-$c\mapsto\frac{(1-c)^2}{2}(3c^2-2c-1-2c\log c)$
+$\sqrt{\frac e2}$
 
 ---
 
@@ -317,16 +227,16 @@ $c\mapsto\frac{(1-c)^2}{2}(3c^2-2c-1-2c\log c)$
 
 **Sub-domain:** Limits and continuity
 
-**Problem Type:** Symbolic derivation
+**Problem Type:** Exact computation
 
-**Answer Type:** Function or mapping
+**Answer Type:** Exact scalar
 
 ---
 
 ## Solution Concepts
 
-- nonlinear iteration
-- reciprocal conjugacy
-- variational recurrence
-- Riemann-sum correction
-- asymptotic products
+- Gaussian lattice duality
+- Fourier coefficients
+- exponentially small asymptotics
+- implicit root splitting
+- double-root perturbation

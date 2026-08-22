@@ -1,30 +1,31 @@
-```markdown id="n4j2sa"
 # Normalized Math Problem
 
 ## LaTeX (Normalized)
 
-Let
+For each positive integer $n$, define
 $$
-T(x)=x(1-x).
+\Theta_n(a)=
+\sum_{k=-\infty}^{\infty}
+e^{-\pi k^2/n}\cos(2\pi ka).
 $$
-For each fixed $c\in(0,1)$ and all sufficiently large positive integers $n$, let $a_n(c)\in(0,\frac12)$ be the unique number satisfying
+For all sufficiently large $n$, let $a_n\in(0,\frac12)$ be the smallest positive solution of
 $$
-T^{\circ n}(a_n(c))=c\,a_n(c).
+\Theta_n''(a_n)+2\pi n\Theta_n(a_n)
+=
+\frac{4\pi n^{3/2}}{e}.
 $$
-Define
+Determine the exact value of
 $$
-L(c)=
 \lim_{n\to\infty}
-n^2
-\left[
-\left(T^{\circ n}\right)'(a_n(c))
--c^2
-+\frac{c(1-c)^2}{n}
-\right],
+\frac{
+\exp\!\left(\frac{(\sqrt{\pi n}-1)^2}{2}\right)
+}{
+\sqrt{\pi n}-1
+}
+\left(
+1-\sqrt{\pi n}\,a_n
+\right).
 $$
-provided the limit exists.
-
-Determine the function $L:(0,1)\to\mathbb R$ explicitly.
 
 ---
 
@@ -34,11 +35,11 @@ Determine the function $L:(0,1)\to\mathbb R$ explicitly.
 |---|---|
 | **Domain** | Calculus |
 | **Sub-domain** | Limits and continuity |
-| **Problem Type** | Symbolic derivation |
-| **Answer Type** | Function or mapping |
+| **Problem Type** | Exact computation |
+| **Answer Type** | Exact scalar |
 
 ---
 
 ## Domain Explanation
 
-The requested object is a parameterized limit involving an implicitly selected initial point and the derivative of a long nonlinear iterate, so Calculus and Limits and continuity is the best fit. The derivation also uses recurrence asymptotics and Riemann-sum corrections, but these are intermediate tools for evaluating the limiting function.
+The requested quantity is a refined limit for the smallest root of an $n$-dependent equation, so Calculus and Limits and continuity is the best fit. A Gaussian lattice duality is needed to expose the root scale, but that transformation is an intermediate device; the requested object is the exponentially rescaled limiting displacement of the implicit root.
