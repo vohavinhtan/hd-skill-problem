@@ -1,12 +1,12 @@
 ## Steps
 
-Step 1: Expand the midpoint of the implicit branch
+Step 1: Expand the midpoint of the level pair
 
 Since
 $$
 g'(t)=\frac{t^3}{1-t},
 $$
-the function $g$ decreases on $(-\infty,0)$ and increases on $(0,1)$. Hence the negative branch $y(x)$ is unique.
+the function $g$ decreases on $(-\infty,0)$ and increases on $(0,1)$. Hence the branch $y(x)$ is unique.
 
 Put
 $$
@@ -22,46 +22,47 @@ y(x)=c-h.
 $$
 Near $0$,
 $$
-g(t)=\sum_{m\ge4}\frac{t^m}{m}.
+g(t)=\sum_{n\ge4}\frac{t^n}{n}.
 $$
-The level equation is
+The equation $g(c+h)=g(c-h)$ forces $c=O(h^2)$. Write
 $$
-g(c+h)-g(c-h)=0.
+c=ah^2+bh^4+ch^6+dh^8+O(h^{10}).
 $$
-Its leading term forces $c=O(h^2)$, so write
+Comparison of the coefficients of $h^5,h^7,h^9,h^{11}$ gives
 $$
-c=Ah^2+Bh^4+Ch^6+O(h^8).
-$$
-Expansion through $h^9$ gives
-$$
-g(c+h)-g(c-h)=
-\frac{2(5A+1)}5h^5
-+
-\frac{2(7A^3+14A^2+7A+7B+1)}7h^7
+5a+1=0,
 $$
 $$
+7a^3+14a^2+7a+7b+1=0,
+$$
+$$
+9a^4+30a^3+27a^2b+27a^2+36ab+9a+9b+9c+1=0,
+$$
+and
+$$
+11a^5+55a^4+44a^3b+77a^3+110a^2b+33a^2c+44a^2
++33ab^2+66ab+44ac+11a+22b^2+11b+11c+11d+1=0.
+$$
+Solving successively,
+$$
+a=-\frac15,
 \qquad
-+
-\frac{2(9A^4+30A^3+27A^2B+27A^2+36AB+9A+9B+9C+1)}9h^9
-+O(h^{11}).
-$$
-The three coefficients vanish successively, giving
-$$
-A=-\frac15,
+b=-\frac{13}{875},
 \qquad
-B=-\frac{13}{875},
+c=-\frac{254}{196875},
 \qquad
-C=-\frac{254}{196875}.
+d=\frac{83}{7734375}.
 $$
 Therefore
 $$
-c=
+c(h)=
 -\frac15h^2
 -\frac{13}{875}h^4
 -\frac{254}{196875}h^6
-+O(h^8),
++\frac{83}{7734375}h^8
++O(h^{10}),
 $$
-and
+so
 $$
 x+y(x)=
 -\frac25h^2
@@ -71,16 +72,13 @@ $$
 
 Step 2: Expand the averaged integral
 
-Since $x-y(x)=2h$,
+Let $G'(t)=g(t)$ and $G(0)=0$. Then
 $$
-M(x)=
-\frac{\displaystyle\int_{c-h}^{c+h}g(t)\,dt}
-{2h\,g(c+h)}.
+G(t)=\sum_{n\ge4}\frac{t^{n+1}}{n(n+1)}.
 $$
-Substituting the expansion of $c$ from Step 1 and integrating the power series of $g$ termwise gives
+Using the midpoint expansion from Step 1,
 $$
-\int_{c-h}^{c+h}g(t)\,dt
-=
+G(c+h)-G(c-h)=
 \frac{h^5}{10}
 +\frac{4h^7}{525}
 +\frac{121h^9}{157500}
@@ -88,14 +86,13 @@ $$
 $$
 while
 $$
-2h\,g(c+h)
-=
+2h\,g(c+h)=
 \frac{h^5}{2}
 +\frac{4h^7}{75}
 +\frac{121h^9}{17500}
 +O(h^{11}).
 $$
-Dividing,
+Hence
 $$
 M(x)=
 \frac15
@@ -103,22 +100,22 @@ M(x)=
 -\frac{38}{65625}h^4
 +O(h^6).
 $$
-Consequently
+Thus
 $$
 \frac{2625}{16}\left(\frac15-M(x)\right)
 =
 h^2+\frac{19}{200}h^4+O(h^6).
 $$
 
-Step 3: Use the derivative of the branch to create the dependent cancellation
+Step 3: Evaluate the differential cancellation factor
 
-Regard $c$ as a function of $h$. Since
+Since
 $$
 x=c(h)+h,
 \qquad
 y=c(h)-h,
 $$
-we have
+differentiation gives
 $$
 y'(x)=\frac{c'(h)-1}{c'(h)+1}.
 $$
@@ -126,140 +123,164 @@ Therefore
 $$
 \frac{1+y'(x)}{1-y'(x)}=c'(h).
 $$
+The quantity $A(x)$ in the statement is consequently
+$$
+A(x)=hc'(h)-2c(h).
+$$
+Using Step 1,
+$$
+A(x)=
+-\frac{26}{875}h^4
+-\frac{1016}{196875}h^6
++\frac{166}{2578125}h^8
++O(h^{10}).
+$$
+
 Also
 $$
-\frac{2(x+y(x))}{x-y(x)}=\frac{2c(h)}h.
+\frac{dh}{dx}=\frac{1-y'(x)}2,
 $$
-Using the coefficients from Step 1,
+so
 $$
-\frac{2c(h)}h-c'(h)
-=
-\frac{26}{875}h^3
-+\frac{1016}{196875}h^5
-+O(h^7).
+\frac{x-y(x)}{1-y'(x)}A'(x)=h\frac{dA}{dh}.
 $$
 Hence
 $$
-\frac{875}{26}
-\left(
-\frac{2(x+y(x))}{x-y(x)}
--\frac{1+y'(x)}{1-y'(x)}
-\right)
+\frac{x-y(x)}{1-y'(x)}A'(x)-4A(x)
 =
-h^3+\frac{508}{2925}h^5+O(h^7).
+h\frac{dA}{dh}-4A.
 $$
-Combining this with Step 2,
+The $h^4$ term cancels, leaving
 $$
-\frac{D(x)}5
+h\frac{dA}{dh}-4A
 =
-\frac{h^5}{5}
-+\frac{6287}{117000}h^7
-+O(h^9).
+-\frac{2032}{196875}h^6
++\frac{664}{2578125}h^8
++O(h^{10}).
 $$
-The leading coefficient is positive, so $D(x)>0$ for small $x>0$.
+Therefore
+$$
+-\frac{196875}{2032}
+\left[
+\frac{x-y(x)}{1-y'(x)}A'(x)-4A(x)
+\right]
+=
+h^6-\frac{1743}{69850}h^8+O(h^{10}).
+$$
 
-Step 4: Resolve the secondary implicit parameter
+Multiplying this by the factor from Step 2 gives
+$$
+D(x)=
+h^8+\frac{19571}{279400}h^{10}+O(h^{12}).
+$$
+
+Step 4: Resolve the eighth-order implicit normalization
 
 Define
 $$
 J(z)=
--\log(1-z)-z-\frac{z^2}{2}-\frac{z^3}{3}-\frac{z^4}{4}.
+-\log(1-z)-\sum_{k=1}^7\frac{z^k}{k}.
 $$
-For $0<z<1$,
-$$
-J'(z)=\frac{z^4}{1-z}>0,
-$$
-so the $z(x)$ in the statement exists uniquely when $x$ is small. Its series is
+Then
 $$
 J(z)=
-\frac{z^5}{5}
-+\frac{z^6}{6}
-+\frac{z^7}{7}
-+\frac{z^8}{8}
-+O(z^9).
+\frac{z^8}{8}
++\frac{z^9}{9}
++\frac{z^{10}}{10}
++\frac{z^{11}}{11}
++O(z^{12}),
 $$
-Because $J(z)=D(x)/5$, Step 3 shows $z\sim h$. Seek
+and
+$$
+J'(z)=\frac{z^7}{1-z}>0
+$$
+for $0<z<1$. Since $D(x)>0$ for small $x$, the stated $z(x)$ exists uniquely.
+
+Write $z=z(x)$ and seek
 $$
 h=z+pz^2+qz^3+rz^4+O(z^5).
 $$
-Substitution into
+From
 $$
-\frac{h^5}{5}
-+\frac{6287}{117000}h^7
-+O(h^9)
+J(z)=\frac{D(x)}8
 =
-\frac{z^5}{5}
-+\frac{z^6}{6}
-+\frac{z^7}{7}
-+\frac{z^8}{8}
-+O(z^9)
+\frac18h^8
++\frac{19571}{2235200}h^{10}
++O(h^{12}),
 $$
-gives at order $z^6$
+comparison of the coefficients of $z^9,z^{10},z^{11}$ yields
 $$
-p=\frac16.
+p=\frac19,
 $$
-After inserting this value, the coefficient of $z^7$ gives
 $$
-q=\frac{27491}{819000},
+q+\frac72p^2+\frac{19571}{2235200}=\frac1{10},
 $$
-and the coefficient of $z^8$ gives
+and
 $$
-r=\frac{16747}{546000}.
+r+7pq+7p^3+\frac{5\cdot19571}{1117600}p=\frac1{11}.
 $$
 Therefore
 $$
+p=\frac19,
+\qquad
+q=\frac{8696669}{181051200},
+\qquad
+r=\frac{5068837}{148132800}.
+$$
+Thus
+$$
 h=
-z+\frac{z^2}{6}
-+\frac{27491}{819000}z^3
-+\frac{16747}{546000}z^4
+z+\frac{z^2}{9}
++\frac{8696669}{181051200}z^3
++\frac{5068837}{148132800}z^4
 +O(z^5).
 $$
 
-Step 5: Compose with the branch-sum expansion
+Step 5: Compose with the branch sum
 
-From Step 4,
+From Step 1,
+$$
+x+y(x)=
+-\frac25h^2-\frac{26}{875}h^4+O(h^6).
+$$
+Using Step 4,
 $$
 h^2=
-z^2+\frac13z^3
-+\frac{19433}{204750}z^4
-+\frac{89107}{1228500}z^5
+z^2+\frac29z^3
++\frac{16549913}{90525600}z^4
++\frac{109639637}{814730400}z^5
 +O(z^6),
 $$
 and
 $$
 h^4=
-z^4+\frac23z^5+O(z^6).
+z^4+\frac49z^5+O(z^6).
 $$
-Using the expansion from Step 1,
-$$
-x+y(x)=
--\frac25h^2-\frac{26}{875}h^4+O(h^6),
-$$
-we obtain
+Substitution gives
 $$
 x+y(x)=
 -\frac25z^2
--\frac{2}{15}z^3
--\frac{4949}{73125}z^4
--\frac{21421}{438750}z^5
+-\frac4{45}z^3
+-\frac{7718213}{105613200}z^4
+-\frac{31973519}{712889100}z^5
 +O(z^6).
 $$
 Therefore
 $$
 x+y(x)
 +\frac25z^2
-+\frac{2}{15}z^3
-+\frac{4949}{73125}z^4
++\frac4{45}z^3
++\frac{7718213}{105613200}z^4
 =
--\frac{21421}{438750}z^5+O(z^6).
+-\frac{31973519}{712889100}z^5+O(z^6).
 $$
-Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^5$ gives the requested limit.
+Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^5$ gives the required value.
 
-Final Answer: $\boxed{-\frac{21421}{438750}}$
+Final Answer: $\boxed{-\frac{31973519}{712889100}}$
 
 ## Answer
 
-$-\frac{21421}{438750}$
+$-\frac{31973519}{712889100}$
 
 ## Classification
 
@@ -274,7 +295,7 @@ $-\frac{21421}{438750}$
 ## Solution Concepts
 
 - implicit branches
-- derivative cancellation
-- asymptotic expansions
+- differential cancellation
+- asymptotic normalization
 - series reversion
-- limits
+- high-order limits

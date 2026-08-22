@@ -18,20 +18,26 @@ M(x)=
 $$
 Define
 $$
+A(x)=
+\frac{x-y(x)}2
+\frac{1+y'(x)}{1-y'(x)}
+-\bigl(x+y(x)\bigr)
+$$
+and
+$$
 D(x)=
 \frac{2625}{16}\left(\frac15-M(x)\right)
-\frac{875}{26}
-\left(
-\frac{2(x+y(x))}{x-y(x)}
--\frac{1+y'(x)}{1-y'(x)}
-\right).
+\left(-\frac{196875}{2032}\right)
+\left[
+\frac{x-y(x)}{1-y'(x)}A'(x)-4A(x)
+\right].
 $$
 For all sufficiently small $x>0$, let $z(x)\in(0,1)$ be the unique number satisfying
 $$
--\log(1-z(x))-z(x)-\frac{z(x)^2}{2}
--\frac{z(x)^3}{3}-\frac{z(x)^4}{4}
+-\log(1-z(x))
+-\sum_{k=1}^7\frac{z(x)^k}{k}
 =
-\frac{D(x)}5.
+\frac{D(x)}8.
 $$
 Determine the exact value of
 $$
@@ -39,8 +45,8 @@ $$
 \frac{
 x+y(x)
 +\dfrac25z(x)^2
-+\dfrac{2}{15}z(x)^3
-+\dfrac{4949}{73125}z(x)^4
++\dfrac4{45}z(x)^3
++\dfrac{7718213}{105613200}z(x)^4
 }
 {z(x)^5}.
 $$
@@ -60,4 +66,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves an implicit branch, differentiation of that branch, asymptotic cancellation, series reversion, and extraction of a high-order limit coefficient, which are part of Calculus and Limits and continuity. The problem also involves formal power-series composition and logarithmic expansions, which are part of Algebra, Functions, and Trigonometry and Algebraic expressions and manipulation. However, those algebraic operations resolve dependent local parameters, while the requested object is an exact limit.
+This problem involves an implicit branch, differential cancellation, nested asymptotic normalization, and extraction of a high-order limit coefficient, which are part of Calculus and Limits and continuity. The problem also involves formal power-series composition and series reversion, which are part of Algebra, Functions, and Trigonometry and Algebraic expressions and manipulation. However, those algebraic operations are intermediate tools for resolving the dependent local scales, while the requested object is an exact limit.
