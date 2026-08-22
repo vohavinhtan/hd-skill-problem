@@ -10,7 +10,7 @@ The phase
 $$
 \phi(x)=x^4(1-x)^2
 $$
-vanishes only at $0$ and $1$. Near $0$ the scale is $x=O(s)$, while near $1$ the scale is $1-x=O(s^2)$. On every closed subinterval of $(0,1)$ the contribution is exponentially small.
+vanishes only at $0$ and $1$. Near $0$ the natural scale is $x=O(s)$, while near $1$ it is $1-x=O(s^2)$. The contribution from a fixed closed subinterval of $(0,1)$ is exponentially small.
 
 At $0$, set
 $$
@@ -37,7 +37,7 @@ the substitution $v=u^4$ gives
 $$
 A_m=\frac14\Gamma\!\left(\frac{m+1}{4}\right).
 $$
-Hence
+Thus the left-end contribution is
 $$
 I_k^{(0)}
 =
@@ -55,9 +55,9 @@ $$
 $$
 Then
 $$
-n\phi(x)=v^2(1-s^2v)^4,
+n\phi(x)=v^2(1-s^2v)^4
 $$
-so
+and
 $$
 x^ke^{-n\phi(x)}
 =
@@ -66,7 +66,7 @@ e^{-v^2}
 1+s^2(4v^3-kv)+O(s^4)
 \right].
 $$
-Therefore
+Hence
 $$
 I_k^{(1)}
 =
@@ -78,13 +78,13 @@ s^2
 \right].
 $$
 
-Step 2: Obtain the asymptotic expansion of $H_n$
+Step 2: Derive the first three coefficients of $H_n$
 
 Write
 $$
 R=\Gamma\!\left(\frac34\right).
 $$
-Combining the two endpoint expansions gives
+Combining the endpoint expansions from Step 1 gives
 $$
 I_0=
 \frac{G}{4}s
@@ -115,16 +115,15 @@ I_4=
 +O(s^6).
 $$
 
-Let
+Put
 $$
 N_n=I_2I_4-I_3^2.
 $$
-The $s^4$ terms cancel. At order $s^5$,
+The $s^4$ terms cancel. At order $s^5$ the coefficient is
 $$
-N_n=
-\frac{\sqrt\pi R}{8}s^5+O(s^6).
+\frac{\sqrt\pi R}{8}.
 $$
-At order $s^6$ the coefficient is
+At order $s^6$,
 $$
 \frac{\sqrt\pi}{2}\frac32
 -2\frac{\sqrt\pi}{2}\frac34=0.
@@ -140,7 +139,7 @@ $$
 =
 \frac{3\sqrt\pi G}{256}.
 $$
-Thus
+Therefore
 $$
 N_n=
 \frac{\sqrt\pi R}{8}s^5
@@ -170,7 +169,7 @@ $$
 C_0=\frac{2\sqrt\pi R}{G^2},
 $$
 $$
-C_1=\frac{-12\pi R}{G^3},
+C_1=-\frac{12\pi R}{G^3},
 $$
 and
 $$
@@ -183,124 +182,161 @@ C_2=
 -\frac{15R}{4G}
 \right).
 $$
-
 Using
 $$
 GR=\pi\sqrt2,
 $$
-these become
+we obtain
 $$
 C_0=\frac{2\sqrt2\,\pi^{3/2}}{G^3},
 $$
 $$
-C_1=\frac{-12\sqrt2\,\pi^2}{G^4},
+C_1=-\frac{12\sqrt2\,\pi^2}{G^4},
 $$
 and
 $$
 C_2=
-\frac{3\sqrt\pi\left[G^4+(288\sqrt2-80)\pi^2\right]}{16G^5}.
+\frac{3\sqrt\pi\left[G^4+(288\sqrt2-80)\pi^2\right]}
+{16G^5}.
 $$
 
-Step 3: Transfer the expansion to the dilated indices
+Step 3: Resolve the first dilation cancellation
 
-For every fixed nonnegative integer $j$,
+Since multiplication of $n$ by $16$ replaces $s$ by $s/2$,
 $$
-(16^jn)^{-1/4}=2^{-j}s.
-$$
-Hence
-$$
-H_{16^jn}
+H_{16n}
 =
-\sum_{m=0}^2
-C_m s^{m+3}2^{-j(m+3)}
-+O(s^6).
-$$
-For $m\geq0$, put
-$$
-r_m=2^{-(m+3)}
+C_0\left(\frac{s}{2}\right)^3
++C_1\left(\frac{s}{2}\right)^4
++C_2\left(\frac{s}{2}\right)^5
++O(s^6),
 $$
 and
 $$
-v_m=
-\begin{pmatrix}
-1\\
-r_m\\
-r_m^2
-\end{pmatrix}.
-$$
-The $3\times3$ matrix defining $K_n$ has the expansion
-$$
-\left(H_{16^{i+j}n}\right)_{0\leq i,j\leq2}
+H_{256n}
 =
-\sum_{m\geq0}C_ms^{m+3}v_mv_m^T.
+C_0\left(\frac{s}{4}\right)^3
++C_1\left(\frac{s}{4}\right)^4
++C_2\left(\frac{s}{4}\right)^5
++O(s^6).
 $$
 
-Step 4: Locate the first nonzero determinant term
+In
+$$
+K_n=H_nH_{256n}-H_{16n}^2,
+$$
+the $C_0^2s^6$ terms cancel.
 
-Expand the determinant multilinearly using the rank-one summands from Step 3. Any term selecting the same index $m$ twice vanishes because the corresponding columns are proportional. The smallest possible sum of powers therefore comes from the three distinct indices
+At order $s^7$, the coefficient is
 $$
-m=0,1,2.
+C_0C_1
+\left(
+4^{-4}+4^{-3}-2\cdot2^{-7}
+\right)
+=
+\frac{C_0C_1}{2^8}.
 $$
-Their total power of $s$ is
+At order $s^8$, the $C_1^2$ terms cancel because
 $$
-3+4+5=12.
+4^{-4}=2^{-8},
 $$
-All other triples have total power at least $13$. Hence
+while the $C_0C_2$ contribution is
 $$
-K_n=
-C_0C_1C_2s^{12}
-\det(v_0,v_1,v_2)^2
-+O(s^{13}).
+C_0C_2
+\left(
+4^{-5}+4^{-3}-2\cdot2^{-8}
+\right)
+=
+\frac{9C_0C_2}{2^{10}}.
+$$
+Consequently
+$$
+K_n=As^7+Bs^8+O(s^9),
+$$
+with
+$$
+A=\frac{C_0C_1}{2^8}
+=
+-\frac{3\pi^{7/2}}{16G^7},
+$$
+and
+$$
+B=\frac{9C_0C_2}{2^{10}}
+=
+\frac{27\sqrt2\,\pi^2
+\left[G^4+(288\sqrt2-80)\pi^2\right]}
+{2^{13}G^8}.
 $$
 
-The determinant is a Vandermonde determinant in
+Step 4: Resolve the second dilation cancellation
+
+The expansion from Step 3 gives
 $$
-r_0=\frac18,\qquad
-r_1=\frac1{16},\qquad
-r_2=\frac1{32}.
-$$
-Thus
-$$
-\det(v_0,v_1,v_2)^2
+K_{16n}
 =
-\left[
-(r_1-r_0)(r_2-r_0)(r_2-r_1)
-\right]^2
+A\left(\frac{s}{2}\right)^7
++B\left(\frac{s}{2}\right)^8
++O(s^9),
+$$
+and
+$$
+K_{256n}
 =
-\frac9{2^{28}}.
+A\left(\frac{s}{4}\right)^7
++B\left(\frac{s}{4}\right)^8
++O(s^9).
+$$
+The order-$s^{14}$ terms in
+$$
+K_nK_{256n}-K_{16n}^2
+$$
+cancel because
+$$
+4^{-7}=2^{-14}.
+$$
+The order-$s^{15}$ coefficient is
+$$
+AB
+\left(
+4^{-8}+4^{-7}-2\cdot2^{-15}
+\right)
+=
+\frac{AB}{2^{16}}.
 $$
 Therefore
 $$
-K_n=
-\frac9{2^{28}}C_0C_1C_2s^{12}
-+O(s^{13}).
+K_nK_{256n}-K_{16n}^2
+=
+\frac{AB}{2^{16}}s^{15}
++O(s^{16}).
 $$
 
 Step 5: Evaluate the limit
 
 Since
 $$
-s^{12}=n^{-3},
+s^{15}=n^{-15/4},
 $$
-we get
+the requested limit equals
 $$
-\lim_{n\to\infty}n^3K_n
+\frac{AB}{2^{16}}.
+$$
+Using the values of $A$ and $B$ from Step 3,
+$$
+\frac{AB}{2^{16}}
 =
-\frac9{2^{28}}C_0C_1C_2.
+-\frac{
+81\sqrt2\,\pi^{11/2}
+\left[G^4+(288\sqrt2-80)\pi^2\right]
+}
+{2^{33}G^{15}}.
 $$
-From Step 2,
-$$
-C_0C_1C_2
-=
-\frac{-9\pi^4\left[G^4+(288\sqrt2-80)\pi^2\right]}{G^{12}}.
-$$
-Substitution gives the requested exact value.
 
-Final Answer: $\boxed{\displaystyle -\frac{81\pi^4(G^4+(288\sqrt2-80)\pi^2)}{2^{28}G^{12}}}$
+Final Answer: $\boxed{-\frac{81\sqrt2\pi^{11/2}(G^4+(288\sqrt2-80)\pi^2)}{2^{33}G^{15}}}$
 
 ## Answer
 
-$\displaystyle -\frac{81\pi^4(G^4+(288\sqrt2-80)\pi^2)}{2^{28}G^{12}}$
+$-\frac{81\sqrt2\pi^{11/2}(G^4+(288\sqrt2-80)\pi^2)}{2^{33}G^{15}}$
 
 ## Classification
 
@@ -316,6 +352,6 @@ $\displaystyle -\frac{81\pi^4(G^4+(288\sqrt2-80)\pi^2)}{2^{28}G^{12}}$
 
 - competing endpoint scales
 - Laplace-type asymptotics
-- determinant cancellation
-- dilation structure
+- moment cancellation
+- nested dilation cancellation
 - asymptotic limits

@@ -10,12 +10,11 @@ $$
 Set
 $$
 H_n=
-\frac{I_2(n)I_4(n)-I_3(n)^2}{I_0(n)^2}.
+\frac{I_2(n)I_4(n)-I_3(n)^2}{I_0(n)^2}
 $$
-Define
+and
 $$
-K_n=
-\det\left(H_{16^{i+j}n}\right)_{0\leq i,j\leq2}.
+K_n=H_nH_{256n}-H_{16n}^2.
 $$
 Let
 $$
@@ -23,7 +22,11 @@ G=\Gamma\!\left(\frac14\right).
 $$
 Determine the exact value of
 $$
-\lim_{n\to\infty}n^3K_n.
+\lim_{n\to\infty}
+n^{15/4}
+\left(
+K_nK_{256n}-K_{16n}^2
+\right).
 $$
 
 ---
@@ -41,4 +44,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves competing endpoint scales, nested asymptotic cancellation, and a dilation determinant whose first surviving term must be identified, which are part of Calculus and Limits and continuity. The problem also involves Laplace-type integral expansions and gamma-function evaluations, which are part of Calculus and Integration. However, those integral calculations supply coefficients for the dilation determinant, while the requested object is a single exact limit.
+This problem involves competing endpoint scales, repeated asymptotic cancellation, and a nested dilation limit, which are part of Calculus and Limits and continuity. The problem also involves Laplace-type endpoint expansions and gamma-function integrals, which are part of Calculus and Integration. However, those integral calculations supply coefficients for the nested cancellation, while the requested object is a single exact limit.
