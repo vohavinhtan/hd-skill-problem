@@ -2,53 +2,26 @@
 
 ## LaTeX (Normalized)
 
-For $t<1$, define
+For each positive integer $n$ and $k\in\{0,2,3,4\}$, define
 $$
-g(t)=-\log(1-t)-t-\frac{t^2}{2}-\frac{t^3}{3}.
-$$
-For each $x\in(0,1)$, let $y(x)<0$ be the unique number satisfying
-$$
-g(y(x))=g(x).
+I_k(n)=\int_0^1 x^k
+\exp\!\left(-n x^4(1-x)^2\right)\,dx.
 $$
 Set
 $$
-M(x)=
-\frac{\displaystyle\int_{y(x)}^x g(t)\,dt}
-{g(x)\bigl(x-y(x)\bigr)}.
+H_n=
+\frac{I_2(n)I_4(n)-I_3(n)^2}{I_0(n)^2}.
 $$
-Define
+Let $\Gamma$ denote the gamma function. Determine the exact value of
 $$
-A(x)=
-\frac{x-y(x)}2
-\frac{1+y'(x)}{1-y'(x)}
--\bigl(x+y(x)\bigr)
-$$
-and
-$$
-D(x)=
-\frac{2625}{16}\left(\frac15-M(x)\right)
-\left(-\frac{196875}{2032}\right)
+\lim_{n\to\infty}
+n^{1/2}
 \left[
-\frac{x-y(x)}{1-y'(x)}A'(x)-4A(x)
+n^{3/4}H_n
+-\frac{2\sqrt2\,\pi^{3/2}}{\Gamma(\frac14)^3}
++\frac{12\sqrt2\,\pi^2}
+{\Gamma(\frac14)^4n^{1/4}}
 \right].
-$$
-For all sufficiently small $x>0$, let $z(x)\in(0,1)$ be the unique number satisfying
-$$
--\log(1-z(x))
--\sum_{k=1}^7\frac{z(x)^k}{k}
-=
-\frac{D(x)}8.
-$$
-Determine the exact value of
-$$
-\lim_{x\to0^+}
-\frac{
-x+y(x)
-+\dfrac25z(x)^2
-+\dfrac4{45}z(x)^3
-+\dfrac{7718213}{105613200}z(x)^4
-}
-{z(x)^5}.
 $$
 
 ---
@@ -66,4 +39,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves an implicit branch, differential cancellation, nested asymptotic normalization, and extraction of a high-order limit coefficient, which are part of Calculus and Limits and continuity. The problem also involves formal power-series composition and series reversion, which are part of Algebra, Functions, and Trigonometry and Algebraic expressions and manipulation. However, those algebraic operations are intermediate tools for resolving the dependent local scales, while the requested object is an exact limit.
+This problem involves a two-scale asymptotic limit and cancellation between competing endpoint contributions, which are part of Calculus and Limits and continuity. The problem also involves local changes of variables and exact gamma-function evaluation of improper integrals, which are part of Calculus and Integration. However, those integral evaluations supply coefficients in the asymptotic expansion, while the requested object is a single exact limit.

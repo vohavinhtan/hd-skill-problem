@@ -1,286 +1,284 @@
 ## Steps
 
-Step 1: Expand the midpoint of the level pair
-
-Since
-$$
-g'(t)=\frac{t^3}{1-t},
-$$
-the function $g$ decreases on $(-\infty,0)$ and increases on $(0,1)$. Hence the branch $y(x)$ is unique.
+Step 1: Separate the two boundary scales
 
 Put
 $$
-h=\frac{x-y(x)}2,
-\qquad
-c=\frac{x+y(x)}2.
+\varepsilon=n^{-1/4}.
+$$
+The phase
+$$
+\phi(x)=x^4(1-x)^2
+$$
+vanishes only at $0$ and $1$. Near $0$ its order is $4$, so the scale is $x=O(\varepsilon)$. Near $1$ its order is $2$, so the scale is $1-x=O(\varepsilon^2)$.
+
+Choose a fixed $\delta\in(0,1/2)$. On $[\delta,1-\delta]$ we have $\phi(x)\geq c_\delta>0$, so that portion of every $I_k(n)$ is exponentially small. It remains to expand the two endpoint pieces.
+
+At $0$, set
+$$
+x=\varepsilon u.
 $$
 Then
 $$
-x=c+h,
-\qquad
-y(x)=c-h.
-$$
-Near $0$,
-$$
-g(t)=\sum_{n\ge4}\frac{t^n}{n}.
-$$
-The equation $g(c+h)=g(c-h)$ forces $c=O(h^2)$. Write
-$$
-c=ah^2+bh^4+ch^6+dh^8+O(h^{10}).
-$$
-Comparison of the coefficients of $h^5,h^7,h^9,h^{11}$ gives
-$$
-5a+1=0,
-$$
-$$
-7a^3+14a^2+7a+7b+1=0,
-$$
-$$
-9a^4+30a^3+27a^2b+27a^2+36ab+9a+9b+9c+1=0,
-$$
-and
-$$
-11a^5+55a^4+44a^3b+77a^3+110a^2b+33a^2c+44a^2
-+33ab^2+66ab+44ac+11a+22b^2+11b+11c+11d+1=0.
-$$
-Solving successively,
-$$
-a=-\frac15,
-\qquad
-b=-\frac{13}{875},
-\qquad
-c=-\frac{254}{196875},
-\qquad
-d=\frac{83}{7734375}.
-$$
-Therefore
-$$
-c(h)=
--\frac15h^2
--\frac{13}{875}h^4
--\frac{254}{196875}h^6
-+\frac{83}{7734375}h^8
-+O(h^{10}),
-$$
-so
-$$
-x+y(x)=
--\frac25h^2
--\frac{26}{875}h^4
-+O(h^6).
-$$
-
-Step 2: Expand the averaged integral
-
-Let $G'(t)=g(t)$ and $G(0)=0$. Then
-$$
-G(t)=\sum_{n\ge4}\frac{t^{n+1}}{n(n+1)}.
-$$
-Using the midpoint expansion from Step 1,
-$$
-G(c+h)-G(c-h)=
-\frac{h^5}{10}
-+\frac{4h^7}{525}
-+\frac{121h^9}{157500}
-+O(h^{11}),
-$$
-while
-$$
-2h\,g(c+h)=
-\frac{h^5}{2}
-+\frac{4h^7}{75}
-+\frac{121h^9}{17500}
-+O(h^{11}).
+n x^4(1-x)^2
+=
+u^4(1-\varepsilon u)^2.
 $$
 Hence
 $$
-M(x)=
-\frac15
--\frac{16}{2625}h^2
--\frac{38}{65625}h^4
-+O(h^6).
+e^{-n x^4(1-x)^2}
+=
+e^{-u^4}
+\left[
+1+2\varepsilon u^5
++\varepsilon^2(2u^{10}-u^6)
++O(\varepsilon^3)
+\right].
+$$
+Define
+$$
+A_m=\int_0^\infty u^m e^{-u^4}\,du
+=
+\frac14\Gamma\!\left(\frac{m+1}{4}\right).
+$$
+Therefore the contribution from $0$ is
+$$
+I_k^{(0)}
+=
+\varepsilon^{k+1}
+\left[
+A_k+2\varepsilon A_{k+5}
++\varepsilon^2(2A_{k+10}-A_{k+6})
++O(\varepsilon^3)
+\right].
+$$
+
+At $1$, set
+$$
+1-x=\varepsilon^2v.
+$$
+Then
+$$
+n x^4(1-x)^2
+=
+v^2(1-\varepsilon^2v)^4,
+$$
+so
+$$
+x^k e^{-n x^4(1-x)^2}
+=
+e^{-v^2}
+\left[
+1+\varepsilon^2(4v^3-kv)+O(\varepsilon^4)
+\right].
 $$
 Thus
 $$
-\frac{2625}{16}\left(\frac15-M(x)\right)
+I_k^{(1)}
 =
-h^2+\frac{19}{200}h^4+O(h^6).
+\varepsilon^2
+\left[
+B_0+\varepsilon^2B_{1,k}+O(\varepsilon^4)
+\right],
+$$
+where
+$$
+B_0=\frac{\sqrt\pi}{2},
+\qquad
+B_{1,k}
+=
+\int_0^\infty(4v^3-kv)e^{-v^2}\,dv
+=
+2-\frac{k}{2}.
 $$
 
-Step 3: Evaluate the differential cancellation factor
+Step 2: Record the four moment expansions
+
+Write
+$$
+G=\Gamma\!\left(\frac14\right),
+\qquad
+R=\Gamma\!\left(\frac34\right).
+$$
+Using the formulas from Step 1,
+$$
+I_0=
+\frac{G}{4}\varepsilon
++\frac{3\sqrt\pi}{4}\varepsilon^2
++\frac{15R}{32}\varepsilon^3
++O(\varepsilon^4).
+$$
+
+For $I_2$,
+$$
+I_2=
+\frac{\sqrt\pi}{2}\varepsilon^2
++\frac{R}{4}\varepsilon^3
++\frac32\varepsilon^4
++\frac{35G}{128}\varepsilon^5
++O(\varepsilon^6).
+$$
+
+For $I_3$,
+$$
+I_3=
+\frac{\sqrt\pi}{2}\varepsilon^2
++\frac34\varepsilon^4
++\frac{5G}{32}\varepsilon^5
++O(\varepsilon^6).
+$$
+
+For $I_4$,
+$$
+I_4=
+\frac{\sqrt\pi}{2}\varepsilon^2
++\frac{G}{16}\varepsilon^5
++O(\varepsilon^6).
+$$
+
+The absence of an $\varepsilon^3$ term in $I_3,I_4$ is caused by the higher power of $x$ at the quartic endpoint, while the absence of an $\varepsilon^4$ correction from the quadratic endpoint in $I_4$ follows from
+$$
+B_{1,4}=0.
+$$
+
+Step 3: Use the determinant cancellation
+
+Put
+$$
+N=I_2I_4-I_3^2.
+$$
+The order-$\varepsilon^4$ terms cancel because all three moments have the same leading contribution from the endpoint $x=1$.
+
+At order $\varepsilon^5$,
+$$
+N=
+\frac{\sqrt\pi R}{8}\varepsilon^5+O(\varepsilon^6).
+$$
+At order $\varepsilon^6$, the coefficient is
+$$
+\frac{\sqrt\pi}{2}
+\left(
+\frac32-2\cdot\frac34
+\right)=0.
+$$
+Thus there is a second cancellation.
+
+At order $\varepsilon^7$, the coefficient is
+$$
+\frac{\sqrt\pi}{2}
+\left(
+\frac{35G}{128}
++\frac{G}{16}
+-2\frac{5G}{32}
+\right)
+=
+\frac{3\sqrt\pi G}{256}.
+$$
+Hence
+$$
+N=
+\frac{\sqrt\pi R}{8}\varepsilon^5
++\frac{3\sqrt\pi G}{256}\varepsilon^7
++O(\varepsilon^8).
+$$
+
+Step 4: Divide by the normalization
+
+From Step 2,
+$$
+I_0^2=
+\frac{G^2}{16}\varepsilon^2
+\left[
+1+\delta_1\varepsilon+\delta_2\varepsilon^2
++O(\varepsilon^3)
+\right],
+$$
+where
+$$
+\delta_1=\frac{6\sqrt\pi}{G},
+$$
+and
+$$
+\delta_2=
+\frac{9\pi}{G^2}
++\frac{15R}{4G}.
+$$
+Therefore
+$$
+H_n
+=
+\varepsilon^3
+\left[
+C_0+C_1\varepsilon+C_2\varepsilon^2
++O(\varepsilon^3)
+\right],
+$$
+with
+$$
+C_0=
+\frac{2\sqrt\pi R}{G^2},
+$$
+$$
+C_1=-\delta_1C_0
+=
+-\frac{12\pi R}{G^3},
+$$
+and
+$$
+C_2=
+\frac{3\sqrt\pi}{16G}
++
+C_0(\delta_1^2-\delta_2).
+$$
+
+The reflection formula
+$$
+\Gamma\!\left(\frac14\right)
+\Gamma\!\left(\frac34\right)
+=
+\pi\sqrt2
+$$
+gives
+$$
+C_0=
+\frac{2\sqrt2\,\pi^{3/2}}{G^3},
+$$
+$$
+C_1=
+-\frac{12\sqrt2\,\pi^2}{G^4},
+$$
+and
+$$
+C_2=
+\frac{
+3\sqrt\pi
+\left[
+G^4+(288\sqrt2-80)\pi^2
+\right]
+}
+{16G^5}.
+$$
+
+Step 5: Match the normalization in the requested limit
 
 Since
 $$
-x=c(h)+h,
-\qquad
-y=c(h)-h,
+\varepsilon=n^{-1/4},
 $$
-differentiation gives
+Step 4 gives
 $$
-y'(x)=\frac{c'(h)-1}{c'(h)+1}.
-$$
-Therefore
-$$
-\frac{1+y'(x)}{1-y'(x)}=c'(h).
-$$
-The quantity $A(x)$ in the statement is consequently
-$$
-A(x)=hc'(h)-2c(h).
-$$
-Using Step 1,
-$$
-A(x)=
--\frac{26}{875}h^4
--\frac{1016}{196875}h^6
-+\frac{166}{2578125}h^8
-+O(h^{10}).
-$$
-
-Also
-$$
-\frac{dh}{dx}=\frac{1-y'(x)}2,
-$$
-so
-$$
-\frac{x-y(x)}{1-y'(x)}A'(x)=h\frac{dA}{dh}.
-$$
-Hence
-$$
-\frac{x-y(x)}{1-y'(x)}A'(x)-4A(x)
+n^{3/4}H_n
 =
-h\frac{dA}{dh}-4A.
+C_0+C_1n^{-1/4}+C_2n^{-1/2}
++O(n^{-3/4}).
 $$
-The $h^4$ term cancels, leaving
-$$
-h\frac{dA}{dh}-4A
-=
--\frac{2032}{196875}h^6
-+\frac{664}{2578125}h^8
-+O(h^{10}).
-$$
-Therefore
-$$
--\frac{196875}{2032}
-\left[
-\frac{x-y(x)}{1-y'(x)}A'(x)-4A(x)
-\right]
-=
-h^6-\frac{1743}{69850}h^8+O(h^{10}).
-$$
+The two displayed subtraction terms in the problem remove $C_0$ and $C_1n^{-1/4}$. Multiplication by $n^{1/2}$ therefore leaves $C_2$.
 
-Multiplying this by the factor from Step 2 gives
-$$
-D(x)=
-h^8+\frac{19571}{279400}h^{10}+O(h^{12}).
-$$
-
-Step 4: Resolve the eighth-order implicit normalization
-
-Define
-$$
-J(z)=
--\log(1-z)-\sum_{k=1}^7\frac{z^k}{k}.
-$$
-Then
-$$
-J(z)=
-\frac{z^8}{8}
-+\frac{z^9}{9}
-+\frac{z^{10}}{10}
-+\frac{z^{11}}{11}
-+O(z^{12}),
-$$
-and
-$$
-J'(z)=\frac{z^7}{1-z}>0
-$$
-for $0<z<1$. Since $D(x)>0$ for small $x$, the stated $z(x)$ exists uniquely.
-
-Write $z=z(x)$ and seek
-$$
-h=z+pz^2+qz^3+rz^4+O(z^5).
-$$
-From
-$$
-J(z)=\frac{D(x)}8
-=
-\frac18h^8
-+\frac{19571}{2235200}h^{10}
-+O(h^{12}),
-$$
-comparison of the coefficients of $z^9,z^{10},z^{11}$ yields
-$$
-p=\frac19,
-$$
-$$
-q+\frac72p^2+\frac{19571}{2235200}=\frac1{10},
-$$
-and
-$$
-r+7pq+7p^3+\frac{5\cdot19571}{1117600}p=\frac1{11}.
-$$
-Therefore
-$$
-p=\frac19,
-\qquad
-q=\frac{8696669}{181051200},
-\qquad
-r=\frac{5068837}{148132800}.
-$$
-Thus
-$$
-h=
-z+\frac{z^2}{9}
-+\frac{8696669}{181051200}z^3
-+\frac{5068837}{148132800}z^4
-+O(z^5).
-$$
-
-Step 5: Compose with the branch sum
-
-From Step 1,
-$$
-x+y(x)=
--\frac25h^2-\frac{26}{875}h^4+O(h^6).
-$$
-Using Step 4,
-$$
-h^2=
-z^2+\frac29z^3
-+\frac{16549913}{90525600}z^4
-+\frac{109639637}{814730400}z^5
-+O(z^6),
-$$
-and
-$$
-h^4=
-z^4+\frac49z^5+O(z^6).
-$$
-Substitution gives
-$$
-x+y(x)=
--\frac25z^2
--\frac4{45}z^3
--\frac{7718213}{105613200}z^4
--\frac{31973519}{712889100}z^5
-+O(z^6).
-$$
-Therefore
-$$
-x+y(x)
-+\frac25z^2
-+\frac4{45}z^3
-+\frac{7718213}{105613200}z^4
-=
--\frac{31973519}{712889100}z^5+O(z^6).
-$$
-Since $z(x)\to0^+$ as $x\to0^+$, division by $z(x)^5$ gives the required value.
-
-Final Answer: $\boxed{-\frac{31973519}{712889100}}$
+Final Answer: $\boxed{\frac{3\sqrt{\pi}(\Gamma(\frac14)^4+(288\sqrt2-80)\pi^2)}{16\Gamma(\frac14)^5}}$
 
 ## Answer
 
-$-\frac{31973519}{712889100}$
+$\frac{3\sqrt{\pi}(\Gamma(\frac14)^4+(288\sqrt2-80)\pi^2)}{16\Gamma(\frac14)^5}$
 
 ## Classification
 
@@ -294,8 +292,8 @@ $-\frac{31973519}{712889100}$
 
 ## Solution Concepts
 
-- implicit branches
-- differential cancellation
-- asymptotic normalization
-- series reversion
-- high-order limits
+- competing boundary layers
+- Laplace-type endpoint asymptotics
+- determinant cancellation
+- gamma-function integrals
+- asymptotic limits
