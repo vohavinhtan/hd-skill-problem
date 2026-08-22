@@ -7,43 +7,34 @@ $$
 \int_0^1
 (2x-1)
 \exp\!\left(
--nx^4(1-x)^2+\lambda_n x^4(5-4x)
+-nx^4(1-x)^2+\lambda_nx
 \right)\,dx=0.
 $$
-Define
+Let $\mu_n$ be the probability measure on $[0,1]$ whose density is proportional to
 $$
-V_n=
-\frac{
-\displaystyle
-\int_0^1
-\left(x-\frac12\right)^2
 \exp\!\left(
--nx^4(1-x)^2+\lambda_n x^4(5-4x)
-\right)\,dx
-}{
-\displaystyle
-\int_0^1
-\exp\!\left(
--nx^4(1-x)^2+\lambda_n x^4(5-4x)
-\right)\,dx
-}.
+-nx^4(1-x)^2+\lambda_nx
+\right).
 $$
-Let
+If $X$ has law $\mu_n$, let
 $$
-G=\Gamma\!\left(\frac14\right).
+C_n=
+\operatorname{Cov}_{\mu_n}
+\begin{pmatrix}
+X\\
+X^2\\
+X^3
+\end{pmatrix}.
+$$
+Set
+$$
+G=\Gamma\!\left(\frac14\right),
+\qquad
+R=\Gamma\!\left(\frac34\right).
 $$
 Determine the exact value of
 $$
-\lim_{n\to\infty}
-n^{3/4}
-\left[
-\frac14-V_n
--\frac{\sqrt\pi}{2G}n^{-1/4}
--\left(
-\frac{1}{2\sqrt\pi}
-+\frac{\sqrt2\,\pi}{4G^2}
-\right)n^{-1/2}
-\right].
+\lim_{n\to\infty}n^{3/2}\det C_n.
 $$
 
 ---
@@ -61,4 +52,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves an implicitly tuned parameter, two competing boundary scales, and extraction of a third-order asymptotic limit, which are part of Calculus and Limits and continuity. The problem also involves Laplace-type integral expansions and gamma-function evaluations, which are part of Calculus and Integration. However, those integral expansions supply the local coefficients, while the requested object is the limit after the centering condition has coupled the two boundary layers.
+This problem involves an implicitly tuned parameter, two boundary layers with different scales, and a singular covariance limit, which are part of Calculus and Limits and continuity. The solution also uses asymptotic integral scaling and gamma-function moments, which are part of Calculus and Integration. The covariance determinant cannot be read from the separate moment limits because its limiting matrix has rank one; the first nonzero term appears only after resolving the two endpoint fluctuation scales.
