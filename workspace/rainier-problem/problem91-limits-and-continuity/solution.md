@@ -1,365 +1,385 @@
 ## Steps
 
-Step 1: Recover the hidden cyclic invariants
+Step 1: Convert the Hankel determinant to a four-point expectation
+
+Let $\mu_N$ be the probability measure on $[0,1]$ with density
+$$
+\frac{\exp\!\left(-Nx^2(1-x)^2\right)}
+{\displaystyle\int_0^1\exp\!\left(-Nt^2(1-t)^2\right)\,dt}.
+$$
+Then
+$$
+M_{k,N}=\int_0^1x^k\,d\mu_N(x).
+$$
+
+For independent $X_1,\ldots,X_4$ with law $\mu_N$, expansion of the two Vandermonde determinants gives
+$$
+H_N
+=
+\frac1{4!}
+\mathbb E
+\left[
+\prod_{1\leq i<j\leq4}(X_i-X_j)^2
+\right].
+$$
+Indeed,
+$$
+\det(M_{i+j,N})_{0\leq i,j\leq3}
+=
+\frac1{4!}
+\int
+\det(X_j^i)_{0\leq i\leq3,\,1\leq j\leq4}^{\,2}
+\prod_{j=1}^4d\mu_N(X_j),
+$$
+and the determinant inside the integral is the Vandermonde product.
+
+The weight is invariant under $x\mapsto1-x$. Each sample therefore lies in the left or right half of $[0,1]$ with probability $1/2$.
 
 Put
 $$
-a=
-xy^2+\frac{y}{x^3}+\frac{x^2}{y^3},
+\varepsilon=N^{-1/2}.
 $$
+On the left endpoint write
 $$
-b=
-\frac{y^3}{x^2}+\frac{x^3}{y}+\frac1{xy^2}.
+X=\varepsilon U.
 $$
-The displayed generators satisfy
+On the right endpoint write
 $$
-u=a+b^2,
-\qquad
-v=b+u^3.
+X=1-\varepsilon U.
 $$
-They can be inverted:
-$$
-b=v-u^3,
-\qquad
-a=u-(v-u^3)^2.
-$$
-Therefore
-$$
-K_q=\mathbb F_q(a,b).
-$$
+The two scaled conditional laws are identical.
 
-Choose a primitive seventh root $\zeta\in\mathbb F_q$ and define
-$$
-\sigma[X:Y:Z]=[\zeta X:\zeta^2Y:\zeta^4Z].
-$$
-On the affine chart $Z=1$ this becomes
-$$
-\sigma(x)=\zeta^4x,
-\qquad
-\sigma(y)=\zeta^5y.
-$$
-Set
-$$
-p=xy^2,
-\qquad
-r=\frac{y}{x^3}.
-$$
-Both functions are fixed by $\sigma$. Also
-$$
-x^7=\frac{p}{r^2},
-\qquad
-y=rx^3.
-$$
-Thus
-$$
-[L_q:\mathbb F_q(p,r)]\leq7.
-$$
-The seven powers of $\sigma$ give the reverse inequality, so
-$$
-\mathbb F_q(p,r)=L_q^{\langle\sigma\rangle}.
-$$
+Step 2: Expand the scaled endpoint law
 
-Step 2: Detect the orientation lost by the symmetric generators
+Ignoring an exponentially small truncation at $U=1/(2\varepsilon)$, the scaled density is proportional to
+$$
+\exp\!\left(-U^2(1-\varepsilon U)^2\right).
+$$
+For fixed $U$,
+$$
+\exp\!\left(-U^2(1-\varepsilon U)^2\right)
+=
+e^{-U^2}
+\left[
+1+2\varepsilon U^3
++\varepsilon^2(2U^6-U^4)
++O(\varepsilon^3)
+\right].
+$$
 
 Let
 $$
-c[X:Y:Z]=[Y:Z:X].
+m_k
+=
+\frac{2}{\sqrt{\pi}}
+\int_0^\infty U^ke^{-U^2}\,dU
+=
+\frac{\Gamma\!\left(\frac{k+1}{2}\right)}{\sqrt{\pi}}.
 $$
-On affine coordinates,
+If $\mu_k(\varepsilon)$ denotes the $k$th moment of the scaled conditional law, normalization gives
 $$
-c(x,y)=\left(\frac yx,\frac1x\right).
+\mu_k(\varepsilon)
+=
+\frac{
+m_k+2\varepsilon m_{k+3}
++\varepsilon^2(2m_{k+6}-m_{k+4})
+}
+{
+1+2\varepsilon m_3
++\varepsilon^2(2m_6-m_4)
+}
++
+O(\varepsilon^3).
 $$
-If
+The values needed below include
 $$
-s=\frac{x^2}{y^3},
-$$
-then direct substitution gives
-$$
-c(p)=r,
+m_1=\frac1{\sqrt{\pi}},
 \qquad
-c(r)=s,
+m_2=\frac12,
 \qquad
-c(s)=p,
-$$
-and
-$$
-prs=1.
-$$
-The functions recovered in Step 1 satisfy
-$$
-a=p+r+s,
+m_3=\frac1{\sqrt{\pi}},
 \qquad
-b=pr+rs+sp.
+m_4=\frac34,
+\qquad
+m_5=\frac2{\sqrt{\pi}},
+\qquad
+m_6=\frac{15}{8}.
 $$
 
-Write
+For independent $U_1,U_2$ having this scaled law, define
 $$
-d=\frac{q-1}{7}.
+A_\varepsilon
+=
+\mathbb E(U_1-U_2)^2,
+$$
+$$
+B_\varepsilon
+=
+\mathbb E\left[(U_1-U_2)^2(U_1+U_2)\right].
 $$
 Using
 $$
-x^7=\frac{p}{r^2},
-\qquad
-y^7=p^3r,
-$$
-the Fermat equation becomes
-$$
-F(p,r)=p^d+p^{3d}r^{3d}+r^{2d}=0.
-$$
-The cubic
-$$
-T^3-aT^2+bT-1
-$$
-has roots $p,r,s$. Hence $a,b$ determine six possible orderings of these roots.
-
-The three cyclic orderings occur on the curve because they are obtained by powers of $c$. A reversed ordering would require, generically,
-$$
-F(r,p)=0.
-$$
-But
-$$
-F(p,r)-F(r,p)
+A_\varepsilon
 =
-(p^d-r^d)(1-p^d-r^d).
-$$
-This is not the zero function. At every point with $x=0$, the function $r=y/x^3$ has a pole while $p=xy^2$ has a zero, so neither factor can vanish identically.
-
-Therefore the reversed orderings do not lie generically on the intermediate curve. Exactly the three cyclic orderings remain, and
-$$
-[\mathbb F_q(p,r):\mathbb F_q(a,b)]=3.
-$$
-
-Step 3: Identify the full fixed field
-
-Conjugating the diagonal action by $c$ gives
-$$
-c\sigma c^{-1}=\sigma^2.
-$$
-Therefore
-$$
-H=\langle\sigma,c\rangle
-$$
-is a semidirect product of order
-$$
-|H|=21.
-$$
-Both $a$ and $b$ are fixed by $\sigma$ and by $c$, so
-$$
-K_q\subseteq L_q^H.
-$$
-Steps 1 and 2 give
-$$
-[L_q:K_q]=7\cdot3=21.
-$$
-Since $H$ already supplies $21$ distinct $K_q$-automorphisms,
-$$
-K_q=L_q^H.
-$$
-
-Step 4: Compute the ramification of the quotient
-
-Let $C_q$ be the smooth projective Fermat curve
-$$
-X^n+Y^n+Z^n=0.
-$$
-The characteristic divides neither $3$ nor $7$, so the action is tame, and
-$$
-2g(C_q)-2=n(n-3).
-$$
-
-For $1\leq k\leq6$, the three eigenvalues of $\sigma^k$ are
-$$
-\zeta^k,\qquad\zeta^{2k},\qquad\zeta^{4k}.
-$$
-They are distinct. Its only projective fixed points are the three coordinate points, none of which lies on $C_q$. The nonidentity elements of $\langle\sigma\rangle$ contribute no fixed points.
-
-Consider
-$$
-g=\sigma^kc.
-$$
-It acts by
-$$
-g[X:Y:Z]
-=
-[\zeta^kY:\zeta^{2k}Z:\zeta^{4k}X].
-$$
-At a fixed eigenline with eigenvalue $\lambda$,
-$$
-\lambda^3=1.
-$$
-Taking $X\neq0$, the eigenvector equations give
-$$
-Y=\lambda\zeta^{-k}X,
-\qquad
-Z=\lambda^2\zeta^{-3k}X.
-$$
-Since $7\mid n$,
-$$
-Y^n=\lambda^nX^n,
-\qquad
-Z^n=\lambda^{2n}X^n.
-$$
-The Fermat equation on this eigenline is therefore
-$$
-1+\lambda^n+\lambda^{2n}=0.
-$$
-
-If $3\nmid n$, exactly the two nontrivial cube roots of unity satisfy this equation. Every element of the cosets
-$$
-\langle\sigma\rangle c,
-\qquad
-\langle\sigma\rangle c^2
-$$
-then fixes two points.
-
-If $3\mid n$, every cube root has $\lambda^n=1$, and no such eigenline lies on $C_q$.
-
-Define
-$$
-\delta_q=
-\begin{cases}
-1,&3\nmid(q-1),\\
-0,&3\mid(q-1).
-\end{cases}
-$$
-There are fourteen elements outside $\langle\sigma\rangle$, so the total fixed-point contribution is
-$$
-R=28\delta_q.
-$$
-
-Step 5: Derive the two genus formulas
-
-Tame Riemann-Hurwitz gives
-$$
-n(n-3)
-=
-21\bigl(2g(K_q)-2\bigr)
-+
-28\delta_q.
-$$
-Solving and using $n=q-1$ yields
-$$
-42g(K_q)
-=
-q^2-5q+46-28\delta_q.
-$$
-
-For
-$$
-Q\equiv29\pmod{42},
-$$
-we have
-$$
-Q\equiv2\pmod3,
-$$
-so
-$$
-42g(K_Q)=Q^2-5Q+18.
-$$
-Every odd power of $Q$ is again congruent to $2$ modulo $3$, while every positive even power is congruent to $1$ modulo $3$. Therefore
-$$
-42g(K_{Q^{2j+1}})
-=
-Q^{4j+2}-5Q^{2j+1}+18,
+2\left(\mu_2(\varepsilon)-\mu_1(\varepsilon)^2\right)
 $$
 and
 $$
-42g(K_{Q^{2j}})
+B_\varepsilon
 =
-Q^{4j}-5Q^{2j}+46
+2\mu_3(\varepsilon)
+-
+2\mu_1(\varepsilon)\mu_2(\varepsilon),
 $$
-for the positive exponents occurring in the problem.
-
-Step 6: Evaluate the first scale cancellation
-
-For an odd-power admissible value $q$, put
+the moment formula gives
 $$
-z=\frac1q.
+A_\varepsilon
+=
+1-\frac2\pi
++
+\frac{8}{\pi^{3/2}}\varepsilon
++
+\left(
+15-\frac{16}{\pi}-\frac{24}{\pi^2}
+\right)\varepsilon^2
++
+O(\varepsilon^3),
+$$
+and
+$$
+B_\varepsilon
+=
+\frac1{\sqrt{\pi}}
++
+\left(
+6-\frac8\pi
+\right)\varepsilon
++
+O(\varepsilon^2).
+$$
+
+Step 3: Compute the two-left two-right contribution
+
+Take two samples near $0$,
+$$
+X_i=\varepsilon U_i,
+\qquad
+i=1,2,
+$$
+and two near $1$,
+$$
+X_{2+j}=1-\varepsilon V_j,
+\qquad
+j=1,2.
+$$
+The $U$-pair and $V$-pair are independent and have the scaled law from Step 2.
+
+The squared Vandermonde product is
+$$
+\varepsilon^4
+(U_1-U_2)^2(V_1-V_2)^2
+\prod_{i,j=1}^2
+\left(1-\varepsilon(U_i+V_j)\right)^2.
+$$
+Put
+$$
+S=U_1+U_2+V_1+V_2.
+$$
+The cross factor has expansion
+$$
+\prod_{i,j=1}^2
+\left(1-\varepsilon(U_i+V_j)\right)^2
+=
+1-4\varepsilon S+\varepsilon^2Q+O(\varepsilon^3),
+$$
+where
+$$
+Q
+=
+8S^2
+-
+\sum_{i,j=1}^2(U_i+V_j)^2.
+$$
+
+Let
+$$
+a=1-\frac2\pi.
+$$
+Under the limiting half-Gaussian law,
+$$
+\mathbb E
+\left[
+(U_1-U_2)^2(V_1-V_2)^2Q
+\right]
+=
+8+\frac{14}{\pi}-\frac{32}{\pi^2}.
+$$
+This follows by expanding $Q$ and using
+$$
+m_0=1,\qquad
+m_1=\frac1{\sqrt{\pi}},
+\qquad
+m_2=\frac12,
+\qquad
+m_3=\frac1{\sqrt{\pi}},
+\qquad
+m_4=\frac34.
+$$
+
+Combining this value with $A_\varepsilon$ and $B_\varepsilon$ gives
+$$
+\mathbb E
+\left[
+(U_1-U_2)^2(V_1-V_2)^2
+\prod_{i,j=1}^2
+\left(1-\varepsilon(U_i+V_j)\right)^2
+\right]
+=
+a^2
+-
+\frac{8a^2}{\sqrt{\pi}}\varepsilon
++
+C\varepsilon^2
++
+O(\varepsilon^3),
+$$
+where
+$$
+C
+=
+-10+\frac{82}{\pi}-\frac{208}{\pi^2}+\frac{160}{\pi^3}.
+$$
+
+There are $\binom42=6$ assignments with two samples at each endpoint. Each assignment has probability $2^{-4}$. After the factor $1/4!$ from Step 1, their contribution to $N^2H_N=\varepsilon^{-4}H_N$ is
+$$
+\frac1{64}
+\left[
+a^2
+-
+\frac{8a^2}{\sqrt{\pi}}\varepsilon
++
+C\varepsilon^2
+\right]
++
+O(\varepsilon^3).
+$$
+
+Step 4: Compute the first contribution from an unequal endpoint split
+
+A three-left one-right configuration contains three within-left differences. Its squared Vandermonde product starts at order
+$$
+\varepsilon^6.
+$$
+After multiplication by $N^2=\varepsilon^{-4}$, it first contributes at order $\varepsilon^2$.
+
+For three independent limiting half-Gaussian variables $U_1,U_2,U_3$,
+$$
+\mathbb E
+\prod_{1\leq i<j\leq3}(U_i-U_j)^2
+=
+6
+\det
+\begin{pmatrix}
+m_0&m_1&m_2\\
+m_1&m_2&m_3\\
+m_2&m_3&m_4
+\end{pmatrix}.
+$$
+Substituting the moments from Step 3 gives
+$$
+\mathbb E
+\prod_{1\leq i<j\leq3}(U_i-U_j)^2
+=
+\frac{3(\pi-3)}{2\pi}.
+$$
+
+There are eight configurations of type $3+1$ or $1+3$. Their total coefficient, including the probability $2^{-4}$ and the factor $1/24$, is
+$$
+\frac1{48}.
+$$
+Therefore their contribution to $N^2H_N$ is
+$$
+\frac{\pi-3}{32\pi}\varepsilon^2
++
+O(\varepsilon^3).
+$$
+
+Configurations with all four samples near the same endpoint contain six small pairwise differences, so their squared Vandermonde product is $O(\varepsilon^{12})$. They do not affect the terms through order $\varepsilon^2$ after multiplication by $\varepsilon^{-4}$.
+
+Step 5: Assemble the expansion of the determinant
+
+Combining Steps 3 and 4,
+$$
+N^2H_N
+=
+c+dN^{-1/2}+eN^{-1}+O(N^{-3/2}),
+$$
+where
+$$
+c=\frac{1}{64}\left(1-\frac2\pi\right)^2,
+$$
+$$
+d=
+-\frac{1}{8\sqrt{\pi}}
+\left(1-\frac2\pi\right)^2,
+$$
+and
+$$
+e
+=
+\frac{C}{64}
++
+\frac{\pi-3}{32\pi}.
+$$
+Using the value of $C$ from Step 3,
+$$
+e
+=
+\frac{-2\pi^3+19\pi^2-52\pi+40}{16\pi^3}.
+$$
+
+Step 6: Apply the three-scale cancellation
+
+Write
+$$
+R_N=N^2H_N.
 $$
 Step 5 gives
 $$
-\frac{g(K_{q^2})}{q^2g(K_q)}
+R_N
 =
-\frac{1-5z^2+46z^4}{1-5z+18z^2}.
+c+dN^{-1/2}+eN^{-1}+O(N^{-3/2}),
 $$
-Expanding the reciprocal denominator,
 $$
-\frac1{1-5z+18z^2}
+R_{4N}
 =
-1+5z+7z^2-55z^3+O(z^4).
+c+\frac{d}{2}N^{-1/2}+\frac{e}{4}N^{-1}+O(N^{-3/2}),
 $$
-Therefore
+and
 $$
-\frac{g(K_{q^2})}{q^2g(K_q)}-1
+R_{16N}
 =
-5z+2z^2-80z^3+O(z^4).
+c+\frac{d}{4}N^{-1/2}+\frac{e}{16}N^{-1}+O(N^{-3/2}).
 $$
+The constant and $N^{-1/2}$ terms cancel in
+$$
+R_N-3R_{4N}+2R_{16N}.
+$$
+The coefficient of $N^{-1}$ is
+$$
+e\left(1-\frac34+\frac{2}{16}\right)
+=
+\frac{3e}{8}.
+$$
+Multiplication by $N$ gives the requested limit.
 
-The even-power quotient gives
-$$
-\frac{g(K_{q^4})}{q^4g(K_{q^2})}
-=
-\frac{1-5z^4+46z^8}{1-5z^2+46z^4},
-$$
-so
-$$
-\frac{g(K_{q^4})}{q^4g(K_{q^2})}-1
-=
-5z^2-26z^4+O(z^6).
-$$
-Subtracting after multiplication by $q=z^{-1}$ gives
-$$
-\frac{g(K_{q^2})}{q^2g(K_q)}-1
--
-q\left(
-\frac{g(K_{q^4})}{q^4g(K_{q^2})}-1
-\right)
-=
-2z^2-54z^3+O(z^4).
-$$
-
-Step 7: Perform the second scale cancellation
-
-Apply the result of Step 6 first with $q=Q$:
-$$
-Q^2
-\left[
-\frac{g(K_{Q^2})}{Q^2g(K_Q)}-1
--
-Q\left(
-\frac{g(K_{Q^4})}{Q^4g(K_{Q^2})}-1
-\right)
-\right]
-=
-2-\frac{54}{Q}+O(Q^{-2}).
-$$
-
-Since $Q^3\equiv29\pmod{42}$, Step 6 also applies with $q=Q^3$:
-$$
-Q^6
-\left[
-\frac{g(K_{Q^6})}{Q^6g(K_{Q^3})}-1
--
-Q^3\left(
-\frac{g(K_{Q^{12}})}{Q^{12}g(K_{Q^6})}-1
-\right)
-\right]
-=
-2-\frac{54}{Q^3}+O(Q^{-6}).
-$$
-Their difference is
-$$
--\frac{54}{Q}+O(Q^{-2}).
-$$
-Multiplication by $Q$ gives the required limit.
-
-Final Answer: $\boxed{-54}$
+Final Answer: $\boxed{\frac{3(-2\pi^3+19\pi^2-52\pi+40)}{128\pi^3}}$
 
 ---
 
 ## Answer
 
-$-54$
+$\frac{3(-2\pi^3+19\pi^2-52\pi+40)}{128\pi^3}$
 
 ---
 
@@ -373,8 +393,8 @@ $-54$
 
 ## Solution Concepts
 
-- invariant subfields
-- semidirect product actions
-- orientation obstruction
-- Riemann-Hurwitz formula
+- endpoint Laplace asymptotics
+- Hankel moment determinants
+- Vandermonde determinant identity
+- endpoint cluster decomposition
 - asymptotic cancellation
