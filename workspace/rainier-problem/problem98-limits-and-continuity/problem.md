@@ -2,34 +2,34 @@
 
 ## LaTeX (Normalized)
 
-For each integer $n\geq2$, let $r_n>0$ be the unique number satisfying
+Let
 $$
-\log\left[
-\frac1{n^2}
-\prod_{k=1}^{n-1}
-\left(
-r_n^2+4\sin^2\frac{\pi k}{n}
-\right)
-\right]
-+
-\frac{60}{n^2+11}
-\left[
-\sum_{k=1}^{n-1}
-\frac{1}{
-r_n^2+4\sin^2\frac{\pi k}{n}
-}
--\frac{n^2-1}{12}
-\right]
-=
-\frac{13}{70n^2}.
+R=\frac{\Gamma(\frac34)}{\Gamma(\frac14)}.
+$$
+For each positive integer $n$, let $\lambda_n,\mu_n\in\mathbb R$ be the unique pair satisfying
+$$
+\int_{-\infty}^{\infty}
+x
+\exp\!\left(
+-nx^4(1+x+x^2)+\lambda_nx+\mu_nx^2
+\right)\,dx=0
+$$
+and
+$$
+\int_{-\infty}^{\infty}
+\left(x^2-Rn^{-1/2}\right)
+\exp\!\left(
+-nx^4(1+x+x^2)+\lambda_nx+\mu_nx^2
+\right)\,dx=0.
 $$
 Determine the exact value of
 $$
 \lim_{n\to\infty}
-n^2
-\left(
-n^3r_n^2-12-\frac{28}{13n}
-\right).
+n^{1/2}
+\left[
+\mu_n-
+\frac{3R^2-1}{2(4R^2-1)}
+\right].
 $$
 
 ---
@@ -47,4 +47,4 @@ $$
 
 ## Domain Explanation
 
-The requested object is a limit of an implicitly defined sequence whose scale and two correction terms must be recovered asymptotically, so Calculus and Limits and continuity is the best fit. The derivation also uses a finite trigonometric product and its logarithmic derivative, which connect to algebraic and trigonometric manipulation, but those identities serve the asymptotic limit rather than being the requested object.
+The problem asks for a second-order limit of parameters defined implicitly by two integral constraints, so Calculus and Limits and continuity is the best fit. Its derivation also uses asymptotic integration and gamma-function moments, which relate to Integration, but those computations serve the extraction of the limiting coefficient rather than being the requested object.
