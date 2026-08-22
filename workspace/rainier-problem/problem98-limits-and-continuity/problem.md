@@ -2,39 +2,36 @@
 
 ## LaTeX (Normalized)
 
-For each positive integer $n$, let $\lambda_n$ be the unique real number satisfying
+For each positive integer $n$, let $\lambda_n,\mu_n\in\mathbb R$ be the unique pair satisfying
 $$
 \int_0^1
-(2x-1)
+\left(x-\frac12\right)
 \exp\!\left(
--nx^4(1-x)^2+\lambda_nx
+-nx^4\left(x-\frac12\right)^2(1-x)^6
++\lambda_nx+\mu_nx^2
+\right)\,dx=0
+$$
+and
+$$
+\int_0^1
+\left(x^2-\frac{5}{12}\right)
+\exp\!\left(
+-nx^4\left(x-\frac12\right)^2(1-x)^6
++\lambda_nx+\mu_nx^2
 \right)\,dx=0.
 $$
-Let $\mu_n$ be the probability measure on $[0,1]$ whose density is proportional to
+Let
 $$
-\exp\!\left(
--nx^4(1-x)^2+\lambda_nx
-\right).
-$$
-If $X$ has law $\mu_n$, let
-$$
-C_n=
-\operatorname{Cov}_{\mu_n}
-\begin{pmatrix}
-X\\
-X^2\\
-X^3
-\end{pmatrix}.
-$$
-Set
-$$
-G=\Gamma\!\left(\frac14\right),
-\qquad
-R=\Gamma\!\left(\frac34\right).
+G=\Gamma\!\left(\frac14\right).
 $$
 Determine the exact value of
 $$
-\lim_{n\to\infty}n^{3/2}\det C_n.
+\lim_{n\to\infty}
+n^{1/6}
+\left[
+2\lambda_n+\mu_n-\log n
++4\log\left(\frac{64\sqrt{2\pi}}{G}\right)
+\right].
 $$
 
 ---
@@ -52,4 +49,4 @@ $$
 
 ## Domain Explanation
 
-This problem involves an implicitly tuned parameter, two boundary layers with different scales, and a singular covariance limit, which are part of Calculus and Limits and continuity. The solution also uses asymptotic integral scaling and gamma-function moments, which are part of Calculus and Integration. The covariance determinant cannot be read from the separate moment limits because its limiting matrix has rank one; the first nonzero term appears only after resolving the two endpoint fluctuation scales.
+This problem involves two implicitly coupled parameters, three concentration scales, and extraction of a correction to their logarithmic asymptotics, which are part of Calculus and Limits and continuity. The solution also uses local integral asymptotics and gamma-function moments, which are part of Calculus and Integration. The requested combination cannot be obtained from any one concentration point alone because its first correction is forced by the moment constraints through the displacement of a different concentration point.

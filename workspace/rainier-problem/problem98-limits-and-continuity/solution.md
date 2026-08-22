@@ -1,353 +1,322 @@
 ## Steps
 
-Step 1: Determine the endpoint balance imposed by the implicit tilt
-
-Write
-$$
-\phi(x)=x^4(1-x)^2
-$$
-and put
-$$
-s=n^{-1/4}.
-$$
-For fixed $n$, the left side of the defining equation for $\lambda_n$, divided by the positive normalizing integral, is
-$$
-E_{\lambda}[2X-1].
-$$
-Its derivative with respect to $\lambda$ is
-$$
-2\operatorname{Var}_{\lambda}(X)>0.
-$$
-Its limits as $\lambda\to-\infty$ and $\lambda\to+\infty$ are $-1$ and $1$, so $\lambda_n$ exists uniquely.
-
-The zero of $\phi$ at $0$ has order $4$, while the zero at $1$ has order $2$. Without the exponential tilt, their masses have orders $s$ and $s^2$.
-
-For any fixed $a>0$, taking
-$$
-\lambda=a\log\frac1s
-$$
-changes the right endpoint mass to order
-$$
-e^\lambda s^2=s^{2-a},
-$$
-while on the left scale $x=su$ we have
-$$
-e^{\lambda x}=e^{as u\log(1/s)}=1+o(1).
-$$
-Hence the centering integral is negative for every fixed $a<1$ and positive for every fixed $a>1$, once $s$ is small. Monotonicity gives
-$$
-\frac{\lambda_n}{\log(1/s)}\to1.
-$$
-In particular,
-$$
-\lambda_ns\to0,
-\qquad
-\lambda_ns^2\to0.
-$$
+Step 1: Establish the two-parameter exponential family
 
 Set
 $$
-q_n=se^{\lambda_n}.
-$$
-At the left endpoint, $x=su$ gives
-$$
-e^{-n\phi(x)+\lambda_nx}\,dx
-=
-s e^{-u^4}(1+o(1))\,du.
-$$
-At the right endpoint, $x=1-s^2v$ gives
-$$
-e^{-n\phi(x)+\lambda_nx}\,dx
-=
-sq_ne^{-v^2}(1+o(1))\,dv.
-$$
-The centering factor $2x-1$ tends to $-1$ on the left and $1$ on the right. Therefore
-$$
--\frac G4+q_n\frac{\sqrt\pi}{2}+o(1)=0,
-$$
-so
-$$
-q_n\to\frac{G}{2\sqrt\pi}.
-$$
-The total leading mass at each endpoint is consequently $sG/4$. Thus $\mu_n$ assigns asymptotic mass $1/2$ to each boundary layer.
-
-Step 2: Identify coordinates adapted to the two different boundary scales
-
-The direct covariance matrix of $X,X^2,X^3$ tends to a rank-one matrix, so its determinant does not reveal the first nonzero scale.
-
-Define
-$$
-Q=2X-1,
-$$
-$$
-U=2X(1-X)^2,
+\phi(x)=x^4\left(x-\frac12\right)^2(1-x)^6
 $$
 and
 $$
-V=2X^2(1-X).
+Z_n(\lambda,\mu)=
+\int_0^1e^{-n\phi(x)+\lambda x+\mu x^2}\,dx.
 $$
-Ignoring the constant term in $Q$, these are obtained from $X,X^2,X^3$ by
+Consider
 $$
+\Phi_n(\lambda,\mu)
+=
+\log Z_n(\lambda,\mu)
+-\frac{\lambda}{2}
+-\frac{5\mu}{12}.
+$$
+Its gradient is
+$$
+\nabla\Phi_n=
 \begin{pmatrix}
-Q\\
-U\\
-V
-\end{pmatrix}
-=
-\begin{pmatrix}
-2&0&0\\
-2&-4&2\\
-0&2&-2
-\end{pmatrix}
-\begin{pmatrix}
-X\\
-X^2\\
-X^3
-\end{pmatrix}
-+
-\begin{pmatrix}
--1\\
-0\\
-0
-\end{pmatrix}.
-$$
-The determinant of the linear matrix is
-$$
-8.
-$$
-Covariance is unchanged by adding constants, so
-$$
-\det\operatorname{Cov}(Q,U,V)
-=
-64\det C_n.
-$$
-
-These coordinates separate the boundary scales. On the left scale $X=su$,
-$$
-Q=-1+O(s),
-\qquad
-U=2su+O(s^2),
-\qquad
-V=2s^2u^2+O(s^3).
-$$
-On the right scale $X=1-s^2v$,
-$$
-Q=1+O(s^2),
-$$
-$$
-U=O(s^4),
-\qquad
-V=2s^2v+O(s^4).
-$$
-Thus $U$ detects the quartic boundary at scale $s$, while $V$ receives contributions of scale $s^2$ from both endpoints.
-
-Step 3: Compute the limiting endpoint moments
-
-Let the limiting left variable $u$ have density proportional to $e^{-u^4}$ on $[0,\infty)$ and the limiting right variable $v$ have density proportional to $e^{-v^2}$.
-
-For the left layer,
-$$
-\int_0^\infty u^m e^{-u^4}\,du
-=
-\frac14\Gamma\!\left(\frac{m+1}{4}\right).
-$$
-Since its normalizing integral is $G/4$,
-$$
-\alpha_1=E_L[u]=\frac{\sqrt\pi}{G},
-$$
-$$
-\alpha_2=E_L[u^2]=\frac{R}{G},
-$$
-$$
-\alpha_3=E_L[u^3]=\frac1G,
-$$
-and
-$$
-\alpha_4=E_L[u^4]=\frac14.
-$$
-
-For the right layer,
-$$
-\int_0^\infty v^m e^{-v^2}\,dv
-=
-\frac12\Gamma\!\left(\frac{m+1}{2}\right).
-$$
-Since its normalizing integral is $\sqrt\pi/2$,
-$$
-\beta_1=E_R[v]=\frac1{\sqrt\pi},
-\qquad
-\beta_2=E_R[v^2]=\frac12.
-$$
-
-Both layers have limiting probability $1/2$. Also the defining condition gives
-$$
-E_{\mu_n}[Q]=0
-$$
-exactly.
-
-It follows that
-$$
-E[U]=\alpha_1s+o(s),
-$$
-$$
-E[V]=(\alpha_2+\beta_1)s^2+o(s^2),
-$$
-$$
-E[QU]=-\alpha_1s+o(s),
-$$
-and
-$$
-E[QV]=(\beta_1-\alpha_2)s^2+o(s^2).
-$$
-Likewise,
-$$
-E[U^2]=2\alpha_2s^2+o(s^2),
-$$
-$$
-E[UV]=2\alpha_3s^3+o(s^3),
-$$
-and
-$$
-E[V^2]
-=
-2(\alpha_4+\beta_2)s^4+o(s^4)
-=
-\frac32s^4+o(s^4).
-$$
-
-Step 4: Form the scaled covariance matrix
-
-Since $E[Q]=0$ and $Q^2\to1$ on both layers,
-$$
-\operatorname{Var}(Q)\to1.
-$$
-The relations from Step 3 give
-$$
-\frac{\operatorname{Cov}(Q,U)}s\to-\alpha_1,
-$$
-$$
-\frac{\operatorname{Cov}(Q,V)}{s^2}
-\to\beta_1-\alpha_2,
-$$
-$$
-\frac{\operatorname{Var}(U)}{s^2}
-\to2\alpha_2-\alpha_1^2,
-$$
-$$
-\frac{\operatorname{Cov}(U,V)}{s^3}
-\to
-2\alpha_3-\alpha_1(\alpha_2+\beta_1),
-$$
-and
-$$
-\frac{\operatorname{Var}(V)}{s^4}
-\to
-\frac32-(\alpha_2+\beta_1)^2.
-$$
-
-Therefore, with
-$$
-D_s=
-\begin{pmatrix}
-1&0&0\\
-0&s&0\\
-0&0&s^2
+E[X]-\frac12\\
+E[X^2]-\frac{5}{12}
 \end{pmatrix},
 $$
-we have
+where the expectation uses the density proportional to the integrand defining $Z_n$.
+
+Its Hessian is the covariance matrix of $X$ and $X^2$. This matrix is positive definite because a relation
 $$
-D_s^{-1}\operatorname{Cov}(Q,U,V)D_s^{-1}\to K,
+aX+bX^2=\text{constant}
 $$
-where
+cannot hold almost surely under a positive density on an interval unless $a=b=0$.
+
+Also
 $$
-K=
-\begin{pmatrix}
-1&
--\dfrac{\sqrt\pi}{G}&
-\dfrac1{\sqrt\pi}-\dfrac RG
-\\[6pt]
--\dfrac{\sqrt\pi}{G}&
-\dfrac{2R}{G}-\dfrac{\pi}{G^2}&
-\dfrac1G-\dfrac{\sqrt\pi R}{G^2}
-\\[6pt]
-\dfrac1{\sqrt\pi}-\dfrac RG&
-\dfrac1G-\dfrac{\sqrt\pi R}{G^2}&
-\dfrac32-\left(\dfrac RG+\dfrac1{\sqrt\pi}\right)^2
-\end{pmatrix}.
+\left(\frac12,\frac{5}{12}\right)
+=
+\frac13(0,0)
++\frac13\left(\frac12,\frac14\right)
++\frac13(1,1),
+$$
+so the target moment vector lies in the interior of the triangle generated by these three points. This makes $\Phi_n$ coercive. It has one critical point, which is its unique minimum. This proves the existence and uniqueness stated in the problem.
+
+Step 2: Match the three concentration scales
+
+The zeros of $\phi$ are
+$$
+0,\qquad \frac12,\qquad 1,
+$$
+with orders $4,2,6$, respectively.
+
+Near $0$, set
+$$
+x=\sqrt2\,n^{-1/4}u.
+$$
+Then
+$$
+n\phi(x)=u^4+o(1),
+$$
+so the leading local mass, before the tilt value at the endpoint is inserted, is
+$$
+C_0n^{-1/4},
+\qquad
+C_0=
+\sqrt2\int_0^\infty e^{-u^4}\,du
+=
+\frac{\sqrt2\,G}{4}.
+$$
+
+Near $1/2$, set
+$$
+x=\frac12+32n^{-1/2}v.
 $$
 Since
 $$
-\det D_s=s^3,
-$$
-we obtain
-$$
-\det\operatorname{Cov}(Q,U,V)
+\phi\left(\frac12+h\right)
 =
-s^6\det K+o(s^6).
+\frac{h^2}{1024}+O(h^3),
+$$
+the leading mass is
+$$
+C_mn^{-1/2},
+\qquad
+C_m=32\sqrt\pi.
 $$
 
-Step 5: Evaluate the remaining determinant
+Near $1$, put
+$$
+1-x=2^{1/3}n^{-1/6}w.
+$$
+Then
+$$
+n\phi(x)=w^6+o(1).
+$$
+The corresponding constant is
+$$
+C_1=
+2^{1/3}\int_0^\infty e^{-w^6}\,dw
+=
+\frac{2^{1/3}}6\Gamma\!\left(\frac16\right).
+$$
 
-For
+Define $\bar\lambda_n,\bar\mu_n$ by requiring the three leading masses to be equal:
 $$
-a=\frac{\sqrt\pi}{G},
-\qquad
-b=\frac1{\sqrt\pi}-\frac RG,
-$$
-$$
-c=\frac{2R}{G}-\frac{\pi}{G^2},
-\qquad
-d=\frac1G-\frac{\sqrt\pi R}{G^2},
+C_0n^{-1/4}
+=
+C_mn^{-1/2}
+e^{\bar\lambda_n/2+\bar\mu_n/4}
 $$
 and
 $$
-e=\frac32-\left(\frac RG+\frac1{\sqrt\pi}\right)^2,
-$$
-the matrix in Step 4 has the form
-$$
-K=
-\begin{pmatrix}
-1&-a&b\\
--a&c&d\\
-b&d&e
-\end{pmatrix}.
-$$
-Thus
-$$
-\det K
+C_0n^{-1/4}
 =
-ce-d^2-a^2e-2abd-b^2c.
+C_1n^{-1/6}
+e^{\bar\lambda_n+\bar\mu_n}.
 $$
-Substitution of $a,b,c,d,e$ and collection over the common denominator $G^3\pi$ gives
+The first equality gives
 $$
-\det K
+2\bar\lambda_n+\bar\mu_n
 =
-\frac{
-3G^2\pi R-4G^2R-3G\pi^2
-+8\pi^{3/2}R-4\pi R^3
-}
-{G^3\pi}.
+\log n
+-4\log\frac{C_m}{C_0}.
+$$
+Since
+$$
+\frac{C_m}{C_0}
+=
+\frac{64\sqrt{2\pi}}{G},
+$$
+we have
+$$
+2\bar\lambda_n+\bar\mu_n
+=
+\log n
+-4\log\left(\frac{64\sqrt{2\pi}}{G}\right).
+$$
+
+Write
+$$
+a_n=\lambda_n-\bar\lambda_n,
+\qquad
+b_n=\mu_n-\bar\mu_n.
+$$
+After division of all three local masses by their common leading value, bounded $(a,b)$ produce the limiting three-point weights proportional to
+$$
+1,\qquad e^{a/2+b/4},\qquad e^{a+b}.
+$$
+The two limiting moment equations have the unique solution of equal weights, so
+$$
+a_n\to0,
+\qquad
+b_n\to0.
+$$
+
+Step 3: Find the first displacement of the three local components
+
+Put
+$$
+\delta=n^{-1/6}.
+$$
+Let $p_0,p_m,p_1$ denote the probabilities carried by fixed small neighborhoods of $0,1/2,1$.
+
+The three weights tend to $1/3$ by Step 2.
+
+At the left endpoint,
+$$
+X=O(n^{-1/4})=o(\delta).
+$$
+At the middle point,
+$$
+X=\frac12+O(n^{-1/2})
+=
+\frac12+o(\delta).
+$$
+
+At the right endpoint,
+$$
+X=1-2^{1/3}\delta W+o(\delta),
+$$
+where $W$ has density proportional to $e^{-w^6}$ on $[0,\infty)$. Its mean is
+$$
+E[W]
+=
+\frac{\Gamma(\frac13)}{\Gamma(\frac16)}.
+$$
+Define
+$$
+d=
+2^{1/3}
+\frac{\Gamma(\frac13)}{\Gamma(\frac16)}.
+$$
+Then the conditional first two moments at the right endpoint are
+$$
+E[X\mid1]=1-d\delta+o(\delta)
+$$
+and
+$$
+E[X^2\mid1]=1-2d\delta+o(\delta).
+$$
+The logarithmic size of $\bar\lambda_n,\bar\mu_n$ changes the local right density only by a relative $O(\delta\log n)$ term, so its effect on these two conditional moments is $O(\delta^2\log n)=o(\delta)$.
+
+Step 4: Use the two exact moment constraints to recover the weight imbalance
+
+The total mass condition gives
+$$
+p_0+p_m+p_1=1.
+$$
+Using Step 3 in the exact equation $E[X]=1/2$,
+$$
+\frac12p_m+(1-d\delta)p_1
+=
+\frac12+o(\delta).
+$$
+The equation $E[X^2]=5/12$ gives
+$$
+\frac14p_m+(1-2d\delta)p_1
+=
+\frac{5}{12}+o(\delta).
+$$
+
+Write
+$$
+p_j=\frac13+\eta_j\delta+o(\delta).
+$$
+Comparison at order $\delta$ gives
+$$
+\frac12\eta_m+\eta_1=\frac d3
+$$
+and
+$$
+\frac14\eta_m+\eta_1=\frac{2d}{3}.
+$$
+Subtracting yields
+$$
+\eta_m=-\frac{4d}{3}.
+$$
+The first equation then gives
+$$
+\eta_1=d.
+$$
+Since the three $\eta_j$ sum to zero,
+$$
+\eta_0=\frac d3.
+$$
+Therefore
+$$
+p_0=
+\frac13+\frac d3\delta+o(\delta),
+$$
+$$
+p_m=
+\frac13-\frac{4d}{3}\delta+o(\delta).
+$$
+Their ratio is
+$$
+\frac{p_m}{p_0}
+=
+1-5d\delta+o(\delta),
+$$
+and hence
+$$
+\log\frac{p_m}{p_0}
+=
+-5d\delta+o(\delta).
+$$
+
+Step 5: Transfer the weight correction to the requested parameter combination
+
+For the left layer, the first relative correction to its local mass is
+$$
+O(n^{-1/4}\log n)=o(\delta).
+$$
+For the middle layer it is
+$$
+O(n^{-1/2}\log n)=o(\delta).
+$$
+Consequently the middle-to-left mass ratio satisfies
+$$
+\frac{p_m}{p_0}
+=
+e^{a_n/2+b_n/4}
+\left(1+o(\delta)\right).
+$$
+Taking logarithms and using Step 4,
+$$
+\frac{a_n}{2}+\frac{b_n}{4}
+=
+-5d\delta+o(\delta).
+$$
+Multiplication by $4$ gives
+$$
+2a_n+b_n
+=
+-20d\delta+o(\delta).
 $$
 
 From Step 2,
 $$
-\det C_n=
-\frac1{64}\det\operatorname{Cov}(Q,U,V).
-$$
-Since $s^6=n^{-3/2}$,
-$$
-\lim_{n\to\infty}n^{3/2}\det C_n
+2a_n+b_n
 =
-\frac{\det K}{64}.
+2\lambda_n+\mu_n-\log n
++4\log\left(\frac{64\sqrt{2\pi}}{G}\right).
+$$
+Since $\delta=n^{-1/6}$,
+$$
+n^{1/6}(2a_n+b_n)\to-20d.
 $$
 
-Final Answer: $\boxed{\frac{3G^2\pi R-4G^2R-3G\pi^2+8\pi^{3/2}R-4\pi R^3}{64G^3\pi}}$
+Final Answer: $\boxed{-20\cdot2^{1/3}\frac{\Gamma(\frac13)}{\Gamma(\frac16)}}$
 
 ---
 
 ## Answer
 
-$\frac{3G^2\pi R-4G^2R-3G\pi^2+8\pi^{3/2}R-4\pi R^3}{64G^3\pi}$
+$-20\cdot2^{1/3}\frac{\Gamma(\frac13)}{\Gamma(\frac16)}$
 
 ---
 
@@ -365,8 +334,8 @@ $\frac{3G^2\pi R-4G^2R-3G\pi^2+8\pi^{3/2}R-4\pi R^3}{64G^3\pi}$
 
 ## Solution Concepts
 
+- multi-scale concentration
 - implicit exponential tilting
-- competing boundary layers
-- covariance basis changes
+- moment matching
 - gamma-function moments
-- singular asymptotic limits
+- asymptotic limits
