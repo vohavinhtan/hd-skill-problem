@@ -1,311 +1,317 @@
 ## Steps
 
-Step 1: Convert the moment determinant to an endpoint-cluster integral
+Step 1: Identify the dominant three-cluster allocation
 
 Let
 $$
-r=2m+1
+\phi(x)=x(1-x)(2x-1)^2.
 $$
-and
+Andréief's identity gives
 $$
-H_r(t)=\det\left(I_{i+j}(t)\right)_{0\leq i,j\leq r-1}.
-$$
-Since every entry of the normalized moment matrix is divided by $I_0(t)$,
-$$
-\Delta_r(t)=\frac{H_r(t)}{I_0(t)^r}.
-$$
-
-Expanding two Vandermonde determinants and integrating term by term gives
-$$
-H_r(t)
+D_m(t)
 =
-\frac1{r!}
-\int_{[0,1]^r}
+\frac{1}{(4m)!}
+\int_{[0,1]^{4m}}
 \prod_{i<j}(x_i-x_j)^2
-\prod_{i=1}^r
-x_i e^{-x_i(1-x_i)/t}\,dx_i.
+\prod_{i=1}^{4m}e^{-\phi(x_i)/t}\,dx_i.
+$$
+The zero set of $\phi$ is
+$$
+\left\{0,\frac12,1\right\}.
+$$
+Away from fixed neighborhoods of these three points, $\phi$ is bounded below by a positive constant, so that part of the integral is exponentially small.
+
+Suppose $k$ variables are near $0$, $l$ near $1/2$, and $r$ near $1$, with
+$$
+k+l+r=4m.
+$$
+Use the local scales
+$$
+x=tu,\qquad
+x=\frac12+\sqrt{t}\,z,\qquad
+x=1-tv.
+$$
+A left or right variable contributes one power of $t$ from its differential, while a center variable contributes $t^{1/2}$. The squared Vandermonde factors inside the three clusters contribute
+$$
+t^{k(k-1)},\qquad
+t^{l(l-1)/2},\qquad
+t^{r(r-1)}.
+$$
+Cross-cluster distances have nonzero limits. The total power is therefore
+$$
+E(k,l,r)=k^2+r^2+\frac{l^2}{2}.
 $$
 
-Suppose $k$ variables lie near $0$ and $l=r-k$ lie near $1$. Write
+Write
 $$
-x_i=tu_i
+k=m+a,\qquad r=m+c,\qquad l=2m-a-c.
 $$
-at the left endpoint and
+Then
 $$
-x_i=1-tv_i
-$$
-at the right endpoint. Each left variable contributes $t^2$, each right variable contributes $t$, and the two within-cluster Vandermonde factors contribute
-$$
-t^{k(k-1)+l(l-1)}.
-$$
-Hence this cluster allocation starts at
-$$
-t^{A_k},
-\qquad
-A_k=r+k+k(k-1)+(r-k)(r-k-1).
-$$
-For $k=m+d$,
-$$
-A_{m+d}-A_m=d(2d-1).
-$$
-Thus the unique leading allocation is
-$$
-k=m,\qquad l=m+1,
-$$
-while $k=m+1$ starts one power of $t$ later. Every other allocation starts at least three powers later. Therefore only these two allocations can affect the expansion through relative order $t^2$.
-
-Also,
-$$
-A_m=2m^2+3m+1.
-$$
-
-Step 2: Evaluate the endpoint partition constants
-
-For integers $k\geq0$ and $\alpha\geq0$, define
-$$
-Z_{k,\alpha}
+E(k,l,r)-4m^2
 =
+\frac{3a^2+2ac+3c^2}{2}.
+$$
+The unique minimum is $(a,c)=(0,0)$, corresponding to
+$$
+(k,l,r)=(m,2m,m).
+$$
+The smallest positive gap is $3/2$, attained only for
+$$
+(a,c)\in\{(1,0),(-1,0),(0,1),(0,-1)\}.
+$$
+All other allocations begin at relative order at least $t^2$.
+
+Step 2: Evaluate the leading local partition constant
+
+Define
+$$
+L_k=
 \frac1{k!}
 \int_{(0,\infty)^k}
 \prod_{i<j}(u_i-u_j)^2
-\prod_{i=1}^ku_i^\alpha e^{-u_i}\,du_i.
+\prod_i e^{-u_i}\,du_i.
 $$
-Expanding the Vandermonde determinants gives
+Expanding the two Vandermonde determinants gives
 $$
-Z_{k,\alpha}
-=
-\det\left((i+j+\alpha)!\right)_{0\leq i,j\leq k-1}.
+L_k=\det\left((i+j)!\right)_{0\leq i,j\leq k-1}.
 $$
-Factor $(i+\alpha)!$ from row $i$. The remaining entry in column $j$ is
+Factor $i!$ from row $i$. The entry remaining in column $j$ is a monic polynomial of degree $j$ in $i$, so its determinant is the Vandermonde determinant at $0,1,\ldots,k-1$. Therefore
 $$
-(i+\alpha+1)(i+\alpha+2)\cdots(i+\alpha+j),
-$$
-a monic polynomial of degree $j$ in $i$. Its determinant is therefore the Vandermonde determinant at $0,1,\ldots,k-1$. Hence
-$$
-Z_{k,\alpha}
-=
-\prod_{j=0}^{k-1}j!(j+\alpha)!.
+L_k=\prod_{j=0}^{k-1}(j!)^2.
 $$
 
-For the leading allocation $(m,m+1)$ the constant is
+For the center cluster define
 $$
-Z_{m,1}Z_{m+1,0}=C_m.
+G_l=
+\frac1{l!}
+\int_{\mathbb{R}^l}
+\prod_{i<j}(z_i-z_j)^2
+\prod_i e^{-z_i^2}\,dz_i.
 $$
-For the allocation $(m+1,m)$,
+The monic Hermite polynomial
 $$
-\frac{Z_{m+1,1}Z_{m,0}}{C_m}
+h_j(z)=(-1)^j2^{-j}e^{z^2}\frac{d^j}{dz^j}e^{-z^2}
+$$
+has squared norm
+$$
+\int_{\mathbb R}h_j(z)^2e^{-z^2}\,dz
 =
-\frac{m!(m+1)!}{(m!)^2}
-=
-m+1.
+\sqrt{\pi}\,2^{-j}j!,
+$$
+obtained by integrating its Rodrigues formula by parts $j$ times. Gram factorization then gives
+$$
+G_l=
+\pi^{l/2}2^{-l(l-1)/2}\prod_{j=0}^{l-1}j!.
 $$
 
-Step 3: Compute the first two corrections in the leading endpoint allocation
-
-For the probability density proportional to
+For the dominant allocation, each left-center and center-right squared distance tends to $1/4$. There are $4m^2$ such pairs, so the cross factor is
 $$
-\prod_{i<j}(u_i-u_j)^2\prod_i u_i^\alpha e^{-u_i},
+2^{-8m^2}.
 $$
-write
+Its leading constant is
 $$
-p_j=\sum_i u_i^j,
-\qquad
-n=k+\alpha.
-$$
-Integration by parts gives, for any polynomial $F$,
-$$
-\mathbb E[p_qF]
+2^{-8m^2}L_m^2G_{2m}
 =
-\mathbb E\left[
-\alpha p_{q-1}F
-+\sum_{j=0}^{q-1}p_jp_{q-1-j}F
-+\sum_i u_i^q\frac{\partial F}{\partial u_i}
-\right].
-$$
-Taking successively $(q,F)=(1,1),(2,1),(1,p_1),(1,p_2),(3,1),(2,p_2)$ yields
-$$
-\mathbb E[p_1]=kn,
-$$
-$$
-\mathbb E[p_2]=kn(k+n),
-$$
-$$
-\operatorname{Var}(p_1)=kn,
-$$
-$$
-\operatorname{Cov}(p_1,p_2)=2kn(k+n),
-$$
-and
-$$
-\operatorname{Var}(p_2)
-=
-kn\left(4(k+n)^2+2kn+2\right).
+C_m.
 $$
 
-For the leading allocation, let $U_j$ denote the power sums of the $m$ left variables and $V_j$ those of the $m+1$ right variables. Expanding the logarithm of the scaled integrand gives
+Step 3: Compute the first correction of the dominant allocation
+
+For the dominant scaling, write
 $$
-tL_1+t^2L_2+O(t^3),
+U_j=\sum_{i=1}^m u_i^j,\qquad
+V_j=\sum_{i=1}^m v_i^j,\qquad
+Z_j=\sum_{a=1}^{2m}z_a^j.
+$$
+After the leading densities
+$$
+e^{-\sum u_i}e^{-\sum v_i}e^{-\sum z_a^2}
+$$
+and the constant cross factor are removed, the logarithm of the remaining integrand has the form
+$$
+tL_1+O(t^2),
 $$
 where
 $$
 L_1
 =
-U_2-2(m+1)U_1+V_2-(2m+1)V_1
+5(U_2+V_2)-10m(U_1+V_1)+4Z_4-8mZ_2.
+$$
+For example,
+$$
+\frac{\phi(tu)}{t}=u-5tu^2+O(t^2)
 $$
 and
 $$
-L_2
+\frac{\phi(1/2+\sqrt{t}\,z)}{t}=z^2-4tz^4.
+$$
+For a left-center pair,
+$$
+2\log\left(1+2\sqrt{t}\,z-2tu\right)
 =
--(m+1)U_2-\left(m+\frac12\right)V_2-2U_1V_1.
+4\sqrt{t}\,z-4tu-4tz^2+O(t^{3/2}),
 $$
-Thus the relative integrand is
-$$
-1+tL_1+t^2\left(L_2+\frac12L_1^2\right)+O(t^3).
-$$
+while the corresponding right-center expansion has the opposite $\sqrt{t}$ term. With equal left and right cluster sizes, those terms cancel.
 
-For the left ensemble $(k,\alpha)=(m,1)$ and the right ensemble $(m+1,0)$, the formulas above give
+The integrated dominant contribution has no $t^{3/2}$ term. Indeed, replacing $\sqrt t$ by $-\sqrt t$ and simultaneously sending
 $$
-\mathbb E[L_1]=m+1.
+(u,v,z)\longmapsto(v,u,-z)
 $$
-Writing
+leaves the scaled integral unchanged, so its expansion contains only integer powers of $t$.
+
+For the Laguerre density defining $L_m$, integration by parts gives
 $$
-L_1=A+B
-$$
-with
-$$
-A=U_2-2(m+1)U_1,
+\mathbb E[U_1]=m^2,
 \qquad
-B=V_2-(2m+1)V_1,
+\mathbb E[U_2]=2m^3.
 $$
-the two endpoint ensembles are independent and
+The first identity follows from integrating
 $$
-\operatorname{Var}(A)
+\sum_i\frac{\partial}{\partial u_i}(u_i\rho),
+$$
+and the second from the same calculation with $u_i^2\rho$. The same formulas hold for $V_1,V_2$.
+
+For the Gaussian density defining $G_n$, the corresponding integration-by-parts identities give
+$$
+\mathbb E[Z_2]=\frac{n^2}{2}.
+$$
+To obtain the fourth moment, write $Z_1=\sum z_i$. The Vandermonde factor is unchanged by a common translation, so the center-of-mass coordinate has density proportional to
+$$
+e^{-Z_1^2/n},
+$$
+and
+$$
+\mathbb E[Z_1^2]=\frac n2.
+$$
+Integrating
+$$
+\sum_i\frac{\partial}{\partial z_i}(z_i^3\rho)
+$$
+then gives
+$$
+\mathbb E[Z_4]
 =
-2m(m+1)(3m^2+m+1),
-$$
-$$
-\operatorname{Var}(B)
+n\mathbb E[Z_2]+\frac12\mathbb E[Z_1^2]
 =
-(m+1)^2(6m^2+16m+13).
+\frac{n(2n^2+1)}4.
 $$
-The first-moment formulas also give
+Taking $n=2m$,
 $$
-\mathbb E[L_2]
+\mathbb E[Z_2]=2m^2,
+$$
+$$
+\mathbb E[Z_4]=4m^3+\frac m2.
+$$
+
+The two endpoint contributions to $\mathbb E[L_1]$ vanish:
+$$
+5(2m^3)-10m(m^2)=0.
+$$
+The center contribution is
+$$
+4\left(4m^3+\frac m2\right)-8m(2m^2)=2m.
+$$
+Therefore the dominant allocation contributes
+$$
+C_mt^{4m^2}\left(1+2mt+O(t^2)\right).
+$$
+
+Step 4: Evaluate the four first competing allocations
+
+For general cluster sizes, the leading local constant is
+$$
+K_{k,l,r}=2^{-2l(k+r)}L_kL_rG_l.
+$$
+The two allocations
+$$
+(m+1,2m-1,m),\qquad (m,2m-1,m+1)
+$$
+have the same ratio to the dominant constant. Using
+$$
+\frac{L_{m+1}}{L_m}=(m!)^2
+$$
+and
+$$
+\frac{G_{2m-1}}{G_{2m}}
 =
--(m+1)^2(6m^2+6m+1).
+\frac{2^{2m-1}}{\sqrt{\pi}(2m-1)!},
+$$
+together with the cross-factor ratio $4$, this ratio is
+$$
+R_+
+=
+\frac{2^{2m+1}(m!)^2}{\sqrt{\pi}(2m-1)!}.
+$$
+
+The other two allocations are
+$$
+(m-1,2m+1,m),\qquad (m,2m+1,m-1).
+$$
+Since
+$$
+\frac{L_{m-1}}{L_m}=\frac1{((m-1)!)^2}
+$$
+and
+$$
+\frac{G_{2m+1}}{G_{2m}}
+=
+\sqrt{\pi}\,2^{-2m}(2m)!,
+$$
+their common ratio is
+$$
+R_-
+=
+2^{2-2m}\sqrt{\pi}\,
+\frac{(2m)!}{((m-1)!)^2}.
+$$
+
+Each of these four allocations starts at relative order $t^{3/2}$. Corrections inside them begin at higher relative order, while Step 1 shows that every other allocation starts at relative order at least $t^2$. Consequently,
+$$
+\frac{D_m(t)}{C_mt^{4m^2}}
+=
+1+2mt+2(R_++R_-)t^{3/2}+O(t^2).
+$$
+
+Step 5: Simplify the surviving coefficient
+
+Using
+$$
+b_m=\binom{2m}{m},
+$$
+we have
+$$
+\frac{(m!)^2}{(2m-1)!}
+=
+\frac{2m}{b_m}
+$$
+and
+$$
+\frac{(2m)!}{((m-1)!)^2}
+=
+m^2b_m.
 $$
 Therefore
 $$
-\mathbb E\left[L_2+\frac12L_1^2\right]
+2R_+
 =
-3(m+1)(3m+2).
+\frac{2^{2m+3}m}{\sqrt{\pi}\,b_m},
 $$
-The leading cluster contributes
+and
 $$
-C_mt^{A_m}
-\left(
-1+(m+1)t+3(m+1)(3m+2)t^2+O(t^3)
-\right).
-$$
-
-Step 4: Add the first subleading endpoint allocation
-
-For the allocation with $m+1$ variables near $0$ and $m$ near $1$, Step 1 shows that its leading power is $t^{A_m+1}$, and Step 2 shows that its leading constant relative to $C_m$ is $m+1$.
-
-For general left and right cluster sizes $k,l$, the first correction has expectation
-$$
-k(k+1)(2k+1-2l)
-+
-l^2(2l-2k-1).
-$$
-Taking
-$$
-k=m+1,\qquad l=m
-$$
-gives
-$$
-3(3m+2).
-$$
-Hence this cluster contributes
-$$
-C_m(m+1)t^{A_m+1}
-\left(1+3(3m+2)t+O(t^2)\right).
-$$
-
-All remaining endpoint allocations begin at relative order at least $t^3$. Adding the two relevant allocations gives
-$$
-H_r(t)
+2R_-
 =
-C_mt^{A_m}
-\left(
-1+2(m+1)t
-+6(m+1)(3m+2)t^2
-+O(t^3)
-\right).
+2^{3-2m}\sqrt{\pi}\,m^2b_m.
 $$
+Subtracting the constant and $t$ terms from Step 4 and dividing by $t^{3/2}$ gives the required limit.
 
-Step 5: Normalize and extract the limit
-
-By symmetry,
-$$
-I_0(t)
-=
-\frac12
-\int_0^1e^{-x(1-x)/t}\,dx.
-$$
-Scaling one endpoint by $x=tu$ gives
-$$
-I_0(t)
-=
-t\int_0^\infty e^{-u}e^{tu^2}\,du
-+O(e^{-c/t})
-$$
-for some $c>0$. Therefore
-$$
-I_0(t)
-=
-t\left(1+2t+12t^2+O(t^3)\right).
-$$
-Since $r=2m+1$,
-$$
-I_0(t)^r
-=
-t^r
-\left(
-1+2rt+(2r^2+10r)t^2+O(t^3)
-\right).
-$$
-
-Using Step 4 and
-$$
-A_m-r=m(2m+1),
-$$
-division gives
-$$
-\frac{\Delta_{2m+1}(t)}
-{C_mt^{m(2m+1)}}
-=
-1-2mt+6m(3m+1)t^2+O(t^3).
-$$
-Therefore
-$$
-\frac{
-\displaystyle
-\frac{\Delta_{2m+1}(t)}
-{C_mt^{m(2m+1)}}
--1+2mt
-}{t^2}
-=
-6m(3m+1)+O(t).
-$$
-
-Final Answer: $\boxed{6m(3m+1)}$
+Final Answer: $\boxed{\frac{2^{2m+3}m}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m}$
 
 ---
 
 ## Answer
 
-$6m(3m+1)$
+$\frac{2^{2m+3}m}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m$
 
 ---
 
@@ -323,8 +329,8 @@ $6m(3m+1)$
 
 ## Solution Concepts
 
-- endpoint Laplace asymptotics
-- Hankel determinant integral representation
-- competing endpoint clusters
-- Vandermonde moment integrals
-- asymptotic normalization
+- competing Laplace clusters
+- Hankel determinant integrals
+- Vandermonde scaling
+- Gaussian and Laguerre moment ensembles
+- fractional-order asymptotics

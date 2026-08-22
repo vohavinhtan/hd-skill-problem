@@ -4,34 +4,31 @@
 
 Fix an integer $m\geq1$. For $0<t<1$ and every integer $k\geq0$, define
 $$
-I_k(t)=\int_0^1x^{k+1}\exp\left(-\frac{x(1-x)}{t}\right)\,dx
+I_k(t)=\int_0^1x^k\exp\left(-\frac{x(1-x)(2x-1)^2}{t}\right)\,dx
 $$
 and
 $$
-M_k(t)=\frac{I_k(t)}{I_0(t)}.
+D_m(t)=\det\left(I_{i+j}(t)\right)_{0\leq i,j\leq4m-1}.
 $$
 Put
 $$
-\Delta_{2m+1}(t)
-=
-\det\left(M_{i+j}(t)\right)_{0\leq i,j\leq2m}
+b_m=\binom{2m}{m}
 $$
 and
 $$
 C_m=
-\left(\prod_{j=0}^{m-1}j!(j+1)!\right)
-\left(\prod_{j=0}^{m}(j!)^2\right).
+2^{m-10m^2}\pi^m
+\left(\prod_{j=0}^{m-1}(j!)^4\right)
+\left(\prod_{j=0}^{2m-1}j!\right).
 $$
 Determine
 $$
 \lim_{t\to0^+}
 \frac{
 \displaystyle
-\frac{\Delta_{2m+1}(t)}
-{C_mt^{m(2m+1)}}
--1+2mt
+\frac{D_m(t)}{C_mt^{4m^2}}-1-2mt
 }{
-t^2
+t^{3/2}
 }.
 $$
 
@@ -50,6 +47,6 @@ $$
 
 ## Domain Explanation
 
-This problem involves a singular one-sided limit for a parameterized family of moment determinants whose mass concentrates at two endpoints, which are part of Calculus and Limits and continuity.
-The problem also involves Vandermonde determinants, endpoint cluster decompositions, and finite-dimensional moment identities, which are part of Linear Algebra and Determinants.
-However, those determinant structures are used to derive the two asymptotic correction layers required by the stated limit, so the limiting analysis is primary.
+This problem involves a singular one-sided limit for a moment determinant whose weight concentrates simultaneously at two endpoint minima and one interior minimum, which are part of Calculus and Limits and continuity.
+The problem also involves Vandermonde determinants, local moment ensembles, and competition between several cluster allocations, which are part of Linear Algebra and Determinants.
+However, those determinant structures are used to resolve the competing asymptotic scales that determine the requested limit, so the limiting analysis is primary.
