@@ -26,9 +26,14 @@ $$
 \lim_{t\to0^+}
 \frac{
 \displaystyle
-\frac{D_m(t)}{C_mt^{4m^2}}-1-2mt
+\frac{D_m(t)}{C_mt^{4m^2}}
+-1-2mt
+-\left(
+\frac{2^{2m+3}m}{\sqrt{\pi}b_m}
++2^{3-2m}\sqrt{\pi}m^2b_m
+\right)t^{3/2}
 }{
-t^{3/2}
+t^2
 }.
 $$
 

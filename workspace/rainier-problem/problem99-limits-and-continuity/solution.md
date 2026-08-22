@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Identify the dominant three-cluster allocation
+Step 1: Rank every cluster allocation that can contribute through order $t^2$
 
 Let
 $$
@@ -10,34 +10,25 @@ Andréief's identity gives
 $$
 D_m(t)
 =
-\frac{1}{(4m)!}
+\frac1{(4m)!}
 \int_{[0,1]^{4m}}
 \prod_{i<j}(x_i-x_j)^2
 \prod_{i=1}^{4m}e^{-\phi(x_i)/t}\,dx_i.
 $$
-The zero set of $\phi$ is
+The zeros of $\phi$ are $0,1/2,1$. Use the local scales
 $$
-\left\{0,\frac12,1\right\}.
+x=tu,\qquad x=\frac12+\sqrt t\,z,\qquad x=1-tv.
 $$
-Away from fixed neighborhoods of these three points, $\phi$ is bounded below by a positive constant, so that part of the integral is exponentially small.
-
-Suppose $k$ variables are near $0$, $l$ near $1/2$, and $r$ near $1$, with
+If $k,l,r$ variables occupy these three neighborhoods, respectively, then
 $$
-k+l+r=4m.
+k+l+r=4m
 $$
-Use the local scales
+and the Jacobians together with the internal squared Vandermonde factors give
 $$
-x=tu,\qquad x=\frac12+\sqrt{t}\,z,\qquad x=1-tv.
-$$
-A left or right variable contributes one power of $t$ from its differential, while a center variable contributes $t^{1/2}$. The squared Vandermonde factors inside the three clusters contribute
-$$
-t^{k(k-1)},\qquad t^{l(l-1)/2},\qquad t^{r(r-1)}.
-$$
-Cross-cluster distances have nonzero limits. The total power is
-$$
+t^{E(k,l,r)},
+\qquad
 E(k,l,r)=k^2+r^2+\frac{l^2}{2}.
 $$
-
 Write
 $$
 k=m+a,\qquad r=m+c,\qquad l=2m-a-c.
@@ -46,247 +37,318 @@ Then
 $$
 E(k,l,r)-4m^2
 =
-\frac{3a^2+2ac+3c^2}{2}.
+Q(a,c):=\frac{3a^2+2ac+3c^2}{2}.
 $$
-The unique minimum is $(a,c)=(0,0)$, corresponding to
+Since
 $$
-(k,l,r)=(m,2m,m).
+Q(a,c)\geq a^2+c^2,
 $$
-The smallest positive gap is $3/2$, attained exactly for
+the condition $Q(a,c)\leq2$ forces $a,c\in\{-1,0,1\}$. Evaluation on these pairs gives:
 $$
-(a,c)\in\{(1,0),(-1,0),(0,1),(0,-1)\}.
+Q(0,0)=0,
 $$
-All other allocations begin at relative order at least $t^2$.
+$$
+Q(\pm1,0)=Q(0,\pm1)=\frac32,
+$$
+and
+$$
+Q(1,-1)=Q(-1,1)=2.
+$$
+Every other allocation begins beyond relative order $t^2$.
 
-Step 2: Evaluate the leading local partition constant
+Thus the dominant cluster is
+$$
+(m,2m,m),
+$$
+the four first competitors are
+$$
+(m\pm1,2m\mp1,m),\qquad
+(m,2m\mp1,m\pm1),
+$$
+and two further clusters enter exactly at relative order $t^2$:
+$$
+(m+1,2m,m-1),\qquad
+(m-1,2m,m+1).
+$$
 
-For $k\geq0$, define
+Step 2: Evaluate the leading constants of the dominant and competing clusters
+
+Define
 $$
 L_k=
 \frac1{k!}
 \int_{(0,\infty)^k}
 \prod_{i<j}(u_i-u_j)^2
-\prod_i e^{-u_i}\,du_i.
+\prod_i e^{-u_i}\,du_i
 $$
-Expanding the two Vandermonde determinants gives
-$$
-L_k=\det\left((i+j)!\right)_{0\leq i,j\leq k-1}.
-$$
-Factor $i!$ from row $i$. The remaining entry in column $j$ is a monic polynomial of degree $j$ in $i$, so its determinant is the Vandermonde determinant at $0,1,\ldots,k-1$. Hence
-$$
-L_k=\prod_{j=0}^{k-1}(j!)^2.
-$$
-
-For the center cluster, define
+and
 $$
 G_l=
 \frac1{l!}
-\int_{\mathbb{R}^l}
+\int_{\mathbb R^l}
 \prod_{i<j}(z_i-z_j)^2
 \prod_i e^{-z_i^2}\,dz_i.
 $$
-The monic Hermite polynomial
+The moment determinant evaluations are
 $$
-h_j(z)=(-1)^j2^{-j}e^{z^2}\frac{d^j}{dz^j}e^{-z^2}
+L_k=\prod_{j=0}^{k-1}(j!)^2,
 $$
-has squared norm
-$$
-\int_{\mathbb R}h_j(z)^2e^{-z^2}\,dz
-=
-\sqrt{\pi}\,2^{-j}j!,
-$$
-obtained by integrating the Rodrigues formula by parts $j$ times. Gram factorization gives
+and
 $$
 G_l=
 \pi^{l/2}2^{-l(l-1)/2}\prod_{j=0}^{l-1}j!.
 $$
+For a cluster $(k,l,r)$, the left-center and center-right squared distances tend to $1/4$, so its leading local constant is
+$$
+K_{k,l,r}=2^{-2l(k+r)}L_kL_rG_l.
+$$
+For $(m,2m,m)$,
+$$
+K_{m,2m,m}=2^{-8m^2}L_m^2G_{2m}=C_m.
+$$
 
-For the dominant allocation, each left-center and center-right squared distance tends to $1/4$. There are $4m^2$ such pairs, so the cross factor is
+For $(m+1,2m-1,m)$ and its reflection, the ratio to $C_m$ is
 $$
-2^{-8m^2}.
+R_+
+=
+4\frac{L_{m+1}}{L_m}\frac{G_{2m-1}}{G_{2m}}
+=
+\frac{2^{2m+1}(m!)^2}{\sqrt{\pi}(2m-1)!}.
 $$
-Its leading constant is
+For $(m-1,2m+1,m)$ and its reflection,
 $$
-2^{-8m^2}L_m^2G_{2m}=C_m.
+R_-
+=
+4\frac{L_{m-1}}{L_m}\frac{G_{2m+1}}{G_{2m}}
+=
+2^{2-2m}\sqrt{\pi}\frac{(2m)!}{((m-1)!)^2}.
+$$
+Using
+$$
+\frac{(m!)^2}{(2m-1)!}=\frac{2m}{b_m},
+\qquad
+\frac{(2m)!}{((m-1)!)^2}=m^2b_m,
+$$
+their combined relative $t^{3/2}$ coefficient is
+$$
+2(R_++R_-)
+=
+\frac{2^{2m+3}m}{\sqrt{\pi}b_m}
++2^{3-2m}\sqrt{\pi}m^2b_m.
 $$
 
-Step 3: Compute the first correction of the dominant allocation
+For either cluster at gap $2$, the center size and all cross factors equal those of the dominant cluster. Hence
+$$
+\frac{K_{m+1,2m,m-1}}{C_m}
+=
+\frac{L_{m+1}L_{m-1}}{L_m^2}
+=
+m^2.
+$$
+The reflected cluster has the same ratio, so these two clusters contribute
+$$
+2m^2t^2
+$$
+relative to the dominant term.
 
-For the dominant scaling, write
+Step 3: Compute the $t^2$ correction inside the dominant cluster
+
+Put $s=\sqrt t$ and, in the dominant cluster, write
 $$
 U_j=\sum_{i=1}^m u_i^j,\qquad
 V_j=\sum_{i=1}^m v_i^j,\qquad
 Z_j=\sum_{a=1}^{2m}z_a^j.
 $$
-After removing the leading densities
+The endpoint phases satisfy
 $$
-e^{-\sum u_i}e^{-\sum v_i}e^{-\sum z_a^2}
+-\frac{\phi(tu)}t=-u+5tu^2-8t^2u^3+O(t^3),
 $$
-and the constant cross factor, the logarithm of the remaining integrand is
+with the same formula for $v$, while
 $$
-tL_1+O(t^2),
+-\frac{\phi(1/2+sz)}t=-z^2+4tz^4.
 $$
-where
+For a left-center pair,
+$$
+2\log(1+2sz-2s^2u)
+=
+4sz-4s^2(u+z^2)
++s^3\left(8uz+\frac{16}{3}z^3\right)
++s^4(-4u^2-16uz^2-8z^4)
++O(s^5),
+$$
+and the right-center formula is obtained by replacing $(z,u)$ with $(-z,v)$. Also,
+$$
+2\log(1-s^2(u+v))
+=
+-2s^2(u+v)-s^4(u+v)^2+O(s^6).
+$$
+After summing all pairs, the logarithm of the correction factor is
+$$
+tL_1+t^{3/2}L_{3/2}+t^2L_2+O(t^{5/2}),
+$$
+where the odd term has zero mean and
 $$
 L_1
 =
-5(U_2+V_2)-10m(U_1+V_1)+4Z_4-8mZ_2.
-$$
-Indeed,
-$$
-\frac{\phi(tu)}{t}=u-5tu^2+O(t^2),
+5(U_2+V_2)-10m(U_1+V_1)+4Z_4-8mZ_2,
 $$
 $$
-\frac{\phi(1/2+\sqrt{t}\,z)}{t}=z^2-4tz^4,
-$$
-and for a left-center pair,
-$$
-2\log\left(1+2\sqrt{t}\,z-2tu\right)
+L_2
 =
-4\sqrt{t}\,z-4tu-4tz^2+O(t^{3/2}),
+-8(U_3+V_3)-9m(U_2+V_2)-2U_1V_1
+-16(U_1+V_1)Z_2-16mZ_4.
 $$
-while the right-center expansion has the opposite $\sqrt{t}$ term. Equal left and right cluster sizes cancel those terms.
+Hence the relative $t^2$ coefficient of the dominant cluster is
+$$
+\mathbb E[L_2]+\frac12\mathbb E[L_1^2].
+$$
 
-The dominant contribution has no $t^{3/2}$ term. Replacing $\sqrt t$ by $-\sqrt t$ and simultaneously sending
+For the Laguerre density proportional to
 $$
-(u,v,z)\longmapsto(v,u,-z)
+\prod_{i<j}(u_i-u_j)^2e^{-\sum u_i},
 $$
-leaves the scaled integral unchanged, so its expansion contains only integer powers of $t$.
-
-For the Laguerre density defining $L_m$, integration by parts gives
+let $p_j=\sum u_i^j$ and $p_0=m$. Integration by parts and pairwise symmetrization give
 $$
-\mathbb E[U_1]=m^2,\qquad
-\mathbb E[U_2]=2m^3,
-$$
-and the same formulas hold for $V_1,V_2$. For the Gaussian density defining $G_n$, integration by parts gives
-$$
-\mathbb E[Z_2]=\frac{n^2}{2}.
-$$
-The Vandermonde factor is invariant under a common translation. Hence the center-of-mass coordinate has density proportional to $e^{-Z_1^2/n}$, so
-$$
-\mathbb E[Z_1^2]=\frac n2.
-$$
-Integrating
-$$
-\sum_i\frac{\partial}{\partial z_i}(z_i^3\rho)
-$$
-then gives
-$$
-\mathbb E[Z_4]
+\mathbb E[p_qF]
 =
-n\mathbb E[Z_2]+\frac12\mathbb E[Z_1^2]
+\mathbb E\left[
+\sum_{j=0}^{q-1}p_jp_{q-1-j}F
++\sum_i u_i^q\frac{\partial F}{\partial u_i}
+\right].
+$$
+Applying this identity with $F=1,p_1,p_2$ gives
+$$
+\mathbb E[p_1]=m^2,\qquad
+\mathbb E[p_2]=2m^3,\qquad
+\mathbb E[p_3]=5m^4+m^2,
+$$
+$$
+\operatorname{Var}(p_1)=m^2,\qquad
+\operatorname{Cov}(p_1,p_2)=4m^3,
+$$
+$$
+\operatorname{Var}(p_2)=2m^2(9m^2+1).
+$$
+
+For the Gaussian density proportional to
+$$
+\prod_{i<j}(z_i-z_j)^2e^{-\sum z_i^2},
+$$
+of size $n$, put $q_j=\sum z_i^j$ and $q_0=n$. The corresponding identity is
+$$
+2\mathbb E[q_{r+1}F]
 =
-\frac{n(2n^2+1)}4.
+\mathbb E\left[
+\sum_{j=0}^{r-1}q_jq_{r-1-j}F
++\sum_i z_i^r\frac{\partial F}{\partial z_i}
+\right].
 $$
-With $n=2m$,
+Successive substitutions with $F=1,q_1^2,q_2,q_4$ give
 $$
-\mathbb E[Z_2]=2m^2,\qquad
-\mathbb E[Z_4]=4m^3+\frac m2.
-$$
-The two endpoint parts of $\mathbb E[L_1]$ vanish:
-$$
-5(2m^3)-10m(m^2)=0.
-$$
-The center part is
-$$
-4\left(4m^3+\frac m2\right)-8m(2m^2)=2m.
-$$
-Therefore the dominant allocation contributes
-$$
-C_mt^{4m^2}\left(1+2mt+O(t^2)\right).
-$$
-
-Step 4: Evaluate the four first competing allocations
-
-For general cluster sizes,
-$$
-K_{k,l,r}=2^{-2l(k+r)}L_kL_rG_l.
-$$
-The allocations
-$$
-(m+1,2m-1,m),\qquad (m,2m-1,m+1)
-$$
-have the same ratio to the dominant constant. From Step 2,
-$$
-\frac{L_{m+1}}{L_m}=(m!)^2,
+\mathbb E[q_2]=\frac{n^2}{2},
 \qquad
-\frac{G_{2m-1}}{G_{2m}}
-=
-\frac{2^{2m-1}}{\sqrt{\pi}(2m-1)!}.
+\mathbb E[q_4]=\frac{n(2n^2+1)}4,
 $$
-The cross-factor ratio is $4$, so their common ratio is
 $$
-R_+
-=
-\frac{2^{2m+1}(m!)^2}{\sqrt{\pi}(2m-1)!}.
-$$
-
-The other two allocations are
-$$
-(m-1,2m+1,m),\qquad (m,2m+1,m-1).
-$$
-Again from Step 2,
-$$
-\frac{L_{m-1}}{L_m}=\frac1{((m-1)!)^2},
+\operatorname{Var}(q_2)=\frac{n^2}{2},
 \qquad
-\frac{G_{2m+1}}{G_{2m}}
-=
-\sqrt{\pi}\,2^{-2m}(2m)!.
+\operatorname{Cov}(q_2,q_4)=\frac{n(2n^2+1)}2,
 $$
-Including the cross-factor ratio gives
 $$
-R_-
-=
-2^{2-2m}\sqrt{\pi}\,
-\frac{(2m)!}{((m-1)!)^2}.
+\operatorname{Var}(q_4)=\frac{3n^2(3n^2+5)}4.
 $$
 
-Each of these four allocations starts at relative order $t^{3/2}$ by Step 1. Corrections within them start later, and every other allocation starts at relative order at least $t^2$. Therefore
+For one endpoint, set
+$$
+A=5p_2-10mp_1.
+$$
+Then
+$$
+\mathbb E[A]=0,
+\qquad
+\operatorname{Var}(A)=50m^2(3m^2+1).
+$$
+For the center take $n=2m$ and
+$$
+B=4q_4-8mq_2.
+$$
+The Gaussian formulas give
+$$
+\mathbb E[B]=2m,
+\qquad
+\operatorname{Var}(B)=16m^2(12m^2+11).
+$$
+The three local ensembles are independent at leading order. Therefore
+$$
+\mathbb E[L_1]=2m
+$$
+and
+$$
+\operatorname{Var}(L_1)
+=
+2\operatorname{Var}(A)+\operatorname{Var}(B)
+=
+492m^4+276m^2.
+$$
+Thus
+$$
+\frac12\mathbb E[L_1^2]
+=
+246m^4+140m^2.
+$$
+
+Using the first moments listed above in $L_2$ gives
+$$
+\mathbb E[L_2]
+=
+-16(5m^4+m^2)-36m^4-2m^4-64m^4
+-16m\left(4m^3+\frac m2\right),
+$$
+so
+$$
+\mathbb E[L_2]=-246m^4-24m^2.
+$$
+The dominant cluster therefore has relative expansion
+$$
+1+2mt+116m^2t^2+O(t^3).
+$$
+
+Step 4: Show which competitor corrections survive and take the limit
+
+For a general cluster $(k,l,r)$, the coefficient of $s=\sqrt t$ in the logarithm of its scaled integrand comes only from the endpoint-center cross factors and equals
+$$
+4(k-r)Z_1.
+$$
+The leading center ensemble is invariant under $z_a\mapsto-z_a$, so
+$$
+\mathbb E[Z_1]=0.
+$$
+Therefore none of the four gap-$3/2$ clusters has a relative $t^{1/2}$ correction. Their next contribution occurs after order $t^2$.
+
+Combining Steps 2 and 3 gives
 $$
 \frac{D_m(t)}{C_mt^{4m^2}}
 =
-1+2mt+2(R_++R_-)t^{3/2}+O(t^2).
+1+2mt
++\left(
+\frac{2^{2m+3}m}{\sqrt{\pi}b_m}
++2^{3-2m}\sqrt{\pi}m^2b_m
+\right)t^{3/2}
++(116m^2+2m^2)t^2
++o(t^2).
+$$
+Hence the coefficient remaining after the three prescribed subtractions is
+$$
+118m^2.
 $$
 
-Step 5: Simplify the coefficient and take the limit
-
-Since the problem defines
-$$
-b_m=\binom{2m}{m},
-$$
-we have
-$$
-\frac{(m!)^2}{(2m-1)!}
-=
-\frac{2m}{b_m},
-$$
-and
-$$
-\frac{(2m)!}{((m-1)!)^2}
-=
-m^2b_m.
-$$
-Using these identities in Step 4 gives
-$$
-2R_+
-=
-\frac{2^{2m+3}m}{\sqrt{\pi}b_m},
-$$
-and
-$$
-2R_-
-=
-2^{3-2m}\sqrt{\pi}m^2b_m.
-$$
-Subtracting $1+2mt$ from the normalized determinant expansion in Step 4 and dividing by $t^{3/2}$ leaves the sum of these two coefficients.
-
-Final Answer: $\boxed{\frac{2^{2m+3}m}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m}$
+Final Answer: $\boxed{118m^2}$
 
 ---
 
 ## Answer
 
-$\frac{2^{2m+3}m}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m$
+$118m^2$
 
 ---
 
@@ -303,5 +365,5 @@ $\frac{2^{2m+3}m}{\sqrt{\pi}b_m}+2^{3-2m}\sqrt{\pi}m^2b_m$
 - competing Laplace clusters
 - Hankel determinant integrals
 - Vandermonde scaling
-- Gaussian and Laguerre moment ensembles
+- Gaussian and Laguerre moment recurrences
 - fractional-order asymptotics
