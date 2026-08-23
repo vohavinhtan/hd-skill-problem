@@ -2,27 +2,28 @@
 
 ## LaTeX (Normalized)
 
-For $a>0$ and each positive integer $n$, define
+For each positive integer $n$ and $a\in(0,1)$, define
 $$
-B_n(a)=
-\sum_{k=0}^{n}
-(-1)^k\binom{n}{k}\frac{1}{k+an}.
+x_0=a
 $$
-For each fixed $c\in(0,1)$ and all sufficiently large $n$, let $a_n(c)\in(\frac12,1)$ be the unique solution of
+and, for $0\leq k\leq n-1$,
 $$
-B_n(a_n(c))B_n(2-a_n(c))
+x_{k+1}
 =
-e^{c/(2n)}B_n(1)^2.
+x_k+
+\frac{x_k(1-x_k)}{n+k}.
 $$
-Determine the function $L:(0,1)\to\mathbb R$ defined by
+Let $a_n\in(0,\frac12)$ be the unique value for which the resulting orbit satisfies
 $$
-L(c)=
+x_n=\frac12.
+$$
+Determine the exact value of
+$$
 \lim_{n\to\infty}
-n^3
+n^2
 \left[
-a_n(c)-1
-+\frac{\sqrt c}{n}
--\frac{5\sqrt c}{8n^2}
+a_n-\frac13
++\frac{\log(\frac32)}{9n}
 \right].
 $$
 
@@ -34,11 +35,11 @@ $$
 |---|---|
 | **Domain** | Calculus |
 | **Sub-domain** | Limits and continuity |
-| **Problem Type** | Symbolic derivation |
-| **Answer Type** | Function or mapping |
+| **Problem Type** | Exact computation |
+| **Answer Type** | Exact scalar |
 
 ---
 
 ## Domain Explanation
 
-The requested object is a parameterized limit of roots of finite-sum equations, so Calculus and Limits and continuity is the best fit. The alternating binomial sum hides an exact beta-function representation, and the symmetric product creates a degenerate implicit displacement around $a=1$. Gamma-function and polygamma expansions are intermediate tools for extracting the limiting function.
+The problem asks for a second-order limit of an initial value selected by a terminal condition on a nonlinear recurrence, so Calculus and Limits and continuity is the best fit. The derivation passes through a continuum orbit and two discrete correction layers. Recurrence manipulation and finite-sum asymptotics are intermediate steps rather than the requested object.
