@@ -32,6 +32,15 @@ S=
 \end{pmatrix}.
 $$
 
+For a polynomial $f\in\mathbb Q[x_1,x_2,x_3,x_4]$, define
+$$
+\Delta_Sf
+=
+\sum_{i,j=1}^4
+(S^{-1})_{ij}
+\frac{\partial^2f}{\partial x_i\partial x_j}.
+$$
+
 Let $\mathcal E$ be the $\mathbb Q$-vector space of polynomial maps
 $$
 F=(F_1,F_2,F_3,F_4):\mathbb Q^4\to\mathbb Q^4
@@ -42,9 +51,9 @@ F(gx)=gF(x)
 $$
 for every $g\in G$ and $x\in\mathbb Q^4$, together with
 $$
-x^TSF(x)=0
+\Delta_SF_i=0
 $$
-and
+for $i=1,2,3,4$,
 $$
 \frac{\partial F_1}{\partial x_1}
 +
@@ -54,7 +63,11 @@ $$
 +
 \frac{\partial F_4}{\partial x_4}
 =
-0.
+0,
+$$
+and
+$$
+x^TSF(x)=0.
 $$
 
 Determine the exact value of
@@ -77,14 +90,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves a finite matrix-group representation and dimensions of constrained polynomial covariants,
+This problem involves a finite matrix-group representation, invariant polynomial spaces, and constrained polynomial covariants,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves invariant rings, harmonic decomposition, and equivariant differential operators,
-which are part of representation-theoretic and invariant-theoretic computation.
-However, these structures are used to determine one exact dimension for the polynomial space defined in the statement.
+The problem also involves Laplacians and divergence on homogeneous polynomial maps,
+which are part of Calculus and Differentiation.
+However, the differential operators are compatible with the finite-group action and are used to isolate representation-theoretic subspaces whose exact dimension is requested.
 
 Specifically:
 
-- The displayed matrices hide the standard four-dimensional representation of a symmetric group and a preserved quadratic form.
-- The tangency condition requires a quotient of the covariant space by degree-thirty invariants before the divergence condition can be analyzed.
-- The divergence map on tangent covariants has a one-dimensional obstruction detected both by harmonic decomposition and by a Gaussian integral.
+- The displayed matrices hide the standard four-dimensional representation of a symmetric group and its invariant quadratic form.
+- Harmonic decomposition must be applied to both scalar invariants and vector covariants before either remaining constraint can be counted.
+- Divergence and tangency form two dependent surjective maps between harmonic invariant spaces, so their kernels cannot be obtained by subtracting the unconstrained ranks independently.
