@@ -1,165 +1,157 @@
 ## Steps
 
-Step 1: Find the scalar quantity that controls every possible periodic orbit
-
-The derivatives of $E$ are
-$$
-E_x=g(x),\qquad E_y=y.
-$$
-Put
-$$
-F(h)=h(\mu+\nu h-h^2).
-$$
-Along a solution,
-$$
-\dot E
-=
-g(x)\dot x+y\dot y
-=
-\left(g(x)^2+y^2\right)F(E).
-$$
-The factor $g(x)^2+y^2$ is nonnegative and vanishes only when $g(x)=y=0$, which gives an equilibrium of the full system.
-
-If a non-equilibrium periodic orbit were not contained in a zero level of $F(E)$, then $F(E)$ would have a fixed sign along that orbit until a zero level was reached. Such a zero level is invariant because $\dot E=0$ there. Hence $E$ would be strictly monotone on the periodic orbit, which is impossible. Therefore every limit cycle is contained in a level
-$$
-E=c
-$$
-with
-$$
-c(\mu+\nu c-c^2)=0.
-$$
-Conversely, on such a level the dissipative terms vanish and the system becomes
-$$
-\dot x=y,\qquad \dot y=-g(x).
-$$
-Thus every regular compact component of $E=c$ is a periodic orbit.
-
-Step 2: Count the periodic components of each relevant energy level
+Step 1: Find the hidden scalar dynamics
 
 Write
 $$
-E(x,y)=\frac{y^2}{2}+V(x),
-\qquad
-V(x)=\frac{x^6}{8}-\frac{15x^4}{16}+\frac{3x^2}{2}.
-$$
-Since
-$$
-V'(x)=g(x)=\frac34x(x^2-1)(x^2-4),
-$$
-the critical points of $V$ are $0,\pm1,\pm2$. Their values are
-$$
-V(0)=0,\qquad V(\pm1)=\frac{11}{16},\qquad V(\pm2)=-1.
-$$
-For $x>0$, the sign of $V'$ is positive on $(0,1)$, negative on $(1,2)$, and positive on $(2,\infty)$. Hence $0$ and $\pm2$ are minima, while $\pm1$ are maxima.
-
-It follows from the one-dimensional mechanical level sets
-$$
-\frac{y^2}{2}+V(x)=c
-$$
-that:
-$$
--1<c<0 \quad\Longrightarrow\quad 2\text{ periodic components},
-$$
-$$
-0<c<\frac{11}{16}
-\quad\Longrightarrow\quad
-3\text{ periodic components},
-$$
-$$
-c>\frac{11}{16}
-\quad\Longrightarrow\quad
-1\text{ periodic component}.
-$$
-At $c=0$ there are still two regular outer periodic components, together with the equilibrium $(0,0)$. At $c=-1$ only the two outer minima occur, and at $c=11/16$ the level contains the saddle separatrices through $(\pm1,0)$.
-
-Therefore the parameter-independent root $c=0$ of $F$ always supplies two limit cycles unless it loses hyperbolicity.
-
-Step 3: Determine the stability contributed by each zero of the energy equation
-
-For a simple zero $c$ of $F$, let $\eta=E-c$. Along the corresponding periodic component,
-$$
-\dot\eta
-=
-\left(g(x)^2+y^2\right)F'(c)\eta+O(\eta^2).
-$$
-Over one period $T$, the transverse multiplier is
-$$
-\exp\left(
-F'(c)\int_0^T\left(g(x(t))^2+y(t)^2\right)\,dt
-\right).
-$$
-The integral is positive, so the cycle is attracting exactly when $F'(c)<0$.
-
-At $c=0$,
-$$
-F'(0)=\mu.
-$$
-Hence the two persistent cycles on $E=0$ are stable exactly when $\mu<0$.
-
-The other two possible energy levels are the roots $c_-<c_+$ of
-$$
-q(c)=\mu+\nu c-c^2.
-$$
-When they are distinct,
-$$
-q'(c_-)>0,\qquad q'(c_+)<0.
-$$
-Since
-$$
-F'(c_\pm)=c_\pm q'(c_\pm),
-$$
-if both roots lie in $(0,11/16)$, the three cycles on $E=c_-$ are unstable and the three cycles on $E=c_+$ are stable. Together with the two stable cycles on $E=0$, this gives exactly eight hyperbolic limit cycles, five stable and three unstable.
-
-Conversely, eight limit cycles require six cycles in addition to the two on $E=0$. A single nonzero root can contribute at most three periodic components, so both $c_-$ and $c_+$ must contribute three. By Step 2 this forces
-$$
-0<c_-<c_+<\frac{11}{16}.
-$$
-Thus the required cycle configuration is equivalent to both roots of $q$ lying in this interval.
-
-Step 4: Convert the root-location condition into the parameter region
-
-Let
-$$
-b=\frac{11}{16}.
-$$
-The roots of
-$$
-q(c)=\mu+\nu c-c^2
-$$
-are distinct and positive exactly when
-$$
-\nu>0,\qquad \mu<0,\qquad \nu^2+4\mu>0.
-$$
-The last inequality is
-$$
-\mu>-\frac{\nu^2}{4}.
-$$
-
-For both roots to lie below $b$, the vertex $\nu/2$ must lie below $b$ and $q(b)$ must be negative. These conditions are
-$$
-0<\nu<2b=\frac{11}{8}
+M=\mu A^2B^2+\nu AB(A^2+B^2)-(A^2+B^2)^2
 $$
 and
 $$
-\mu+\frac{11\nu}{16}-\frac{121}{256}<0.
+N=A^3B^3-(A^2+B^2-5AB)^2(x^2-y^2-A)^2.
 $$
-Combining them with the positivity and distinctness conditions gives
+Set $z=x+iy$. Then
 $$
-0<\nu<\frac{11}{8},
+A=|z|^4,
 \qquad
--\frac{\nu^2}{4}<\mu<0,
-\qquad
-\mu+\frac{11\nu}{16}<\frac{121}{256}.
+B=|1-z^2|^2,
 $$
-Every inequality is strict, so all eight cycles are regular and all three zero levels of $F$ are simple. Hence all eight cycles are hyperbolic.
+and the two cubic factors in the system are the real and imaginary parts of $z(1-z^2)$. Hence the system is
+$$
+\dot z=z(1-z^2)(M+iN).
+$$
+Any periodic orbit avoids the equilibria $z=\pm1$, so along such an orbit introduce
+$$
+w=\frac{z^2}{1-z^2}.
+$$
+Since
+$$
+\frac{dw}{dz}=\frac{2z}{(1-z^2)^2},
+$$
+we obtain
+$$
+\dot w=2w(M+iN).
+$$
+Put
+$$
+s=|w|^2=\frac{A}{B},
+\qquad
+t=s+\frac1s=\frac{A^2+B^2}{AB}.
+$$
+Then
+$$
+M=(AB)^2q(t),
+\qquad
+q(t)=\mu+\nu t-t^2,
+$$
+so
+$$
+\dot s=4s(AB)^2q(t).
+$$
+A root level of $q(t)$ is invariant. Between consecutive root levels the sign of $\dot s$ is fixed, so $s$ is strictly monotone on every non-equilibrium orbit there. Therefore every limit cycle must lie over a root of $q(t)$.
 
-Final Answer: $\boxed{\{(\mu,\nu):0<\nu<\frac{11}{8},-\frac{\nu^2}{4}<\mu<0,\mu+\frac{11\nu}{16}<\frac{121}{256}\}}$
+Step 2: Determine which invariant levels are actually periodic
+
+Write
+$$
+w=\sqrt{s}e^{i\theta}.
+$$
+Because
+$$
+\operatorname{Re}w=\frac{x^2-y^2-A}{B}
+$$
+and
+$$
+A^2+B^2-5AB=AB(t-5),
+$$
+the angular factor becomes
+$$
+N=s^3B^6\left(1-(t-5)^2\cos^2\theta\right).
+$$
+On a root level of $q$, the angular equation is
+$$
+\dot\theta=2N.
+$$
+For $t>2$, this angular velocity is nonzero for every $\theta$ exactly when
+$$
+|t-5|<1,
+$$
+that is,
+$$
+4<t<6.
+$$
+If $2<t\leq4$ or $t\geq6$, the angular factor vanishes somewhere on the invariant level, producing equilibria on that level instead of a periodic orbit. At $t=2$ the only solution of $s+s^{-1}=2$ is $s=1$, whose lifted level is noncompact. Hence only roots of $q$ in $(4,6)$ can generate limit cycles.
+
+Step 3: Count the lifted cycles and determine their stability
+
+For $t>2$, the equation
+$$
+s+\frac1s=t
+$$
+has reciprocal roots
+$$
+0<s_-<1<s_+.
+$$
+Set $u=z^2$. Since
+$$
+u=\frac{w}{1+w},
+$$
+the circle $|w|=\sqrt{s}$ maps to
+$$
+|u|=\sqrt{s}|1-u|.
+$$
+When $s<1$, this circle surrounds $u=0$. Its inverse image under $z\mapsto z^2$ is therefore one connected oval. When $s>1$, the circle does not surround $0$, and its inverse image is two disjoint ovals. Thus every root $t\in(4,6)$ of $q$ produces exactly three limit cycles.
+
+Let $\alpha<\beta$ be the two roots of $q$ when they exist. Since
+$$
+q(t)=-(t-\alpha)(t-\beta),
+$$
+we have
+$$
+q'(\alpha)>0,
+\qquad
+q'(\beta)<0.
+$$
+At a root level, linearizing the scalar equation for $s$ in the transverse direction leaves the sign
+$$
+q'(t)\left(1-\frac1{s^2}\right),
+$$
+because all other factors are positive there. Hence the single cycle over $s_-$ is stable exactly when $q'(t)>0$, while the two cycles over $s_+$ are stable exactly when $q'(t)<0$.
+
+Therefore a root $t=\alpha$ in $(4,6)$ produces one stable and two unstable cycles, whereas a root $t=\beta$ in $(4,6)$ produces two stable and one unstable cycle. The transverse coefficient is nonzero in either case, so all of these cycles are hyperbolic.
+
+Step 4: Identify the parameter region
+
+Exactly three limit cycles with exactly two asymptotically stable means that exactly one root of $q$ lies in $(4,6)$ and that this root is the upper root $\beta$. The interior of that parameter set is therefore characterized by
+$$
+\alpha<4<\beta<6.
+$$
+Since $q$ opens downward, it is positive precisely between its roots. Thus
+$$
+\alpha<4<\beta
+$$
+is equivalent to
+$$
+q(4)>0.
+$$
+Once $4$ lies between the roots, the condition $\beta<6$ is equivalent to
+$$
+q(6)<0.
+$$
+These inequalities are
+$$
+\mu+4\nu>16,
+\qquad
+\mu+6\nu<36.
+$$
+
+Final Answer: $\boxed{\{(\mu,\nu):\mu+4\nu>16,\ \mu+6\nu<36\}}$
 
 ---
 
 ## Answer
 
-$\{(\mu,\nu):0<\nu<\frac{11}{8},-\frac{\nu^2}{4}<\mu<0,\mu+\frac{11\nu}{16}<\frac{121}{256}\}$
+$\{(\mu,\nu):\mu+4\nu>16,\ \mu+6\nu<36\}$
 
 ---
 
@@ -173,8 +165,8 @@ $\{(\mu,\nu):0<\nu<\frac{11}{8},-\frac{\nu^2}{4}<\mu<0,\mu+\frac{11\nu}{16}<\fra
 
 ## Solution Concepts
 
-- energy monotonicity
-- Hamiltonian level sets
-- limit-cycle hyperbolicity
-- root-location inequalities
+- nonlinear coordinate changes
+- invariant radial variables
+- covering-space topology
+- transverse stability
 - bifurcation regions
