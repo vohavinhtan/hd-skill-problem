@@ -52,23 +52,23 @@ $$
 \lambda_H(\varepsilon)
 =-\frac{\varepsilon}{4}+O(\varepsilon^3).
 $$
-The determinant at this point is
+Also
 $$
 \det J=\frac{1+\phi'(u_H)/2}{\varepsilon}
 =\frac{1-\varepsilon/4}{\varepsilon}>0,
 $$
-so this is indeed the Hopf value.
+so the eigenvalues are indeed purely imaginary there.
 
 Step 3: Match the attracting and repelling slow manifolds through the fold
 
-For the maximal canard, the two slow manifolds have one common local invariant graph through the fold. Write that graph and its parameter as
+The two Fenichel slow manifolds have asymptotic invariant-graph expansions on the two sides of the fold. At the maximal canard these expansions continue through $u=0$ as one regular graph. Write
 $$
 v=h(u)=\phi(u)+\varepsilon a_0(u)+\varepsilon^2a_1(u)+O(\varepsilon^3),
 $$
 $$
 \lambda_C(\varepsilon)=\ell_1\varepsilon+\ell_2\varepsilon^2+O(\varepsilon^3).
 $$
-The invariance equation is
+The graph invariance equation is
 $$
 h'(u)\bigl(h(u)-\phi(u)\bigr)
 =\varepsilon\left(\lambda-u-\frac{h(u)}2\right).
@@ -79,9 +79,10 @@ $$
 $$
 so
 $$
-a_0(u)=-\frac{u^2+3u+6}{6(u+2)}.
+a_0(u)=-\frac{u^2+3u+6}{6(u+2)}
+=-\frac12-\frac{u^2}{12}+\frac{u^3}{24}+O(u^4).
 $$
-Hence
+Thus
 $$
 a_0(0)=-\frac12,
 \qquad
@@ -93,7 +94,7 @@ $$
 \phi'(u)a_1(u)+a_0'(u)a_0(u)
 =\ell_1-\frac{a_0(u)}2.
 $$
-Because $\phi'(0)=0$, a common graph can pass regularly through the fold only if the right-hand side remaining after the $a_0'a_0$ term vanishes at $u=0$. Thus
+Since $\phi'(0)=0$, regularity at the fold forces
 $$
 0=\ell_1+\frac14,
 $$
@@ -101,7 +102,16 @@ so
 $$
 \ell_1=-\frac14.
 $$
-With this value, expansion of the same equation at $u=0$ gives
+With this value, the last equation becomes locally
+$$
+(2u+u^2)a_1(u)
+=-\frac{u}{12}+\frac{5u^2}{48}+O(u^3).
+$$
+Hence
+$$
+a_1(u)=-\frac1{24}+\frac{7u}{96}+O(u^2),
+$$
+so
 $$
 a_1(0)=-\frac1{24},
 \qquad
@@ -113,7 +123,7 @@ $$
 \phi'(u)a_2(u)+a_0'(u)a_1(u)+a_1'(u)a_0(u)
 =\ell_2-\frac{a_1(u)}2.
 $$
-Regularity at $u=0$ now gives
+Evaluating the regularity condition at $u=0$ gives
 $$
 -\frac7{192}
 =\ell_2+\frac1{48},
@@ -135,7 +145,7 @@ $$
 \lambda_C(\varepsilon)-\lambda_H(\varepsilon)
 =-\frac{11}{192}\varepsilon^2+O(\varepsilon^3).
 $$
-Hence
+Therefore
 $$
 \lim_{\varepsilon\to0^+}
 \frac{\lambda_C(\varepsilon)-\lambda_H(\varepsilon)}{\varepsilon^2}
