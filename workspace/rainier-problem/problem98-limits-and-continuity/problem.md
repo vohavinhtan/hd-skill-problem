@@ -6,40 +6,38 @@ Put
 $$
 \ell=\log2,
 \qquad
-\rho=\frac{\pi}{\ell}.
+\kappa=\frac{\pi^2}{12\ell}-\frac{\ell}{2},
 $$
-For $r>0$ and each positive integer $n$, define
+and
 $$
-U_0(r)=1,
-\qquad
-V_0(r)=0,
+\eta=
+\frac{4\ell^4-24\ell^3+78\ell^2-3\pi^2}{32\ell^3}.
 $$
-and, for $0\leq k\leq n-1$,
+For $a>0$ and each positive integer $n$, define
 $$
-U_{k+1}(r)
+Q_n(a)=
+\prod_{k=1}^{n}
+\left(1-e^{-ak/n}\right).
+$$
+For all sufficiently large $n$, let $a_n\in(\ell/2,\ell)$ be the unique solution of
+$$
+\log Q_n(a_n)-\kappa n\log a_n
 =
-U_k(r)+\frac{V_k(r)}{n+k},
-$$
-$$
-V_{k+1}(r)
-=
-V_k(r)-\frac{r^2U_k(r)}{n+k}.
-$$
-For all sufficiently large $n$, let $r_n\in(\rho-1,\rho)$ be the unique solution of
-$$
-e^{-r_n^2/(4n)}U_n(r_n)
-=
--1+
-\frac{2-\frac{3\rho^2}{16}}{n^2}.
+-n\left(
+\frac{\pi^2}{12\ell}
++\frac{\ell}{2}
++\kappa\log\ell
+\right)
++\frac12\log\frac{\pi n}{\ell}
++\frac{\eta}{n}.
 $$
 Determine the exact value of
 $$
 \lim_{n\to\infty}
 n^2
-\left[
-r_n-\rho
-+\frac{\rho+8}{4\ell n}
-\right].
+\left(
+a_n-\ell+\frac{3}{2n}
+\right).
 $$
 
 ---
@@ -57,4 +55,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for a second-order limit of a parameter selected by the terminal value of a long recurrence, so Calculus and Limits and continuity is the best fit. The recurrence hides a complex multiplicative evolution whose phase approaches a critical value where the first derivative vanishes. Finite-sum asymptotics and the resulting double-root displacement are intermediate tools for extracting the requested limit.
+The requested object is a second-order limit of roots of finite-product equations, so Calculus and Limits and continuity is the best fit. The product has a logarithmic endpoint singularity, and its limiting exponent is stationary at the target point. Resolving the root requires both the singular finite-product expansion and the local degenerate implicit equation.

@@ -1,306 +1,310 @@
 ## Steps
 
-Step 1: Convert the two-dimensional recurrence into one product
+Step 1: Separate the endpoint singularity in the finite product
 
-For $r>0$, define
+For $a$ in a fixed compact subset of $(0,\infty)$, write
 $$
-W_k(r)=U_k(r)+\frac{i}{r}V_k(r).
-$$
-The two recurrences give
-$$
-W_{k+1}(r)
+\log(1-e^{-at})
 =
-\left(
-1-\frac{ir}{n+k}
-\right)W_k(r).
-$$
-Since $W_0(r)=1$,
-$$
-W_n(r)
-=
-\prod_{j=n}^{2n-1}
-\left(
-1-\frac{ir}{j}
-\right).
-$$
-Write
-$$
-W_n(r)=A_n(r)e^{-i\theta_n(r)},
+\log(at)+g_a(t),
 $$
 where
 $$
-A_n(r)
+g_a(t)=
+\log\frac{1-e^{-at}}{at}.
+$$
+The apparent singularity is removable at $t=0$, with
+$$
+g_a(0)=0.
+$$
+Therefore
+$$
+\log Q_n(a)
 =
-\prod_{j=n}^{2n-1}
-\sqrt{1+\frac{r^2}{j^2}}
-$$
-and
-$$
-\theta_n(r)
-=
-\sum_{j=n}^{2n-1}
-\arctan\frac rj.
-$$
-Taking real parts gives the exact identity
-$$
-U_n(r)=A_n(r)\cos\theta_n(r).
+n\log a+\log(n!)-n\log n
++\sum_{k=1}^{n}g_a\left(\frac{k}{n}\right).
 $$
 
-Since
+Stirling's expansion gives
 $$
-\theta_n(r)\to r\log2=r\ell
-$$
-uniformly on compact $r$-intervals, the limiting expression on $(\rho-1,\rho)$ is
-$$
-\cos(r\ell).
-$$
-Here
-$$
-\rho\ell=\pi,
-$$
-so its value tends to $-1$ only as $r\to\rho$. The defining equation therefore forces
-$$
-r_n\to\rho.
-$$
-
-Step 2: Expand the phase and the normalized amplitude
-
-Set
-$$
-S_p(n)=\sum_{j=n}^{2n-1}\frac1{j^p}.
-$$
-Euler-Maclaurin applied on $[n,2n]$ gives
-$$
-S_1(n)
+\log(n!)
 =
-\ell+\frac1{4n}+\frac1{16n^2}+O(n^{-4}),
-$$
-$$
-S_2(n)
-=
-\frac1{2n}
-+\frac3{8n^2}
-+\frac7{48n^3}
-+O(n^{-4}),
-$$
-$$
-S_3(n)
-=
-\frac3{8n^2}+O(n^{-3}),
-$$
-and
-$$
-S_4(n)
-=
-\frac7{24n^3}+O(n^{-4}).
-$$
-
-Using
-$$
-\arctan z=z-\frac{z^3}{3}+O(z^5),
-$$
-we obtain
-$$
-\theta_n(r)
-=
-rS_1(n)-\frac{r^3}{3}S_3(n)+O(n^{-3}),
-$$
-so
-$$
-\theta_n(r)
-=
-r\ell+\frac{r}{4n}
-+
-\frac{\frac r{16}-\frac{r^3}{8}}{n^2}
+n\log n-n+\frac12\log(2\pi n)
++\frac1{12n}
 +O(n^{-3}).
 $$
-
-For the amplitude, put
+Euler-Maclaurin applied to the smooth function $g_a$ gives
 $$
-\Lambda_n(r)
+\sum_{k=1}^{n}g_a\left(\frac{k}{n}\right)
 =
-\log\left(e^{-r^2/(4n)}A_n(r)\right).
+n\int_0^1g_a(t)\,dt
++\frac{g_a(1)}2
++\frac{g_a'(1)-g_a'(0)}{12n}
++O(n^{-3}).
+$$
+Define
+$$
+I(a)=\int_0^1\log(1-e^{-at})\,dt.
 $$
 Since
 $$
-\frac12\log(1+z)
-=
-\frac z2-\frac{z^2}{4}+O(z^3),
+g_a(1)=\log\frac{1-e^{-a}}a
 $$
-we get
+and
 $$
-\Lambda_n(r)
-=
--\frac{r^2}{4n}
-+\frac{r^2}{2}S_2(n)
--\frac{r^4}{4}S_4(n)
-+O(n^{-4}).
-$$
-The order-$n^{-1}$ terms cancel, leaving
-$$
-\Lambda_n(r)
-=
-\frac{3r^2}{16n^2}
-+
-\frac{7(r^2-r^4)}{96n^3}
-+O(n^{-4}).
-$$
-
-Step 3: Locate the correct side of the split critical root
-
-The defining equation differs from $-1$ by $O(n^{-2})$. From Step 2,
-$$
-\Lambda_n(r)=O(n^{-2}),
-$$
-while near $\rho$,
-$$
-1+\cos\theta_n(r)
-\asymp
-(\theta_n(r)-\pi)^2.
-$$
-It follows that
-$$
-\theta_n(r_n)-\pi=O(n^{-1}),
-$$
-and since
-$$
-\frac{\partial\theta_n}{\partial r}\to\ell>0,
+g_a'(t)=\frac{a}{e^{at}-1}-\frac1t,
 $$
 we have
 $$
-r_n-\rho=O(n^{-1}).
+g_a'(0)=-\frac a2,
+\qquad
+g_a'(1)=\frac{a}{e^a-1}-1.
 $$
-
-Write
+Combining the expansions,
 $$
-r_n
+\log Q_n(a)
 =
-\rho+\frac d n+\frac e{n^2}+o(n^{-2}).
-$$
-Step 2 gives
-$$
-\theta_n(r_n)-\pi
-=
-\frac{A_1}{n}
-+\frac{A_2}{n^2}
-+o(n^{-2}),
+nI(a)
++\frac12\log(2\pi n)
++C_0(a)
++\frac{C_1(a)}n
++O(n^{-3}),
 $$
 where
 $$
-A_1=\ell d+\frac{\rho}{4}
+C_0(a)=
+\frac12\log\frac{1-e^{-a}}a
 $$
 and
 $$
-A_2=
-\ell e+\frac d4+\frac{\rho}{16}-\frac{\rho^3}{8}.
-$$
-Also
-$$
-\Lambda_n(r_n)
-=
-\frac{3\rho^2}{16n^2}
-+
-\frac{L_3}{n^3}
-+o(n^{-3}),
-$$
-where
-$$
-L_3=
-\frac{3\rho d}{8}
-+
-\frac{7(\rho^2-\rho^4)}{96}.
+C_1(a)=
+\frac{a}{12}
+\left(
+\frac1{e^a-1}+\frac12
+\right).
 $$
 
-Step 4: Use the double-root expansion to determine $d$ and $e$
+Step 2: Identify the stationary limiting exponent
 
-Since
+Integration in the variable $s=at$ gives
 $$
-\cos(\pi+z)=-1+\frac{z^2}{2}+O(z^4),
+I(a)=
+\frac1a
+\int_0^a\log(1-e^{-s})\,ds.
 $$
-Steps 1 and 3 give
+If
 $$
-e^{-r_n^2/(4n)}U_n(r_n)
-=
--1+
-\frac{\frac12A_1^2-\frac{3\rho^2}{16}}{n^2}
-+
-\frac{A_1A_2-L_3}{n^3}
-+o(n^{-3}).
+N(a)=\operatorname{Li}_2(e^{-a})-\frac{\pi^2}{6},
+$$
+then
+$$
+N'(a)=\log(1-e^{-a})
+$$
+and
+$$
+I(a)=\frac{N(a)}a.
 $$
 
-Comparison with the defining equation gives
+The identity
 $$
-\frac12A_1^2-\frac{3\rho^2}{16}
+\operatorname{Li}_2(x)+\operatorname{Li}_2(1-x)
 =
-2-\frac{3\rho^2}{16},
+\frac{\pi^2}{6}
+-\log x\log(1-x)
+$$
+follows by differentiation and evaluation at $x=0$. At $x=1/2$ it gives
+$$
+\operatorname{Li}_2\left(\frac12\right)
+=
+\frac{\pi^2}{12}-\frac{\ell^2}{2}.
+$$
+Therefore
+$$
+I(\ell)
+=
+-\frac{\pi^2}{12\ell}-\frac{\ell}{2}.
+$$
+
+Set
+$$
+J(a)=I(a)-\kappa\log a.
+$$
+At $a=\ell$,
+$$
+N(\ell)
+=
+-\frac{\pi^2}{12}-\frac{\ell^2}{2},
+$$
+$$
+N'(\ell)=-\ell,
+\qquad
+N''(\ell)=1,
+\qquad
+N'''(\ell)=-2.
+$$
+From these values,
+$$
+I'(\ell)
+=
+\frac{\pi^2}{12\ell^2}-\frac12,
+$$
+so the choice
+$$
+\kappa=\ell I'(\ell)
+$$
+gives
+$$
+J'(\ell)=0.
+$$
+
+The next derivatives are
+$$
+J''(\ell)
+=
+\frac{18\ell^2-\pi^2}{12\ell^3}
+$$
+and
+$$
+J'''(\ell)
+=
+\frac{\pi^2-15\ell^2-6\ell^3}{3\ell^4}.
+$$
+Since $\pi^2>18\ell^2$,
+$$
+J''(\ell)<0.
+$$
+
+Step 3: Expand the finite-product equation near the stationary point
+
+The right side in the problem is
+$$
+nJ(\ell)
++\frac12\log\frac{\pi n}{\ell}
++\frac{\eta}{n}.
+$$
+At $a=\ell$,
+$$
+C_0(\ell)=\frac12\log\frac1{2\ell},
 $$
 so
 $$
-A_1^2=4.
+\frac12\log(2\pi n)+C_0(\ell)
+=
+\frac12\log\frac{\pi n}{\ell}.
 $$
-Because
+The equation for $a_n$ becomes
 $$
-r_n<\rho,
+n\bigl(J(a_n)-J(\ell)\bigr)
++C_0(a_n)-C_0(\ell)
++\frac{C_1(a_n)-\eta}{n}
++O(n^{-3})
+=0.
 $$
-the relevant branch is $A_1=-2$. Therefore
+
+The required local derivatives are
 $$
-\ell d+\frac{\rho}{4}=-2,
+C_0'(\ell)=\frac{\ell-1}{2\ell},
+$$
+$$
+C_0''(\ell)=\frac1{2\ell^2}-1,
+$$
+$$
+C_1(\ell)=\frac{\ell}{8},
 $$
 and
 $$
-d=-\frac{\rho+8}{4\ell}.
+C_1'(\ell)=\frac18-\frac{\ell}{6}.
 $$
 
-There is no $n^{-3}$ term on the right side of the defining equation, so
+Away from $\ell$, the leading term $n(J(a)-J(\ell))$ prevents a solution in a fixed compact part of $(\ell/2,\ell)$. Therefore
 $$
-A_1A_2-L_3=0.
+a_n-\ell=O(n^{-1}).
 $$
-Using $A_1=-2$,
+Write
 $$
-A_2=-\frac{L_3}{2}.
+a_n=
+\ell+\frac{d}{n}+\frac{e}{n^2}+o(n^{-2}).
 $$
-Consequently
+
+Step 4: Determine the first displacement and select the left branch
+
+Substitution into Step 3 gives at order $n^{-1}$
 $$
-\ell e
-=
--\frac{L_3}{2}
--\frac d4
--\frac{\rho}{16}
-+\frac{\rho^3}{8}.
+\frac12J''(\ell)d^2
++C_0'(\ell)d
++C_1(\ell)-\eta
+=0.
 $$
-Substitution of the value of $d$ and simplification gives
+Using the definitions of $\kappa$ and $\eta$, this polynomial factors as
 $$
-e=
 \frac{
-\ell\rho(7\rho^3+24\rho^2-7\rho-12)
-+9\rho^2+84\rho+96
+(2d+3)
+\left[
+(36\ell^2-2\pi^2)d
++24\ell^3-78\ell^2+3\pi^2
+\right]
 }
-{192\ell^2}.
+{96\ell^3}
+=0.
 $$
-
-Step 5: Evaluate the normalized displacement
-
-The expansion obtained in Step 4 is
+The branch lying to the left of $\ell$ has
 $$
-r_n
-=
-\rho
--\frac{\rho+8}{4\ell n}
+d=-\frac32.
+$$
+The other local branch lies to the right of $\ell$. This also gives the stated uniqueness in $(\ell/2,\ell)$ for large $n$.
+
+Step 5: Determine the second displacement
+
+At order $n^{-2}$, Step 3 gives
+$$
+\left(
+J''(\ell)d+C_0'(\ell)
+\right)e
 +
-\frac{
-\ell\rho(7\rho^3+24\rho^2-7\rho-12)
-+9\rho^2+84\rho+96
+\frac{J'''(\ell)}6d^3
++\frac{C_0''(\ell)}2d^2
++C_1'(\ell)d
+=0.
+$$
+Insert
+$$
+d=-\frac32.
+$$
+The coefficient of $e$ becomes
+$$
+J''(\ell)d+C_0'(\ell)
+=
+\frac{4\ell^3-22\ell^2+\pi^2}{8\ell^3}.
+$$
+The remaining terms give
+$$
+e
+=
+-\frac{
+4\ell^5-21\ell^4+18\ell^3+54\ell^2-3\pi^2
+}{
+2\ell(4\ell^3-22\ell^2+\pi^2)
+}.
+$$
+Therefore
+$$
+a_n
+=
+\ell-\frac{3}{2n}
+-\frac{
+4\ell^5-21\ell^4+18\ell^3+54\ell^2-3\pi^2
+}{
+2\ell(4\ell^3-22\ell^2+\pi^2)n^2
 }
-{192\ell^2n^2}
 +o(n^{-2}).
 $$
-The normalization in the problem removes the first two terms, so the remaining coefficient is the required limit.
+The normalization in the problem isolates the coefficient of $n^{-2}$.
 
-Final Answer: $\boxed{\frac{\ell\rho(7\rho^3+24\rho^2-7\rho-12)+9\rho^2+84\rho+96}{192\ell^2}}$
+Final Answer: $\boxed{-\frac{4\ell^5-21\ell^4+18\ell^3+54\ell^2-3\pi^2}{2\ell(4\ell^3-22\ell^2+\pi^2)}}$
 
 ## Answer
 
-$\frac{\ell\rho(7\rho^3+24\rho^2-7\rho-12)+9\rho^2+84\rho+96}{192\ell^2}$
+$-\frac{4\ell^5-21\ell^4+18\ell^3+54\ell^2-3\pi^2}{2\ell(4\ell^3-22\ell^2+\pi^2)}$
 
 ## Classification
 
@@ -314,8 +318,8 @@ $\frac{\ell\rho(7\rho^3+24\rho^2-7\rho-12)+9\rho^2+84\rho+96}{192\ell^2}$
 
 ## Solution Concepts
 
-- complex recurrence reduction
-- multiplicative transfer products
-- Euler-Maclaurin expansion
-- critical phase splitting
-- implicit root asymptotics
+- singular Euler-Maclaurin expansion
+- finite product asymptotics
+- dilogarithm evaluation
+- stationary implicit roots
+- second-order limits
