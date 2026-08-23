@@ -14,7 +14,7 @@ For $k\in\{-2,-1,0,1,2\}$ define
 $$
 g_k=e^{-kx}\left(1+kxs^3\right)^{s^{-3}+\alpha k}.
 $$
-Factoring $e^{ix}$ from row $i$ and $e^{jx}$ from column $j$ has total factor $1$, hence
+Factoring $e^{ix}$ from row $i$ and $e^{jx}$ from column $j$ has total factor $1$, so
 $$
 H_n(\alpha)=\det[g_{i+j}]_{i,j=-1}^{1}.
 $$
@@ -67,7 +67,7 @@ The determinant identity is
 $$
 H_n=e^{2u}\left[(e^{a+b}-1)(e^{a-b}-1)-(e^{-u}-1)^2\right].
 $$
-Since $a-u=O(s^9)$, terms of degree at least four in $u,a,b$ have weighted order at least $20$. Hence
+Since $a-u=O(s^9)$, terms of degree at least four in $u,a,b$ have weighted order at least $20$. Therefore
 $$
 (e^{a+b}-1)(e^{a-b}-1)-(e^{-u}-1)^2
 =a^2-b^2-u^2+a(a^2-b^2)+u^3+O(s^{20}).
