@@ -15,21 +15,32 @@ A=
 B=
 \begin{pmatrix}
 -1&0&-4&-2\\
-1&-2&0&1\\
+-1&1&-2&-1\\
 0&0&1&0\\
-2&-3&2&3
+0&0&0&1
 \end{pmatrix}.
 $$
 
 Let $\mathcal E$ be the $\mathbb Q$-vector space of polynomial maps
 $$
-F:\mathbb Q^4\to\mathbb Q^4
+F=(F_1,F_2,F_3,F_4):\mathbb Q^4\to\mathbb Q^4
 $$
-whose four coordinate polynomials are homogeneous of total degree $21$ and which satisfy
+whose coordinate polynomials are homogeneous of total degree $29$ and satisfy
 $$
 F(gx)=gF(x)
 $$
-for every $g\in G$ and $x\in\mathbb Q^4$.
+for every $g\in G$ and $x\in\mathbb Q^4$, together with
+$$
+\frac{\partial F_1}{\partial x_1}
++
+\frac{\partial F_2}{\partial x_2}
++
+\frac{\partial F_3}{\partial x_3}
++
+\frac{\partial F_4}{\partial x_4}
+=
+0.
+$$
 
 Determine the exact value of
 $$
@@ -51,14 +62,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves identifying a finite matrix group and computing the dimension of a space of polynomial covariants,
+This problem involves identifying a finite matrix group and computing a constrained space of polynomial covariants,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves character calculations and generating functions for symmetric powers,
-which are part of Abstract Algebra and representation-theoretic computation.
-However, those tools are used to determine one exact dimension for the explicitly defined equivariant polynomial space.
+The problem also involves character generating functions, symmetric-group invariants, and an equivariant differential map,
+which are part of representation-theoretic and invariant-theoretic computation.
+However, those structures are used to determine one exact dimension for the polynomial space defined in the statement.
 
 Specifically:
 
-- The displayed generators are given in a basis that hides the underlying permutation representation.
-- After the representation is identified, the required dimension becomes a character multiplicity rather than an invariant-counting problem.
-- The degree is chosen so that the identity, three-cycle, and five-cycle classes all contribute to the final coefficient.
+- The displayed matrices hide the standard four-dimensional representation of a symmetric group.
+- The equivariance condition first becomes a character-multiplicity calculation, while the divergence condition produces a second dependent dimension calculation.
+- Surjectivity of the divergence map must be established before the two dimensions can be subtracted.
