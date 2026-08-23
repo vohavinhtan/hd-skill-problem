@@ -1,172 +1,169 @@
 ## Steps
 
-Step 1: Find the hidden scalar dynamics
+Step 1: Move the right fold to the origin
 
-Write
+Set
 $$
-M=\mu A^2B^2+\nu AB(A^2+B^2)-(A^2+B^2)^2
+u=x-1,\qquad v=y+\frac23,
 $$
-and
+and write
 $$
-N=A^3B^3-(A^2+B^2-5AB)^2(x^2-y^2-A)^2.
+\phi(u)=u^2+\frac{u^3}{3}.
 $$
-Set $z=x+iy$. Then
+Then the system becomes
 $$
-A=|z|^4,
+\varepsilon\dot u=v-\phi(u),
 \qquad
-B=|1-z^2|^2,
+\dot v=\lambda-u-\frac v2.
 $$
-and the two cubic factors in the system are the real and imaginary parts of $z(1-z^2)$. Hence the system is
+The critical manifold is $v=\phi(u)$. Since
 $$
-\dot z=z(1-z^2)(M+iN).
+\phi'(u)=2u+u^2,
 $$
-Any periodic orbit avoids the equilibria $z=\pm1$, so along such an orbit introduce
+the point $u=0$ is the right fold; the branch $u>0$ is attracting and the branch $-2<u<0$ is repelling.
+
+Step 2: Expand the Hopf parameter
+
+An equilibrium near the fold satisfies
 $$
-w=\frac{z^2}{1-z^2}.
-$$
-Since
-$$
-\frac{dw}{dz}=\frac{2z}{(1-z^2)^2},
-$$
-we obtain
-$$
-\dot w=2w(M+iN).
-$$
-Put
-$$
-s=|w|^2=\frac{A}{B},
+v=\phi(u),
 \qquad
-t=s+\frac1s=\frac{A^2+B^2}{AB}.
+\lambda=u+\frac{\phi(u)}2.
 $$
-Then
+Its Jacobian is
 $$
-M=(AB)^2q(t),
-\qquad
-q(t)=\mu+\nu t-t^2,
+J=
+\begin{pmatrix}
+-\phi'(u)/\varepsilon & 1/\varepsilon\\
+-1 & -1/2
+\end{pmatrix}.
+$$
+Purely imaginary eigenvalues require zero trace, so
+$$
+\phi'(u_H)=-\frac{\varepsilon}{2}.
+$$
+The root tending to $0$ is
+$$
+u_H=-1+\sqrt{1-\frac{\varepsilon}{2}}
+=-\frac{\varepsilon}{4}-\frac{\varepsilon^2}{32}+O(\varepsilon^3).
+$$
+Substituting into $\lambda=u+\phi(u)/2$ gives
+$$
+\lambda_H(\varepsilon)
+=-\frac{\varepsilon}{4}+O(\varepsilon^3).
+$$
+The determinant at this point is
+$$
+\det J=\frac{1+\phi'(u_H)/2}{\varepsilon}
+=\frac{1-\varepsilon/4}{\varepsilon}>0,
+$$
+so this is indeed the Hopf value.
+
+Step 3: Match the attracting and repelling slow manifolds through the fold
+
+For the maximal canard, the two slow manifolds have one common local invariant graph through the fold. Write that graph and its parameter as
+$$
+v=h(u)=\phi(u)+\varepsilon a_0(u)+\varepsilon^2a_1(u)+O(\varepsilon^3),
+$$
+$$
+\lambda_C(\varepsilon)=\ell_1\varepsilon+\ell_2\varepsilon^2+O(\varepsilon^3).
+$$
+The invariance equation is
+$$
+h'(u)\bigl(h(u)-\phi(u)\bigr)
+=\varepsilon\left(\lambda-u-\frac{h(u)}2\right).
+$$
+At order $\varepsilon$,
+$$
+\phi'(u)a_0(u)=-u-\frac{\phi(u)}2,
 $$
 so
 $$
-\dot s=4s(AB)^2q(t).
+a_0(u)=-\frac{u^2+3u+6}{6(u+2)}.
 $$
-A root level of $q(t)$ is invariant. Between consecutive root levels the sign of $\dot s$ is fixed, so $s$ is strictly monotone on every non-equilibrium orbit there. Therefore every limit cycle must lie over a root of $q(t)$.
-
-Step 2: Determine which invariant levels are actually periodic
-
-Write
+Hence
 $$
-w=\sqrt{s}e^{i\theta}.
-$$
-Because
-$$
-\operatorname{Re}w=\frac{x^2-y^2-A}{B}
-$$
-and
-$$
-A^2+B^2-5AB=AB(t-5),
-$$
-the angular factor becomes
-$$
-N=s^3B^6\left(1-(t-5)^2\cos^2\theta\right).
-$$
-On a root level of $q$, the angular equation is
-$$
-\dot\theta=2N.
-$$
-For $t>2$, this angular velocity is nonzero for every $\theta$ exactly when
-$$
-|t-5|<1,
-$$
-that is,
-$$
-4<t<6.
-$$
-If $2<t\leq4$ or $t\geq6$, the angular factor vanishes somewhere on the invariant level, producing equilibria on that level instead of a periodic orbit. At $t=2$ the only solution of $s+s^{-1}=2$ is $s=1$, whose lifted level is noncompact. Hence only roots of $q$ in $(4,6)$ can generate limit cycles.
-
-Step 3: Count the lifted cycles and determine their stability
-
-For $t>2$, the equation
-$$
-s+\frac1s=t
-$$
-has reciprocal roots
-$$
-0<s_-<1<s_+.
-$$
-Set $u=z^2$. Since
-$$
-u=\frac{w}{1+w},
-$$
-the circle $|w|=\sqrt{s}$ maps to
-$$
-|u|=\sqrt{s}|1-u|.
-$$
-When $s<1$, this circle surrounds $u=0$. Its inverse image under $z\mapsto z^2$ is therefore one connected oval. When $s>1$, the circle does not surround $0$, and its inverse image is two disjoint ovals. Thus every root $t\in(4,6)$ of $q$ produces exactly three limit cycles.
-
-Let $\alpha<\beta$ be the two roots of $q$ when they exist. Since
-$$
-q(t)=-(t-\alpha)(t-\beta),
-$$
-we have
-$$
-q'(\alpha)>0,
+a_0(0)=-\frac12,
 \qquad
-q'(\beta)<0.
+a_0'(0)=0.
 $$
-At a root level, linearizing the scalar equation for $s$ in the transverse direction leaves the sign
-$$
-q'(t)\left(1-\frac1{s^2}\right),
-$$
-because all other factors are positive there. Hence the single cycle over $s_-$ is stable exactly when $q'(t)>0$, while the two cycles over $s_+$ are stable exactly when $q'(t)<0$.
 
-Therefore a root $t=\alpha$ in $(4,6)$ produces one stable and two unstable cycles, whereas a root $t=\beta$ in $(4,6)$ produces two stable and one unstable cycle. The transverse coefficient is nonzero in either case, so all of these cycles are hyperbolic.
-
-Step 4: Identify the parameter region
-
-Exactly three limit cycles with exactly two asymptotically stable means that exactly one root of $q$ lies in $(4,6)$ and that this root is the upper root $\beta$. The interior of that parameter set is therefore characterized by
+At order $\varepsilon^2$,
 $$
-\alpha<4<\beta<6.
+\phi'(u)a_1(u)+a_0'(u)a_0(u)
+=\ell_1-\frac{a_0(u)}2.
 $$
-Since $q$ opens downward, it is positive precisely between its roots. Thus
+Because $\phi'(0)=0$, a common graph can pass regularly through the fold only if the right-hand side remaining after the $a_0'a_0$ term vanishes at $u=0$. Thus
 $$
-\alpha<4<\beta
+0=\ell_1+\frac14,
 $$
-is equivalent to
+so
 $$
-q(4)>0.
+\ell_1=-\frac14.
 $$
-Once $4$ lies between the roots, the condition $\beta<6$ is equivalent to
+With this value, expansion of the same equation at $u=0$ gives
 $$
-q(6)<0.
-$$
-These inequalities are
-$$
-\mu+4\nu>16,
+a_1(0)=-\frac1{24},
 \qquad
-\mu+6\nu<36.
+a_1'(0)=\frac7{96}.
 $$
 
-Final Answer: $\boxed{\{(\mu,\nu):\mu+4\nu>16,\ \mu+6\nu<36\}}$
+At order $\varepsilon^3$,
+$$
+\phi'(u)a_2(u)+a_0'(u)a_1(u)+a_1'(u)a_0(u)
+=\ell_2-\frac{a_1(u)}2.
+$$
+Regularity at $u=0$ now gives
+$$
+-\frac7{192}
+=\ell_2+\frac1{48},
+$$
+therefore
+$$
+\ell_2=-\frac{11}{192}.
+$$
+Thus
+$$
+\lambda_C(\varepsilon)
+=-\frac{\varepsilon}{4}-\frac{11}{192}\varepsilon^2+O(\varepsilon^3).
+$$
+
+Step 4: Compare the two bifurcation curves
+
+From Step 2 and Step 3,
+$$
+\lambda_C(\varepsilon)-\lambda_H(\varepsilon)
+=-\frac{11}{192}\varepsilon^2+O(\varepsilon^3).
+$$
+Hence
+$$
+\lim_{\varepsilon\to0^+}
+\frac{\lambda_C(\varepsilon)-\lambda_H(\varepsilon)}{\varepsilon^2}
+=-\frac{11}{192}.
+$$
+
+Final Answer: $\boxed{-\frac{11}{192}}$
 
 ---
 
 ## Answer
 
-$\{(\mu,\nu):\mu+4\nu>16,\ \mu+6\nu<36\}$
+$-\frac{11}{192}$
 
 ---
 
 ## Classification
 
-**Problem Type:** Parameter identification
+**Problem Type:** Symbolic derivation
 
-**Answer Type:** Interval or region description
+**Answer Type:** Exact scalar
 
 ---
 
 ## Solution Concepts
 
-- nonlinear coordinate changes
-- invariant radial variables
-- covering-space topology
-- transverse stability
-- bifurcation regions
+- slow-fast systems
+- fold regularity
+- maximal canards
+- singular Hopf bifurcation
+- invariant-manifold matching
