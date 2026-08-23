@@ -1,255 +1,179 @@
 ## Steps
 
-Step 1: Reduce the inner determinant to three logarithmic differences
+Step 1: Reduce the inner determinant to a normalized root equation
 
 Put
 $$
 s=n^{-1/3},\qquad \alpha=\frac{x}{2}+xsy,
 $$
-and, for $k\in\{-2,-1,0,1,2\}$, set
+and, for $k\in\{-2,-1,0,1,2\}$, define
 $$
 g_k=e^{-kx}\left(1+kxs^3\right)^{s^{-3}+\alpha k}.
 $$
-Removing $e^{ix}$ from row $i$ and $e^{jx}$ from column $j$ leaves total row and column factor $1$, so
+Factoring $e^{ix}$ from row $i$ and $e^{jx}$ from column $j$ leaves total factor $1$, so
 $$
 H_n(\alpha)=\det[g_{i+j}]_{i,j=-1}^{1}.
 $$
-Since $g_0=1$, expansion of this $3\times3$ determinant can be grouped as
+Since $g_0=1$,
 $$
 H_n=(g_2-g_1^2)(g_{-2}-g_{-1}^2)-(1-g_1g_{-1})^2.
 $$
 
-Write $\ell_k=\log g_k$ and define
+Write $\ell_k=\log g_k$. Taylor's formula applied once to
+$$
+\ell_k=\left(s^{-3}+\alpha k\right)\log(1+kxs^3)-kx
+$$
+gives, uniformly for bounded $y$,
+$$
+\ell_k=k^2x^2ys^4+\frac{k^3x^3}{12}s^6-\frac{k^3x^3y}{2}s^7-\frac{k^4x^4}{12}s^9
++\frac{k^4x^4y}{3}s^{10}+\frac{3k^5x^5}{40}s^{12}-\frac{k^5x^5y}{4}s^{13}+O(s^{15}).
+$$
+Set
 $$
 u=\ell_1+\ell_{-1},\qquad
 a=\frac{\ell_2+\ell_{-2}-2\ell_1-2\ell_{-1}}{2},\qquad
 b=\frac{\ell_2-\ell_{-2}-2\ell_1+2\ell_{-1}}{2}.
 $$
-Then $\ell_2-2\ell_1=a+b$ and $\ell_{-2}-2\ell_{-1}=a-b$, giving
+Then $u,a=O(s^4)$, $b=O(s^6)$, and $a-u=O(s^9)$. The determinant identity becomes
 $$
 H_n=e^{2u}\left[(e^{a+b}-1)(e^{a-b}-1)-(e^{-u}-1)^2\right].
 $$
-The choice $\alpha=x/2+xsy$ cancels the $s^3$ term in every $\ell_k$. Applying
+Because $a-u=O(s^9)$, all terms of total degree at least four in the bracket start at order $s^{20}$. Up to order $s^{17}$ the bracket is therefore
 $$
-\log(1+z)=z-\frac{z^2}{2}+\frac{z^3}{3}-\frac{z^4}{4}+\frac{z^5}{5}+O(z^6)
+a^2-b^2-u^2+a(a^2-b^2)+u^3+O(s^{20}).
 $$
-to the definitions of $u,a,b$ gives
+Substituting the single expansion for $\ell_k$ gives
 $$
-\begin{aligned}
-u&=2x^2ys^4-\frac{x^4}{6}s^9+\frac{2x^4y}{3}s^{10}+O(s^{15}),\\
-a&=2x^2ys^4-\frac{7x^4}{6}s^9+\frac{14x^4y}{3}s^{10}+O(s^{15}),\\
-b&=\frac{x^3}{2}s^6-3x^3ys^7+\frac{9x^5}{4}s^{12}-\frac{15x^5y}{2}s^{13}+O(s^{15}).
-\end{aligned}
-$$
-Here $a,u=O(s^4)$ and $b=O(s^6)$. Expanding the bracket only by total degree in these three small quantities gives
-$$
-\begin{aligned}
-&(e^{a+b}-1)(e^{a-b}-1)-(e^{-u}-1)^2\\
-&=a^2-b^2-u^2+a(a^2-b^2)+u^3\\
-&\quad+\frac13(a^4-b^4)+\frac14(a^2-b^2)^2-\frac7{12}u^4+O(s^{20}).
-\end{aligned}
-$$
-The quadratic and cubic pieces are
-$$
-\frac{a^2-b^2-u^2}{x^6s^{12}}=-\frac14-ys+7y^2s^2+O(s^6),
+a^2-b^2-u^2=x^6s^{12}\left(-\frac14-ys+7y^2s^2\right)+O(s^{18}),
 $$
 and
 $$
-\frac{a(a^2-b^2)+u^3}{x^6s^{12}}=16y^3-\frac{x^2y}{2}s^4-10x^2y^2s^5+O(s^6).
+a(a^2-b^2)+u^3=x^6s^{12}\left(16y^3-\frac{x^2y}{2}s^4-10x^2y^2s^5\right)+O(s^{18}).
 $$
-The quartic polynomial in $a,b,u$ and the omitted terms are $O(s^{20})$, so after division by $x^6s^{12}$ they are $O(s^8)$. Therefore
+Also $e^{2u}=1+4x^2ys^4+O(s^8)$. Thus
 $$
-\frac{(e^{a+b}-1)(e^{a-b}-1)-(e^{-u}-1)^2}{x^6s^{12}}=16y^3-\frac14-ys+7y^2s^2-\frac{x^2y}{2}s^4-10x^2y^2s^5+O(s^6).
+F(s,y):=\frac{H_n\left(\frac{x}{2}+xsy\right)}{x^6s^{12}}
+=16y^3-\frac14-ys+7y^2s^2+x^2\left(64y^4-\frac32y\right)s^4-14x^2y^2s^5+O(s^6).
 $$
-Also $e^{2u}=1+4x^2ys^4+O(s^8)$. Therefore, with
-$$
-F(s,y)=\frac{H_n\left(\frac{x}{2}+xsy\right)}{x^6s^{12}},
-$$
-we obtain
-$$
-F(s,y)=16y^3-\frac14-ys+7y^2s^2+x^2\left(64y^4-\frac32y\right)s^4-14x^2y^2s^5+O(s^6).
-$$
-At $s=0$, the equation $F(0,y)=0$ has the simple real root $y=1/4$, since $F_y(0,1/4)=3$. The implicit function theorem gives one analytic branch near $1/4$. For small positive $s$, this branch satisfies $0<1/2+sy<1$, so $\alpha=x(1/2+sy)$ lies between $0$ and $x$. By the uniqueness assumed in the definition of $\alpha_n$, this branch is $\alpha_n$.
+At $s=0$, $F(0,y)=0$ has the simple root $y=1/4$, with $F_y(0,1/4)=3$. The implicit function theorem gives an analytic branch $y(s)$ near $1/4$. For small positive $s$, $\alpha=x(1/2+sy(s))$ lies strictly between $0$ and $x$, so the zero specified in the problem is this branch.
 
-Step 2: Recover the moving zero by one series reversion and one perturbation
+Step 2: Extract only the jet of the moving zero needed by the outer determinant
 
-Separate
+Write
 $$
-F_0(s,y)=16y^3-\frac14-ys+7y^2s^2.
+y(s)=\frac14+\sum_{m=1}^{5}c_ms^m+O(s^6).
 $$
-Let $y_0(s)$ be the branch of $F_0(s,y)=0$ with $y_0(0)=1/4$, and put $t=4y_0$. The equation becomes
+Since $F_y(0,1/4)=3$, the coefficients are determined successively. A compact recurrence that exposes every coefficient extraction is
 $$
-t^3-1-ts+\frac74t^2s^2=0.
+c_m=-\frac13[s^m]F\left(s,\frac14+\sum_{j=1}^{m-1}c_js^j\right),\qquad 1\leq m\leq5,
 $$
-Set $r=ts$. Then
+where the $O(s^6)$ term in $F$ cannot affect these five coefficients. Applying this recurrence to the explicit polynomial jet from Step 1 yields
 $$
-t^3=1+r-\frac74r^2,\qquad
-r=s\left(1+r-\frac74r^2\right)^{1/3}.
-$$
-This form fixes the reversion kernel. Since its value at $r=0$ is $1$, Lagrange inversion gives
-$$
-[s^m]r(s)=\frac1m[z^{m-1}]\left(1+z-\frac74z^2\right)^{m/3}.
-$$
-Taking $m=1,\ldots,5$ in this single formula gives
-$$
-r=s+\frac13s^2-\frac7{12}s^3-\frac{67}{324}s^4+\frac{1591}{3888}s^5+O(s^6).
-$$
-For $m=6$, the exponent $m/3$ is $2$, so the kernel is a polynomial of degree $4$ and $[z^5](1+z-7z^2/4)^2=0$. The $s^6$ coefficient therefore vanishes, and
-$$
-r=s+\frac13s^2-\frac7{12}s^3-\frac{67}{324}s^4+\frac{1591}{3888}s^5+O(s^7).
-$$
-Since $t=r/s$ and $y_0=t/4$,
-$$
-y_0(s)=\frac14+\frac1{12}s-\frac7{48}s^2-\frac{67}{1296}s^3+\frac{1591}{15552}s^4+O(s^6).
-$$
-
-The $x$-dependent terms first occur at order $s^4$. Write
-$$
-y=y_0+x^2\eta,\qquad \eta=O(s^4).
-$$
-From Step 1,
-$$
-F=F_0+x^2P_4(y)s^4+x^2P_5(y)s^5+O(s^6),
-$$
-where
-$$
-P_4(y)=64y^4-\frac32y,\qquad P_5(y)=-14y^2.
-$$
-Using only the terms needed at $y_0$ gives
-$$
-F_{0,y}(s,y_0)=3+s+O(s^2),\qquad
-P_4(y_0)=-\frac18+\frac5{24}s+O(s^2),\qquad
-P_5(y_0)=-\frac78+O(s).
-$$
-Linearization at $y_0$ therefore gives
-$$
-(3+s)\eta-\frac18s^4-\frac23s^5=O(s^6),
-$$
-so
-$$
-\eta=\frac1{24}s^4+\frac5{24}s^5+O(s^6).
+(c_1,c_2,c_3,c_4,c_5)=
+\left(
+\frac1{12},-\frac7{48},-\frac{67}{1296},
+\frac{1591}{15552}+\frac{x^2}{24},
+\frac{5x^2}{24}
+\right).
 $$
 Therefore
-$$
-y=\frac14+\frac1{12}s-\frac7{48}s^2-\frac{67}{1296}s^3
-+\left(\frac{1591}{15552}+\frac{x^2}{24}\right)s^4+\frac{5x^2}{24}s^5+O(s^6).
-$$
-Since $\alpha_n=x/2+xsy$,
 $$
 \alpha_n=\sum_{r=0}^{6}d_rs^r+O(s^7),
 $$
 with
 $$
+d_0=\frac{x}{2},\quad d_1=\frac{x}{4},\quad d_2=\frac{x}{12},\quad d_3=-\frac{7x}{48},
+$$
+$$
+d_4=-\frac{67x}{1296},\quad
+d_5=\frac{x(648x^2+1591)}{15552},\quad
+d_6=\frac{5x^3}{24}.
+$$
+
+Step 3: Compute the cubic logarithmic jet of the outer determinant
+
+Let $q=1/2$ and define
+$$
+V(r_0,r_1,r_2,r_3)=\prod_{0\leq a<b\leq3}\left(q^{r_b}-q^{r_a}\right).
+$$
+Replacing $n$ by $8^{i+j}n$ sends $s$ to $q^{i+j}s$. Cauchy-Binet applied to the rank-one expansion from Step 2 gives the exact formal identity
+$$
+D_n=\sum_{0\leq r_0<r_1<r_2<r_3}
+d_{r_0}d_{r_1}d_{r_2}d_{r_3}
+V(r_0,r_1,r_2,r_3)^2s^{r_0+r_1+r_2+r_3}.
+$$
+The least exponent is $0+1+2+3=6$. To know $\log D_n$ through relative order $s^3$, only terms with exponent sum at most $9$ can contribute, so only $d_0,\ldots,d_6$ are needed.
+
+Put $V_0=V(0,1,2,3)$ and
+$$
+K=d_0d_1d_2d_3V_0^2=-\frac{3087x^4}{2^{37}}.
+$$
+For the six exponent sets of excess $1$, $2$, or $3$, the Vandermonde product formula gives
+$$
+\left(
+\frac{V(0,1,2,4)}{V_0},
+\frac{V(0,1,2,5)}{V_0},
+\frac{V(0,1,3,4)}{V_0},
+\frac{V(0,1,2,6)}{V_0},
+\frac{V(0,1,3,5)}{V_0},
+\frac{V(0,2,3,4)}{V_0}
+\right)
+=
+\left(
+\frac{15}{8},\frac{155}{64},\frac{35}{32},
+\frac{1395}{512},\frac{465}{256},\frac{15}{64}
+\right).
+$$
+Thus, if
+$$
+\log\frac{D_n}{Ks^6}=\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4),
+$$
+the identity above gives directly
+$$
 \begin{aligned}
-d_0&=\frac{x}{2},&d_1&=\frac{x}{4},&d_2&=\frac{x}{12},&d_3&=-\frac{7x}{48},\\
-d_4&=-\frac{67x}{1296},&d_5&=\frac{x(648x^2+1591)}{15552},&d_6&=\frac{5x^3}{24}.
+\gamma_3={}&
+\frac{d_6}{d_3}\left(\frac{1395}{512}\right)^2
++\frac{d_5}{d_2}\left(\frac{465}{256}\right)^2
++\frac{d_4}{d_1}\left(\frac{15}{64}\right)^2\\
+&-\frac{d_4}{d_3}\left(\frac{15}{8}\right)^2
+\left[
+\frac{d_5}{d_3}\left(\frac{155}{64}\right)^2
++\frac{d_4}{d_2}\left(\frac{35}{32}\right)^2
+\right]
++\frac13\left[
+\frac{d_4}{d_3}\left(\frac{15}{8}\right)^2
+\right]^3.
 \end{aligned}
 $$
-
-Step 3: Compress the outer determinant with the alternant identity
-
-Let $q=1/2$ and
+Substitution of the six coefficients from Step 2 simplifies this to
 $$
-v_r=\begin{pmatrix}1\\q^r\\q^{2r}\\q^{3r}\end{pmatrix}.
-$$
-Replacing $n$ by $8^mn$ sends $s$ to $q^ms$, so the analytic expansion from Step 2 gives
-$$
-[\alpha_{8^{i+j}n}]_{i,j=0}^{3}=\sum_{r\geq0}d_rs^rv_rv_r^T.
-$$
-Cauchy-Binet can be organized by the alternant identity
-$$
-\frac{\det[q^{ir_j}]_{i,j=0}^{3}}{\det[q^{ij}]_{i,j=0}^{3}}=S_\lambda(1,q,q^2,q^3),
-\qquad r_j=j+\lambda_{4-j},
-$$
-where $S_\lambda$ is the Schur polynomial of the partition $\lambda$, padded by zeros to four parts. If
-$$
-K=d_0d_1d_2d_3\left(\det[q^{ij}]_{i,j=0}^{3}\right)^2,
-$$
-then Cauchy-Binet becomes
-$$
-\frac{D_n}{Ks^6}=\sum_{\lambda}
-\left(\prod_{j=0}^{3}\frac{d_{j+\lambda_{4-j}}}{d_j}\right)
-S_\lambda(1,q,q^2,q^3)^2s^{|\lambda|}.
-$$
-The sum runs over partitions with at most four parts. The excess exponent sum is $|\lambda|$, so terms through relative order $s^3$ require only partitions of size at most $3$.
-
-For $X=(1,1/2,1/4,1/8)$, its elementary symmetric values are
-$$
-e_1=\frac{15}{8},\qquad e_2=\frac{35}{32},\qquad e_3=\frac{15}{64}.
-$$
-For partitions of size at most $3$,
-$$
-S_{(1)}=h_1,\qquad S_{(2)}=h_2,\qquad S_{(1,1)}=e_2,\qquad
-S_{(3)}=h_3,\qquad S_{(1,1,1)}=e_3.
-$$
-The complete homogeneous values needed here follow from
-$$
-h_1=e_1,\qquad h_2=e_1^2-e_2,\qquad h_3=e_1h_2-e_2h_1+e_3,
-$$
-so
-$$
-h_1=\frac{15}{8},\qquad h_2=\frac{155}{64},\qquad h_3=\frac{1395}{512}.
-$$
-The remaining size-three Schur value is
-$$
-S_{(2,1)}=e_1e_2-e_3=\frac{465}{256}.
-$$
-Also
-$$
-d_0d_1d_2d_3=-\frac{7x^4}{4608},\qquad
-\det[q^{ij}]_{i,j=0}^{3}=\prod_{0\leq i<j\leq3}(q^j-q^i)=\frac{63}{16384}.
-$$
-Therefore
-$$
-D_n=Ks^6\left(1+As+Bs^2+Cs^3+O(s^4)\right),
-\qquad K=-\frac{3087x^4}{2^{37}},
-$$
-and the partition sizes $1,2,3$ give
-$$
-A=\frac{d_4}{d_3}h_1^2=\frac{1675}{1344},
-$$
-$$
-B=\frac{d_5}{d_3}h_2^2+\frac{d_4}{d_2}e_2^2=-\frac{25(622728x^2+1804723)}{9289728},
-$$
-$$
-C=\frac{d_6}{d_3}h_3^2+\frac{d_5}{d_2}S_{(2,1)}^2+\frac{d_4}{d_1}e_3^2=-\frac{225(292144x^2-131761)}{7340032}.
+\gamma_3=-\frac{25(12002770836x^2-18768001859)}{43698880512}.
 $$
 
-Step 4: Use the scale moments to evaluate the limit
+Step 4: Apply the scale filter and take the limit
 
-Set
+From Step 3,
 $$
-E(s)=1+As+Bs^2+Cs^3+O(s^4).
+D_n=Ks^6\exp\left(\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4)\right).
 $$
-The powers of $K$ cancel in the requested ratio. The factors $s^6$ contribute $64^{-3}$, which is canceled by the prefactor $64^3$. Therefore
+The factors $K$ cancel in the requested ratio, while the powers of $s^6$ contribute $64^{-3}$ and cancel the prefactor $64^3$. Taking logarithms leaves the linear scale operator
 $$
-64^3\frac{D_{8n}^{\,7}D_{512n}^{\,8}}{D_nD_{64n}^{\,14}}=\frac{E(s/2)^7E(s/8)^8}{E(s)E(s/4)^{14}}.
+\mathcal{T}L(s)=7L\left(\frac{s}{2}\right)+8L\left(\frac{s}{8}\right)-L(s)-14L\left(\frac{s}{4}\right),
 $$
-Write
+where $L(s)=\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4)$. On $s^k$ its multiplier is
 $$
-\log E(s)=As+\left(B-\frac{A^2}{2}\right)s^2+Gs^3+O(s^4),
-\qquad
-G=C-AB+\frac{A^3}{3}.
+-1+\frac7{2^k}-\frac{14}{4^k}+\frac8{8^k}.
 $$
-For the coefficient of $s^k$ in the logarithm of the ratio, the scale multiplier is
+This multiplier is $0$ for $k=1,2$ and $-21/64$ for $k=3$. Since $s^3=n^{-1}$,
 $$
-M_k=-1+\frac7{2^k}-\frac{14}{4^k}+\frac8{8^k}.
-$$
-A direct evaluation gives
-$$
-M_1=M_2=0,\qquad M_3=-\frac{21}{64}.
-$$
-Substituting the values of $A,B,C$ from Step 3 into $G$ gives
-$$
-G=-\frac{25(12002770836x^2-18768001859)}{43698880512}.
-$$
-Since $s^3=n^{-1}$,
-$$
-n\log\left(64^3\frac{D_{8n}^{\,7}D_{512n}^{\,8}}{D_nD_{64n}^{\,14}}\right)
-\longrightarrow
+n\log\left(
+64^3\frac{D_{8n}^{\,7}D_{512n}^{\,8}}{D_nD_{64n}^{\,14}}
+\right)
+\longrightarrow -\frac{21}{64}\gamma_3
+=
 \frac{25(12002770836x^2-18768001859)}{133177540608}.
 $$
-For large $n$, $D_n\sim Ks^6<0$, so the ratio inside the logarithm is positive. Exponentiating this limit gives the requested value.
+Also $K<0$ because $x\neq0$, so $D_n<0$ for all sufficiently large $n$ and the ratio inside the logarithm is positive. Exponentiating gives the limit.
 
 Final Answer: $\boxed{\exp\left(\frac{25(12002770836x^2-18768001859)}{133177540608}\right)}$
 
@@ -271,8 +195,8 @@ $\exp\left(\frac{25(12002770836x^2-18768001859)}{133177540608}\right)$
 
 ## Solution Concepts
 
+- implicit function theorem
 - singular asymptotic scaling
-- lagrange inversion
 - cauchy-binet formula
-- schur alternants
+- vandermonde determinant
 - multiscale cancellation
