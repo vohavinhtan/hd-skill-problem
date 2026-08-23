@@ -1,323 +1,260 @@
 ## Steps
 
-Step 1: Convert the determinant to a four-point integral
+Step 1: Convert the determinant to a three-point integral
 
 Put
 $$
-\phi(x)=(2x-1)^2(1-x)
+\phi(x)=(2x-1)^5(1-x)
 $$
 and
 $$
-Z_N=\int_0^1e^{-N\phi(x)^2}\,dx.
+Z_N=\int_0^1e^{-N^{10}\phi(x)^2}\,dx.
 $$
 The Gram determinant identity gives
 $$
 H_N
 =
-\frac1{24Z_N^4}
-\int_{[0,1]^4}
-\prod_{1\leq i<j\leq4}(x_i-x_j)^2
-\exp\!\left(-N\sum_{i=1}^4\phi(x_i)^2\right)
-\,dx_1dx_2dx_3dx_4.
+\frac1{6Z_N^3}
+\int_{[0,1]^3}
+\prod_{1\leq i<j\leq3}(x_i-x_j)^2
+\exp\!\left(
+-N^{10}\sum_{i=1}^3\phi(x_i)^2
+\right)
+\,dx_1dx_2dx_3.
 $$
 
-Set
+The zeros of $\phi$ are
 $$
-h=N^{-1/4}.
+\frac12
+\qquad\text{and}\qquad
+1.
 $$
-The zero $x=\frac12$ of $\phi$ has multiplicity two, so its localization width is $h$. The zero $x=1$ is simple, so its width is $h^2$.
+The first has multiplicity $5$, so its localization width is $N^{-1}$. The endpoint zero has multiplicity $1$, so its width is $N^{-5}$.
 
-Step 2: Expand the masses of the two concentration regions
+Step 2: Determine the possible leading occupancies
 
-Near $x=\frac12$, write
+Write a central point as
 $$
-x=\frac12+hu.
+x=\frac12+\frac{u}{N}
 $$
-Then
+and an endpoint point as
 $$
-\phi(x)=2h^2u^2-4h^3u^3
+x=1-\frac{v}{N^5}.
+$$
+
+If $m$ of the three variables are central and $3-m$ are at the endpoint, the Jacobians contribute
+$$
+N^{-m-5(3-m)}.
+$$
+Every central-central squared difference contributes $N^{-2}$, while every endpoint-endpoint squared difference contributes $N^{-10}$.
+
+The numerator orders are therefore
+$$
+\begin{array}{c|cccc}
+m&3&2&1&0\\ \hline
+\text{power of }N^{-1}&9&9&21&45.
+\end{array}
+$$
+Thus two different occupancies, $3+0$ and $2+1$, contribute at the same leading order $N^{-9}$. The other two occupancies cannot affect the terms needed below.
+
+Step 3: Establish the allowed powers in the expansion
+
+For the central scaling,
+$$
+\phi\left(\frac12+\frac{u}{N}\right)
+=
+\frac{16u^5}{N^5}
+\left(1-\frac{2u}{N}\right).
+$$
+Hence
+$$
+N^{10}\phi\left(\frac12+\frac{u}{N}\right)^2
+=
+256u^{10}
+\left(1-\frac{2u}{N}\right)^2.
+$$
+
+After integration over the limiting full line, changing every central variable $u$ to $-u$ has the same effect as replacing $N^{-1}$ by $-N^{-1}$. The squared Vandermonde factor is unchanged. Therefore both relevant occupancy integrals contain only even powers of $N^{-1}$ until an endpoint correction is introduced.
+
+At the endpoint,
+$$
+Z_N
+=
+\frac{A}{N}
+\left(
+1+\frac{r_2}{N^2}+\frac{r_4}{N^4}+O(N^{-6})
+\right),
+$$
+for constants $r_2,r_4$, where
+$$
+A
+=
+\int_{-\infty}^{\infty}e^{-256u^{10}}\,du.
+$$
+The endpoint mass itself is $O(N^{-5})$, which is a relative $N^{-4}$ correction to the central mass. Thus no $N^{-5}$ term occurs in $Z_N^3$.
+
+Combining this with Step 2 gives
+$$
+N^6H_N
+=
+c_0+\frac{c_2}{N^2}+\frac{c_4}{N^4}+\frac{c_5}{N^5}+O(N^{-6}).
+$$
+Only $c_5$ must be computed.
+
+Step 4: Compute the unique $N^{-5}$ numerator correction
+
+The all-central occupancy has only even powers of $N^{-1}$ by Step 3, so it contributes nothing to $c_5$.
+
+For the $2+1$ occupancy put
+$$
+x_i=\frac12+\frac{u_i}{N},
+\qquad
+i=1,2,
 $$
 and
 $$
-N\phi(x)^2
+y=1-\frac{v}{N^5}.
+$$
+Define
+$$
+A_2
 =
-4u^4-16hu^5+16h^2u^6.
+\int_{\mathbb R^2}
+(u_1-u_2)^2
+e^{-256(u_1^{10}+u_2^{10})}
+\,du_1du_2.
+$$
+
+At the precision $N^{-5}$, the two cross-well squared differences satisfy
+$$
+(y-x_1)^2(y-x_2)^2
+=
+\frac1{16}
+\left(
+1-\frac{8v}{N^5}
+\right)
++
+O(N^{-6}).
+$$
+Also
+$$
+N^{10}\phi\left(1-\frac{v}{N^5}\right)^2
+=
+v^2-\frac{20v^3}{N^5}+O(N^{-10}),
+$$
+so the endpoint weight is
+$$
+e^{-v^2}
+\left(
+1+\frac{20v^3}{N^5}
+\right)
++
+O(N^{-10}).
+$$
+
+There are three choices for the endpoint variable, while the Gram identity contributes $1/6$. Hence the $N^{-14}$ coefficient of the numerator, which is the relative $N^{-5}$ correction to its leading $N^{-9}$ term, is
+$$
+D_5
+=
+\frac12\cdot\frac1{16}A_2
+\int_0^\infty
+(20v^3-8v)e^{-v^2}\,dv.
+$$
+Since
+$$
+\int_0^\infty ve^{-v^2}\,dv=\frac12,
+$$
+and
+$$
+\int_0^\infty v^3e^{-v^2}\,dv=\frac12,
+$$
+we get
+$$
+D_5=\frac{3A_2}{16}.
+$$
+Because the denominator has no relative $N^{-5}$ term,
+$$
+c_5=\frac{D_5}{A^3}.
+$$
+
+Step 5: Evaluate the central integrals
+
+For even $j$,
+$$
+m_j
+=
+\int_{-\infty}^{\infty}
+u^je^{-256u^{10}}\,du
+=
+\frac15
+256^{-(j+1)/10}
+\Gamma\left(\frac{j+1}{10}\right).
 $$
 Therefore
 $$
-e^{-N\phi(x)^2}
+A=m_0
 =
-e^{-4u^4}
-\left(
-1+16hu^5+O(h^2)
-\right).
+\frac{\Gamma(\frac1{10})}
+{5\,2^{4/5}},
 $$
-The coefficient of $h$ is odd in $u$, so its integral over the limiting full line is zero. Hence the central mass is
+and
 $$
-hA+O(h^3),
-$$
-where, writing
-$$
-G=\Gamma\!\left(\frac14\right),
-$$
-we have
-$$
-A=\int_{-\infty}^{\infty}e^{-4u^4}\,du
+m_2
 =
-\frac{G}{2\sqrt2}.
+\frac{\Gamma(\frac3{10})}
+{5\,2^{12/5}}.
 $$
-
-Near $x=1$, write
+The odd first moment vanishes, so
 $$
-x=1-h^2v.
-$$
-Then
-$$
-N\phi(x)^2=v^2+O(h^2),
-$$
-so the endpoint mass is
-$$
-h^2B+O(h^4),
-$$
-where
-$$
-B=\int_0^\infty e^{-v^2}\,dv
-=
-\frac{\sqrt\pi}{2}.
-$$
-Thus
-$$
-Z_N=hA+h^2B+O(h^3).
-$$
-
-Step 3: Identify the leading occupancy and its parity cancellation
-
-For three variables near $\frac12$ and one near $1$, the four Jacobians contribute $h^5$. The three squared differences among the central variables contribute $h^6$, while the three cross-well squared differences have nonzero limits. This occupancy therefore contributes at order $h^{11}$ to the numerator in Step 1.
-
-All four variables near $\frac12$ contribute only at order $h^{16}$. A two-two split contributes at order $h^{12}$. Occupancies with at least three variables near $1$ occur still later. Thus the leading term is the three-one split, and the first competing occupancy is the two-two split.
-
-Let
-$$
-m_j=\int_{-\infty}^{\infty}u^je^{-4u^4}\,du.
-$$
-Odd moments vanish, while
-$$
-m_0=A=\frac{G}{2\sqrt2},
-$$
-$$
-m_2=\frac{\pi}{4G},
-$$
-$$
-m_4=\frac{G}{32\sqrt2},
-$$
-where
-$$
-\Gamma\!\left(\frac14\right)
-\Gamma\!\left(\frac34\right)
-=
-\pi\sqrt2
-$$
-was used for $m_2$.
-
-The three-particle central Vandermonde integral is
-$$
-J_3
-=
-6
-\det
-\begin{pmatrix}
-m_0&0&m_2\\
-0&m_2&0\\
-m_2&0&m_4
-\end{pmatrix}
-=
-6m_2(m_0m_4-m_2^2).
-$$
-Therefore
-$$
-J_3
-=
-\frac{3\pi(G^4-8\pi^2)}{256G^3}.
-$$
-
-For the three-one cluster the cross-well factor has leading value
-$$
-\left(\frac12\right)^6.
-$$
-Its relative order-$h$ correction is proportional to
-$$
-u_1+u_2+u_3.
-$$
-The order-$h$ correction of the three central weights is proportional to
-$$
-u_1^5+u_2^5+u_3^5.
-$$
-Their sum is odd under
-$$
-(u_1,u_2,u_3)\longmapsto(-u_1,-u_2,-u_3),
-$$
-while the squared Vandermonde and limiting weight are even. Hence the complete order-$h$ correction of the three-one occupancy vanishes.
-
-Step 4: Compute the first competing occupancy
-
-There are four labelled three-one assignments, so the factor $1/24$ in Step 1 leaves $1/6$. The coefficient of $h^{11}$ in the numerator is
-$$
-D_0
-=
-\frac16
-\left(\frac12\right)^6
-BJ_3.
-$$
-Substitution gives
-$$
-D_0
-=
-\frac{\pi^{3/2}(G^4-8\pi^2)}{65536G^3}.
-$$
-
-For a two-two split, define the two-particle central integral
-$$
-J_C
-=
-2
-\det
-\begin{pmatrix}
-m_0&0\\
-0&m_2
-\end{pmatrix}
-=
-2m_0m_2
-=
-\frac{\sqrt2\pi}{8}.
-$$
-
-For the endpoint scaling law $e^{-v^2}$, put
-$$
-n_j=\int_0^\infty v^je^{-v^2}\,dv.
-$$
-Then
-$$
-n_0=\frac{\sqrt\pi}{2},
-\qquad
-n_1=\frac12,
-\qquad
-n_2=\frac{\sqrt\pi}{4}.
-$$
-The endpoint pair integral is
-$$
-J_E
-=
-2(n_0n_2-n_1^2)
-=
-\frac{\pi-2}{4}.
-$$
-
-There are six labelled two-two assignments, so the factor $1/24$ leaves $1/4$. The four cross-well pairs contribute
-$$
-\left(\frac12\right)^8.
-$$
-Hence the coefficient of $h^{12}$ is
-$$
-D_1
-=
-\frac14
-\left(\frac12\right)^8
-J_CJ_E
-=
-\frac{\sqrt2\pi(\pi-2)}{32768}.
-$$
-
-Together with the parity result from Step 3,
-$$
-\frac1{24}
-\int_{[0,1]^4}
-\prod_{i<j}(x_i-x_j)^2
-e^{-N\sum_i\phi(x_i)^2}
-\,dx_1dx_2dx_3dx_4
-=
-h^{11}D_0+h^{12}D_1+O(h^{13}).
-$$
-
-Step 5: Extract the first correction to the determinant
-
-From Step 2,
-$$
-Z_N^4
-=
-h^4A^4
-\left(
-1+4\frac BA h+O(h^2)
-\right).
-$$
-Using Step 4,
-$$
-H_N
-=
-h^7
-\left[
-\frac{D_0}{A^4}
-+
-h\left(
-\frac{D_1}{A^4}
--
-4\frac{BD_0}{A^5}
-\right)
-+
-O(h^2)
-\right].
-$$
-Thus
-$$
-N^{7/4}H_N=c_0+c_1h+O(h^2),
-$$
-where
-$$
-c_1
-=
-\frac{D_1}{A^4}
--
-4\frac{BD_0}{A^5}.
-$$
-Substituting $A,B,D_0,D_1$ and simplifying gives
-$$
-c_1
-=
-\frac{
-\sqrt2\pi
-\left(
-16\pi^3-(\pi+2)G^4
-\right)
-}{
-512G^8
-}.
-$$
-
-Step 6: Evaluate the scale difference
-
-For $16N$, the parameter $h=N^{-1/4}$ is replaced by $h/2$. Therefore
-$$
-(16N)^{7/4}H_{16N}
-=
-c_0+\frac{c_1}{2}h+O(h^2).
+A_2=2m_0m_2.
 $$
 It follows that
 $$
-N^{1/4}
-\left[
-N^{7/4}H_N-(16N)^{7/4}H_{16N}
-\right]
+c_5
 =
-\frac{c_1}{2}+O(h).
+\frac{3A_2}{16A^3}
+=
+\frac{15\Gamma(\frac3{10})}
+{2^{19/5}\Gamma(\frac1{10})^2}.
 $$
-Since $G=\Gamma(\frac14)$, the limit is the stated scalar.
 
-Final Answer: $\boxed{\frac{\sqrt{2}\pi(16\pi^3-(\pi+2)\Gamma(\frac14)^4)}{1024\Gamma(\frac14)^8}}$
+Step 6: Apply the four-scale annihilation
+
+Set
+$$
+R_N=N^6H_N.
+$$
+For a term $N^{-p}$, the four-scale combination in the problem multiplies its coefficient by
+$$
+1-\frac{21}{2^p}+\frac{84}{4^p}-\frac{64}{8^p}.
+$$
+For
+$$
+p=0,\qquad2,\qquad4,
+$$
+this factor is zero. Therefore the terms containing $c_0,c_2,c_4$ disappear.
+
+For $p=5$ the factor is
+$$
+1-\frac{21}{32}+\frac{84}{1024}-\frac{64}{32768}
+=
+\frac{217}{512}.
+$$
+After multiplication by $N^5$, the limit is therefore
+$$
+\frac{217}{512}c_5
+=
+\frac{3255\Gamma(\frac3{10})}
+{2^{64/5}\Gamma(\frac1{10})^2}.
+$$
+
+Final Answer: $\boxed{\frac{3255\Gamma(\frac3{10})}{2^{64/5}\Gamma(\frac1{10})^2}}$
 
 ---
 
 ## Answer
 
-$\frac{\sqrt{2}\pi(16\pi^3-(\pi+2)\Gamma(\frac14)^4)}{1024\Gamma(\frac14)^8}$
+$\frac{3255\Gamma(\frac3{10})}{2^{64/5}\Gamma(\frac1{10})^2}$
 
 ---
 
@@ -334,5 +271,5 @@ $\frac{\sqrt{2}\pi(16\pi^3-(\pi+2)\Gamma(\frac14)^4)}{1024\Gamma(\frac14)^8}$
 - Laplace asymptotics
 - mixed localization scales
 - Hankel moment determinants
-- Vandermonde determinant identity
 - cluster occupancy analysis
+- multiscale cancellation
