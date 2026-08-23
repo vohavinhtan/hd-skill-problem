@@ -2,17 +2,17 @@
 
 ## LaTeX (Normalized)
 
-For each integer $N\geq1$ and $k\in\{0,1,2,3,4\}$, define
+For each integer $N\geq1$ and $k\in\{0,1,\ldots,6\}$, define
 $$
 M_{k,N}
 =
 \frac{\displaystyle\int_0^1 x^k
 \exp\!\left(
--N^6\left[x^3(2x-1)(1-x)\right]^2
+-N^4\left[x(1-x)(2x-1)^2\right]^2
 \right)\,dx}
 {\displaystyle\int_0^1
 \exp\!\left(
--N^6\left[x^3(2x-1)(1-x)\right]^2
+-N^4\left[x(1-x)(2x-1)^2\right]^2
 \right)\,dx}.
 $$
 
@@ -22,17 +22,23 @@ H_N
 =
 \det
 \begin{pmatrix}
-M_{0,N}&M_{1,N}&M_{2,N}\\
-M_{1,N}&M_{2,N}&M_{3,N}\\
-M_{2,N}&M_{3,N}&M_{4,N}
+M_{0,N}&M_{1,N}&M_{2,N}&M_{3,N}\\
+M_{1,N}&M_{2,N}&M_{3,N}&M_{4,N}\\
+M_{2,N}&M_{3,N}&M_{4,N}&M_{5,N}\\
+M_{3,N}&M_{4,N}&M_{5,N}&M_{6,N}
 \end{pmatrix}.
 $$
 
 Determine the exact value of
 $$
 \lim_{N\to\infty}
-N\left[
-N^4H_N-(2N)^4H_{2N}
+N^2
+\left[
+N^4H_N
+-
+3(2N)^4H_{2N}
++
+2(4N)^4H_{4N}
 \right].
 $$
 
@@ -51,14 +57,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves an exact renormalized limit determined by the first correction to a fractional-power concentration expansion,
+This problem involves an exact multiscale limit whose first two asymptotic orders cancel,
 which are part of Calculus and Limits and continuity.
-The problem also involves Laplace asymptotics near zeros of unequal multiplicity and a Hankel moment determinant,
+The problem also involves Laplace asymptotics at zeros of unequal multiplicity and a Hankel moment determinant,
 which are part of Calculus and Applications of integration.
-However, those local integral calculations determine the asymptotic sequence entering the limit, while the final requested object is one exact scalar limit.
+However, the local cluster analysis determines the asymptotic sequence entering the limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The triple zero at $0$ localizes on the scale $N^{-1}$, while the two simple zeros localize on the scale $N^{-3}$.
-- Three different occupancy classes contribute at the same leading determinant order.
-- The first correction of one leading occupancy cancels internally, so the surviving coefficient requires comparing the remaining cluster corrections with the normalization correction.
+- The interior double zero localizes on the scale $N^{-1}$ while the two endpoint simple zeros localize on the scale $N^{-2}$.
+- The leading four-point determinant contribution requires two samples at the interior well and one at each endpoint.
+- The three-scale combination removes both the leading term and the normalization correction, so the answer depends on the second-order deformation of that cluster.

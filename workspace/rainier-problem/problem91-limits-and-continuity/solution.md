@@ -1,381 +1,342 @@
 ## Steps
 
-Step 1: Convert the determinant to a three-point integral and find the localization scales
+Step 1: Convert the Hankel determinant to a four-point cluster integral
 
 Put
 $$
-\phi(x)=x^3(2x-1)(1-x)
+\phi(x)=x(1-x)(2x-1)^2
 $$
 and
 $$
-Z_N=\int_0^1e^{-N^6\phi(x)^2}\,dx.
+Z_N=\int_0^1e^{-N^4\phi(x)^2}\,dx.
 $$
 The Gram determinant identity gives
 $$
 H_N
 =
-\frac1{6Z_N^3}
-\int_{[0,1]^3}
-\prod_{1\leq i<j\leq3}(x_i-x_j)^2
+\frac1{24Z_N^4}
+\int_{[0,1]^4}
+\prod_{1\leq i<j\leq4}(x_i-x_j)^2
 \exp\!\left(
--N^6\sum_{i=1}^3\phi(x_i)^2
+-N^4\sum_{i=1}^4\phi(x_i)^2
 \right)
-\,dx_1dx_2dx_3.
+\,dx_1dx_2dx_3dx_4.
 $$
 
 Set
 $$
 h=\frac1N.
 $$
-The zeros of $\phi$ are
-$$
-0,\qquad\frac12,\qquad1.
-$$
-The zero at $0$ has multiplicity $3$, so its width is $h$. The other two zeros are simple, so their widths are $h^3$.
+The zeros of $\phi$ are $0,\frac12,1$. The zero at $\frac12$ has multiplicity two, so its localization width is $h$. The endpoint zeros are simple, so their width is $h^2$.
 
-Near the three zeros use
-$$
-x=hu,
-\qquad
-x=\frac12+h^3v,
-\qquad
-x=1-h^3w,
-$$
-respectively.
+Step 2: Expand the normalizing integral
 
-Step 2: Expand the normalizing integral through relative order $h$
-
-At the triple zero,
+Near $\frac12$, write
 $$
-\phi(hu)
+x=\frac12+hu.
+$$
+Then
+$$
+\phi(x)=h^2u^2-4h^4u^4,
+$$
+so
+$$
+N^4\phi(x)^2
 =
--h^3u^3
-\left(
-1-3hu+2h^2u^2
-\right).
+u^4-8h^2u^6+O(h^4).
 $$
 Therefore
 $$
-N^6\phi(hu)^2
+e^{-N^4\phi(x)^2}
 =
-u^6-6hu^7+O(h^2),
-$$
-and
-$$
-e^{-N^6\phi(hu)^2}
-=
-e^{-u^6}
+e^{-u^4}
 \left(
-1+6hu^7+O(h^2)
+1+8h^2u^6+O(h^4)
 \right).
 $$
 
 Write
 $$
-A=\Gamma(1/6),
+G=\Gamma\!\left(\frac14\right).
+$$
+The central mass is
+$$
+hA+h^3A_2+O(h^5),
+$$
+where
+$$
+A=\int_{\mathbb R}e^{-u^4}\,du=\frac G2
+$$
+and
+$$
+A_2=8\int_{\mathbb R}u^6e^{-u^4}\,du
+=
+\frac{3\sqrt2\pi}{G}.
+$$
+
+At either endpoint use $x=h^2s$ or $x=1-h^2s$. In both cases
+$$
+N^4\phi(x)^2
+=
+s^2-10h^2s^3+O(h^4),
+$$
+so each endpoint contributes
+$$
+h^2B+O(h^4),
 \qquad
-C=\Gamma(1/3).
-$$
-Since
-$$
-\int_0^\infty u^je^{-u^6}\,du
-=
-\frac16\Gamma\left(\frac{j+1}{6}\right),
-$$
-the contribution from $0$ is
-$$
-h\left(
-\frac A6+\frac C3h+O(h^2)
-\right).
+B=\frac{\sqrt\pi}{2}.
 $$
 
-At $x=\frac12$,
-$$
-N^6\phi\left(\frac12+h^3v\right)^2
-=
-\frac{v^2}{64}+O(h^3),
-$$
-so this well contributes
-$$
-8\sqrt{\pi}\,h^3+O(h^6).
-$$
-At $x=1$,
-$$
-N^6\phi(1-h^3w)^2
-=
-w^2+O(h^3),
-$$
-so its contribution is
-$$
-\frac{\sqrt{\pi}}2h^3+O(h^6).
-$$
-
-Only the triple zero affects the relative $h$ term. Hence
+Hence
 $$
 Z_N
 =
-ha\left(
-1+rh+O(h^2)
+hA
+\left(
+1+bh+rh^2+O(h^3)
 \right),
 $$
 where
 $$
-a=\frac A6,
+b=\frac{2B}{A}=\frac{2\sqrt\pi}{G},
+$$
+$$
+r=\frac{A_2}{A}=\frac{6\sqrt2\pi}{G^2}.
+$$
+
+Step 3: Find the unique occupancy contributing through relative order $h^2$
+
+Take two variables near $\frac12$, one near $0$, and one near $1$:
+$$
+x_1=\frac12+hu,
 \qquad
-r=\frac{2C}{A}.
-$$
-
-Step 3: Identify the three tied leading occupancies
-
-For three samples, let the letters $A,B,C$ denote the wells at $0,\frac12,1$.
-
-The occupancy $AAB$ has Jacobian order $h^5$ and one small squared difference of order $h^2$, so it contributes at order $h^7$ to the numerator.
-
-The occupancy $AAC$ has the same order.
-
-The occupancy $ABC$ has Jacobian order
-$$
-h\cdot h^3\cdot h^3=h^7
-$$
-and no small cross-well difference, so it also contributes at order $h^7$.
-
-All other occupancies occur later.
-
-For the $A$-well define
-$$
-m_j=\int_0^\infty u^je^{-u^6}\,du.
-$$
-The central pair integral is
-$$
-J_0
-=
-\int_0^\infty\int_0^\infty
-(u-v)^2e^{-u^6-v^6}\,du\,dv
-=
-2(m_0m_2-m_1^2).
-$$
-Using
-$$
-m_0=\frac A6,
+x_2=\frac12+hv,
 \qquad
-m_1=\frac C6,
+x_3=h^2s,
 \qquad
-m_2=\frac{\sqrt{\pi}}6,
+x_4=1-h^2t.
 $$
-we obtain
-$$
-J_0
-=
-\frac{\sqrt{\pi}A-C^2}{18}.
-$$
+The four Jacobians contribute $h^6$, and the squared difference between the two central variables contributes $h^2$. All other pairwise distances have nonzero limits. Thus this occupancy contributes at order $h^8$ to the numerator.
 
-The factor $1/6$ in the Gram identity leaves a factor $1/2$ for each repeated-well occupancy. Therefore the three leading coefficients are
-$$
-D_{AAB}
-=
-\frac{8\sqrt{\pi}}{32}J_0,
-$$
-$$
-D_{AAC}
-=
-\frac{\sqrt{\pi}}4J_0,
-$$
-and
-$$
-D_{ABC}
-=
-\frac1{16}\cdot\frac A6\cdot8\sqrt{\pi}\cdot\frac{\sqrt{\pi}}2.
-$$
-Their sum is
-$$
-D_0
-=
-\frac{5\pi A-2\sqrt{\pi}C^2}{72}.
-$$
+Every other occupancy starts at order $h^{11}$ or later, so none affects the expansion through $h^{10}$.
 
-Step 4: Compute the first numerator correction
-
-Put
-$$
-E=\Gamma(2/3).
-$$
-The moments needed for the repeated-$A$ corrections are
-$$
-m_3=\frac E6,
-\qquad
-m_7=\frac C{18},
-\qquad
-m_8=\frac{\sqrt{\pi}}{12},
-\qquad
-m_9=\frac E9.
-$$
+There are $12$ labelled assignments. Together with the factor $1/24$, this leaves $1/2$.
 
 Define
 $$
-\Delta=AE-\sqrt{\pi}C.
+m_j=\int_{\mathbb R}u^je^{-u^4}\,du.
 $$
-Direct expansion gives
+The needed values are
 $$
-J_7
-=
-\int\!\!\int
-(u-v)^2(u^7+v^7)e^{-u^6-v^6}\,du\,dv
-=
-\frac{\Delta}{27},
+m_0=\frac G2,
+\qquad
+m_2=\frac{\sqrt2\pi}{2G},
+\qquad
+m_4=\frac G8,
 $$
-and
 $$
-J_1
-=
-\int\!\!\int
-(u-v)^2(u+v)e^{-u^6-v^6}\,du\,dv
-=
-\frac{\Delta}{18}.
+m_6=\frac{3\sqrt2\pi}{8G},
+\qquad
+m_8=\frac{5G}{32}.
 $$
 
-For the $AAB$ cluster, the two $A$-weights contribute $6J_7$, while expansion of the two cross-well factors contributes $-4J_1$. These cancel:
+The central pair integral is
 $$
-6J_7-4J_1=0.
+J
+=
+\int_{\mathbb R^2}
+(u-v)^2e^{-u^4-v^4}\,du\,dv
+=
+2m_0m_2
+=
+\frac{\sqrt2\pi}{2}.
 $$
 
-For the $AAC$ cluster the cross-well correction is $-2J_1$, so its first correction is
+The four central-endpoint squared differences contribute
 $$
-\frac{\sqrt{\pi}}4
+\left(\frac12\right)^8
+=
+\frac1{256}
+$$
+at leading order. Therefore the $h^8$ numerator coefficient is
+$$
+D_0
+=
+\frac12\cdot\frac1{256}B^2J
+=
+\frac{\sqrt2\pi^2}{4096}.
+$$
+
+Step 4: Compute the second-order deformation of the leading cluster
+
+For the coordinates in Step 3, the product of all cross-well squared differences, after removing its leading factor $1/256$, is
+$$
+1
+-
+8h^2(u^2+v^2)
+-
+10h^2(s+t)
++
+O(h^3).
+$$
+
+The two central weights contribute
+$$
+1+8h^2(u^6+v^6)+O(h^4),
+$$
+while the endpoint weights contribute
+$$
+1+10h^2(s^3+t^3)+O(h^4).
+$$
+Thus the relative $h^2$ correction is
+$$
+8(u^6+v^6-u^2-v^2)
++
+10(s^3-s+t^3-t).
+$$
+
+The endpoint part vanishes after integration because
+$$
+\int_0^\infty(s^3-s)e^{-s^2}\,ds=0.
+$$
+
+The remaining central integral is
+$$
+K
+=
+8\int_{\mathbb R^2}
+(u-v)^2
+(u^6+v^6-u^2-v^2)
+e^{-u^4-v^4}\,du\,dv.
+$$
+Expanding the polynomial gives
+$$
+K
+=
+16
 \left(
-6J_7-2J_1
-\right)
-=
-\frac{\sqrt{\pi}\Delta}{36}.
-$$
-
-For the $ABC$ cluster, the two cross distances involving the $A$-variable contribute a relative factor
-$$
-1-6hu+O(h^2).
-$$
-Together with the local weight correction, the relative term is
-$$
-6h(u^7-u).
-$$
-Since
-$$
-m_7-m_1=-\frac C9,
-$$
-the $ABC$ correction is
-$$
--\frac{\pi C}{6}.
-$$
-
-Hence the numerator in the Gram identity has expansion
-$$
-h^7
-\left(
-D_0+hD_1+O(h^2)
-\right),
-$$
-where
-$$
-D_1
-=
-\frac{\sqrt{\pi}AE-7\pi C}{36}.
-$$
-
-Step 5: Extract the coefficient of $N^{-1}$
-
-Using Step 2,
-$$
-Z_N^3
-=
-h^3a^3
-\left(
-1+3rh+O(h^2)
+m_0m_8+m_2m_6-m_0m_4-m_2^2
 \right).
+$$
+Substituting the moments from Step 3,
+$$
+K
+=
+\frac{G^4-8\pi^2}{4G^2}.
+$$
+
+Therefore the $h^{10}$ numerator coefficient is
+$$
+D_2
+=
+\frac12\cdot\frac1{256}B^2K
+=
+\frac{\pi(G^4-8\pi^2)}{8192G^2}.
+$$
+
+The numerator in Step 1 is consequently
+$$
+h^8
+\left(
+D_0+D_2h^2+O(h^3)
+\right).
+$$
+
+Step 5: Extract the coefficient that survives the scale cancellation
+
+From Step 2,
+$$
+Z_N^{-4}
+=
+h^{-4}A^{-4}
+\left[
+1-4bh+(10b^2-4r)h^2+O(h^3)
+\right].
 $$
 Combining this with Step 4 gives
 $$
 H_N
 =
 h^4
-\frac{
-D_0+h(D_1-3rD_0)+O(h^2)
-}{
-a^3
-}.
-$$
-Therefore
-$$
-N^4H_N
-=
-c_0+\frac{c_1}{N}+O(N^{-2}),
+\left(
+c_0+c_1h+c_2h^2+O(h^3)
+\right),
 $$
 where
 $$
-c_1
+c_2
 =
-\frac{D_1-3rD_0}{a^3}.
-$$
-
-Substituting
-$$
-a=\frac A6,
-\qquad
-r=\frac{2C}{A},
-$$
-and the values of $D_0,D_1$ gives
-$$
-c_1
-=
-\frac{6\sqrt{\pi}E}{A^2}
--
-\frac{132\pi C}{A^3}
-+
-\frac{36\sqrt{\pi}C^3}{A^4}.
-$$
-
-Step 6: Evaluate the scale difference and simplify
-
-Replacing $N$ by $2N$ gives
-$$
-(2N)^4H_{2N}
-=
-c_0+\frac{c_1}{2N}+O(N^{-2}).
-$$
-Therefore
-$$
-N
-\left[
-N^4H_N-(2N)^4H_{2N}
-\right]
-=
-\frac{c_1}{2}+O(N^{-1}).
-$$
-
-The duplication identity
-$$
-\Gamma(1/6)\Gamma(2/3)
-=
-2^{2/3}\sqrt{\pi}\Gamma(1/3)
-$$
-reduces $c_1/2$ to
-$$
 \frac{
-3C
-\left[
-\pi(2^{2/3}-22)A
-+
-6\sqrt{\pi}C^2
-\right]
+D_2+(10b^2-4r)D_0
+}{A^4}.
+$$
+
+Using
+$$
+A=\frac G2,
+\qquad
+b=\frac{2\sqrt\pi}{G},
+\qquad
+r=\frac{6\sqrt2\pi}{G^2},
+$$
+together with $D_0,D_2$ from Steps 3 and 4, we obtain
+$$
+c_2
+=
+\frac{
+\pi\left(
+G^4+(80\sqrt2-104)\pi^2
+\right)
 }{
-A^4
+512G^6
 }.
 $$
 
-Final Answer: $\boxed{\frac{3\Gamma(1/3)(\pi(2^{2/3}-22)\Gamma(1/6)+6\sqrt{\pi}\Gamma(1/3)^2)}{\Gamma(1/6)^4}}$
+Thus
+$$
+N^4H_N
+=
+c_0+\frac{c_1}{N}+\frac{c_2}{N^2}+O(N^{-3}).
+$$
+
+Step 6: Apply the three-scale annihilation
+
+Replacing $N$ by $2N$ and $4N$ gives
+$$
+(2N)^4H_{2N}
+=
+c_0+\frac{c_1}{2N}+\frac{c_2}{4N^2}+O(N^{-3}),
+$$
+$$
+(4N)^4H_{4N}
+=
+c_0+\frac{c_1}{4N}+\frac{c_2}{16N^2}+O(N^{-3}).
+$$
+
+The constant and $N^{-1}$ terms cancel because
+$$
+1-3+2=0,
+$$
+$$
+1-\frac32+\frac12=0.
+$$
+The coefficient of $N^{-2}$ is
+$$
+c_2\left(
+1-\frac34+\frac18
+\right)
+=
+\frac{3c_2}{8}.
+$$
+Multiplication by $N^2$ gives the required limit.
+
+Final Answer: $\boxed{\frac{3\pi(\Gamma(\frac14)^4+(80\sqrt2-104)\pi^2)}{4096\Gamma(\frac14)^6}}$
 
 ---
 
 ## Answer
 
-$\frac{3\Gamma(1/3)(\pi(2^{2/3}-22)\Gamma(1/6)+6\sqrt{\pi}\Gamma(1/3)^2)}{\Gamma(1/6)^4}$
+$\frac{3\pi(\Gamma(\frac14)^4+(80\sqrt2-104)\pi^2)}{4096\Gamma(\frac14)^6}$
 
 ---
 
@@ -390,7 +351,7 @@ $\frac{3\Gamma(1/3)(\pi(2^{2/3}-22)\Gamma(1/6)+6\sqrt{\pi}\Gamma(1/3)^2)}{\Gamma
 ## Solution Concepts
 
 - Laplace asymptotics
-- unequal localization scales
+- mixed localization scales
 - Hankel moment determinants
-- competing occupancy patterns
-- gamma-function identities
+- cluster occupancy analysis
+- multiscale cancellation
