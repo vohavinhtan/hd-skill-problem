@@ -15,9 +15,9 @@ A=
 B=
 \begin{pmatrix}
 -1&0&-4&-2\\
-1&-2&0&1\\
+-1&1&-2&-1\\
 0&0&1&0\\
-2&-3&2&3
+0&0&0&1
 \end{pmatrix}.
 $$
 
@@ -45,9 +45,9 @@ Let $\mathcal E$ be the $\mathbb Q$-vector space of polynomial maps
 $$
 F=(F_1,F_2,F_3,F_4):\mathbb Q^4\to\mathbb Q^4
 $$
-whose coordinate polynomials are homogeneous of total degree $23$ and satisfy
+whose coordinate polynomials are homogeneous of total degree $31$ and satisfy
 $$
-F(gx)=gF(x)
+F(gx)=\det(g)\,gF(x)
 $$
 for every $g\in G$ and $x\in\mathbb Q^4$, together with
 $$
@@ -90,14 +90,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves a finite matrix-group representation and dimensions of constrained polynomial covariants,
+This problem involves a finite matrix-group representation and determinant-twisted polynomial covariants,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves invariant quadratic forms, harmonic decomposition, and equivariant differential operators,
-which are part of representation-theoretic computation and Calculus.
-However, the differential conditions are imposed on representation-theoretic spaces, and the requested object is the exact dimension of their simultaneous kernel.
+The problem also involves alternating invariant theory, harmonic decomposition, and equivariant differential operators,
+which are part of representation-theoretic computation.
+However, these structures are used to determine one exact dimension for the simultaneous kernel specified in the statement.
 
 Specifically:
 
-- The generators hide the standard four-dimensional representation of $A_5$, so the polynomial invariant ring is no longer the free reflection-group invariant ring available for $S_5$.
-- Scalar and vector harmonic dimensions must first be extracted from two different Molien series.
-- Divergence must be removed before radial contraction becomes a map into harmonic invariants, making the last dimension count dependent on the preceding kernel calculation.
+- The generators hide the standard four-dimensional representation of a symmetric group, while the determinant in the equivariance law introduces the sign character.
+- Scalar targets of divergence and radial contraction are alternating harmonic polynomials rather than ordinary invariants.
+- The radial contraction can be counted only after restricting to the divergence-free harmonic twisted covariants.
