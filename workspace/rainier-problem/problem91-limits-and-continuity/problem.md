@@ -2,7 +2,7 @@
 
 ## LaTeX (Normalized)
 
-For each integer $N\geq1$ and $k\in\{0,1,2,3,4\}$, define
+For each integer $N\geq1$ and $k\in\{0,1,\ldots,6\}$, define
 $$
 M_{k,N}
 =
@@ -22,19 +22,24 @@ H_N
 =
 \det
 \begin{pmatrix}
-M_{0,N}&M_{1,N}&M_{2,N}\\
-M_{1,N}&M_{2,N}&M_{3,N}\\
-M_{2,N}&M_{3,N}&M_{4,N}
+M_{0,N}&M_{1,N}&M_{2,N}&M_{3,N}\\
+M_{1,N}&M_{2,N}&M_{3,N}&M_{4,N}\\
+M_{2,N}&M_{3,N}&M_{4,N}&M_{5,N}\\
+M_{3,N}&M_{4,N}&M_{5,N}&M_{6,N}
 \end{pmatrix}.
 $$
 
 Determine the exact value of
 $$
 \lim_{N\to\infty}
-N^{1/4}
-\left(
-\sqrt N\,H_N-\sqrt{16N}\,H_{16N}
-\right).
+\sqrt N
+\left[
+NH_N
+-
+3(16N)H_{16N}
++
+2(256N)H_{256N}
+\right].
 $$
 
 ---
@@ -52,14 +57,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves an exact renormalized limit whose value is determined by a lower-order term in a fractional-power asymptotic expansion,
+This problem involves an exact multiscale limit in which two successive terms of a fractional-power asymptotic expansion cancel,
 which are part of Calculus and Limits and continuity.
-The problem also involves Laplace asymptotics near zeros with different multiplicities and a moment determinant,
+The problem also involves Laplace asymptotics near zeros of different multiplicities and a Hankel moment determinant,
 which are part of Calculus and Applications of integration.
-However, the local integral analysis determines the asymptotic sequence entering the requested limit, while the final requested object is one exact scalar limit.
+However, the local integral analysis determines the asymptotic sequence entering the limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The two endpoint zeros and the interior double zero generate localization scales $N^{-1/2}$ and $N^{-1/4}$ simultaneously.
-- The dominant determinant term comes from samples occupying all three concentration regions, while the first correction comes from a different occupancy pattern.
-- The scale difference removes the dominant term and isolates the interaction between normalization and the first repeated-well contribution.
+- The endpoint zeros localize on the scale $N^{-1/2}$ while the interior double zero localizes on the scale $N^{-1/4}$.
+- The four-point determinant is first supported by a two-one-one occupancy pattern, and all competing occupancies enter later.
+- The three-scale combination removes both the leading term and the normalization correction, forcing a second-order cluster calculation.
