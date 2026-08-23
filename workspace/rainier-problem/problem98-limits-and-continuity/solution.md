@@ -1,381 +1,306 @@
 ## Steps
 
-Step 1: Pass from the nonlinear recurrence to log-odds coordinates
+Step 1: Convert the two-dimensional recurrence into one product
 
-For fixed $n$, the map
+For $r>0$, define
 $$
-x\mapsto x+\frac{x(1-x)}{n+k}
+W_k(r)=U_k(r)+\frac{i}{r}V_k(r).
 $$
-maps $(0,1)$ into itself and has derivative
+The two recurrences give
 $$
-1+\frac{1-2x}{n+k}>0.
-$$
-The terminal value $x_n$ is therefore strictly increasing in $x_0$. It equals $0$ when $x_0=0$, while starting from $x_0=1/2$ makes every later term larger than $1/2$. Hence the stated $a_n$ exists uniquely.
-
-Put
-$$
-h=\frac1n,
-\qquad
-t_k=kh,
-\qquad
-q_k=\frac{1}{n+k}=\frac{h}{1+t_k},
-$$
-and define
-$$
-z_k=\log\frac{x_k}{1-x_k}.
-$$
-From
-$$
-x_{k+1}=x_k+q_kx_k(1-x_k)
-$$
-we obtain
-$$
-\frac{x_{k+1}}{1-x_{k+1}}
+W_{k+1}(r)
 =
-\frac{x_k}{1-x_k}
-\frac{1+q_k(1-x_k)}{1-q_kx_k}.
+\left(
+1-\frac{ir}{n+k}
+\right)W_k(r).
 $$
-Therefore
+Since $W_0(r)=1$,
 $$
-z_{k+1}-z_k
+W_n(r)
 =
-\log(1+q_k(1-x_k))
--\log(1-q_kx_k).
+\prod_{j=n}^{2n-1}
+\left(
+1-\frac{ir}{j}
+\right).
 $$
-Expanding in $q_k$ gives
+Write
 $$
-z_{k+1}-z_k
-=
-q_k+A(x_k)q_k^2+B(x_k)q_k^3+O(q_k^4),
+W_n(r)=A_n(r)e^{-i\theta_n(r)},
 $$
 where
 $$
-A(x)=x-\frac12
+A_n(r)
+=
+\prod_{j=n}^{2n-1}
+\sqrt{1+\frac{r^2}{j^2}}
 $$
 and
 $$
-B(x)=\frac13-x(1-x).
+\theta_n(r)
+=
+\sum_{j=n}^{2n-1}
+\arctan\frac rj.
+$$
+Taking real parts gives the exact identity
+$$
+U_n(r)=A_n(r)\cos\theta_n(r).
 $$
 
 Since
 $$
-\sum_{k=0}^{n-1}q_k
-=
-\log2+O(h),
-\qquad
-\sum_{k=0}^{n-1}q_k^2=O(h),
+\theta_n(r)\to r\log2=r\ell
 $$
-and $z_n=0$, we get
+uniformly on compact $r$-intervals, the limiting expression on $(\rho-1,\rho)$ is
 $$
-z_0=-\log2+O(h).
-$$
-Consequently
-$$
-a_n\to\frac13.
-$$
-
-Step 2: Find the continuum orbit and the first correction to the initial value
-
-For $0\leq t\leq1$, the leading log-odds path is
-$$
-z^{(0)}(t)
-=
--\log2+\log(1+t).
-$$
-Its corresponding $x$-coordinate is
-$$
-X(t)
-=
-\frac{e^{z^{(0)}(t)}}{1+e^{z^{(0)}(t)}}
-=
-\frac{1+t}{3+t}.
-$$
-Therefore
-$$
-A(X(t))
-=
-\frac{t-1}{2(t+3)}.
-$$
-Set
-$$
-F(t)=
-\frac{A(X(t))}{(1+t)^2}
-=
-\frac{t-1}{2(t+3)(t+1)^2}.
-$$
-The partial fractions
-$$
-F(t)
-=
--\frac1{2(t+3)}
-+\frac1{2(t+1)}
--\frac1{2(t+1)^2}
-$$
-give
-$$
-\int_0^1F(t)\,dt
-=
--\frac14+\frac12\log\frac32.
-$$
-
-Write
-$$
-z_0
-=
--\log2+\alpha h+O(h^2).
-$$
-The left Riemann sum satisfies
-$$
-\sum_{k=0}^{n-1}q_k
-=
-\log2+\frac h4+O(h^2),
-$$
-while
-$$
-\sum_{k=0}^{n-1}A(x_k)q_k^2
-=
-h\int_0^1F(t)\,dt+O(h^2).
-$$
-Since $z_n=0$,
-$$
-\alpha+\frac14+\int_0^1F(t)\,dt=0.
-$$
-Hence
-$$
-\alpha=-\frac12\log\frac32.
-$$
-
-Step 3: Determine the first correction along the whole orbit
-
-For $t_k=k/n$, Euler-Maclaurin on the partial sum gives
-$$
-\sum_{j=0}^{k-1}q_j
-=
-\log(1+t_k)
-+
-h\frac{t_k}{2(1+t_k)}
-+O(h^2)
-$$
-uniformly in $k$.
-
-Also
-$$
-\sum_{j=0}^{k-1}A(x_j)q_j^2
-=
-h\int_0^{t_k}F(s)\,ds+O(h^2).
-$$
-Therefore
-$$
-z_k
-=
-z^{(0)}(t_k)+hz_1(t_k)+O(h^2),
-$$
-where
-$$
-z_1(t)
-=
-\alpha+
-\frac{t}{2(1+t)}
-+\int_0^tF(s)\,ds.
-$$
-Using the partial fractions from Step 2 and the value of $\alpha$,
-$$
-z_1(t)
-=
-\frac12\log\frac{2(1+t)}{3+t}.
-$$
-
-Since
-$$
-\frac{d}{dz}
-\left(
-\frac{e^z}{1+e^z}-\frac12
-\right)
-=
-X(1-X),
-$$
-we have
-$$
-A(x_k)
-=
-A(X(t_k))
-+
-hX(t_k)(1-X(t_k))z_1(t_k)
-+O(h^2).
+\cos(r\ell).
 $$
 Here
 $$
-X(t)(1-X(t))
-=
-\frac{2(1+t)}{(3+t)^2}.
+\rho\ell=\pi,
+$$
+so its value tends to $-1$ only as $r\to\rho$. The defining equation therefore forces
+$$
+r_n\to\rho.
 $$
 
-Step 4: Compute the complete second-order endpoint correction
+Step 2: Expand the phase and the normalized amplitude
 
-Write
+Set
 $$
-z_0
+S_p(n)=\sum_{j=n}^{2n-1}\frac1{j^p}.
+$$
+Euler-Maclaurin applied on $[n,2n]$ gives
+$$
+S_1(n)
 =
--\log2+\alpha h+\beta h^2+o(h^2).
+\ell+\frac1{4n}+\frac1{16n^2}+O(n^{-4}),
 $$
-First,
 $$
-\sum_{k=0}^{n-1}q_k
+S_2(n)
 =
-\log2+\frac h4+\frac{h^2}{16}+O(h^3).
+\frac1{2n}
++\frac3{8n^2}
++\frac7{48n^3}
++O(n^{-4}),
 $$
-
-For the quadratic term, Euler-Maclaurin gives
 $$
-\sum_{k=0}^{n-1}A(x_k)q_k^2
+S_3(n)
 =
-h\int_0^1F(t)\,dt
-+h^2
-\left[
-\frac{F(0)-F(1)}2+I
-\right]
-+o(h^2),
+\frac3{8n^2}+O(n^{-3}),
 $$
-where
+and
 $$
-I=
-\int_0^1
-\frac{2z_1(t)}{(1+t)(3+t)^2}\,dt.
-$$
-Since
-$$
-F(0)=-\frac16,
-\qquad
-F(1)=0,
-$$
-the endpoint term is $-1/12$.
-
-Put
-$$
-\ell=\log\frac32.
-$$
-With
-$$
-u=\frac{2(1+t)}{3+t},
-$$
-the integral becomes
-$$
-I=
-\frac18
-\int_{2/3}^{1}
-\left(\frac2u-1\right)\log u\,du
+S_4(n)
 =
-\frac1{24}-\frac{\ell}{12}-\frac{\ell^2}{8}.
+\frac7{24n^3}+O(n^{-4}).
 $$
 
-For the cubic term, only the continuum orbit is needed:
+Using
 $$
-\sum_{k=0}^{n-1}B(x_k)q_k^3
+\arctan z=z-\frac{z^3}{3}+O(z^5),
+$$
+we obtain
+$$
+\theta_n(r)
 =
-h^2J+o(h^2),
-$$
-where
-$$
-J=
-\int_0^1
-\frac{
-\frac13-\frac{2(1+t)}{(3+t)^2}
-}{(1+t)^3}\,dt.
-$$
-The integrand decomposes as
-$$
--\frac1{2(t+3)}
--\frac1{2(t+3)^2}
-+\frac1{2(t+1)}
--\frac1{2(t+1)^2}
-+\frac1{3(t+1)^3},
+rS_1(n)-\frac{r^3}{3}S_3(n)+O(n^{-3}),
 $$
 so
 $$
-J=-\frac16+\frac{\ell}{2}.
-$$
-
-The order-$h^2$ part of $z_n=0$ now gives
-$$
-\beta+
-\frac1{16}
--\frac1{12}
-+I+J=0.
-$$
-Therefore
-$$
-\beta
+\theta_n(r)
 =
-\frac7{48}
--\frac{5\ell}{12}
-+\frac{\ell^2}{8}.
+r\ell+\frac{r}{4n}
++
+\frac{\frac r{16}-\frac{r^3}{8}}{n^2}
++O(n^{-3}).
 $$
 
-Step 5: Convert the log-odds expansion back to $a_n$
-
-Let
+For the amplitude, put
 $$
-\sigma(z)=\frac{e^z}{1+e^z}.
-$$
-At
-$$
-z_*=-\log2,
-$$
-we have
-$$
-\sigma(z_*)=\frac13,
-\qquad
-\sigma'(z_*)=\frac29,
-\qquad
-\sigma''(z_*)=\frac2{27}.
+\Lambda_n(r)
+=
+\log\left(e^{-r^2/(4n)}A_n(r)\right).
 $$
 Since
 $$
-z_0=z_*+\alpha h+\beta h^2+o(h^2),
-$$
-Taylor expansion gives
-$$
-a_n
+\frac12\log(1+z)
 =
-\frac13
-+\frac{2\alpha}{9}h
-+
-\left(
-\frac{2\beta}{9}
-+\frac{\alpha^2}{27}
-\right)h^2
-+o(h^2).
+\frac z2-\frac{z^2}{4}+O(z^3),
 $$
-Substituting
+we get
 $$
-\alpha=-\frac{\ell}{2},
-\qquad
-\beta=
-\frac7{48}
--\frac{5\ell}{12}
-+\frac{\ell^2}{8}
-$$
-yields
-$$
-a_n
+\Lambda_n(r)
 =
-\frac13
--\frac{\ell}{9n}
+-\frac{r^2}{4n}
++\frac{r^2}{2}S_2(n)
+-\frac{r^4}{4}S_4(n)
++O(n^{-4}).
+$$
+The order-$n^{-1}$ terms cancel, leaving
+$$
+\Lambda_n(r)
+=
+\frac{3r^2}{16n^2}
 +
-\left(
-\frac7{216}
--\frac{5\ell}{54}
-+\frac{\ell^2}{27}
-\right)\frac1{n^2}
+\frac{7(r^2-r^4)}{96n^3}
++O(n^{-4}).
+$$
+
+Step 3: Locate the correct side of the split critical root
+
+The defining equation differs from $-1$ by $O(n^{-2})$. From Step 2,
+$$
+\Lambda_n(r)=O(n^{-2}),
+$$
+while near $\rho$,
+$$
+1+\cos\theta_n(r)
+\asymp
+(\theta_n(r)-\pi)^2.
+$$
+It follows that
+$$
+\theta_n(r_n)-\pi=O(n^{-1}),
+$$
+and since
+$$
+\frac{\partial\theta_n}{\partial r}\to\ell>0,
+$$
+we have
+$$
+r_n-\rho=O(n^{-1}).
+$$
+
+Write
+$$
+r_n
+=
+\rho+\frac d n+\frac e{n^2}+o(n^{-2}).
+$$
+Step 2 gives
+$$
+\theta_n(r_n)-\pi
+=
+\frac{A_1}{n}
++\frac{A_2}{n^2}
++o(n^{-2}),
+$$
+where
+$$
+A_1=\ell d+\frac{\rho}{4}
+$$
+and
+$$
+A_2=
+\ell e+\frac d4+\frac{\rho}{16}-\frac{\rho^3}{8}.
+$$
+Also
+$$
+\Lambda_n(r_n)
+=
+\frac{3\rho^2}{16n^2}
++
+\frac{L_3}{n^3}
++o(n^{-3}),
+$$
+where
+$$
+L_3=
+\frac{3\rho d}{8}
++
+\frac{7(\rho^2-\rho^4)}{96}.
+$$
+
+Step 4: Use the double-root expansion to determine $d$ and $e$
+
+Since
+$$
+\cos(\pi+z)=-1+\frac{z^2}{2}+O(z^4),
+$$
+Steps 1 and 3 give
+$$
+e^{-r_n^2/(4n)}U_n(r_n)
+=
+-1+
+\frac{\frac12A_1^2-\frac{3\rho^2}{16}}{n^2}
++
+\frac{A_1A_2-L_3}{n^3}
++o(n^{-3}).
+$$
+
+Comparison with the defining equation gives
+$$
+\frac12A_1^2-\frac{3\rho^2}{16}
+=
+2-\frac{3\rho^2}{16},
+$$
+so
+$$
+A_1^2=4.
+$$
+Because
+$$
+r_n<\rho,
+$$
+the relevant branch is $A_1=-2$. Therefore
+$$
+\ell d+\frac{\rho}{4}=-2,
+$$
+and
+$$
+d=-\frac{\rho+8}{4\ell}.
+$$
+
+There is no $n^{-3}$ term on the right side of the defining equation, so
+$$
+A_1A_2-L_3=0.
+$$
+Using $A_1=-2$,
+$$
+A_2=-\frac{L_3}{2}.
+$$
+Consequently
+$$
+\ell e
+=
+-\frac{L_3}{2}
+-\frac d4
+-\frac{\rho}{16}
++\frac{\rho^3}{8}.
+$$
+Substitution of the value of $d$ and simplification gives
+$$
+e=
+\frac{
+\ell\rho(7\rho^3+24\rho^2-7\rho-12)
++9\rho^2+84\rho+96
+}
+{192\ell^2}.
+$$
+
+Step 5: Evaluate the normalized displacement
+
+The expansion obtained in Step 4 is
+$$
+r_n
+=
+\rho
+-\frac{\rho+8}{4\ell n}
++
+\frac{
+\ell\rho(7\rho^3+24\rho^2-7\rho-12)
++9\rho^2+84\rho+96
+}
+{192\ell^2n^2}
 +o(n^{-2}).
 $$
-Using $\ell=\log(3/2)$ gives the requested limit.
+The normalization in the problem removes the first two terms, so the remaining coefficient is the required limit.
 
-Final Answer: $\boxed{\frac7{216}-\frac{5\log(\frac32)}{54}+\frac{\log^2(\frac32)}{27}}$
+Final Answer: $\boxed{\frac{\ell\rho(7\rho^3+24\rho^2-7\rho-12)+9\rho^2+84\rho+96}{192\ell^2}}$
 
 ## Answer
 
-$\frac7{216}-\frac{5\log(\frac32)}{54}+\frac{\log^2(\frac32)}{27}$
+$\frac{\ell\rho(7\rho^3+24\rho^2-7\rho-12)+9\rho^2+84\rho+96}{192\ell^2}$
 
 ## Classification
 
@@ -389,8 +314,8 @@ $\frac7{216}-\frac{5\log(\frac32)}{54}+\frac{\log^2(\frac32)}{27}$
 
 ## Solution Concepts
 
-- nonlinear recurrences
-- log-odds transformation
-- continuum limits
-- Euler-Maclaurin correction
-- implicit terminal conditions
+- complex recurrence reduction
+- multiplicative transfer products
+- Euler-Maclaurin expansion
+- critical phase splitting
+- implicit root asymptotics

@@ -2,28 +2,43 @@
 
 ## LaTeX (Normalized)
 
-For each positive integer $n$ and $a\in(0,1)$, define
+Put
 $$
-x_0=a
+\ell=\log2,
+\qquad
+\rho=\frac{\pi}{\ell}.
+$$
+For $r>0$ and each positive integer $n$, define
+$$
+U_0(r)=1,
+\qquad
+V_0(r)=0,
 $$
 and, for $0\leq k\leq n-1$,
 $$
-x_{k+1}
+U_{k+1}(r)
 =
-x_k+
-\frac{x_k(1-x_k)}{n+k}.
+U_k(r)+\frac{V_k(r)}{n+k},
 $$
-Let $a_n\in(0,\frac12)$ be the unique value for which the resulting orbit satisfies
 $$
-x_n=\frac12.
+V_{k+1}(r)
+=
+V_k(r)-\frac{r^2U_k(r)}{n+k}.
+$$
+For all sufficiently large $n$, let $r_n\in(\rho-1,\rho)$ be the unique solution of
+$$
+e^{-r_n^2/(4n)}U_n(r_n)
+=
+-1+
+\frac{2-\frac{3\rho^2}{16}}{n^2}.
 $$
 Determine the exact value of
 $$
 \lim_{n\to\infty}
 n^2
 \left[
-a_n-\frac13
-+\frac{\log(\frac32)}{9n}
+r_n-\rho
++\frac{\rho+8}{4\ell n}
 \right].
 $$
 
@@ -42,4 +57,4 @@ $$
 
 ## Domain Explanation
 
-The problem asks for a second-order limit of an initial value selected by a terminal condition on a nonlinear recurrence, so Calculus and Limits and continuity is the best fit. The derivation passes through a continuum orbit and two discrete correction layers. Recurrence manipulation and finite-sum asymptotics are intermediate steps rather than the requested object.
+The problem asks for a second-order limit of a parameter selected by the terminal value of a long recurrence, so Calculus and Limits and continuity is the best fit. The recurrence hides a complex multiplicative evolution whose phase approaches a critical value where the first derivative vanishes. Finite-sum asymptotics and the resulting double-root displacement are intermediate tools for extracting the requested limit.
