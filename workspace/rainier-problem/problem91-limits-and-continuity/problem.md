@@ -8,11 +8,11 @@ M_{k,N}
 =
 \frac{\displaystyle\int_0^1 x^k
 \exp\!\left(
--N^{10}\left[(2x-1)^5(1-x)\right]^2
+-N^6\left[x^3(2x-1)(1-x)\right]^2
 \right)\,dx}
 {\displaystyle\int_0^1
 \exp\!\left(
--N^{10}\left[(2x-1)^5(1-x)\right]^2
+-N^6\left[x^3(2x-1)(1-x)\right]^2
 \right)\,dx}.
 $$
 
@@ -31,15 +31,8 @@ $$
 Determine the exact value of
 $$
 \lim_{N\to\infty}
-N^5
-\left[
-N^6H_N
--
-21(2N)^6H_{2N}
-+
-84(4N)^6H_{4N}
--
-64(8N)^6H_{8N}
+N\left[
+N^4H_N-(2N)^4H_{2N}
 \right].
 $$
 
@@ -58,14 +51,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves an exact multiscale limit that removes three lower asymptotic orders,
+This problem involves an exact renormalized limit determined by the first correction to a fractional-power concentration expansion,
 which are part of Calculus and Limits and continuity.
-The problem also involves Laplace asymptotics near zeros of different multiplicities and a Hankel moment determinant,
+The problem also involves Laplace asymptotics near zeros of unequal multiplicity and a Hankel moment determinant,
 which are part of Calculus and Applications of integration.
-However, the local asymptotic analysis determines the sequence entering the requested limit, while the final requested object is one exact scalar limit.
+However, those local integral calculations determine the asymptotic sequence entering the limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The interior zero and endpoint zero localize on the different scales $N^{-1}$ and $N^{-5}$.
-- Two distinct occupancy patterns contribute at exactly the same leading determinant order.
-- Parity removes the odd central corrections, while the four-scale combination removes the constant, $N^{-2}$, and $N^{-4}$ terms, leaving the first endpoint correction.
+- The triple zero at $0$ localizes on the scale $N^{-1}$, while the two simple zeros localize on the scale $N^{-3}$.
+- Three different occupancy classes contribute at the same leading determinant order.
+- The first correction of one leading occupancy cancels internally, so the surviving coefficient requires comparing the remaining cluster corrections with the normalization correction.

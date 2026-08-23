@@ -1,14 +1,14 @@
 ## Steps
 
-Step 1: Convert the determinant to a three-point integral
+Step 1: Convert the determinant to a three-point integral and find the localization scales
 
 Put
 $$
-\phi(x)=(2x-1)^5(1-x)
+\phi(x)=x^3(2x-1)(1-x)
 $$
 and
 $$
-Z_N=\int_0^1e^{-N^{10}\phi(x)^2}\,dx.
+Z_N=\int_0^1e^{-N^6\phi(x)^2}\,dx.
 $$
 The Gram determinant identity gives
 $$
@@ -18,243 +18,364 @@ H_N
 \int_{[0,1]^3}
 \prod_{1\leq i<j\leq3}(x_i-x_j)^2
 \exp\!\left(
--N^{10}\sum_{i=1}^3\phi(x_i)^2
+-N^6\sum_{i=1}^3\phi(x_i)^2
 \right)
 \,dx_1dx_2dx_3.
 $$
 
+Set
+$$
+h=\frac1N.
+$$
 The zeros of $\phi$ are
 $$
-\frac12
-\qquad\text{and}\qquad
-1.
+0,\qquad\frac12,\qquad1.
 $$
-The first has multiplicity $5$, so its localization width is $N^{-1}$. The endpoint zero has multiplicity $1$, so its width is $N^{-5}$.
+The zero at $0$ has multiplicity $3$, so its width is $h$. The other two zeros are simple, so their widths are $h^3$.
 
-Step 2: Determine the possible leading occupancies
-
-Write a central point as
+Near the three zeros use
 $$
-x=\frac12+\frac{u}{N}
-$$
-and an endpoint point as
-$$
-x=1-\frac{v}{N^5}.
-$$
-
-If $m$ of the three variables are central and $3-m$ are at the endpoint, the Jacobians contribute
-$$
-N^{-m-5(3-m)}.
-$$
-Every central-central squared difference contributes $N^{-2}$, while every endpoint-endpoint squared difference contributes $N^{-10}$.
-
-The numerator orders are therefore
-$$
-\begin{array}{c|cccc}
-m&3&2&1&0\\ \hline
-\text{power of }N^{-1}&9&9&21&45.
-\end{array}
-$$
-Thus two different occupancies, $3+0$ and $2+1$, contribute at the same leading order $N^{-9}$. The other two occupancies cannot affect the terms needed below.
-
-Step 3: Establish the allowed powers in the expansion
-
-For the central scaling,
-$$
-\phi\left(\frac12+\frac{u}{N}\right)
-=
-\frac{16u^5}{N^5}
-\left(1-\frac{2u}{N}\right).
-$$
-Hence
-$$
-N^{10}\phi\left(\frac12+\frac{u}{N}\right)^2
-=
-256u^{10}
-\left(1-\frac{2u}{N}\right)^2.
-$$
-
-After integration over the limiting full line, changing every central variable $u$ to $-u$ has the same effect as replacing $N^{-1}$ by $-N^{-1}$. The squared Vandermonde factor is unchanged. Therefore both relevant occupancy integrals contain only even powers of $N^{-1}$ until an endpoint correction is introduced.
-
-At the endpoint,
-$$
-Z_N
-=
-\frac{A}{N}
-\left(
-1+\frac{r_2}{N^2}+\frac{r_4}{N^4}+O(N^{-6})
-\right),
-$$
-for constants $r_2,r_4$, where
-$$
-A
-=
-\int_{-\infty}^{\infty}e^{-256u^{10}}\,du.
-$$
-The endpoint mass itself is $O(N^{-5})$, which is a relative $N^{-4}$ correction to the central mass. Thus no $N^{-5}$ term occurs in $Z_N^3$.
-
-Combining this with Step 2 gives
-$$
-N^6H_N
-=
-c_0+\frac{c_2}{N^2}+\frac{c_4}{N^4}+\frac{c_5}{N^5}+O(N^{-6}).
-$$
-Only $c_5$ must be computed.
-
-Step 4: Compute the unique $N^{-5}$ numerator correction
-
-The all-central occupancy has only even powers of $N^{-1}$ by Step 3, so it contributes nothing to $c_5$.
-
-For the $2+1$ occupancy put
-$$
-x_i=\frac12+\frac{u_i}{N},
+x=hu,
 \qquad
-i=1,2,
+x=\frac12+h^3v,
+\qquad
+x=1-h^3w,
 $$
-and
-$$
-y=1-\frac{v}{N^5}.
-$$
-Define
-$$
-A_2
-=
-\int_{\mathbb R^2}
-(u_1-u_2)^2
-e^{-256(u_1^{10}+u_2^{10})}
-\,du_1du_2.
-$$
+respectively.
 
-At the precision $N^{-5}$, the two cross-well squared differences satisfy
+Step 2: Expand the normalizing integral through relative order $h$
+
+At the triple zero,
 $$
-(y-x_1)^2(y-x_2)^2
+\phi(hu)
 =
-\frac1{16}
+-h^3u^3
 \left(
-1-\frac{8v}{N^5}
-\right)
-+
-O(N^{-6}).
-$$
-Also
-$$
-N^{10}\phi\left(1-\frac{v}{N^5}\right)^2
-=
-v^2-\frac{20v^3}{N^5}+O(N^{-10}),
-$$
-so the endpoint weight is
-$$
-e^{-v^2}
-\left(
-1+\frac{20v^3}{N^5}
-\right)
-+
-O(N^{-10}).
-$$
-
-There are three choices for the endpoint variable, while the Gram identity contributes $1/6$. Hence the $N^{-14}$ coefficient of the numerator, which is the relative $N^{-5}$ correction to its leading $N^{-9}$ term, is
-$$
-D_5
-=
-\frac12\cdot\frac1{16}A_2
-\int_0^\infty
-(20v^3-8v)e^{-v^2}\,dv.
-$$
-Since
-$$
-\int_0^\infty ve^{-v^2}\,dv=\frac12,
-$$
-and
-$$
-\int_0^\infty v^3e^{-v^2}\,dv=\frac12,
-$$
-we get
-$$
-D_5=\frac{3A_2}{16}.
-$$
-Because the denominator has no relative $N^{-5}$ term,
-$$
-c_5=\frac{D_5}{A^3}.
-$$
-
-Step 5: Evaluate the central integrals
-
-For even $j$,
-$$
-m_j
-=
-\int_{-\infty}^{\infty}
-u^je^{-256u^{10}}\,du
-=
-\frac15
-256^{-(j+1)/10}
-\Gamma\left(\frac{j+1}{10}\right).
+1-3hu+2h^2u^2
+\right).
 $$
 Therefore
 $$
-A=m_0
+N^6\phi(hu)^2
 =
-\frac{\Gamma(\frac1{10})}
-{5\,2^{4/5}},
+u^6-6hu^7+O(h^2),
 $$
 and
 $$
-m_2
+e^{-N^6\phi(hu)^2}
 =
-\frac{\Gamma(\frac3{10})}
-{5\,2^{12/5}}.
-$$
-The odd first moment vanishes, so
-$$
-A_2=2m_0m_2.
-$$
-It follows that
-$$
-c_5
-=
-\frac{3A_2}{16A^3}
-=
-\frac{15\Gamma(\frac3{10})}
-{2^{19/5}\Gamma(\frac1{10})^2}.
+e^{-u^6}
+\left(
+1+6hu^7+O(h^2)
+\right).
 $$
 
-Step 6: Apply the four-scale annihilation
-
-Set
+Write
 $$
-R_N=N^6H_N.
+A=\Gamma(1/6),
+\qquad
+C=\Gamma(1/3).
 $$
-For a term $N^{-p}$, the four-scale combination in the problem multiplies its coefficient by
+Since
 $$
-1-\frac{21}{2^p}+\frac{84}{4^p}-\frac{64}{8^p}.
-$$
-For
-$$
-p=0,\qquad2,\qquad4,
-$$
-this factor is zero. Therefore the terms containing $c_0,c_2,c_4$ disappear.
-
-For $p=5$ the factor is
-$$
-1-\frac{21}{32}+\frac{84}{1024}-\frac{64}{32768}
+\int_0^\infty u^je^{-u^6}\,du
 =
-\frac{217}{512}.
+\frac16\Gamma\left(\frac{j+1}{6}\right),
 $$
-After multiplication by $N^5$, the limit is therefore
+the contribution from $0$ is
 $$
-\frac{217}{512}c_5
-=
-\frac{3255\Gamma(\frac3{10})}
-{2^{64/5}\Gamma(\frac1{10})^2}.
+h\left(
+\frac A6+\frac C3h+O(h^2)
+\right).
 $$
 
-Final Answer: $\boxed{\frac{3255\Gamma(\frac3{10})}{2^{64/5}\Gamma(\frac1{10})^2}}$
+At $x=\frac12$,
+$$
+N^6\phi\left(\frac12+h^3v\right)^2
+=
+\frac{v^2}{64}+O(h^3),
+$$
+so this well contributes
+$$
+8\sqrt{\pi}\,h^3+O(h^6).
+$$
+At $x=1$,
+$$
+N^6\phi(1-h^3w)^2
+=
+w^2+O(h^3),
+$$
+so its contribution is
+$$
+\frac{\sqrt{\pi}}2h^3+O(h^6).
+$$
+
+Only the triple zero affects the relative $h$ term. Hence
+$$
+Z_N
+=
+ha\left(
+1+rh+O(h^2)
+\right),
+$$
+where
+$$
+a=\frac A6,
+\qquad
+r=\frac{2C}{A}.
+$$
+
+Step 3: Identify the three tied leading occupancies
+
+For three samples, let the letters $A,B,C$ denote the wells at $0,\frac12,1$.
+
+The occupancy $AAB$ has Jacobian order $h^5$ and one small squared difference of order $h^2$, so it contributes at order $h^7$ to the numerator.
+
+The occupancy $AAC$ has the same order.
+
+The occupancy $ABC$ has Jacobian order
+$$
+h\cdot h^3\cdot h^3=h^7
+$$
+and no small cross-well difference, so it also contributes at order $h^7$.
+
+All other occupancies occur later.
+
+For the $A$-well define
+$$
+m_j=\int_0^\infty u^je^{-u^6}\,du.
+$$
+The central pair integral is
+$$
+J_0
+=
+\int_0^\infty\int_0^\infty
+(u-v)^2e^{-u^6-v^6}\,du\,dv
+=
+2(m_0m_2-m_1^2).
+$$
+Using
+$$
+m_0=\frac A6,
+\qquad
+m_1=\frac C6,
+\qquad
+m_2=\frac{\sqrt{\pi}}6,
+$$
+we obtain
+$$
+J_0
+=
+\frac{\sqrt{\pi}A-C^2}{18}.
+$$
+
+The factor $1/6$ in the Gram identity leaves a factor $1/2$ for each repeated-well occupancy. Therefore the three leading coefficients are
+$$
+D_{AAB}
+=
+\frac{8\sqrt{\pi}}{32}J_0,
+$$
+$$
+D_{AAC}
+=
+\frac{\sqrt{\pi}}4J_0,
+$$
+and
+$$
+D_{ABC}
+=
+\frac1{16}\cdot\frac A6\cdot8\sqrt{\pi}\cdot\frac{\sqrt{\pi}}2.
+$$
+Their sum is
+$$
+D_0
+=
+\frac{5\pi A-2\sqrt{\pi}C^2}{72}.
+$$
+
+Step 4: Compute the first numerator correction
+
+Put
+$$
+E=\Gamma(2/3).
+$$
+The moments needed for the repeated-$A$ corrections are
+$$
+m_3=\frac E6,
+\qquad
+m_7=\frac C{18},
+\qquad
+m_8=\frac{\sqrt{\pi}}{12},
+\qquad
+m_9=\frac E9.
+$$
+
+Define
+$$
+\Delta=AE-\sqrt{\pi}C.
+$$
+Direct expansion gives
+$$
+J_7
+=
+\int\!\!\int
+(u-v)^2(u^7+v^7)e^{-u^6-v^6}\,du\,dv
+=
+\frac{\Delta}{27},
+$$
+and
+$$
+J_1
+=
+\int\!\!\int
+(u-v)^2(u+v)e^{-u^6-v^6}\,du\,dv
+=
+\frac{\Delta}{18}.
+$$
+
+For the $AAB$ cluster, the two $A$-weights contribute $6J_7$, while expansion of the two cross-well factors contributes $-4J_1$. These cancel:
+$$
+6J_7-4J_1=0.
+$$
+
+For the $AAC$ cluster the cross-well correction is $-2J_1$, so its first correction is
+$$
+\frac{\sqrt{\pi}}4
+\left(
+6J_7-2J_1
+\right)
+=
+\frac{\sqrt{\pi}\Delta}{36}.
+$$
+
+For the $ABC$ cluster, the two cross distances involving the $A$-variable contribute a relative factor
+$$
+1-6hu+O(h^2).
+$$
+Together with the local weight correction, the relative term is
+$$
+6h(u^7-u).
+$$
+Since
+$$
+m_7-m_1=-\frac C9,
+$$
+the $ABC$ correction is
+$$
+-\frac{\pi C}{6}.
+$$
+
+Hence the numerator in the Gram identity has expansion
+$$
+h^7
+\left(
+D_0+hD_1+O(h^2)
+\right),
+$$
+where
+$$
+D_1
+=
+\frac{\sqrt{\pi}AE-7\pi C}{36}.
+$$
+
+Step 5: Extract the coefficient of $N^{-1}$
+
+Using Step 2,
+$$
+Z_N^3
+=
+h^3a^3
+\left(
+1+3rh+O(h^2)
+\right).
+$$
+Combining this with Step 4 gives
+$$
+H_N
+=
+h^4
+\frac{
+D_0+h(D_1-3rD_0)+O(h^2)
+}{
+a^3
+}.
+$$
+Therefore
+$$
+N^4H_N
+=
+c_0+\frac{c_1}{N}+O(N^{-2}),
+$$
+where
+$$
+c_1
+=
+\frac{D_1-3rD_0}{a^3}.
+$$
+
+Substituting
+$$
+a=\frac A6,
+\qquad
+r=\frac{2C}{A},
+$$
+and the values of $D_0,D_1$ gives
+$$
+c_1
+=
+\frac{6\sqrt{\pi}E}{A^2}
+-
+\frac{132\pi C}{A^3}
++
+\frac{36\sqrt{\pi}C^3}{A^4}.
+$$
+
+Step 6: Evaluate the scale difference and simplify
+
+Replacing $N$ by $2N$ gives
+$$
+(2N)^4H_{2N}
+=
+c_0+\frac{c_1}{2N}+O(N^{-2}).
+$$
+Therefore
+$$
+N
+\left[
+N^4H_N-(2N)^4H_{2N}
+\right]
+=
+\frac{c_1}{2}+O(N^{-1}).
+$$
+
+The duplication identity
+$$
+\Gamma(1/6)\Gamma(2/3)
+=
+2^{2/3}\sqrt{\pi}\Gamma(1/3)
+$$
+reduces $c_1/2$ to
+$$
+\frac{
+3C
+\left[
+\pi(2^{2/3}-22)A
++
+6\sqrt{\pi}C^2
+\right]
+}{
+A^4
+}.
+$$
+
+Final Answer: $\boxed{\frac{3\Gamma(1/3)(\pi(2^{2/3}-22)\Gamma(1/6)+6\sqrt{\pi}\Gamma(1/3)^2)}{\Gamma(1/6)^4}}$
 
 ---
 
 ## Answer
 
-$\frac{3255\Gamma(\frac3{10})}{2^{64/5}\Gamma(\frac1{10})^2}$
+$\frac{3\Gamma(1/3)(\pi(2^{2/3}-22)\Gamma(1/6)+6\sqrt{\pi}\Gamma(1/3)^2)}{\Gamma(1/6)^4}$
 
 ---
 
@@ -269,7 +390,7 @@ $\frac{3255\Gamma(\frac3{10})}{2^{64/5}\Gamma(\frac1{10})^2}$
 ## Solution Concepts
 
 - Laplace asymptotics
-- mixed localization scales
+- unequal localization scales
 - Hankel moment determinants
-- cluster occupancy analysis
-- multiscale cancellation
+- competing occupancy patterns
+- gamma-function identities
