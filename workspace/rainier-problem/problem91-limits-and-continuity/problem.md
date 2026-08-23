@@ -8,11 +8,11 @@ M_{k,N}
 =
 \frac{\displaystyle\int_0^1 x^k
 \exp\!\left(
--N\left[x(1-x)\left(x-\frac13\right)^2\right]^2
+-N\left[(2x-1)^2(1-x)\right]^2
 \right)\,dx}
 {\displaystyle\int_0^1
 \exp\!\left(
--N\left[x(1-x)\left(x-\frac13\right)^2\right]^2
+-N\left[(2x-1)^2(1-x)\right]^2
 \right)\,dx}.
 $$
 
@@ -32,13 +32,9 @@ $$
 Determine the exact value of
 $$
 \lim_{N\to\infty}
-\sqrt N
+N^{1/4}
 \left[
-NH_N
--
-3(16N)H_{16N}
-+
-2(256N)H_{256N}
+N^{7/4}H_N-(16N)^{7/4}H_{16N}
 \right].
 $$
 
@@ -57,14 +53,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves an exact multiscale limit in which two successive terms of a fractional-power asymptotic expansion cancel,
+This problem involves an exact renormalized limit governed by the first correction to a fractional-power asymptotic expansion,
 which are part of Calculus and Limits and continuity.
 The problem also involves Laplace asymptotics near zeros of different multiplicities and a Hankel moment determinant,
 which are part of Calculus and Applications of integration.
-However, the local integral analysis determines the asymptotic sequence entering the limit, while the final requested object is one exact scalar limit.
+However, the local integral calculations determine the asymptotic sequence entering the requested limit, while the final requested object is one exact scalar limit.
 
 Specifically:
 
-- The endpoint zeros localize on the scale $N^{-1/2}$ while the interior double zero localizes on the scale $N^{-1/4}$.
-- The four-point determinant is first supported by a two-one-one occupancy pattern, and all competing occupancies enter later.
-- The three-scale combination removes both the leading term and the normalization correction, forcing a second-order cluster calculation.
+- The interior double zero and the endpoint simple zero localize on the different scales $N^{-1/4}$ and $N^{-1/2}$.
+- The leading four-point determinant contribution has a three-one occupancy, while the first correction comes from a two-two occupancy.
+- The apparent first correction of the leading cluster vanishes by parity, so the surviving term can only be found after the occupancy structure is identified.
