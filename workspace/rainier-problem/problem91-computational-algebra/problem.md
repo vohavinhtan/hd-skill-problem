@@ -15,9 +15,9 @@ A=
 B=
 \begin{pmatrix}
 -1&0&-4&-2\\
--1&1&-2&-1\\
+1&-2&0&1\\
 0&0&1&0\\
-0&0&0&1
+2&-3&2&3
 \end{pmatrix}.
 $$
 
@@ -32,7 +32,7 @@ S=
 \end{pmatrix}.
 $$
 
-For a polynomial $f\in\mathbb Q[x_1,x_2,x_3,x_4]$, define
+For $f\in\mathbb Q[x_1,x_2,x_3,x_4]$, define
 $$
 \Delta_Sf
 =
@@ -45,7 +45,7 @@ Let $\mathcal E$ be the $\mathbb Q$-vector space of polynomial maps
 $$
 F=(F_1,F_2,F_3,F_4):\mathbb Q^4\to\mathbb Q^4
 $$
-whose coordinate polynomials are homogeneous of total degree $29$ and satisfy
+whose coordinate polynomials are homogeneous of total degree $23$ and satisfy
 $$
 F(gx)=gF(x)
 $$
@@ -90,14 +90,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves a finite matrix-group representation, invariant polynomial spaces, and constrained polynomial covariants,
+This problem involves a finite matrix-group representation and dimensions of constrained polynomial covariants,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves Laplacians and divergence on homogeneous polynomial maps,
-which are part of Calculus and Differentiation.
-However, the differential operators are compatible with the finite-group action and are used to isolate representation-theoretic subspaces whose exact dimension is requested.
+The problem also involves invariant quadratic forms, harmonic decomposition, and equivariant differential operators,
+which are part of representation-theoretic computation and Calculus.
+However, the differential conditions are imposed on representation-theoretic spaces, and the requested object is the exact dimension of their simultaneous kernel.
 
 Specifically:
 
-- The displayed matrices hide the standard four-dimensional representation of a symmetric group and its invariant quadratic form.
-- Harmonic decomposition must be applied to both scalar invariants and vector covariants before either remaining constraint can be counted.
-- Divergence and tangency form two dependent surjective maps between harmonic invariant spaces, so their kernels cannot be obtained by subtracting the unconstrained ranks independently.
+- The generators hide the standard four-dimensional representation of $A_5$, so the polynomial invariant ring is no longer the free reflection-group invariant ring available for $S_5$.
+- Scalar and vector harmonic dimensions must first be extracted from two different Molien series.
+- Divergence must be removed before radial contraction becomes a map into harmonic invariants, making the last dimension count dependent on the preceding kernel calculation.
