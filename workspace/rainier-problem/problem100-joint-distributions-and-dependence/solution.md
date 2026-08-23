@@ -2,18 +2,47 @@
 
 Step 1: Rewrite the precision matrix as an innovation model
 
-Let $D_n=X_n-X_0$. Expanding the block quadratic form gives
+Let $D_n=X_n-X_0$. Start with the path energy
 $$
-x^{T}\Omega_{n,q}x=
+\sum_{k=1}^{n}(x_k-x_{k-1})^{T}B_q(x_k-x_{k-1}).
+$$
+Expanding it gives
+$$
+x_0^{T}B_qx_0+x_n^{T}B_qx_n+
+2\sum_{k=1}^{n-1}x_k^{T}B_qx_k-
+2\sum_{k=1}^{n}x_{k-1}^{T}B_qx_k.
+$$
+Its block precision therefore has $B_q$ at the two endpoints, $2B_q$ on the interior diagonal, and $-B_q$ on neighboring off-diagonal blocks. Adding $\frac{1}{n}x_0^{T}A_qx_0$ accounts for the remaining $\frac{1}{n}A_q$ in the $(0,0)$ block. Comparing with the given $\Omega_{n,q}$ leaves only
+$$
+\frac{1}{nq}E
+$$
+in the $(0,0)$ and $(n,n)$ blocks and
+$$
+-\frac{1}{nq}E
+$$
+in the $(0,n)$ and $(n,0)$ blocks. Let $g_n\in\mathbb{R}^{3(n+1)}$ have block $-e$ at index $0$, block $e$ at index $n$, and zero blocks elsewhere. Since $E=ee^{T}$,
+$$
+g_n^{T}x=e^{T}(x_n-x_0),
+$$
+and $g_ng_n^{T}$ has exactly those four remaining blocks. Hence the precision matrix is forced to split as
+$$
+\Omega_{n,q}=\Omega^{\mathrm{ref}}_{n,q}+\frac{1}{nq}g_ng_n^{T},
+$$
+where
+$$
+x^{T}\Omega^{\mathrm{ref}}_{n,q}x=
 \frac{1}{n}x_0^{T}A_qx_0+
-\sum_{k=1}^{n}(x_k-x_{k-1})^{T}B_q(x_k-x_{k-1})+
-\frac{1}{nq}\bigl(e^{T}(x_n-x_0)\bigr)^2.
+\sum_{k=1}^{n}(x_k-x_{k-1})^{T}B_q(x_k-x_{k-1}).
 $$
-Delete the last summand and call the resulting Gaussian law the reference law. If
+This defines the reference law directly from the path precision and the initial anchoring term. With
 $$
 \varepsilon_k=X_k-X_{k-1},
 $$
-then $X_0,\varepsilon_1,\ldots,\varepsilon_n$ are independent under the reference law, with
+the change of variables $(X_0,\varepsilon_1,\ldots,\varepsilon_n)\mapsto(X_0,\ldots,X_n)$ is triangular with determinant $1$, and the reference quadratic form becomes
+$$
+\frac{1}{n}X_0^{T}A_qX_0+\sum_{k=1}^{n}\varepsilon_k^{T}B_q\varepsilon_k.
+$$
+Therefore $X_0,\varepsilon_1,\ldots,\varepsilon_n$ are independent under the reference law, with
 $$
 \operatorname{Cov}(X_0)=nA_q^{-1},\qquad
 \operatorname{Cov}(\varepsilon_k)=B_q^{-1}.
@@ -32,7 +61,7 @@ $$
 A_q^{-1}=9qP+P_{\perp},\qquad
 B_q^{-1}=P+qP_{\perp}.
 $$
-The omitted precision term multiplies the reference density by
+The original Gaussian law is the normalized exponential tilt of the reference law by
 $$
 \exp\left(-\frac{(e^{T}D_n)^2}{2nq}\right).
 $$
@@ -337,7 +366,7 @@ $\frac{1}{2}\log\frac{2(q+4)(2q^2+10q+3)(162q^2+1522q+81)}{3(q+3)(164q^3+1978q^2
 
 **Problem Type:** Exact computation
 
-**Answer Type:** Exact scalar
+**Answer Type:** Exact symbolic expression
 
 ---
 
