@@ -30,26 +30,28 @@ C=
 0&0&1&0\\
 0&0&0&1
 \end{pmatrix},
-\qquad
-S=
-\begin{pmatrix}
-4&-7&7&6\\
--7&14&-12&-11\\
-7&-12&16&12\\
-6&-11&12&10
-\end{pmatrix}.
 $$
-
-Put
+and put
 $$
-R=\mathbb Q[x_1,x_2,x_3,x_4]^G,
-\qquad
-q=x^TSx.
+R=\mathbb Q[x_1,x_2,x_3,x_4]^G.
 $$
 
 Let $\tau:R\to R$ be the graded automorphism
 $$
 (\tau f)(x)=f(C^{-1}x).
+$$
+
+Define the linear form
+$$
+L(x)=-x_1+x_2-x_3-x_4,
+$$
+and for $k\in\{2,3,4,5\}$ put
+$$
+p_k(x)=\sum_{j=0}^4L(A^jx)^k.
+$$
+Set
+$$
+h=12p_2p_5-10p_3p_4-5p_2^2p_3.
 $$
 
 A derivation $\theta:R\to R$ is homogeneous of degree $m$ if
@@ -60,11 +62,14 @@ for every $d\geq0$.
 
 Let $\mathcal D$ be the $\mathbb Q$-vector space of homogeneous derivations $\theta:R\to R$ of degree $19$ satisfying
 $$
-\theta\circ\tau=-\tau\circ\theta
+\theta\circ\tau=-\tau\circ\theta,
+$$
+$$
+\theta(p_2)=0,
 $$
 and
 $$
-\theta(q)=0.
+\theta(h)=0.
 $$
 
 Determine the exact value of
@@ -87,14 +92,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves an invariant ring of a finite matrix group and graded derivations with a prescribed involution parity,
+This problem involves an invariant ring of a finite matrix group and graded derivations with prescribed involution parity,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves alternating invariants, a quadratic hypersurface extension, and weighted derivation modules,
+The problem also involves alternating invariants, Newton identities, and a graded syzygy module,
 which are part of invariant-theoretic algebra.
-However, those structures are used to determine one exact graded dimension.
+However, these structures are used to determine one exact dimension for the constrained derivation space.
 
 Specifically:
 
-- The matrices first have to be recognized as the standard representation of the alternating and symmetric groups on five letters.
-- The involution splits the alternating-group invariant ring into symmetric and Vandermonde parts, and an odd derivation must be reconstructed from its restriction to the symmetric subring.
-- The condition $\theta(q)=0$ removes one weighted derivation generator only after that reconstruction has been established.
+- The orbit sums in the statement conceal the power-sum invariants of a five-letter permutation action.
+- Odd derivations of the alternating-group invariant ring must first be reconstructed from derivations of its symmetric subring.
+- The second annihilation condition becomes a nontrivial homogeneous syzygy whose parameterization has its own relation.
