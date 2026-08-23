@@ -50,7 +50,7 @@ $$
 | **Domain** | Probability and Statistics |
 | **Sub-domain** | Joint distributions and dependence |
 | **Problem Type** | Exact computation |
-| **Answer Type** | Exact scalar |
+| **Answer Type** | Exact symbolic expression |
 
 ---
 
