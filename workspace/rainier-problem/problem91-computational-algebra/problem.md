@@ -21,6 +21,17 @@ B=
 \end{pmatrix}.
 $$
 
+Let
+$$
+S=
+\begin{pmatrix}
+4&-7&7&6\\
+-7&14&-12&-11\\
+7&-12&16&12\\
+6&-11&12&10
+\end{pmatrix}.
+$$
+
 Let $\mathcal E$ be the $\mathbb Q$-vector space of polynomial maps
 $$
 F=(F_1,F_2,F_3,F_4):\mathbb Q^4\to\mathbb Q^4
@@ -30,6 +41,10 @@ $$
 F(gx)=gF(x)
 $$
 for every $g\in G$ and $x\in\mathbb Q^4$, together with
+$$
+x^TSF(x)=0
+$$
+and
 $$
 \frac{\partial F_1}{\partial x_1}
 +
@@ -62,14 +77,14 @@ $$
 
 ## Domain Explanation
 
-This problem involves identifying a finite matrix group and computing a constrained space of polynomial covariants,
+This problem involves a finite matrix-group representation and dimensions of constrained polynomial covariants,
 which are part of Abstract Algebra and Computational algebra.
-The problem also involves character generating functions, symmetric-group invariants, and an equivariant differential map,
+The problem also involves invariant rings, harmonic decomposition, and equivariant differential operators,
 which are part of representation-theoretic and invariant-theoretic computation.
-However, those structures are used to determine one exact dimension for the polynomial space defined in the statement.
+However, these structures are used to determine one exact dimension for the polynomial space defined in the statement.
 
 Specifically:
 
-- The displayed matrices hide the standard four-dimensional representation of a symmetric group.
-- The equivariance condition first becomes a character-multiplicity calculation, while the divergence condition produces a second dependent dimension calculation.
-- Surjectivity of the divergence map must be established before the two dimensions can be subtracted.
+- The displayed matrices hide the standard four-dimensional representation of a symmetric group and a preserved quadratic form.
+- The tangency condition requires a quotient of the covariant space by degree-thirty invariants before the divergence condition can be analyzed.
+- The divergence map on tangent covariants has a one-dimensional obstruction detected both by harmonic decomposition and by a Gaussian integral.

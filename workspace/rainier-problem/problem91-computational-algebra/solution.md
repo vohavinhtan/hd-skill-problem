@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Identify the group and its representation
+Step 1: Identify the group and the preserved quadratic form
 
 Set
 $$
@@ -12,7 +12,7 @@ P=
 -1&2&-2&-2
 \end{pmatrix}.
 $$
-Its determinant is $1$. Matrix multiplication gives
+Its determinant is $1$, and multiplication gives
 $$
 PAP^{-1}
 =
@@ -21,10 +21,8 @@ PAP^{-1}
 1&0&0&0\\
 0&1&0&0\\
 0&0&1&0
-\end{pmatrix}
-=:A_0
+\end{pmatrix},
 $$
-and
 $$
 PBP^{-1}
 =
@@ -33,262 +31,266 @@ PBP^{-1}
 1&0&0&0\\
 0&0&1&0\\
 0&0&0&1
-\end{pmatrix}
-=:B_0.
+\end{pmatrix}.
 $$
 
-Let
+On
 $$
 V=
 \left\{
 (z_1,\ldots,z_5)\in\mathbb Q^5:
 z_1+\cdots+z_5=0
-\right\}
+\right\},
 $$
-with basis
+with basis $e_i-e_5$, these are the matrices of $(1\,2\,3\,4\,5)$ and $(1\,2)$. Their conjugates contain all adjacent transpositions, so
 $$
-v_i=e_i-e_5,
-\qquad
-1\leq i\leq4.
+G\cong S_5.
 $$
-In this basis, $A_0$ is the matrix of
-$$
-a=(1\,2\,3\,4\,5),
-$$
-while $B_0$ is the matrix of
-$$
-b=(1\,2).
-$$
-The conjugates $a^kba^{-k}$ contain
-$$
-(1\,2),\qquad(2\,3),\qquad(3\,4),\qquad(4\,5),
-$$
-which generate $S_5$. Thus
-$$
-G\cong S_5,
-$$
-and the given four-dimensional representation is the standard representation $V$ obtained from the five-letter permutation representation by removing its trivial summand.
 
-Step 2: Compute the dimension before imposing divergence
-
-Let $\mathcal C_{29}$ be the space of all degree-$29$ equivariant polynomial maps without the divergence condition. A degree-$29$ polynomial map $V\to V$ is an element of
+The Gram matrix of this basis is $I+J$, where $J$ is the all-ones matrix. Direct multiplication gives
 $$
-V\otimes\operatorname{Sym}^{29}(V^*).
+P^T(I+J)P=S.
 $$
 Therefore
 $$
-\dim\mathcal C_{29}
-=
-\dim
-\left(
-V\otimes\operatorname{Sym}^{29}(V^*)
-\right)^{S_5}.
+g^TSg=S
+$$
+for every $g\in G$. Put
+$$
+\rho(x)=x^TSx.
 $$
 
-The standard representation is self-dual. If $\chi$ denotes its character, its covariant Molien series is
+Step 2: Compute the degree-$29$ covariant dimension
+
+Let $\mathcal C_{29}$ be the space of all degree-$29$ equivariant polynomial maps. Since the standard representation is self-dual,
 $$
-C(t)
+\dim\mathcal C_{29}
 =
+[t^{29}]
 \frac1{120}
 \sum_{g\in S_5}
 \frac{\chi(g)}{\det(I-tg)}.
 $$
 
-For an element of cycle type $\lambda$, the standard character is
-$$
-\chi(g)=\#\{\text{fixed letters of }g\}-1.
-$$
-The class data are
+The classes with nonzero standard character give
 $$
 \begin{array}{c|c|c|c}
-\lambda&|K_\lambda|&\chi(g)&\det(I-tg)\\ \hline
+\text{cycle type}&\text{size}&\chi&\det(I-tg)\\ \hline
 1^5&1&4&(1-t)^4\\
 2\,1^3&10&2&(1-t)^2(1-t^2)\\
-2^2\,1&15&0&(1-t^2)^2\\
 3\,1^2&20&1&(1-t)(1-t^3)\\
 3\,2&20&-1&(1+t)(1-t^3)\\
-4\,1&30&0&1-t^4\\
 5&24&-1&\dfrac{1-t^5}{1-t}
 \end{array}.
 $$
 
-Step 3: Extract the degree-$29$ covariant multiplicity
-
-For the identity class,
+The degree-$29$ coefficients of the reciprocal determinants are
 $$
-[t^{29}]\frac1{(1-t)^4}
-=
-\binom{32}{3}
-=
-4960.
+4960,\qquad240,\qquad10,\qquad0,\qquad0.
 $$
-
-For a transposition,
+For example,
 $$
-\frac1{(1-t)^2(1-t^2)}
-=
-\sum_{j\geq0}\frac{t^{2j}}{(1-t)^2}.
-$$
-Hence
-$$
-[t^{29}]
-\frac1{(1-t)^2(1-t^2)}
+[t^{29}]\frac1{(1-t)^2(1-t^2)}
 =
 \sum_{j=0}^{14}(30-2j)
 =
-240.
+240,
 $$
-
-For a $3$-cycle,
+while
 $$
-[t^{29}]
-\frac1{(1-t)(1-t^3)}
+[t^{29}]\frac1{(1-t)(1-t^3)}
 =
-10,
+10.
 $$
-because $29=a+3b$ has one nonnegative solution for each $b=0,\ldots,9$.
-
-For cycle type $3\,2$,
-$$
-\frac1{(1+t)(1-t^3)}
-=
-\sum_{j\geq0}\sum_{r\geq0}(-1)^rt^{3j+r}.
-$$
-The coefficient of $t^{29}$ is
-$$
-\sum_{j=0}^{9}(-1)^{29-3j}
-=
-0.
-$$
-
-For a $5$-cycle,
-$$
-\frac1{\det(I-tg)}
-=
-\frac{1-t}{1-t^5}.
-$$
-Its nonzero degrees are congruent to $0$ or $1$ modulo $5$, so its degree-$29$ coefficient is $0$.
-
-The two classes with character $0$ make no contribution. Therefore
+Hence
 $$
 \dim\mathcal C_{29}
 =
-\frac{
-4\cdot4960
-+
-10\cdot2\cdot240
-+
-20\cdot10
-}{120}
+\frac{4\cdot4960+20\cdot240+20\cdot10}{120}
 =
 207.
 $$
 
-Step 4: Compute the invariant space reached by divergence
+Step 3: Count the invariant polynomials needed by the two constraints
 
-Let $\mathcal I_{28}$ denote the invariant homogeneous polynomials of degree $28$ on $V$.
-
-The five-letter permutation representation has coordinates $z_1,\ldots,z_5$, and its invariant ring is
+The invariant ring of the five-letter permutation representation is
 $$
-\mathbb Q[e_1,e_2,e_3,e_4,e_5],
+\mathbb Q[e_1,e_2,e_3,e_4,e_5].
 $$
-where $e_j$ are the elementary symmetric polynomials. On the standard representation $V$,
-$$
-e_1=z_1+\cdots+z_5=0.
-$$
-Thus
+On $V$ we have $e_1=0$, so
 $$
 \mathbb Q[V]^{S_5}
 =
-\mathbb Q[e_2,e_3,e_4,e_5],
+\mathbb Q[e_2,e_3,e_4,e_5].
 $$
-with generator degrees $2,3,4,5$.
-
-Consequently
+Its Hilbert series is
 $$
-\dim\mathcal I_{28}
-=
-[t^{28}]
 \frac1{(1-t^2)(1-t^3)(1-t^4)(1-t^5)}.
 $$
-This coefficient counts the nonnegative solutions of
-$$
-2a+3b+4c+5d=28.
-$$
-Fixing $d=0,1,\ldots,5$, the numbers of solutions of
-$$
-2a+3b+4c=28-5d
-$$
-are
-$$
-24,\qquad14,\qquad12,\qquad5,\qquad4,\qquad1.
-$$
-Their sum is
-$$
-\dim\mathcal I_{28}=60.
-$$
 
-Step 5: Prove that divergence maps onto the invariant space
-
-For $F\in\mathcal C_{29}$, differentiating
+Let $b_m$ be the dimension of the degree-$m$ invariant subspace. It counts solutions of
 $$
-F(gx)=gF(x)
+2a+3b+4c+5d=m.
 $$
-gives
+Fixing $d$ gives
 $$
-DF(gx)=g\,DF(x)\,g^{-1}.
-$$
-Taking traces shows
-$$
-\operatorname{div}F(gx)=\operatorname{div}F(x).
-$$
-Thus divergence defines a linear map
-$$
-\operatorname{div}:\mathcal C_{29}\to\mathcal I_{28}.
-$$
-
-This map is onto. Given $p\in\mathcal I_{28}$, define
-$$
-F_p(x)=\frac1{32}p(x)x.
-$$
-Since $p$ is invariant,
-$$
-F_p(gx)=gF_p(x),
-$$
-so $F_p\in\mathcal C_{29}$. Euler's identity for the degree-$28$ polynomial $p$ gives
-$$
-\sum_{i=1}^4x_i\frac{\partial p}{\partial x_i}=28p.
+\begin{array}{c|c|c}
+m&\text{counts for successive }d&b_m\\ \hline
+28&24,14,12,5,4,1&60\\
+30&27,16,14,7,5,1,1&71
+\end{array}.
 $$
 Therefore
 $$
-\operatorname{div}(p(x)x)
-=
-4p+
-\sum_{i=1}^4x_i\frac{\partial p}{\partial x_i}
-=
-32p,
-$$
-and
-$$
-\operatorname{div}F_p=p.
+b_{28}=60,
+\qquad
+b_{30}=71.
 $$
 
-The space $\mathcal E$ in the problem is the kernel of this surjective map. Rank-nullity and Steps 3-4 give
+Step 4: Impose the tangency condition
+
+Define
+$$
+C(F)=x^TSF(x).
+$$
+Because $g^TSg=S$ and $F(gx)=gF(x)$, the polynomial $C(F)$ is invariant. Thus
+$$
+C:\mathcal C_{29}\to\mathbb Q[V]^{S_5}_{30}.
+$$
+
+This map is onto. For an invariant polynomial $p$ of degree $30$, set
+$$
+\nabla_Sp=S^{-1}\nabla p.
+$$
+The invariance of $p$ and of $S$ makes $\nabla_Sp$ equivariant. Euler's identity gives
+$$
+x^TS\nabla_Sp
+=
+x^T\nabla p
+=
+30p.
+$$
+Therefore $C((1/30)\nabla_Sp)=p$.
+
+Let
+$$
+\mathcal T_{29}=\ker C.
+$$
+Using Steps 2 and 3,
+$$
+\dim\mathcal T_{29}
+=
+207-71
+=
+136.
+$$
+
+Step 5: Determine the rank of divergence on tangent covariants
+
+Define
+$$
+\Delta_Sp
+=
+\operatorname{tr}\left(S^{-1}\operatorname{Hess}p\right).
+$$
+Both $\rho$ and $\Delta_S$ commute with the $S_5$-action.
+
+For an invariant homogeneous polynomial $q$ of degree $28$, set
+$$
+F_q=\rho\nabla_Sq-28qx.
+$$
+Euler's identity gives
+$$
+x^TSF_q
+=
+28\rho q-28\rho q
+=
+0,
+$$
+so $F_q\in\mathcal T_{29}$.
+
+Its divergence is
+$$
+\operatorname{div}F_q
+=
+\rho\Delta_Sq-840q.
+$$
+
+Every homogeneous polynomial of degree $28$ has a unique Fischer decomposition
+$$
+q=\sum_{j=0}^{14}\rho^jh_{28-2j},
+$$
+where $\Delta_Sh_{\ell}=0$. This follows recursively from
+$$
+\Delta_S(\rho^jh_\ell)
+=
+4j(\ell+j+1)\rho^{j-1}h_\ell.
+$$
+Since $\rho$ and $\Delta_S$ commute with $G$, an invariant $q$ decomposes into invariant harmonic terms.
+
+For
+$$
+q=\rho^jh_\ell,
+\qquad
+\ell+2j=28,
+$$
+we obtain
+$$
+\rho\Delta_Sq-840q
+=
+-\ell(\ell+2)q.
+$$
+This vanishes exactly for $\ell=0$. The kernel on the $60$-dimensional invariant space is therefore
+$$
+\mathbb Q\rho^{14}.
+$$
+Hence divergences of the fields $F_q$ already span a $59$-dimensional subspace.
+
+To see that the rank cannot exceed $59$, let $F\in\mathcal T_{29}$. Integration by parts against $e^{-\rho/2}$ gives
+$$
+\int_{\mathbb R^4}
+(\operatorname{div}F)e^{-\rho/2}\,dx
+=
+\int_{\mathbb R^4}
+x^TSF\,e^{-\rho/2}\,dx
+=
+0.
+$$
+In the Fischer decomposition, every positive-degree harmonic component has zero spherical average, whereas $\rho^{14}$ has nonzero Gaussian integral. Thus this condition removes exactly the radial line $\mathbb Q\rho^{14}$.
+
+Therefore
+$$
+\operatorname{rank}
+\left(
+\operatorname{div}:\mathcal T_{29}\to
+\mathbb Q[V]^{S_5}_{28}
+\right)
+=
+59.
+$$
+
+Step 6: Compute the simultaneous kernel
+
+The space in the problem consists exactly of the tangent equivariant fields whose divergence vanishes. Step 4 gives
+$$
+\dim\mathcal T_{29}=136,
+$$
+and Step 5 gives divergence rank $59$. Rank-nullity yields
 $$
 \dim_{\mathbb Q}\mathcal E
 =
-207-60
+136-59
 =
-147.
+77.
 $$
 
-Final Answer: $\boxed{147}$
+Final Answer: $\boxed{77}$
 
 ---
 
 ## Answer
 
-$147$
+$77$
 
 ---
 
@@ -303,7 +305,7 @@ $147$
 ## Solution Concepts
 
 - finite matrix groups
-- standard representations
 - Molien series
-- symmetric polynomial invariants
-- equivariant divergence
+- invariant polynomial rings
+- Fischer decomposition
+- equivariant differential operators
