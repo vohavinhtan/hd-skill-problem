@@ -45,7 +45,7 @@ N^4\phi(x)^2
 =
 u^4-8h^2u^6+O(h^4).
 $$
-Therefore
+The weight is
 $$
 e^{-N^4\phi(x)^2}
 =
@@ -86,8 +86,7 @@ h^2B+O(h^4),
 \qquad
 B=\frac{\sqrt\pi}{2}.
 $$
-
-Hence
+This gives
 $$
 Z_N
 =
@@ -104,7 +103,7 @@ $$
 r=\frac{A_2}{A}=\frac{6\sqrt2\pi}{G^2}.
 $$
 
-Step 3: Find the unique occupancy contributing through relative order $h^2$
+Step 3: Find the occupancy contributing through relative order $h^2$
 
 Take two variables near $\frac12$, one near $0$, and one near $1$:
 $$
@@ -116,7 +115,7 @@ x_3=h^2s,
 \qquad
 x_4=1-h^2t.
 $$
-The four Jacobians contribute $h^6$, and the squared difference between the two central variables contributes $h^2$. All other pairwise distances have nonzero limits. Thus this occupancy contributes at order $h^8$ to the numerator.
+The four Jacobians contribute $h^6$, and the squared difference between the two central variables contributes $h^2$. All other pairwise distances have nonzero limits. This occupancy contributes at order $h^8$ to the numerator.
 
 Every other occupancy starts at order $h^{11}$ or later, so none affects the expansion through $h^{10}$.
 
@@ -158,7 +157,7 @@ $$
 =
 \frac1{256}
 $$
-at leading order. Therefore the $h^8$ numerator coefficient is
+at leading order. The $h^8$ numerator coefficient is
 $$
 D_0
 =
@@ -188,14 +187,14 @@ while the endpoint weights contribute
 $$
 1+10h^2(s^3+t^3)+O(h^4).
 $$
-Thus the relative $h^2$ correction is
+The relative $h^2$ correction is
 $$
 8(u^6+v^6-u^2-v^2)
 +
 10(s^3-s+t^3-t).
 $$
 
-The endpoint part vanishes after integration because
+The endpoint part integrates to zero because
 $$
 \int_0^\infty(s^3-s)e^{-s^2}\,ds=0.
 $$
@@ -209,23 +208,19 @@ K
 (u^6+v^6-u^2-v^2)
 e^{-u^4-v^4}\,du\,dv.
 $$
-Expanding the polynomial gives
+Expanding the polynomial and using the moments from Step 3 gives
 $$
 K
 =
 16
 \left(
 m_0m_8+m_2m_6-m_0m_4-m_2^2
-\right).
-$$
-Substituting the moments from Step 3,
-$$
-K
+\right)
 =
 \frac{G^4-8\pi^2}{4G^2}.
 $$
 
-Therefore the $h^{10}$ numerator coefficient is
+The $h^{10}$ numerator coefficient is
 $$
 D_2
 =
@@ -233,8 +228,7 @@ D_2
 =
 \frac{\pi(G^4-8\pi^2)}{8192G^2}.
 $$
-
-The numerator in Step 1 is consequently
+The numerator in the Gram identity from Step 1 is
 $$
 h^8
 \left(
@@ -271,7 +265,7 @@ D_2+(10b^2-4r)D_0
 }{A^4}.
 $$
 
-Using
+Substituting
 $$
 A=\frac G2,
 \qquad
@@ -279,7 +273,7 @@ b=\frac{2\sqrt\pi}{G},
 \qquad
 r=\frac{6\sqrt2\pi}{G^2},
 $$
-together with $D_0,D_2$ from Steps 3 and 4, we obtain
+and the values of $D_0,D_2$ from Steps 3 and 4 gives
 $$
 c_2
 =
@@ -291,7 +285,6 @@ G^4+(80\sqrt2-104)\pi^2
 512G^6
 }.
 $$
-
 Thus
 $$
 N^4H_N
@@ -301,7 +294,7 @@ $$
 
 Step 6: Apply the three-scale annihilation
 
-Replacing $N$ by $2N$ and $4N$ gives
+Replacing $N$ by $2N$ and $4N$ in Step 5 gives
 $$
 (2N)^4H_{2N}
 =
