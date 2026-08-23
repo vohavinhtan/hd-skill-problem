@@ -1,247 +1,291 @@
-```markdown id="f6f8jp"
 ## Steps
 
-Step 1: Identify the limiting lattice sum
+Step 1: Convert the alternating binomial sum to a beta integral
 
-Define
+For $a>0$,
 $$
-F(a)=
-\sum_{k\in\mathbb Z}
-\frac{1}{(k-a)^2+1}.
-$$
-For
-$$
-f(x)=\frac1{x^2+1},
-$$
-its Fourier transform in the convention
-$$
-\widehat f(j)=
-\int_{\mathbb R}f(x)e^{-2\pi ijx}\,dx
-$$
-is
-$$
-\widehat f(j)=\pi e^{-2\pi|j|}.
-$$
-Applying the Fourier expansion of the periodization of $f$ gives
-$$
-F(a)
+\frac1{k+an}
 =
-\pi
-\left[
-1+2\sum_{j\geq1}e^{-2\pi j}\cos(2\pi ja)
-\right].
-$$
-Writing $q=e^{-2\pi}$ and summing the geometric series,
-$$
-1+2\sum_{j\geq1}q^j\cos(j\theta)
-=
-\frac{1-q^2}{1-2q\cos\theta+q^2}.
+\int_0^1x^{k+an-1}\,dx.
 $$
 Therefore
 $$
-F(a)=
-\frac{\pi\sinh(2\pi)}
-{\cosh(2\pi)-\cos(2\pi a)}.
+B_n(a)
+=
+\int_0^1x^{an-1}
+\sum_{k=0}^n(-1)^k\binom nkx^k\,dx.
+$$
+The binomial theorem gives
+$$
+B_n(a)
+=
+\int_0^1x^{an-1}(1-x)^n\,dx.
+$$
+Consequently
+$$
+B_n(a)
+=
+\frac{\Gamma(an)\Gamma(n+1)}
+{\Gamma((a+1)n+1)}.
 $$
 
-At
+Set
 $$
-a_0=\frac13,
+u=n(1-a),
 $$
-we have
+so that
 $$
-\cos(2\pi a_0)=-\frac12,
-$$
-and consequently
-$$
-F(a_0)=\frac{\pi S}{H}.
-$$
-Thus $a_m\to a_0$ once the finite sums are shown to converge uniformly near $a_0$.
-
-Step 2: Compute the derivatives governing the implicit displacement
-
-Put
-$$
-D(a)=\cosh(2\pi)-\cos(2\pi a).
+a=1-\frac un.
 $$
 Then
 $$
-F(a)=\frac{\pi S}{D(a)}.
+2-a=1+\frac un.
 $$
-Since
+Taking logarithms of
 $$
-D'(a)=2\pi\sin(2\pi a),
+\frac{B_n(a)B_n(2-a)}{B_n(1)^2}
 $$
-we obtain
+gives
 $$
-F'(a)=
--\frac{2\pi^2S\sin(2\pi a)}{D(a)^2}.
+E_n(u)=
+\log\Gamma(n+u)+\log\Gamma(n-u)-2\log\Gamma(n)
 $$
-At $a_0=1/3$,
 $$
-D(a_0)=H,
 \qquad
-\sin(2\pi a_0)=\frac{\sqrt3}{2},
+-\log\Gamma(2n+1+u)-\log\Gamma(2n+1-u)
++2\log\Gamma(2n+1).
 $$
-so
+The defining equation for $a_n(c)$ is therefore
 $$
-F'(a_0)=
--\frac{\pi^2\sqrt3\,S}{H^2}.
-$$
-
-Differentiating once more,
-$$
-F''(a)
-=
--\frac{4\pi^3S\cos(2\pi a)}{D(a)^2}
-+
-\frac{8\pi^3S\sin^2(2\pi a)}{D(a)^3}.
-$$
-Hence
-$$
-F''(a_0)
-=
-\frac{2\pi^3S}{H^2}
-+
-\frac{6\pi^3S}{H^3}
-=
-\frac{2\pi^3S(H+3)}{H^3}.
+E_n(u_n)=\frac{c}{2n},
+\qquad
+u_n=n(1-a_n(c)).
 $$
 
-Since $F'(a)<0$ on the compact interval
-$$
-\left[\frac14,\frac5{12}\right],
-$$
-and the differentiated tails converge uniformly there, $F_m'(a)<0$ throughout that interval for large $m$. Uniform convergence of $F_m$ to $F$ then gives the stated unique solution near $a_0$.
+Step 2: Prove the relevant root is unique
 
-Step 3: Expand the omitted symmetric tail
+Let $\psi$ be the logarithmic derivative of $\Gamma$, and let $\psi_1=\psi'$.
 
-Let
+For $0<u<n$,
 $$
-T_m(a)=F(a)-F_m(a).
-$$
-For $a$ in a fixed compact subset of $(0,\frac12)$,
-$$
-T_m(a)
+E_n'(u)
 =
-\sum_{k=m+1}^{\infty}
-\left[
-\frac1{(k-a)^2+1}
-+
-\frac1{(k+a)^2+1}
-\right].
+\psi(n+u)-\psi(n-u)
+-\psi(2n+1+u)+\psi(2n+1-u).
 $$
-Expanding the paired summand for large $k$,
+Writing the differences as integrals,
 $$
-\frac1{(k-a)^2+1}
-+
-\frac1{(k+a)^2+1}
+E_n'(u)
 =
-\frac2{k^2}+O(k^{-4}),
+\int_{n-u}^{n+u}\psi_1(t)\,dt
+-
+\int_{2n+1-u}^{2n+1+u}\psi_1(t)\,dt.
 $$
-uniformly in $a$ on that compact set.
-
+The trigamma function has the positive series
+$$
+\psi_1(t)=\sum_{j=0}^\infty\frac1{(t+j)^2},
+$$
+so it is strictly decreasing for $t>0$. The first interval lies strictly to the left of the second and both have length $2u$. Therefore
+$$
+E_n'(u)>0.
+$$
 Also
 $$
-\sum_{k=m+1}^{\infty}\frac1{k^2}
+E_n(0)=0.
+$$
+
+For fixed bounded $u$, the expansion derived below gives
+$$
+nE_n(u)\to\frac{u^2}{2}.
+$$
+In particular,
+$$
+nE_n(1)\to\frac12>\frac c2.
+$$
+Since $c\in(0,1)$, for sufficiently large $n$ the equation
+$$
+E_n(u)=\frac{c}{2n}
+$$
+has exactly one solution in $(0,1)$. This corresponds to exactly one
+$$
+a=1-\frac un\in\left(\frac12,1\right).
+$$
+
+Step 3: Expand the symmetric gamma ratio
+
+For
+$$
+g(x)=\log\Gamma(x),
+$$
+Taylor expansion at fixed bounded $u$ gives
+$$
+g(x+u)+g(x-u)-2g(x)
 =
-\frac1m-\frac1{2m^2}+O(m^{-3}).
+u^2\psi_1(x)
++\frac{u^4}{12}\psi_3(x)
++O(x^{-5}),
+$$
+where $\psi_3$ is the third polygamma function.
+
+The large-$x$ expansions needed are
+$$
+\psi_1(x)
+=
+\frac1x+\frac1{2x^2}+\frac1{6x^3}
++O(x^{-4})
+$$
+and
+$$
+\psi_3(x)
+=
+\frac2{x^3}+O(x^{-4}).
+$$
+At $x=2n+1$,
+$$
+\psi_1(2n+1)
+=
+\frac1{2n}
+-\frac1{8n^2}
++\frac1{48n^3}
++O(n^{-4}).
 $$
 Therefore
 $$
-T_m(a)
+\psi_1(n)-\psi_1(2n+1)
 =
-\frac2m-\frac1{m^2}+O(m^{-3})
+\frac1{2n}
++\frac5{8n^2}
++\frac7{48n^3}
++O(n^{-4}).
 $$
-uniformly near $a_0$.
-
-The absence of an $a$-dependent term through order $m^{-2}$ is caused by the symmetric pairing of the positive and negative tails.
-
-Step 4: Solve the implicit equation through second order
-
-Write
+Similarly,
 $$
-\delta_m=a_m-a_0.
-$$
-The defining equation is
-$$
-F(a_m)-T_m(a_m)=F(a_0).
-$$
-Since $F'(a_0)\neq0$ and $T_m=O(m^{-1})$,
-$$
-\delta_m=O(m^{-1}).
-$$
-Taylor expansion gives
-$$
-F'(a_0)\delta_m
-+\frac12F''(a_0)\delta_m^2
--\frac2m+\frac1{m^2}
+\psi_3(n)-\psi_3(2n+1)
 =
-O(m^{-3}).
+\frac7{4n^3}+O(n^{-4}).
+$$
+
+Substitution into the expression for $E_n$ yields, uniformly for bounded $u$,
+$$
+E_n(u)
+=
+\frac{u^2}{2n}
++\frac{5u^2}{8n^2}
++\frac{7(u^2+u^4)}{48n^3}
++O(n^{-4}).
+$$
+
+Step 4: Resolve the implicit root through two correction orders
+
+Put
+$$
+r=\sqrt c.
+$$
+Since
+$$
+nE_n(u_n)=\frac c2
+$$
+and
+$$
+nE_n(u)\to\frac{u^2}{2}
+$$
+locally uniformly, uniqueness from Step 2 gives
+$$
+u_n\to r.
 $$
 
 Seek
 $$
-\delta_m=
-\frac{d_1}{m}
-+\frac{d_2}{m^2}
-+O(m^{-3}).
+u_n
+=
+r+\frac{p}{n}+\frac{q}{n^2}+o(n^{-2}).
 $$
-At order $m^{-1}$,
+Then
 $$
-F'(a_0)d_1=2,
+u_n^2
+=
+c+\frac{2rp}{n}
++\frac{p^2+2rq}{n^2}
++o(n^{-2}).
 $$
-hence
+Using the expansion from Step 3 in
 $$
-d_1=
--\frac{2H^2}{\pi^2\sqrt3\,S}.
+E_n(u_n)=\frac{c}{2n},
+$$
+the coefficient of $n^{-2}$ is
+$$
+rp+\frac{5c}{8}.
+$$
+It must vanish, so
+$$
+p=-\frac{5r}{8}.
 $$
 
-At order $m^{-2}$,
+At order $n^{-3}$ the coefficient is
 $$
-F'(a_0)d_2
-+\frac12F''(a_0)d_1^2
-+1=0.
+\frac{p^2+2rq}{2}
++\frac{5rp}{4}
++\frac{7(c+c^2)}{48}.
 $$
-Now
+Substituting
 $$
-\frac12F''(a_0)d_1^2
-=
-\frac{4H(H+3)}{3\pi S}.
+p=-\frac{5r}{8}
+$$
+gives
+$$
+rq-\frac{169c}{384}+\frac{7c^2}{48}=0.
 $$
 Therefore
 $$
-d_2=
-\frac{H^2}{\pi^2\sqrt3\,S}
-\left(
-1+\frac{4H(H+3)}{3\pi S}
-\right).
+q=
+\frac{\sqrt c(169-56c)}{384}.
 $$
-
-Step 5: Evaluate the normalized root displacement
-
-From Step 4,
+Hence
 $$
-a_m-\frac13
+u_n
 =
--\frac{2H^2}{\pi^2\sqrt3\,S}\frac1m
+\sqrt c
+-\frac{5\sqrt c}{8n}
 +
-\frac{H^2}{\pi^2\sqrt3\,S}
-\left(
-1+\frac{4H(H+3)}{3\pi S}
-\right)\frac1{m^2}
-+
-O(m^{-3}).
+\frac{\sqrt c(169-56c)}{384n^2}
++o(n^{-2}).
 $$
-Thus the subtraction appearing in the problem removes the first displacement, and multiplication by $m^2$ leaves the second coefficient.
 
-Final Answer: $\boxed{\frac{H^2}{\pi^2\sqrt3S}\left(1+\frac{4H(H+3)}{3\pi S}\right)}$
+Step 5: Return to $a_n(c)$ and evaluate the limiting function
+
+Since
+$$
+a_n(c)=1-\frac{u_n}{n},
+$$
+Step 4 gives
+$$
+a_n(c)
+=
+1-\frac{\sqrt c}{n}
++\frac{5\sqrt c}{8n^2}
++
+\frac{\sqrt c(56c-169)}{384n^3}
++o(n^{-3}).
+$$
+Therefore
+$$
+n^3
+\left[
+a_n(c)-1
++\frac{\sqrt c}{n}
+-\frac{5\sqrt c}{8n^2}
+\right]
+\to
+\frac{\sqrt c(56c-169)}{384}.
+$$
+
+Final Answer: $\boxed{c\mapsto\frac{\sqrt c(56c-169)}{384}}$
 
 ---
 
 ## Answer
 
-$\frac{H^2}{\pi^2\sqrt3S}\left(1+\frac{4H(H+3)}{3\pi S}\right)$
+$c\mapsto\frac{\sqrt c(56c-169)}{384}$
 
 ---
 
@@ -251,16 +295,16 @@ $\frac{H^2}{\pi^2\sqrt3S}\left(1+\frac{4H(H+3)}{3\pi S}\right)$
 
 **Sub-domain:** Limits and continuity
 
-**Problem Type:** Exact computation
+**Problem Type:** Symbolic derivation
 
-**Answer Type:** Exact scalar
+**Answer Type:** Function or mapping
 
 ---
 
 ## Solution Concepts
 
-- periodized lattice sums
-- Fourier transformation
-- symmetric tail expansion
+- beta integral representation
+- symmetric gamma ratios
+- polygamma expansions
 - implicit root asymptotics
-- second-order limits
+- parameterized limits
