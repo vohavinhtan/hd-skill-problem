@@ -2,31 +2,22 @@
 
 ## LaTeX (Normalized)
 
-For real parameters $\mu,\nu$, put
+For $0<\varepsilon\ll1$ and real $\lambda$, consider
 $$
-A=(x^2+y^2)^2,
+\varepsilon\dot x=y-\frac{x^3}{3}+x,
 \qquad
-B=1-2x^2+2y^2+(x^2+y^2)^2.
-$$
-Consider the planar polynomial system
-$$
-\dot x=
-(x-x^3+3xy^2)
-\left[\mu A^2B^2+\nu AB(A^2+B^2)-(A^2+B^2)^2\right]
--
-(y-3x^2y+y^3)
-\left[A^3B^3-(A^2+B^2-5AB)^2(x^2-y^2-A)^2\right],
-$$
-$$
-\dot y=
-(y-3x^2y+y^3)
-\left[\mu A^2B^2+\nu AB(A^2+B^2)-(A^2+B^2)^2\right]
-+
-(x-x^3+3xy^2)
-\left[A^3B^3-(A^2+B^2-5AB)^2(x^2-y^2-A)^2\right].
+\dot y=\lambda+1-x-\frac12\left(y+\frac23\right).
 $$
 
-Determine the interior in $\mathbb R^2$ of the set of parameter pairs $(\mu,\nu)$ for which this system has exactly three limit cycles, all hyperbolic, with exactly two asymptotically stable.
+For every sufficiently small $\varepsilon>0$, let $\lambda_H(\varepsilon)$ be the parameter value for which the equilibrium converging to $(1,-2/3)$ has purely imaginary eigenvalues.
+
+Let $\lambda_C(\varepsilon)$ be the maximal-canard parameter through the right fold: the parameter for which the attracting slow manifold associated with $x>1$ and the repelling slow manifold associated with $|x|<1$ join through a single orbit near $(1,-2/3)$.
+
+Determine
+$$
+\lim_{\varepsilon\to0^+}
+\frac{\lambda_C(\varepsilon)-\lambda_H(\varepsilon)}{\varepsilon^2}.
+$$
 
 ---
 
@@ -36,13 +27,12 @@ Determine the interior in $\mathbb R^2$ of the set of parameter pairs $(\mu,\nu)
 |---|---|
 | **Domain** | Differential Equations and Dynamical Systems |
 | **Sub-domain** | Bifurcation theory |
-| **Problem Type** | Parameter identification |
-| **Answer Type** | Interval or region description |
+| **Problem Type** | Symbolic derivation |
+| **Answer Type** | Exact scalar |
 
 ---
 
 ## Domain Explanation
 
-This problem asks for the parameter region in which a planar polynomial family has a prescribed number and stability pattern of hyperbolic limit cycles, which is a bifurcation-theory question.
-The requested region is determined by how periodic orbits appear and disappear as the two parameters vary.
-Although stability of individual cycles is part of the condition, the primary task is to locate the bifurcation region in parameter space, so Bifurcation theory is more appropriate than Stability theory.
+This problem compares the singular Hopf bifurcation curve with the maximal-canard curve of a planar slow-fast family near a fold, so the requested quantity is a bifurcation invariant in parameter space.
+Stability of the equilibrium is used to locate the Hopf curve, but the main task is the second-order separation of two bifurcation loci, making Bifurcation theory more appropriate than Stability theory.
