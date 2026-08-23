@@ -1,6 +1,6 @@
 ## Steps
 
-Step 1: Replace the boundary-value problem by travel-time integrals
+Step 1: Convert the boundary condition into travel-time integrals
 
 The right side of the differential equation is positive on $0\leq y\leq1$, so every relevant solution is strictly increasing. Separating variables gives
 $$
@@ -52,7 +52,7 @@ I_R(\mu)=
 u^2+\mu^2(q_0+q_1u+q_2u^2+q_3u^3)
 }.
 $$
-The boundary condition and the definition of $\xi_n$ give the exact relations
+The boundary condition and the definition of $\xi_n$ give
 $$
 I_L(\mu_n)+I_R(\mu_n)=n
 $$
@@ -67,7 +67,7 @@ $$
 \frac{I_L(\mu_n)-I_R(\mu_n)}{2n}.
 $$
 
-Step 2: Find the singular scale of $\lambda_n$
+Step 2: Find the singular scale of the parameter
 
 Scale
 $$
@@ -89,8 +89,7 @@ I_L(\mu_n)+I_R(\mu_n)=n,
 $$
 we obtain
 $$
-n\mu_n\to
-A,
+n\mu_n\to A,
 \qquad
 A=\frac{\pi}{\sqrt{q_0}}
 =
@@ -122,7 +121,7 @@ I_L-I_R
 \frac1{D+\mu q_1z+\mu^2q_2z^2+\mu^3q_3z^3}
 \right]dz.
 $$
-Expanding the exact difference through order $\mu^2$ gives
+Expanding this rational difference through order $\mu^2$ gives
 $$
 I_L-I_R
 =
@@ -143,8 +142,7 @@ G(z)=
 +
 \frac{q_1^3z^3}{D^4}.
 $$
-
-The first integral is explicit:
+The first integral is
 $$
 2q_1\int_0^M\frac{z}{D^2}\,dz
 =
@@ -163,9 +161,9 @@ $$
 o(\mu^2).
 $$
 
-Step 4: Evaluate the logarithmic correction from the singular layer
+Step 4: Evaluate the logarithmic correction
 
-The three needed integrals are
+The three integrals in $G$ satisfy
 $$
 \int_0^M\frac{z^3}{D^2}\,dz
 =
@@ -202,19 +200,18 @@ K=
 -\frac{q_1q_2}{2q_0}
 +\frac{q_1^3}{12q_0^2}.
 $$
-With the present coefficients,
+Using the coefficients from Step 1,
 $$
 K=
 -\frac12\log\frac98-\frac{35}{36}.
 $$
-
-Also
+Also,
 $$
 \frac{q_1}{q_0}=\frac23,
 \qquad
 \frac{q_1}{a^2}=3.
 $$
-Hence
+Combining these values with Step 3 gives
 $$
 I_L(\mu)-I_R(\mu)
 =
@@ -233,13 +230,7 @@ $$
 
 Step 5: Extract the normalized transition-point limit
 
-By Step 1,
-$$
-\xi_n-\frac12
-=
-\frac{I_L(\mu_n)-I_R(\mu_n)}{2n}.
-$$
-Using Step 4,
+From Step 1 and Step 4,
 $$
 \xi_n-\frac12-\frac1{3n}
 =
@@ -253,11 +244,7 @@ $$
 +
 o\left(\frac{\mu_n^2}{n}\right).
 $$
-Step 2 gives
-$$
-n\mu_n\to A,
-$$
-so
+Step 2 gives $n\mu_n\to A$, so
 $$
 \log\frac a{\mu_n}
 =
@@ -282,35 +269,37 @@ A^2
 -\frac{35}{36}
 \right].
 $$
-Now
+Since
 $$
 a=\frac12,
 \qquad
 A=\frac{2\sqrt2\,\pi}{3},
 $$
-and
+we have
 $$
 \log\frac aA-\frac12\log\frac98
 =
 -\log(2\pi).
 $$
-Also
+Also,
 $$
 \frac32+\frac{35}{36}
 =
-\frac{89}{36}.
+\frac{89}{36},
+\qquad
+A^2=\frac{8\pi^2}{9}.
 $$
-Since
-$$
-A^2=\frac{8\pi^2}{9},
-$$
-the requested limit follows.
+This gives the requested limit.
 
 Final Answer: $\boxed{-\frac{8\pi^2}{9}\left(\log(2\pi)+\frac{89}{36}\right)}$
+
+---
 
 ## Answer
 
 $-\frac{8\pi^2}{9}\left(\log(2\pi)+\frac{89}{36}\right)$
+
+---
 
 ## Classification
 
@@ -322,9 +311,11 @@ $-\frac{8\pi^2}{9}\left(\log(2\pi)+\frac{89}{36}\right)$
 
 **Answer Type:** Exact scalar
 
+---
+
 ## Solution Concepts
 
-- separable nonlinear ODEs
+- separable nonlinear ordinary differential equations
 - internal bottleneck scaling
 - asymmetric matched asymptotics
 - logarithmic singular corrections
