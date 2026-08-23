@@ -309,25 +309,43 @@ then the actual conditional precision is
 $$
 K^{-1}+\frac{1}{nq}aa^{T}.
 $$
-The matrix determinant lemma gives the joint covariance determinant factor
+Set $\alpha=\frac{1}{nq}$. Since
+$$
+a^{T}Ka=\operatorname{Var}(d_n\mid Y_n),
+$$
+the matrix determinant lemma gives
 $$
 \frac{\det K_{\mathrm{new}}}{\det K}
-=\frac{1}{1+\operatorname{Var}(d_n\mid Y_n)/(nq)}.
+=\frac{1}{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
 $$
-Applying the same rank-one covariance formula to each endpoint block gives
+Factor the joint determinant as
+$$
+\det K=
+\det\operatorname{Cov}(X_0\mid Y_n)\,
+\det\operatorname{Cov}(X_n\mid Y_n,X_0).
+$$
+With $(Y_n,X_0)$ fixed, $d_n$ differs from $e^{T}X_n$ by a constant, so the conditional precision of $X_n$ receives the update $\alpha ee^{T}$. Hence
+$$
+\frac{\det\operatorname{Cov}_{\mathrm{new}}(X_n\mid Y_n,X_0)}
+{\det\operatorname{Cov}(X_n\mid Y_n,X_0)}
+=
+\frac{1}{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_0)}.
+$$
+Dividing the joint determinant factor by this conditional factor gives
 $$
 \frac{\det\operatorname{Cov}_{\mathrm{new}}(X_0\mid Y_n)}
 {\det\operatorname{Cov}(X_0\mid Y_n)}
 =
-\frac{1+\operatorname{Var}(d_n\mid Y_n,X_0)/(nq)}
-{1+\operatorname{Var}(d_n\mid Y_n)/(nq)},
+\frac{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_0)}
+{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
 $$
+Interchanging $X_0$ and $X_n$ gives, by the same determinant factorization,
 $$
 \frac{\det\operatorname{Cov}_{\mathrm{new}}(X_n\mid Y_n)}
 {\det\operatorname{Cov}(X_n\mid Y_n)}
 =
-\frac{1+\operatorname{Var}(d_n\mid Y_n,X_n)/(nq)}
-{1+\operatorname{Var}(d_n\mid Y_n)/(nq)}.
+\frac{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_n)}
+{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
 $$
 Therefore the limiting determinant ratio is
 $$
