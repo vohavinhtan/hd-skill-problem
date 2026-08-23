@@ -1,16 +1,20 @@
 ## Steps
 
-Step 1: Reduce the inner determinant to a normalized root equation
+Step 1: Convert the inner determinant to one weighted normal form
 
 Put
 $$
-s=n^{-1/3},\qquad \alpha=\frac{x}{2}+xsy,
+s=n^{-1/3},\qquad r=\frac{4\alpha}{x}-2,
 $$
-and, for $k\in\{-2,-1,0,1,2\}$, define
+so that
+$$
+\alpha=\frac{x}{4}(2+r).
+$$
+For $k\in\{-2,-1,0,1,2\}$ define
 $$
 g_k=e^{-kx}\left(1+kxs^3\right)^{s^{-3}+\alpha k}.
 $$
-Factoring $e^{ix}$ from row $i$ and $e^{jx}$ from column $j$ leaves total factor $1$, so
+Factoring $e^{ix}$ from row $i$ and $e^{jx}$ from column $j$ has total factor $1$, hence
 $$
 H_n(\alpha)=\det[g_{i+j}]_{i,j=-1}^{1}.
 $$
@@ -19,161 +23,236 @@ $$
 H_n=(g_2-g_1^2)(g_{-2}-g_{-1}^2)-(1-g_1g_{-1})^2.
 $$
 
-Write $\ell_k=\log g_k$. Taylor's formula applied once to
+Write $\ell_k=\log g_k$. Expanding the logarithm before substituting any particular value of $k$ gives the single formula
 $$
-\ell_k=\left(s^{-3}+\alpha k\right)\log(1+kxs^3)-kx
-$$
-gives, uniformly for bounded $y$,
-$$
-\ell_k=k^2x^2ys^4+\frac{k^3x^3}{12}s^6-\frac{k^3x^3y}{2}s^7-\frac{k^4x^4}{12}s^9
-+\frac{k^4x^4y}{3}s^{10}+\frac{3k^5x^5}{40}s^{12}-\frac{k^5x^5y}{4}s^{13}+O(s^{15}).
+\ell_k=\frac{k^2x^2r}{4}s^3+
+\sum_{m\geq3}(-1)^mk^mx^m
+\left(\frac{2-m}{2m(m-1)}+\frac{r}{4(m-1)}\right)s^{3m-3}.
 $$
 Set
 $$
-u=\ell_1+\ell_{-1},\qquad
-a=\frac{\ell_2+\ell_{-2}-2\ell_1-2\ell_{-1}}{2},\qquad
+u=\ell_1+\ell_{-1},
+$$
+$$
+a=\frac{\ell_2+\ell_{-2}-2\ell_1-2\ell_{-1}}{2},
+\qquad
 b=\frac{\ell_2-\ell_{-2}-2\ell_1+2\ell_{-1}}{2}.
 $$
-Then $u,a=O(s^4)$, $b=O(s^6)$, and $a-u=O(s^9)$. The determinant identity becomes
+On a monomial $k^m$, the three linear forms above have multipliers
+$$
+u:\ 1+(-1)^m,
+$$
+$$
+a:\ \frac{2^m+(-2)^m-2-2(-1)^m}{2},
+\qquad
+b:\ \frac{2^m-(-2)^m-2+2(-1)^m}{2}.
+$$
+Therefore $u$ and $a$ keep only even powers, while $b$ keeps only odd powers. For bounded $r$ this gives
+$$
+\frac{4H_n\left(\frac{x}{4}(2+r)\right)}{x^6s^9}=r^3+O(s^3).
+$$
+The zero specified in the problem has bounded $r$, so its equation forces $r=O(s)$.
+
+With this information the weighted orders become $u,a=O(s^4)$ and $b=O(s^6)$. The same parity formulas now give only the terms that can affect weighted order below $9$:
+$$
+u=\frac{x^2r}{2}s^3-\frac{x^4(1-r)}{6}s^9+O(s^{15}),
+$$
+$$
+a=\frac{x^2r}{2}s^3-\frac{7x^4(1-r)}{6}s^9+O(s^{15}),
+$$
+$$
+b=\frac{x^3(2-3r)}{4}s^6+\frac{3x^5(6-5r)}{8}s^{12}+O(s^{18}).
+$$
+The determinant identity is
 $$
 H_n=e^{2u}\left[(e^{a+b}-1)(e^{a-b}-1)-(e^{-u}-1)^2\right].
 $$
-Because $a-u=O(s^9)$, all terms of total degree at least four in the bracket start at order $s^{20}$. Up to order $s^{17}$ the bracket is therefore
+Since $a-u=O(s^9)$, terms of degree at least four in $u,a,b$ have weighted order at least $20$. Hence
 $$
-a^2-b^2-u^2+a(a^2-b^2)+u^3+O(s^{20}).
+(e^{a+b}-1)(e^{a-b}-1)-(e^{-u}-1)^2
+=a^2-b^2-u^2+a(a^2-b^2)+u^3+O(s^{20}).
 $$
-Substituting the single expansion for $\ell_k$ gives
+Using $a^2-u^2=(a-u)(a+u)$ and the three displayed forms gives
 $$
-a^2-b^2-u^2=x^6s^{12}\left(-\frac14-ys+7y^2s^2\right)+O(s^{18}),
+\frac{4H_n\left(\frac{x}{4}(2+r)\right)}{x^6s^9}
+=
+E(r,s)+O(s^9),
 $$
-and
+where
 $$
-a(a^2-b^2)+u^3=x^6s^{12}\left(16y^3-\frac{x^2y}{2}s^4-10x^2y^2s^5\right)+O(s^{18}).
+E(r,s)=r^3-s^3\left(1+r-\frac74r^2\right)
++x^2s^3r^4-\frac{x^2s^6}{2}(3r+7r^2).
 $$
-Also $e^{2u}=1+4x^2ys^4+O(s^8)$. Thus
-$$
-F(s,y):=\frac{H_n\left(\frac{x}{2}+xsy\right)}{x^6s^{12}}
-=16y^3-\frac14-ys+7y^2s^2+x^2\left(64y^4-\frac32y\right)s^4-14x^2y^2s^5+O(s^6).
-$$
-At $s=0$, $F(0,y)=0$ has the simple root $y=1/4$, with $F_y(0,1/4)=3$. The implicit function theorem gives an analytic branch $y(s)$ near $1/4$. For small positive $s$, $\alpha=x(1/2+sy(s))$ lies strictly between $0$ and $x$, so the zero specified in the problem is this branch.
+In particular, the required branch satisfies $r/s\to1$.
 
-Step 2: Extract only the jet of the moving zero needed by the outer determinant
+Step 2: Obtain the required root jet from one Newton certificate
 
-Write
+The polynomial normal form from Step 1 has
 $$
-y(s)=\frac14+\sum_{m=1}^{5}c_ms^m+O(s^6).
+E_r(r,s)=3r^2-s^3\left(1-\frac72r\right)
++4x^2s^3r^3-\frac{x^2s^6}{2}(3+14r).
 $$
-Since $F_y(0,1/4)=3$, the coefficients are determined successively. A compact recurrence that exposes every coefficient extraction is
+Starting from $r_0=s$, apply the formal Newton map
 $$
-c_m=-\frac13[s^m]F\left(s,\frac14+\sum_{j=1}^{m-1}c_js^j\right),\qquad 1\leq m\leq5,
+r\longmapsto r-\frac{E(r,s)}{E_r(r,s)}
 $$
-where the $O(s^6)$ term in $F$ cannot affect these five coefficients. Applying this recurrence to the explicit polynomial jet from Step 1 yields
+three times, truncating after degree $6$. This produces
 $$
-(c_1,c_2,c_3,c_4,c_5)=
-\left(
-\frac1{12},-\frac7{48},-\frac{67}{1296},
-\frac{1591}{15552}+\frac{x^2}{24},
-\frac{5x^2}{24}
-\right).
+r_*(s)=
+s+\frac13s^2-\frac7{12}s^3-\frac{67}{324}s^4
++\left(\frac{1591}{3888}+\frac{x^2}{6}\right)s^5
++\frac{5x^2}{6}s^6.
+$$
+The approximation is certified directly, without solving for its coefficients one at a time:
+$$
+E(r_*(s),s)=
+\left(\frac{46307}{69984}-\frac{161x^2}{72}\right)s^9+O(s^{10}),
+$$
+while
+$$
+E_r(r_*(s),s)=3s^2+O(s^3).
+$$
+The true branch satisfies $E(r(s),s)=O(s^9)$ by Step 1. The mean value formula applied between $r(s)$ and $r_*(s)$ then gives
+$$
+r(s)-r_*(s)=O(s^7).
 $$
 Therefore
 $$
-\alpha_n=\sum_{r=0}^{6}d_rs^r+O(s^7),
-$$
-with
-$$
-d_0=\frac{x}{2},\quad d_1=\frac{x}{4},\quad d_2=\frac{x}{12},\quad d_3=-\frac{7x}{48},
-$$
-$$
-d_4=-\frac{67x}{1296},\quad
-d_5=\frac{x(648x^2+1591)}{15552},\quad
-d_6=\frac{5x^3}{24}.
+\alpha_n=\frac{x}{4}\left(2+r_*(s)\right)+O(s^7).
 $$
 
-Step 3: Compute the cubic logarithmic jet of the outer determinant
+Step 3: Extract the cubic logarithmic term by a Vandermonde basis change
 
-Let $q=1/2$ and define
+Let
 $$
-V(r_0,r_1,r_2,r_3)=\prod_{0\leq a<b\leq3}\left(q^{r_b}-q^{r_a}\right).
+q=\frac12,\qquad f(s)=2+r(s),
 $$
-Replacing $n$ by $8^{i+j}n$ sends $s$ to $q^{i+j}s$. Cauchy-Binet applied to the rank-one expansion from Step 2 gives the exact formal identity
+and set
 $$
-D_n=\sum_{0\leq r_0<r_1<r_2<r_3}
-d_{r_0}d_{r_1}d_{r_2}d_{r_3}
-V(r_0,r_1,r_2,r_3)^2s^{r_0+r_1+r_2+r_3}.
+\widetilde D(s)=\det[f(q^{i+j}s)]_{i,j=0}^{3}.
 $$
-The least exponent is $0+1+2+3=6$. To know $\log D_n$ through relative order $s^3$, only terms with exponent sum at most $9$ can contribute, so only $d_0,\ldots,d_6$ are needed.
+Since $\alpha_{8^{i+j}n}=\frac{x}{4}f(q^{i+j}s)$,
+$$
+D_n=\left(\frac{x}{4}\right)^4\widetilde D(s).
+$$
+The constant factor will cancel from the requested ratio.
 
-Put $V_0=V(0,1,2,3)$ and
+Write $f(s)=\sum_{m\geq0}c_ms^m$ and
 $$
-K=d_0d_1d_2d_3V_0^2=-\frac{3087x^4}{2^{37}}.
+v_m=\begin{pmatrix}1\\q^m\\q^{2m}\\q^{3m}\end{pmatrix}.
 $$
-For the six exponent sets of excess $1$, $2$, or $3$, the Vandermonde product formula gives
+Then
 $$
-\left(
-\frac{V(0,1,2,4)}{V_0},
-\frac{V(0,1,2,5)}{V_0},
-\frac{V(0,1,3,4)}{V_0},
-\frac{V(0,1,2,6)}{V_0},
-\frac{V(0,1,3,5)}{V_0},
-\frac{V(0,2,3,4)}{V_0}
-\right)
+[f(q^{i+j}s)]_{i,j=0}^{3}
+=\sum_{m\geq0}c_ms^mv_mv_m^T.
+$$
+Let
+$$
+V=(v_0\ v_1\ v_2\ v_3),
+\qquad
+D_0(s)=\operatorname{diag}(c_0,c_1s,c_2s^2,c_3s^3),
+$$
+and, for $m\geq4$, put $w_m=V^{-1}v_m$. Conjugating by $V^{-1}$ gives
+$$
+V^{-1}[f(q^{i+j}s)]V^{-T}
 =
-\left(
-\frac{15}{8},\frac{155}{64},\frac{35}{32},
-\frac{1395}{512},\frac{465}{256},\frac{15}{64}
-\right).
+D_0(s)+\sum_{m\geq4}c_ms^mw_mw_m^T.
 $$
-Thus, if
+Because $c_0=2$, $c_1=1$, $c_2=1/3$, and $c_3=-7/12$, the leading diagonal matrix is nonsingular for $s\neq0$. After factoring it,
 $$
-\log\frac{D_n}{Ks^6}=\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4),
+\widetilde D(s)=Cs^6\det(I+R(s)),
 $$
-the identity above gives directly
+where $C\neq0$ is independent of $s$ and
 $$
-\begin{aligned}
-\gamma_3={}&
-\frac{d_6}{d_3}\left(\frac{1395}{512}\right)^2
-+\frac{d_5}{d_2}\left(\frac{465}{256}\right)^2
-+\frac{d_4}{d_1}\left(\frac{15}{64}\right)^2\\
-&-\frac{d_4}{d_3}\left(\frac{15}{8}\right)^2
-\left[
-\frac{d_5}{d_3}\left(\frac{155}{64}\right)^2
-+\frac{d_4}{d_2}\left(\frac{35}{32}\right)^2
-\right]
-+\frac13\left[
-\frac{d_4}{d_3}\left(\frac{15}{8}\right)^2
-\right]^3.
-\end{aligned}
+R(s)=D_0(s)^{-1}\sum_{m=4}^{6}c_ms^mw_mw_m^T+O(s^4).
 $$
-Substitution of the six coefficients from Step 2 simplifies this to
+Terms with $m\geq7$ start at relative order $s^{m-3}\geq s^4$, so they cannot affect the cubic logarithmic term.
+
+Write
 $$
-\gamma_3=-\frac{25(12002770836x^2-18768001859)}{43698880512}.
+R(s)=sR_1+s^2R_2+s^3R_3+O(s^4).
+$$
+If $e_j$ is the $j$th coordinate vector, comparison of powers of $s$ gives the closed formula
+$$
+R_k=
+\sum_{\substack{4\leq m\leq6,\ 0\leq j\leq3\\m-j=k}}
+\frac{c_m}{c_j}(w_m)_j\,e_jw_m^T,
+\qquad 1\leq k\leq3.
+$$
+No minor expansion is needed. The coordinates of $w_m$ come from Lagrange interpolation at the four nodes $1,q,q^2,q^3$:
+$$
+(w_m)_j=
+\prod_{\substack{0\leq h\leq3\\h\neq j}}
+\frac{q^m-q^h}{q^j-q^h}.
+$$
+The trace expansion
+$$
+\log\det(I+R(s))
+=
+\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4)
+$$
+has
+$$
+\gamma_3=
+\operatorname{tr}\left(R_3-R_1R_2+\frac13R_1^3\right).
+$$
+Substituting $q=1/2$ and the polynomial $r_*(s)$ from Step 2 into the two closed formulas above gives the three trace terms
+$$
+\operatorname{tr}(R_3)
+=-\frac{225(292144x^2-131761)}{7340032},
+$$
+$$
+\operatorname{tr}(R_1R_2)
+=-\frac{41875(622728x^2+1804723)}{12485394432},
+$$
+$$
+\frac13\operatorname{tr}(R_1^3)
+=\frac{4699421875}{7283146752}.
+$$
+Combining these three rational quantities yields
+$$
+\gamma_3
+=-\frac{25(12002770836x^2-18768001859)}{43698880512}.
 $$
 
-Step 4: Apply the scale filter and take the limit
+Step 4: Apply the factorized scale filter
 
 From Step 3,
 $$
-D_n=Ks^6\exp\left(\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4)\right).
+\widetilde D(s)
+=Cs^6\exp\left(\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4)\right).
 $$
-The factors $K$ cancel in the requested ratio, while the powers of $s^6$ contribute $64^{-3}$ and cancel the prefactor $64^3$. Taking logarithms leaves the linear scale operator
+Replacing $n$ by $8^mn$ sends $s$ to $q^ms$. The constant factors cancel in the requested ratio. The powers $s^6$ contribute
 $$
-\mathcal{T}L(s)=7L\left(\frac{s}{2}\right)+8L\left(\frac{s}{8}\right)-L(s)-14L\left(\frac{s}{4}\right),
+q^{6(7+24-28)}=q^{18}=64^{-3},
 $$
-where $L(s)=\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4)$. On $s^k$ its multiplier is
+which is canceled by the prefactor $64^3$.
+
+Let $T$ act by $(TL)(s)=L(s/2)$. The logarithm of the remaining ratio applies the operator
 $$
--1+\frac7{2^k}-\frac{14}{4^k}+\frac8{8^k}.
+-I+7T-14T^2+8T^3=(T-I)(2T-I)(4T-I)
 $$
-This multiplier is $0$ for $k=1,2$ and $-21/64$ for $k=3$. Since $s^3=n^{-1}$,
+to
+$$
+L(s)=\gamma_1s+\gamma_2s^2+\gamma_3s^3+O(s^4).
+$$
+On $s^k$, $T$ has eigenvalue $2^{-k}$. The factor $2T-I$ kills $s$, the factor $4T-I$ kills $s^2$, and on $s^3$ the multiplier is
+$$
+\left(\frac18-1\right)\left(\frac14-1\right)\left(\frac12-1\right)
+=-\frac{21}{64}.
+$$
+Since $s^3=n^{-1}$,
 $$
 n\log\left(
-64^3\frac{D_{8n}^{\,7}D_{512n}^{\,8}}{D_nD_{64n}^{\,14}}
+64^3\frac{D_{8n}^{\,7}D_{512n}^{\,8}}
+{D_nD_{64n}^{\,14}}
 \right)
-\longrightarrow -\frac{21}{64}\gamma_3
+\longrightarrow
+-\frac{21}{64}\gamma_3
 =
 \frac{25(12002770836x^2-18768001859)}{133177540608}.
 $$
-Also $K<0$ because $x\neq0$, so $D_n<0$ for all sufficiently large $n$ and the ratio inside the logarithm is positive. Exponentiating gives the limit.
+Also $\widetilde D(s)\sim Cs^6$ with $C\neq0$, so all four determinants in the ratio have the same sign for large $n$ and the ratio is positive. Exponentiating gives the limit.
 
 Final Answer: $\boxed{\exp\left(\frac{25(12002770836x^2-18768001859)}{133177540608}\right)}$
 
@@ -195,8 +274,8 @@ $\exp\left(\frac{25(12002770836x^2-18768001859)}{133177540608}\right)$
 
 ## Solution Concepts
 
-- implicit function theorem
 - singular asymptotic scaling
-- cauchy-binet formula
-- vandermonde determinant
-- multiscale cancellation
+- formal Newton iteration
+- Vandermonde basis conjugation
+- trace logarithm
+- scale annihilation
