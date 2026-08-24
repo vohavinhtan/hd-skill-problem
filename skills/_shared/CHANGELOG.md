@@ -4,6 +4,13 @@ Newest first. One entry per update to the shared skill framework — short bulle
 know. `/math-sync` prints the top entries so a fresh pull sees what changed. **When you change the
 framework, add a dated entry at the top here** (same run as the change); keep each entry to a few lines.
 
+## 2026-08-24 — Rainier workflow navigator + trace-driven hardening
+
+- **New `/rainier-next` navigator:** inspects the active problem plus pasted Rainier feedback/JSON/trace paths and returns exactly one next action instead of expecting the user to remember the workflow.
+- **New `docs/rainier-hardening-workflow.md`:** records the user/agent roles, current observed difficulty threshold (`<=75%` for at least one model), evidence priority, trace-attack analysis, and routing after difficulty/quality/format failures.
+- **Difficulty evidence is equivalence-aware:** different answer strings are not treated as different outcomes when Rainier's symbolic equivalence judge marks them correct; use per-attempt correctness and success/failure counts.
+- **Hardening is trace-driven:** attack the earliest robust solver shortcut and avoid mechanical-volume hardening such as deeper expansions, more coefficient bookkeeping, or larger brute-force workloads.
+
 ## 2026-08-01 — cross-platform sync + CLAUDE.md skill entries
 
 - **`scripts/sync-provider-skills.sh` is now cross-platform.** On Windows (Git Bash / MSYS2 / Cygwin)
