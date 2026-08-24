@@ -2,371 +2,252 @@
 
 Step 1: Rewrite the precision matrix as an innovation model
 
-Let $D_n=X_n-X_0$. Start with the path energy
-$$
-\sum_{k=1}^{n}(x_k-x_{k-1})^{T}B_q(x_k-x_{k-1}).
-$$
-Expanding it gives
-$$
-x_0^{T}B_qx_0+x_n^{T}B_qx_n+
-2\sum_{k=1}^{n-1}x_k^{T}B_qx_k-
-2\sum_{k=1}^{n}x_{k-1}^{T}B_qx_k.
-$$
-Its block precision therefore has $B_q$ at the two endpoints, $2B_q$ on the interior diagonal, and $-B_q$ on neighboring off-diagonal blocks. Adding $\frac{1}{n}x_0^{T}A_qx_0$ accounts for the remaining $\frac{1}{n}A_q$ in the $(0,0)$ block. Comparing with the given $\Omega_{n,q}$ leaves only
-$$
-\frac{1}{nq}E
-$$
-in the $(0,0)$ and $(n,n)$ blocks and
-$$
--\frac{1}{nq}E
-$$
-in the $(0,n)$ and $(n,0)$ blocks. Let $g_n\in\mathbb{R}^{3(n+1)}$ have block $-e$ at index $0$, block $e$ at index $n$, and zero blocks elsewhere. Since $E=ee^{T}$,
-$$
-g_n^{T}x=e^{T}(x_n-x_0),
-$$
-and $g_ng_n^{T}$ has exactly those four remaining blocks. Hence the precision matrix is forced to split as
+Let $D_n=X_n-X_0$. Expanding the path term gives endpoint blocks $B_q$, interior blocks $2B_q$, and neighboring blocks $-B_q$. The remaining blocks of $\Omega_{n,q}$ are exactly those of $\frac{1}{n}A_q$ at $(0,0)$ and $\frac{1}{nq}g_ng_n^{T}$, where $g_n$ has blocks $-e$ at $0$, $e$ at $n$, and zero elsewhere. Hence
 $$
 \Omega_{n,q}=\Omega^{\mathrm{ref}}_{n,q}+\frac{1}{nq}g_ng_n^{T},
 $$
-where
+with
 $$
-x^{T}\Omega^{\mathrm{ref}}_{n,q}x=
-\frac{1}{n}x_0^{T}A_qx_0+
-\sum_{k=1}^{n}(x_k-x_{k-1})^{T}B_q(x_k-x_{k-1}).
+x^{T}\Omega^{\mathrm{ref}}_{n,q}x=\frac{1}{n}x_0^{T}A_qx_0+\sum_{k=1}^{n}(x_k-x_{k-1})^{T}B_q(x_k-x_{k-1}).
 $$
-This defines the reference law directly from the path precision and the initial anchoring term. With
+For $\varepsilon_k=X_k-X_{k-1}$, the triangular change $(X_0,\varepsilon_1,\ldots,\varepsilon_n)\mapsto(X_0,\ldots,X_n)$ has determinant $1$, so under the reference law
 $$
-\varepsilon_k=X_k-X_{k-1},
+\operatorname{Cov}(X_0)=nA_q^{-1},\qquad \operatorname{Cov}(\varepsilon_k)=B_q^{-1},
 $$
-the change of variables $(X_0,\varepsilon_1,\ldots,\varepsilon_n)\mapsto(X_0,\ldots,X_n)$ is triangular with determinant $1$, and the reference quadratic form becomes
+and these variables are independent. With
 $$
-\frac{1}{n}X_0^{T}A_qX_0+\sum_{k=1}^{n}\varepsilon_k^{T}B_q\varepsilon_k.
+P=\frac13\mathbf1\mathbf1^{T},\qquad P_{\perp}=I_3-P,
 $$
-Therefore $X_0,\varepsilon_1,\ldots,\varepsilon_n$ are independent under the reference law, with
+we have
 $$
-\operatorname{Cov}(X_0)=nA_q^{-1},\qquad
-\operatorname{Cov}(\varepsilon_k)=B_q^{-1}.
-$$
-For
-$$
-P=\frac{1}{3}\mathbf{1}\mathbf{1}^{T},\qquad P_{\perp}=I_3-P,
-$$
-the definitions of $A_q$ and $B_q$ give
-$$
-A_q=\frac{1}{9q}P+P_{\perp},\qquad
-B_q=P+\frac{1}{q}P_{\perp},
+A_q=\frac{1}{9q}P+P_{\perp},\qquad B_q=P+\frac1qP_{\perp},
 $$
 so
 $$
-A_q^{-1}=9qP+P_{\perp},\qquad
-B_q^{-1}=P+qP_{\perp}.
+A_q^{-1}=9qP+P_{\perp},\qquad B_q^{-1}=P+qP_{\perp}.
 $$
-The original Gaussian law is the normalized exponential tilt of the reference law by
+The original law is the normalized tilt of the reference law by
 $$
 \exp\left(-\frac{(e^{T}D_n)^2}{2nq}\right).
 $$
 
-Step 2: Compute the scaled covariance limit of the path average
+Step 2: Compute the scaled covariance limit
 
-Use the orthonormal basis
+Use
 $$
-u=\frac{1}{\sqrt{3}}(1,1,1)^{T},\qquad
-w=\frac{1}{\sqrt{6}}(2,-1,-1)^{T},\qquad
-h=\frac{1}{\sqrt{2}}(0,1,-1)^{T}.
+u=\frac{1}{\sqrt3}(1,1,1)^{T},\quad w=\frac{1}{\sqrt6}(2,-1,-1)^{T},\quad h=\frac{1}{\sqrt2}(0,1,-1)^{T}.
 $$
-In each mode the reference law is a scalar random walk. Write its initial variance as $cnr$ and each increment variance as $r$. The parameters are
+Each mode is a scalar random walk with initial variance $cnr$ and increment variance $r$, where $(c,r)=(9q,1)$ on $u$ and $(c,r)=(1/q,q)$ on $w,h$. Put
 $$
-(c,r)=(9q,1)
+T_n=\frac1n\sum_{k=1}^{n-1}X_k.
 $$
-for the $u$-mode and
+Since $X_k=X_0+\sum_{j=1}^{k}\varepsilon_j$ and
 $$
-(c,r)=\left(\frac{1}{q},q\right)
+\sum_{i,j=1}^{n-1}\min(i,j)=\frac{n(n-1)(2n-1)}6,
 $$
-for the $w$- and $h$-modes.
-
-Set
+the covariance of $(X_0,X_n,T_n,D_n)$ divided by $n$ tends, in one mode, to
 $$
-T_n=\frac{1}{n}\sum_{k=1}^{n-1}X_k.
+r\begin{pmatrix}c&c&c&0\\c&c+1&c+\frac12&1\\c&c+\frac12&c+\frac13&\frac12\\0&1&\frac12&1\end{pmatrix}.
 $$
-For a scalar mode,
-$$
-X_k=X_0+\sum_{j=1}^{k}\varepsilon_j.
-$$
-Using
-$$
-\sum_{i,j=1}^{n-1}\min(i,j)=\frac{n(n-1)(2n-1)}{6},
-$$
-the covariance matrix of $(X_0,X_n,T_n,D_n)$, divided by $n$, tends to
-$$
-r\begin{pmatrix}
-c&c&c&0\\
-c&c+1&c+\frac{1}{2}&1\\
-c&c+\frac{1}{2}&c+\frac{1}{3}&\frac{1}{2}\\
-0&1&\frac{1}{2}&1
-\end{pmatrix}.
-$$
-
 In the $(u,w,h)$ basis,
 $$
-e=\frac{1}{\sqrt{3}}u+\sqrt{\frac{2}{3}}\,w.
+e=\frac1{\sqrt3}u+\sqrt{\frac23}w,
 $$
-Keep the symbol $E$ for the matrix of $ee^{T}$ in this basis, and put
+and, writing $E$ for $ee^{T}$ in this basis,
 $$
 A=\operatorname{diag}(9q,1,1),\qquad R=\operatorname{diag}(1,q,q).
 $$
-The scalar limit gives
+Since $Y_n=T_n-ED_n$,
 $$
-\frac{1}{n}\operatorname{Cov}(T_n)\to A+\frac{1}{3}R,\qquad
-\frac{1}{n}\operatorname{Cov}(T_n,D_n)\to\frac{1}{2}R,\qquad
-\frac{1}{n}\operatorname{Cov}(D_n)\to R.
+H:=\lim_{n\to\infty}\frac1n\operatorname{Cov}(Y_n)=A+\frac13R-\frac12(RE+ER)+ERE
 $$
-Because $Y_n=T_n-ED_n$, its scaled covariance tends to
+becomes
 $$
-H=A+\frac{1}{3}R-\frac{1}{2}(RE+ER)+ERE.
+H=\begin{pmatrix}\frac{83q+1}{9}&\frac{\sqrt2(q-1)}{18}&0\\\frac{\sqrt2(q-1)}{18}&\frac{q+11}{9}&0\\0&0&\frac{q+3}{3}\end{pmatrix},
 $$
-Substituting the coordinates of $e$ gives
-$$
-H=
-\begin{pmatrix}
-\frac{83q+1}{9}&\frac{\sqrt{2}(q-1)}{18}&0\\
-\frac{\sqrt{2}(q-1)}{18}&\frac{q+11}{9}&0\\
-0&0&\frac{q+3}{3}
-\end{pmatrix}.
-$$
-Taking the determinant of the upper $2\times2$ block gives
+so
 $$
 \det H=\frac{(q+3)(55q^2+610q+7)}{162}.
 $$
 
-Step 3: Evaluate the reference conditional determinant ratio
+Step 3: Derive the reference conditional determinant ratio
 
-The scaled covariance of $X_0$ is $A$, while that of $X_n$ is
+The scaled endpoint covariance is
 $$
-V=A+R=\operatorname{diag}(9q+1,q+1,q+1).
-$$
-Also
-$$
-\frac{1}{n}\operatorname{Cov}(X_0,Y_n)\to A,
+V=A+R=\operatorname{diag}(9q+1,q+1,q+1),
 $$
 and
 $$
-\frac{1}{n}\operatorname{Cov}(X_n,Y_n)\to N=A+\frac{1}{2}R-RE.
+N:=\lim_{n\to\infty}\frac1n\operatorname{Cov}(X_n,Y_n)=A+\frac12R-RE.
 $$
 Conditioning on $X_0$ replaces $H$ by
 $$
-H_0=H-A=
-\begin{pmatrix}
-\frac{2q+1}{9}&\frac{\sqrt{2}(q-1)}{18}&0\\
-\frac{\sqrt{2}(q-1)}{18}&\frac{q+2}{9}&0\\
-0&0&\frac{q}{3}
-\end{pmatrix},
+H_0=H-A=\begin{pmatrix}\frac{2q+1}{9}&\frac{\sqrt2(q-1)}{18}&0\\\frac{\sqrt2(q-1)}{18}&\frac{q+2}{9}&0\\0&0&\frac q3\end{pmatrix},
 $$
-with
+with $\det H_0=q(q^2+4q+1)/162$. Therefore
 $$
-\det H_0=\frac{q(q^2+4q+1)}{162}.
-$$
-The determinant identity
-$$
-\det\operatorname{Cov}(X_0\mid Y_n)
-=\det\operatorname{Cov}(X_0)\,
-\frac{\det\operatorname{Cov}(Y_n\mid X_0)}{\det\operatorname{Cov}(Y_n)}
-$$
-yields, after division by $n^3$ and passage to the limit,
-$$
-\det\overline{K}_{00}
-=\frac{9q^2(q^2+4q+1)}
-{(q+3)(55q^2+610q+7)}.
+\det\overline K_{00}=\det A\frac{\det H_0}{\det H}=\frac{9q^2(q^2+4q+1)}{(q+3)(55q^2+610q+7)}.
 $$
 
-For $X_n$, substitution in $H-N^{T}V^{-1}N$ gives
+For $X_n$, let $H_n=H-N^{T}V^{-1}N$. On the $(u,w)$ block,
 $$
-H_n=
-\begin{pmatrix}
-\frac{324q^2+263q+3}{36(9q^2+10q+1)}
-&
-\frac{2\sqrt{2}q(27q+13)}{9(9q^2+10q+1)}
-&0\\
-\frac{2\sqrt{2}q(27q+13)}{9(9q^2+10q+1)}
-&
-\frac{q(27q^2+543q+124)}{36(9q^2+10q+1)}
-&0\\
-0&0&\frac{q(q+4)}{12(q+1)}
-\end{pmatrix}.
+N_2=\begin{pmatrix}9q+\frac16&-\frac{\sqrt2}{3}\\-\frac{\sqrt2q}{3}&1-\frac q6\end{pmatrix},\qquad V_2^{-1}=\begin{pmatrix}\frac1{9q+1}&0\\0&\frac1{q+1}\end{pmatrix}.
 $$
-The upper $2\times2$ determinant and the last diagonal entry give
+Thus, with $D=(q+1)(9q+1)$,
 $$
-\det H_n=
-\frac{q^2(q+4)(324q^2+2963q+124)}
-{5184(q+1)^2(9q+1)}.
+(H_{n,2})_{11}=\frac{83q+1}{9}-\frac{(9q+1/6)^2}{9q+1}-\frac{2q^2/9}{q+1}=\frac{324q^2+263q+3}{36D},
+$$
+$$
+(H_{n,2})_{12}=\frac{\sqrt2(q-1)}{18}+\frac{\sqrt2(9q+1/6)}{3(9q+1)}+\frac{\sqrt2q(1-q/6)}{3(q+1)}=\frac{2\sqrt2q(27q+13)}{9D},
+$$
+$$
+(H_{n,2})_{22}=\frac{q+11}{9}-\frac{2/9}{9q+1}-\frac{(1-q/6)^2}{q+1}=\frac{q(27q^2+543q+124)}{36D}.
+$$
+The third mode gives
+$$
+(H_n)_{33}=\frac{q+3}{3}-\frac{(q/2+1)^2}{q+1}=\frac{q(q+4)}{12(q+1)}.
+$$
+Putting the $2\times2$ block over denominator $36D$,
+$$
+\det H_{n,2}=\frac{q\bigl[(324q^2+263q+3)(27q^2+543q+124)-128q(27q+13)^2\bigr]}{1296D^2}.
+$$
+The bracket factors as
+$$
+3D(324q^2+2963q+124),
+$$
+so
+$$
+\det H_n=\frac{q^2(q+4)(324q^2+2963q+124)}{5184(q+1)^2(9q+1)}.
 $$
 Since $\det V=(q+1)^2(9q+1)$,
 $$
-\det\overline{K}_{nn}
-=\frac{q^2(q+4)(324q^2+2963q+124)}
-{32(q+3)(55q^2+610q+7)}.
+\det\overline K_{nn}=\det V\frac{\det H_n}{\det H}=\frac{q^2(q+4)(324q^2+2963q+124)}{32(q+3)(55q^2+610q+7)}.
 $$
 
-The map $(X_0,X_n,T_n)\mapsto(X_0,X_n,Y_n)$ is a block shear with determinant $1$. For one scalar mode the limiting covariance of $(X_0,X_n,T_n)$ has determinant
+The shear $(X_0,X_n,T_n)\mapsto(X_0,X_n,Y_n)$ has determinant $1$. In one scalar mode,
 $$
-\det\left[
-r\begin{pmatrix}
-c&c&c\\
-c&c+1&c+\frac{1}{2}\\
-c&c+\frac{1}{2}&c+\frac{1}{3}
-\end{pmatrix}
-\right]
-=\frac{cr^3}{12}.
+\det\left[r\begin{pmatrix}c&c&c\\c&c+1&c+\frac12\\c&c+\frac12&c+\frac13\end{pmatrix}\right]=\frac{cr^3}{12}.
 $$
-Multiplying the $u,w,h$ values gives
+Multiplying the three modes gives $\det\overline{\operatorname{Cov}}(X_0,X_n,Y_n)=q^5/192$, hence
 $$
-\det\overline{\operatorname{Cov}}(X_0,X_n,Y_n)=\frac{q^5}{192}.
+\det\overline K=\frac{27q^5}{32(q+3)(55q^2+610q+7)}.
 $$
-Dividing by $\det H$ gives
+Therefore
 $$
-\det\overline{K}
-=\frac{27q^5}{32(q+3)(55q^2+610q+7)}.
-$$
-Therefore the reference conditional-information ratio is
-$$
-R_0=
-\frac{\det\overline{K}_{00}\det\overline{K}_{nn}}{\det\overline{K}}
-=
-\frac{(q+4)(q^2+4q+1)(324q^2+2963q+124)}
-{3q(q+3)(55q^2+610q+7)}.
+R_0=\frac{\det\overline K_{00}\det\overline K_{nn}}{\det\overline K}=\frac{(q+4)(q^2+4q+1)(324q^2+2963q+124)}{3q(q+3)(55q^2+610q+7)}.
 $$
 
-Step 4: Compute the three variances needed for the endpoint precision update
+Step 4: Derive the three conditional variances for the endpoint update
 
-Let
+Let $d_n=e^{T}D_n$ and $L=\frac12R-RE$. Only the $(u,w)$ block contributes, and
 $$
-d_n=e^{T}D_n,\qquad L=\frac{1}{2}R-RE.
+z:=(L^{T}e)_2=\frac1{18}\begin{pmatrix}\sqrt3(1-4q)\\-\sqrt6(q+2)\end{pmatrix}.
 $$
-The scaled limits from Step 2 give
+Writing $D_H=55q^2+610q+7$,
 $$
-v=\lim_{n\to\infty}\frac{1}{n}\operatorname{Var}(d_n\mid Y_n)
-=e^{T}(R-LH^{-1}L^{T})e.
+H_2^{-1}=\frac1{D_H}\begin{pmatrix}6(q+11)&3\sqrt2(1-q)\\3\sqrt2(1-q)&6(83q+1)\end{pmatrix}.
 $$
-Here
+Hence
 $$
-e^{T}Re=\frac{2q+1}{3},
+z^{T}H_2^{-1}z=\frac{18(q+11)(1-4q)^2-36(1-q)(1-4q)(q+2)+36(83q+1)(q+2)^2}{324D_H}
 $$
-and inversion of the displayed $2\times2$ block of $H$ gives
 $$
-e^{T}LH^{-1}L^{T}e=
-\frac{58q^3+276q^2+201q+5}{6(55q^2+610q+7)}.
+=\frac{58q^3+276q^2+201q+5}{6D_H}.
 $$
-Subtracting yields
+Since $e^{T}Re=(2q+1)/3$,
 $$
-v=\frac{54q^3+758q^2+349q+3}{2(55q^2+610q+7)}.
+v=\frac{54q^3+758q^2+349q+3}{2D_H}.
 $$
 
-Since $D_n$ and $X_0$ are independent in the reference law, conditioning also on $X_0$ replaces only $H$ by $H_0$. Therefore
+For conditioning also on $X_0$, write $D_0=q^2+4q+1$. The relevant inverse is
 $$
-e^{T}LH_0^{-1}L^{T}e=
-\frac{(q+2)(2q+1)^2}{6(q^2+4q+1)},
+H_{0,2}^{-1}=\frac1{D_0}\begin{pmatrix}6(q+2)&3\sqrt2(1-q)\\3\sqrt2(1-q)&6(2q+1)\end{pmatrix}.
 $$
-and
+Using the same $z$,
 $$
-v_0=\lim_{n\to\infty}\frac{1}{n}\operatorname{Var}(d_n\mid Y_n,X_0)
-=\frac{q(2q+1)}{2(q^2+4q+1)}.
+z^{T}H_{0,2}^{-1}z=\frac{18(q+2)(1-4q)^2-36(1-q)(1-4q)(q+2)+36(2q+1)(q+2)^2}{324D_0}
+$$
+$$
+=\frac{(q+2)(2q+1)^2}{6D_0},
+$$
+so
+$$
+v_0=\frac{q(2q+1)}{2(q^2+4q+1)}.
 $$
 
 For conditioning on $X_n$, define
 $$
-R_n=R-RV^{-1}R,\qquad
-L_n=L-RV^{-1}N.
+R_n=R-RV^{-1}R,\qquad L_n=L-RV^{-1}N.
 $$
-The conditional covariance of $Y_n/\sqrt{n}$ given $X_n/\sqrt{n}$ is the matrix $H_n$ from Step 3. Therefore
+Then
 $$
-v_n=\lim_{n\to\infty}\frac{1}{n}\operatorname{Var}(d_n\mid Y_n,X_n)
-=e^{T}(R_n-L_nH_n^{-1}L_n^{T})e.
+R_n=\operatorname{diag}\left(\frac{9q}{9q+1},\frac q{q+1},\frac q{q+1}\right),
 $$
-The two scalar contractions are
+so
 $$
-e^{T}R_ne=\frac{q(27q+11)}{3(q+1)(9q+1)},
+e^{T}R_ne=\frac{q(27q+11)}{3(q+1)(9q+1)}.
 $$
+Let $F=324q^2+2963q+124$ and $D=(q+1)(9q+1)$. Directly from $L_n$,
 $$
-e^{T}L_nH_n^{-1}L_n^{T}e=
-\frac{q(6561q^3+80109q^2+34558q+1250)}
-{3(q+1)(9q+1)(324q^2+2963q+124)}.
+z_n:=(L_n^{T}e)_2=-\frac{q}{18D}\begin{pmatrix}\sqrt3(81q+49)\\\sqrt6(81q+25)\end{pmatrix}.
 $$
-Their difference is
+The inverse of the $H_{n,2}$ derived in Step 3 is
 $$
-v_n=\frac{q(81q+38)}{324q^2+2963q+124}.
+H_{n,2}^{-1}=\frac1F\begin{pmatrix}12(27q^2+543q+124)&-96\sqrt2(27q+13)\\-96\sqrt2(27q+13)&\frac{12(324q^2+263q+3)}q\end{pmatrix}.
+$$
+Put $a=81q+49$, $b=81q+25$, $P=27q^2+543q+124$, and $Q=324q^2+263q+3$. Then
+$$
+z_n^{T}H_{n,2}^{-1}z_n=\frac{36q^2a^2P-1152q^2ab(27q+13)+72qb^2Q}{324D^2F}.
+$$
+Its numerator factors as
+$$
+108qD(6561q^3+80109q^2+34558q+1250),
+$$
+so
+$$
+z_n^{T}H_{n,2}^{-1}z_n=\frac{q(6561q^3+80109q^2+34558q+1250)}{3DF}.
+$$
+Therefore
+$$
+v_n=e^{T}(R_n-L_nH_n^{-1}L_n^{T})e=\frac{q(81q+38)}{324q^2+2963q+124}.
 $$
 
 Step 5: Apply the rank-one update and simplify the final ratio
 
-Conditioned on $Y_n$, the actual law is obtained from the reference conditional law by the factor
+Conditioned on $Y_n$, the actual law is the reference conditional law tilted by $\exp(-d_n^2/(2nq))$. Let
 $$
-\exp\left(-\frac{d_n^2}{2nq}\right).
+\alpha=\frac1{nq},\qquad a=\begin{pmatrix}-e\\e\end{pmatrix},
 $$
-If $K$ is the reference conditional covariance of $(X_0,X_n)$ and
+and let $K$ be the reference conditional covariance of $(X_0,X_n)$. Then the new precision is $K^{-1}+\alpha aa^{T}$, so
 $$
-a=\begin{pmatrix}-e\\e\end{pmatrix},
+\frac{\det K_{\mathrm{new}}}{\det K}=\frac1{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
 $$
-then the actual conditional precision is
+Also
 $$
-K^{-1}+\frac{1}{nq}aa^{T}.
+\det K=\det\operatorname{Cov}(X_0\mid Y_n)\det\operatorname{Cov}(X_n\mid Y_n,X_0).
 $$
-Set $\alpha=\frac{1}{nq}$. Since
+With $(Y_n,X_0)$ fixed, $d_n$ differs from $e^{T}X_n$ by a constant; the conditional precision of $X_n$ therefore gains $\alpha ee^{T}$. The determinant lemma gives
 $$
-a^{T}Ka=\operatorname{Var}(d_n\mid Y_n),
+\frac{\det\operatorname{Cov}_{\mathrm{new}}(X_n\mid Y_n,X_0)}{\det\operatorname{Cov}(X_n\mid Y_n,X_0)}=\frac1{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_0)}.
 $$
-the matrix determinant lemma gives
+Dividing the joint factors yields
 $$
-\frac{\det K_{\mathrm{new}}}{\det K}
-=\frac{1}{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
+\frac{\det\operatorname{Cov}_{\mathrm{new}}(X_0\mid Y_n)}{\det\operatorname{Cov}(X_0\mid Y_n)}=\frac{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_0)}{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
 $$
-Factor the joint determinant as
-$$
-\det K=
-\det\operatorname{Cov}(X_0\mid Y_n)\,
-\det\operatorname{Cov}(X_n\mid Y_n,X_0).
-$$
-With $(Y_n,X_0)$ fixed, $d_n$ differs from $e^{T}X_n$ by a constant, so the conditional precision of $X_n$ receives the update $\alpha ee^{T}$. Hence
-$$
-\frac{\det\operatorname{Cov}_{\mathrm{new}}(X_n\mid Y_n,X_0)}
-{\det\operatorname{Cov}(X_n\mid Y_n,X_0)}
-=
-\frac{1}{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_0)}.
-$$
-Dividing the joint determinant factor by this conditional factor gives
-$$
-\frac{\det\operatorname{Cov}_{\mathrm{new}}(X_0\mid Y_n)}
-{\det\operatorname{Cov}(X_0\mid Y_n)}
-=
-\frac{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_0)}
-{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
-$$
-Interchanging $X_0$ and $X_n$ gives, by the same determinant factorization,
-$$
-\frac{\det\operatorname{Cov}_{\mathrm{new}}(X_n\mid Y_n)}
-{\det\operatorname{Cov}(X_n\mid Y_n)}
-=
-\frac{1+\alpha\operatorname{Var}(d_n\mid Y_n,X_n)}
-{1+\alpha\operatorname{Var}(d_n\mid Y_n)}.
-$$
-Therefore the limiting determinant ratio is
+Interchanging $X_0,X_n$ gives the analogous factor with $\operatorname{Var}(d_n\mid Y_n,X_n)$. Hence
 $$
 R=R_0\frac{(1+v_0/q)(1+v_n/q)}{1+v/q}.
 $$
-The values from Step 4 give
+From Step 4,
 $$
-1+\frac{v_0}{q}=\frac{2q^2+10q+3}{2(q^2+4q+1)},
-$$
-$$
-1+\frac{v_n}{q}=\frac{2(162q^2+1522q+81)}{324q^2+2963q+124},
+1+\frac{v_0}{q}=\frac{2q^2+10q+3}{2(q^2+4q+1)},\quad 1+\frac{v_n}{q}=\frac{2(162q^2+1522q+81)}{324q^2+2963q+124},
 $$
 $$
-1+\frac{v}{q}=
-\frac{164q^3+1978q^2+363q+3}{2q(55q^2+610q+7)}.
+1+\frac vq=\frac{164q^3+1978q^2+363q+3}{2q(55q^2+610q+7)}.
 $$
-Substitution into the expression for $R$ cancels the three intermediate factors:
+Substitution into $R$ gives
 $$
-R=
-\frac{2(q+4)(2q^2+10q+3)(162q^2+1522q+81)}
-{3(q+3)(164q^3+1978q^2+363q+3)}.
+R=\frac{2(q+4)(2q^2+10q+3)(162q^2+1522q+81)}{3(q+3)(164q^3+1978q^2+363q+3)}.
 $$
 For jointly Gaussian vectors, conditional mutual information is one half the logarithm of this determinant ratio.
 
