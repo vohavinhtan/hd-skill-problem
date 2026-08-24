@@ -1,9 +1,9 @@
 ---
 name: rainier-next
-description: Navigator for the Rainier problem-authoring loop. Inspect the active frontier problem plus any pasted Rainier feedback/JSON/trace path, determine the current workflow stage, and tell the user exactly one next action. Use when the user does not remember what to do next after creating, solving, normalizing, submitting, or receiving Rainier feedback. This skill is routing-only: it does not rewrite the problem or solution.
+description: Navigator for the Rainier problem-authoring loop. Given a problem number/path and any Rainier feedback/JSON/trace evidence, fetch the problem files from GitHub, determine the current workflow stage, and tell the user exactly one next action. This skill is routing-only: it does not rewrite the problem or solution.
 user-invocable: true
 disable-model-invocation: false
-argument-hint: optional active problem path, Rainier feedback/JSON, or trace/archive path
+argument-hint: optional problemNN or folder path, plus optional Rainier feedback/JSON/trace path
 ---
 
 # Rainier Next — Workflow Navigator
@@ -11,62 +11,85 @@ argument-hint: optional active problem path, Rainier feedback/JSON, or trace/arc
 ## Contract
 
 - **Task:** inspect the current Rainier state and return one concrete `YOUR NEXT ACTION`, including the exact next command when the next step is agent-side.
-- **Defaults (act, do not ask):** infer the active problem from context per `skills/_shared/frontier_workspace.md`; if no explicit problem is supplied, use the context-selected folder, else the most-recently-modified active frontier problem. Treat pasted Rainier feedback, JSON, trace paths, and archive paths as workflow evidence, not as problem text.
-- **Only hard stop:** none. If there is not enough state to continue agent-side, the output itself must tell the user exactly what portal action or artifact is needed next.
+- **Defaults:** fetch repository files yourself. If the user says only `problem91`, `problem104`, etc., that is sufficient identification: locate the matching `problemNN-*` folder in GitHub and read its `problem.md` and `solution.md`. Never ask the user to paste those files again when they already exist in GitHub.
+- **Context fallback:** if the user does not give a problem number but the immediately preceding workflow context unambiguously identifies one problem, use that problem automatically and fetch it from GitHub.
+- **Minimal clarification only:** if neither a problem number/path nor unambiguous current context exists, ask only which `problemNN` to use. Do not ask for the contents of `problem.md` or `solution.md`.
 - **Done:** one stage verdict, a compact reason, and exactly one primary `YOUR NEXT ACTION`. Do not modify any problem, solution, archive, or shared knowledge file.
 
 ## Authoritative workflow
 
 Read `docs/rainier-hardening-workflow.md` first. A newer user-provided Rainier portal export overrides static calibration in that document for the current run.
 
-Read `skills/_shared/frontier_workspace.md` to resolve the active problem folder. Read the active `problem.md` and `solution.md` when they exist.
+The repository currently contains Rainier work under `workspace/rainier-problem/`, while some older shared skills still refer to `workspace/frontier-problem/`. For this navigator, probe both locations and use the one that actually contains the referenced `problemNN-*` folder:
 
-This is a navigator, not an executor. Never silently invoke a hardening, solving, formatting, or submission rewrite. Route the user to the correct existing skill instead.
+```text
+workspace/rainier-problem/
+workspace/frontier-problem/
+```
 
-## Evidence rules
+Do not infer a different problem number from folder ordering. If the user says `problem91`, resolve exactly problem 91.
+
+This is a navigator, not an executor. Never silently invoke hardening, solving, formatting, or submission rewrites. Route to the correct existing skill.
+
+## Problem resolution
+
+Resolve the active problem in this order:
+
+1. Explicit `problemNN`, problem folder, `problem.md`, or `solution.md` named by the user.
+2. The exact problem identified by the immediately preceding workflow context.
+3. A unique repository match to a Rainier export/problem statement supplied in the current request.
+4. Otherwise ask only for `problemNN`.
+
+Once resolved, fetch both `problem.md` and `solution.md` from GitHub automatically. A pasted file copy overrides GitHub only when the user explicitly says it is newer than the repository version.
+
+## Rainier evidence rules
+
+Rainier feedback/JSON/trace evidence is different from repository problem files. The user may need to provide it if it is not already stored in the repo/chat.
 
 When Rainier evidence is present:
 
 - Prefer explicit portal fields such as `is_correct`, `successes`, `failures`, `stumped`, `model_outcomes`, `equivalence_judgement`, and the stated difficulty threshold.
-- Never infer instability merely because `textarea-model_generated_answer-*` contains different strings. Equivalent symbolic forms may all be correct.
-- If a current export states the acceptance threshold, use it. The observed 2026-08-23/24 flow used `<=75%` success for at least one of two models.
-- Treat `No Response`/missing completion as inconclusive unless the current portal explicitly scores it as a failure; recommend rerun when needed.
-- When a full difficulty trace HTML path under `workspace/response-archive/html/` is supplied and no corresponding current analysis exists, route to `/evaluate-responses <path>` before hardening.
+- Never infer instability merely because model answer strings differ; mathematically equivalent expressions may all be correct.
+- If a current export states the threshold, use it. The observed 2026-08-23/24 flow used `<=75%` success for at least one of two models.
+- Treat `No Response` as inconclusive unless the current portal explicitly scores it as a failure.
+- Prefer full difficulty trace HTML over summary scores when diagnosing a difficulty failure.
 
 ## Stage detection
 
 Choose exactly one stage.
 
-### Stage A — NO ACTIVE PROBLEM
+### Stage A — Problem missing
 
-Use when no active problem folder/problem statement exists.
+If the requested `problemNN` does not exist in GitHub:
 
-`YOUR NEXT ACTION`: run `/math-clone <problem number and optional domain/sub-domain>` to create a new frontier problem. If the user explicitly wants only an empty folder first, route to `/problem-init <NN>` instead.
+`YOUR NEXT ACTION`: run `/math-clone <problemNN and optional domain/sub-domain>`.
 
-### Stage B — PROBLEM EXISTS, SOLUTION MISSING/EMPTY
+### Stage B — Problem exists, solution missing/empty
 
-`YOUR NEXT ACTION`: run `/math-solve <active problem path>`.
+`YOUR NEXT ACTION`: run `/math-solve <resolved problem path>`.
 
-### Stage C — SOLUTION EXISTS BUT SUBMISSION SHAPE IS NOT CLEAN
+### Stage C — Solution exists but local submission shape is not clean
 
-Indicators include missing normalized problem sections, missing `## Steps` / `## Answer` / classification / concepts, or known format/LaTeX/black-box gaps.
+Indicators: missing normalized problem sections; missing `## Steps`, `## Answer`, classification, or concepts; known LaTeX/black-box gaps.
 
-- If the mathematics itself is unresolved or an unjustified core claim remains, route to `/math-solve <active problem path>`.
-- Otherwise route to `/normalize-all <active problem folder>`.
+- If mathematics is unresolved or a core justification is missing, route to `/math-solve <resolved problem path>`.
+- Otherwise route to `/normalize-all <resolved problem folder>`.
 
-Choose only one based on the earliest unresolved prerequisite.
+Choose the earliest unresolved prerequisite only.
 
-### Stage D — LOCALLY CLEAN, NOT YET PORTAL-TESTED
+### Stage D — Locally clean, not yet portal-tested
 
-Use when problem and solution are normalized/gate-clean and no current Rainier result is supplied.
+If no current Rainier result is available:
 
-`YOUR NEXT ACTION`: run `/rainier-submit <active problem folder>` if it has not just been packaged. If the current context already contains a clean Rainier submission package, the next action is portal-side instead: run Rainier Automated Checks/Difficulty Check, then bring the result back with `/rainier-next <feedback or export>`.
+- If a submission package has not yet been produced, `YOUR NEXT ACTION`: `/rainier-submit <resolved problem folder>`.
+- If a clean package was just produced, `YOUR NEXT ACTION` is portal-side: run Rainier Automated/Difficulty Checks and bring back the result.
 
-### Stage E — DIFFICULTY FAIL / BORDERLINE
+### Stage E — Difficulty fail or borderline
 
-Examples: both model success rates exceed the current acceptance threshold, including `100% / 100%`, or the result is too close to the threshold to be robust.
+Examples: both model success rates exceed the current threshold, including `100% / 100%`, or the result is too close to the boundary to be robust.
 
 Evidence priority:
+
 1. full difficulty trace HTML;
 2. full Rainier JSON;
 3. raw model attempts;
@@ -74,40 +97,40 @@ Evidence priority:
 
 Routing:
 
-- If a trace HTML is available but not analyzed, `YOUR NEXT ACTION` is `/evaluate-responses <trace path>`.
-- If only a score summary is present and the portal offers full traces/JSON, `YOUR NEXT ACTION` is user-side: download/export the full difficulty trace (preferred) or full JSON, then call `/rainier-next` with it. State that hardening can proceed without it only as a weaker fallback.
-- If current trace/archive analysis already exists, `YOUR NEXT ACTION` is `/math-harder <active problem path>` and state that the hardener must attack the earliest robust shortcut found in the trace, not increase mechanical volume.
-- If a full JSON with attempt-level model responses is pasted but no archive HTML exists, route directly to `/math-harder <active problem path>` using the pasted evidence in the same conversation, unless the user can trivially download the full trace HTML; do not force an unnecessary extra round trip.
+- Trace HTML available but not analyzed -> `/evaluate-responses <trace path>`.
+- Only score summary available and portal offers export -> user-side action: download/export full trace HTML (preferred) or full JSON, then call `/rainier-next problemNN` with that evidence.
+- Current trace/archive analysis already exists -> `/math-harder <resolved problem path>`.
+- Full attempt-level JSON is pasted and sufficient -> `/math-harder <resolved problem path>` using that evidence; do not force another round trip merely for format preference.
 
-### Stage F — SOLUTION QUALITY FAIL
+When routing to harden, attack the earliest robust shortcut found in traces, not mechanical volume.
 
-Classify the feedback before routing.
+### Stage F — Solution quality fail
 
-- **Mechanical/bookkeeping/too-computational** (long expansions, coefficient tables, determinant/partition/case bookkeeping): `YOUR NEXT ACTION` is `/math-harder <active problem path>` because the architecture must change; do not merely shorten prose.
-- **Black-box/unjustified claim/result out of thin air**: `YOUR NEXT ACTION` is `/math-solve <active problem path>` with the reviewer feedback in context, then normalization later.
-- **Formatting/LaTeX/concept wording only**: `YOUR NEXT ACTION` is `/format-solution <active solution path>` or `/normalize-all <active problem folder>`; choose the narrower appropriate fix.
+- Mechanical/bookkeeping/too-computational -> `/math-harder <resolved problem path>`.
+- Black-box/unjustified claim/result out of thin air -> `/math-solve <resolved problem path>` with the feedback in context.
+- Formatting/LaTeX/concept wording only -> `/format-solution <resolved solution path>` or `/normalize-all <resolved problem folder>`, choosing the narrower fix.
 
-### Stage G — DIFFICULTY PASS, OTHER PORTAL GATE FAIL
+### Stage G — Difficulty pass, another portal gate fails
 
 Route by the named failing evaluator:
 
 - concept conciseness/format -> `/format-solution`;
-- classification/domain mismatch -> the appropriate classification/normalization skill;
+- classification/domain mismatch -> appropriate classification/normalization skill;
 - answer-length design failure -> `/math-change-answer-type` when applicable;
 - prompt/problem structural failure -> `/math-harder`;
 - solution correctness/consistency failure -> `/math-solve`.
 
-Preserve the passed difficulty result only for the exact unchanged statement. Any statement redesign invalidates it and requires a fresh portal difficulty run.
+A statement redesign invalidates any previous difficulty result and requires a fresh portal run.
 
-### Stage H — ACCEPTED
+### Stage H — Accepted
 
-`YOUR NEXT ACTION`: freeze the accepted version and stop changing its statement/solution. Optionally archive the accepted traces later for learning, but do not harden an accepted version.
+`YOUR NEXT ACTION`: freeze the accepted version and stop changing its statement/solution.
 
 ## Difficulty interpretation
 
 When attempt counts are available, compute success rate from portal correctness labels, not answer-string identity.
 
-Report compactly, for example:
+Example:
 
 ```text
 GPT-5.4: 8/8 correct = 100%
@@ -116,11 +139,11 @@ Threshold: <=75% for at least one model
 Difficulty: PASS
 ```
 
-If a current portal export names different models or a different threshold, use the current export and note that it overrides the stored calibration.
+If a newer portal export names different models or threshold, it overrides stored calibration.
 
-## Trace-driven hardening reminder
+## Trace-driven hardening handoff
 
-When routing to `/math-harder`, include at most these six diagnostic labels if the evidence supports them:
+When routing to `/math-harder`, include these labels only when evidence supports them:
 
 ```text
 COMMON ENTRY:
@@ -131,11 +154,9 @@ RECOVERY PATH:
 EARLIEST ROBUST SHORTCUT:
 ```
 
-Do not perform a full hardening design in this navigator. The purpose is to ensure the hardener receives the right evidence and target.
+Do not design the full hardening inside this navigator.
 
 ## Output format
-
-Keep the output short enough to act on immediately:
 
 ```text
 RAINIER STAGE: <A-H + name>
@@ -154,9 +175,10 @@ BRING BACK:
 
 Rules:
 
-- There must be exactly one primary `YOUR NEXT ACTION`.
-- Do not dump the entire workflow unless the user asks.
+- Exactly one primary `YOUR NEXT ACTION`.
+- If the user supplies `problemNN`, never ask them to paste `problem.md` or `solution.md`; fetch them from GitHub.
+- If current context uniquely identifies the problem, do the same without asking for the number again.
+- Ask only for `problemNN` when problem identity is genuinely ambiguous.
 - Do not ask the user to remember thresholds or routing rules.
 - Do not call a locally clean problem `RAINIER PASS` before a current portal difficulty result exists.
-- A changed problem statement always resets portal difficulty status.
 - Difficulty failures are redesigned from trace evidence; formatting passes never substitute for difficulty passes.
