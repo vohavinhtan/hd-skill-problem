@@ -18,8 +18,7 @@ for every provider is `skills/` — never hand-edit `.claude/commands`, `.codex/
 - **Bias to action.** Do not end a turn on clarifying questions unless genuinely blocked; proceed on
   the most reasonable reading and state the assumption. Prefer a stated default over a pause.
 - **Do not narrate an upfront plan** before acting. Required reports and artifacts (the P1–P8 probe
-  block, audits, verdicts) belong in the finished deliverable, not as a pre-write status pause —
-  narrating a plan first can make the model stop early.
+  block, audits, verdicts) belong in the finished deliverable, not as a pre-write status pause.
 - **Decide the files you need before acting.** Read enough context, then batch edits; avoid repeated
   micro-edits to the same file.
 - **Avoid busy-looping.** If you are re-reading or re-editing the same file without progress, stop and
@@ -47,13 +46,15 @@ for every provider is `skills/` — never hand-edit `.claude/commands`, `.codex/
 
 ## Gate > Stump priority — detail in `skills/_shared/harden_loop.md`
 
-- **Gate-clean is the hard constraint.** A stump obtained by failing any gate is worthless.
-- A stump is **pursued but never required** to save. On honest-effort exhaustion of the harden
-  ladder, a **gate-clean** draft matching the accepted profile (`skills/_shared/passed_exemplars.md`)
-  **may ship**; if it does not match the profile, recommend replace.
-- The staged harden loop (Diagnose → Guided rotation → Creative pivot → Ablation → Final), the
-  per-round anti-regression check, and lesson logging all live in `skills/_shared/harden_loop.md`.
-  The stump verdict oracle (two blind gpt-5.4 solvers) lives in `skills/_shared/stump_gate.md`.
+- **Gate-clean is the hard constraint.** Difficulty obtained by failing a quality/hard gate is worthless.
+- Local model testing is a **provider-neutral optional preflight**, not a save blocker. Missing Codex
+  CLI, credentials, or another independent harness yields `LOCAL_DIFFICULTY_UNMEASURED`, not failure.
+- A gate-clean candidate may be saved in GPT-web/no-CLI mode and must then be tested on the Rainier
+  portal before it is called `RAINIER DIFFICULTY PASS`.
+- Rainier traces/JSON are the preferred hardening evidence after a portal difficulty failure; attack
+  the earliest robust shortcut, not mechanical volume.
+- The preflight evidence/status contract lives in `skills/_shared/stump_gate.md`; the save/iteration
+  policy lives in `skills/_shared/harden_loop.md`.
 
 ## Triviality Probe — detail in `skills/_shared/triviality_probe.md`
 
@@ -66,4 +67,3 @@ blocks; soft-tier (P4, P6, P7 node-count) warns when the accepted profile holds.
 Type, and Answer Type slots. Read it before choosing any label; do not paste the full slot table into
 outputs. Per-topic breaker knowledge lives in `skills/_shared/breaker-topics/<topic>.md` (load only
 the chosen topic).
-
