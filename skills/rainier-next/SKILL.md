@@ -20,7 +20,7 @@ argument-hint: optional problemNN or folder path, plus optional Rainier feedback
 
 Read `docs/rainier-hardening-workflow.md` first. A newer user-provided Rainier portal export overrides static calibration in that document for the current run.
 
-The repository currently contains Rainier work under `workspace/rainier-problem/`, while some older shared skills still refer to `workspace/frontier-problem/`. For this navigator, probe both locations and use the one that actually contains the referenced `problemNN-*` folder:
+Probe both repository layouts and use the one that actually contains the referenced problem:
 
 ```text
 workspace/rainier-problem/
@@ -42,17 +42,17 @@ Resolve the active problem in this order:
 
 Once resolved, fetch both `problem.md` and `solution.md` from GitHub automatically. A pasted file copy overrides GitHub only when the user explicitly says it is newer than the repository version.
 
-## Rainier evidence rules
+## Rainier and local-difficulty evidence rules
 
 Rainier feedback/JSON/trace evidence is different from repository problem files. The user may need to provide it if it is not already stored in the repo/chat.
 
-When Rainier evidence is present:
-
-- Prefer explicit portal fields such as `is_correct`, `successes`, `failures`, `stumped`, `model_outcomes`, `equivalence_judgement`, and the stated difficulty threshold.
-- Never infer instability merely because model answer strings differ; mathematically equivalent expressions may all be correct.
+- Prefer portal fields such as `is_correct`, `successes`, `failures`, `stumped`, `model_outcomes`, and `equivalence_judgement`.
+- Never infer instability merely because model answer strings differ; equivalent expressions may all be correct.
 - If a current export states the threshold, use it. The observed 2026-08-23/24 flow used `<=75%` success for at least one of two models.
-- Treat `No Response` as inconclusive unless the current portal explicitly scores it as a failure.
+- Treat `No Response` as inconclusive unless the portal explicitly scores it as a failure.
 - Prefer full difficulty trace HTML over summary scores when diagnosing a difficulty failure.
+- A local `UNMEASURED`, `LOCAL_DIFFICULTY_UNMEASURED`, missing Codex CLI, missing credentials, unavailable provider, or inability to spawn independent runs is **not a failure**. Do not route back to a CLI stump check. Continue the normal solve/normalize/submit flow and use Rainier portal as the authoritative repeated-model test.
+- Never call a local heuristic/adversarial review an observed model stump rate.
 
 ## Stage detection
 
@@ -62,11 +62,15 @@ Choose exactly one stage.
 
 If the requested `problemNN` does not exist in GitHub:
 
-`YOUR NEXT ACTION`: run `/math-clone <problemNN and optional domain/sub-domain>`.
+`YOUR NEXT ACTION`: `/math-clone <problemNN and optional domain/sub-domain>`.
 
-### Stage B — Problem exists, solution missing/empty
+### Stage B — Problem exists, solution missing/empty or stale after hardening
 
-`YOUR NEXT ACTION`: run `/math-solve <resolved problem path>`.
+If `problem.md` changed after the current `solution.md`, or the solution clearly belongs to an older statement:
+
+`YOUR NEXT ACTION`: `/math-solve <resolved problem path>`.
+
+This includes a newly saved hardened candidate with `LOCAL_DIFFICULTY_UNMEASURED`. Do not demand a local model rerun first.
 
 ### Stage C — Solution exists but local submission shape is not clean
 
@@ -79,10 +83,12 @@ Choose the earliest unresolved prerequisite only.
 
 ### Stage D — Locally clean, not yet portal-tested
 
-If no current Rainier result is available:
+Use this stage even when local model preflight is `UNMEASURED`.
 
-- If a submission package has not yet been produced, `YOUR NEXT ACTION`: `/rainier-submit <resolved problem folder>`.
-- If a clean package was just produced, `YOUR NEXT ACTION` is portal-side: run Rainier Automated/Difficulty Checks and bring back the result.
+- If a submission package has not yet been produced: `/rainier-submit <resolved problem folder>`.
+- If a clean package was just produced: user-side action is to run Rainier Automated/Difficulty Checks and bring back the result.
+
+`UNMEASURED` means "portal test required", not "hardening blocked".
 
 ### Stage E — Difficulty fail or borderline
 
@@ -130,8 +136,6 @@ A statement redesign invalidates any previous difficulty result and requires a f
 
 When attempt counts are available, compute success rate from portal correctness labels, not answer-string identity.
 
-Example:
-
 ```text
 GPT-5.4: 8/8 correct = 100%
 Claude Opus 4.8: 5/8 correct = 62.5%
@@ -177,8 +181,8 @@ Rules:
 
 - Exactly one primary `YOUR NEXT ACTION`.
 - If the user supplies `problemNN`, never ask them to paste `problem.md` or `solution.md`; fetch them from GitHub.
-- If current context uniquely identifies the problem, do the same without asking for the number again.
 - Ask only for `problemNN` when problem identity is genuinely ambiguous.
 - Do not ask the user to remember thresholds or routing rules.
 - Do not call a locally clean problem `RAINIER PASS` before a current portal difficulty result exists.
+- `LOCAL_DIFFICULTY_UNMEASURED` never blocks save or submission preparation.
 - Difficulty failures are redesigned from trace evidence; formatting passes never substitute for difficulty passes.
