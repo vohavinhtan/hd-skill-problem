@@ -26,16 +26,29 @@ Internal target: do not aim exactly at the 75% boundary. Prefer a meaningful buf
 - Hardening the earliest robust shortcut, not merely increasing computation.
 - Reference-solution architecture and zero-black-box quality.
 - Domain/Sub-domain, Problem Type, Answer Type, concepts, formatting, and hard gates.
+- Fetching the current `problem.md` and `solution.md` directly from GitHub once the problem number is known.
 - Deciding whether the next technical action is `math-clone`, `math-solve`, `math-harder`, `evaluate-responses`, `normalize-all`, `format-solution`, or `rainier-submit`.
 
 ### User owns
 
+- Telling the agent which problem is being worked on when context is ambiguous; saying only `problem91`, `problem104`, etc. is enough.
 - Running the actual Rainier portal check/submission.
-- Bringing portal feedback back into the repo/chat when a problem is rejected or borderline.
-- When available, downloading the full difficulty trace export and/or sending the full submission JSON.
+- Bringing new portal feedback back when a problem is rejected or borderline.
+- When available, downloading the full difficulty trace export and/or sending the full Rainier JSON.
 - Making product-level choices only when desired, e.g. "keep this domain" or "replace the whole problem".
 
-The user should not need to remember the routing rules. Run `/rainier-next` after every meaningful stage or portal response.
+The user does NOT need to copy `problem.md` or `solution.md` from GitHub into chat. `/rainier-next problemNN` must locate and read both files itself. If no problem number is given but the immediately preceding workflow context uniquely identifies the problem, `/rainier-next` should use that context automatically.
+
+## Repository lookup rule
+
+Current Rainier work may exist under either of these repository paths because older skills and the live workspace are not fully aligned:
+
+```text
+workspace/rainier-problem/
+workspace/frontier-problem/
+```
+
+The navigator must probe both and use the path that actually contains the requested `problemNN-*` folder. If the user says `problem91`, resolve exactly problem 91; do not infer another number from folder ordering.
 
 ## Core status model
 
@@ -59,7 +72,7 @@ A problem is never called Rainier-ready solely because local formatting or math 
 4. Reject or redesign locally if the main method is immediately visible or if difficulty is mostly long expansion, coefficient tracking, case enumeration, determinant bookkeeping, repeated recurrence, brute force, or symbolic volume.
 5. Run `/normalize-all` and then `/rainier-submit` when the files are clean.
 6. User runs Rainier automated difficulty/quality checks.
-7. User runs `/rainier-next` with the portal result or export.
+7. User runs `/rainier-next problemNN` with the portal result or export when feedback exists.
 
 ## Harden workflow after a Rainier difficulty failure
 
@@ -118,18 +131,20 @@ Long model reasoning is not evidence of sufficient difficulty. A model can spend
 
 ### Difficulty FAIL or borderline
 
-Preferred: full trace HTML plus full JSON. If only one is easy to obtain, send that one. The critical fields are model success/failure counts, per-attempt correctness, model responses/reasoning traces, and equivalence judgments.
+Tell `/rainier-next` the problem number and provide the new Rainier evidence. Preferred: full trace HTML plus full JSON. If only one is easy to obtain, send that one. The critical fields are model success/failure counts, per-attempt correctness, model responses/reasoning traces, and equivalence judgments.
+
+Do not resend `problem.md` or `solution.md`; the agent fetches them from GitHub.
 
 ### Solution-quality FAIL
 
-Send the exact quality feedback plus the current solution. Full JSON is helpful but not mandatory.
+Send the exact quality feedback and the problem number. The agent fetches the current solution from GitHub. Full JSON is helpful but not mandatory.
 
 - Mechanical/bookkeeping criticism usually means redesign the solve architecture, and often the problem architecture, rather than merely shortening prose.
 - Black-box/unjustified-claim criticism means re-solve or expand the missing derivation before formatting.
 
 ### Format / LaTeX / concept / taxonomy FAIL
 
-Only the relevant feedback is normally needed. Full JSON is unnecessary unless the result is ambiguous.
+Send the problem number and relevant feedback. Full JSON is unnecessary unless the result is ambiguous.
 
 ### ACCEPTED
 
@@ -153,18 +168,25 @@ The important history is not only the score but the failure mode and the shortcu
 
 ## The one command to remember
 
-Run:
+If you know the problem number, this is enough:
 
 ```text
-/rainier-next
+/rainier-next problem91
 ```
 
-Optionally pass the active problem path, pasted Rainier feedback, pasted JSON, or a trace/archive path:
+With new Rainier feedback:
 
 ```text
-/rainier-next workspace/frontier-problem/problem107-...
-/rainier-next <paste Rainier feedback or JSON>
-/rainier-next workspace/response-archive/html/<trace>.html
+/rainier-next problem91
+<paste Rainier feedback or JSON>
 ```
 
-The command must print exactly one `YOUR NEXT ACTION` as the primary instruction, plus the command to run next when the next step is agent-side. If the next step is portal-side, it must tell the user exactly what to click/run and what evidence to bring back.
+With a trace export:
+
+```text
+/rainier-next problem91 workspace/response-archive/html/<trace>.html
+```
+
+If you omit the problem number but the current conversation already makes the active problem unambiguous, `/rainier-next` should resolve it automatically. If the problem identity is genuinely ambiguous, it asks only for `problemNN`, never for the contents of `problem.md` or `solution.md`.
+
+The command must print exactly one `YOUR NEXT ACTION` as the primary instruction, plus the command to run next when the next step is agent-side. If the next step is portal-side, it must tell the user exactly what to run and what evidence to bring back.
