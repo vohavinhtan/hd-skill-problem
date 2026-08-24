@@ -4,6 +4,14 @@ Newest first. One entry per update to the shared skill framework — short bulle
 know. `/math-sync` prints the top entries so a fresh pull sees what's new. **When you change the
 framework, add a dated entry at the top here** (same run as the change); keep each entry to a few lines.
 
+## 2026-08-24 — GPT-web/no-CLI hardening flow
+
+- **Codex CLI is no longer a mandatory stump gate.** `stump_gate.md` is now provider-neutral local difficulty preflight; unavailable CLI/credentials/providers produce `UNMEASURED`, never a save-blocking infrastructure failure.
+- **Gate-clean + UNMEASURED may save.** `harden_loop.md` now allows a mathematically verified, quality-clean candidate to be saved as `LOCAL_DIFFICULTY_UNMEASURED`, then routes it to Rainier portal for the authoritative repeated-model difficulty test.
+- **No fake independence.** A single ChatGPT-web reasoning run may perform adversarial shortcut review but may not pretend to be multiple independent model attempts or invent a success rate.
+- **`/rainier-next` understands UNMEASURED.** It continues to `/math-solve`, `/normalize-all`, `/rainier-submit`, then portal testing instead of routing back to Codex or asking for credentials.
+- **Trace-driven hardening remains the default after portal failure.** Full Rainier traces/JSON outrank local heuristics; harden the earliest robust shortcut rather than increasing mechanical volume.
+
 ## 2026-08-24 — Rainier workflow navigator + trace-driven hardening
 
 - **New `/rainier-next` navigator:** inspects the active problem plus pasted Rainier feedback/JSON/trace paths and returns exactly one next action instead of expecting the user to remember the workflow.
