@@ -63,7 +63,7 @@ $$
 To find $s_{n,p}$, write
 $$
 D_s(u)=\left(u-\frac{ps^2}{2}\right)^2
-+s^2\left(1-\frac{p^2s^2}{4}\right).
++s^2\left(1-\frac{p^{2}s^2}{4}\right).
 $$
 The integral of $\frac{1}{D_s}$ over $[-a,a]$ is $\frac{\pi}{s}+O(1)$ as $s\downarrow0$: after the displayed shift its exact antiderivative is an arctangent, and the two endpoint arguments tend to $+\infty$ and $-\infty$. The remaining part satisfies
 $$
@@ -91,7 +91,7 @@ Polynomial division gives the identity
 $$
 \frac{W(u)}{D_s(u)}
 =
--4pu-4p^2s^2
+-4pu-4p^{2}s^2
 +
 \alpha_s\frac{D_s'(u)}{D_s(u)}
 +
@@ -99,15 +99,15 @@ $$
 $$
 where
 $$
-\alpha_s=2ps^2(1-p^2s^2),
+\alpha_s=2ps^2(1-p^{2}s^2),
 \qquad
-\beta_s=1+6p^2s^4-2p^4s^6.
+\beta_s=1+6p^{2}s^4-2p^{4}s^6.
 $$
 Multiplying the right side by $D_s(u)$ produces
 $$
 -4pu^3+1=W(u).
 $$
-The constant term $-4p^2s^2$ has equal integrals on the two half-intervals, while the term $-4pu$ contributes
+The constant term $-4p^{2}s^2$ has equal integrals on the two half-intervals, while the term $-4pu$ contributes
 $$
 \int_{-a}^{0}(-4pu)\,du-\int_{0}^{a}(-4pu)\,du
 =
@@ -144,7 +144,7 @@ Set
 $$
 h=\frac{ps^2}{2},
 \qquad
-r=s\sqrt{1-\frac{p^2s^2}{4}}.
+r=s\sqrt{1-\frac{p^{2}s^2}{4}}.
 $$
 With $D_s(u)=(u-h)^2+r^2$, integrating the shifted quadratic gives
 $$
@@ -176,7 +176,7 @@ Also
 $$
 \frac{h}{r}
 =
-\frac{ps}{2}+\frac{p^3s^3}{16}+O(s^5),
+\frac{ps}{2}+\frac{p^{3}s^3}{16}+O(s^5),
 $$
 so $\arctan z=z-\frac{z^3}{3}+O(z^5)$ yields
 $$
