@@ -28,7 +28,7 @@ $$
 =
 \frac{W(u)}{nD_s(u)}.
 $$
-Therefore
+So
 $$
 X(u)
 =
@@ -42,7 +42,7 @@ J(s):=
 =
 \frac{nq}{2}.
 $$
-For fixed $u$, the integrand decreases strictly with $s^2$ because $W(u)>0$ and $1-pu>0$. Also $J(s)\to\infty$ as $s\downarrow0$ from the neighborhood of $u=0$, while $J(s)\to0$ as $s\to\infty$. Thus this equation has exactly one $s=s_{n,p}>0$, which proves the required parameter is well-defined.
+For fixed $u$, the integrand decreases strictly with $s^2$ because $W(u)>0$ and $1-pu>0$. Also $J(s)\to\infty$ as $s\downarrow0$ from the neighborhood of $u=0$, while $J(s)\to0$ as $s\to\infty$. So this equation has exactly one $s=s_{n,p}>0$, which proves the required parameter is well-defined.
 
 Step 2: Relate the transition point to a left-right difference and determine the scale
 
@@ -74,7 +74,7 @@ $$
 =
 O(1),
 $$
-because $D_s(u)\geq c_p(u^2+s^2)$ for fixed $p\in(0,2)$. Hence
+because $D_s(u)\geq c_p(u^2+s^2)$ for fixed $p\in(0,2)$. So
 $$
 J(s)=\frac{\pi}{s}+O(1).
 $$
@@ -103,7 +103,7 @@ $$
 \qquad
 \beta_s=1+6p^2s^4-2p^4s^6.
 $$
-Indeed, multiplying the right side by $D_s(u)$ produces
+Multiplying the right side by $D_s(u)$ produces
 $$
 -4pu^3+1=W(u).
 $$
@@ -113,7 +113,7 @@ $$
 =
 4pa^2=p.
 $$
-Therefore
+So
 $$
 \Delta(s)
 =
@@ -146,7 +146,7 @@ h=\frac{ps^2}{2},
 \qquad
 r=s\sqrt{1-\frac{p^2s^2}{4}}.
 $$
-Then $D_s(u)=(u-h)^2+r^2$, so direct integration gives
+With $D_s(u)=(u-h)^2+r^2$, integrating the shifted quadratic gives
 $$
 K(s)
 =
@@ -184,7 +184,7 @@ $$
 =
 p+\frac{p^3}{6}s^2+O(s^4).
 $$
-Thus, with $a=\frac{1}{2}$,
+With $a=\frac{1}{2}$,
 $$
 K(s)
 =
