@@ -1,153 +1,147 @@
 ---
 name: rainier-next
-description: Navigator for the Rainier problem-authoring loop. Given a problem number/path and any Rainier feedback/JSON/trace evidence, fetch the problem files from GitHub, determine the current workflow stage, and tell the user exactly one next action. This skill is routing-only: it does not rewrite the problem or solution.
+description: Orchestrate the Rainier problem-authoring loop end-to-end. Given problemNN/path plus optional Rainier feedback/JSON/trace evidence, fetch the current problem files from GitHub, automatically execute all safe agent-side stages needed, and stop only at a genuine user/portal boundary or a real blocker.
 user-invocable: true
 disable-model-invocation: false
 argument-hint: optional problemNN or folder path, plus optional Rainier feedback/JSON/trace path
 ---
 
-# Rainier Next — Workflow Navigator
+# Rainier Next — Auto-Advance Orchestrator
 
 ## Contract
 
-- **Task:** inspect the current Rainier state and return one concrete `YOUR NEXT ACTION`, including the exact next command when the next step is agent-side.
-- **Defaults:** fetch repository files yourself. If the user says only `problem91`, `problem104`, etc., that is sufficient identification: locate the matching `problemNN-*` folder in GitHub and read its `problem.md` and `solution.md`. Never ask the user to paste those files again when they already exist in GitHub.
-- **Context fallback:** if the user does not give a problem number but the immediately preceding workflow context unambiguously identifies one problem, use that problem automatically and fetch it from GitHub.
-- **Minimal clarification only:** if neither a problem number/path nor unambiguous current context exists, ask only which `problemNN` to use. Do not ask for the contents of `problem.md` or `solution.md`.
-- **Done:** one stage verdict, a compact reason, and exactly one primary `YOUR NEXT ACTION`. Do not modify any problem, solution, archive, or shared knowledge file.
+- **Task:** drive one Rainier problem forward automatically through every agent-side stage that is currently required. Do not merely tell the user which slash command to run next.
+- **Defaults:** if the user says only `problem91`, `problem104`, etc., locate the matching `problemNN-*` folder in GitHub and read `problem.md` + `solution.md` yourself. If current context uniquely identifies the problem, use it automatically.
+- **Auto-advance rule:** once the problem is resolved, repeatedly inspect state, execute the required existing skill contract, re-read the resulting files/state, and continue until reaching a **portal boundary**, **accepted state**, or **real blocker**.
+- **Do not make the user relay internal steps.** The user should not have to manually run `/math-solve`, `/normalize-all`, `/rainier-submit`, `/format-solution`, `/math-harder`, or `/evaluate-responses` one by one when those steps can be executed in the current run.
+- **Minimal clarification only:** if problem identity is genuinely ambiguous, ask only for `problemNN`. Never ask the user to paste repository `problem.md` or `solution.md` when they already exist in GitHub.
+- **Done:** either (a) a copy-paste-ready Rainier package is produced and the only remaining action is the user's portal test, (b) the accepted version is frozen, or (c) a genuine blocker is reported with one concrete recovery action.
 
 ## Authoritative workflow
 
-Read `docs/rainier-hardening-workflow.md` first. A newer user-provided Rainier portal export overrides static calibration in that document for the current run.
+Read `docs/rainier-hardening-workflow.md` first. A newer user-provided Rainier export overrides stored calibration for the current run.
 
-Probe both repository layouts and use the one that actually contains the referenced problem:
+Probe both repository layouts and use the one that actually contains the requested problem:
 
 ```text
 workspace/rainier-problem/
 workspace/frontier-problem/
 ```
 
-Do not infer a different problem number from folder ordering. If the user says `problem91`, resolve exactly problem 91.
+If the user says `problem91`, resolve exactly problem 91. Never infer another number from ordering.
 
-This is a navigator, not an executor. Never silently invoke hardening, solving, formatting, or submission rewrites. Route to the correct existing skill.
+## Delegation model
 
-## Problem resolution
+This skill is an **orchestrator**. When a stage requires an existing skill, read that skill's `SKILL.md` and execute its contract directly in the same run. Do not stop just to print the slash command.
 
-Resolve the active problem in this order:
+Relevant delegates:
 
-1. Explicit `problemNN`, problem folder, `problem.md`, or `solution.md` named by the user.
-2. The exact problem identified by the immediately preceding workflow context.
-3. A unique repository match to a Rainier export/problem statement supplied in the current request.
-4. Otherwise ask only for `problemNN`.
+- `skills/math-clone/SKILL.md`
+- `skills/math-solve/SKILL.md`
+- `skills/math-harder/SKILL.md`
+- `skills/evaluate-responses/SKILL.md`
+- `skills/format-solution/SKILL.md`
+- `skills/normalize-all/SKILL.md`
+- `skills/math-change-answer-type/SKILL.md`
+- `skills/math-change-problem-type/SKILL.md`
+- `skills/rainier-submit/SKILL.md`
 
-Once resolved, fetch both `problem.md` and `solution.md` from GitHub automatically. A pasted file copy overrides GitHub only when the user explicitly says it is newer than the repository version.
+Important: `normalize-all` already runs `rainier-submit` as its Phase 4. Therefore after a successful `normalize-all`, do **not** ask the user to run `/rainier-submit` again. Treat the package produced by `normalize-all` as the current submission package.
 
-## Rainier and local-difficulty evidence rules
+## Evidence rules
 
-Rainier feedback/JSON/trace evidence is different from repository problem files. The user may need to provide it if it is not already stored in the repo/chat.
+- Prefer portal fields such as `is_correct`, `successes`, `failures`, `stumped`, `model_outcomes`, `equivalence_judgement`, and the current threshold.
+- Different answer strings are not different outcomes when Rainier marks them mathematically equivalent.
+- The observed 2026-08-23/24 portal used GPT-5.4 + Claude Opus 4.8, 8 attempts each, and accepted difficulty when at least one model had success rate `<=75%`. A newer export overrides this.
+- `No Response` is inconclusive unless the portal explicitly scores it as a failure.
+- Full trace HTML > full attempt-level JSON > raw attempts > score summary only.
+- `UNMEASURED`, missing Codex CLI, missing credentials, unavailable providers, or inability to spawn independent model runs are **not blockers**. Continue agent-side work and leave official difficulty to Rainier.
+- Never fabricate independent attempts or success rates from one GPT-web reasoning run.
 
-- Prefer portal fields such as `is_correct`, `successes`, `failures`, `stumped`, `model_outcomes`, and `equivalence_judgement`.
-- Never infer instability merely because model answer strings differ; equivalent expressions may all be correct.
-- If a current export states the threshold, use it. The observed 2026-08-23/24 flow used `<=75%` success for at least one of two models.
-- Treat `No Response` as inconclusive unless the portal explicitly scores it as a failure.
-- Prefer full difficulty trace HTML over summary scores when diagnosing a difficulty failure.
-- A local `UNMEASURED`, `LOCAL_DIFFICULTY_UNMEASURED`, missing Codex CLI, missing credentials, unavailable provider, or inability to spawn independent runs is **not a failure**. Do not route back to a CLI stump check. Continue the normal solve/normalize/submit flow and use Rainier portal as the authoritative repeated-model test.
-- Never call a local heuristic/adversarial review an observed model stump rate.
+## Auto-loop
 
-## Stage detection
+After each executed stage, re-read the current problem/solution and continue from the top of this loop. Maximum internal transitions per invocation: 8. If the cap is reached without a portal boundary, report the current state and the single real blocker; do not ask the user to replay already-completed steps.
 
-Choose exactly one stage.
+### A — Problem missing
 
-### Stage A — Problem missing
+If the requested problem does not exist:
 
-If the requested `problemNN` does not exist in GitHub:
+1. Execute `math-clone` for that exact problem number using any supplied taxonomy constraints/current context.
+2. If creation succeeds, continue automatically to B.
+3. If the problem cannot be created because a genuinely required input is unavailable, stop with that blocker only.
 
-`YOUR NEXT ACTION`: `/math-clone <problemNN and optional domain/sub-domain>`.
+### B — Solution missing, empty, or stale
 
-### Stage B — Problem exists, solution missing/empty or stale after hardening
+If `problem.md` is newer/different and the current solution belongs to an older statement, or no valid solution exists:
 
-If `problem.md` changed after the current `solution.md`, or the solution clearly belongs to an older statement:
+1. Execute `math-solve` on the current problem.
+2. Re-read both files.
+3. If solving verifies successfully, continue automatically to C.
+4. If correctness cannot be established, stop as a real blocker; do not normalize an unverified solution.
 
-`YOUR NEXT ACTION`: `/math-solve <resolved problem path>`.
+### C — Solve is current; normalization/package pending
 
-This includes a newly saved hardened candidate with `LOCAL_DIFFICULTY_UNMEASURED`. Do not demand a local model rerun first.
+If the current solution matches the current statement but the folder is not yet normalized/package-ready:
 
-### Stage C — Solution exists but local submission shape is not clean
+1. Execute `normalize-all` on the resolved folder.
+2. This runs normalize-problem -> format-solution -> math-rewrite -> rainier-submit in one pipeline.
+3. If all gates pass, capture the submission package and stop at **PORTAL READY**.
+4. If `normalize-all` finds a Level 2/3 black-box mathematical gap, automatically execute `math-solve` to repair it, then retry `normalize-all` once.
+5. If normalization reveals a problem-design/answer-length/mechanical-computation failure requiring redesign, execute the appropriate redesign skill (`math-harder` or `math-change-answer-type`), then continue through B again.
 
-Indicators: missing normalized problem sections; missing `## Steps`, `## Answer`, classification, or concepts; known LaTeX/black-box gaps.
+### D — Locally clean/package-ready, no current portal result
 
-- If mathematics is unresolved or a core justification is missing, route to `/math-solve <resolved problem path>`.
-- Otherwise route to `/normalize-all <resolved problem folder>`.
+This is a user boundary. Do not invent a portal result and do not continue hardening without evidence.
 
-Choose the earliest unresolved prerequisite only.
-
-### Stage D — Locally clean, not yet portal-tested
-
-Use this stage even when local model preflight is `UNMEASURED`.
-
-- If a submission package has not yet been produced: `/rainier-submit <resolved problem folder>`.
-- If a clean package was just produced: user-side action is to run Rainier Automated/Difficulty Checks and bring back the result.
-
-`UNMEASURED` means "portal test required", not "hardening blocked".
-
-### Stage E — Difficulty fail or borderline
-
-Examples: both model success rates exceed the current threshold, including `100% / 100%`, or the result is too close to the boundary to be robust.
-
-Evidence priority:
-
-1. full difficulty trace HTML;
-2. full Rainier JSON;
-3. raw model attempts;
-4. score summary only.
-
-Routing:
-
-- Trace HTML available but not analyzed -> `/evaluate-responses <trace path>`.
-- Only score summary available and portal offers export -> user-side action: download/export full trace HTML (preferred) or full JSON, then call `/rainier-next problemNN` with that evidence.
-- Current trace/archive analysis already exists -> `/math-harder <resolved problem path>`.
-- Full attempt-level JSON is pasted and sufficient -> `/math-harder <resolved problem path>` using that evidence; do not force another round trip merely for format preference.
-
-When routing to harden, attack the earliest robust shortcut found in traces, not mechanical volume.
-
-### Stage F — Solution quality fail
-
-- Mechanical/bookkeeping/too-computational -> `/math-harder <resolved problem path>`.
-- Black-box/unjustified claim/result out of thin air -> `/math-solve <resolved problem path>` with the feedback in context.
-- Formatting/LaTeX/concept wording only -> `/format-solution <resolved solution path>` or `/normalize-all <resolved problem folder>`, choosing the narrower fix.
-
-### Stage G — Difficulty pass, another portal gate fails
-
-Route by the named failing evaluator:
-
-- concept conciseness/format -> `/format-solution`;
-- classification/domain mismatch -> appropriate classification/normalization skill;
-- answer-length design failure -> `/math-change-answer-type` when applicable;
-- prompt/problem structural failure -> `/math-harder`;
-- solution correctness/consistency failure -> `/math-solve`.
-
-A statement redesign invalidates any previous difficulty result and requires a fresh portal run.
-
-### Stage H — Accepted
-
-`YOUR NEXT ACTION`: freeze the accepted version and stop changing its statement/solution.
-
-## Difficulty interpretation
-
-When attempt counts are available, compute success rate from portal correctness labels, not answer-string identity.
+Stop with:
 
 ```text
-GPT-5.4: 8/8 correct = 100%
-Claude Opus 4.8: 5/8 correct = 62.5%
-Threshold: <=75% for at least one model
-Difficulty: PASS
+RAINIER LOOP: PORTAL READY
+YOUR ACTION: test this exact package in Rainier Automated/Difficulty Checks
+BRING BACK: problemNN + full trace HTML or full JSON if available; otherwise the exact portal feedback/score summary
 ```
 
-If a newer portal export names different models or threshold, it overrides stored calibration.
+Do not print another agent-side slash command.
 
-## Trace-driven hardening handoff
+### E — Rainier difficulty FAIL or borderline
 
-When routing to `/math-harder`, include these labels only when evidence supports them:
+Examples: both model success rates exceed the current threshold, including `100% / 100%`, or the result is borderline.
+
+- If a full trace HTML is available and has not been analyzed, execute `evaluate-responses` first, then continue.
+- If full attempt-level JSON/raw responses are supplied, use them directly; do not force a format-only round trip.
+- If only a score summary exists and the portal exposes trace/JSON, this is a genuine user boundary because only the user can obtain that artifact. Stop and request the strongest available export.
+- Once sufficient evidence exists, execute `math-harder` against the earliest robust shortcut, not later arithmetic.
+- After hardening saves a changed statement, previous difficulty evidence becomes stale. Continue automatically through B -> C -> D.
+
+### F — Solution quality FAIL
+
+Classify and repair automatically:
+
+- mechanical/bookkeeping/too-computational -> execute `math-harder`, then B -> C;
+- black-box/unjustified mathematical claim -> execute `math-solve`, then C;
+- formatting/LaTeX/concept wording only -> execute `format-solution` or `normalize-all`, choosing the narrower safe repair; if a package needs rebuilding, finish with `normalize-all`.
+
+Stop only if the repair skill reports a genuine correctness/design blocker.
+
+### G — Difficulty PASS, another portal gate fails
+
+Repair automatically based on the failing evaluator:
+
+- concept conciseness/format -> `format-solution` / `normalize-all`;
+- classification/domain mismatch -> appropriate normalization/classification repair;
+- answer-length design failure -> `math-change-answer-type` when applicable;
+- prompt/problem structural failure -> `math-harder`;
+- solution correctness/consistency failure -> `math-solve`.
+
+If the statement changes, invalidate the prior difficulty result and continue through B -> C -> D for a fresh portal run. If only solution formatting changes and the exact statement remains byte-for-byte unchanged, preserve the portal difficulty evidence unless the portal says otherwise.
+
+### H — Accepted
+
+Stop. Freeze the exact accepted statement and solution. Do not harden or normalize further.
+
+## Hardening handoff
+
+When entering `math-harder`, provide the strongest current diagnosis available:
 
 ```text
 COMMON ENTRY:
@@ -158,31 +152,23 @@ RECOVERY PATH:
 EARLIEST ROBUST SHORTCUT:
 ```
 
-Do not design the full hardening inside this navigator.
+The hardener should block the earliest robust shortcut and prefer structural moves: hidden representation/invariant, coupled conditions, competing regimes, leading-order degeneracy, a structurally failing standard route, or a necessary certificate. Do not manufacture difficulty through longer expansions, larger determinants, more coefficient tables, brute force, or cosmetic constants.
 
 ## Output format
 
+Do not narrate every internal transition. At the end, report only the compact loop result:
+
 ```text
-RAINIER STAGE: <A-H + name>
-STATUS: <one-line verdict>
-WHY: <1-3 bullets>
+RAINIER LOOP: <PORTAL READY | ACCEPTED | BLOCKED>
+PROBLEM: problemNN
+AUTO-RAN: <ordered list of stages actually executed, or `none`>
+STATUS: <one-line result>
 
-YOUR NEXT ACTION:
-<exactly one action>
-
-NEXT COMMAND:
-<exact slash command, only when agent-side>
+YOUR ACTION:
+<only the real remaining user action, if any>
 
 BRING BACK:
-<only when the next step is portal-side; exact feedback/export requested>
+<only when the user must return portal evidence>
 ```
 
-Rules:
-
-- Exactly one primary `YOUR NEXT ACTION`.
-- If the user supplies `problemNN`, never ask them to paste `problem.md` or `solution.md`; fetch them from GitHub.
-- Ask only for `problemNN` when problem identity is genuinely ambiguous.
-- Do not ask the user to remember thresholds or routing rules.
-- Do not call a locally clean problem `RAINIER PASS` before a current portal difficulty result exists.
-- `LOCAL_DIFFICULTY_UNMEASURED` never blocks save or submission preparation.
-- Difficulty failures are redesigned from trace evidence; formatting passes never substitute for difficulty passes.
+If blocked, replace `YOUR ACTION` with one concrete recovery action. Do not tell the user to manually replay internal agent-side commands already covered by this orchestrator.
