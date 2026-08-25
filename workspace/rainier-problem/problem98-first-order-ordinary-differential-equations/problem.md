@@ -20,7 +20,7 @@ nF_{\lambda_{n,p},p}(y_{n,p}(x))
 1+
 \displaystyle
 \frac{
-12pnx\left(y_{n,p}(x)-\frac{1}{2}\right)^2F_{\lambda_{n,p},p}(y_{n,p}(x))
+12pnx\left(y_{n,p}(x)-\frac{1}{2}\right)^{2}F_{\lambda_{n,p},p}(y_{n,p}(x))
 }{
 1-4p\left(y_{n,p}(x)-\frac{1}{2}\right)^3
 }
