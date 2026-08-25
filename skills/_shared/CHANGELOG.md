@@ -4,6 +4,14 @@ Newest first. One entry per update to the shared skill framework — short bulle
 know. `/math-sync` prints the top entries so a fresh pull sees what's new. **When you change the
 framework, add a dated entry at the top here** (same run as the change); keep each entry to a few lines.
 
+## 2026-08-25 — Rainier auto-advance orchestrator
+
+- **`/rainier-next` now executes, not merely routes.** It automatically advances through agent-side stages such as solve, response analysis, harden, normalize, repair, and package generation in one invocation.
+- **Stops only at a real boundary:** Rainier portal testing/evidence retrieval, accepted freeze, or a genuine mathematical/design blocker. The user no longer needs to relay each slash command manually.
+- **`normalize-all` already includes `rainier-submit`.** The orchestrator treats a successful normalize-all run as package-ready and never asks for a redundant separate `/rainier-submit` step.
+- **Portal-failure loop is automatic when evidence is sufficient:** trace/JSON -> analyze if needed -> harden -> re-solve -> normalize/package -> return to portal.
+- **Problem number remains enough:** `/rainier-next problem98` fetches the current GitHub files and runs until the next true user boundary.
+
 ## 2026-08-24 — GPT-web/no-CLI hardening flow
 
 - **Codex CLI is no longer a mandatory stump gate.** `stump_gate.md` is now provider-neutral local difficulty preflight; unavailable CLI/credentials/providers produce `UNMEASURED`, never a save-blocking infrastructure failure.
