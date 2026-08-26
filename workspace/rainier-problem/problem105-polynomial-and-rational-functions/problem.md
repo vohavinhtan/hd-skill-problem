@@ -30,10 +30,10 @@ Here $\operatorname{Res}_y$ denotes the resultant with respect to $y$.
 
 | Field | Value |
 |---|---|
-| Domain | Algebra, Functions, and Trigonometry |
-| Sub-domain | Polynomial and rational functions |
-| Problem Type | Exhaustive enumeration |
-| Answer Type | Set or multiset of objects |
+| **Domain** | Algebra, Functions, and Trigonometry |
+| **Sub-domain** | Polynomial and rational functions |
+| **Problem Type** | Exhaustive enumeration |
+| **Answer Type** | Set or multiset of objects |
 
 ---
 
